@@ -1,0 +1,39 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+.env*
+.wrangler
+__unconfig*
+todos.json
+
+# typescript
+*.tsbuildinfo
+
+# Original artwork (not published or tracked)
+/private/
+
+
+# Void の生成物
+.void
+.void-wrangler.jsonc
+
+# Local documentation and agent workspace
+/.docs/
+/.claude/
+
+# Image assets are managed in R2; local copies stay outside Git
+/public/images/
+/public/art/
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.avif
+*.ico
+*.svg
+*.bmp
+*.tif
+*.tiff
