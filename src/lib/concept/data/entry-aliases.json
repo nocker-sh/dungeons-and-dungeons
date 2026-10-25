@@ -1,0 +1,29 @@
+{
+  "characters": {
+    "ogre": "gou",
+    "contract-breaker": "rize",
+    "stonewing": "sera",
+    "mimic-devil": "mimika",
+    "dragon-traveler": "rio",
+    "door-bearer": "clef",
+    "cerberus-keeper": "nem",
+    "gravekeeper": "mort",
+    "self-proclaimed-hero": "alma"
+  },
+  "residents": {
+    "guild": "milena",
+    "smithy": "hilde",
+    "armory": "otto",
+    "tools": "walter",
+    "apothecary": "morna",
+    "guide": "lloyd",
+    "secret": "yoru"
+  },
+  "demons": {
+    "thread": "nui",
+    "lock": "lox",
+    "stone": "tris",
+    "bird": "haro",
+    "shadow-stitcher": "zaza"
+  }
+}

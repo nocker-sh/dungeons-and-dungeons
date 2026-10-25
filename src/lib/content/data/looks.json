@@ -1,0 +1,328 @@
+{
+  "members": {
+    "34233f3c-e646-40c6-8a1e-7c93b27be0a4": {
+      "fx": 0.5,
+      "fy": 0.30007,
+      "zoom": 1.714627,
+      "ratio": 1.3333333333333333,
+      "color": "#2a1f3d"
+    },
+    "e7883b7f-237f-4de0-a73d-196b09e705b5": {
+      "fx": 0.5,
+      "fy": 0.15,
+      "zoom": 2.333023,
+      "ratio": 1.3333333333333333,
+      "color": "#8c3a34"
+    },
+    "d312117e-1aa5-4e02-ae58-9b913f6b8917": {
+      "fx": 0.588889,
+      "fy": 0.16,
+      "zoom": 3.0375,
+      "ratio": 1.3333333333333333,
+      "color": "#3d4f52"
+    },
+    "92994417-49e7-428b-9565-d050a6e8c3ab": {
+      "fx": 0.431174,
+      "fy": 0.089937,
+      "zoom": 3.364698,
+      "ratio": 1.3333333333333333,
+      "color": "#3a4468"
+    },
+    "f9298ba8-cd8f-4e88-b491-2d7e2c1f947d": {
+      "fx": 0.5,
+      "fy": 0.140472,
+      "zoom": 2.731183,
+      "ratio": 1.3333333333333333,
+      "color": "#34503a"
+    },
+    "b7cdab32-f48f-4ae0-aba8-591814af0b0f": {
+      "fx": 0.5,
+      "fy": 0.30007,
+      "zoom": 1.714627,
+      "ratio": 1.3333333333333333,
+      "color": "#1f2f3d"
+    },
+    "2ea1b696-2332-4a72-bf80-0debe88d2525": {
+      "fx": 0.5,
+      "fy": 0.30007,
+      "zoom": 1.714627,
+      "ratio": 1.3333333333333333,
+      "color": "#3d1f22"
+    },
+    "742f2b94-2e04-4dd3-85e0-bbd5a2e26849": {
+      "fx": 0.5,
+      "fy": 0.30007,
+      "zoom": 1.714627,
+      "ratio": 1.3333333333333333,
+      "color": "#3d331f"
+    }
+  },
+  "defaults": {
+    "fx": 0.5,
+    "fy": 0.2,
+    "zoom": 1.6,
+    "ratio": 1.5,
+    "color": "#2a2342"
+  },
+  "demons": {
+    "1cda31a8-f190-4c40-8b75-cff10de8d894": {
+      "fx": 0.5,
+      "color": "#b3202e"
+    },
+    "7a09e178-f9cc-40fc-b87b-472250f3dc35": {
+      "fx": 0.47,
+      "color": "#c9a24a"
+    },
+    "12217057-7b5b-4b60-9008-fcf68bd37723": {
+      "fx": 0.56,
+      "color": "#e0843a"
+    },
+    "d8767e77-e0b8-4bde-a99e-e465e71a1a7b": {
+      "fx": 0.5,
+      "color": "#6fbf6a"
+    },
+    "22fc495f-8f5e-4239-93dc-03bd6841047b": {
+      "fx": 0.5,
+      "color": "#5a3f8c"
+    }
+  },
+  "foes": {
+    "61893649-624b-4c84-882b-5d4df3e8a8bb": {
+      "glow": "#a98cf0"
+    },
+    "29ed2718-1c81-4e16-9230-2e80870a0298": {
+      "glow": "#6fe3ee"
+    },
+    "0db315b8-06b0-4c86-817a-5f50ab70e30a": {
+      "glow": "#6fe3ee"
+    },
+    "539a2b7f-8e2b-4484-882a-ca1c50be7709": {
+      "glow": "#6fe3ee"
+    },
+    "4790537c-c395-4bc5-9649-005d2fcf52a5": {
+      "glow": "#c9a24a"
+    },
+    "8aae8f96-edbf-4649-82cb-4c6d7b12d1a8": {
+      "glow": "#a97cff"
+    },
+    "3f93cd61-6218-4de9-921a-8ef69dd413e5": {
+      "glow": "#d9643c"
+    },
+    "77f87869-8a88-4559-a8e8-f7f6f0828d9a": {
+      "glow": "#ff8a3c"
+    },
+    "0b27b6ee-377c-4c00-98b6-ff9fe53bfb78": {
+      "glow": "#5ec98a"
+    },
+    "85495e6d-9a6d-4b81-bc62-37ce73ee9722": {
+      "glow": "#ff6fb0"
+    },
+    "495dd552-d553-4a92-b408-6f336c221ae2": {
+      "glow": "#d14a7a"
+    },
+    "b2dfcc17-8719-472a-9510-6564f6dd3818": {
+      "glow": "#ff3f6f"
+    },
+    "a5c09011-ddae-4bfb-8f07-dc82dfc58951": {
+      "glow": "#d9643c"
+    },
+    "89831ecc-694f-489b-9b81-e6805b9e2371": {
+      "glow": "#a89a86"
+    },
+    "feca401a-3c60-4777-972b-4d31f82e9d10": {
+      "glow": "#aa9fd4"
+    },
+    "4a9b6857-44d0-4495-b4a0-ca77daad9ba7": {
+      "glow": "#ffb34a"
+    },
+    "077cf720-2ab2-4d30-8ce5-7e4223bd38e3": {
+      "glow": "#7ad16a"
+    },
+    "f7e72b0b-c879-44b4-b85e-f26bb768002a": {
+      "glow": "#c95a5a"
+    },
+    "71a02ed5-31dd-43c8-9192-94db906271ec": {
+      "glow": "#e0b24a"
+    },
+    "973c11c6-e9d2-423f-bcbc-f2ae9d7a5a20": {
+      "glow": "#9ab4d6"
+    },
+    "977c6c0b-b1ed-4a3c-9462-3c11607ad563": {
+      "glow": "#e05a8a"
+    },
+    "4ed3f555-e6d3-4213-a6c8-ec7a0af11e36": {
+      "glow": "#5a8ad6"
+    },
+    "a93a40ce-dacc-4a01-a8c5-8ff7289b6650": {
+      "glow": "#a99ad0"
+    },
+    "4ae48d64-3bc0-4bff-9ef9-fc30e3d49c84": {
+      "glow": "#c7e07a"
+    },
+    "3776eb0a-02ac-4f4f-9c66-c4434164b2b9": {
+      "glow": "#c94a4a"
+    },
+    "0bd25319-47c6-4761-8c7a-49535e14a938": {
+      "glow": "#5a7ab0"
+    },
+    "552ec59c-a774-42d0-8f12-f2963aeb417d": {
+      "glow": "#8fb4d6"
+    },
+    "f8db80ab-a853-45d1-91c4-7a2fd0856aba": {
+      "glow": "#7a5aa8"
+    }
+  },
+  "layers": {
+    "9de7d35a-f278-4a77-8017-92c121958caa": {
+      "scene": "f1211d70-3fc4-4803-84ef-d1c3bfaa98c5"
+    },
+    "e350494d-9aa2-48a1-8b0d-58b170c11c67": {
+      "scene": "742dad77-7906-47fb-b167-c1a20ed6b24c",
+      "glow": "#a97cff"
+    },
+    "c4b1634c-03bc-4e65-8443-dcb1cbf44e98": {
+      "glow": "#d97a3c",
+      "scene": "82a283db-d672-4a55-907b-a238cd2802ed"
+    },
+    "9fc46fb5-0692-4472-b26d-8962e1837fd0": {
+      "glow": "#5ec98a",
+      "scene": "b693cf1b-a67d-4bde-a47f-808689a0870a"
+    },
+    "3d0fffc3-8e02-42c9-9733-bc1589520f52": {
+      "glow": "#d14a7a",
+      "scene": "920b6fd0-4562-46c9-b9a4-717d7a87b5da"
+    }
+  },
+  "places": {
+    "town": "fb52305e-51df-4209-a1c4-8029a506da56",
+    "outskirts": "745cd2b6-bf2e-4cd7-ab49-0ebe92d08eec",
+    "guild": "898b2804-3b16-4560-a125-94abbe843c6b",
+    "reception": "c39344d9-2458-4bf6-93d2-36f385239d33",
+    "inn": "e6da2353-9c69-47c7-8a4f-564899e3d92d",
+    "shop": "88a1ef98-fc3f-4c4e-a049-59feecd9f55e",
+    "armory": "bfa763f0-cfe8-4ea2-b6c9-fbe244d7db46",
+    "tools": "8d377a5e-e603-427e-a218-ef986eb5e8bf",
+    "apothecary": "e014c850-9102-4a16-b578-6913f9f49fa2",
+    "secret": "39323fee-cdc9-438c-933a-94ce75f3c63f",
+    "9900c60d-f620-48da-becd-3a16a7e8a150": "5bb9ce59-fdd5-40e1-b136-15f02b17bfe8",
+    "6c938d85-6f2c-4de6-bff5-c087fa431245": "3adb6fa3-34e8-43d0-b2fe-a5e0c022906b",
+    "673d747a-621d-4f06-83d7-8a9f3e62a1e2": "b01ba591-ef86-4206-8b75-a8619fde277a",
+    "smithy": "93ae2581-e948-4b30-a79b-0afb847347f4",
+    "farm": "60712f03-1916-4afd-972e-f50c0c28960a",
+    "highway": "4629d05a-8b24-48ac-bc4d-b87f7712c07a",
+    "rim-road": "c01170e2-38cd-4668-a21e-4a679ab5ac7c",
+    "shop-street": "6945cb51-820e-4538-8be2-c5b866d9e18e",
+    "back-alley": "328e65c5-a87d-47fd-92ce-df1e24af418f",
+    "campfire": "188f5731-cac5-47e1-87e4-52ce5029a985",
+    "attic": "5bb9ce59-fdd5-40e1-b136-15f02b17bfe8"
+  },
+  "people": {
+    "guide": "f790642c-1e81-41e7-82cb-748b35d888a5",
+    "guild": "d5100106-ff86-494b-a10b-b11255b0b932",
+    "secret": "b59082ce-5bf6-41f5-9707-18e072031b05"
+  },
+  "shops": {
+    "355d68f3-0162-40cf-ba89-0e8c3ea373b1": {
+      "kind": "shop",
+      "place": "bfa763f0-cfe8-4ea2-b6c9-fbe244d7db46",
+      "keepers": ["75f62b3a-a441-453c-a80a-37549e63f458"]
+    },
+    "b56e681e-43b0-4b94-bafd-25a80eace908": {
+      "kind": "shop",
+      "place": "8d377a5e-e603-427e-a218-ef986eb5e8bf",
+      "keepers": ["c6a065ae-8bbd-44a3-85bb-42215cceca56"]
+    },
+    "63228b54-3a1f-4a3a-940d-7b0f5103b87d": {
+      "kind": "shop",
+      "place": "e014c850-9102-4a16-b578-6913f9f49fa2",
+      "keepers": ["eab50e26-0001-4116-8158-bd248f514e56"]
+    },
+    "583bc866-a1b6-4b56-b5d2-2ed462882c6f": {
+      "kind": "smithy",
+      "place": "93ae2581-e948-4b30-a79b-0afb847347f4",
+      "keepers": ["73a5f30f-e162-4eee-848c-13ee7265953e"]
+    }
+  },
+  "goodIcons": {
+    "22dd429d-10e7-4abc-aa42-536ba50e657f": "sword",
+    "9ffc0d44-726d-4e5d-8104-4d1c79066597": "axe",
+    "f70679d7-3f97-4bec-9bef-a49c3127e0b9": "sword",
+    "4e2a2cc8-3f32-46d8-b6fe-52351c4c7553": "staff",
+    "2eb864d1-11fc-442a-b516-7b6efd4894ad": "leather",
+    "e39004ac-5205-4a52-9929-49783e738b3b": "mail",
+    "b24c170d-ef52-4f5c-8140-49ab20033a5d": "shield",
+    "4ae0f777-d468-4e30-ac77-c8e23149f707": "leather",
+    "8f7db974-0adf-4b73-81ba-44494112f3bd": "robe",
+    "c2ff7c8e-a695-40ee-b992-55cd31f34f9b": "potion",
+    "9c7cd391-4d94-40d6-8794-3e66cefaa830": "ether",
+    "f6ad082e-8d68-467f-835c-a583a7970ffe": "antidote",
+    "2179c5a7-ee93-41f6-a03c-6d818e7410be": "bomb",
+    "ca607fe8-e8f3-4acf-9bc3-82586b094609": "smoke",
+    "a9c88a41-4ed0-4675-8be5-7b42430fd3cb": "rope",
+    "ccda2f48-5454-46f4-9ef3-5e91793d9196": "torch",
+    "e5951ae4-0a5b-436e-8720-286f9e2bfc0c": "potion",
+    "31640e26-28b2-4ef6-afb1-cc46dd80ac88": "ether",
+    "4443a01d-85b5-453f-8bb9-47adf6b1de70": "potion",
+    "76fa8f5b-906b-4732-9ccb-44e03ce98b4a": "ether",
+    "3d9538c4-0e42-4d30-b477-01dc2430e9ba": "potion",
+    "8958e700-3c52-4eb4-bfaa-e9e7ff933301": "antidote",
+    "444db350-800c-432d-bcaf-6d4a926597c2": "bone",
+    "474f33dd-079e-46e8-b11b-8549f6cf48cf": "crystal",
+    "619ae895-2e95-4f01-ba6b-b78835debae7": "junk",
+    "35a9f50a-24c2-449b-a570-8b191b09ce5c": "junk",
+    "8dc8e419-7020-4cb2-8ce5-19052f378521": "cinder",
+    "43e8c836-8d6c-47f5-bd33-e8a1e6aabc67": "sword",
+    "48c90a78-fca9-495c-a2a1-5db9cfa0409f": "sword",
+    "90bb29e1-d879-4287-8347-3db8dc732dfe": "sword",
+    "3a639b16-9c51-46f6-978d-733e02b4082c": "staff",
+    "86172553-2914-4f88-b2a3-6f122ba739a4": "sword",
+    "b299f848-948a-4a9d-ae7e-63dd050596d6": "sword",
+    "9b1936ae-de99-41e5-a601-a496d0ea983f": "axe",
+    "a56fc6a8-31fa-4a7a-9041-5198ab40f010": "sword",
+    "92808423-dcd8-477d-96a7-8b6299988e4e": "sword",
+    "bb37b64c-6a42-4c4d-a9a3-bdf71e458f10": "shield",
+    "38044c40-1369-4c56-a3cf-5e2c6dcbe9f2": "axe",
+    "0f2614f4-3626-4857-9684-38e53aaaae23": "sword",
+    "1f654359-b1fc-4d04-bc45-f2b9fbffa177": "axe",
+    "ac6c13dd-8348-4583-992a-f640b6564581": "sword",
+    "ecf99492-3941-44db-a41c-aa5a16e95744": "staff",
+    "dd95ea84-4cb4-4577-bbbe-2d80f26cd8a0": "sword",
+    "4ca6d4fb-0266-40b2-bec2-553bb5cff5ee": "sword",
+    "75069fff-88f1-4ca3-a55d-b1b86ee1553f": "axe",
+    "8a517ec5-46c0-4d68-b091-4a636209847c": "shield",
+    "771448b7-c64c-41e9-8567-3fc1a24394a7": "staff",
+    "597fb8b2-503b-4557-9b81-177fd30514a9": "sword",
+    "b0e9c352-340d-4854-9b82-1dd7a310453c": "sword",
+    "318d897d-1b43-46b7-8d98-239fc71ca28d": "axe",
+    "466b25ec-4eb2-4032-abfe-4ad8b498d8b1": "sword",
+    "78d2503e-bd28-401a-84ac-d517b8ca36e7": "staff",
+    "1e8c194d-60c0-4f5d-bfa7-f43cde325e03": "sword",
+    "0c5c9671-4d51-4c45-a807-3821ef7a2274": "sword",
+    "b9dcebb0-767a-481c-801b-e416fcba8229": "axe",
+    "d4f20cf1-73d8-410b-adf5-de38b38fb5e6": "sword",
+    "1c43f660-0f3d-4606-9c2d-5c128a487a28": "staff",
+    "63eec065-9e2d-479c-b5f0-901137573470": "sword",
+    "e30acc12-af1a-4905-bb4e-fba3ef23057c": "mail",
+    "2ff3f42f-7cbd-4808-a607-315a1873e15c": "mail",
+    "90c0e8f9-f8e9-4d1d-954d-719a2c20365c": "robe",
+    "1cf811a3-4709-4578-967a-c236127ce41e": "leather",
+    "ace6e36e-3471-4a7d-8cd8-d3ab1e418526": "junk",
+    "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a": "crystal",
+    "57790d09-046e-4fc6-9f57-e285f8e4b890": "cinder",
+    "daab17e1-102d-4617-b101-fc9ef383dfec": "potion",
+    "c7fee833-bc0c-43e0-87b7-eab7329c594b": "potion",
+    "b3e6c0d1-5a47-4f92-8c3b-0d715e4a92c8": "crystal"
+  },
+  "kindIcons": {
+    "weapon": "sword",
+    "armor": "leather",
+    "item": "potion",
+    "material": "junk"
+  },
+  "street": [
+    "355d68f3-0162-40cf-ba89-0e8c3ea373b1",
+    "583bc866-a1b6-4b56-b5d2-2ed462882c6f",
+    "b56e681e-43b0-4b94-bafd-25a80eace908",
+    "63228b54-3a1f-4a3a-940d-7b0f5103b87d"
+  ]
+}

@@ -1,0 +1,382 @@
+{
+  "upgrades": [
+    {
+      "gold": 30,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "gold": 60,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "gold": 100,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 2
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "gold": 200,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 3
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "gold": 320,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 3
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "gold": 480,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 4
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "gold": 680,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 4
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "gold": 920,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 5
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "gold": 1200,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 5
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "gold": 1600,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 6
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "gold": 2100,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 6
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "gold": 2700,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 7
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "gold": 3400,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 7
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "gold": 4200,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 8
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "gold": 5000,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 8
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 7
+        }
+      ]
+    }
+  ],
+  "recipes": [
+    {
+      "id": "602edb37-3cdf-4a24-8283-86722a2dcec7",
+      "slug": "craft-axe",
+      "good": "9ffc0d44-726d-4e5d-8104-4d1c79066597",
+      "gold": 20,
+      "materials": [
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 1
+        },
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "65fbae32-4757-48c1-a915-344f094fca6b",
+      "slug": "craft-dagger",
+      "good": "f70679d7-3f97-4bec-9bef-a49c3127e0b9",
+      "gold": 20,
+      "materials": [
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 1
+        },
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "9a44626c-ca56-4336-a43b-4bb3a9d2d3f1",
+      "slug": "craft-mail",
+      "good": "e39004ac-5205-4a52-9929-49783e738b3b",
+      "gold": 30,
+      "materials": [
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 1
+        },
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "c923baaf-5087-4b2d-bc4c-1dbb7f1c055c",
+      "slug": "craft-sword-shield",
+      "good": "b24c170d-ef52-4f5c-8140-49ab20033a5d",
+      "gold": 20,
+      "materials": [
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 1
+        },
+        {
+          "good": "474f33dd-079e-46e8-b11b-8549f6cf48cf",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "6e6ab587-d56d-4c55-ac84-9dbfa493259c",
+      "slug": "craft-bone-axe",
+      "good": "1f654359-b1fc-4d04-bc45-f2b9fbffa177",
+      "gold": 120,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 4
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "3a7c140d-1593-4369-a861-5fc28ecf11cb",
+      "slug": "craft-bone-armor",
+      "good": "e30acc12-af1a-4905-bb4e-fba3ef23057c",
+      "gold": 80,
+      "materials": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "id": "b6dc212d-6f24-40bb-9af2-d3f1049645b0",
+      "slug": "craft-gear-gun",
+      "good": "771448b7-c64c-41e9-8567-3fc1a24394a7",
+      "gold": 300,
+      "materials": [
+        {
+          "good": "ace6e36e-3471-4a7d-8cd8-d3ab1e418526",
+          "count": 4
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "dbd89c5a-cc09-403c-8d59-c91ba8c56a01",
+      "slug": "craft-steel-armor",
+      "good": "2ff3f42f-7cbd-4808-a607-315a1873e15c",
+      "gold": 200,
+      "materials": [
+        {
+          "good": "ace6e36e-3471-4a7d-8cd8-d3ab1e418526",
+          "count": 5
+        },
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "fcaa9a7b-4df3-46c9-be0d-eb4acba0fd70",
+      "slug": "craft-vine-sword",
+      "good": "466b25ec-4eb2-4032-abfe-4ad8b498d8b1",
+      "gold": 560,
+      "materials": [
+        {
+          "good": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
+          "count": 4
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "d3f203b0-ce34-42c1-8343-c432e5f4c714",
+      "slug": "craft-vine-armor",
+      "good": "90c0e8f9-f8e9-4d1d-954d-719a2c20365c",
+      "gold": 420,
+      "materials": [
+        {
+          "good": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
+          "count": 5
+        },
+        {
+          "good": "ace6e36e-3471-4a7d-8cd8-d3ab1e418526",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "1c0f3ef5-56d9-4bbc-8fca-d3b85f3431f9",
+      "slug": "craft-seal-dagger",
+      "good": "63eec065-9e2d-479c-b5f0-901137573470",
+      "gold": 1000,
+      "materials": [
+        {
+          "good": "57790d09-046e-4fc6-9f57-e285f8e4b890",
+          "count": 4
+        },
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "743d2c00-6a45-49a7-bfbb-299946c9e748",
+      "slug": "craft-seal-armor",
+      "good": "1cf811a3-4709-4578-967a-c236127ce41e",
+      "gold": 860,
+      "materials": [
+        {
+          "good": "57790d09-046e-4fc6-9f57-e285f8e4b890",
+          "count": 5
+        },
+        {
+          "good": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "skillBook": "49c06f75-74e8-4a31-a9bb-d6b09e96d001"
+}

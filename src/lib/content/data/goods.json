@@ -1,0 +1,2247 @@
+[
+  {
+    "id": "43e8c836-8d6c-47f5-bd33-e8a1e6aabc67",
+    "slug": "greatsword",
+    "name": "鉄の両手剣",
+    "kind": "weapon",
+    "desc": "両手で振り抜く長い刃。重いが、前に立つ者の肩に馴染んでいく。",
+    "stat": "",
+    "price": 120,
+    "weaponType": "greatsword",
+    "power": 26,
+    "need": {
+      "str": 19,
+      "tec": 0
+    },
+    "skills": [
+      "bd1bcdef-8b15-4093-a6e1-a7e998f8ae99",
+      "be7e2670-66b1-4395-97e5-11dde683439a",
+      "00b0549e-1182-461e-aab6-9eb64dbaa322"
+    ]
+  },
+  {
+    "id": "22dd429d-10e7-4abc-aa42-536ba50e657f",
+    "slug": "sword",
+    "name": "鉄の剣",
+    "kind": "weapon",
+    "desc": "よく鍛えられた一振り。扱いやすく、最初の給料で買う者が多い。",
+    "stat": "",
+    "price": 68,
+    "weaponType": "sword",
+    "power": 21,
+    "need": {
+      "str": 15,
+      "tec": 5
+    },
+    "skills": [
+      "8b3bc0e6-628e-48c7-b31e-e54858f30909",
+      "434d322d-efee-49da-ab2d-7824f16b3da3",
+      "8f8d36e7-f367-4135-879f-0ca24a00ae24"
+    ]
+  },
+  {
+    "id": "b24c170d-ef52-4f5c-8140-49ab20033a5d",
+    "slug": "sword-shield",
+    "name": "剣と盾",
+    "kind": "weapon",
+    "desc": "片手剣と小盾を組みにした一式。受けながら打ち込む。盾の裏に名前を彫る客が多い。",
+    "stat": "",
+    "price": 76,
+    "weaponType": "sword",
+    "power": 19,
+    "need": {
+      "str": 14,
+      "tec": 4
+    },
+    "skills": [
+      "8b3bc0e6-628e-48c7-b31e-e54858f30909",
+      "28ec59cd-767b-45ad-92ce-4d6baa44ee30",
+      "8f8d36e7-f367-4135-879f-0ca24a00ae24"
+    ]
+  },
+  {
+    "id": "9ffc0d44-726d-4e5d-8104-4d1c79066597",
+    "slug": "axe",
+    "name": "木こりの斧",
+    "kind": "weapon",
+    "desc": "薪割りに使われていた斧。重いが一撃が大きい。",
+    "stat": "",
+    "price": 96,
+    "weaponType": "axe",
+    "power": 24,
+    "need": {
+      "str": 21,
+      "tec": 0
+    },
+    "skills": [
+      "5dbcd59c-8fe0-4c02-af23-acf1bae45dc3",
+      "5334baa9-0ed4-4f35-bda6-a8e3bfc6c131",
+      "f69b6c7a-4752-4912-b17b-5d89b98abe5f"
+    ]
+  },
+  {
+    "id": "f70679d7-3f97-4bec-9bef-a49c3127e0b9",
+    "slug": "dagger",
+    "name": "細身の短剣",
+    "kind": "weapon",
+    "desc": "軽くて素早く刺し込める。獲物の解体にも使える。",
+    "stat": "",
+    "price": 66,
+    "weaponType": "dagger",
+    "power": 19,
+    "need": {
+      "str": 4,
+      "tec": 15
+    },
+    "skills": [
+      "5c68b128-52ca-4579-acf6-01b24cb1b8da",
+      "c8b764f9-d92b-42a6-ac8a-e5de669daf6b",
+      "e75a90a6-ff0c-4ef9-a35c-1b898dc27b24"
+    ]
+  },
+  {
+    "id": "4e2a2cc8-3f32-46d8-b6fe-52351c4c7553",
+    "slug": "gun",
+    "name": "魔法銃",
+    "kind": "weapon",
+    "desc": "魔力を弾にして撃ち出す銃。弾代がかからないぶん、腕が疲れる。",
+    "stat": "",
+    "price": 80,
+    "weaponType": "gun",
+    "power": 20,
+    "need": {
+      "str": 2,
+      "tec": 16
+    },
+    "skills": [
+      "92355567-38c4-4b88-bfd2-e993971cbd0a",
+      "b28c6f45-0b10-453b-a1bb-a672fc913716",
+      "04477410-478f-4067-ab02-63b226a228a9"
+    ]
+  },
+  {
+    "id": "48c90a78-fca9-495c-a2a1-5db9cfa0409f",
+    "slug": "old-greatsword",
+    "name": "ボロボロの両手剣",
+    "kind": "weapon",
+    "desc": "刃こぼれだらけの両手剣。無いよりはまし。",
+    "stat": "",
+    "weaponType": "greatsword",
+    "power": 12,
+    "need": {
+      "str": 8,
+      "tec": 0
+    },
+    "skills": [
+      "bd1bcdef-8b15-4093-a6e1-a7e998f8ae99",
+      "be7e2670-66b1-4395-97e5-11dde683439a",
+      "00b0549e-1182-461e-aab6-9eb64dbaa322"
+    ]
+  },
+  {
+    "id": "90bb29e1-d879-4287-8347-3db8dc732dfe",
+    "slug": "old-sword",
+    "name": "さびた片手剣",
+    "kind": "weapon",
+    "desc": "赤くさびた片手剣。刃はまだ立つ。",
+    "stat": "",
+    "weaponType": "sword",
+    "power": 12,
+    "need": {
+      "str": 8,
+      "tec": 2
+    },
+    "skills": [
+      "8b3bc0e6-628e-48c7-b31e-e54858f30909",
+      "434d322d-efee-49da-ab2d-7824f16b3da3",
+      "8f8d36e7-f367-4135-879f-0ca24a00ae24"
+    ]
+  },
+  {
+    "id": "3a639b16-9c51-46f6-978d-733e02b4082c",
+    "slug": "old-gun",
+    "name": "錆びた魔法銃",
+    "kind": "weapon",
+    "desc": "詰まりがちな古い魔法銃。叩けば弾はまだ出る。",
+    "stat": "",
+    "weaponType": "gun",
+    "power": 12,
+    "need": {
+      "str": 0,
+      "tec": 8
+    },
+    "skills": [
+      "92355567-38c4-4b88-bfd2-e993971cbd0a",
+      "b28c6f45-0b10-453b-a1bb-a672fc913716",
+      "04477410-478f-4067-ab02-63b226a228a9"
+    ]
+  },
+  {
+    "id": "86172553-2914-4f88-b2a3-6f122ba739a4",
+    "slug": "old-dagger",
+    "name": "欠けた短剣",
+    "kind": "weapon",
+    "desc": "先の欠けた短剣。握りだけは前の持ち主の手の形に馴染んでいる。",
+    "stat": "",
+    "weaponType": "dagger",
+    "power": 12,
+    "need": {
+      "str": 2,
+      "tec": 8
+    },
+    "skills": [
+      "5c68b128-52ca-4579-acf6-01b24cb1b8da",
+      "c8b764f9-d92b-42a6-ac8a-e5de669daf6b",
+      "e75a90a6-ff0c-4ef9-a35c-1b898dc27b24"
+    ]
+  },
+  {
+    "id": "b299f848-948a-4a9d-ae7e-63dd050596d6",
+    "slug": "old-knife",
+    "name": "刃こぼれの短剣",
+    "kind": "weapon",
+    "desc": "獣をさばくのに使い込まれた短剣。",
+    "stat": "",
+    "weaponType": "dagger",
+    "power": 12,
+    "need": {
+      "str": 2,
+      "tec": 8
+    },
+    "skills": [
+      "5c68b128-52ca-4579-acf6-01b24cb1b8da",
+      "c8b764f9-d92b-42a6-ac8a-e5de669daf6b",
+      "e75a90a6-ff0c-4ef9-a35c-1b898dc27b24"
+    ]
+  },
+  {
+    "id": "4ae0f777-d468-4e30-ac77-c8e23149f707",
+    "slug": "coat",
+    "name": "旅装の外套",
+    "kind": "armor",
+    "desc": "厚布の上着に外套を重ねた旅装。胸と腕を薄く覆い、傷んだ部分を縫い直して使う。",
+    "stat": "耐久 20",
+    "price": 14,
+    "durability": 20
+  },
+  {
+    "id": "2eb864d1-11fc-442a-b516-7b6efd4894ad",
+    "slug": "leather",
+    "name": "革の鎧",
+    "kind": "armor",
+    "desc": "厚革の胸当てと肩当てを、動きやすい上着に縫い付けた鎧。軽さと守りを両立する。",
+    "stat": "耐久 36",
+    "price": 28,
+    "durability": 36,
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者",
+      "斧使い",
+      "狩人",
+      "竜連れの旅人",
+      "僧侶",
+      "仕立て屋"
+    ]
+  },
+  {
+    "id": "8f7db974-0adf-4b73-81ba-44494112f3bd",
+    "slug": "robe",
+    "name": "魔導のローブ",
+    "kind": "armor",
+    "desc": "魔力を編んだ厚布の上着。胸元は布を重ね、袖口を絞って手を動かしやすくした。耐久は控えめで技量を補う。",
+    "stat": "耐久 30　技量 +1",
+    "price": 52,
+    "bonus": {
+      "tec": 1
+    },
+    "durability": 30,
+    "allowedJobs": [
+      "悪魔召喚師",
+      "黒魔術師",
+      "影絵師",
+      "魔術師",
+      "契約破り",
+      "僧侶",
+      "仕立て屋"
+    ],
+    "appraisalWeight": 0.2
+  },
+  {
+    "id": "e39004ac-5205-4a52-9929-49783e738b3b",
+    "slug": "mail",
+    "name": "鎖かたびら",
+    "kind": "armor",
+    "desc": "厚い下衣の上に鎖を編んだ上着を着る。刃を受ける胸と腕を覆い、重いぶん長く持つ。",
+    "stat": "耐久 64　速さ −1",
+    "price": 60,
+    "bonus": {
+      "spd": -1
+    },
+    "durability": 64,
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者"
+    ]
+  },
+  {
+    "id": "c2ff7c8e-a695-40ee-b992-55cd31f34f9b",
+    "slug": "potion",
+    "name": "回復薬",
+    "kind": "item",
+    "desc": "仲間ひとりの傷を癒やす。薬屋の定番。",
+    "stat": "HP +70",
+    "price": 12,
+    "effect": {
+      "type": "heal",
+      "hp": 70
+    }
+  },
+  {
+    "id": "9c7cd391-4d94-40d6-8794-3e66cefaa830",
+    "slug": "ether",
+    "name": "気力の水",
+    "kind": "item",
+    "desc": "澄んだ青い水。ワザの残りが戻る。",
+    "stat": "ワザの残り +2",
+    "price": 20,
+    "effect": {
+      "type": "refill",
+      "uses": 2
+    }
+  },
+  {
+    "id": "f6ad082e-8d68-467f-835c-a583a7970ffe",
+    "slug": "antidote",
+    "name": "毒消し",
+    "kind": "item",
+    "desc": "温室の苦い葉を煮詰めた薬。仲間ひとりの毒を治す。",
+    "stat": "毒を治す",
+    "price": 8,
+    "effect": {
+      "type": "cure",
+      "kinds": ["poison"]
+    }
+  },
+  {
+    "id": "2179c5a7-ee93-41f6-a03c-6d818e7410be",
+    "slug": "bomb",
+    "name": "爆弾",
+    "kind": "item",
+    "desc": "投げると大爆発。敵に大ダメージ。もとは岩を崩す発破。",
+    "stat": "ダメージ 90",
+    "price": 25,
+    "effect": {
+      "type": "damage",
+      "amount": 90
+    }
+  },
+  {
+    "id": "ca607fe8-e8f3-4acf-9bc3-82586b094609",
+    "slug": "smoke",
+    "name": "煙玉",
+    "kind": "item",
+    "desc": "煙に紛れ、次に自分が受ける被害を半分にする。",
+    "stat": "自分の次の被害を半減",
+    "price": 15,
+    "effect": {
+      "type": "status",
+      "status": {
+        "kind": "protect",
+        "turns": 1
+      },
+      "target": "self"
+    }
+  },
+  {
+    "id": "a9c88a41-4ed0-4675-8be5-7b42430fd3cb",
+    "slug": "rope",
+    "name": "ロープ",
+    "kind": "item",
+    "desc": "輪にした縄を投げ、敵ひとりの動きを止める。荷を縛る縄と同じもの。",
+    "stat": "敵ひとりを足止め 2行動（成功率70%）",
+    "price": 10,
+    "effect": {
+      "type": "status",
+      "status": {
+        "kind": "bind",
+        "turns": 2,
+        "chance": 0.7
+      },
+      "target": "foe"
+    }
+  },
+  {
+    "id": "ccda2f48-5454-46f4-9ef3-5e91793d9196",
+    "slug": "torch",
+    "name": "松明",
+    "kind": "item",
+    "desc": "角張った薪に布を巻いた松明。敵ひとりに投げつける。",
+    "stat": "ダメージ 40",
+    "price": 6,
+    "effect": {
+      "type": "damage",
+      "amount": 40
+    }
+  },
+  {
+    "id": "e5951ae4-0a5b-436e-8720-286f9e2bfc0c",
+    "slug": "hipotion",
+    "name": "上回復薬",
+    "kind": "item",
+    "desc": "深い傷もたちまちふさがる。",
+    "stat": "HP +180",
+    "price": 40,
+    "effect": {
+      "type": "heal",
+      "hp": 180
+    },
+    "unlock": 1
+  },
+  {
+    "id": "31640e26-28b2-4ef6-afb1-cc46dd80ac88",
+    "slug": "elixir",
+    "name": "霊薬",
+    "kind": "item",
+    "desc": "薬屋が大鍋で一晩煮詰める薬。全員の傷が戻る。一度に作れる量が少ない。",
+    "stat": "全員 HP +999",
+    "price": 600,
+    "effect": {
+      "type": "heal",
+      "hp": 999,
+      "all": true
+    },
+    "unlock": 4
+  },
+  {
+    "id": "4443a01d-85b5-453f-8bb9-47adf6b1de70",
+    "slug": "revive",
+    "name": "気つけ薬",
+    "kind": "item",
+    "desc": "倒れた仲間ひとりを、HP（生命力）80で起こす。鼻にくる匂い。",
+    "stat": "蘇生 HP 80",
+    "price": 45,
+    "effect": {
+      "type": "revive",
+      "hp": 80
+    }
+  },
+  {
+    "id": "76fa8f5b-906b-4732-9ccb-44e03ce98b4a",
+    "slug": "eyedrop",
+    "name": "目薬",
+    "kind": "item",
+    "desc": "視界と意識を澄ませ、仲間ひとりの縛りを解く。",
+    "stat": "縛りを治す",
+    "price": 9,
+    "effect": {
+      "type": "cure",
+      "kinds": ["bind"]
+    }
+  },
+  {
+    "id": "3d9538c4-0e42-4d30-b477-01dc2430e9ba",
+    "slug": "strength",
+    "name": "力の薬",
+    "kind": "item",
+    "desc": "仲間ひとりの次の攻撃を強める。後で腕が張る。",
+    "stat": "仲間ひとりの次の攻撃を強化",
+    "price": 35,
+    "effect": {
+      "type": "status",
+      "status": {
+        "kind": "charge",
+        "turns": 3
+      },
+      "target": "ally"
+    }
+  },
+  {
+    "id": "8958e700-3c52-4eb4-bfaa-e9e7ff933301",
+    "slug": "guardpot",
+    "name": "守りの薬",
+    "kind": "item",
+    "desc": "仲間ひとりを覆い、次に受ける被害を半分にする。",
+    "stat": "仲間ひとりの次の被害を半減",
+    "price": 35,
+    "effect": {
+      "type": "status",
+      "status": {
+        "kind": "protect",
+        "turns": 1
+      },
+      "target": "ally"
+    }
+  },
+  {
+    "id": "444db350-800c-432d-bcaf-6d4a926597c2",
+    "slug": "bone",
+    "name": "巨人の骨片",
+    "kind": "material",
+    "desc": "大昔に死んだ巨人の骨のかけら。鍛冶屋が炉で焼いて武具の芯にする。道具屋でも扱っている。",
+    "stat": "素材",
+    "sell": 18,
+    "price": 90
+  },
+  {
+    "id": "474f33dd-079e-46e8-b11b-8549f6cf48cf",
+    "slug": "crystal",
+    "name": "洞窟の結晶",
+    "kind": "material",
+    "desc": "結晶の洞窟で拾える結晶。薬屋が砕いて薬に混ぜるので、高く買い取る。",
+    "stat": "素材",
+    "sell": 24
+  },
+  {
+    "id": "619ae895-2e95-4f01-ba6b-b78835debae7",
+    "slug": "junk",
+    "name": "ガラクタ",
+    "kind": "material",
+    "desc": "谷で拾った、誰かの使い古し。武器と防具の店か道具屋で鑑定すると、掘り出し物が出るかも。",
+    "stat": "鑑定できる",
+    "sell": 3
+  },
+  {
+    "id": "35a9f50a-24c2-449b-a570-8b191b09ce5c",
+    "slug": "rare-junk",
+    "name": "光るガラクタ",
+    "kind": "material",
+    "desc": "深い場所や強敵から出る、妙に光るガラクタ。武器と防具の店で鑑定すると、必ず R 以上の武器になる。",
+    "stat": "鑑定できる（R 以上の武器）",
+    "sell": 30
+  },
+  {
+    "id": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+    "slug": "cinder",
+    "name": "炉の燃えカス",
+    "kind": "material",
+    "desc": "炉から取り出した燃えカス。武器や防具を作る材料になる。道具屋でも扱っている。",
+    "stat": "素材",
+    "sell": 30,
+    "price": 60
+  },
+  {
+    "id": "9b1936ae-de99-41e5-a601-a496d0ea983f",
+    "slug": "old-axe",
+    "name": "刃こぼれの斧",
+    "kind": "weapon",
+    "desc": "刃がこぼれた斧。素のままでも振れる。",
+    "stat": "攻撃力 12",
+    "weaponType": "axe",
+    "power": 12,
+    "need": {
+      "str": 8,
+      "tec": 0
+    },
+    "skills": [
+      "5dbcd59c-8fe0-4c02-af23-acf1bae45dc3",
+      "5334baa9-0ed4-4f35-bda6-a8e3bfc6c131",
+      "f69b6c7a-4752-4912-b17b-5d89b98abe5f"
+    ]
+  },
+  {
+    "id": "a56fc6a8-31fa-4a7a-9041-5198ab40f010",
+    "slug": "iron-gloves",
+    "name": "鉄の手袋",
+    "kind": "weapon",
+    "desc": "打ち合いで育った鉄の手袋。",
+    "stat": "攻撃力 28",
+    "weaponType": "dagger",
+    "power": 28,
+    "powerPerPlus": 1.7,
+    "need": {
+      "str": 8,
+      "tec": 14
+    },
+    "skills": [
+      "5c7b54b7-6ff2-4401-a050-68e4ca01e703",
+      "5c68b128-52ca-4579-acf6-01b24cb1b8da",
+      "8f8d36e7-f367-4135-879f-0ca24a00ae24"
+    ]
+  },
+  {
+    "id": "92808423-dcd8-477d-96a7-8b6299988e4e",
+    "slug": "great-key",
+    "name": "影切りの鋏",
+    "kind": "weapon",
+    "desc": "影を切り抜くための大きな鋏。切った影は少しのあいだ動く。",
+    "stat": "攻撃力 24",
+    "weaponType": "dagger",
+    "power": 24,
+    "need": {
+      "str": 6,
+      "tec": 15
+    },
+    "skills": [
+      "2ba9e5ab-a039-4030-ad4f-1abec1a70c44",
+      "c8b764f9-d92b-42a6-ac8a-e5de669daf6b",
+      "fb2c2376-9adf-4859-98d7-e1051fb64565"
+    ]
+  },
+  {
+    "id": "bb37b64c-6a42-4c4d-a9a3-bdf71e458f10",
+    "slug": "dungeon-door",
+    "name": "ダンジョンの鍵とドア",
+    "kind": "weapon",
+    "desc": "合う扉を探して担いでいる、鍵と扉の一式。",
+    "stat": "攻撃力 23",
+    "weaponType": "sword",
+    "power": 23,
+    "powerPerPlus": 1.7,
+    "need": {
+      "str": 16,
+      "tec": 5
+    },
+    "skills": [
+      "c293e4c3-cff4-4f98-a4a0-1425fad01425",
+      "28ec59cd-767b-45ad-92ce-4d6baa44ee30",
+      "8b3bc0e6-628e-48c7-b31e-e54858f30909"
+    ]
+  },
+  {
+    "id": "38044c40-1369-4c56-a3cf-5e2c6dcbe9f2",
+    "slug": "cerberus-chain",
+    "name": "ケルベロスの鎖",
+    "kind": "weapon",
+    "desc": "三つ首のケルベロスから三つ首を一緒に動かす力を借りる。代わりに三皿分のごはんを先に用意する。",
+    "stat": "攻撃力 27",
+    "weaponType": "axe",
+    "power": 27,
+    "powerPerPlus": 1.7,
+    "need": {
+      "str": 18,
+      "tec": 0
+    },
+    "skills": [
+      "2092ba48-5611-4410-868b-827b2c436cb9",
+      "7b7070ca-1f11-4a89-a87f-a4a2dda07b3f",
+      "095ae70a-c163-47bd-a25a-be818ef7dc49"
+    ]
+  },
+  {
+    "id": "0f2614f4-3626-4857-9684-38e53aaaae23",
+    "slug": "bone-greatsword",
+    "name": "骨断ちの両手剣",
+    "kind": "weapon",
+    "desc": "巨人の太い骨を芯に通した両手剣。ヒルデは骨を炉に入れる前に、毎回一言断っている。",
+    "stat": "攻撃力 36",
+    "price": 300,
+    "unlock": 1,
+    "weaponType": "greatsword",
+    "power": 36,
+    "need": {
+      "str": 24,
+      "tec": 0
+    },
+    "skills": [
+      "be7e2670-66b1-4395-97e5-11dde683439a",
+      "bd1bcdef-8b15-4093-a6e1-a7e998f8ae99",
+      "40bf2edd-39f8-4746-a6f5-4474a54e448f"
+    ]
+  },
+  {
+    "id": "1f654359-b1fc-4d04-bc45-f2b9fbffa177",
+    "slug": "bone-axe",
+    "name": "骨断ちの斧",
+    "kind": "weapon",
+    "desc": "骨の継ぎ目を刃にした斧。骨の筋に沿って割るので、刃が欠けにくい。",
+    "stat": "攻撃力 34",
+    "price": 260,
+    "unlock": 1,
+    "weaponType": "axe",
+    "power": 34,
+    "need": {
+      "str": 26,
+      "tec": 0
+    },
+    "skills": [
+      "5dbcd59c-8fe0-4c02-af23-acf1bae45dc3",
+      "749a8d47-a200-4a61-8500-58551b159112",
+      "f69b6c7a-4752-4912-b17b-5d89b98abe5f"
+    ]
+  },
+  {
+    "id": "ac6c13dd-8348-4583-992a-f640b6564581",
+    "slug": "bone-sword",
+    "name": "骨の剣",
+    "kind": "weapon",
+    "desc": "骨を削り出した片手剣。白い刃は使い込むほど飴色になる。",
+    "stat": "攻撃力 30",
+    "price": 200,
+    "unlock": 1,
+    "weaponType": "sword",
+    "power": 30,
+    "need": {
+      "str": 20,
+      "tec": 7
+    },
+    "skills": [
+      "8a584337-150a-4a02-9982-70d3ae66f35b",
+      "8b3bc0e6-628e-48c7-b31e-e54858f30909",
+      "8f8d36e7-f367-4135-879f-0ca24a00ae24"
+    ]
+  },
+  {
+    "id": "ecf99492-3941-44db-a41c-aa5a16e95744",
+    "slug": "bone-gun",
+    "name": "骨の魔法銃",
+    "kind": "weapon",
+    "desc": "中が空洞の骨を銃身にした魔法銃。撃つたびに低く鳴る。",
+    "stat": "攻撃力 29",
+    "price": 230,
+    "unlock": 1,
+    "weaponType": "gun",
+    "power": 29,
+    "need": {
+      "str": 3,
+      "tec": 21
+    },
+    "skills": [
+      "b28c6f45-0b10-453b-a1bb-a672fc913716",
+      "2fa437ac-df19-4b5d-bf76-978f9079e98a",
+      "04477410-478f-4067-ab02-63b226a228a9"
+    ]
+  },
+  {
+    "id": "dd95ea84-4cb4-4577-bbbe-2d80f26cd8a0",
+    "slug": "bone-dagger",
+    "name": "骨の短剣",
+    "kind": "weapon",
+    "desc": "指の骨ほどの細い骨を研いだ短剣。握りに骨の節がそのまま残る。",
+    "stat": "攻撃力 27",
+    "price": 195,
+    "unlock": 1,
+    "weaponType": "dagger",
+    "power": 27,
+    "need": {
+      "str": 6,
+      "tec": 20
+    },
+    "skills": [
+      "864418e3-630a-4da6-ab41-efc3306a558f",
+      "5c68b128-52ca-4579-acf6-01b24cb1b8da",
+      "c8b764f9-d92b-42a6-ac8a-e5de669daf6b"
+    ]
+  },
+  {
+    "id": "e30acc12-af1a-4905-bb4e-fba3ef23057c",
+    "slug": "bone-armor",
+    "name": "骨鎧",
+    "kind": "armor",
+    "desc": "巨人の骨を削った板で胸と肩を覆う鎧。革の帯で板をつなぎ、関節を動かせるよう仕立てた。",
+    "stat": "耐久 88",
+    "price": 150,
+    "unlock": 1,
+    "durability": 88,
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者"
+    ]
+  },
+  {
+    "id": "4ca6d4fb-0266-40b2-bec2-553bb5cff5ee",
+    "slug": "steel-greatsword",
+    "name": "鋼の両手剣",
+    "kind": "weapon",
+    "desc": "鉄橋の梁を打ち延ばした両手剣。古い刻印は削らずに残してある。",
+    "stat": "攻撃力 48",
+    "price": 620,
+    "unlock": 2,
+    "weaponType": "greatsword",
+    "power": 48,
+    "need": {
+      "str": 32,
+      "tec": 0
+    },
+    "skills": [
+      "5e62be96-7af0-4405-bda6-d0f268782b5d",
+      "1c495318-fb97-4117-97ea-64fca8f6d597",
+      "00b0549e-1182-461e-aab6-9eb64dbaa322"
+    ]
+  },
+  {
+    "id": "75069fff-88f1-4ca3-a55d-b1b86ee1553f",
+    "slug": "gear-axe",
+    "name": "歯車の斧",
+    "kind": "weapon",
+    "desc": "大きな歯車を半分に割って刃にした斧。歯の一つひとつが食い込む。",
+    "stat": "攻撃力 45",
+    "price": 560,
+    "unlock": 2,
+    "weaponType": "axe",
+    "power": 45,
+    "need": {
+      "str": 34,
+      "tec": 0
+    },
+    "skills": [
+      "749a8d47-a200-4a61-8500-58551b159112",
+      "5dbcd59c-8fe0-4c02-af23-acf1bae45dc3",
+      "7b7070ca-1f11-4a89-a87f-a4a2dda07b3f"
+    ]
+  },
+  {
+    "id": "8a517ec5-46c0-4d68-b091-4a636209847c",
+    "slug": "steel-sword-shield",
+    "name": "鋼の剣と盾",
+    "kind": "weapon",
+    "desc": "橋の鋼板から切り出した剣と盾。盾には留め穴の跡が並んでいる。",
+    "stat": "攻撃力 40",
+    "price": 460,
+    "unlock": 2,
+    "weaponType": "sword",
+    "power": 40,
+    "need": {
+      "str": 26,
+      "tec": 9
+    },
+    "skills": [
+      "28ec59cd-767b-45ad-92ce-4d6baa44ee30",
+      "685fff6a-eaf5-42d6-885f-7b3a5b54b6d9",
+      "8f8d36e7-f367-4135-879f-0ca24a00ae24"
+    ]
+  },
+  {
+    "id": "771448b7-c64c-41e9-8567-3fc1a24394a7",
+    "slug": "gear-gun",
+    "name": "歯車の魔法銃",
+    "kind": "weapon",
+    "desc": "巻き上げ機の歯車を組み込んだ魔法銃。引き金を引くたびに歯車が一つ回る。",
+    "stat": "攻撃力 39",
+    "price": 520,
+    "unlock": 2,
+    "weaponType": "gun",
+    "power": 39,
+    "need": {
+      "str": 4,
+      "tec": 28
+    },
+    "skills": [
+      "2fa437ac-df19-4b5d-bf76-978f9079e98a",
+      "25b977ed-49ba-482d-9961-577e30fe9a69",
+      "a6094156-68f1-4ef6-b79e-d06a3731cfb5"
+    ]
+  },
+  {
+    "id": "597fb8b2-503b-4557-9b81-177fd30514a9",
+    "slug": "gear-dagger",
+    "name": "歯車の短剣",
+    "kind": "weapon",
+    "desc": "歯車の歯を一枚だけ研ぎ出した短剣。鍛冶屋は残りの歯を数えてから仕事を終える。",
+    "stat": "攻撃力 36",
+    "price": 440,
+    "unlock": 2,
+    "weaponType": "dagger",
+    "power": 36,
+    "need": {
+      "str": 8,
+      "tec": 27
+    },
+    "skills": [
+      "864418e3-630a-4da6-ab41-efc3306a558f",
+      "673d49db-5332-4154-b50f-7a180b01291f",
+      "fb2c2376-9adf-4859-98d7-e1051fb64565"
+    ]
+  },
+  {
+    "id": "2ff3f42f-7cbd-4808-a607-315a1873e15c",
+    "slug": "steel-armor",
+    "name": "鋼鉄の鎧",
+    "kind": "armor",
+    "desc": "鉄橋の鉄を打ち直した胸当てと肩当て。厚い下衣と可動する鉄板で体を守る。重いが修理して長く使える。",
+    "stat": "耐久 120　速さ −1",
+    "price": 340,
+    "unlock": 2,
+    "durability": 120,
+    "bonus": {
+      "spd": -1
+    },
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者"
+    ]
+  },
+  {
+    "id": "b0e9c352-340d-4854-9b82-1dd7a310453c",
+    "slug": "vine-greatsword",
+    "name": "蔦巻きの両手剣",
+    "kind": "weapon",
+    "desc": "刃に温室の蔦を巻いて締めた両手剣。蔦は乾くほど固く締まる。",
+    "stat": "攻撃力 62",
+    "price": 765,
+    "unlock": 3,
+    "weaponType": "greatsword",
+    "power": 62,
+    "need": {
+      "str": 38,
+      "tec": 0
+    },
+    "skills": [
+      "5e62be96-7af0-4405-bda6-d0f268782b5d",
+      "d1b6994f-4938-4abb-a935-5a9d70df3215",
+      "40bf2edd-39f8-4746-a6f5-4474a54e448f"
+    ]
+  },
+  {
+    "id": "318d897d-1b43-46b7-8d98-239fc71ca28d",
+    "slug": "vine-axe",
+    "name": "蔦割りの斧",
+    "kind": "weapon",
+    "desc": "太い蔦の幹ごと割れる重い斧。柄には蔦を割いた細紐が巻いてある。",
+    "stat": "攻撃力 58",
+    "price": 701,
+    "unlock": 3,
+    "weaponType": "axe",
+    "power": 58,
+    "need": {
+      "str": 40,
+      "tec": 0
+    },
+    "skills": [
+      "749a8d47-a200-4a61-8500-58551b159112",
+      "2507bf9f-56c7-4da0-a5e4-3ee7462df06f",
+      "f69b6c7a-4752-4912-b17b-5d89b98abe5f"
+    ]
+  },
+  {
+    "id": "466b25ec-4eb2-4032-abfe-4ad8b498d8b1",
+    "slug": "vine-sword",
+    "name": "蔦編みの剣",
+    "kind": "weapon",
+    "desc": "蔦の繊維を編んで刃の背を補った剣。しなって折れにくい。",
+    "stat": "攻撃力 52",
+    "price": 574,
+    "unlock": 3,
+    "weaponType": "sword",
+    "power": 52,
+    "need": {
+      "str": 31,
+      "tec": 11
+    },
+    "skills": [
+      "685fff6a-eaf5-42d6-885f-7b3a5b54b6d9",
+      "53f2fea7-9c77-41a6-a817-5329182d1e00",
+      "8f8d36e7-f367-4135-879f-0ca24a00ae24"
+    ]
+  },
+  {
+    "id": "78d2503e-bd28-401a-84ac-d517b8ca36e7",
+    "slug": "poison-gun",
+    "name": "毒の魔法銃",
+    "kind": "weapon",
+    "desc": "毒花の汁を弾に混ぜる魔法銃。撃った後の銃口は素手で触らない。",
+    "stat": "攻撃力 50",
+    "price": 670,
+    "unlock": 3,
+    "weaponType": "gun",
+    "power": 50,
+    "need": {
+      "str": 5,
+      "tec": 34
+    },
+    "skills": [
+      "2fa437ac-df19-4b5d-bf76-978f9079e98a",
+      "7673320b-bc7f-4352-b4aa-501439288b65",
+      "04477410-478f-4067-ab02-63b226a228a9"
+    ]
+  },
+  {
+    "id": "1e8c194d-60c0-4f5d-bfa7-f43cde325e03",
+    "slug": "poison-dagger",
+    "name": "毒牙の短剣",
+    "kind": "weapon",
+    "desc": "蔦の棘から毒をしみ込ませた短剣。鞘から抜くと甘い匂いがする。",
+    "stat": "攻撃力 47",
+    "price": 561,
+    "unlock": 3,
+    "weaponType": "dagger",
+    "power": 47,
+    "need": {
+      "str": 10,
+      "tec": 33
+    },
+    "skills": [
+      "864418e3-630a-4da6-ab41-efc3306a558f",
+      "7dabc84e-0007-4054-83f2-237a3541a3d2",
+      "673d49db-5332-4154-b50f-7a180b01291f"
+    ]
+  },
+  {
+    "id": "90c0e8f9-f8e9-4d1d-954d-719a2c20365c",
+    "slug": "vine-armor",
+    "name": "蔦織りの装束",
+    "kind": "armor",
+    "desc": "蔦の繊維を丈夫な布へ織り直した装束。胸と肩には織りを重ね、腕の動きを妨げずに守る。",
+    "stat": "耐久 164",
+    "price": 446,
+    "unlock": 3,
+    "durability": 164,
+    "bonus": {
+      "tec": 1
+    },
+    "allowedJobs": [
+      "悪魔召喚師",
+      "黒魔術師",
+      "影絵師",
+      "魔術師",
+      "契約破り",
+      "僧侶",
+      "仕立て屋"
+    ]
+  },
+  {
+    "id": "0c5c9671-4d51-4c45-a807-3821ef7a2274",
+    "slug": "seal-greatsword",
+    "name": "封蝋の両手剣",
+    "kind": "weapon",
+    "desc": "黒い封蝋で刃を何層にも固めた両手剣。振ると蝋の熱が手に伝わる。",
+    "stat": "攻撃力 78",
+    "price": 1078,
+    "unlock": 4,
+    "weaponType": "greatsword",
+    "power": 78,
+    "need": {
+      "str": 44,
+      "tec": 0
+    },
+    "skills": [
+      "39ae5c7e-594f-4e6c-b3cd-d259739ae741",
+      "1c495318-fb97-4117-97ea-64fca8f6d597",
+      "40bf2edd-39f8-4746-a6f5-4474a54e448f"
+    ]
+  },
+  {
+    "id": "b9dcebb0-767a-481c-801b-e416fcba8229",
+    "slug": "seal-axe",
+    "name": "封蝋の大斧",
+    "kind": "weapon",
+    "desc": "封蝋を厚く盛って重さを足した大斧。一振りごとに蝋の匂いが立つ。",
+    "stat": "攻撃力 73",
+    "price": 980,
+    "unlock": 4,
+    "weaponType": "axe",
+    "power": 73,
+    "need": {
+      "str": 46,
+      "tec": 0
+    },
+    "skills": [
+      "749a8d47-a200-4a61-8500-58551b159112",
+      "d1b6994f-4938-4abb-a935-5a9d70df3215",
+      "7b7070ca-1f11-4a89-a87f-a4a2dda07b3f"
+    ]
+  },
+  {
+    "id": "d4f20cf1-73d8-410b-adf5-de38b38fb5e6",
+    "slug": "seal-sword",
+    "name": "封蝋の剣",
+    "kind": "weapon",
+    "desc": "刃の根元に封蝋の印を押した剣。印は鍛冶屋が押すたびに少しずつ違う。",
+    "stat": "攻撃力 66",
+    "price": 833,
+    "unlock": 4,
+    "weaponType": "sword",
+    "power": 66,
+    "need": {
+      "str": 36,
+      "tec": 14
+    },
+    "skills": [
+      "685fff6a-eaf5-42d6-885f-7b3a5b54b6d9",
+      "434d322d-efee-49da-ab2d-7824f16b3da3",
+      "e93819c5-64b8-427b-be24-f78c65092472"
+    ]
+  },
+  {
+    "id": "1c43f660-0f3d-4606-9c2d-5c128a487a28",
+    "slug": "seal-gun",
+    "name": "封蝋の魔法銃",
+    "kind": "weapon",
+    "desc": "銃身の継ぎ目を封蝋でふさいだ魔法銃。撃つと継ぎ目がほのかに赤くなる。",
+    "stat": "攻撃力 63",
+    "price": 931,
+    "unlock": 4,
+    "weaponType": "gun",
+    "power": 63,
+    "need": {
+      "str": 6,
+      "tec": 40
+    },
+    "skills": [
+      "2fa437ac-df19-4b5d-bf76-978f9079e98a",
+      "b28c6f45-0b10-453b-a1bb-a672fc913716",
+      "04477410-478f-4067-ab02-63b226a228a9"
+    ]
+  },
+  {
+    "id": "63eec065-9e2d-479c-b5f0-901137573470",
+    "slug": "seal-dagger",
+    "name": "封蝋の短剣",
+    "kind": "weapon",
+    "desc": "封蝋を薄く重ねて刃にした短剣。冷めると石のように硬い。",
+    "stat": "攻撃力 59",
+    "price": 809,
+    "unlock": 4,
+    "weaponType": "dagger",
+    "power": 59,
+    "need": {
+      "str": 12,
+      "tec": 39
+    },
+    "skills": [
+      "864418e3-630a-4da6-ab41-efc3306a558f",
+      "7dabc84e-0007-4054-83f2-237a3541a3d2",
+      "fb2c2376-9adf-4859-98d7-e1051fb64565"
+    ]
+  },
+  {
+    "id": "1cf811a3-4709-4578-967a-c236127ce41e",
+    "slug": "seal-armor",
+    "name": "封蝋の鎧",
+    "kind": "armor",
+    "desc": "厚い鉄板を深紅に塗り、継ぎ目へ祭壇の封蝋を押した鎧。胸と腕を重ねた板で守る。封蝋は鎧の留め印に使う。",
+    "stat": "耐久 220",
+    "price": 686,
+    "unlock": 4,
+    "durability": 220,
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者"
+    ]
+  },
+  {
+    "id": "ace6e36e-3471-4a7d-8cd8-d3ab1e418526",
+    "slug": "gear",
+    "name": "錆びた歯車",
+    "kind": "material",
+    "desc": "錆びた鉄橋で拾う歯車。鍛冶屋が錆を落とし、打ち直して使う。",
+    "stat": "素材",
+    "sell": 44
+  },
+  {
+    "id": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
+    "slug": "seed",
+    "name": "毒花の種",
+    "kind": "material",
+    "desc": "温室の毒花の種。触ると手が痺れる。薬屋が煎じて薬にする。",
+    "stat": "素材",
+    "sell": 68
+  },
+  {
+    "id": "57790d09-046e-4fc6-9f57-e285f8e4b890",
+    "slug": "wax",
+    "name": "黒い封蝋",
+    "kind": "material",
+    "desc": "祭壇を封じていた黒い蝋。まだ温かい。鍛冶屋が溶かして鎧を固める。",
+    "stat": "素材",
+    "sell": 100
+  },
+  {
+    "id": "daab17e1-102d-4617-b101-fc9ef383dfec",
+    "slug": "greatpotion",
+    "name": "大回復薬",
+    "kind": "item",
+    "desc": "深い層の帰りに買われる、よく効く回復薬。",
+    "stat": "HP+420",
+    "price": 90,
+    "unlock": 2,
+    "effect": {
+      "type": "heal",
+      "hp": 420
+    }
+  },
+  {
+    "id": "c7fee833-bc0c-43e0-87b7-eab7329c594b",
+    "slug": "secretpotion",
+    "name": "秘薬",
+    "kind": "item",
+    "desc": "薬屋が奥から出す一本。傷が見る間に閉じる。値札は付いていない。",
+    "stat": "HP+900",
+    "price": 200,
+    "unlock": 3,
+    "effect": {
+      "type": "heal",
+      "hp": 900
+    }
+  },
+  {
+    "id": "b3e6c0d1-5a47-4f92-8c3b-0d715e4a92c8",
+    "slug": "stone",
+    "name": "契約石",
+    "kind": "material",
+    "desc": "悪魔との契約に使う石。相手との出会いを経て、必要な素材と契約料とともに渡す。抽選には使わない。",
+    "stat": "召喚 1回",
+    "price": 900,
+    "stones": 1
+  },
+  {
+    "id": "3b0e9d6b-1acd-49fa-a8cc-916dd299b757",
+    "slug": "crystal-pickaxe",
+    "name": "結晶のつるはし",
+    "kind": "weapon",
+    "desc": "結晶の穂先をくくり付けたつるはし。洞窟の採掘者が仕事道具をそのまま武器にした。打ち砕きと引っ掛けで、硬い相手を崩す。 0層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 38,
+    "appraiseFrom": 0,
+    "weaponType": "axe",
+    "power": 25,
+    "need": {
+      "str": 20,
+      "tec": 0
+    },
+    "skills": [
+      "749a8d47-a200-4a61-8500-58551b159112",
+      "5dbcd59c-8fe0-4c02-af23-acf1bae45dc3",
+      "f69b6c7a-4752-4912-b17b-5d89b98abe5f"
+    ]
+  },
+  {
+    "id": "b2ea6a78-9a9f-4438-b576-b30d5a6d5e68",
+    "slug": "cave-lantern-gun",
+    "name": "坑道灯の魔法銃",
+    "kind": "weapon",
+    "desc": "坑道灯を銃身にした魔法銃。帰り道を照らしていた灯りの名残で、閃光弾で足を止め、治癒弾で味方を支える。 0層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 32,
+    "appraiseFrom": 0,
+    "weaponType": "gun",
+    "power": 18,
+    "need": {
+      "str": 2,
+      "tec": 15
+    },
+    "skills": [
+      "04477410-478f-4067-ab02-63b226a228a9",
+      "92355567-38c4-4b88-bfd2-e993971cbd0a",
+      "a6094156-68f1-4ef6-b79e-d06a3731cfb5"
+    ]
+  },
+  {
+    "id": "ce60edbf-3d18-4abd-898c-0b5395225822",
+    "slug": "mole-claw-dagger",
+    "name": "掘り爪の短剣",
+    "kind": "weapon",
+    "desc": "結晶の爪に短い柄を付けた刃。投げ短剣と毒塗りで、間合いを選んで戦う。 0層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 28,
+    "appraiseFrom": 0,
+    "weaponType": "dagger",
+    "power": 18,
+    "need": {
+      "str": 4,
+      "tec": 14
+    },
+    "skills": [
+      "c8b764f9-d92b-42a6-ac8a-e5de669daf6b",
+      "5c68b128-52ca-4579-acf6-01b24cb1b8da",
+      "7dabc84e-0007-4054-83f2-237a3541a3d2"
+    ]
+  },
+  {
+    "id": "2cf10e6b-78f7-4014-8c85-a508a5fc858d",
+    "slug": "grave-slab-greatsword",
+    "name": "墓石の両手剣",
+    "kind": "weapon",
+    "desc": "欠けた墓石を刃にした両手剣。刻まれた名前は削らずに残してある。なぎ払いと受け構えを備える。 1層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 95,
+    "appraiseFrom": 1,
+    "weaponType": "greatsword",
+    "power": 34,
+    "need": {
+      "str": 25,
+      "tec": 0
+    },
+    "skills": [
+      "1c495318-fb97-4117-97ea-64fca8f6d597",
+      "8b3bc0e6-628e-48c7-b31e-e54858f30909",
+      "5e62be96-7af0-4405-bda6-d0f268782b5d"
+    ]
+  },
+  {
+    "id": "6382fe20-e213-44a7-b4e5-a303d9e20226",
+    "slug": "grave-bell-sword",
+    "name": "墓守の剣と鐘盾",
+    "kind": "weapon",
+    "desc": "割れた鐘を盾にした一式。墓守が時刻を知らせていた鐘で、シールドバッシュと岩塊の壁で仲間を守る。 1層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 78,
+    "appraiseFrom": 1,
+    "weaponType": "sword",
+    "power": 28,
+    "need": {
+      "str": 20,
+      "tec": 7
+    },
+    "skills": [
+      "28ec59cd-767b-45ad-92ce-4d6baa44ee30",
+      "8a584337-150a-4a02-9982-70d3ae66f35b",
+      "8f8d36e7-f367-4135-879f-0ca24a00ae24"
+    ]
+  },
+  {
+    "id": "cecdd05c-59b7-4894-801e-0e72d055f6bf",
+    "slug": "grave-robber-dagger",
+    "name": "墓荒らしの隠し刃",
+    "kind": "weapon",
+    "desc": "布に包んで隠せる薄い刃。墓を荒らす者が使っていたらしい。影踏みで力をため、背刺しを狙う。 1層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 74,
+    "appraiseFrom": 1,
+    "weaponType": "dagger",
+    "power": 26,
+    "need": {
+      "str": 5,
+      "tec": 21
+    },
+    "skills": [
+      "fb2c2376-9adf-4859-98d7-e1051fb64565",
+      "c8b764f9-d92b-42a6-ac8a-e5de669daf6b",
+      "7dabc84e-0007-4054-83f2-237a3541a3d2"
+    ]
+  },
+  {
+    "id": "21af0d43-ad21-4cfe-91f6-c41fb694fd1c",
+    "slug": "bridge-hook-axe",
+    "name": "鉄橋の鉤斧",
+    "kind": "weapon",
+    "desc": "鉄橋の留め金を研いだ鉤形の斧。保守係が足場に引っ掛けていた金具で、引っ掛けと打ち砕きを使い分ける。 2層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 180,
+    "appraiseFrom": 2,
+    "weaponType": "axe",
+    "power": 42,
+    "need": {
+      "str": 32,
+      "tec": 3
+    },
+    "skills": [
+      "7b7070ca-1f11-4a89-a87f-a4a2dda07b3f",
+      "f69b6c7a-4752-4912-b17b-5d89b98abe5f",
+      "2507bf9f-56c7-4da0-a5e4-3ee7462df06f"
+    ]
+  },
+  {
+    "id": "079d1785-3128-4abe-aa3a-f45b568850ff",
+    "slug": "signal-gun",
+    "name": "信号灯の魔法銃",
+    "kind": "weapon",
+    "desc": "錆びた信号灯から作られた魔法銃。橋の上で合図を送っていた灯で、速射で長く戦い、閃光弾で隙を作る。 2層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 166,
+    "appraiseFrom": 2,
+    "weaponType": "gun",
+    "power": 36,
+    "need": {
+      "str": 4,
+      "tec": 27
+    },
+    "skills": [
+      "25b977ed-49ba-482d-9961-577e30fe9a69",
+      "b28c6f45-0b10-453b-a1bb-a672fc913716",
+      "2fa437ac-df19-4b5d-bf76-978f9079e98a"
+    ]
+  },
+  {
+    "id": "510d6568-da42-4601-b37c-40f35e7af226",
+    "slug": "rivet-sword-shield",
+    "name": "鋲打ちの剣と盾",
+    "kind": "weapon",
+    "desc": "鋲で継ぎ接ぎされた剣と盾。鋲の打ち方に職人の癖が出ている。シールドバッシュといなしで打ち合う。 2層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 150,
+    "appraiseFrom": 2,
+    "weaponType": "sword",
+    "power": 38,
+    "need": {
+      "str": 25,
+      "tec": 10
+    },
+    "skills": [
+      "28ec59cd-767b-45ad-92ce-4d6baa44ee30",
+      "434d322d-efee-49da-ab2d-7824f16b3da3",
+      "685fff6a-eaf5-42d6-885f-7b3a5b54b6d9"
+    ]
+  },
+  {
+    "id": "5e523f7b-ae78-4c56-8934-245db1e3374d",
+    "slug": "pruning-greatsword",
+    "name": "温室の剪定大剣",
+    "kind": "weapon",
+    "desc": "剪定刃を長く継いだ大剣。温室の手入れに使われていた刃で、棘の蔓で遠くを狙い、なぎ払いで周囲を刈る。 3層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 230,
+    "appraiseFrom": 3,
+    "weaponType": "greatsword",
+    "power": 57,
+    "need": {
+      "str": 37,
+      "tec": 5
+    },
+    "skills": [
+      "7673320b-bc7f-4352-b4aa-501439288b65",
+      "5e62be96-7af0-4405-bda6-d0f268782b5d",
+      "40bf2edd-39f8-4746-a6f5-4474a54e448f"
+    ]
+  },
+  {
+    "id": "92151fb0-b36c-4ebf-8c77-ffa1a7e83ed5",
+    "slug": "watering-gun",
+    "name": "薬莢じょうろ",
+    "kind": "weapon",
+    "desc": "じょうろの口から魔弾を放つ銃。水やりの道具を誰かが作り替えた。治癒弾と浄化の光で探索を支える。 3層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 204,
+    "appraiseFrom": 3,
+    "weaponType": "gun",
+    "power": 46,
+    "need": {
+      "str": 4,
+      "tec": 32
+    },
+    "skills": [
+      "63cf6ce7-1670-463b-a736-a03d9ef6b55a",
+      "92355567-38c4-4b88-bfd2-e993971cbd0a",
+      "2fa437ac-df19-4b5d-bf76-978f9079e98a"
+    ]
+  },
+  {
+    "id": "ff56a697-28ba-46cf-9c3e-4d593596db1e",
+    "slug": "flytrap-dagger",
+    "name": "食虫花の短剣",
+    "kind": "weapon",
+    "desc": "食虫花の牙を留めた短剣。毒塗りと蔦縛りでじわじわ追い詰める。 3層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 176,
+    "appraiseFrom": 3,
+    "weaponType": "dagger",
+    "power": 44,
+    "need": {
+      "str": 9,
+      "tec": 32
+    },
+    "skills": [
+      "e75a90a6-ff0c-4ef9-a35c-1b898dc27b24",
+      "5c68b128-52ca-4579-acf6-01b24cb1b8da",
+      "673d49db-5332-4154-b50f-7a180b01291f"
+    ]
+  },
+  {
+    "id": "62c82e0a-5efe-4fbc-85c1-16d8b18b2ed5",
+    "slug": "votive-greatsword",
+    "name": "燭台の両手剣",
+    "kind": "weapon",
+    "desc": "長い燭台を叩き伸ばした刃。灯りの番が毎晩磨いていた燭台で、生命力を払う生贄の一撃と、受け構えを備える。 4層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 324,
+    "appraiseFrom": 4,
+    "weaponType": "greatsword",
+    "power": 72,
+    "need": {
+      "str": 43,
+      "tec": 5
+    },
+    "skills": [
+      "6c09f8d4-0cad-47ae-a3a9-fbff0f2f41e8",
+      "be7e2670-66b1-4395-97e5-11dde683439a",
+      "bd1bcdef-8b15-4093-a6e1-a7e998f8ae99"
+    ]
+  },
+  {
+    "id": "2733c21b-a20b-4e68-a0b6-44aa3fb94966",
+    "slug": "seal-chain-axe",
+    "name": "封印鎖の斧",
+    "kind": "weapon",
+    "desc": "封蝋の残る鎖を巻いた斧。縛鎖の呪いで敵を止め、叩き割る。 4層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 294,
+    "appraiseFrom": 4,
+    "weaponType": "axe",
+    "power": 68,
+    "need": {
+      "str": 44,
+      "tec": 2
+    },
+    "skills": [
+      "9e66d6ac-db40-48ff-a268-3a170a823406",
+      "7b7070ca-1f11-4a89-a87f-a4a2dda07b3f",
+      "f69b6c7a-4752-4912-b17b-5d89b98abe5f"
+    ]
+  },
+  {
+    "id": "f2058503-e2a3-4e29-8f74-7c608e09e64e",
+    "slug": "censer-gun",
+    "name": "星灰の香炉銃",
+    "kind": "weapon",
+    "desc": "香炉を銃身に仕立てた魔法銃。灰の匂いが抜けない。星屑の雨で広く撃ち、溜め撃ちで一体を狙う。 4層到達後の鑑定限定。",
+    "stat": "",
+    "sell": 278,
+    "appraiseFrom": 4,
+    "weaponType": "gun",
+    "power": 58,
+    "need": {
+      "str": 5,
+      "tec": 38
+    },
+    "skills": [
+      "dd5acbb1-06f5-4879-90df-e3f0a1cae2c2",
+      "b28c6f45-0b10-453b-a1bb-a672fc913716",
+      "63cf6ce7-1670-463b-a736-a03d9ef6b55a"
+    ]
+  },
+  {
+    "id": "25d73565-9f7c-4d82-a0dc-3a2aa783397a",
+    "slug": "bone-runner-coat",
+    "name": "骨留めの軽装",
+    "kind": "armor",
+    "desc": "軽い上着の胸と前腕を補強し、削った骨を留め具にした軽装。守る範囲を絞って速さを選ぶ。",
+    "stat": "耐久 60　速さ +2",
+    "price": 138,
+    "unlock": 1,
+    "durability": 60,
+    "bonus": {
+      "spd": 2
+    },
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者",
+      "斧使い",
+      "狩人",
+      "竜連れの旅人",
+      "僧侶",
+      "仕立て屋"
+    ]
+  },
+  {
+    "id": "af75af93-b0e0-41ed-9482-fbe8aea55be6",
+    "slug": "burial-robe",
+    "name": "墓布の法衣",
+    "kind": "armor",
+    "desc": "厚い墓布を洗って重ね縫いした法衣。胸と袖を厚くし、傷みやすい裾は短く整えた。技量を補う。",
+    "stat": "耐久 68　技量 +3",
+    "price": 158,
+    "unlock": 1,
+    "durability": 68,
+    "bonus": {
+      "tec": 3
+    },
+    "allowedJobs": [
+      "悪魔召喚師",
+      "黒魔術師",
+      "影絵師",
+      "魔術師",
+      "契約破り",
+      "僧侶",
+      "仕立て屋"
+    ],
+    "appraisalWeight": 0.2
+  },
+  {
+    "id": "2e0443af-58e5-4ef0-957b-c33b8de359aa",
+    "slug": "bridge-runner-coat",
+    "name": "橋渡りの外套",
+    "kind": "armor",
+    "desc": "短い外套に肩と肘の補強を縫い付けた軽装。鉄橋で引っ掛かりにくい裾と帯で、速さを優先する。",
+    "stat": "耐久 82　速さ +3",
+    "price": 306,
+    "unlock": 2,
+    "durability": 82,
+    "bonus": {
+      "spd": 3
+    },
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者",
+      "斧使い",
+      "狩人",
+      "竜連れの旅人",
+      "僧侶",
+      "仕立て屋"
+    ]
+  },
+  {
+    "id": "c60dd47d-3327-4844-8c11-96ed0db8643c",
+    "slug": "gearweave-robe",
+    "name": "歯車織りの作業着",
+    "kind": "armor",
+    "desc": "厚布と革の胸当てを組み合わせた作業着。歯車形の留め具で袖と前掛けを固定し、手元を動かしやすくした。",
+    "stat": "耐久 96　技量 +4",
+    "price": 350,
+    "unlock": 2,
+    "durability": 96,
+    "bonus": {
+      "tec": 4
+    },
+    "allowedJobs": [
+      "悪魔召喚師",
+      "黒魔術師",
+      "影絵師",
+      "魔術師",
+      "契約破り",
+      "僧侶",
+      "仕立て屋"
+    ],
+    "appraisalWeight": 0.2
+  },
+  {
+    "id": "f25bd1f5-b00e-44d5-8976-406eb0803995",
+    "slug": "moss-runner-coat",
+    "name": "苔綿の軽装",
+    "kind": "armor",
+    "desc": "苔綿を薄く詰めた上着。肩と肘だけを厚くし、腕と裾は軽く仕立てる。耐久より速さを重視する。",
+    "stat": "耐久 112　速さ +4",
+    "price": 402,
+    "unlock": 3,
+    "durability": 112,
+    "bonus": {
+      "spd": 4
+    },
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者",
+      "斧使い",
+      "狩人",
+      "竜連れの旅人",
+      "僧侶",
+      "仕立て屋"
+    ]
+  },
+  {
+    "id": "1713ddf5-586c-4615-bc49-4f84d45556c6",
+    "slug": "root-plate",
+    "name": "樹根の重鎧",
+    "kind": "armor",
+    "desc": "硬い根を削って重ねた肩当てと、鉄の胸当てを合わせた重鎧。根の編み帯で縁を補強する。重いが長く攻撃を受け止める。",
+    "stat": "耐久 192　速さ −2",
+    "price": 520,
+    "unlock": 3,
+    "durability": 192,
+    "bonus": {
+      "spd": -2
+    },
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者"
+    ]
+  },
+  {
+    "id": "6fe9788e-08e1-4b8c-b84a-b51b2e5ae4e0",
+    "slug": "pilgrim-coat",
+    "name": "巡礼の軽装",
+    "kind": "armor",
+    "desc": "巡礼の厚布を短い上着へ仕立て直した軽装。胸と手首を重ね縫いし、軽い裾で足さばきを助ける。",
+    "stat": "耐久 148　速さ +5",
+    "price": 618,
+    "unlock": 4,
+    "durability": 148,
+    "bonus": {
+      "spd": 5
+    },
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者",
+      "斧使い",
+      "狩人",
+      "竜連れの旅人",
+      "僧侶",
+      "仕立て屋"
+    ]
+  },
+  {
+    "id": "29e01669-5b76-457c-b34a-336aba77e53c",
+    "slug": "ritual-robe",
+    "name": "祭壇の祭服",
+    "kind": "armor",
+    "desc": "祭壇の厚布を重ねて胸と袖を守る祭服。大きな襟と帯で布を整え、手を動かしやすくした。技量を大きく補う。",
+    "stat": "耐久 176　技量 +6",
+    "price": 710,
+    "unlock": 4,
+    "durability": 176,
+    "bonus": {
+      "tec": 6
+    },
+    "allowedJobs": [
+      "悪魔召喚師",
+      "黒魔術師",
+      "影絵師",
+      "魔術師",
+      "契約破り",
+      "僧侶",
+      "仕立て屋"
+    ]
+  },
+  {
+    "id": "41c01291-5faa-4cd4-940e-7fd0963d6488",
+    "slug": "group-potion",
+    "name": "全体回復薬",
+    "kind": "item",
+    "desc": "霧になって広がり、生きている仲間全員の傷を癒やす。",
+    "stat": "全員 HP +100",
+    "price": 65,
+    "unlock": 1,
+    "effect": {
+      "type": "heal",
+      "hp": 100,
+      "all": true
+    }
+  },
+  {
+    "id": "0f48a9dc-8200-4850-a578-4842a570e1df",
+    "slug": "group-hipotion",
+    "name": "全体上回復薬",
+    "kind": "item",
+    "desc": "濃い薬液を霧にして、仲間全員の深い傷を癒やす。",
+    "stat": "全員 HP +300",
+    "price": 190,
+    "unlock": 3,
+    "effect": {
+      "type": "heal",
+      "hp": 300,
+      "all": true
+    }
+  },
+  {
+    "id": "1975f149-6547-410b-92ac-6e59d21cfd17",
+    "slug": "great-ether",
+    "name": "気力の雫",
+    "kind": "item",
+    "desc": "仲間ひとりのワザの残りをまとめて戻す濃縮液。",
+    "stat": "ワザの残り +5",
+    "price": 70,
+    "unlock": 2,
+    "effect": {
+      "type": "refill",
+      "uses": 5
+    }
+  },
+  {
+    "id": "9a2f38cc-68d4-4cd1-b95a-ac17c2d83f1b",
+    "slug": "revival-incense",
+    "name": "蘇生の香",
+    "kind": "item",
+    "desc": "倒れた仲間ひとりを、HP（生命力）300で起こす香。",
+    "stat": "蘇生 HP 300",
+    "price": 130,
+    "unlock": 2,
+    "effect": {
+      "type": "revive",
+      "hp": 300
+    }
+  },
+  {
+    "id": "b5648a53-aca7-4dc5-a458-b34547ac09a9",
+    "slug": "charge-incense",
+    "name": "奮起の香",
+    "kind": "item",
+    "desc": "仲間全員の次の攻撃を強める。",
+    "stat": "全員の次の攻撃を強化",
+    "price": 110,
+    "unlock": 2,
+    "effect": {
+      "type": "status",
+      "status": {
+        "kind": "charge",
+        "turns": 2
+      },
+      "target": "allies"
+    }
+  },
+  {
+    "id": "7a332053-4962-4a65-b0e6-fd8b0309a21c",
+    "slug": "guard-incense",
+    "name": "守りの香",
+    "kind": "item",
+    "desc": "仲間全員を覆う香。それぞれが次に受ける被害を半分にする。",
+    "stat": "全員の次の被害を半減",
+    "price": 95,
+    "unlock": 1,
+    "effect": {
+      "type": "status",
+      "status": {
+        "kind": "protect",
+        "turns": 1
+      },
+      "target": "allies"
+    }
+  },
+  {
+    "id": "3974dc6e-7fb7-48ca-9eef-d2e75213df59",
+    "slug": "regen-seed",
+    "name": "芽吹きの丸薬",
+    "kind": "item",
+    "desc": "仲間ひとりに、行動ごとに傷が癒える再生を付ける。",
+    "stat": "仲間ひとりに再生 3行動",
+    "price": 38,
+    "unlock": 1,
+    "effect": {
+      "type": "status",
+      "status": {
+        "kind": "regen",
+        "turns": 3
+      },
+      "target": "ally"
+    }
+  },
+  {
+    "id": "11a03289-b827-40b1-a003-d491e21b5a45",
+    "slug": "regen-incense",
+    "name": "芽吹きの香",
+    "kind": "item",
+    "desc": "仲間全員に、行動ごとに傷が癒える再生を付ける。",
+    "stat": "全員に再生 3行動",
+    "price": 160,
+    "unlock": 3,
+    "effect": {
+      "type": "status",
+      "status": {
+        "kind": "regen",
+        "turns": 3
+      },
+      "target": "allies"
+    }
+  },
+  {
+    "id": "fb663f87-0438-4dc6-a7d0-dd34ce1932bc",
+    "slug": "cleansing-mist",
+    "name": "浄化の霧",
+    "kind": "item",
+    "desc": "清い霧で仲間全員の毒と縛りを取り除く。",
+    "stat": "全員の毒・縛りを治す",
+    "price": 85,
+    "unlock": 2,
+    "effect": {
+      "type": "cure",
+      "kinds": ["poison", "bind"],
+      "all": true
+    }
+  },
+  {
+    "id": "763af6c7-47db-4e32-af40-8615e38fec70",
+    "slug": "burst-bomb",
+    "name": "破裂弾",
+    "kind": "item",
+    "desc": "細かく裂ける殻の爆弾。敵全員を巻き込む。",
+    "stat": "敵全員にダメージ 170",
+    "price": 140,
+    "unlock": 3,
+    "effect": {
+      "type": "damage",
+      "amount": 170,
+      "all": true
+    }
+  },
+  {
+    "id": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+    "slug": "skill-book",
+    "name": "スキルの書",
+    "kind": "material",
+    "desc": "職人が書き残した手ほどきの書。鍛冶屋で武器のランダムなワザを1つ変更できる。1回につき1冊使う。",
+    "stat": ""
+  },
+  {
+    "id": "22a3c18b-089e-4297-8738-70f32c911479",
+    "slug": "crystal-claw",
+    "name": "結晶の爪",
+    "kind": "material",
+    "desc": "淡い青緑色の結晶でできた爪形の欠片。薬屋が粉にして傷薬に混ぜる。売却できる。",
+    "stat": "換金素材",
+    "sell": 24
+  },
+  {
+    "id": "8c647c6b-18c9-4f19-828d-dd312d0afd43",
+    "slug": "statue-shard",
+    "name": "石像の欠片",
+    "kind": "material",
+    "desc": "ミミウォールの石の体から剥がれた欠片。浅い彫り跡が残っている。道具屋が砥石に使う。売却できる。",
+    "stat": "換金素材",
+    "sell": 18
+  },
+  {
+    "id": "5d2bca64-e580-4543-8966-7a1d3e0435da",
+    "slug": "rust-fang",
+    "name": "錆獣の牙",
+    "kind": "material",
+    "desc": "鉄橋の錆にまみれた鉄の牙。根元に赤茶色の錆がこびりついている。鍛冶屋が錆を落として鋲にする。売却できる。",
+    "stat": "換金素材",
+    "sell": 44
+  },
+  {
+    "id": "a3bb2f9e-c479-4c07-95c8-af1b2967bb8f",
+    "slug": "venom-petal",
+    "name": "毒花の花弁",
+    "kind": "material",
+    "desc": "バドアイの蕾から落ちた肉厚な花弁。乾かしても紫がかった色が残る。薬屋が染め粉と毒消しに使う。売却できる。",
+    "stat": "換金素材",
+    "sell": 68
+  },
+  {
+    "id": "ce408ebe-b853-47ad-89c3-d91c90ac0a8b",
+    "slug": "spore-pouch",
+    "name": "胞子の袋",
+    "kind": "material",
+    "desc": "毒沼で拾った胞子嚢。裂け目の中に細かな粒が詰まっている。薬屋が干して咳止めにする。売却できる。",
+    "stat": "換金素材",
+    "sell": 68
+  },
+  {
+    "id": "9afe2fed-97ff-4669-90ec-1c9bcd9979d6",
+    "slug": "contract-scrap",
+    "name": "契約の切れ端",
+    "kind": "material",
+    "desc": "ククルスが落とした紙片。破れた封蝋が残っている。何の取り決めだったかは読めない。売却できる。",
+    "stat": "換金素材",
+    "sell": 100
+  },
+  {
+    "id": "279b51a4-efe5-49ea-b72c-6a43ca9afaf9",
+    "slug": "crystal-liner",
+    "name": "結晶裏地の外套",
+    "kind": "armor",
+    "desc": "磨いた結晶片を厚布の裏地へ収めた外套。肩と腰の帯で重い武器を支えやすくするが、動きは少し鈍る。",
+    "stat": "耐久 28　力 +2　速さ -1",
+    "price": 64,
+    "appraiseFrom": 0,
+    "durability": 28,
+    "bonus": {
+      "str": 2,
+      "spd": -1
+    },
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者",
+      "斧使い",
+      "狩人",
+      "竜連れの旅人",
+      "僧侶",
+      "仕立て屋"
+    ],
+    "appraisalRetentionWeight": 0.15
+  },
+  {
+    "id": "5d0af7c1-f593-4c9d-b673-35d34f6e81f3",
+    "slug": "gravekeeper-vest",
+    "name": "墓守の骨留め",
+    "kind": "armor",
+    "desc": "厚布の胴着を骨の留め具で閉じ、胸と腰を支える装束。鎧の耐久より生命力を選ぶ、墓守の仕事着。",
+    "stat": "耐久 64　HP +40　速さ -1",
+    "price": 190,
+    "appraiseFrom": 1,
+    "durability": 64,
+    "bonus": {
+      "maxHp": 40,
+      "spd": -1
+    },
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者"
+    ],
+    "appraisalRetentionWeight": 0.15
+  },
+  {
+    "id": "2dbc9d05-8e6f-4bdb-9f2e-13c53a3b182a",
+    "slug": "bridge-harness",
+    "name": "橋渡りの革帯装束",
+    "kind": "armor",
+    "desc": "厚い上着に胸から腰へ通る革帯を縫い付けた軽装。体と道具を支え、耐久を抑えて力と速さを選ぶ。",
+    "stat": "耐久 72　力 +2　速さ +2",
+    "price": 390,
+    "appraiseFrom": 2,
+    "durability": 72,
+    "bonus": {
+      "str": 2,
+      "spd": 2
+    },
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者",
+      "斧使い",
+      "狩人",
+      "竜連れの旅人",
+      "僧侶",
+      "仕立て屋"
+    ],
+    "appraisalRetentionWeight": 0.15
+  },
+  {
+    "id": "c145a4a8-8cb1-451c-98a1-9b05709efea1",
+    "slug": "seedweave-robe",
+    "name": "種織りの法衣",
+    "kind": "armor",
+    "desc": "硬い種殻を磨いて肩当てと留め具にした法衣。重ねた布で体を覆い、耐久より技量と生命力を補う。",
+    "stat": "耐久 108　技量 +3　HP +30",
+    "price": 540,
+    "appraiseFrom": 3,
+    "durability": 108,
+    "bonus": {
+      "tec": 3,
+      "maxHp": 30
+    },
+    "allowedJobs": [
+      "悪魔召喚師",
+      "黒魔術師",
+      "影絵師",
+      "魔術師",
+      "契約破り",
+      "僧侶",
+      "仕立て屋"
+    ],
+    "appraisalRetentionWeight": 0.15
+  },
+  {
+    "id": "d53d6f50-87bd-4582-8a87-50fbc510079c",
+    "slug": "sealed-vow-armor",
+    "name": "封誓の重鎧",
+    "kind": "armor",
+    "desc": "古い鉄板を鋲でつなぎ直し、封蝋で留め印を押した重鎧。厚い下衣で体を支えるが重い。耐久より生命力を選ぶ。",
+    "stat": "耐久 160　HP +80　速さ -2",
+    "price": 780,
+    "appraiseFrom": 4,
+    "durability": 160,
+    "bonus": {
+      "maxHp": 80,
+      "spd": -2
+    },
+    "allowedJobs": [
+      "戦士",
+      "重戦士",
+      "盾持ち",
+      "扉担ぎ",
+      "墓守",
+      "守護者",
+      "ケルベロスの飼い主",
+      "自称勇者"
+    ],
+    "appraisalRetentionWeight": 0.15
+  },
+  {
+    "id": "contract-paper-nui",
+    "slug": "contract-paper-nui",
+    "name": "ヌイの契約書",
+    "kind": "material",
+    "desc": "記された悪魔を初めて呼び出すための契約書。呼び出し後は紙なしで再び会える。",
+    "stat": "",
+    "sellable": false
+  },
+  {
+    "id": "contract-paper-tris",
+    "slug": "contract-paper-tris",
+    "name": "トリスの契約書",
+    "kind": "material",
+    "desc": "記された悪魔を初めて呼び出すための契約書。呼び出し後は紙なしで再び会える。",
+    "stat": "",
+    "sellable": false
+  },
+  {
+    "id": "contract-paper-haro",
+    "slug": "contract-paper-haro",
+    "name": "ハロの契約書",
+    "kind": "material",
+    "desc": "記された悪魔を初めて呼び出すための契約書。呼び出し後は紙なしで再び会える。",
+    "stat": "",
+    "sellable": false
+  },
+  {
+    "id": "contract-paper-zaza",
+    "slug": "contract-paper-zaza",
+    "name": "ザザの契約書",
+    "kind": "material",
+    "desc": "記された悪魔を初めて呼び出すための契約書。呼び出し後は紙なしで再び会える。",
+    "stat": "",
+    "sellable": false
+  },
+  {
+    "id": "golden-apple",
+    "slug": "golden-apple",
+    "name": "金のリンゴ",
+    "kind": "material",
+    "desc": "村の東、黄金の森で採れる金色のリンゴ。ヌイが契約の条件として求めている。",
+    "stat": "",
+    "sellable": false
+  },
+  {
+    "id": "wetland-flower",
+    "slug": "wetland-flower",
+    "name": "湿地の白い花",
+    "kind": "material",
+    "desc": "南の湿地に咲く花。ハロが契約の条件として求めている。",
+    "stat": "",
+    "sellable": false
+  },
+  {
+    "id": "70717d91-d61f-4fa3-860f-e52753cc7945",
+    "slug": "pact-alma-name",
+    "name": "欠けゆく勇者",
+    "kind": "weapon",
+    "desc": "守り石の悪魔ドルメから石碑を砕いて一撃の力へ替えるを借りる。代わりに名乗るたび欠けた石の弁償を増やす。",
+    "stat": "攻撃力 30",
+    "weaponType": "greatsword",
+    "power": 30,
+    "powerPerPlus": 1.7,
+    "need": {
+      "str": 18,
+      "tec": 4
+    },
+    "skills": [
+      "5334baa9-0ed4-4f35-bda6-a8e3bfc6c131",
+      "8efbad09-d229-43f8-b5f0-ca5ffbb3e9ed",
+      "3cddb15d-abfd-4f65-8d98-6cc44cb3b502"
+    ]
+  },
+  {
+    "id": "5ad89d9e-29c6-424d-ae22-ba335f3cfd2f",
+    "slug": "pact-tsumugi-patch",
+    "name": "縫い代の身体",
+    "kind": "weapon",
+    "desc": "指ぬきの悪魔シンブルから他人の傷を縫い止める糸の身体を借りる。代わりに自分の服の縫い代を渡す。",
+    "stat": "攻撃力 19",
+    "weaponType": "gun",
+    "power": 19,
+    "powerPerPlus": 1.7,
+    "need": {
+      "str": 2,
+      "tec": 15
+    },
+    "skills": [
+      "63cf6ce7-1670-463b-a736-a03d9ef6b55a",
+      "25b977ed-49ba-482d-9961-577e30fe9a69",
+      "251e51d2-bd36-41ad-a535-3eda631de3b9"
+    ]
+  },
+  {
+    "id": "31936151-6472-474e-89d7-4d087c13b73f",
+    "slug": "pact-rivet-forge",
+    "name": "借り火の炉心",
+    "kind": "weapon",
+    "desc": "ふいごの悪魔フイゴからフイゴの炉を胸へ宿すを借りる。代わりに自分の体温をフイゴへ貸す。",
+    "stat": "攻撃力 22",
+    "weaponType": "dagger",
+    "power": 22,
+    "powerPerPlus": 1.7,
+    "need": {
+      "str": 14,
+      "tec": 6
+    },
+    "skills": [
+      "5c7b54b7-6ff2-4401-a050-68e4ca01e703",
+      "5f6790df-1fad-4891-a734-a23e93ce49bb",
+      "d0499232-c9f7-4981-81e2-deac51126565"
+    ]
+  },
+  {
+    "id": "33ff5e49-81ed-4bb9-8d9b-c3951c387b8b",
+    "slug": "pact-rize-blank",
+    "name": "影貸しの白紙",
+    "kind": "weapon",
+    "desc": "破棄の悪魔ハキから条件のない白紙へ自分の影を貸すを借りる。代わりに自分の影をハキに渡す。",
+    "stat": "攻撃力 26",
+    "weaponType": "dagger",
+    "power": 26,
+    "powerPerPlus": 1.7,
+    "need": {
+      "str": 4,
+      "tec": 16
+    },
+    "skills": [
+      "39ae5c7e-594f-4e6c-b3cd-d259739ae741",
+      "2d61945d-1d2f-45d9-8f47-f1ec66ef8703",
+      "5b3fa035-1c9c-4219-b335-27bc548fe010"
+    ]
+  },
+  {
+    "id": "c7a44829-433d-4b1a-af43-080407466aeb",
+    "slug": "pact-sera-wings",
+    "name": "開門の石群",
+    "kind": "weapon",
+    "desc": "門の悪魔カドモリから門を離れて石を飛ばす身体を借りる。代わりに帰った後の門の修繕を肩代わりする。",
+    "stat": "攻撃力 24",
+    "weaponType": "axe",
+    "power": 24,
+    "powerPerPlus": 1.7,
+    "need": {
+      "str": 14,
+      "tec": 4
+    },
+    "skills": [
+      "c73ddb12-9716-4acb-a936-937a5d8b9892",
+      "5dbcd59c-8fe0-4c02-af23-acf1bae45dc3",
+      "bd7e478a-b916-4a9e-a5b1-c2d80c57011f"
+    ]
+  }
+]

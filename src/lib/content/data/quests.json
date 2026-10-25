@@ -1,0 +1,639 @@
+[
+  {
+    "id": "d734cdc1-211e-4b02-82fd-dcf119e1766a",
+    "slug": "q-mole",
+    "name": "スタンプダックを3体討伐",
+    "desc": "結晶の採り場にスタンプダックが居座って、うちの新人が近寄れない。3羽でいい、どかしてくれ。回復薬は新人が自分の稼ぎで買って置いてったやつだ。",
+    "foe": "29ed2718-1c81-4e16-9230-2e80870a0298",
+    "count": 3,
+    "reward": {
+      "gold": 40,
+      "goods": [
+        {
+          "good": "c2ff7c8e-a695-40ee-b992-55cd31f34f9b",
+          "count": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "ef75c81d-588d-4059-8074-115abaefffad",
+    "slug": "q-skeleton",
+    "name": "ジェムロードを2体討伐",
+    "desc": "ジェムロードが2頭、荷車の道をふさいでる。荷台の幌が針で穴だらけだ。幌は女房が縫ってくれたもんでね。道からどけてくれ。",
+    "foe": "0db315b8-06b0-4c86-817a-5f50ab70e30a",
+    "count": 2,
+    "reward": {
+      "gold": 60,
+      "goods": []
+    }
+  },
+  {
+    "id": "c08a901f-7aeb-42bb-80fb-0511667f8189",
+    "slug": "q-king",
+    "name": "ジェムロードを倒す",
+    "desc": "0層の終点にジェムロードが居座って、採掘組が毎日稼ぎを取りこぼしてる。報酬は組の全員で出し合った。上回復薬は親方の差し入れだ。",
+    "foe": "0db315b8-06b0-4c86-817a-5f50ab70e30a",
+    "count": 1,
+    "reward": {
+      "gold": 120,
+      "goods": [
+        {
+          "good": "e5951ae4-0a5b-436e-8720-286f9e2bfc0c",
+          "count": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "8be7461d-326d-4006-959f-5177b3607a1c",
+    "slug": "q-bone-imp",
+    "name": "アクアサウルを4体討伐",
+    "desc": "骨を運ぶ通路で、首の長いアクアサウルが寝そべってる。鍛冶屋への納品がもう三日遅れだ。遅れた分は俺の取り分から引かれる。4頭、どかしてくれ。",
+    "foe": "feca401a-3c60-4777-972b-4d31f82e9d10",
+    "count": 4,
+    "reward": {
+      "gold": 120,
+      "goods": [
+        {
+          "good": "c2ff7c8e-a695-40ee-b992-55cd31f34f9b",
+          "count": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "fc0b4c4f-552e-49e9-988a-65b4fde50a92",
+    "slug": "q-stone-golem",
+    "name": "ミミウォールを3体討伐",
+    "desc": "墓碑の数を帳面に付ける仕事をしてる。歩くミミウォールが混ざるせいで、何度数えても合わない。3体崩して、帳面を合わせさせてくれ。",
+    "foe": "89831ecc-694f-489b-9b81-e6805b9e2371",
+    "count": 3,
+    "reward": {
+      "gold": 160,
+      "goods": [
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "44c4d94f-1043-486c-b134-15b3bcb02226",
+    "slug": "q-grave-titan",
+    "name": "ホークロードを倒す",
+    "desc": "1層の終点に、鉄の棒を構えたホークロードが立ってる。あれを越えないと2層の仕事に出られない。うちの息子は2層の稼ぎで学費を払うつもりでいる。",
+    "foe": "8aae8f96-edbf-4649-82cb-4c6d7b12d1a8",
+    "count": 1,
+    "reward": {
+      "gold": 300,
+      "goods": [
+        {
+          "good": "e5951ae4-0a5b-436e-8720-286f9e2bfc0c",
+          "count": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "a28c91a6-a245-4748-90d7-fb1c70682ede",
+    "slug": "q-rust-hound",
+    "name": "エコーパロットを5体討伐",
+    "desc": "鉄橋で荷をつつくエコーパロットが5羽。こっちは歯車を運ぶ荷担ぎだ。破られた袋の弁償で、今月はもう赤字だよ。追い払ってくれ。",
+    "foe": "f7e72b0b-c879-44b4-b85e-f26bb768002a",
+    "count": 5,
+    "reward": {
+      "gold": 240,
+      "goods": [
+        {
+          "good": "ace6e36e-3471-4a7d-8cd8-d3ab1e418526",
+          "count": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "65327b9f-8739-437a-8379-c9c0e42b55c2",
+    "slug": "q-bridge-shade",
+    "name": "エコーパロットを4体討伐",
+    "desc": "鉄橋の風を切る鳥に驚いて、相方が足場から落ちかけた。命綱は切れなかったが、あいつはまだ橋に戻れない。戻れるように、4羽減らしておいてくれ。",
+    "foe": "f7e72b0b-c879-44b4-b85e-f26bb768002a",
+    "count": 4,
+    "reward": {
+      "gold": 300,
+      "goods": [
+        {
+          "good": "e5951ae4-0a5b-436e-8720-286f9e2bfc0c",
+          "count": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "0be686ea-2702-4eda-9a31-1a4042f36418",
+    "slug": "q-rust-devourer",
+    "name": "ウォールタイタンを倒す",
+    "desc": "鉄橋の出口に城門みたいなウォールタイタンが居座って、3層の仕事が止まってる。温室の薬草が届かないと薬屋の棚が空く。崩して道を開けてほしい。",
+    "foe": "77f87869-8a88-4559-a8e8-f7f6f0828d9a",
+    "count": 1,
+    "reward": {
+      "gold": 600,
+      "goods": [
+        {
+          "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+          "count": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "5b960093-c6c3-4b5c-b1cf-82201fad9e10",
+    "slug": "q-swamp-leech",
+    "name": "ステンドクラゲを6体討伐",
+    "desc": "温室の沼にステンドクラゲが増えすぎて、種を拾う手が届かない。薬屋に納める咳止めの種だ。冬が来る前に6匹、減らしてほしい。",
+    "foe": "4ed3f555-e6d3-4213-a6c8-ec7a0af11e36",
+    "count": 6,
+    "reward": {
+      "gold": 480,
+      "goods": [
+        {
+          "good": "f6ad082e-8d68-467f-835c-a583a7970ffe",
+          "count": 4
+        }
+      ]
+    }
+  },
+  {
+    "id": "daa74312-52c6-4e51-94b4-09dc6b6cb5bf",
+    "slug": "q-vine-scarecrow",
+    "name": "スピラスネイルを3体討伐",
+    "desc": "温室の通路にスピラスネイルの粘液が這って、乾燥室まで薬草を運べない。殻の硬いのが3匹。急がなくていい、確実に頼む。",
+    "foe": "a93a40ce-dacc-4a01-a8c5-8ff7289b6650",
+    "count": 3,
+    "reward": {
+      "gold": 600,
+      "goods": [
+        {
+          "good": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
+          "count": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "a9a65757-047b-481a-ac70-cae94a5e8888",
+    "slug": "q-great-bloom",
+    "name": "シードロードを倒す",
+    "desc": "温室の奥にシードロードが大きく育って居座ってる。あの奥の棚に、師匠が最後に植えた株がある。持ち帰らなくていい。倒して、株が生きてるかだけ見てきてくれ。",
+    "foe": "85495e6d-9a6d-4b81-bc62-37ce73ee9722",
+    "count": 1,
+    "reward": {
+      "gold": 1200,
+      "goods": [
+        {
+          "good": "31640e26-28b2-4ef6-afb1-cc46dd80ac88",
+          "count": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "e6dd9d59-71fa-4c64-ad3e-e539960f8c90",
+    "slug": "q-altar-shade",
+    "name": "ナイトキャップを6体討伐",
+    "desc": "祭壇でナイトキャップに眠らされて、帰りの籠に間に合わなかった奴がいる。ロイドが一晩、籠を下ろしたまま待ってた。眠る前に6匹、退けてきてくれ。",
+    "foe": "552ec59c-a774-42d0-8f12-f2963aeb417d",
+    "count": 6,
+    "reward": {
+      "gold": 900,
+      "goods": [
+        {
+          "good": "e5951ae4-0a5b-436e-8720-286f9e2bfc0c",
+          "count": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "d05d9635-4c36-4dee-acb4-168ce3a8ee3e",
+    "slug": "q-fallen-adventurer",
+    "name": "ソウルキャンドラを4体討伐",
+    "desc": "祭壇の黒いろうそくを4本、消してきて。灯りの番をしてた爺さんが降りられなくなった。日当は爺さんの分も乗せとく。",
+    "foe": "f8db80ab-a853-45d1-91c4-7a2fd0856aba",
+    "count": 4,
+    "reward": {
+      "gold": 1100,
+      "goods": [
+        {
+          "good": "57790d09-046e-4fc6-9f57-e285f8e4b890",
+          "count": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "f92aeac5-21ff-41da-af52-1518b463a446",
+    "slug": "q-the-waiting",
+    "name": "タールフェンサーを倒す",
+    "desc": "4層の奥にいるタールフェンサー。姿を見て帰ってきた者がいない。踊り場の先へ道を延ばしたい測量組からの依頼で、前金はもう組の全員で出し合ってある。",
+    "foe": "b2dfcc17-8719-472a-9510-6564f6dd3818",
+    "count": 1,
+    "reward": {
+      "gold": 2400,
+      "goods": [
+        {
+          "good": "31640e26-28b2-4ef6-afb1-cc46dd80ac88",
+          "count": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "ed77c58e-be0b-4991-bf06-4fddefa884aa",
+    "slug": "q-rematch-0",
+    "name": "再挑戦：ジェムロード",
+    "desc": "4層まで通い慣れた組への指名仕事。0層のボスとの再戦に勝利し、勝利時に3人全員が生存していること。戦闘中の蘇生は可。受注後の勝利のみ数える。",
+    "foe": "0db315b8-06b0-4c86-817a-5f50ab70e30a",
+    "count": 1,
+    "requiresCleared": true,
+    "requiresFullPartyAlive": true,
+    "reward": {
+      "gold": 400,
+      "goods": [
+        {
+          "good": "35a9f50a-24c2-449b-a570-8b191b09ce5c",
+          "count": 1
+        },
+        {
+          "good": "474f33dd-079e-46e8-b11b-8549f6cf48cf",
+          "count": 3
+        }
+      ]
+    },
+    "requiresBossVictory": true
+  },
+  {
+    "id": "41846e9c-97f8-40f8-9349-6ac35a9352dd",
+    "slug": "q-rematch-1",
+    "name": "再挑戦：ホークロード",
+    "desc": "4層まで通い慣れた組への指名仕事。1層のボスとの再戦に勝利し、勝利時に3人全員が生存していること。戦闘中の蘇生は可。受注後の勝利のみ数える。",
+    "foe": "8aae8f96-edbf-4649-82cb-4c6d7b12d1a8",
+    "count": 1,
+    "requiresCleared": true,
+    "requiresFullPartyAlive": true,
+    "reward": {
+      "gold": 700,
+      "goods": [
+        {
+          "good": "35a9f50a-24c2-449b-a570-8b191b09ce5c",
+          "count": 1
+        },
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 3
+        }
+      ]
+    },
+    "requiresBossVictory": true
+  },
+  {
+    "id": "1f3fe323-2e7c-4507-a3cc-f1c4619d907f",
+    "slug": "q-rematch-2",
+    "name": "再挑戦：ウォールタイタン",
+    "desc": "4層まで通い慣れた組への指名仕事。2層のボスとの再戦に勝利し、勝利時に3人全員が生存していること。戦闘中の蘇生は可。受注後の勝利のみ数える。",
+    "foe": "77f87869-8a88-4559-a8e8-f7f6f0828d9a",
+    "count": 1,
+    "requiresCleared": true,
+    "requiresFullPartyAlive": true,
+    "reward": {
+      "gold": 1000,
+      "goods": [
+        {
+          "good": "35a9f50a-24c2-449b-a570-8b191b09ce5c",
+          "count": 1
+        },
+        {
+          "good": "ace6e36e-3471-4a7d-8cd8-d3ab1e418526",
+          "count": 3
+        }
+      ]
+    },
+    "requiresBossVictory": true
+  },
+  {
+    "id": "710221c0-4b99-4c31-9db5-403fe894721c",
+    "slug": "q-rematch-3",
+    "name": "再挑戦：シードロード",
+    "desc": "4層まで通い慣れた組への指名仕事。3層のボスとの再戦に勝利し、勝利時に3人全員が生存していること。戦闘中の蘇生は可。受注後の勝利のみ数える。",
+    "foe": "85495e6d-9a6d-4b81-bc62-37ce73ee9722",
+    "count": 1,
+    "requiresCleared": true,
+    "requiresFullPartyAlive": true,
+    "reward": {
+      "gold": 1300,
+      "goods": [
+        {
+          "good": "35a9f50a-24c2-449b-a570-8b191b09ce5c",
+          "count": 2
+        },
+        {
+          "good": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
+          "count": 3
+        }
+      ]
+    },
+    "requiresBossVictory": true
+  },
+  {
+    "id": "e47a6063-3cd2-4503-b12a-b09d1669a416",
+    "slug": "q-rematch-4",
+    "name": "再挑戦：タールフェンサー",
+    "desc": "4層まで通い慣れた組への指名仕事。4層のボスとの再戦に勝利し、勝利時に3人全員が生存していること。戦闘中の蘇生は可。受注後の勝利のみ数える。",
+    "foe": "b2dfcc17-8719-472a-9510-6564f6dd3818",
+    "count": 1,
+    "requiresCleared": true,
+    "requiresFullPartyAlive": true,
+    "reward": {
+      "gold": 1600,
+      "goods": [
+        {
+          "good": "35a9f50a-24c2-449b-a570-8b191b09ce5c",
+          "count": 2
+        },
+        {
+          "good": "57790d09-046e-4fc6-9f57-e285f8e4b890",
+          "count": 3
+        }
+      ]
+    },
+    "requiresBossVictory": true
+  },
+  {
+    "id": "ac483664-d8b4-4dcf-8c2a-2e7a99eeffd4",
+    "slug": "q-town-crates",
+    "name": "街の荷箱を守る",
+    "desc": "積み荷に入り込んだスタンプダックを追い払う。",
+    "foe": "29ed2718-1c81-4e16-9230-2e80870a0298",
+    "count": 1,
+    "encounter": {
+      "place": "town",
+      "reached": 0,
+      "foes": ["29ed2718-1c81-4e16-9230-2e80870a0298"]
+    },
+    "reward": {
+      "gold": 30,
+      "goods": []
+    }
+  },
+  {
+    "id": "690d9659-2245-4087-b4b1-1e6bd0c0e9c9",
+    "slug": "q-farm-vegetables",
+    "name": "農場の畑を守る",
+    "desc": "畑を荒らすダックリングを追い払う。",
+    "foe": "61893649-624b-4c84-882b-5d4df3e8a8bb",
+    "count": 1,
+    "encounter": {
+      "place": "farm",
+      "reached": 0,
+      "foes": ["61893649-624b-4c84-882b-5d4df3e8a8bb"]
+    },
+    "reward": {
+      "gold": 35,
+      "goods": []
+    }
+  },
+  {
+    "id": "4ba8c8fd-2af5-48e4-8a47-39242177163e",
+    "slug": "q-town-smoke",
+    "name": "街の煙騒ぎ",
+    "desc": "路地を煙だらけにするケムレイスを止める。",
+    "foe": "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd",
+    "count": 1,
+    "encounter": {
+      "place": "town",
+      "reached": 1,
+      "foes": ["bc7581dc-5ede-47ba-8cf8-fb57004a1cdd"]
+    },
+    "reward": {
+      "gold": 65,
+      "goods": []
+    }
+  },
+  {
+    "id": "6cf997b3-9b29-4fa2-b708-d016ff77b7e2",
+    "slug": "q-farm-muddy",
+    "name": "農場のぬかるみ退治",
+    "desc": "マッドダックが畑道を泥だらけにしている。",
+    "foe": "569b9fb2-dbc4-4d55-8ff5-796134341dc5",
+    "count": 1,
+    "encounter": {
+      "place": "farm",
+      "reached": 1,
+      "foes": [
+        "569b9fb2-dbc4-4d55-8ff5-796134341dc5",
+        "29ed2718-1c81-4e16-9230-2e80870a0298"
+      ]
+    },
+    "reward": {
+      "gold": 65,
+      "goods": []
+    }
+  },
+  {
+    "id": "2e98719c-891d-4adb-bb84-8498606faba6",
+    "slug": "q-town-nest",
+    "name": "街の屋根の巣",
+    "desc": "屋根に居座るエコーパロットとダックリングを追い払う。",
+    "foe": "f7e72b0b-c879-44b4-b85e-f26bb768002a",
+    "count": 1,
+    "encounter": {
+      "place": "town",
+      "reached": 2,
+      "foes": [
+        "f7e72b0b-c879-44b4-b85e-f26bb768002a",
+        "61893649-624b-4c84-882b-5d4df3e8a8bb"
+      ]
+    },
+    "reward": {
+      "gold": 110,
+      "goods": []
+    }
+  },
+  {
+    "id": "c9a44afd-1d2f-4e15-ad70-900c23176007",
+    "slug": "q-farm-harvest",
+    "name": "農場の収穫を守る",
+    "desc": "カリクスとコルンバが収穫を狙っている。",
+    "foe": "a429af02-f106-4a04-baed-d9d4eee614c5",
+    "count": 1,
+    "encounter": {
+      "place": "farm",
+      "reached": 2,
+      "foes": [
+        "a429af02-f106-4a04-baed-d9d4eee614c5",
+        "901fae80-d075-4490-889e-50c776afbbfe"
+      ]
+    },
+    "reward": {
+      "gold": 110,
+      "goods": []
+    }
+  },
+  {
+    "id": "4ec3ccf6-5928-4f39-b35e-f7a1728f1616",
+    "slug": "q-shop-street-cloth",
+    "name": "商店街の布を守る",
+    "desc": "店先に出す布が、毎朝すこしずつ汚れてる。閉めたあとの角に、ベレーダックが来て帽子を拭いてるんだ。追い払ってくれ。あの布は、母さんが織った最後の分でね。",
+    "foe": "6a239a4b-bd2d-4905-a4d8-f08c7b42dbb4",
+    "count": 1,
+    "encounter": {
+      "place": "shop-street",
+      "reached": 0,
+      "foes": ["6a239a4b-bd2d-4905-a4d8-f08c7b42dbb4"]
+    },
+    "reward": {
+      "gold": 30,
+      "goods": []
+    }
+  },
+  {
+    "id": "75850f80-db2d-427d-ae83-400d2f1a1b37",
+    "slug": "q-highway-cart",
+    "name": "街道の荷車を通す",
+    "desc": "街道の曲がり口に、でかい作業靴のブーツダックが居座ってる。荷車が通るたびに蹴ってくるんで、朝の市に野菜が間に合わない。",
+    "foe": "f2bb31d9-6c17-4443-963d-3e95907cc7ef",
+    "count": 1,
+    "encounter": {
+      "place": "highway",
+      "reached": 0,
+      "foes": ["f2bb31d9-6c17-4443-963d-3e95907cc7ef"]
+    },
+    "reward": {
+      "gold": 35,
+      "goods": []
+    }
+  },
+  {
+    "id": "689af48e-8474-4de8-85d3-46f022ad595f",
+    "slug": "q-highway-passing",
+    "name": "街道のすれ違い場を空ける",
+    "desc": "谷から上げた結晶の箱が、すれ違い場で一つ割れた。かけらが温かいらしく、ランドヴルムが子を連れて座りこんでる。ブリックトードまで寄ってきた。荷車を通させてくれ。",
+    "foe": "2cf1c41a-7ce3-4118-b41c-fa5bcd4fed35",
+    "count": 1,
+    "encounter": {
+      "place": "highway",
+      "reached": 1,
+      "foes": [
+        "2cf1c41a-7ce3-4118-b41c-fa5bcd4fed35",
+        "69d0b191-9c2e-446f-8763-9d2b2138a3c3",
+        "a5c09011-ddae-4bfb-8f07-dc82dfc58951"
+      ]
+    },
+    "reward": {
+      "gold": 65,
+      "goods": []
+    }
+  },
+  {
+    "id": "9a209a55-de9e-4569-be40-292726845054",
+    "slug": "q-back-alley-crates",
+    "name": "路地裏の空き箱",
+    "desc": "店の裏の空き箱に、タールスライムが住みついた。洗って返すはずの瓶を、割らずに飲みこんでいく。溝からはヘドロスライムも這ってくる。瓶の数が合わないと、次の仕入れが減らされるんだ。",
+    "foe": "fed79135-c848-48e8-ad83-bf3b4a657247",
+    "count": 1,
+    "encounter": {
+      "place": "back-alley",
+      "reached": 1,
+      "foes": [
+        "fed79135-c848-48e8-ad83-bf3b4a657247",
+        "667e8819-89ef-4fdd-b59a-82b2b3517304"
+      ]
+    },
+    "reward": {
+      "gold": 65,
+      "goods": []
+    }
+  },
+  {
+    "id": "fa09b121-dbd0-422c-850a-d4a7f7be1bf0",
+    "slug": "q-rim-road-line",
+    "name": "谷縁の道の朝の列",
+    "desc": "乗り場へ向かう道で、籠を待つ連中のパンくず目当てにコルンバが群れてる。スタンプダックまで混ざって、朝の列が進まない。一本遅れると、その日の稼ぎが一本分減る。",
+    "foe": "29ed2718-1c81-4e16-9230-2e80870a0298",
+    "count": 1,
+    "encounter": {
+      "place": "rim-road",
+      "reached": 1,
+      "foes": [
+        "29ed2718-1c81-4e16-9230-2e80870a0298",
+        "901fae80-d075-4490-889e-50c776afbbfe",
+        "901fae80-d075-4490-889e-50c776afbbfe"
+      ]
+    },
+    "reward": {
+      "gold": 65,
+      "goods": []
+    }
+  },
+  {
+    "id": "a5958719-1467-43fe-bb40-1b9375160035",
+    "slug": "q-shop-street-nails",
+    "name": "商店街の釘箱",
+    "desc": "店先の釘箱が、夜のうちに減っていく。ナッツハイドが殻にしまいこんでるらしい。こぼれた釘にはコルンバまで寄ってくる。拾い集めるのは毎朝おれだ。",
+    "foe": "ec3ef953-0655-447e-be9f-a06f792e0b13",
+    "count": 1,
+    "encounter": {
+      "place": "shop-street",
+      "reached": 2,
+      "foes": [
+        "ec3ef953-0655-447e-be9f-a06f792e0b13",
+        "901fae80-d075-4490-889e-50c776afbbfe"
+      ]
+    },
+    "reward": {
+      "gold": 110,
+      "goods": []
+    }
+  },
+  {
+    "id": "41910a5c-717c-450f-8321-d19cb99f5fd8",
+    "slug": "q-back-alley-soot",
+    "name": "路地裏の焚き口",
+    "desc": "路地裏の焚き口に、夜中ケムレイスが寄ってくる。灰色のアッシュレイスまで来て、干した作業着がすすで真っ黒だ。明日も谷へ降りる人たちの分なんだよ。",
+    "foe": "f190eccf-5c98-40d0-8ab6-03ede6cd0436",
+    "count": 1,
+    "encounter": {
+      "place": "back-alley",
+      "reached": 2,
+      "foes": [
+        "f190eccf-5c98-40d0-8ab6-03ede6cd0436",
+        "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd"
+      ]
+    },
+    "reward": {
+      "gold": 110,
+      "goods": []
+    }
+  },
+  {
+    "id": "35d038df-eb2a-4afd-94b8-2d9b8f3b9eb3",
+    "slug": "q-rim-road-pouch",
+    "name": "谷縁の道の落とし物",
+    "desc": "籠から下ろした荷を、ペリカーゴが袋にしまって持っていく。袋に入った物は戻ってこない。今朝は相棒の手袋をやられた。もう片方だけは、持っていかせないでくれ。",
+    "foe": "71a02ed5-31dd-43c8-9192-94db906271ec",
+    "count": 1,
+    "encounter": {
+      "place": "rim-road",
+      "reached": 2,
+      "foes": [
+        "71a02ed5-31dd-43c8-9192-94db906271ec",
+        "901fae80-d075-4490-889e-50c776afbbfe"
+      ]
+    },
+    "reward": {
+      "gold": 110,
+      "goods": []
+    }
+  }
+]

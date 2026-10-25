@@ -1,0 +1,26 @@
+[
+  {
+    "id": "34233f3c-e646-40c6-8a1e-7c93b27be0a4",
+    "slug": "hero",
+    "name": "紫髪",
+    "image": "/images/character_00_player-purple.webp"
+  },
+  {
+    "id": "b7cdab32-f48f-4ae0-aba8-591814af0b0f",
+    "slug": "player-blue",
+    "name": "青髪",
+    "image": "/images/character_01_player-blue.webp"
+  },
+  {
+    "id": "2ea1b696-2332-4a72-bf80-0debe88d2525",
+    "slug": "player-red",
+    "name": "赤髪",
+    "image": "/images/character_02_player-red.webp"
+  },
+  {
+    "id": "742f2b94-2e04-4dd3-85e0-bbd5a2e26849",
+    "slug": "player-gold",
+    "name": "金髪",
+    "image": "/images/character_03_player-gold.webp"
+  }
+]

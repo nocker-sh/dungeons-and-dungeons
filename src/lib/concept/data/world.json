@@ -1,0 +1,2006 @@
+[
+  {
+    "id": "fb52305e-51df-4209-a1c4-8029a506da56",
+    "slug": "place-town",
+    "name": "街",
+    "role": "探索の拠点",
+    "category": "場所",
+    "image": "/art/scenes/town-market-ink.webp",
+    "wideImage": "/art/scenes/town-market-ink-wide.webp",
+    "battleImage": "/art/scenes/battle-town-v3.webp",
+    "battleWideImage": "/art/scenes/battle-town-wide-v3.webp",
+    "section": "街",
+    "entrances": {
+      "narrow": {
+        "guild": [0.22, 0.52],
+        "shop": [0.84, 0.55],
+        "dungeon": [0.735, 0.4]
+      },
+      "wide": {
+        "guild": [0.2, 0.6],
+        "shop": [0.875, 0.62],
+        "dungeon": [0.645, 0.6]
+      }
+    }
+  },
+  {
+    "id": "898b2804-3b16-4560-a125-94abbe843c6b",
+    "slug": "place-guild",
+    "name": "冒険者ギルド",
+    "role": "冒険者が集う酒場",
+    "category": "場所",
+    "image": "/art/scenes/guild-hall-ink.webp",
+    "wideImage": "/art/scenes/guild-hall-ink-wide.webp",
+    "section": "街",
+    "entrances": {
+      "narrow": {
+        "reception": [0.6, 0.55],
+        "inn": [0.3, 0.48],
+        "secret": [0.77, 0.47]
+      },
+      "wide": {
+        "reception": [0.54, 0.56],
+        "inn": [0.31, 0.48],
+        "secret": [0.69, 0.48]
+      }
+    }
+  },
+  {
+    "id": "c39344d9-2458-4bf6-93d2-36f385239d33",
+    "slug": "place-guild-reception",
+    "name": "ギルドの受付",
+    "role": "依頼と募集の窓口",
+    "category": "場所",
+    "image": "/art/scenes/guild-reception-ink.webp",
+    "wideImage": "/art/scenes/guild-reception-ink-wide.webp",
+    "section": "街",
+    "stands": {
+      "narrow": [
+        {
+          "left": "-5%",
+          "height": "75%"
+        }
+      ],
+      "wide": [
+        {
+          "left": "4%",
+          "height": "83%"
+        }
+      ]
+    }
+  },
+  {
+    "id": "e6da2353-9c69-47c7-8a4f-564899e3d92d",
+    "slug": "place-inn",
+    "name": "宿",
+    "role": "街の施設",
+    "category": "場所",
+    "image": "/art/scenes/inn-portrait-fisheye-comic-v3.webp",
+    "wideImage": "/art/scenes/inn-fisheye-comic-v4.webp",
+    "section": "街"
+  },
+  {
+    "id": "88a1ef98-fc3f-4c4e-a049-59feecd9f55e",
+    "slug": "place-shop",
+    "name": "商店街",
+    "role": "街の施設",
+    "category": "場所",
+    "image": "/art/scenes/market-ink.webp",
+    "wideImage": "/art/scenes/market-ink-wide.webp",
+    "section": "街",
+    "entrances": {
+      "narrow": {
+        "355d68f3-0162-40cf-ba89-0e8c3ea373b1": [0.17, 0.5],
+        "583bc866-a1b6-4b56-b5d2-2ed462882c6f": [0.36, 0.4],
+        "b56e681e-43b0-4b94-bafd-25a80eace908": [0.72, 0.42],
+        "63228b54-3a1f-4a3a-940d-7b0f5103b87d": [0.87, 0.52]
+      },
+      "wide": {
+        "355d68f3-0162-40cf-ba89-0e8c3ea373b1": [0.12, 0.58],
+        "583bc866-a1b6-4b56-b5d2-2ed462882c6f": [0.31, 0.6],
+        "b56e681e-43b0-4b94-bafd-25a80eace908": [0.74, 0.58],
+        "63228b54-3a1f-4a3a-940d-7b0f5103b87d": [0.88, 0.6]
+      }
+    }
+  },
+  {
+    "id": "bfa763f0-cfe8-4ea2-b6c9-fbe244d7db46",
+    "slug": "place-armory",
+    "name": "武器と防具",
+    "role": "商店街の店",
+    "category": "場所",
+    "image": "/art/scenes/armory-portrait-fisheye-comic-v3.webp",
+    "wideImage": "/art/scenes/armory-fisheye-comic-v3.webp",
+    "section": "街",
+    "stands": {
+      "narrow": [
+        {
+          "left": "0%",
+          "height": "79%"
+        }
+      ],
+      "wide": [
+        {
+          "left": "0%",
+          "height": "85%"
+        }
+      ]
+    }
+  },
+  {
+    "id": "93ae2581-e948-4b30-a79b-0afb847347f4",
+    "slug": "place-smithy",
+    "name": "鍛冶屋",
+    "role": "商店街の店",
+    "category": "場所",
+    "image": "/art/scenes/smithy-portrait-fisheye-comic-v3.webp",
+    "wideImage": "/art/scenes/smithy-fisheye-comic-v3.webp",
+    "section": "街",
+    "stands": {
+      "narrow": [
+        {
+          "left": "18%",
+          "height": "77%"
+        }
+      ],
+      "wide": [
+        {
+          "left": "28%",
+          "height": "80%"
+        }
+      ]
+    }
+  },
+  {
+    "id": "8d377a5e-e603-427e-a218-ef986eb5e8bf",
+    "slug": "place-tools",
+    "name": "道具屋",
+    "role": "商店街の店",
+    "category": "場所",
+    "image": "/art/scenes/tools-portrait-fisheye-comic-v3.webp",
+    "wideImage": "/art/scenes/tools-fisheye-comic-v3.webp",
+    "section": "街",
+    "stands": {
+      "narrow": [
+        {
+          "left": "48%",
+          "height": "78%"
+        }
+      ],
+      "wide": [
+        {
+          "left": "68%",
+          "height": "83%"
+        }
+      ]
+    }
+  },
+  {
+    "id": "e014c850-9102-4a16-b578-6913f9f49fa2",
+    "slug": "place-apothecary",
+    "name": "薬屋",
+    "role": "商店街の店",
+    "category": "場所",
+    "image": "/art/scenes/apothecary-portrait-fisheye-comic-v3.webp",
+    "wideImage": "/art/scenes/apothecary-fisheye-comic-v3.webp",
+    "section": "街",
+    "stands": {
+      "narrow": [
+        {
+          "left": "62%",
+          "height": "72%"
+        }
+      ],
+      "wide": [
+        {
+          "left": "72%",
+          "height": "78%"
+        }
+      ]
+    }
+  },
+  {
+    "id": "39323fee-cdc9-438c-933a-94ce75f3c63f",
+    "slug": "place-secret",
+    "name": "秘密の部屋",
+    "role": "ギルド内の部屋",
+    "category": "場所",
+    "image": "/art/scenes/secret-portrait-fisheye-comic-v3.webp",
+    "wideImage": "/art/scenes/secret-fisheye-comic-v3.webp",
+    "section": "街"
+  },
+  {
+    "id": "745cd2b6-bf2e-4cd7-ab49-0ebe92d08eec",
+    "slug": "place-outskirts",
+    "name": "街はずれ・乗り場",
+    "role": "ダンジョンへの入口",
+    "category": "場所",
+    "image": "/art/scenes/outskirts-portrait-fisheye-comic-v3.webp",
+    "wideImage": "/art/scenes/outskirts-fisheye-comic-v3.webp",
+    "section": "街",
+    "stands": {
+      "narrow": [
+        {
+          "left": "-6%",
+          "height": "68%"
+        }
+      ],
+      "wide": [
+        {
+          "left": "0%",
+          "height": "73%"
+        }
+      ]
+    }
+  },
+  {
+    "id": "5bb9ce59-fdd5-40e1-b136-15f02b17bfe8",
+    "slug": "place-room-attic",
+    "name": "屋根裏",
+    "role": "宿の部屋",
+    "category": "場所",
+    "image": "/art/scenes/room-attic-portrait-fisheye-comic-v3.webp",
+    "wideImage": "/art/scenes/room-attic-fisheye-comic-v3.webp",
+    "section": "街"
+  },
+  {
+    "id": "3adb6fa3-34e8-43d0-b2fe-a5e0c022906b",
+    "slug": "place-room-normal",
+    "name": "普通の部屋",
+    "role": "宿の部屋",
+    "category": "場所",
+    "image": "/art/scenes/room-normal-portrait-fisheye-comic-v3.webp",
+    "wideImage": "/art/scenes/room-normal-fisheye-comic-v3.webp",
+    "section": "街"
+  },
+  {
+    "id": "b01ba591-ef86-4206-8b75-a8619fde277a",
+    "slug": "place-room-deluxe",
+    "name": "高い部屋",
+    "role": "宿の部屋",
+    "category": "場所",
+    "image": "/art/scenes/room-deluxe-portrait-fisheye-comic-v3.webp",
+    "wideImage": "/art/scenes/room-deluxe-fisheye-comic-v4.webp",
+    "section": "街"
+  },
+  {
+    "id": "f1211d70-3fc4-4803-84ef-d1c3bfaa98c5",
+    "slug": "place-layer0",
+    "name": "結晶の洞窟",
+    "role": "0層",
+    "category": "場所",
+    "image": "/art/scenes/layer0-fisheye-comic-v3-ink.webp",
+    "battleImage": "/art/scenes/battle-layer0-v3.webp",
+    "battleWideImage": "/art/scenes/battle-layer0-wide-v3.webp",
+    "section": "ダンジョン",
+    "scenes": [
+      {
+        "key": "landing",
+        "kind": "path",
+        "image": "/art/scenes/layer0-fisheye-comic-v3-ink.webp"
+      },
+      {
+        "key": "ledge",
+        "kind": "path",
+        "image": "/art/scenes/layer0-ledge-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer0-ledge-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "slope",
+        "kind": "path",
+        "image": "/art/scenes/layer0-slope-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer0-slope-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "treasure",
+        "kind": "treasure",
+        "image": "/art/scenes/layer0-treasure-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer0-treasure-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "rest",
+        "kind": "rest",
+        "image": "/art/scenes/layer0-rest-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer0-rest-fisheye-wide-ink.webp"
+      }
+    ]
+  },
+  {
+    "id": "742dad77-7906-47fb-b167-c1a20ed6b24c",
+    "slug": "place-layer1",
+    "name": "巨人たちの墓場",
+    "role": "1層",
+    "category": "場所",
+    "image": "/art/scenes/layer1-ribs-fisheye-ink.webp",
+    "wideImage": "/art/scenes/layer1-ribs-fisheye-wide-ink.webp",
+    "battleImage": "/art/scenes/battle-layer1-v3.webp",
+    "battleWideImage": "/art/scenes/battle-layer1-wide-v3.webp",
+    "section": "ダンジョン",
+    "scenes": [
+      {
+        "key": "ribs",
+        "kind": "path",
+        "image": "/art/scenes/layer1-ribs-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer1-ribs-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "ledge",
+        "kind": "path",
+        "image": "/art/scenes/layer1-ledge-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer1-ledge-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "collapse",
+        "kind": "path",
+        "image": "/art/scenes/layer1-collapse-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer1-collapse-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "treasure",
+        "kind": "treasure",
+        "image": "/art/scenes/layer1-treasure-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer1-treasure-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "rest",
+        "kind": "rest",
+        "image": "/art/scenes/layer1-rest-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer1-rest-fisheye-wide-ink.webp"
+      }
+    ]
+  },
+  {
+    "id": "a5c09011-ddae-4bfb-8f07-dc82dfc58951",
+    "slug": "rengaeru",
+    "name": "ブリックトード",
+    "category": "敵",
+    "role": "0層の敵",
+    "image": "/images/enemy_27_rengaeru.webp",
+    "attackImage": "/images/enemy_27_rengaeru_attack.webp",
+    "sleepingImage": "/images/enemy_27_rengaeru_sleeping.webp",
+    "defeatedImage": "/images/enemy_27_rengaeru_defeated.webp",
+    "section": "トード",
+    "attack": {
+      "name": "舌打ち",
+      "reach": "ranged"
+    },
+    "skillPortraits": {
+      "3178c33a-f33e-4908-8247-4403c6d56419": "/images/enemy_27_rengaeru_attack.webp"
+    }
+  },
+  {
+    "id": "89831ecc-694f-489b-9b81-e6805b9e2371",
+    "slug": "kabemimi",
+    "name": "ミミウォール",
+    "category": "敵",
+    "role": "1層の敵",
+    "image": "/images/enemy_28_kabemimi.webp",
+    "attackImage": "/images/enemy_28_kabemimi_attack.webp",
+    "sleepingImage": "/images/enemy_28_kabemimi_sleeping.webp",
+    "defeatedImage": "/images/enemy_28_kabemimi_defeated.webp",
+    "section": "ウォール",
+    "attack": {
+      "name": "石壁あたり",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "96af34af-a342-4316-928f-505ab2731baa": "/images/enemy_28_kabemimi_attack.webp"
+    }
+  },
+  {
+    "id": "31c63acd-0086-4843-8428-1842dfe200be",
+    "slug": "kabemimi-adult",
+    "name": "モスウォール",
+    "category": "敵",
+    "role": "大人の姿",
+    "section": "ウォール",
+    "image": "/images/enemy_28_kabemimi_adult.webp",
+    "attackImage": "/images/enemy_28_kabemimi_adult_attack.webp",
+    "sleepingImage": "/images/enemy_28_kabemimi_adult_sleeping.webp",
+    "defeatedImage": "/images/enemy_28_kabemimi_adult_defeated.webp",
+    "attack": {
+      "name": "岩拳打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {}
+  },
+  {
+    "id": "77f87869-8a88-4559-a8e8-f7f6f0828d9a",
+    "slug": "kabemimi-fortress",
+    "name": "ウォールタイタン",
+    "category": "敵",
+    "role": "2層のボス",
+    "section": "ウォール",
+    "image": "/images/enemy_28_kabemimi_fortress.webp",
+    "attackImage": "/images/enemy_28_kabemimi_fortress_attack.webp",
+    "sleepingImage": "/images/enemy_28_kabemimi_fortress_sleeping.webp",
+    "defeatedImage": "/images/enemy_28_kabemimi_fortress_defeated.webp",
+    "attack": {
+      "name": "城壁パンチ",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "c2576d5a-ca55-4beb-ac73-7884f9dcea47": "/images/enemy_28_kabemimi_fortress_skill-gear-spin-20261013-v2-toward-player.webp",
+      "08cece1a-363a-4b43-a558-cdd0e9bb60cd": "/images/enemy_28_kabemimi_fortress_skill-rust-bite-20261013.webp",
+      "20196775-1b91-4425-954b-a67b54e00cef": "/images/enemy_28_kabemimi_fortress_skill-iron-press-20261013-v2-toward-player.webp"
+    }
+  },
+  {
+    "id": "feca401a-3c60-4777-972b-4d31f82e9d10",
+    "slug": "koburakuda",
+    "name": "アクアサウル",
+    "category": "敵",
+    "section": "アクアサウル",
+    "role": "1層の敵",
+    "image": "/images/enemy_86_koburakuda.webp",
+    "sleepingImage": "/images/enemy_86_koburakuda_sleeping.webp",
+    "defeatedImage": "/images/enemy_86_koburakuda_defeated.webp",
+    "attackImage": "/images/enemy_86_koburakuda_attack.webp",
+    "attack": {
+      "name": "首ぶつけ",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "6aed3e33-557b-483e-aebb-84d4a8b28b0d": "/images/enemy_86_koburakuda_attack.webp"
+    }
+  },
+  {
+    "id": "4a9b6857-44d0-4495-b4a0-ca77daad9ba7",
+    "slug": "rousokun",
+    "name": "キャンドラ",
+    "category": "敵",
+    "role": "1層の敵",
+    "image": "/images/enemy_30_rousokun.webp",
+    "attackImage": "/images/enemy_30_rousokun_attack.webp",
+    "sleepingImage": "/images/enemy_30_rousokun_sleeping.webp",
+    "defeatedImage": "/images/enemy_30_rousokun_defeated.webp",
+    "section": "キャンドラ",
+    "attack": {
+      "name": "火の一吹き",
+      "reach": "ranged"
+    },
+    "skillPortraits": {
+      "c6284fa4-43f2-4f89-bad0-2724505dc947": "/images/enemy_30_rousokun_attack.webp"
+    }
+  },
+  {
+    "id": "077cf720-2ab2-4d30-8ce5-7e4223bd38e3",
+    "slug": "koke-gaeru",
+    "name": "モストード",
+    "category": "敵",
+    "role": "1層の敵",
+    "image": "/images/enemy_40_koke-gaeru.webp",
+    "attackImage": "/images/enemy_40_koke-gaeru_attack.webp",
+    "sleepingImage": "/images/enemy_40_koke-gaeru_sleeping.webp",
+    "defeatedImage": "/images/enemy_40_koke-gaeru_defeated.webp",
+    "section": "トード",
+    "attack": {
+      "name": "舌打ち",
+      "reach": "ranged"
+    },
+    "skillPortraits": {
+      "3178c33a-f33e-4908-8247-4403c6d56419": "/images/enemy_40_koke-gaeru_attack.webp"
+    }
+  },
+  {
+    "id": "71a02ed5-31dd-43c8-9192-94db906271ec",
+    "slug": "peripoke",
+    "name": "ペリカーゴ",
+    "category": "敵",
+    "role": "2層の敵",
+    "image": "/images/enemy_32_peripoke.webp",
+    "attackImage": "/images/enemy_32_peripoke_attack.webp",
+    "sleepingImage": "/images/enemy_32_peripoke_sleeping.webp",
+    "defeatedImage": "/images/enemy_32_peripoke_defeated.webp",
+    "attack": {
+      "name": "袋嘴ぶつけ",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "80f3b6ac-41d6-4ee9-ba74-ed609ab48333": "/images/enemy_32_peripoke_attack.webp"
+    }
+  },
+  {
+    "id": "973c11c6-e9d2-423f-bcbc-f2ae9d7a5a20",
+    "slug": "kubikoki",
+    "name": "クビコキ",
+    "category": "不採用",
+    "role": "2層の敵",
+    "image": "/images/enemy_33_kubikoki.webp",
+    "attackImage": "/images/enemy_33_kubikoki_attack.webp",
+    "sleepingImage": "/images/enemy_33_kubikoki_sleeping.webp",
+    "defeatedImage": "/images/enemy_33_kubikoki_defeated.webp",
+    "attack": {
+      "name": "嘴突き",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "d5bd6b12-0324-4245-8b0f-31d5d04fbbda": "/images/enemy_33_kubikoki_attack.webp"
+    }
+  },
+  {
+    "id": "977c6c0b-b1ed-4a3c-9462-3c11607ad563",
+    "slug": "tsubomimu",
+    "name": "バドアイ",
+    "category": "敵",
+    "role": "3層の敵",
+    "image": "/images/enemy_34_tsubomimu.webp",
+    "sleepingImage": "/images/enemy_34_tsubomimu_sleeping.webp",
+    "defeatedImage": "/images/enemy_34_tsubomimu_defeated.webp",
+    "section": "スプラウト",
+    "attackImage": "/images/enemy_34_tsubomimu_attack.webp",
+    "attack": {
+      "name": "葉の打ち払い",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "e7e375ed-2a98-458a-b80e-5540da67db1f": "/images/enemy_34_tsubomimu_attack.webp"
+    }
+  },
+  {
+    "id": "4ed3f555-e6d3-4213-a6c8-ec7a0af11e36",
+    "slug": "kuragesa",
+    "name": "ステンドクラゲ",
+    "category": "敵",
+    "role": "3層の敵",
+    "image": "/images/enemy_35_kuragesa.webp",
+    "attackImage": "/images/enemy_35_kuragesa_attack.webp",
+    "sleepingImage": "/images/enemy_35_kuragesa_sleeping.webp",
+    "defeatedImage": "/images/enemy_35_kuragesa_defeated.webp",
+    "attack": {
+      "name": "触手打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "1afac4ed-2737-4efa-89fe-17fad1c1551b": "/images/enemy_35_kuragesa_skill-poison-spit-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "a93a40ce-dacc-4a01-a8c5-8ff7289b6650",
+    "slug": "makigaitsu",
+    "section": "スネイル",
+    "name": "スピラスネイル",
+    "category": "敵",
+    "role": "3層の敵",
+    "image": "/images/enemy_36_makigaitsu.webp",
+    "attackImage": "/images/enemy_36_makigaitsu_attack-shell-ram-20261013.webp",
+    "sleepingImage": "/images/enemy_36_makigaitsu_sleeping.webp",
+    "defeatedImage": "/images/enemy_36_makigaitsu_defeated.webp",
+    "appearances": [
+      {
+        "slug": "makigaitsu-stone",
+        "name": "スピラスネイル（岩殻）",
+        "image": "/images/enemy_97_makigaitsu-stone.webp",
+        "attackImage": "/images/enemy_97_makigaitsu-stone_attack-shell-ram-20261013.webp",
+        "sleepingImage": "/images/enemy_97_makigaitsu-stone_sleeping.webp",
+        "defeatedImage": "/images/enemy_97_makigaitsu-stone_defeated.webp",
+        "skillPortraits": {
+          "3d6d60b7-f7d2-494f-aa4c-46093ca1cc33": "/images/enemy_97_makigaitsu-stone_attack-shell-ram-20261013.webp",
+          "3a9aba66-59f9-4e24-b980-5b46df81fe3e": "/images/enemy_97_makigaitsu-stone_skill-slime-spray-20261013-toward-player.webp"
+        }
+      }
+    ],
+    "attack": {
+      "name": "殻の体当たり",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "3d6d60b7-f7d2-494f-aa4c-46093ca1cc33": "/images/enemy_36_makigaitsu_attack-shell-ram-20261013.webp",
+      "3a9aba66-59f9-4e24-b980-5b46df81fe3e": "/images/enemy_36_makigaitsu_skill-slime-spray-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "4ae48d64-3bc0-4bff-9ef9-fc30e3d49c84",
+    "slug": "numa-koki",
+    "name": "ヌマコキ",
+    "category": "不採用",
+    "role": "3層の敵",
+    "image": "/images/enemy_42_numa-koki.webp",
+    "attackImage": "/images/enemy_42_numa-koki_attack.webp",
+    "sleepingImage": "/images/enemy_42_numa-koki_sleeping.webp",
+    "defeatedImage": "/images/enemy_42_numa-koki_defeated.webp",
+    "attack": {
+      "name": "嘴突き",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "e871c439-41f5-491c-8260-808422a03d80": "/images/enemy_42_numa-koki_attack.webp"
+    }
+  },
+  {
+    "id": "3776eb0a-02ac-4f4f-9c66-c4434164b2b9",
+    "slug": "tsunofood",
+    "name": "ククルス",
+    "category": "敵",
+    "role": "4層の敵",
+    "image": "/images/enemy_37_tsunofood.webp",
+    "attackImage": "/images/enemy_37_tsunofood_attack.webp",
+    "sleepingImage": "/images/enemy_37_tsunofood_sleeping.webp",
+    "defeatedImage": "/images/enemy_37_tsunofood_defeated.webp",
+    "section": "ククルス",
+    "appearances": [
+      {
+        "image": "/images/enemy_87_tsunofood-blue.webp",
+        "attackImages": ["/images/enemy_87_tsunofood-blue_attack.webp"],
+        "sleepingImage": "/images/enemy_87_tsunofood-blue_sleeping.webp",
+        "defeatedImage": "/images/enemy_87_tsunofood-blue_defeated.webp",
+        "attackImage": "/images/enemy_87_tsunofood-blue_attack.webp",
+        "skillPortraits": {
+          "2ef5781b-1583-4562-91da-7a26f6866d66": "/images/enemy_87_tsunofood-blue_skill-curse-wave-20261013-v2-toward-player.webp"
+        }
+      }
+    ],
+    "attack": {
+      "name": "袖パンチ",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "2ef5781b-1583-4562-91da-7a26f6866d66": "/images/enemy_37_tsunofood_skill-curse-wave-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "552ec59c-a774-42d0-8f12-f2963aeb417d",
+    "slug": "makurayume",
+    "name": "ナイトキャップ",
+    "category": "敵",
+    "role": "4層の敵",
+    "image": "/images/enemy_39_makurayume.webp",
+    "attackImage": "/images/enemy_39_makurayume_attack.webp",
+    "sleepingImage": "/images/enemy_39_makurayume_sleeping.webp",
+    "defeatedImage": "/images/enemy_39_makurayume_defeated.webp",
+    "attack": {
+      "name": "星帽キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "2638ec61-1720-4cab-8370-29b7445c6161": "/images/enemy_39_makurayume_skill-star-dust-20261013-toward-player.webp",
+      "e8a6f050-deb5-4664-95da-1de35bec408c": "/images/enemy_39_makurayume_skill-star-dust-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "f8db80ab-a853-45d1-91c4-7a2fd0856aba",
+    "slug": "kuro-rousoku",
+    "name": "ソウルキャンドラ",
+    "category": "敵",
+    "role": "4層の敵",
+    "image": "/images/enemy_43_kuro-rousoku.webp",
+    "attackImage": "/images/enemy_43_kuro-rousoku_attack.webp",
+    "sleepingImage": "/images/enemy_43_kuro-rousoku_sleeping.webp",
+    "defeatedImage": "/images/enemy_43_kuro-rousoku_defeated.webp",
+    "section": "キャンドラ",
+    "attack": {
+      "name": "蝋拳打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/images/enemy_43_kuro-rousoku_skill-soul-drain-20261013-toward-player.webp",
+      "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/images/enemy_43_kuro-rousoku_attack.webp"
+    }
+  },
+  {
+    "id": "14a5e502-2b0a-48d4-bc84-27421343ec23",
+    "slug": "wood-mimic",
+    "name": "ウッドミミック",
+    "category": "敵",
+    "role": "宝箱に潜む敵",
+    "image": "/images/enemy_44_wood-mimic.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_44_wood-mimic_individual.webp",
+        "attackImages": [
+          "/images/enemy_44_wood-mimic_individual_attack-lash.webp",
+          "/images/enemy_44_wood-mimic_individual_attack-surge.webp"
+        ],
+        "sleepingImage": "/images/enemy_44_wood-mimic_individual_sleeping.webp",
+        "defeatedImage": "/images/enemy_44_wood-mimic_individual_defeated.webp",
+        "slug": "wood-mimic-individual",
+        "name": "ウッドミミック（別個体）",
+        "attackImage": "/images/enemy_44_wood-mimic_individual_attack-lash.webp",
+        "skillPortraits": {}
+      }
+    ],
+    "attackImages": [
+      "/images/enemy_44_wood-mimic_attack-lash.webp",
+      "/images/enemy_44_wood-mimic_attack-surge.webp"
+    ],
+    "section": "ミミック",
+    "sleepingImage": "/images/enemy_44_wood-mimic_sleeping.webp",
+    "defeatedImage": "/images/enemy_44_wood-mimic_defeated.webp",
+    "attack": {
+      "name": "粘腕打ち",
+      "reach": "melee"
+    },
+    "attackImage": "/images/enemy_44_wood-mimic_attack-lash.webp",
+    "skillPortraits": {}
+  },
+  {
+    "id": "c7e4b60c-edc5-4071-b956-c883f1ca51b3",
+    "slug": "iron-mimic",
+    "name": "アイアンミミック",
+    "category": "敵",
+    "role": "宝箱に潜む敵",
+    "image": "/images/enemy_45_iron-mimic.webp",
+    "section": "ミミック",
+    "sleepingImage": "/images/enemy_45_iron-mimic_sleeping.webp",
+    "defeatedImage": "/images/enemy_45_iron-mimic_defeated.webp",
+    "attackImages": [
+      "/images/enemy_45_iron-mimic_attack-lash.webp",
+      "/images/enemy_45_iron-mimic_attack-surge.webp"
+    ],
+    "attack": {
+      "name": "粘腕打ち",
+      "reach": "melee"
+    },
+    "attackImage": "/images/enemy_45_iron-mimic_attack-lash.webp",
+    "skillPortraits": {
+      "96af34af-a342-4316-928f-505ab2731baa": "/images/enemy_45_iron-mimic_attack-lash.webp"
+    }
+  },
+  {
+    "id": "e23fb92e-09c4-44d8-89cf-74fae002e8ae",
+    "slug": "vault-mimic",
+    "name": "グランミミック",
+    "category": "敵",
+    "role": "宝箱に潜む敵",
+    "image": "/images/enemy_46_vault-mimic.webp",
+    "section": "ミミック",
+    "sleepingImage": "/images/enemy_46_vault-mimic_sleeping.webp",
+    "defeatedImage": "/images/enemy_46_vault-mimic_defeated.webp",
+    "attackImages": [
+      "/images/enemy_46_vault-mimic_attack-lash.webp",
+      "/images/enemy_46_vault-mimic_attack-surge.webp"
+    ],
+    "attack": {
+      "name": "粘腕打ち",
+      "reach": "melee"
+    },
+    "attackImage": "/images/enemy_46_vault-mimic_attack-lash.webp",
+    "skillPortraits": {
+      "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/images/enemy_46_vault-mimic_skill-soul-drain-20261013-toward-player.webp",
+      "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/images/enemy_46_vault-mimic_attack-lash.webp"
+    }
+  },
+  {
+    "id": "fed79135-c848-48e8-ad83-bf3b4a657247",
+    "slug": "black-slime",
+    "name": "タールスライム",
+    "category": "敵",
+    "role": "0層の道中",
+    "image": "/images/enemy_47_black-slime.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_47_black-slime_wide.webp",
+        "attackImages": [
+          "/images/enemy_47_black-slime_wide_attack-lash.webp",
+          "/images/enemy_47_black-slime_wide_attack-surge.webp"
+        ],
+        "sleepingImage": "/images/enemy_47_black-slime_wide_sleeping.webp",
+        "defeatedImage": "/images/enemy_47_black-slime_wide_defeated.webp",
+        "slug": "black-slime-wide",
+        "name": "タールスライム（横長）",
+        "attackImage": "/images/enemy_47_black-slime_wide_attack-lash.webp",
+        "skillPortraits": {}
+      },
+      {
+        "image": "/images/enemy_47_black-slime_tall.webp",
+        "attackImages": [
+          "/images/enemy_47_black-slime_tall_attack-lash.webp",
+          "/images/enemy_47_black-slime_tall_attack-surge.webp"
+        ],
+        "sleepingImage": "/images/enemy_47_black-slime_tall_sleeping.webp",
+        "defeatedImage": "/images/enemy_47_black-slime_tall_defeated.webp",
+        "slug": "black-slime-tall",
+        "name": "タールスライム（縦長）",
+        "attackImage": "/images/enemy_47_black-slime_tall_attack-lash.webp",
+        "skillPortraits": {}
+      }
+    ],
+    "attackImages": [
+      "/images/enemy_47_black-slime_attack-lash.webp",
+      "/images/enemy_47_black-slime_attack-surge.webp"
+    ],
+    "section": "スライム",
+    "sleepingImage": "/images/enemy_47_black-slime_sleeping.webp",
+    "defeatedImage": "/images/enemy_47_black-slime_defeated.webp",
+    "attack": {
+      "name": "粘腕打ち",
+      "reach": "melee"
+    },
+    "attackImage": "/images/enemy_47_black-slime_attack-lash.webp",
+    "skillPortraits": {}
+  },
+  {
+    "id": "df3aa88c-51ff-4970-8ef6-9f9814d88266",
+    "slug": "white-slime",
+    "name": "ゴーストスライム",
+    "category": "敵",
+    "section": "スライム",
+    "role": "2層の道中",
+    "image": "/images/enemy_48_white-slime.webp",
+    "attackImages": [
+      "/images/enemy_48_white-slime_attack-lash.webp",
+      "/images/enemy_48_white-slime_attack-surge.webp"
+    ],
+    "sleepingImage": "/images/enemy_48_white-slime_sleeping.webp",
+    "defeatedImage": "/images/enemy_48_white-slime_defeated.webp",
+    "attack": {
+      "name": "粘腕打ち",
+      "reach": "melee"
+    },
+    "attackImage": "/images/enemy_48_white-slime_attack-lash.webp",
+    "skillPortraits": {}
+  },
+  {
+    "id": "667e8819-89ef-4fdd-b59a-82b2b3517304",
+    "slug": "poison-slime",
+    "name": "ヘドロスライム",
+    "category": "敵",
+    "section": "スライム",
+    "role": "1層の道中",
+    "image": "/images/enemy_49_poison-slime.webp",
+    "attackImages": [
+      "/images/enemy_49_poison-slime_attack-lash.webp",
+      "/images/enemy_49_poison-slime_attack-surge.webp"
+    ],
+    "sleepingImage": "/images/enemy_49_poison-slime_sleeping.webp",
+    "defeatedImage": "/images/enemy_49_poison-slime_defeated.webp",
+    "attack": {
+      "name": "粘腕打ち",
+      "reach": "melee"
+    },
+    "attackImage": "/images/enemy_49_poison-slime_attack-lash.webp",
+    "skillPortraits": {
+      "3a9aba66-59f9-4e24-b980-5b46df81fe3e": "/images/enemy_49_poison-slime_attack-surge.webp"
+    }
+  },
+  {
+    "id": "4b7ff100-f945-498f-9724-3497a901e6f2",
+    "slug": "goblin",
+    "name": "ゴブリン",
+    "category": "不採用",
+    "role": "四つ目の猫型悪魔",
+    "image": "/images/enemy_50_goblin.webp",
+    "attackImages": [
+      "/images/enemy_50_goblin_attack-swing.webp",
+      "/images/enemy_50_goblin_attack-thrust.webp"
+    ],
+    "sleepingImage": "/images/enemy_50_goblin_sleeping.webp",
+    "defeatedImage": "/images/enemy_50_goblin_defeated.webp"
+  },
+  {
+    "id": "b2dfcc17-8719-472a-9510-6564f6dd3818",
+    "slug": "slime-swordsman",
+    "name": "タールフェンサー",
+    "category": "敵",
+    "role": "4層のボス",
+    "section": "スライム",
+    "image": "/images/enemy_51_slime-swordsman.webp",
+    "attackImages": [
+      "/images/enemy_51_slime-swordsman_attack-cleave.webp",
+      "/images/enemy_51_slime-swordsman_attack-thrust.webp"
+    ],
+    "sleepingImage": "/images/enemy_51_slime-swordsman_sleeping.webp",
+    "defeatedImage": "/images/enemy_51_slime-swordsman_defeated.webp",
+    "attack": {
+      "name": "粘剣斬り",
+      "reach": "melee"
+    },
+    "attackImage": "/images/enemy_51_slime-swordsman_attack-cleave.webp",
+    "skillPortraits": {
+      "ed55c469-5ca5-4c3f-b7f2-569fb78dd734": "/images/enemy_51_slime-swordsman_skill-abyss-gaze-20261013-toward-player.webp",
+      "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/images/enemy_51_slime-swordsman_skill-abyss-gaze-20261013-toward-player.webp",
+      "2ef5781b-1583-4562-91da-7a26f6866d66": "/images/enemy_51_slime-swordsman_skill-abyss-gaze-20261013-toward-player.webp",
+      "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/images/enemy_51_slime-swordsman_attack-cleave.webp"
+    }
+  },
+  {
+    "id": "3f93cd61-6218-4de9-921a-8ef69dd413e5",
+    "slug": "mitsuashi",
+    "name": "スクラップアイ",
+    "category": "敵",
+    "section": "スクラップアイ",
+    "role": "2層の中ボス",
+    "image": "/images/enemy_52_mitsuashi.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_65_mitsuashi-marsh.webp",
+        "attackImages": ["/images/enemy_65_mitsuashi-marsh_attack.webp"],
+        "defeatedImage": "/images/enemy_65_mitsuashi-marsh_defeated.webp",
+        "sleepingImage": "/images/enemy_65_mitsuashi-marsh_sleeping.webp",
+        "attackImage": "/images/enemy_65_mitsuashi-marsh_attack.webp",
+        "skillPortraits": {
+          "20196775-1b91-4425-954b-a67b54e00cef": "/images/enemy_65_mitsuashi-marsh_skill-iron-press-20261013-v2-toward-player.webp",
+          "c2576d5a-ca55-4beb-ac73-7884f9dcea47": "/images/enemy_65_mitsuashi-marsh_skill-gear-spin-20261013-toward-player.webp"
+        }
+      }
+    ],
+    "attackImage": "/images/enemy_52_mitsuashi_attack.webp",
+    "defeatedImage": "/images/enemy_52_mitsuashi_defeated.webp",
+    "sleepingImage": "/images/enemy_52_mitsuashi_sleeping.webp",
+    "attack": {
+      "name": "大足キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "20196775-1b91-4425-954b-a67b54e00cef": "/images/enemy_52_mitsuashi_skill-iron-press-20261013-v2-toward-player.webp",
+      "c2576d5a-ca55-4beb-ac73-7884f9dcea47": "/images/enemy_52_mitsuashi_skill-gear-spin-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd",
+    "slug": "kemurimaki",
+    "name": "ケムレイス",
+    "category": "敵",
+    "section": "レイス",
+    "role": "採用モンスター",
+    "image": "/images/enemy_53_kemurimaki.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_66_kemurimaki-ash.webp",
+        "sleepingImage": "/images/enemy_66_kemurimaki-ash_sleeping.webp",
+        "defeatedImage": "/images/enemy_66_kemurimaki-ash_defeated.webp",
+        "attackImages": ["/images/enemy_66_kemurimaki-ash_attack.webp"],
+        "attackImage": "/images/enemy_66_kemurimaki-ash_attack.webp",
+        "skillPortraits": {
+          "6aed3e33-557b-483e-aebb-84d4a8b28b0d": "/images/enemy_66_kemurimaki-ash_attack.webp"
+        }
+      },
+      {
+        "image": "/images/enemy_92_kemurimaki-ice.webp",
+        "attackImages": ["/images/enemy_92_kemurimaki-ice_attack.webp"],
+        "defeatedImage": "/images/enemy_92_kemurimaki-ice_defeated.webp",
+        "sleepingImage": "/images/enemy_92_kemurimaki-ice_sleeping.webp",
+        "attackImage": "/images/enemy_92_kemurimaki-ice_attack.webp",
+        "skillPortraits": {
+          "6aed3e33-557b-483e-aebb-84d4a8b28b0d": "/images/enemy_92_kemurimaki-ice_attack.webp"
+        }
+      }
+    ],
+    "sleepingImage": "/images/enemy_53_kemurimaki_sleeping.webp",
+    "defeatedImage": "/images/enemy_53_kemurimaki_defeated.webp",
+    "attackImage": "/images/enemy_53_kemurimaki_attack.webp",
+    "attack": {
+      "name": "煙拳打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "6aed3e33-557b-483e-aebb-84d4a8b28b0d": "/images/enemy_53_kemurimaki_attack.webp"
+    }
+  },
+  {
+    "id": "69d0b191-9c2e-446f-8763-9d2b2138a3c3",
+    "slug": "hanenashin",
+    "name": "ヴルム",
+    "category": "敵",
+    "section": "ヴルム",
+    "role": "採用モンスター",
+    "image": "/images/enemy_54_hanenashin.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_90_hanenashin-stone.webp",
+        "defeatedImage": "/images/enemy_90_hanenashin-stone_defeated.webp",
+        "sleepingImage": "/images/enemy_90_hanenashin-stone_sleeping.webp",
+        "attackImages": ["/images/enemy_90_hanenashin-stone_attack.webp"],
+        "attackImage": "/images/enemy_90_hanenashin-stone_attack.webp",
+        "skillPortraits": {}
+      },
+      {
+        "image": "/images/enemy_89_hanenashin-adult.webp",
+        "sleepingImage": "/images/enemy_89_hanenashin-adult_sleeping.webp",
+        "defeatedImage": "/images/enemy_89_hanenashin-adult_defeated.webp",
+        "attackImages": ["/images/enemy_89_hanenashin-adult_attack.webp"],
+        "attackImage": "/images/enemy_89_hanenashin-adult_attack.webp",
+        "skillPortraits": {}
+      }
+    ],
+    "attackImage": "/images/enemy_54_hanenashin_attack.webp",
+    "sleepingImage": "/images/enemy_54_hanenashin_sleeping.webp",
+    "defeatedImage": "/images/enemy_54_hanenashin_defeated.webp",
+    "attack": {
+      "name": "爪キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {}
+  },
+  {
+    "id": "4790537c-c395-4bc5-9649-005d2fcf52a5",
+    "slug": "washinoko",
+    "name": "ボーンホーク",
+    "category": "敵",
+    "section": "ホーク",
+    "role": "1層の中ボス",
+    "image": "/images/enemy_55_washinoko.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_68_washinoko-snow.webp",
+        "sleepingImage": "/images/enemy_68_washinoko-snow_sleeping.webp",
+        "defeatedImage": "/images/enemy_68_washinoko-snow_defeated.webp",
+        "attackImages": ["/images/enemy_68_washinoko-snow_attack.webp"],
+        "attackImage": "/images/enemy_68_washinoko-snow_attack.webp",
+        "skillPortraits": {
+          "a9742f96-76fc-477c-bd58-ce2b6f9f6ea3": "/images/enemy_68_washinoko-snow_attack.webp",
+          "319a9920-9562-4e02-bcaf-98d3ae14f013": "/images/enemy_68_washinoko-snow_attack.webp"
+        }
+      }
+    ],
+    "sleepingImage": "/images/enemy_55_washinoko_sleeping.webp",
+    "defeatedImage": "/images/enemy_55_washinoko_defeated.webp",
+    "attackImage": "/images/enemy_55_washinoko_attack.webp",
+    "attack": {
+      "name": "鉤爪キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "a9742f96-76fc-477c-bd58-ce2b6f9f6ea3": "/images/enemy_55_washinoko_attack.webp",
+      "319a9920-9562-4e02-bcaf-98d3ae14f013": "/images/enemy_55_washinoko_attack.webp"
+    }
+  },
+  {
+    "id": "f7e72b0b-c879-44b4-b85e-f26bb768002a",
+    "slug": "oumuku",
+    "name": "エコーパロット",
+    "category": "敵",
+    "section": "パロット",
+    "role": "2層の採用モンスター",
+    "image": "/images/enemy_56_oumuku.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_69_oumuku-forest.webp",
+        "defeatedImage": "/images/enemy_69_oumuku-forest_defeated.webp",
+        "sleepingImage": "/images/enemy_69_oumuku-forest_sleeping.webp",
+        "attackImages": ["/images/enemy_69_oumuku-forest_attack.webp"],
+        "attackImage": "/images/enemy_69_oumuku-forest_attack.webp",
+        "skillPortraits": {
+          "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/images/enemy_69_oumuku-forest_skill-wind-cut-20261013-toward-player.webp"
+        }
+      }
+    ],
+    "sleepingImage": "/images/enemy_56_oumuku_sleeping.webp",
+    "defeatedImage": "/images/enemy_56_oumuku_defeated.webp",
+    "attackImage": "/images/enemy_56_oumuku_attack.webp",
+    "attack": {
+      "name": "鉤爪キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/images/enemy_56_oumuku_skill-wind-cut-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "29ed2718-1c81-4e16-9230-2e80870a0298",
+    "slug": "kamokutsu",
+    "name": "スタンプダック",
+    "category": "敵",
+    "section": "ダック",
+    "role": "0層の採用モンスター",
+    "image": "/images/enemy_57_kamokutsu.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_84_haneboots.webp",
+        "attackImages": ["/images/enemy_84_haneboots_attack.webp"],
+        "sleepingImage": "/images/enemy_84_haneboots_sleeping.webp",
+        "defeatedImage": "/images/enemy_84_haneboots_defeated.webp",
+        "attackImage": "/images/enemy_84_haneboots_attack.webp",
+        "skillPortraits": {
+          "876376fe-bbcf-420c-9e0d-247a8de30481": "/images/enemy_84_haneboots_attack.webp"
+        }
+      },
+      {
+        "image": "/images/enemy_85_tosakado.webp",
+        "attackImages": ["/images/enemy_85_tosakado_attack.webp"],
+        "sleepingImage": "/images/enemy_85_tosakado_sleeping.webp",
+        "defeatedImage": "/images/enemy_85_tosakado_defeated.webp",
+        "attackImage": "/images/enemy_85_tosakado_attack.webp",
+        "skillPortraits": {
+          "876376fe-bbcf-420c-9e0d-247a8de30481": "/images/enemy_85_tosakado_attack.webp"
+        }
+      }
+    ],
+    "attackImage": "/images/enemy_57_kamokutsu_attack.webp",
+    "sleepingImage": "/images/enemy_57_kamokutsu_sleeping.webp",
+    "defeatedImage": "/images/enemy_57_kamokutsu_defeated.webp",
+    "attack": {
+      "name": "長靴キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "876376fe-bbcf-420c-9e0d-247a8de30481": "/images/enemy_57_kamokutsu_attack.webp"
+    },
+    "skillNames": {
+      "876376fe-bbcf-420c-9e0d-247a8de30481": "長靴の蹴り"
+    }
+  },
+  {
+    "id": "61893649-624b-4c84-882b-5d4df3e8a8bb",
+    "slug": "hiyokobu",
+    "name": "ダックリング",
+    "category": "敵",
+    "section": "ダック",
+    "role": "スタンプダックのヒナ・0層の敵",
+    "image": "/images/enemy_58_hiyokobu.webp",
+    "sleepingImage": "/images/enemy_58_hiyokobu_sleeping.webp",
+    "defeatedImage": "/images/enemy_58_hiyokobu_defeated.webp",
+    "attackImage": "/images/enemy_58_hiyokobu_attack.webp",
+    "attack": {
+      "name": "跳び蹴り",
+      "reach": "melee"
+    },
+    "skillPortraits": {}
+  },
+  {
+    "id": "901fae80-d075-4490-889e-50c776afbbfe",
+    "slug": "horopoppo",
+    "name": "コルンバ",
+    "category": "敵",
+    "section": "コルンバ",
+    "role": "採用モンスター",
+    "image": "/images/enemy_59_horopoppo.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_71_horopoppo-speckled.webp",
+        "attackImages": ["/images/enemy_71_horopoppo-speckled_attack.webp"],
+        "sleepingImage": "/images/enemy_71_horopoppo-speckled_sleeping.webp",
+        "defeatedImage": "/images/enemy_71_horopoppo-speckled_defeated.webp",
+        "attackImage": "/images/enemy_71_horopoppo-speckled_attack.webp",
+        "skillPortraits": {}
+      },
+      {
+        "image": "/images/enemy_94_horopoppo-demon.webp",
+        "attackImages": ["/images/enemy_94_horopoppo-demon_attack.webp"],
+        "sleepingImage": "/images/enemy_94_horopoppo-demon_sleeping.webp",
+        "defeatedImage": "/images/enemy_94_horopoppo-demon_defeated.webp",
+        "attackImage": "/images/enemy_94_horopoppo-demon_attack.webp",
+        "skillPortraits": {}
+      }
+    ],
+    "attackImage": "/images/enemy_59_horopoppo_attack.webp",
+    "sleepingImage": "/images/enemy_59_horopoppo_sleeping.webp",
+    "defeatedImage": "/images/enemy_59_horopoppo_defeated.webp",
+    "attack": {
+      "name": "腹の体当たり",
+      "reach": "melee"
+    },
+    "skillPortraits": {}
+  },
+  {
+    "id": "a429af02-f106-4a04-baed-d9d4eee614c5",
+    "slug": "yadocup",
+    "name": "カリクス",
+    "category": "敵",
+    "section": "カリクス",
+    "role": "採用モンスター",
+    "image": "/images/enemy_60_yadocup.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_72_yadocup-teapot.webp",
+        "attackImages": ["/images/enemy_72_yadocup-teapot_attack.webp"],
+        "sleepingImage": "/images/enemy_72_yadocup-teapot_sleeping.webp",
+        "defeatedImage": "/images/enemy_72_yadocup-teapot_defeated.webp",
+        "attackImage": "/images/enemy_72_yadocup-teapot_attack.webp",
+        "skillPortraits": {
+          "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/images/enemy_72_yadocup-teapot_skill-wind-cut-20261013-toward-player.webp"
+        }
+      },
+      {
+        "image": "/images/enemy_96_yadocup-demon.webp",
+        "attackImages": ["/images/enemy_96_yadocup-demon_attack.webp"],
+        "sleepingImage": "/images/enemy_96_yadocup-demon_sleeping.webp",
+        "defeatedImage": "/images/enemy_96_yadocup-demon_defeated.webp",
+        "attackImage": "/images/enemy_96_yadocup-demon_attack.webp",
+        "skillPortraits": {
+          "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/images/enemy_96_yadocup-demon_skill-wind-cut-20261013-toward-player.webp"
+        }
+      }
+    ],
+    "attackImage": "/images/enemy_60_yadocup_attack.webp",
+    "sleepingImage": "/images/enemy_60_yadocup_sleeping.webp",
+    "defeatedImage": "/images/enemy_60_yadocup_defeated.webp",
+    "attack": {
+      "name": "ハサミ打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/images/enemy_60_yadocup_skill-wind-cut-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "ec3ef953-0655-447e-be9f-a06f792e0b13",
+    "slug": "kurumiwari",
+    "name": "ナッツハイド",
+    "category": "敵",
+    "section": "ナッツハイド",
+    "role": "採用モンスター",
+    "image": "/images/enemy_61_kurumiwari.webp",
+    "defeatedImage": "/images/enemy_61_kurumiwari_defeated.webp",
+    "sleepingImage": "/images/enemy_61_kurumiwari_sleeping.webp",
+    "attackImage": "/images/enemy_61_kurumiwari_attack.webp",
+    "attack": {
+      "name": "胡桃パンチ",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/images/enemy_61_kurumiwari_skill-wind-cut-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "0bd25319-47c6-4761-8c7a-49535e14a938",
+    "slug": "kaisando",
+    "name": "パッチクローク",
+    "category": "敵",
+    "section": "パッチクローク",
+    "role": "4層の採用モンスター",
+    "image": "/images/enemy_62_kaisando.webp",
+    "sleepingImage": "/images/enemy_62_kaisando_sleeping.webp",
+    "defeatedImage": "/images/enemy_62_kaisando_defeated.webp",
+    "attackImage": "/images/enemy_62_kaisando_attack.webp",
+    "attack": {
+      "name": "外套ぶつけ",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "bd093901-181f-4448-8ad2-8dda2c4a5746": "/images/enemy_62_kaisando_attack.webp"
+    }
+  },
+  {
+    "id": "0b27b6ee-377c-4c00-98b6-ff9fe53bfb78",
+    "slug": "futabane",
+    "name": "パラソリーフ",
+    "category": "敵",
+    "section": "スプラウト",
+    "role": "3層の中ボス",
+    "image": "/images/enemy_63_futabane.webp",
+    "sleepingImage": "/images/enemy_63_futabane_sleeping.webp",
+    "defeatedImage": "/images/enemy_63_futabane_defeated.webp",
+    "attackImage": "/images/enemy_63_futabane_attack.webp",
+    "attack": {
+      "name": "葉の打ち払い",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "e7e375ed-2a98-458a-b80e-5540da67db1f": "/images/enemy_63_futabane_attack.webp",
+      "1afac4ed-2737-4efa-89fe-17fad1c1551b": "/images/enemy_63_futabane_skill-poison-spit-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "85495e6d-9a6d-4b81-bc62-37ce73ee9722",
+    "slug": "yukimebae",
+    "name": "シードロード",
+    "category": "敵",
+    "section": "スプラウト",
+    "role": "3層のボス",
+    "image": "/images/enemy_64_yukimebae.webp",
+    "sleepingImage": "/images/enemy_64_yukimebae_sleeping.webp",
+    "defeatedImage": "/images/enemy_64_yukimebae_defeated.webp",
+    "attackImage": "/images/enemy_64_yukimebae_attack.webp",
+    "attack": {
+      "name": "種殻の打ち払い",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "448e40f1-5e0d-465a-b025-80cf72307c05": "/images/enemy_64_yukimebae_skill-bloom-burst-20261013-toward-player.webp",
+      "1afac4ed-2737-4efa-89fe-17fad1c1551b": "/images/enemy_64_yukimebae_skill-bloom-burst-20261013-toward-player.webp",
+      "e7e375ed-2a98-458a-b80e-5540da67db1f": "/images/enemy_64_yukimebae_attack.webp"
+    }
+  },
+  {
+    "id": "495dd552-d553-4a92-b408-6f336c221ae2",
+    "slug": "agohitsu",
+    "name": "サバトゴート",
+    "category": "敵",
+    "section": "サバト",
+    "role": "4層の中ボス",
+    "image": "/images/enemy_76_agohitsu.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_82_agohitsu-stone.webp",
+        "attackImages": ["/images/enemy_82_agohitsu-stone_attack.webp"],
+        "sleepingImage": "/images/enemy_82_agohitsu-stone_sleeping.webp",
+        "defeatedImage": "/images/enemy_82_agohitsu-stone_defeated.webp",
+        "attackImage": "/images/enemy_82_agohitsu-stone_attack.webp",
+        "skillPortraits": {
+          "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/images/enemy_82_agohitsu-stone_skill-curse-wave-20261013-toward-player.webp",
+          "2ef5781b-1583-4562-91da-7a26f6866d66": "/images/enemy_82_agohitsu-stone_skill-curse-wave-20261013-toward-player.webp",
+          "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/images/enemy_82_agohitsu-stone_attack.webp"
+        }
+      }
+    ],
+    "attackImage": "/images/enemy_76_agohitsu_attack.webp",
+    "sleepingImage": "/images/enemy_76_agohitsu_sleeping.webp",
+    "defeatedImage": "/images/enemy_76_agohitsu_defeated.webp",
+    "attack": {
+      "name": "蹄打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/images/enemy_76_agohitsu_skill-curse-wave-20261013-toward-player.webp",
+      "2ef5781b-1583-4562-91da-7a26f6866d66": "/images/enemy_76_agohitsu_skill-curse-wave-20261013-toward-player.webp",
+      "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/images/enemy_76_agohitsu_attack.webp"
+    }
+  },
+  {
+    "id": "539a2b7f-8e2b-4484-882a-ca1c50be7709",
+    "slug": "haribote",
+    "name": "ジェムホッグ",
+    "category": "敵",
+    "section": "ジェムホッグ",
+    "role": "0層の中ボス",
+    "image": "/images/enemy_77_haribote.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_83_haribote-moss.webp",
+        "sleepingImage": "/images/enemy_83_haribote-moss_sleeping.webp",
+        "defeatedImage": "/images/enemy_83_haribote-moss_defeated.webp",
+        "attackImages": ["/images/enemy_83_haribote-moss_attack.webp"],
+        "attackImage": "/images/enemy_83_haribote-moss_attack.webp",
+        "skillPortraits": {
+          "876376fe-bbcf-420c-9e0d-247a8de30481": "/images/enemy_83_haribote-moss_attack.webp",
+          "9f72649e-cc75-4e44-8424-1c7841ec2eeb": "/images/enemy_83_haribote-moss_skill-crystal-spray-20261013-toward-player.webp"
+        }
+      }
+    ],
+    "sleepingImage": "/images/enemy_77_haribote_sleeping.webp",
+    "defeatedImage": "/images/enemy_77_haribote_defeated.webp",
+    "attackImage": "/images/enemy_77_haribote_attack.webp",
+    "attack": {
+      "name": "前脚ぶつけ",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "876376fe-bbcf-420c-9e0d-247a8de30481": "/images/enemy_77_haribote_attack.webp",
+      "9f72649e-cc75-4e44-8424-1c7841ec2eeb": "/images/enemy_77_haribote_skill-crystal-spray-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "b2368153-19b7-45b8-bf77-6c520afb485e",
+    "slug": "mitsuashi-marsh",
+    "name": "スワンプアイ",
+    "category": "敵",
+    "section": "スクラップアイ",
+    "role": "亜種",
+    "image": "/images/enemy_65_mitsuashi-marsh.webp",
+    "attackImage": "/images/enemy_65_mitsuashi-marsh_attack.webp",
+    "defeatedImage": "/images/enemy_65_mitsuashi-marsh_defeated.webp",
+    "sleepingImage": "/images/enemy_65_mitsuashi-marsh_sleeping.webp",
+    "attack": {
+      "name": "大足キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "20196775-1b91-4425-954b-a67b54e00cef": "/images/enemy_65_mitsuashi-marsh_skill-iron-press-20261013-v2-toward-player.webp",
+      "c2576d5a-ca55-4beb-ac73-7884f9dcea47": "/images/enemy_65_mitsuashi-marsh_skill-gear-spin-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "f190eccf-5c98-40d0-8ab6-03ede6cd0436",
+    "slug": "kemurimaki-ash",
+    "name": "アッシュレイス",
+    "category": "敵",
+    "section": "レイス",
+    "role": "2層の敵・ケムレイスの亜種",
+    "image": "/images/enemy_66_kemurimaki-ash.webp",
+    "sleepingImage": "/images/enemy_66_kemurimaki-ash_sleeping.webp",
+    "defeatedImage": "/images/enemy_66_kemurimaki-ash_defeated.webp",
+    "attackImage": "/images/enemy_66_kemurimaki-ash_attack.webp",
+    "attack": {
+      "name": "灰拳打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "84b5c834-0808-49c0-b9ba-2f5bcb9e084b": "/images/enemy_66_kemurimaki-ash_attack.webp"
+    }
+  },
+  {
+    "id": "5f10327a-44ce-480e-b5a3-ded71a959cf8",
+    "slug": "oumuku-forest",
+    "name": "リーフパロット",
+    "category": "敵",
+    "section": "パロット",
+    "role": "亜種",
+    "image": "/images/enemy_69_oumuku-forest.webp",
+    "defeatedImage": "/images/enemy_69_oumuku-forest_defeated.webp",
+    "sleepingImage": "/images/enemy_69_oumuku-forest_sleeping.webp",
+    "attackImage": "/images/enemy_69_oumuku-forest_attack.webp",
+    "attack": {
+      "name": "鉤爪キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/images/enemy_69_oumuku-forest_skill-wind-cut-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "db6663f0-a18e-440f-90ea-f79e5db93727",
+    "slug": "horopoppo-speckled",
+    "name": "グランコルンバ",
+    "category": "敵",
+    "section": "コルンバ",
+    "role": "亜種",
+    "image": "/images/enemy_71_horopoppo-speckled.webp",
+    "appearances": [
+      {
+        "image": "/images/enemy_94_horopoppo-demon.webp",
+        "attackImages": ["/images/enemy_94_horopoppo-demon_attack.webp"],
+        "sleepingImage": "/images/enemy_94_horopoppo-demon_sleeping.webp",
+        "defeatedImage": "/images/enemy_94_horopoppo-demon_defeated.webp",
+        "attackImage": "/images/enemy_94_horopoppo-demon_attack.webp",
+        "skillPortraits": {}
+      }
+    ],
+    "attackImage": "/images/enemy_71_horopoppo-speckled_attack.webp",
+    "sleepingImage": "/images/enemy_71_horopoppo-speckled_sleeping.webp",
+    "defeatedImage": "/images/enemy_71_horopoppo-speckled_defeated.webp",
+    "attack": {
+      "name": "腹の体当たり",
+      "reach": "melee"
+    },
+    "skillPortraits": {}
+  },
+  {
+    "id": "2b2fb38d-87fc-4490-a4be-4c582618aab5",
+    "slug": "yadocup-teapot",
+    "name": "グランカリクス",
+    "category": "敵",
+    "section": "カリクス",
+    "role": "亜種",
+    "image": "/images/enemy_72_yadocup-teapot.webp",
+    "attackImage": "/images/enemy_72_yadocup-teapot_attack.webp",
+    "sleepingImage": "/images/enemy_72_yadocup-teapot_sleeping.webp",
+    "defeatedImage": "/images/enemy_72_yadocup-teapot_defeated.webp",
+    "attack": {
+      "name": "ハサミ打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/images/enemy_72_yadocup-teapot_skill-wind-cut-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "0db315b8-06b0-4c86-817a-5f50ab70e30a",
+    "slug": "haribote-adult",
+    "name": "ジェムロード",
+    "category": "敵",
+    "section": "ジェムホッグ",
+    "role": "0層のボス",
+    "image": "/images/enemy_80_haribote-adult.webp",
+    "attackImage": "/images/enemy_80_haribote-adult_attack.webp",
+    "sleepingImage": "/images/enemy_80_haribote-adult_sleeping.webp",
+    "defeatedImage": "/images/enemy_80_haribote-adult_defeated.webp",
+    "attack": {
+      "name": "前脚ぶつけ",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "9f72649e-cc75-4e44-8424-1c7841ec2eeb": "/images/enemy_80_haribote-adult_skill-crystal-spray-20261013-toward-player-v2-fit.webp",
+      "876376fe-bbcf-420c-9e0d-247a8de30481": "/images/enemy_80_haribote-adult_attack.webp"
+    }
+  },
+  {
+    "id": "0e84d744-7f37-4871-84f0-f6bfc46209ee",
+    "slug": "agohitsu-stone",
+    "name": "サバトホーン",
+    "category": "敵",
+    "section": "サバト",
+    "role": "亜種",
+    "image": "/images/enemy_82_agohitsu-stone.webp",
+    "attackImage": "/images/enemy_82_agohitsu-stone_attack.webp",
+    "sleepingImage": "/images/enemy_82_agohitsu-stone_sleeping.webp",
+    "defeatedImage": "/images/enemy_82_agohitsu-stone_defeated.webp",
+    "attack": {
+      "name": "蹄打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/images/enemy_82_agohitsu-stone_skill-curse-wave-20261013-toward-player.webp",
+      "2ef5781b-1583-4562-91da-7a26f6866d66": "/images/enemy_82_agohitsu-stone_skill-curse-wave-20261013-toward-player.webp",
+      "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/images/enemy_82_agohitsu-stone_attack.webp"
+    }
+  },
+  {
+    "id": "90b7be26-2a70-4c76-bea3-5c8c840a860e",
+    "slug": "haribote-moss",
+    "name": "アンバーホッグ",
+    "category": "敵",
+    "section": "ジェムホッグ",
+    "role": "亜種",
+    "image": "/images/enemy_83_haribote-moss.webp",
+    "sleepingImage": "/images/enemy_83_haribote-moss_sleeping.webp",
+    "defeatedImage": "/images/enemy_83_haribote-moss_defeated.webp",
+    "attackImage": "/images/enemy_83_haribote-moss_attack.webp",
+    "attack": {
+      "name": "前脚ぶつけ",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "876376fe-bbcf-420c-9e0d-247a8de30481": "/images/enemy_83_haribote-moss_attack.webp",
+      "9f72649e-cc75-4e44-8424-1c7841ec2eeb": "/images/enemy_83_haribote-moss_skill-crystal-spray-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "ab2284ee-ddb0-4da3-9f14-c5e1a09bc916",
+    "slug": "washinoko-snow",
+    "name": "アッシュホーク",
+    "category": "敵",
+    "section": "ホーク",
+    "role": "亜種",
+    "image": "/images/enemy_68_washinoko-snow.webp",
+    "sleepingImage": "/images/enemy_68_washinoko-snow_sleeping.webp",
+    "defeatedImage": "/images/enemy_68_washinoko-snow_defeated.webp",
+    "attackImage": "/images/enemy_68_washinoko-snow_attack.webp",
+    "attack": {
+      "name": "鉤爪キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "a9742f96-76fc-477c-bd58-ce2b6f9f6ea3": "/images/enemy_68_washinoko-snow_attack.webp",
+      "319a9920-9562-4e02-bcaf-98d3ae14f013": "/images/enemy_68_washinoko-snow_attack.webp"
+    }
+  },
+  {
+    "id": "569b9fb2-dbc4-4d55-8ff5-796134341dc5",
+    "slug": "kamokutsu-mud",
+    "name": "マッドダック",
+    "category": "敵",
+    "section": "ダック",
+    "role": "スタンプダックのオス・泥長靴",
+    "image": "/images/enemy_70_kamokutsu-mud.webp",
+    "sleepingImage": "/images/enemy_70_kamokutsu-mud_sleeping.webp",
+    "defeatedImage": "/images/enemy_70_kamokutsu-mud_defeated.webp",
+    "attackImage": "/images/enemy_70_kamokutsu-mud_attack.webp",
+    "attack": {
+      "name": "長靴キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "8adbc6e7-23a3-4aee-bf45-84b2b6c74640": "/images/enemy_70_kamokutsu-mud_skill-mud-splash-20261013.webp"
+    }
+  },
+  {
+    "id": "8aae8f96-edbf-4649-82cb-4c6d7b12d1a8",
+    "slug": "washinoko-adult",
+    "name": "ホークロード",
+    "category": "敵",
+    "section": "ホーク",
+    "role": "1層のボス",
+    "image": "/images/enemy_81_washinoko-adult.webp",
+    "attackImage": "/images/enemy_81_washinoko-adult_attack.webp",
+    "sleepingImage": "/images/enemy_81_washinoko-adult_sleeping.webp",
+    "defeatedImage": "/images/enemy_81_washinoko-adult_defeated.webp",
+    "attack": {
+      "name": "杖突き",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "0de1870d-2513-4935-93ac-eeddd40fddd9": "/images/enemy_81_washinoko-adult_skill-bone-rain-20261013-toward-player.webp",
+      "a9742f96-76fc-477c-bd58-ce2b6f9f6ea3": "/images/enemy_81_washinoko-adult_attack.webp",
+      "319a9920-9562-4e02-bcaf-98d3ae14f013": "/images/enemy_81_washinoko-adult_attack.webp"
+    }
+  },
+  {
+    "id": "82a283db-d672-4a55-907b-a238cd2802ed",
+    "slug": "place-layer2",
+    "name": "錆びた鉄橋",
+    "role": "2層",
+    "category": "場所",
+    "image": "/art/scenes/layer2-descent-fisheye-b-ink.webp",
+    "wideImage": "/art/scenes/layer2-descent-fisheye-wide-b-ink.webp",
+    "battleImage": "/art/scenes/battle-layer2-v3.webp",
+    "battleWideImage": "/art/scenes/battle-layer2-wide-v3.webp",
+    "section": "ダンジョン",
+    "scenes": [
+      {
+        "key": "descent",
+        "kind": "path",
+        "image": "/art/scenes/layer2-descent-fisheye-b-ink.webp",
+        "wideImage": "/art/scenes/layer2-descent-fisheye-wide-b-ink.webp"
+      },
+      {
+        "key": "underdeck",
+        "kind": "path",
+        "image": "/art/scenes/layer2-underdeck-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer2-underdeck-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "pier",
+        "kind": "path",
+        "image": "/art/scenes/layer2-pier-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer2-pier-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "treasure",
+        "kind": "treasure",
+        "image": "/art/scenes/layer2-treasure-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer2-treasure-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "rest",
+        "kind": "rest",
+        "image": "/art/scenes/layer2-rest-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer2-rest-fisheye-wide-ink.webp"
+      }
+    ]
+  },
+  {
+    "id": "b693cf1b-a67d-4bde-a47f-808689a0870a",
+    "slug": "place-layer3",
+    "name": "毒沼の温室",
+    "role": "3層",
+    "category": "場所",
+    "image": "/art/scenes/layer3-ramp-fisheye-b-ink.webp",
+    "wideImage": "/art/scenes/layer3-ramp-fisheye-wide-b-ink.webp",
+    "battleImage": "/art/scenes/battle-layer3-v3.webp",
+    "battleWideImage": "/art/scenes/battle-layer3-wide-v3.webp",
+    "section": "ダンジョン",
+    "scenes": [
+      {
+        "key": "ramp",
+        "kind": "path",
+        "image": "/art/scenes/layer3-ramp-fisheye-b-ink.webp",
+        "wideImage": "/art/scenes/layer3-ramp-fisheye-wide-b-ink.webp"
+      },
+      {
+        "key": "boardwalk",
+        "kind": "path",
+        "image": "/art/scenes/layer3-boardwalk-fisheye-b-ink.webp",
+        "wideImage": "/art/scenes/layer3-boardwalk-fisheye-wide-b-ink.webp"
+      },
+      {
+        "key": "terrace",
+        "kind": "path",
+        "image": "/art/scenes/layer3-terrace-fisheye-b-ink.webp",
+        "wideImage": "/art/scenes/layer3-terrace-fisheye-wide-b-ink.webp"
+      },
+      {
+        "key": "treasure",
+        "kind": "treasure",
+        "image": "/art/scenes/layer3-treasure-fisheye-b-ink.webp",
+        "wideImage": "/art/scenes/layer3-treasure-fisheye-wide-b-ink.webp"
+      },
+      {
+        "key": "rest",
+        "kind": "rest",
+        "image": "/art/scenes/layer3-rest-fisheye-b-ink.webp",
+        "wideImage": "/art/scenes/layer3-rest-fisheye-wide-b-ink.webp"
+      }
+    ]
+  },
+  {
+    "id": "920b6fd0-4562-46c9-b9a4-717d7a87b5da",
+    "slug": "place-layer4",
+    "name": "底なしの祭壇",
+    "role": "4層",
+    "category": "場所",
+    "image": "/art/scenes/layer4-fisheye-comic-v3-ink.webp",
+    "battleImage": "/art/scenes/battle-layer4-v3.webp",
+    "battleWideImage": "/art/scenes/battle-layer4-wide-v3.webp",
+    "section": "ダンジョン",
+    "scenes": [
+      {
+        "key": "altar",
+        "kind": "path",
+        "image": "/art/scenes/layer4-fisheye-comic-v3-ink.webp"
+      },
+      {
+        "key": "stairs",
+        "kind": "path",
+        "image": "/art/scenes/layer4-stairs-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer4-stairs-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "ledge",
+        "kind": "path",
+        "image": "/art/scenes/layer4-ledge-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer4-ledge-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "treasure",
+        "kind": "treasure",
+        "image": "/art/scenes/layer4-treasure-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer4-treasure-fisheye-wide-ink.webp"
+      },
+      {
+        "key": "rest",
+        "kind": "rest",
+        "image": "/art/scenes/layer4-rest-fisheye-ink.webp",
+        "wideImage": "/art/scenes/layer4-rest-fisheye-wide-ink.webp"
+      }
+    ]
+  },
+  {
+    "id": "f2bb31d9-6c17-4443-963d-3e95907cc7ef",
+    "slug": "haneboots",
+    "name": "ブーツダック",
+    "category": "敵",
+    "section": "ダック",
+    "role": "スタンプダックのオス・ブーツ姿",
+    "image": "/images/enemy_84_haneboots.webp",
+    "attackImage": "/images/enemy_84_haneboots_attack.webp",
+    "sleepingImage": "/images/enemy_84_haneboots_sleeping.webp",
+    "defeatedImage": "/images/enemy_84_haneboots_defeated.webp",
+    "attack": {
+      "name": "長靴キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "876376fe-bbcf-420c-9e0d-247a8de30481": "/images/enemy_84_haneboots_attack.webp"
+    },
+    "skillNames": {
+      "876376fe-bbcf-420c-9e0d-247a8de30481": "長靴の蹴り"
+    }
+  },
+  {
+    "id": "6a239a4b-bd2d-4905-a4d8-f08c7b42dbb4",
+    "slug": "tosakado",
+    "name": "ベレーダック",
+    "category": "敵",
+    "section": "ダック",
+    "role": "スタンプダックのメス・帽子姿",
+    "image": "/images/enemy_85_tosakado.webp",
+    "attackImage": "/images/enemy_85_tosakado_attack.webp",
+    "sleepingImage": "/images/enemy_85_tosakado_sleeping.webp",
+    "defeatedImage": "/images/enemy_85_tosakado_defeated.webp",
+    "attack": {
+      "name": "長靴キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "876376fe-bbcf-420c-9e0d-247a8de30481": "/images/enemy_85_tosakado_attack.webp"
+    },
+    "skillNames": {
+      "876376fe-bbcf-420c-9e0d-247a8de30481": "長靴の蹴り"
+    }
+  },
+  {
+    "id": "6c57887e-9c87-4b45-b225-9c5c5c881193",
+    "slug": "tsunofood-blue",
+    "name": "ルリククルス",
+    "category": "敵",
+    "section": "ククルス",
+    "role": "亜種",
+    "image": "/images/enemy_87_tsunofood-blue.webp",
+    "attackImage": "/images/enemy_87_tsunofood-blue_attack.webp",
+    "sleepingImage": "/images/enemy_87_tsunofood-blue_sleeping.webp",
+    "defeatedImage": "/images/enemy_87_tsunofood-blue_defeated.webp",
+    "attack": {
+      "name": "袖パンチ",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "2ef5781b-1583-4562-91da-7a26f6866d66": "/images/enemy_87_tsunofood-blue_skill-curse-wave-20261013-v2-toward-player.webp"
+    }
+  },
+  {
+    "id": "eb059c44-724e-44fc-909f-ab4fcda02df3",
+    "slug": "tsunofood-bone",
+    "name": "ボーンククルス",
+    "category": "敵",
+    "section": "ククルス",
+    "role": "亜種",
+    "image": "/images/enemy_88_tsunofood-bone.webp",
+    "attackImage": "/images/enemy_88_tsunofood-bone_attack.webp",
+    "sleepingImage": "/images/enemy_88_tsunofood-bone_sleeping.webp",
+    "defeatedImage": "/images/enemy_88_tsunofood-bone_defeated.webp",
+    "attack": {
+      "name": "袖パンチ",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "71be7e8d-6d09-47ac-8d9a-d920ec20ee63": "/images/enemy_88_tsunofood-bone_attack.webp"
+    }
+  },
+  {
+    "id": "2cf1c41a-7ce3-4118-b41c-fa5bcd4fed35",
+    "slug": "hanenashin-adult",
+    "name": "ランドヴルム",
+    "category": "敵",
+    "section": "ヴルム",
+    "role": "大人",
+    "image": "/images/enemy_89_hanenashin-adult.webp",
+    "sleepingImage": "/images/enemy_89_hanenashin-adult_sleeping.webp",
+    "defeatedImage": "/images/enemy_89_hanenashin-adult_defeated.webp",
+    "attackImage": "/images/enemy_89_hanenashin-adult_attack.webp",
+    "attack": {
+      "name": "爪キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {}
+  },
+  {
+    "id": "206aa3c3-431b-4e51-a587-c87701ac9091",
+    "slug": "kemurimaki-fire",
+    "name": "フレアレイス",
+    "category": "敵",
+    "section": "レイス",
+    "role": "亜種",
+    "image": "/images/enemy_91_kemurimaki-fire.webp",
+    "sleepingImage": "/images/enemy_91_kemurimaki-fire_sleeping.webp",
+    "defeatedImage": "/images/enemy_91_kemurimaki-fire_defeated.webp",
+    "attackImage": "/images/enemy_91_kemurimaki-fire_attack.webp",
+    "attack": {
+      "name": "炎拳打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "c6284fa4-43f2-4f89-bad0-2724505dc947": "/images/enemy_91_kemurimaki-fire_attack.webp"
+    }
+  },
+  {
+    "id": "199b1ab4-6794-4a36-a3ea-9bf4dfacc6ec",
+    "slug": "kemurimaki-ice",
+    "name": "フロストレイス",
+    "category": "敵",
+    "section": "レイス",
+    "role": "亜種",
+    "image": "/images/enemy_92_kemurimaki-ice.webp",
+    "attackImage": "/images/enemy_92_kemurimaki-ice_attack.webp",
+    "defeatedImage": "/images/enemy_92_kemurimaki-ice_defeated.webp",
+    "sleepingImage": "/images/enemy_92_kemurimaki-ice_sleeping.webp",
+    "attack": {
+      "name": "氷塊打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "6aed3e33-557b-483e-aebb-84d4a8b28b0d": "/images/enemy_92_kemurimaki-ice_attack.webp"
+    }
+  },
+  {
+    "id": "51726071-a80b-49d9-82f0-8a7272b4b3f9",
+    "slug": "hanenashin-stone",
+    "name": "ロックヴルム",
+    "category": "敵",
+    "section": "ヴルム",
+    "role": "亜種",
+    "image": "/images/enemy_90_hanenashin-stone.webp",
+    "defeatedImage": "/images/enemy_90_hanenashin-stone_defeated.webp",
+    "sleepingImage": "/images/enemy_90_hanenashin-stone_sleeping.webp",
+    "attackImage": "/images/enemy_90_hanenashin-stone_attack.webp",
+    "attack": {
+      "name": "爪キック",
+      "reach": "melee"
+    },
+    "skillPortraits": {}
+  },
+  {
+    "id": "4eb40f75-7f55-4e04-85ee-de3b67f5111c",
+    "slug": "horopoppo-poison",
+    "name": "ベノムコルンバ",
+    "category": "敵",
+    "section": "コルンバ",
+    "role": "亜種",
+    "image": "/images/enemy_93_horopoppo-poison.webp",
+    "attackImage": "/images/enemy_93_horopoppo-poison_attack.webp",
+    "sleepingImage": "/images/enemy_93_horopoppo-poison_sleeping.webp",
+    "defeatedImage": "/images/enemy_93_horopoppo-poison_defeated.webp",
+    "attack": {
+      "name": "毒しぶき",
+      "reach": "ranged"
+    },
+    "skillPortraits": {
+      "1afac4ed-2737-4efa-89fe-17fad1c1551b": "/images/enemy_93_horopoppo-poison_attack.webp"
+    }
+  },
+  {
+    "id": "a760dba6-ff96-4ddc-8a3b-efb37a8e77fa",
+    "slug": "horopoppo-demon",
+    "name": "デビルコルンバ",
+    "category": "敵",
+    "section": "コルンバ",
+    "role": "亜種",
+    "image": "/images/enemy_94_horopoppo-demon.webp",
+    "attackImage": "/images/enemy_94_horopoppo-demon_attack.webp",
+    "sleepingImage": "/images/enemy_94_horopoppo-demon_sleeping.webp",
+    "defeatedImage": "/images/enemy_94_horopoppo-demon_defeated.webp",
+    "attack": {
+      "name": "腹の体当たり",
+      "reach": "melee"
+    },
+    "skillPortraits": {}
+  },
+  {
+    "id": "20dd3be9-a532-4a33-8606-9b998eb9e888",
+    "slug": "yadocup-fire",
+    "name": "バーンカリクス",
+    "category": "敵",
+    "section": "カリクス",
+    "role": "亜種",
+    "image": "/images/enemy_95_yadocup-fire.webp",
+    "attackImage": "/images/enemy_95_yadocup-fire_attack.webp",
+    "sleepingImage": "/images/enemy_95_yadocup-fire_sleeping.webp",
+    "defeatedImage": "/images/enemy_95_yadocup-fire_defeated.webp",
+    "attack": {
+      "name": "ハサミ打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "c6284fa4-43f2-4f89-bad0-2724505dc947": "/images/enemy_95_yadocup-fire_attack.webp"
+    }
+  },
+  {
+    "id": "dd7b3ed3-0726-4725-92f7-51ceee2a40e6",
+    "slug": "yadocup-demon",
+    "name": "デビルカリクス",
+    "category": "敵",
+    "section": "カリクス",
+    "role": "亜種",
+    "image": "/images/enemy_96_yadocup-demon.webp",
+    "attackImage": "/images/enemy_96_yadocup-demon_attack.webp",
+    "sleepingImage": "/images/enemy_96_yadocup-demon_sleeping.webp",
+    "defeatedImage": "/images/enemy_96_yadocup-demon_defeated.webp",
+    "attack": {
+      "name": "ハサミ打ち",
+      "reach": "melee"
+    },
+    "skillPortraits": {
+      "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/images/enemy_96_yadocup-demon_skill-wind-cut-20261013-toward-player.webp"
+    }
+  },
+  {
+    "id": "60712f03-1916-4afd-972e-f50c0c28960a",
+    "slug": "place-farm",
+    "name": "農場",
+    "role": "単発戦闘の場所",
+    "category": "場所",
+    "image": "/art/scenes/quick-farm-v1-fisheye-comic-v3.webp",
+    "section": "街",
+    "wideImage": "/art/scenes/quick-farm-wide-v1-fisheye-comic-v3.webp",
+    "battleImage": "/art/scenes/battle-farm-v3.webp",
+    "battleWideImage": "/art/scenes/battle-farm-wide-v3.webp"
+  },
+  {
+    "id": "4629d05a-8b24-48ac-bc4d-b87f7712c07a",
+    "slug": "place-highway",
+    "name": "街道",
+    "role": "単発戦闘の場所",
+    "category": "場所",
+    "image": "/art/scenes/place-highway-fisheye.webp",
+    "section": "街",
+    "wideImage": "/art/scenes/place-highway-fisheye-wide.webp",
+    "battleImage": "/art/scenes/battle-highway-v3.webp",
+    "battleWideImage": "/art/scenes/battle-highway-wide-v3.webp"
+  },
+  {
+    "id": "c01170e2-38cd-4668-a21e-4a679ab5ac7c",
+    "slug": "place-rim-road",
+    "name": "谷縁の道",
+    "role": "単発戦闘の場所",
+    "category": "場所",
+    "image": "/art/scenes/place-rim-road-fisheye.webp",
+    "section": "街",
+    "wideImage": "/art/scenes/place-rim-road-fisheye-wide.webp",
+    "battleImage": "/art/scenes/battle-rim-road-v3.webp",
+    "battleWideImage": "/art/scenes/battle-rim-road-wide-v3.webp"
+  },
+  {
+    "id": "188f5731-cac5-47e1-87e4-52ce5029a985",
+    "slug": "place-campfire-forest",
+    "name": "夜の森の焚き火",
+    "role": "開幕の場面",
+    "category": "場所",
+    "image": "/art/scenes/campfire-forest-a.webp",
+    "section": "街の外",
+    "wideImage": "/art/scenes/campfire-forest-wide-c.webp"
+  },
+  {
+    "id": "6945cb51-820e-4538-8be2-c5b866d9e18e",
+    "slug": "place-shop-street",
+    "name": "商店街の曲がり角",
+    "role": "単発戦闘の場所",
+    "category": "場所",
+    "image": "/art/scenes/place-shop-street-fisheye.webp",
+    "section": "街",
+    "wideImage": "/art/scenes/place-shop-street-fisheye-wide.webp",
+    "battleImage": "/art/scenes/battle-shop-street-v3.webp",
+    "battleWideImage": "/art/scenes/battle-shop-street-wide-v3.webp"
+  },
+  {
+    "id": "328e65c5-a87d-47fd-92ce-df1e24af418f",
+    "slug": "place-back-alley",
+    "name": "路地裏",
+    "role": "単発戦闘の場所",
+    "category": "場所",
+    "image": "/art/scenes/place-back-alley-fisheye.webp",
+    "section": "街",
+    "wideImage": "/art/scenes/place-back-alley-fisheye-wide.webp",
+    "battleImage": "/art/scenes/battle-back-alley-v3.webp",
+    "battleWideImage": "/art/scenes/battle-back-alley-wide-v3.webp"
+  }
+]

@@ -1,0 +1,426 @@
+[
+  {
+    "skill": "49c06f75-74e8-4a31-a9bb-d6b09e96d010",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "49c06f75-74e8-4a31-a9bb-d6b09e96d015",
+    "effect": "comic-poison"
+  },
+  {
+    "skill": "28ec59cd-767b-45ad-92ce-4d6baa44ee30",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "8eef2842-2a49-4051-90fd-5c03957cd9b0",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "f69b6c7a-4752-4912-b17b-5d89b98abe5f",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "5c7b54b7-6ff2-4401-a050-68e4ca01e703",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "2ba9e5ab-a039-4030-ad4f-1abec1a70c44",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "c293e4c3-cff4-4f98-a4a0-1425fad01425",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "2092ba48-5611-4410-868b-827b2c436cb9",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "d1b6994f-4938-4abb-a935-5a9d70df3215",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "a9742f96-76fc-477c-bd58-ce2b6f9f6ea3",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "319a9920-9562-4e02-bcaf-98d3ae14f013",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "08cece1a-363a-4b43-a558-cdd0e9bb60cd",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "e7e375ed-2a98-458a-b80e-5540da67db1f",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "fe055010-6b2b-42a7-b0e5-5de0b97407eb",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "be7e2670-66b1-4395-97e5-11dde683439a",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "5dbcd59c-8fe0-4c02-af23-acf1bae45dc3",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "5334baa9-0ed4-4f35-bda6-a8e3bfc6c131",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "5e62be96-7af0-4405-bda6-d0f268782b5d",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "749a8d47-a200-4a61-8500-58551b159112",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "20196775-1b91-4425-954b-a67b54e00cef",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "b32f5694-90f9-4180-a703-7cc3bf39fb7a",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "b82a464b-3de5-4eaa-bac0-0102742782f4",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "bd1bcdef-8b15-4093-a6e1-a7e998f8ae99",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "b2216d3b-fb2b-49d3-b799-f07f9214f49e",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "876376fe-bbcf-420c-9e0d-247a8de30481",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "00b0549e-1182-461e-aab6-9eb64dbaa322",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "8b3bc0e6-628e-48c7-b31e-e54858f30909",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "8a584337-150a-4a02-9982-70d3ae66f35b",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "7917b829-510a-47f2-bdbb-43cbea2ef8df",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "e75a90a6-ff0c-4ef9-a35c-1b898dc27b24",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "1c495318-fb97-4117-97ea-64fca8f6d597",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "685fff6a-eaf5-42d6-885f-7b3a5b54b6d9",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "2507bf9f-56c7-4da0-a5e4-3ee7462df06f",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "7b7070ca-1f11-4a89-a87f-a4a2dda07b3f",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "39ae5c7e-594f-4e6c-b3cd-d259739ae741",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "4e09d1d7-dd44-46a7-9c0c-b2eacaefcf43",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "c2576d5a-ca55-4beb-ac73-7884f9dcea47",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "8efbad09-d229-43f8-b5f0-ca5ffbb3e9ed",
+    "effect": "comic-thrust"
+  },
+  {
+    "skill": "5c68b128-52ca-4579-acf6-01b24cb1b8da",
+    "effect": "comic-thrust"
+  },
+  {
+    "skill": "7dabc84e-0007-4054-83f2-237a3541a3d2",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "c8b764f9-d92b-42a6-ac8a-e5de669daf6b",
+    "effect": "comic-thrust"
+  },
+  {
+    "skill": "434d322d-efee-49da-ab2d-7824f16b3da3",
+    "effect": "comic-thrust"
+  },
+  {
+    "skill": "864418e3-630a-4da6-ab41-efc3306a558f",
+    "effect": "comic-thrust"
+  },
+  {
+    "skill": "673d49db-5332-4154-b50f-7a180b01291f",
+    "effect": "comic-thrust"
+  },
+  {
+    "skill": "b28c6f45-0b10-453b-a1bb-a672fc913716",
+    "effect": "comic-thrust"
+  },
+  {
+    "skill": "92355567-38c4-4b88-bfd2-e993971cbd0a",
+    "effect": "comic-shot"
+  },
+  {
+    "skill": "a6094156-68f1-4ef6-b79e-d06a3731cfb5",
+    "effect": "comic-shot"
+  },
+  {
+    "skill": "04477410-478f-4067-ab02-63b226a228a9",
+    "effect": "comic-shot"
+  },
+  {
+    "skill": "9f72649e-cc75-4e44-8424-1c7841ec2eeb",
+    "effect": "comic-shot"
+  },
+  {
+    "skill": "25b977ed-49ba-482d-9961-577e30fe9a69",
+    "effect": "comic-shot"
+  },
+  {
+    "skill": "2fa437ac-df19-4b5d-bf76-978f9079e98a",
+    "effect": "comic-shot"
+  },
+  {
+    "skill": "0de1870d-2513-4935-93ac-eeddd40fddd9",
+    "effect": "comic-shot"
+  },
+  {
+    "skill": "4453ab0c-afd9-4597-a708-55b825673d43",
+    "effect": "comic-shot"
+  },
+  {
+    "skill": "71d2194c-4c53-485e-8aaa-d3356533ba96",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "c0448908-364a-496d-8565-ea898159a6d8",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "6391bc8f-0654-4c4b-b229-a3d5958d9b2a",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "6c09f8d4-0cad-47ae-a3a9-fbff0f2f41e8",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "002bfd2d-0deb-4f3a-bcf8-2f543edc3921",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "dd5acbb1-06f5-4879-90df-e3f0a1cae2c2",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "7673320b-bc7f-4352-b4aa-501439288b65",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "9f006a85-3aab-4b0f-8619-5def4d586a78",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "f0a77498-4e0a-4062-8179-0099b1aa73ec",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "b241f77e-acb1-4303-8f80-71d617dffd25",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "1afac4ed-2737-4efa-89fe-17fad1c1551b",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "448e40f1-5e0d-465a-b025-80cf72307c05",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "2ef5781b-1583-4562-91da-7a26f6866d66",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "871cd85b-2b84-4d04-a8f8-56a8a84ab34a",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "ed55c469-5ca5-4c3f-b7f2-569fb78dd734",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "49c06f75-74e8-4a31-a9bb-d6b09e96d016",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "775625cf-3b7c-452e-aae8-1494babc0005",
+    "effect": "comic-poison"
+  },
+  {
+    "skill": "775625cf-3b7c-452e-aae8-1494babc0006",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "775625cf-3b7c-452e-aae8-1494babc0007",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "775625cf-3b7c-452e-aae8-1494babc0008",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "3178c33a-f33e-4908-8247-4403c6d56419",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "6aed3e33-557b-483e-aebb-84d4a8b28b0d",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "c6284fa4-43f2-4f89-bad0-2724505dc947",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "96af34af-a342-4316-928f-505ab2731baa",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "d1d46bed-7671-42b0-90c1-e330a16f3fec",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "80f3b6ac-41d6-4ee9-ba74-ed609ab48333",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "d5bd6b12-0324-4245-8b0f-31d5d04fbbda",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "84b5c834-0808-49c0-b9ba-2f5bcb9e084b",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "3d6d60b7-f7d2-494f-aa4c-46093ca1cc33",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "3a9aba66-59f9-4e24-b980-5b46df81fe3e",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "e871c439-41f5-491c-8260-808422a03d80",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "bd093901-181f-4448-8ad2-8dda2c4a5746",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "2638ec61-1720-4cab-8370-29b7445c6161",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "e8a6f050-deb5-4664-95da-1de35bec408c",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "dd34363a-15cf-4b81-9fc2-3d89dd8ca4e7",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "8adbc6e7-23a3-4aee-bf45-84b2b6c74640",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "71be7e8d-6d09-47ac-8d9a-d920ec20ee63",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "4b0ea7f4-3c91-44a6-a017-ba6bfc7a4875",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "71f9b056-3635-4d1e-a2c7-76af1d1c4166",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "ac12cea2-8107-45a9-8967-e5f77495a6fc",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "fd30ae14-70b1-412b-8756-85113a28e0dd",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "722304a5-cb04-468c-9f2e-11df2311be52",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "16846e41-9426-44a4-9a60-3b79e8ad571d",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "5f6790df-1fad-4891-a734-a23e93ce49bb",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "d0499232-c9f7-4981-81e2-deac51126565",
+    "effect": "comic-hit"
+  },
+  {
+    "skill": "c73ddb12-9716-4acb-a936-937a5d8b9892",
+    "effect": "comic-critical"
+  },
+  {
+    "skill": "bd7e478a-b916-4a9e-a5b1-c2d80c57011f",
+    "effect": "comic-shot"
+  },
+  {
+    "skill": "de2048dc-1ee5-44c9-b767-edb0662fba0a",
+    "effect": "comic-shot"
+  },
+  {
+    "skill": "8ec5b69e-371b-402e-929f-a1fb866809de",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "2d61945d-1d2f-45d9-8f47-f1ec66ef8703",
+    "effect": "comic-magic"
+  },
+  {
+    "skill": "5b3fa035-1c9c-4219-b335-27bc548fe010",
+    "effect": "comic-slash"
+  },
+  {
+    "skill": "251e51d2-bd36-41ad-a535-3eda631de3b9",
+    "effect": "comic-shot"
+  }
+]

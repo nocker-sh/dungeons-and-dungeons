@@ -1,0 +1,135 @@
+{
+  "width": 5,
+  "height": 5,
+  "start": "world-town",
+  "tiles": [
+    {
+      "id": "world-town",
+      "x": 0,
+      "y": 2,
+      "name": "最初の街",
+      "biome": "village",
+      "settlement": true,
+      "place": "world-map"
+    },
+    {
+      "id": "world-road",
+      "x": 1,
+      "y": 2,
+      "name": "街道",
+      "biome": "road"
+    },
+    {
+      "id": "world-village",
+      "x": 2,
+      "y": 2,
+      "name": "街道の村",
+      "biome": "village",
+      "settlement": true,
+      "place": "world-village",
+      "goods": [
+        {
+          "good": "contract-paper-nui",
+          "count": 1
+        },
+        {
+          "good": "contract-paper-tris",
+          "count": 1
+        },
+        {
+          "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "world-forest-road",
+      "x": 3,
+      "y": 2,
+      "name": "森への小道",
+      "biome": "forest",
+      "requires": ["world:forest-path"]
+    },
+    {
+      "id": "world-orchard",
+      "x": 4,
+      "y": 2,
+      "name": "黄金の森",
+      "biome": "forest",
+      "requires": ["world:forest-path"],
+      "goods": [
+        {
+          "good": "golden-apple",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "world-forest-camp",
+      "x": 4,
+      "y": 1,
+      "name": "森の拠点",
+      "biome": "forest",
+      "settlement": true,
+      "requires": ["world:forest-path"],
+      "place": "world-forest-camp",
+      "goods": [
+        {
+          "good": "contract-paper-zaza",
+          "count": 1
+        }
+      ],
+      "dungeon": "e350494d-9aa2-48a1-8b0d-58b170c11c67"
+    },
+    {
+      "id": "world-north-road",
+      "x": 2,
+      "y": 1,
+      "name": "北の坂道",
+      "biome": "road"
+    },
+    {
+      "id": "world-mountain",
+      "x": 2,
+      "y": 0,
+      "name": "岩山の拠点",
+      "biome": "mountain",
+      "settlement": true,
+      "goods": [
+        {
+          "good": "474f33dd-079e-46e8-b11b-8549f6cf48cf",
+          "count": 2
+        },
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 2
+        }
+      ],
+      "dungeon": "c4b1634c-03bc-4e65-8443-dcb1cbf44e98"
+    },
+    {
+      "id": "world-south-road",
+      "x": 2,
+      "y": 3,
+      "name": "湿地への道",
+      "biome": "road"
+    },
+    {
+      "id": "world-wetland",
+      "x": 2,
+      "y": 4,
+      "name": "白い花の湿地",
+      "biome": "wetland",
+      "goods": [
+        {
+          "good": "contract-paper-haro",
+          "count": 1
+        },
+        {
+          "good": "wetland-flower",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1897 @@
+[
+  {
+    "id": "bd1bcdef-8b15-4093-a6e1-a7e998f8ae99",
+    "slug": "whirl",
+    "name": "大車輪斬り",
+    "desc": "敵をまとめて斬り払う",
+    "uses": 8,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 0.9,
+    "target": "foes"
+  },
+  {
+    "id": "8efbad09-d229-43f8-b5f0-ca5ffbb3e9ed",
+    "slug": "charge",
+    "name": "突進",
+    "desc": "一直線に飛び込む",
+    "uses": 10,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.4
+  },
+  {
+    "id": "d9836535-0f35-4b52-b67c-d9bb2256b2d6",
+    "slug": "focus",
+    "name": "気合いため",
+    "desc": "次の一撃が倍になる",
+    "uses": 6,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "charge",
+      "turns": 3
+    }
+  },
+  {
+    "id": "28ec59cd-767b-45ad-92ce-4d6baa44ee30",
+    "slug": "bash",
+    "name": "シールドバッシュ",
+    "desc": "盾で殴って怯ませる",
+    "uses": 8,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.1,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.3
+    }
+  },
+  {
+    "id": "eae8d826-4677-4a65-ae1c-8ebe25cfa137",
+    "slug": "taunt",
+    "name": "挑発",
+    "desc": "敵の単体攻撃を引きつけ、受ける被害を25％減らす。全体攻撃は引きつけられない。",
+    "uses": 6,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "taunt",
+      "turns": 3
+    }
+  },
+  {
+    "id": "00d806c9-63ec-4c9e-aa00-5399ac913892",
+    "slug": "wall",
+    "name": "鉄壁",
+    "desc": "全員の被害を減らす",
+    "uses": 4,
+    "kind": "support",
+    "target": "allies",
+    "status": {
+      "kind": "protect",
+      "turns": 1
+    }
+  },
+  {
+    "id": "1058fc65-094d-4268-8c71-f25f0c43f05d",
+    "slug": "prayer",
+    "name": "癒やしの祈り",
+    "desc": "仲間の傷を癒やす",
+    "uses": 12,
+    "kind": "heal",
+    "power": 2.2,
+    "school": "sun"
+  },
+  {
+    "id": "71d2194c-4c53-485e-8aaa-d3356533ba96",
+    "slug": "holy",
+    "name": "聖なる光",
+    "desc": "闇の敵に大きく効く",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.8,
+    "school": "sun"
+  },
+  {
+    "id": "7b4e37f9-6616-40e2-a7ab-9fc124d04b67",
+    "slug": "bless",
+    "name": "守護の祝福",
+    "desc": "次の被害を防ぐ",
+    "uses": 6,
+    "kind": "support",
+    "target": "ally",
+    "status": {
+      "kind": "protect",
+      "turns": 2
+    },
+    "school": "sun"
+  },
+  {
+    "id": "b2216d3b-fb2b-49d3-b799-f07f9214f49e",
+    "slug": "shears",
+    "name": "裁ち鋏",
+    "desc": "角の鋏で敵を断ち切る",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2
+  },
+  {
+    "id": "c0448908-364a-496d-8565-ea898159a6d8",
+    "slug": "stitch",
+    "name": "赤糸縫い",
+    "desc": "赤い糸で敵を縫い止め、動きを止める",
+    "uses": 8,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.6
+    },
+    "school": "demon"
+  },
+  {
+    "id": "3cddb15d-abfd-4f65-8d98-6cc44cb3b502",
+    "slug": "blood",
+    "name": "血の契約",
+    "desc": "HPを削って次の一撃を倍に",
+    "uses": 6,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "charge",
+      "turns": 3
+    }
+  },
+  {
+    "id": "8eef2842-2a49-4051-90fd-5c03957cd9b0",
+    "slug": "pick",
+    "name": "こじ開け",
+    "desc": "巨大な鍵で守りをこじ開けて貫く",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.8
+  },
+  {
+    "id": "8882f142-16e3-4b7f-8b16-ab7da0bbfa94",
+    "slug": "cage",
+    "name": "鍵穴の檻",
+    "desc": "敵を鍵穴に閉じ込めて動きを止める",
+    "uses": 6,
+    "kind": "support",
+    "target": "foe",
+    "status": {
+      "kind": "bind",
+      "turns": 2,
+      "chance": 0.7
+    },
+    "school": "earth"
+  },
+  {
+    "id": "4453ab0c-afd9-4597-a708-55b825673d43",
+    "slug": "pebbles",
+    "name": "三連星",
+    "desc": "三つの石を星の軌道に乗せ、敵へ撃ち込む",
+    "uses": 8,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.5,
+    "school": "star"
+  },
+  {
+    "id": "8885be68-e5a8-4485-b7d2-9cfc1dd16ad9",
+    "slug": "stonewall",
+    "name": "石の盾",
+    "desc": "浮かぶ石で仲間の前をふさぐ",
+    "uses": 6,
+    "kind": "support",
+    "target": "allies",
+    "status": {
+      "kind": "protect",
+      "turns": 1
+    }
+  },
+  {
+    "id": "9f72649e-cc75-4e44-8424-1c7841ec2eeb",
+    "slug": "crystal-spray",
+    "name": "結晶の雨",
+    "desc": "背に刺してため込んだ結晶を身震いで撒き散らし、全員を打つ",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.7,
+    "target": "foes"
+  },
+  {
+    "id": "876376fe-bbcf-420c-9e0d-247a8de30481",
+    "slug": "burrow-claw",
+    "name": "掘り爪",
+    "desc": "結晶を掘り当てるときの大振りの爪で、地面ごと抉る",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.5
+  },
+  {
+    "id": "be7e2670-66b1-4395-97e5-11dde683439a",
+    "slug": "helmsplit",
+    "name": "兜割り",
+    "desc": "頭上から刃を落とす",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.9
+  },
+  {
+    "id": "00b0549e-1182-461e-aab6-9eb64dbaa322",
+    "slug": "stepcut",
+    "name": "踏み込み斬り",
+    "desc": "間合いを詰めて斬り、体勢を崩す",
+    "uses": 8,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.2,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.3
+    }
+  },
+  {
+    "id": "8b3bc0e6-628e-48c7-b31e-e54858f30909",
+    "slug": "uppercut",
+    "name": "斬り上げ",
+    "desc": "下から素早く斬り上げる",
+    "uses": 12,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.3
+  },
+  {
+    "id": "8a584337-150a-4a02-9982-70d3ae66f35b",
+    "slug": "twincut",
+    "name": "二段斬り",
+    "desc": "返す刃でもう一度斬る",
+    "uses": 8,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.7
+  },
+  {
+    "id": "8f8d36e7-f367-4135-879f-0ca24a00ae24",
+    "slug": "parry",
+    "name": "見切り",
+    "desc": "相手の動きを読んで身を守る",
+    "uses": 6,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "protect",
+      "turns": 2
+    }
+  },
+  {
+    "id": "5dbcd59c-8fe0-4c02-af23-acf1bae45dc3",
+    "slug": "cleave",
+    "name": "叩き割り",
+    "desc": "重い斧をまっすぐ叩き込む",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2
+  },
+  {
+    "id": "7917b829-510a-47f2-bdbb-43cbea2ef8df",
+    "slug": "swingaround",
+    "name": "振り回し",
+    "desc": "斧を回して周りごと巻き込む",
+    "uses": 8,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1,
+    "target": "foes"
+  },
+  {
+    "id": "5334baa9-0ed4-4f35-bda6-a8e3bfc6c131",
+    "slug": "allmight",
+    "name": "渾身の一撃",
+    "desc": "身体ごと振り抜く大振り",
+    "uses": 4,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2.6
+  },
+  {
+    "id": "f69b6c7a-4752-4912-b17b-5d89b98abe5f",
+    "slug": "doublehit",
+    "name": "重ね打ち",
+    "desc": "同じ場所を二度打つ",
+    "uses": 10,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.3
+  },
+  {
+    "id": "92355567-38c4-4b88-bfd2-e993971cbd0a",
+    "slug": "magicbullet",
+    "name": "魔弾",
+    "desc": "魔力を弾にして撃ち抜く",
+    "uses": 14,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.2,
+    "school": "star"
+  },
+  {
+    "id": "a6094156-68f1-4ef6-b79e-d06a3731cfb5",
+    "slug": "buckshot",
+    "name": "散弾",
+    "desc": "広がる弾で敵全員を撃つ",
+    "uses": 8,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.85,
+    "target": "foes"
+  },
+  {
+    "id": "b28c6f45-0b10-453b-a1bb-a672fc913716",
+    "slug": "piercer",
+    "name": "貫通弾",
+    "desc": "厚い皮も貫く重い弾",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.8
+  },
+  {
+    "id": "04477410-478f-4067-ab02-63b226a228a9",
+    "slug": "flashshot",
+    "name": "閃光弾",
+    "desc": "光る弾で目をつぶし、足を止める",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.6,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.5
+    }
+  },
+  {
+    "id": "5c68b128-52ca-4579-acf6-01b24cb1b8da",
+    "slug": "thrust",
+    "name": "刺突",
+    "desc": "急所を狙って短く刺す",
+    "uses": 14,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.2
+  },
+  {
+    "id": "7dabc84e-0007-4054-83f2-237a3541a3d2",
+    "slug": "flurry",
+    "name": "連ね斬り",
+    "desc": "小刻みに刻み続ける",
+    "uses": 8,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.5
+  },
+  {
+    "id": "c8b764f9-d92b-42a6-ac8a-e5de669daf6b",
+    "slug": "throwknife",
+    "name": "投げ短剣",
+    "desc": "遠くの敵へ刃を投げる",
+    "uses": 10,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.1
+  },
+  {
+    "id": "e75a90a6-ff0c-4ef9-a35c-1b898dc27b24",
+    "slug": "poisonedge",
+    "name": "毒塗り",
+    "desc": "刃に塗った毒を流し込む",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 0.8,
+    "status": {
+      "kind": "poison",
+      "turns": 3,
+      "chance": 0.6
+    },
+    "school": "plant"
+  },
+  {
+    "id": "fe055010-6b2b-42a7-b0e5-5de0b97407eb",
+    "slug": "brawl",
+    "name": "殴る",
+    "desc": "武器を使わずに殴りつける",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 0.35
+  },
+  {
+    "id": "3f7c0a52-9f0e-4d62-9a4d-7b1c5e0d84aa",
+    "slug": "mend",
+    "name": "防具の修復",
+    "desc": "味方ひとりの防具の耐久を戻す。",
+    "uses": 4,
+    "kind": "heal",
+    "target": "ally",
+    "repair": 40
+  },
+  {
+    "id": "5e62be96-7af0-4405-bda6-d0f268782b5d",
+    "slug": "heavy-swing",
+    "name": "重い一振り",
+    "desc": "刃の重さをそのまま落とす",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2.3
+  },
+  {
+    "id": "1c495318-fb97-4117-97ea-64fca8f6d597",
+    "slug": "wide-sweep",
+    "name": "なぎ払い",
+    "desc": "広く薙いで敵全体を斬る",
+    "uses": 7,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1,
+    "target": "foes"
+  },
+  {
+    "id": "40bf2edd-39f8-4746-a6f5-4474a54e448f",
+    "slug": "brace",
+    "name": "受け構え",
+    "desc": "刃を立てて次の被害を減らす",
+    "uses": 5,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "protect",
+      "turns": 1
+    }
+  },
+  {
+    "id": "434d322d-efee-49da-ab2d-7824f16b3da3",
+    "slug": "quick-thrust",
+    "name": "早突き",
+    "desc": "小さく速く突き込む",
+    "uses": 12,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.25
+  },
+  {
+    "id": "685fff6a-eaf5-42d6-885f-7b3a5b54b6d9",
+    "slug": "cross-cut",
+    "name": "十字斬り",
+    "desc": "二度斬りつけて傷を広げる",
+    "uses": 7,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.75
+  },
+  {
+    "id": "e93819c5-64b8-427b-be24-f78c65092472",
+    "slug": "deflect",
+    "name": "いなし",
+    "desc": "相手の力を受け流す",
+    "uses": 6,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "protect",
+      "turns": 1
+    }
+  },
+  {
+    "id": "749a8d47-a200-4a61-8500-58551b159112",
+    "slug": "crusher",
+    "name": "打ち砕き",
+    "desc": "刃の腹で叩き潰す",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2.1
+  },
+  {
+    "id": "2507bf9f-56c7-4da0-a5e4-3ee7462df06f",
+    "slug": "axe-storm",
+    "name": "旋風斧",
+    "desc": "体ごと回して敵全体を巻き込む",
+    "uses": 7,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.05,
+    "target": "foes"
+  },
+  {
+    "id": "7b7070ca-1f11-4a89-a87f-a4a2dda07b3f",
+    "slug": "hook-pull",
+    "name": "引っ掛け",
+    "desc": "刃を引っ掛けて動きを止める",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 0.9,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.5
+    }
+  },
+  {
+    "id": "25b977ed-49ba-482d-9961-577e30fe9a69",
+    "slug": "rapid-fire",
+    "name": "速射",
+    "desc": "狙いを絞らず撃ち続ける",
+    "uses": 12,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.1
+  },
+  {
+    "id": "2fa437ac-df19-4b5d-bf76-978f9079e98a",
+    "slug": "charged-shot",
+    "name": "溜め撃ち",
+    "desc": "魔力を溜めて撃ち抜く",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 2
+  },
+  {
+    "id": "63cf6ce7-1670-463b-a736-a03d9ef6b55a",
+    "slug": "mend-bullet",
+    "name": "治癒弾",
+    "desc": "癒やしの魔力を撃ち込む",
+    "uses": 6,
+    "kind": "heal",
+    "power": 1.2,
+    "target": "ally",
+    "school": "sun"
+  },
+  {
+    "id": "864418e3-630a-4da6-ab41-efc3306a558f",
+    "slug": "back-stab",
+    "name": "背刺し",
+    "desc": "隙をついて背に刺し込む",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.9
+  },
+  {
+    "id": "673d49db-5332-4154-b50f-7a180b01291f",
+    "slug": "knife-fan",
+    "name": "投げ散らし",
+    "desc": "短剣をまとめて投げ散らす",
+    "uses": 7,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.85,
+    "target": "foes"
+  },
+  {
+    "id": "fb2c2376-9adf-4859-98d7-e1051fb64565",
+    "slug": "shadow-step",
+    "name": "影踏み",
+    "desc": "影に沈んで次の一撃を倍にする",
+    "uses": 5,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "charge",
+      "turns": 3
+    },
+    "school": "demon"
+  },
+  {
+    "id": "6391bc8f-0654-4c4b-b229-a3d5958d9b2a",
+    "slug": "curse-mark",
+    "name": "呪いの紋",
+    "desc": "敵に紋を刻み、内から腐らせる",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.8,
+    "status": {
+      "kind": "poison",
+      "turns": 3,
+      "chance": 0.7
+    },
+    "school": "demon"
+  },
+  {
+    "id": "6c09f8d4-0cad-47ae-a3a9-fbff0f2f41e8",
+    "slug": "offering",
+    "name": "生贄の一撃",
+    "desc": "己の血を対価に、遠くの敵を撃ち抜く",
+    "uses": 4,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 2.6,
+    "school": "demon",
+    "sacrifice": 0.15
+  },
+  {
+    "id": "9e66d6ac-db40-48ff-a268-3a170a823406",
+    "slug": "chain-curse",
+    "name": "縛鎖の呪い",
+    "desc": "呪いの鎖で敵全員の足を止める",
+    "uses": 4,
+    "kind": "support",
+    "target": "foes",
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.55
+    },
+    "school": "demon"
+  },
+  {
+    "id": "002bfd2d-0deb-4f3a-bcf8-2f543edc3921",
+    "slug": "meteor-arrow",
+    "name": "流星の矢",
+    "desc": "星の光を矢にして遠くから貫く",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.9,
+    "school": "star"
+  },
+  {
+    "id": "dd5acbb1-06f5-4879-90df-e3f0a1cae2c2",
+    "slug": "stardust-rain",
+    "name": "星屑の雨",
+    "desc": "星屑を降らせて敵全員を打つ",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1,
+    "target": "foes",
+    "school": "star"
+  },
+  {
+    "id": "28352369-1c2d-469a-ad4e-0e01736e0284",
+    "slug": "rock-wall",
+    "name": "岩塊の壁",
+    "desc": "岩を持ち上げて仲間全員をかばう",
+    "uses": 4,
+    "kind": "support",
+    "target": "allies",
+    "status": {
+      "kind": "protect",
+      "turns": 1
+    },
+    "school": "earth"
+  },
+  {
+    "id": "f426868b-4d2b-4a2a-a10d-7a2adaeb39c5",
+    "slug": "earth-mend",
+    "name": "大地の継ぎ",
+    "desc": "土と鉄をなじませ、味方の防具を継ぐ",
+    "uses": 5,
+    "kind": "heal",
+    "target": "ally",
+    "repair": 40,
+    "school": "earth"
+  },
+  {
+    "id": "cbd454cd-a51b-4a36-8a94-894ec3302061",
+    "slug": "sunlit-care",
+    "name": "陽だまりの手当て",
+    "desc": "日なたの温かさで味方の傷を閉じる",
+    "uses": 6,
+    "kind": "heal",
+    "power": 1.6,
+    "target": "ally",
+    "school": "sun"
+  },
+  {
+    "id": "84dc6631-f23f-4147-a232-166e7ba8e2b6",
+    "slug": "cleansing-light",
+    "name": "浄化の光",
+    "desc": "光で仲間全員の毒を洗い、傷を癒やす",
+    "uses": 4,
+    "kind": "heal",
+    "power": 1.1,
+    "target": "allies",
+    "cure": ["poison"],
+    "school": "sun"
+  },
+  {
+    "id": "0b522417-ce8b-4e2c-88bd-b5e53f12880c",
+    "slug": "revival-light",
+    "name": "再臨の光",
+    "desc": "倒れた仲間を日の光で起こす",
+    "uses": 4,
+    "kind": "heal",
+    "power": 1,
+    "target": "ally",
+    "revive": true,
+    "school": "sun"
+  },
+  {
+    "id": "7673320b-bc7f-4352-b4aa-501439288b65",
+    "slug": "thorn-vine",
+    "name": "棘の蔓",
+    "desc": "棘の蔓を伸ばし、毒を流し込む",
+    "uses": 7,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1,
+    "status": {
+      "kind": "poison",
+      "turns": 3,
+      "chance": 0.65
+    },
+    "school": "plant"
+  },
+  {
+    "id": "da456b26-0ffd-49d0-8557-685dcce51c4b",
+    "slug": "bud-blessing",
+    "name": "若芽の恵み",
+    "desc": "若芽が仲間全員の傷を少しずつ塞ぐ",
+    "uses": 4,
+    "kind": "support",
+    "target": "allies",
+    "status": {
+      "kind": "regen",
+      "turns": 3
+    },
+    "school": "plant"
+  },
+  {
+    "id": "5c7b54b7-6ff2-4401-a050-68e4ca01e703",
+    "slug": "iron-flurry",
+    "name": "鉄拳連打",
+    "desc": "素手で立て続けに打ち込む。",
+    "uses": 9,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.45
+  },
+  {
+    "id": "2ba9e5ab-a039-4030-ad4f-1abec1a70c44",
+    "slug": "key-strike",
+    "name": "影切り",
+    "desc": "大きな鋏で影ごと断ち切る。",
+    "uses": 9,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.55
+  },
+  {
+    "id": "5970f430-d9c1-48f8-a33f-15da21427ecf",
+    "slug": "door-guard",
+    "name": "扉受け",
+    "desc": "担いだ扉を構えて受ける。",
+    "uses": 6,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "protect",
+      "turns": 2
+    }
+  },
+  {
+    "id": "c293e4c3-cff4-4f98-a4a0-1425fad01425",
+    "slug": "door-slam",
+    "name": "扉で殴る",
+    "desc": "扉ごと相手へ叩きつける。",
+    "uses": 7,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.7
+  },
+  {
+    "id": "2092ba48-5611-4410-868b-827b2c436cb9",
+    "slug": "three-bite",
+    "name": "三つ首の噛みつき",
+    "desc": "鎖の三つ首が敵全員へ噛みつく。",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1,
+    "target": "foes",
+    "school": "demon"
+  },
+  {
+    "id": "39ae5c7e-594f-4e6c-b3cd-d259739ae741",
+    "slug": "soul-reap",
+    "name": "魂刈り",
+    "desc": "大鎌で魂ごと刈り取る。",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2.3,
+    "school": "demon"
+  },
+  {
+    "id": "d1b6994f-4938-4abb-a935-5a9d70df3215",
+    "slug": "ground-roar",
+    "name": "地鳴らし",
+    "desc": "地を鳴らして敵全員の足元を崩す。",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.25,
+    "target": "foes",
+    "school": "earth"
+  },
+  {
+    "id": "9278d955-740a-4b72-97da-dbff94e25989",
+    "slug": "stone-skin",
+    "name": "石肌の護り",
+    "desc": "肌を石に変えて受け止める。",
+    "uses": 6,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "protect",
+      "turns": 2
+    },
+    "school": "earth"
+  },
+  {
+    "id": "53f2fea7-9c77-41a6-a817-5329182d1e00",
+    "slug": "vine-bind",
+    "name": "蔦縛り",
+    "desc": "蔦で敵ひとりを縛りつける。",
+    "uses": 5,
+    "kind": "support",
+    "target": "foe",
+    "status": {
+      "kind": "bind",
+      "turns": 2,
+      "chance": 0.6
+    },
+    "school": "plant"
+  },
+  {
+    "id": "fb03dbf5-a8ec-45c6-8bcc-f7afdcf2bdce",
+    "slug": "sprout-breath",
+    "name": "芽吹きの息",
+    "desc": "芽吹きの息で味方ひとりを癒やす。",
+    "uses": 8,
+    "kind": "heal",
+    "power": 2.4,
+    "target": "ally",
+    "school": "plant"
+  },
+  {
+    "id": "9f006a85-3aab-4b0f-8619-5def4d586a78",
+    "slug": "comet-shot",
+    "name": "彗星の一矢",
+    "desc": "彗星を呼んで撃ち抜く。",
+    "uses": 4,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 2.4,
+    "school": "star"
+  },
+  {
+    "id": "b82a464b-3de5-4eaa-bac0-0102742782f4",
+    "slug": "soul-eater",
+    "name": "魂喰らい",
+    "desc": "自分の魂を削って喰らいつく。",
+    "uses": 4,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2.4,
+    "school": "demon",
+    "sacrifice": 0.12
+  },
+  {
+    "id": "4e09d1d7-dd44-46a7-9c0c-b2eacaefcf43",
+    "slug": "shade-familiar",
+    "name": "影の使い魔",
+    "desc": "影の使い魔が敵全員を裂く。",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.1,
+    "target": "foes",
+    "school": "demon"
+  },
+  {
+    "id": "bcb6d43d-5055-43a1-96a9-f2c93851b210",
+    "slug": "sun-vow",
+    "name": "日輪の誓い",
+    "desc": "日輪に誓い、味方全員を少し癒やす。",
+    "uses": 5,
+    "kind": "heal",
+    "power": 1.8,
+    "target": "allies",
+    "school": "sun"
+  },
+  {
+    "id": "dc9819b7-8cdd-4144-80a4-eee1484df447",
+    "slug": "grave-rite",
+    "name": "土くれの手当て",
+    "desc": "土をかぶせて味方ひとりの防具を繕う。",
+    "uses": 5,
+    "kind": "heal",
+    "target": "ally",
+    "repair": 50,
+    "school": "earth"
+  },
+  {
+    "id": "0de1870d-2513-4935-93ac-eeddd40fddd9",
+    "slug": "bone-rain",
+    "name": "骨の雨",
+    "desc": "骨を高くから落として割る癖がある。割れた破片が降りそそぐ。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.45,
+    "target": "foes"
+  },
+  {
+    "id": "a9742f96-76fc-477c-bd58-ce2b6f9f6ea3",
+    "slug": "stomp",
+    "name": "踏みつけ",
+    "desc": "骨を踏み割るときの大きな足で、上から踏みつける。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.6
+  },
+  {
+    "id": "319a9920-9562-4e02-bcaf-98d3ae14f013",
+    "slug": "grave-grab",
+    "name": "墓土つかみ",
+    "desc": "墓の土ごと、鉤爪でわしづかみにする。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.1,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.4
+    }
+  },
+  {
+    "id": "08cece1a-363a-4b43-a558-cdd0e9bb60cd",
+    "slug": "rust-bite",
+    "name": "錆びた牙",
+    "desc": "閉じた門のすき間に並ぶ、錆びた鉄杭で噛みつく。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.4,
+    "status": {
+      "kind": "poison",
+      "turns": 3,
+      "chance": 0.4
+    }
+  },
+  {
+    "id": "c2576d5a-ca55-4beb-ac73-7884f9dcea47",
+    "slug": "gear-spin",
+    "name": "歯車の回転",
+    "desc": "拾い集めた歯車を回して、周りを削る。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 0.45,
+    "target": "foes"
+  },
+  {
+    "id": "20196775-1b91-4425-954b-a67b54e00cef",
+    "slug": "iron-press",
+    "name": "鉄塊落とし",
+    "desc": "ため込んだ鉄の塊を、上から落とす。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.8
+  },
+  {
+    "id": "f0a77498-4e0a-4062-8179-0099b1aa73ec",
+    "slug": "shade-touch",
+    "name": "影の手",
+    "desc": "影が伸びて足を止める。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.2,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.5
+    }
+  },
+  {
+    "id": "b241f77e-acb1-4303-8f80-71d617dffd25",
+    "slug": "spore-burst",
+    "name": "胞子まき",
+    "desc": "胞子をまき散らす。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.4,
+    "target": "foes",
+    "status": {
+      "kind": "poison",
+      "turns": 3,
+      "chance": 0.35
+    }
+  },
+  {
+    "id": "1afac4ed-2737-4efa-89fe-17fad1c1551b",
+    "slug": "poison-spit",
+    "name": "毒の唾",
+    "desc": "毒花の汁を口にため、唾にして吐きかける。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.3,
+    "status": {
+      "kind": "poison",
+      "turns": 3,
+      "chance": 0.5
+    }
+  },
+  {
+    "id": "e7e375ed-2a98-458a-b80e-5540da67db1f",
+    "slug": "vine-lash",
+    "name": "蔦の鞭",
+    "desc": "ふだん葉や蕾を支えている蔦をしならせて打ち、絡める。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.5,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.35
+    }
+  },
+  {
+    "id": "448e40f1-5e0d-465a-b025-80cf72307c05",
+    "slug": "bloom-burst",
+    "name": "大輪の開花",
+    "desc": "抱えた白い殻が大輪のように開き、毒の風を吹き出す。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.45,
+    "target": "foes",
+    "status": {
+      "kind": "poison",
+      "turns": 3,
+      "chance": 0.4
+    }
+  },
+  {
+    "id": "2ef5781b-1583-4562-91da-7a26f6866d66",
+    "slug": "curse-wave",
+    "name": "呪いの波",
+    "desc": "どこかで聞き覚えた文句を、意味も知らずに唱える。呪いの波が広がる。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.45,
+    "target": "foes"
+  },
+  {
+    "id": "b32f5694-90f9-4180-a703-7cc3bf39fb7a",
+    "slug": "seal-break",
+    "name": "封蝋割り",
+    "desc": "祭壇に落ちている黒い封蝋を砕いて、叩きつける。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2
+  },
+  {
+    "id": "871cd85b-2b84-4d04-a8f8-56a8a84ab34a",
+    "slug": "soul-drain",
+    "name": "魂抜き",
+    "desc": "まばたきもせずに見つめ、魂を引き抜く。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.5
+  },
+  {
+    "id": "ed55c469-5ca5-4c3f-b7f2-569fb78dd734",
+    "slug": "abyss-gaze",
+    "name": "底の眼",
+    "desc": "足もとの粘体の底から別の眼がのぞく。見られた体がすくむ。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.4,
+    "target": "foes",
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.4
+    }
+  },
+  {
+    "id": "b5c7ac1e-222a-4bb4-9e83-1d5bc4ca6101",
+    "slug": "hold-line",
+    "name": "前線を守る",
+    "desc": "仲間全員に守りを付け、次に受ける一撃を軽減する。",
+    "uses": 6,
+    "kind": "support",
+    "target": "allies",
+    "status": {
+      "kind": "protect",
+      "turns": 2
+    }
+  },
+  {
+    "id": "49c06f75-74e8-4a31-a9bb-d6b09e96d010",
+    "slug": "dungeon-blessing-1",
+    "blessing": true,
+    "name": "渓谷の閃光",
+    "desc": "祝福の光で敵全体を攻撃する",
+    "kind": "hit",
+    "reach": "ranged",
+    "target": "foes",
+    "power": 1.15,
+    "uses": 4
+  },
+  {
+    "id": "49c06f75-74e8-4a31-a9bb-d6b09e96d011",
+    "slug": "dungeon-blessing-2",
+    "blessing": true,
+    "name": "命の湧水",
+    "desc": "味方全員のHPを回復する",
+    "kind": "heal",
+    "target": "allies",
+    "power": 1,
+    "uses": 4
+  },
+  {
+    "id": "49c06f75-74e8-4a31-a9bb-d6b09e96d012",
+    "slug": "dungeon-blessing-3",
+    "blessing": true,
+    "name": "岩壁の加護",
+    "desc": "味方全員を守り、次に受ける被害を軽くする",
+    "kind": "support",
+    "target": "allies",
+    "status": {
+      "kind": "protect",
+      "turns": 2
+    },
+    "uses": 4
+  },
+  {
+    "id": "49c06f75-74e8-4a31-a9bb-d6b09e96d013",
+    "slug": "dungeon-blessing-4",
+    "blessing": true,
+    "name": "再起の灯",
+    "desc": "倒れた味方ひとりを蘇らせる",
+    "kind": "heal",
+    "target": "ally",
+    "power": 1,
+    "revive": true,
+    "uses": 2
+  },
+  {
+    "id": "49c06f75-74e8-4a31-a9bb-d6b09e96d014",
+    "slug": "dungeon-blessing-5",
+    "blessing": true,
+    "name": "猛進の兆し",
+    "desc": "味方ひとりの次の一撃を強くする",
+    "kind": "support",
+    "target": "ally",
+    "status": {
+      "kind": "charge",
+      "turns": 2
+    },
+    "uses": 4
+  },
+  {
+    "id": "49c06f75-74e8-4a31-a9bb-d6b09e96d015",
+    "slug": "dungeon-blessing-6",
+    "blessing": true,
+    "name": "毒花の風",
+    "desc": "敵全体を毒にする遠距離攻撃",
+    "kind": "hit",
+    "reach": "ranged",
+    "target": "foes",
+    "power": 0.65,
+    "status": {
+      "kind": "poison",
+      "turns": 3
+    },
+    "uses": 4
+  },
+  {
+    "id": "49c06f75-74e8-4a31-a9bb-d6b09e96d016",
+    "slug": "blood-blessing-flare",
+    "blessing": true,
+    "name": "血の奔流",
+    "desc": "敵全体に強力な遠距離攻撃。体力を捧げた祭壇だけで得られる。",
+    "kind": "hit",
+    "reach": "ranged",
+    "target": "foes",
+    "power": 1.9,
+    "uses": 3
+  },
+  {
+    "id": "49c06f75-74e8-4a31-a9bb-d6b09e96d017",
+    "slug": "blood-blessing-spring",
+    "blessing": true,
+    "name": "命の返礼",
+    "desc": "味方全員のHPを大きく回復する。体力を捧げた祭壇だけで得られる。",
+    "kind": "heal",
+    "target": "allies",
+    "power": 1.8,
+    "uses": 3
+  },
+  {
+    "slug": "plant-cleansing",
+    "name": "薬草の浄化",
+    "desc": "味方全員の毒を取り除き、少し回復する。",
+    "uses": 4,
+    "kind": "heal",
+    "target": "allies",
+    "power": 1.2,
+    "cure": ["poison"],
+    "school": "plant",
+    "id": "775625cf-3b7c-452e-aae8-1494babc0001"
+  },
+  {
+    "slug": "plant-revival",
+    "name": "芽吹きの蘇生",
+    "desc": "倒れた味方ひとりを起こす。継続回復と合わせて立て直す。",
+    "uses": 3,
+    "kind": "heal",
+    "target": "ally",
+    "power": 0.9,
+    "revive": true,
+    "school": "plant",
+    "id": "775625cf-3b7c-452e-aae8-1494babc0002"
+  },
+  {
+    "slug": "hero-rescue",
+    "name": "勇者の救援",
+    "desc": "倒れた味方ひとりを起こす。回数は少ないが回復役の代わりを担える。",
+    "uses": 2,
+    "kind": "heal",
+    "target": "ally",
+    "power": 0.8,
+    "revive": true,
+    "school": "sun",
+    "id": "775625cf-3b7c-452e-aae8-1494babc0003"
+  },
+  {
+    "slug": "rally-ally",
+    "name": "攻勢の合図",
+    "desc": "味方ひとりの次の攻撃を倍にする。強い一撃を持つ仲間と連携する。",
+    "uses": 4,
+    "kind": "support",
+    "target": "ally",
+    "status": {
+      "kind": "charge",
+      "turns": 3
+    },
+    "id": "775625cf-3b7c-452e-aae8-1494babc0004"
+  },
+  {
+    "slug": "poison-finish",
+    "name": "毒を裂く刃",
+    "desc": "毒状態の敵には威力が1.8倍。毒を仕込む仲間との連携技。",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.3,
+    "bonusAgainst": {
+      "status": "poison",
+      "factor": 1.8
+    },
+    "id": "775625cf-3b7c-452e-aae8-1494babc0005"
+  },
+  {
+    "slug": "leech-shot",
+    "name": "血を奪う魔弾",
+    "desc": "最大HP8％を払い、敵に与えたHP被害の65％を吸収する。",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.15,
+    "sacrifice": 0.08,
+    "drain": 0.65,
+    "school": "demon",
+    "id": "775625cf-3b7c-452e-aae8-1494babc0006"
+  },
+  {
+    "slug": "earth-pin",
+    "name": "足止めの震脚",
+    "desc": "敵ひとりを攻撃し、65％の確率で次の行動を縛る。",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.1,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.65
+    },
+    "school": "earth",
+    "id": "775625cf-3b7c-452e-aae8-1494babc0007"
+  },
+  {
+    "slug": "blood-punch",
+    "name": "生命を奪う拳",
+    "desc": "敵を殴り、与えたHP被害の60％を吸収する。",
+    "uses": 7,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2,
+    "drain": 0.6,
+    "id": "775625cf-3b7c-452e-aae8-1494babc0008"
+  },
+  {
+    "id": "3178c33a-f33e-4908-8247-4403c6d56419",
+    "slug": "tongue-lash",
+    "name": "べろ打ち",
+    "desc": "虫を待つあいだ垂らしていた長い舌で打ち、足に巻きつく。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.3,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.3
+    }
+  },
+  {
+    "id": "6aed3e33-557b-483e-aebb-84d4a8b28b0d",
+    "slug": "sleeve-grab",
+    "name": "袖つかみ",
+    "desc": "だらりと垂れた袖や長い首を巻きつけ、つかんで離さない。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.1,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.4
+    }
+  },
+  {
+    "id": "c6284fa4-43f2-4f89-bad0-2724505dc947",
+    "slug": "candle-flame",
+    "name": "ろうそくの火",
+    "desc": "いつもはかばっている大事な火を、このときだけ吹きつける。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.3
+  },
+  {
+    "id": "96af34af-a342-4316-928f-505ab2731baa",
+    "slug": "wall-tackle",
+    "name": "石壁あたり",
+    "desc": "固まったふりをやめて、重い体ごとぶつかってくる。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.8
+  },
+  {
+    "id": "d1d46bed-7671-42b0-90c1-e330a16f3fec",
+    "slug": "swallow-cut",
+    "name": "風切り",
+    "desc": "鉄橋を吹き抜ける風に乗って打ちかかり、足を止める。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.2,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.5
+    }
+  },
+  {
+    "id": "80f3b6ac-41d6-4ee9-ba74-ed609ab48333",
+    "slug": "gulp",
+    "name": "まるのみ",
+    "desc": "落とし物をしまう大きな袋で、相手まで包みこむ。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.8
+  },
+  {
+    "id": "d5bd6b12-0324-4245-8b0f-31d5d04fbbda",
+    "slug": "neck-peck",
+    "name": "しなり突き",
+    "desc": "水面の魚を狙うときと同じ速さで、長い首をしならせて突く。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.4,
+    "status": {
+      "kind": "poison",
+      "turns": 3,
+      "chance": 0.4
+    }
+  },
+  {
+    "id": "84b5c834-0808-49c0-b9ba-2f5bcb9e084b",
+    "slug": "soot-swirl",
+    "name": "すすの渦",
+    "desc": "鉄骨にたまったすすを袖から巻き上げ、周りを汚す。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 0.45,
+    "target": "foes"
+  },
+  {
+    "id": "3d6d60b7-f7d2-494f-aa4c-46093ca1cc33",
+    "slug": "shell-bump",
+    "name": "殻ぶつけ",
+    "desc": "ガラスを這う重い殻ごと体当たりし、粘液で絡める。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.5,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.35
+    }
+  },
+  {
+    "id": "3a9aba66-59f9-4e24-b980-5b46df81fe3e",
+    "slug": "slime-spray",
+    "name": "粘液まき",
+    "desc": "這った跡に残る毒の粘液を、まとめてまき散らす。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.4,
+    "target": "foes",
+    "status": {
+      "kind": "poison",
+      "turns": 3,
+      "chance": 0.35
+    }
+  },
+  {
+    "id": "e871c439-41f5-491c-8260-808422a03d80",
+    "slug": "marsh-splash",
+    "name": "沼しぶき",
+    "desc": "魚を待っていた沼の水を跳ね上げる。毒が混ざっている。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.4,
+    "target": "foes",
+    "status": {
+      "kind": "poison",
+      "turns": 3,
+      "chance": 0.35
+    }
+  },
+  {
+    "id": "bd093901-181f-4448-8ad2-8dda2c4a5746",
+    "slug": "two-bite",
+    "name": "ふたくち噛み",
+    "desc": "拾い物を確かめるお腹の口でも、噛みつく。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2
+  },
+  {
+    "id": "2638ec61-1720-4cab-8370-29b7445c6161",
+    "slug": "sleep-star",
+    "name": "ねむりの星",
+    "desc": "眠りを邪魔されると、帽子の星を振って相手まで眠らせようとする。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.2,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.5
+    }
+  },
+  {
+    "id": "e8a6f050-deb5-4664-95da-1de35bec408c",
+    "slug": "star-dust",
+    "name": "星くず",
+    "desc": "帽子の星からこぼれる星くずを降らせる。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.45,
+    "target": "foes"
+  },
+  {
+    "id": "dd34363a-15cf-4b81-9fc2-3d89dd8ca4e7",
+    "slug": "shadow-fang",
+    "name": "影絵の牙",
+    "desc": "指で作った影絵の獣が、離れた敵に噛みつく。",
+    "uses": 8,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 2,
+    "school": "demon"
+  },
+  {
+    "id": "8adbc6e7-23a3-4aee-bf45-84b2b6c74640",
+    "slug": "mud-splash",
+    "name": "泥はね",
+    "desc": "拾った長靴にためた泥を飛ばして、足を鈍らせる。",
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.9,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.25
+    }
+  },
+  {
+    "id": "71be7e8d-6d09-47ac-8d9a-d920ec20ee63",
+    "slug": "bone-horn",
+    "name": "骨角突き",
+    "desc": "骨のように固めたフードの角を突き出して打つ。",
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.5
+  },
+  {
+    "id": "f65dfc3f-4270-4b0c-9bf9-301afe329bf9",
+    "slug": "grave-care",
+    "name": "弔いの手当て",
+    "desc": "土の匂いのする布で、味方ひとりの傷を押さえる。",
+    "uses": 6,
+    "kind": "heal",
+    "power": 1.9,
+    "target": "ally",
+    "school": "earth"
+  },
+  {
+    "id": "6e7cc289-f522-4d88-9167-d4fb39973544",
+    "slug": "grave-raise",
+    "name": "墓起こし",
+    "desc": "倒れた味方ひとりを、名前を呼んで起こす。起こしたあとの傷が浅い。",
+    "uses": 3,
+    "kind": "heal",
+    "power": 1.6,
+    "target": "ally",
+    "revive": true,
+    "school": "earth"
+  },
+  {
+    "id": "7833da07-ee5f-48fc-8e91-58d3fe4d1367",
+    "slug": "hunter-aid",
+    "name": "狩人の手当て",
+    "desc": "血止めの草で味方ひとりを癒やし、毒と縛りを解く。",
+    "uses": 8,
+    "kind": "heal",
+    "power": 1.7,
+    "target": "ally",
+    "cure": ["poison", "bind"],
+    "school": "plant"
+  },
+  {
+    "id": "cffc2c24-4b7c-4c54-9aeb-3d7acb72fc45",
+    "slug": "waking-leaf",
+    "name": "気付けの葉",
+    "desc": "苦い葉を噛ませ、味方全員の毒と縛りを解く。傷は少しだけ塞ぐ。",
+    "uses": 4,
+    "kind": "heal",
+    "power": 0.5,
+    "target": "allies",
+    "cure": ["poison", "bind"],
+    "school": "plant"
+  },
+  {
+    "id": "fdef2482-ebb4-4184-8638-4460daf0a370",
+    "slug": "grave-hymn",
+    "name": "弔いの歌",
+    "desc": "低い声で歌い、味方全員の傷を少し塞ぐ。",
+    "uses": 4,
+    "kind": "heal",
+    "power": 1.3,
+    "target": "allies",
+    "school": "earth"
+  },
+  {
+    "id": "4b0ea7f4-3c91-44a6-a017-ba6bfc7a4875",
+    "slug": "clod-throw",
+    "name": "土くれ投げ",
+    "desc": "シャベルで固い土をすくって投げる。後ろからでも届く。",
+    "uses": 8,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.2,
+    "school": "earth"
+  },
+  {
+    "id": "71f9b056-3635-4d1e-a2c7-76af1d1c4166",
+    "slug": "fissure",
+    "name": "地割れ",
+    "desc": "地面を踏み割って敵全員を揺らし、30％の確率で次の行動を縛る。",
+    "uses": 4,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 0.7,
+    "target": "foes",
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.3
+    },
+    "school": "earth"
+  },
+  {
+    "id": "ac12cea2-8107-45a9-8967-e5f77495a6fc",
+    "slug": "great-sweep",
+    "name": "大斧の薙ぎ払い",
+    "desc": "斧を大きく振り回し、敵全員を薙ぐ。",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1,
+    "target": "foes"
+  },
+  {
+    "id": "fd30ae14-70b1-412b-8756-85113a28e0dd",
+    "slug": "stubborn-blow",
+    "name": "負けず嫌いの一撃",
+    "desc": "力の加減をやめて、敵ひとりへ叩き込む。",
+    "uses": 4,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2.2
+  },
+  {
+    "id": "722304a5-cb04-468c-9f2e-11df2311be52",
+    "slug": "partner-bite",
+    "name": "相棒の噛みつき",
+    "desc": "籠の相棒が身を乗り出して、近くの敵に噛みつく。",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 1.8
+  },
+  {
+    "id": "16846e41-9426-44a4-9a60-3b79e8ad571d",
+    "slug": "tail-sweep",
+    "name": "相棒の尾払い",
+    "desc": "相棒が尾を振って、近くの敵全員を払う。",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 0.9,
+    "target": "foes"
+  },
+  {
+    "id": "531ebde5-db0a-4458-ba5b-a3daf3ed6df6",
+    "slug": "full-inspection",
+    "name": "総点検",
+    "desc": "仲間全員の防具を見て回り、少しずつ継ぐ。",
+    "uses": 3,
+    "kind": "heal",
+    "target": "allies",
+    "repair": 20,
+    "school": "earth"
+  },
+  {
+    "id": "bfd094e2-1ecc-4f80-9eb5-ca49b31026b7",
+    "slug": "patch-plate",
+    "name": "当て板",
+    "desc": "味方ひとりの防具に板を当て、次の被害を防ぐ。",
+    "uses": 5,
+    "kind": "support",
+    "target": "ally",
+    "status": {
+      "kind": "protect",
+      "turns": 2
+    },
+    "school": "earth"
+  },
+  {
+    "id": "5f6790df-1fad-4891-a734-a23e93ce49bb",
+    "slug": "forge-fist",
+    "name": "炉の拳",
+    "desc": "最大HP8％を払い、焼けた拳で敵ひとりを殴る。",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 2.2,
+    "sacrifice": 0.08
+  },
+  {
+    "id": "d0499232-c9f7-4981-81e2-deac51126565",
+    "slug": "spark-scatter",
+    "name": "火の粉散らし",
+    "desc": "拳を打ち合わせ、近くの敵全員へ火の粉を浴びせる。",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "melee",
+    "power": 0.8,
+    "target": "foes"
+  },
+  {
+    "id": "28a2bfa4-e971-4ccb-9ffe-a83299c5f82a",
+    "slug": "wing-cover",
+    "name": "翼の覆い",
+    "desc": "石の翼で味方ひとりを覆い、長く守る。",
+    "uses": 5,
+    "kind": "support",
+    "target": "ally",
+    "status": {
+      "kind": "protect",
+      "turns": 3
+    },
+    "school": "earth"
+  },
+  {
+    "id": "cf33e30b-3a10-499e-98e6-89998bcce9d8",
+    "slug": "stone-sleep",
+    "name": "石の眠り",
+    "desc": "体を石に寄せて、行動のたびに傷を少しずつ戻す。",
+    "uses": 3,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "regen",
+      "turns": 3
+    },
+    "school": "earth"
+  },
+  {
+    "id": "c73ddb12-9716-4acb-a936-937a5d8b9892",
+    "slug": "rockfall",
+    "name": "落石",
+    "desc": "翼を広げて飛び上がり、敵全員へ石を落とす。",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1,
+    "target": "foes",
+    "school": "earth"
+  },
+  {
+    "id": "bd7e478a-b916-4a9e-a5b1-c2d80c57011f",
+    "slug": "stone-hail",
+    "name": "石つぶて",
+    "desc": "翼から石を飛ばし、遠くの敵ひとりを打つ。",
+    "uses": 7,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.6,
+    "school": "earth"
+  },
+  {
+    "id": "de2048dc-1ee5-44c9-b767-edb0662fba0a",
+    "slug": "seizure-shot",
+    "name": "差し押さえの弾",
+    "desc": "条項を撃ち込み、60％の確率で敵ひとりの次の行動を縛る。",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.9,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.6
+    },
+    "school": "demon"
+  },
+  {
+    "id": "8ec5b69e-371b-402e-929f-a1fb866809de",
+    "slug": "penalty-shot",
+    "name": "違約金の取り立て",
+    "desc": "縛られた敵には威力が1.9倍。",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 1.3,
+    "bonusAgainst": {
+      "status": "bind",
+      "factor": 1.9
+    },
+    "school": "demon"
+  },
+  {
+    "id": "2d61945d-1d2f-45d9-8f47-f1ec66ef8703",
+    "slug": "no-terms",
+    "name": "条件なしの一撃",
+    "desc": "最大HP12％を払い、何も書いていない契約で遠くの敵を撃つ。",
+    "uses": 4,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 2.4,
+    "sacrifice": 0.12,
+    "school": "demon"
+  },
+  {
+    "id": "5b3fa035-1c9c-4219-b335-27bc548fe010",
+    "slug": "paper-storm",
+    "name": "紙吹雪",
+    "desc": "白紙をばらまいて、敵全員を切る。",
+    "uses": 5,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.9,
+    "target": "foes"
+  },
+  {
+    "id": "cb3eafc7-034d-42f3-9ab5-761fbb1682c2",
+    "slug": "three-growl",
+    "name": "三つ首の威嚇",
+    "desc": "三つの首が一斉に唸り、敵全員の足を止める（40％）。",
+    "uses": 4,
+    "kind": "support",
+    "target": "foes",
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.4
+    },
+    "school": "demon"
+  },
+  {
+    "id": "d0ec2659-9d7f-4b41-a442-cfd4287c4c97",
+    "slug": "watch-guard",
+    "name": "番犬の見張り",
+    "desc": "ケルベロスが仲間全員の前に伏せ、次の被害を防ぐ。",
+    "uses": 4,
+    "kind": "support",
+    "target": "allies",
+    "status": {
+      "kind": "protect",
+      "turns": 1
+    },
+    "school": "demon"
+  },
+  {
+    "id": "3d839de7-4abc-44fc-9e15-3bea2ee2b60b",
+    "slug": "three-pats",
+    "name": "頭を三回なでる",
+    "desc": "首を順になでて落ち着かせ、行動のたびに自分の傷を少しずつ戻す。",
+    "uses": 3,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "regen",
+      "turns": 3
+    }
+  },
+  {
+    "id": "095ae70a-c163-47bd-a25a-be818ef7dc49",
+    "slug": "collar-pull",
+    "name": "首輪の引き締め",
+    "desc": "首輪を引いて身構え、自分への次の被害を防ぐ。",
+    "uses": 6,
+    "kind": "support",
+    "target": "self",
+    "status": {
+      "kind": "protect",
+      "turns": 2
+    }
+  },
+  {
+    "id": "dbeb25e3-c8bf-4b5e-8cbb-40128a21bf0d",
+    "slug": "door-bolt",
+    "name": "閂",
+    "desc": "閂を下ろすように押さえ込み、60％の確率で敵ひとりの次の行動を縛る。",
+    "uses": 5,
+    "kind": "support",
+    "target": "foe",
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.6
+    }
+  },
+  {
+    "id": "251e51d2-bd36-41ad-a535-3eda631de3b9",
+    "slug": "lint-toss",
+    "name": "糸くず撒き",
+    "desc": "糸くずを撒いて目をくらませ、40％の確率で敵ひとりの次の行動を縛る。",
+    "uses": 6,
+    "kind": "hit",
+    "reach": "ranged",
+    "power": 0.7,
+    "status": {
+      "kind": "bind",
+      "turns": 1,
+      "chance": 0.4
+    }
+  }
+]

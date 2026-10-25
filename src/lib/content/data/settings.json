@@ -1,0 +1,244 @@
+{
+  "startingGold": 420,
+  "startingStones": 3,
+  "startingBag": [
+    {
+      "good": "c2ff7c8e-a695-40ee-b992-55cd31f34f9b",
+      "count": 2
+    }
+  ],
+  "hero": {
+    "name": "あなた",
+    "looks": [
+      "34233f3c-e646-40c6-8a1e-7c93b27be0a4",
+      "b7cdab32-f48f-4ae0-aba8-591814af0b0f",
+      "2ea1b696-2332-4a72-bf80-0debe88d2525",
+      "742f2b94-2e04-4dd3-85e0-bbd5a2e26849"
+    ],
+    "outfits": [
+      "4ae0f777-d468-4e30-ac77-c8e23149f707",
+      "8f7db974-0adf-4b73-81ba-44494112f3bd",
+      "90c0e8f9-f8e9-4d1d-954d-719a2c20365c",
+      "af75af93-b0e0-41ed-9482-fbe8aea55be6",
+      "c60dd47d-3327-4844-8c11-96ed0db8643c",
+      "29e01669-5b76-457c-b34a-336aba77e53c",
+      "c145a4a8-8cb1-451c-98a1-9b05709efea1"
+    ]
+  },
+  "junk": "619ae895-2e95-4f01-ba6b-b78835debae7",
+  "rareJunk": "35a9f50a-24c2-449b-a570-8b191b09ce5c",
+  "brawl": "fe055010-6b2b-42a7-b0e5-5de0b97407eb",
+  "reached": 0,
+  "summon": {
+    "success": 0.6,
+    "failure": [
+      {
+        "good": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+        "count": 1
+      }
+    ],
+    "duplicateExp": 10,
+    "levelExp": 10,
+    "maxLevel": 5,
+    "powerPerLevel": 0.1
+  },
+  "recruiting": {
+    "slots": 3,
+    "reroll": 30,
+    "initial": [
+      "c4d0f5b8-6d31-4f2e-9a67-3f8b1d20a501",
+      "f1a7c2de-5b94-4d08-8c31-7e6a9b40d512",
+      "0f5ec726-8ac0-4b03-a36a-2aa09d287c13"
+    ]
+  },
+  "weaponSkills": {
+    "greatsword": [
+      "5e62be96-7af0-4405-bda6-d0f268782b5d",
+      "1c495318-fb97-4117-97ea-64fca8f6d597",
+      "40bf2edd-39f8-4746-a6f5-4474a54e448f",
+      "be7e2670-66b1-4395-97e5-11dde683439a",
+      "bd1bcdef-8b15-4093-a6e1-a7e998f8ae99",
+      "8efbad09-d229-43f8-b5f0-ca5ffbb3e9ed"
+    ],
+    "sword": [
+      "434d322d-efee-49da-ab2d-7824f16b3da3",
+      "685fff6a-eaf5-42d6-885f-7b3a5b54b6d9",
+      "e93819c5-64b8-427b-be24-f78c65092472",
+      "8b3bc0e6-628e-48c7-b31e-e54858f30909",
+      "8a584337-150a-4a02-9982-70d3ae66f35b",
+      "8f8d36e7-f367-4135-879f-0ca24a00ae24"
+    ],
+    "axe": [
+      "749a8d47-a200-4a61-8500-58551b159112",
+      "2507bf9f-56c7-4da0-a5e4-3ee7462df06f",
+      "7b7070ca-1f11-4a89-a87f-a4a2dda07b3f",
+      "5dbcd59c-8fe0-4c02-af23-acf1bae45dc3",
+      "f69b6c7a-4752-4912-b17b-5d89b98abe5f",
+      "7917b829-510a-47f2-bdbb-43cbea2ef8df"
+    ],
+    "gun": [
+      "25b977ed-49ba-482d-9961-577e30fe9a69",
+      "2fa437ac-df19-4b5d-bf76-978f9079e98a",
+      "63cf6ce7-1670-463b-a736-a03d9ef6b55a",
+      "92355567-38c4-4b88-bfd2-e993971cbd0a",
+      "a6094156-68f1-4ef6-b79e-d06a3731cfb5",
+      "04477410-478f-4067-ab02-63b226a228a9"
+    ],
+    "dagger": [
+      "864418e3-630a-4da6-ab41-efc3306a558f",
+      "673d49db-5332-4154-b50f-7a180b01291f",
+      "fb2c2376-9adf-4859-98d7-e1051fb64565",
+      "5c68b128-52ca-4579-acf6-01b24cb1b8da",
+      "7dabc84e-0007-4054-83f2-237a3541a3d2",
+      "c8b764f9-d92b-42a6-ac8a-e5de669daf6b"
+    ]
+  },
+  "balance": {
+    "expBase": 20,
+    "expPower": 1.6,
+    "growth": {
+      "maxHp": 18,
+      "str": 2,
+      "tec": 2,
+      "spd": 0.8
+    },
+    "growthCurve": {
+      "bands": [11, 21],
+      "types": {
+        "normal": {
+          "early": 1,
+          "middle": 1,
+          "late": 1
+        },
+        "early": {
+          "early": 1.35,
+          "middle": 0.65,
+          "late": 1
+        },
+        "late": {
+          "early": 0.7,
+          "middle": 1,
+          "late": 1.3
+        },
+        "steady": {
+          "early": 1.15,
+          "middle": 1.1,
+          "late": 0.75
+        },
+        "modest": {
+          "early": 0.6,
+          "middle": 0.6,
+          "late": 0.6
+        }
+      }
+    },
+    "wear": {
+      "fatigue": 4,
+      "dirt": 6
+    },
+    "exhaustedAt": 100,
+    "damage": {
+      "swing": [0.85, 1.15]
+    },
+    "heal": {
+      "base": 8,
+      "swing": [0.9, 1.1]
+    },
+    "weapon": {
+      "needFloor": 0.4,
+      "usesPerPlus": 2,
+      "favorite": 1,
+      "other": 0.75,
+      "rarity": {
+        "weights": {
+          "N": 92,
+          "R": 7,
+          "SR": 1
+        },
+        "powerRate": {
+          "N": [0, 0],
+          "R": [0.08, 0.15],
+          "SR": [0.2, 0.3]
+        },
+        "uses": {
+          "N": 0,
+          "R": 1,
+          "SR": 2
+        },
+        "randomSkills": {
+          "N": 2,
+          "R": 2,
+          "SR": 2
+        },
+        "sell": {
+          "N": 1,
+          "R": 1.3,
+          "SR": 1.8
+        }
+      }
+    },
+    "poisonDivisor": 20,
+    "protect": 0.5,
+    "taunt": 0.75,
+    "guard": 0.5,
+    "backRow": {
+      "melee": 0.5,
+      "hit": 0.6
+    },
+    "tankTarget": 3,
+    "armor": {
+      "durabilityPerPlus": 6,
+      "repairPerPoint": 0.5
+    },
+    "pact": {
+      "plusPerLevel": 2,
+      "maxPlus": 30
+    },
+    "unique": {
+      "maxPlus": 30,
+      "progressPerStep": 3,
+      "materialProgress": {
+        "N": 2,
+        "R": 4,
+        "SR": 8
+      },
+      "gold": 20
+    },
+    "school": {
+      "affinity": 1.1
+    },
+    "regenDivisor": 16,
+    "sell": {
+      "perPlus": 0.4
+    },
+    "depth": {
+      "gold": 0.8,
+      "treasure": 0.8,
+      "goods": 1,
+      "retreatBonus": 0.15,
+      "rarityPerLayer": 0.15,
+      "rareJunkFrom": 0.5,
+      "rareJunkChance": 0.15
+    },
+    "exploration": {
+      "discount": 0.15,
+      "trapReduction": 0.25,
+      "campRefill": 1,
+      "lootGold": 0.1
+    },
+    "appraisal": {
+      "ahead": 0.3
+    },
+    "weaponDrop": {
+      "chance": 0.05
+    },
+    "wipe": {
+      "keepJunk": 0.5
+    }
+  },
+  "startingDemon": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+  "startingCompanions": [
+    "e7883b7f-237f-4de0-a73d-196b09e705b5",
+    "1aac56f8-7a5c-4199-8100-91caf9e283a6"
+  ]
+}

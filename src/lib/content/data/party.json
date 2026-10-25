@@ -1,0 +1,27 @@
+[
+  {
+    "id": "34233f3c-e646-40c6-8a1e-7c93b27be0a4",
+    "slug": "hero",
+    "name": "あなた",
+    "job": "悪魔召喚師",
+    "role": "summoner",
+    "hero": true,
+    "lv": 1,
+    "stats": {
+      "maxHp": 112,
+      "str": 8,
+      "tec": 8,
+      "spd": 9
+    },
+    "skills": [],
+    "growth": {
+      "maxHp": 0,
+      "str": 0,
+      "tec": 0,
+      "spd": 0
+    },
+    "favorite": "dagger",
+    "defaultWeapon": "86172553-2914-4f88-b2a3-6f122ba739a4",
+    "gear": []
+  }
+]

@@ -1,0 +1,3123 @@
+[
+  {
+    "id": "9de7d35a-f278-4a77-8017-92c121958caa",
+    "slug": "layer0",
+    "no": 0,
+    "name": "結晶の洞窟",
+    "foes": [
+      "61893649-624b-4c84-882b-5d4df3e8a8bb",
+      "fed79135-c848-48e8-ad83-bf3b4a657247",
+      "fed79135-c848-48e8-ad83-bf3b4a657247",
+      "69d0b191-9c2e-446f-8763-9d2b2138a3c3",
+      "901fae80-d075-4490-889e-50c776afbbfe",
+      "a5c09011-ddae-4bfb-8f07-dc82dfc58951",
+      "29ed2718-1c81-4e16-9230-2e80870a0298",
+      "569b9fb2-dbc4-4d55-8ff5-796134341dc5"
+    ],
+    "group": [1, 2],
+    "boss": "0db315b8-06b0-4c86-817a-5f50ab70e30a",
+    "start": "s",
+    "stations": [
+      {
+        "id": "s",
+        "x": 0,
+        "y": 0,
+        "next": ["n1"]
+      },
+      {
+        "id": "n1",
+        "x": 1,
+        "y": 0,
+        "next": ["n2"],
+        "event": "battle"
+      },
+      {
+        "id": "n2",
+        "x": 2,
+        "y": 0,
+        "next": ["n3", "m3"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d012",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d013",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d014"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n3",
+        "x": 3,
+        "y": -1,
+        "next": ["n4"],
+        "event": "discovery",
+        "label": "魔物のショップ",
+        "hint": "呼び込みの声と、小銭を数える音。手当てと未鑑定の品を売っている",
+        "danger": "low",
+        "mystery": true,
+        "discovery": {
+          "title": "ククルスの露店",
+          "description": "「買うなら一つだけだぞ」。ククルスは釣り銭を一枚ずつ数えて渡す。今の傷を癒やすか、鑑定の楽しみを持ち帰るか。何も買わずに通り過ぎてもよい。",
+          "choices": [
+            {
+              "id": "heal",
+              "label": "手当てを受ける・35G",
+              "description": "生きている仲間全員のHPを40％回復。回復薬は消費しない。",
+              "cost": 35,
+              "healRatio": 0.4
+            },
+            {
+              "id": "goods",
+              "label": "未鑑定の包みを買う・50G",
+              "description": "ガラクタ3個。街で鑑定するまで、装備の種類や品質は分からない。",
+              "cost": 50,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "買わずに進む",
+              "description": "金貨を温存して先へ進む。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n4",
+        "x": 4,
+        "y": 0,
+        "next": ["u5", "l5"]
+      },
+      {
+        "id": "u5",
+        "x": 5,
+        "y": -1,
+        "next": ["u6"],
+        "event": "battle",
+        "label": "装備を掘る道",
+        "hint": "敵を倒してガラクタ2個。次の宝箱でさらに1個確定",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "61893649-624b-4c84-882b-5d4df3e8a8bb",
+          "29ed2718-1c81-4e16-9230-2e80870a0298"
+        ],
+        "danger": "high"
+      },
+      {
+        "id": "u6",
+        "x": 6,
+        "y": -1,
+        "next": ["n7"],
+        "event": "treasure",
+        "label": "埋もれた宝箱",
+        "hint": "金貨と品物。ガラクタ1個は必ず入っている",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "id": "l5",
+        "x": 5,
+        "y": 1,
+        "next": ["l6"],
+        "event": "discovery",
+        "label": "休息の道",
+        "hint": "休息・戦利品・祝福から1つを選ぶ",
+        "discovery": {
+          "title": "見捨てられた野営地",
+          "description": "先に来た組が畳み忘れた野営地。鍋の底がまだ温かい。ここなら少し休めそうだ。奥には、まだ使えそうな荷物も残っている。",
+          "choices": [
+            {
+              "id": "rest",
+              "label": "休息を取る",
+              "description": "生きている仲間のHPを30％回復、疲れを12軽減。各人の各ワザの残り回数を2回戻す。",
+              "healRatio": 0.3,
+              "fatigue": 12,
+              "refill": 2
+            },
+            {
+              "id": "salvage",
+              "label": "荷物を探す",
+              "description": "休まずに荷物を調べ、鑑定用のガラクタを2個手に入れる。",
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ]
+            },
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "休息や戦利品の代わりに、仲間ひとりの祝福を選ぶ。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d010",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d011",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d012"
+              ]
+            }
+          ]
+        },
+        "danger": "low"
+      },
+      {
+        "id": "l6",
+        "x": 6,
+        "y": 1,
+        "next": ["n7"]
+      },
+      {
+        "id": "n7",
+        "x": 7,
+        "y": 0,
+        "next": ["n8"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d013",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d014",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d015"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n8",
+        "x": 8,
+        "y": 0,
+        "next": ["n9"],
+        "event": "midboss",
+        "foes": ["539a2b7f-8e2b-4484-882a-ca1c50be7709"]
+      },
+      {
+        "id": "n9",
+        "x": 9,
+        "y": 0,
+        "next": ["n10", "l10"]
+      },
+      {
+        "id": "n10",
+        "x": 10,
+        "y": -1,
+        "next": ["n11"],
+        "event": "treasure",
+        "label": "拾い物の道",
+        "hint": "安全に宝箱を開ける",
+        "danger": "low"
+      },
+      {
+        "id": "n11",
+        "x": 11,
+        "y": 0,
+        "next": ["u12", "l12"]
+      },
+      {
+        "id": "u12",
+        "x": 12,
+        "y": -1,
+        "next": ["u13"],
+        "event": "battle",
+        "label": "スキルの書を守る敵",
+        "hint": "勝てば書2冊。武器のランダム枠を鍛冶屋で変更できる",
+        "rewardGoods": [
+          {
+            "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "29ed2718-1c81-4e16-9230-2e80870a0298",
+          "29ed2718-1c81-4e16-9230-2e80870a0298"
+        ],
+        "danger": "high"
+      },
+      {
+        "id": "u13",
+        "x": 13,
+        "y": -1,
+        "next": ["n14"],
+        "event": "treasure",
+        "label": "埋もれた宝箱",
+        "hint": "金貨と品物。ガラクタ1個は必ず入っている",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "id": "l12",
+        "x": 12,
+        "y": 1,
+        "next": ["l13"],
+        "event": "discovery",
+        "label": "休息か、血の祝福か",
+        "hint": "HPを回復するか、全員の最大HP25％を捧げて特別な祝福を得る",
+        "discovery": {
+          "title": "血の祭壇と休憩所",
+          "description": "古い祭壇の脇に、冒険者が木箱を並べただけの休憩所。ボスに備えて立て直すか、今の体力を強い祝福に変えるか。一つだけ選べる。",
+          "choices": [
+            {
+              "id": "rest",
+              "label": "休息を取る",
+              "description": "生きている仲間のHPを30％回復、疲れを12軽減。各人の各ワザの残り回数を2回戻す。",
+              "healRatio": 0.3,
+              "fatigue": 12,
+              "refill": 2
+            },
+            {
+              "id": "salvage",
+              "label": "荷物を探す",
+              "description": "休まずに荷物を調べ、鑑定用のガラクタを2個手に入れる。",
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ]
+            },
+            {
+              "id": "blessing",
+              "label": "血の祝福を授かる",
+              "description": "生きている出撃メンバー全員が最大HPの25％を捧げる。支払いで倒れる場合は選べない。祝福は帰還まで。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d016",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d017"
+              ],
+              "healthCostRatio": 0.25
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "l13",
+        "x": 13,
+        "y": 1,
+        "next": ["n14"]
+      },
+      {
+        "id": "n14",
+        "x": 14,
+        "y": 0,
+        "next": ["n15", "m15"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d010",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d011",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d012"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n15",
+        "x": 15,
+        "y": -1,
+        "next": ["n16"],
+        "event": "battle",
+        "label": "魔物が待つ道",
+        "hint": "足音が重なる。ボス前に戦闘を越え、ガラクタ2個を狙う",
+        "danger": "high",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "569b9fb2-dbc4-4d55-8ff5-796134341dc5",
+          "29ed2718-1c81-4e16-9230-2e80870a0298"
+        ]
+      },
+      {
+        "id": "n16",
+        "x": 16,
+        "y": 0,
+        "next": [],
+        "boss": true
+      },
+      {
+        "id": "l10",
+        "x": 10,
+        "y": 1,
+        "next": ["n11"],
+        "event": "discovery",
+        "label": "鑑定か、武器の付け替えか",
+        "hint": "HPを削ってガラクタ4個／金貨でスキルの書1冊／立ち去る",
+        "discovery": {
+          "title": "封じられた宝箱",
+          "description": "鍵穴のまわりに、先に来た誰かのこじ開け傷が残る箱。仕掛けはまだ生きている。無理に開けるか、道具を使うか。",
+          "choices": [
+            {
+              "id": "force",
+              "label": "強引に開ける",
+              "description": "全員が最大HPの20％を失う（倒れない）。ガラクタ4個を獲得。",
+              "damageRatio": 0.2,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 4
+                }
+              ]
+            },
+            {
+              "id": "tools",
+              "label": "金貨30でスキルの書を取り出す",
+              "description": "金貨30を支払い、武器のワザを変更できるスキルの書を1冊得る。",
+              "cost": 30,
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "手前の荷物だけ取る",
+              "description": "危険を避けて、ガラクタ1個を持ち帰る。",
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "m3",
+        "x": 3,
+        "y": 1,
+        "next": ["n4"],
+        "label": "？ 正体不明の道",
+        "hint": "車輪の跡と金属の音。商人か、宝か、それを狙う魔物か",
+        "danger": "unknown",
+        "mystery": true,
+        "weights": {
+          "battle": 3,
+          "treasure": 3,
+          "trap": 2,
+          "discovery": 2
+        },
+        "discovery": {
+          "title": "魔物の交換屋",
+          "description": "荷車の陰から声がする。「拾ったガラクタ、書と取り替えないか？ 帳面に付けとくから、ごまかしはしない」取引するか、体力を代償に品を得るか、立ち去るか。",
+          "choices": [
+            {
+              "id": "trade",
+              "label": "ガラクタ2個をスキルの書1冊と交換",
+              "description": "鑑定の機会を手放し、武器のランダムスキルを変更できる書を得る。",
+              "costGoods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ],
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "blood",
+              "label": "HPを渡して包みを得る",
+              "description": "全生存メンバーの最大HP15％と引き換えにガラクタ3個。支払いで倒れる場合は選べない。",
+              "healthCostRatio": 0.15,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "取引せずに進む",
+              "description": "品物と体力を温存する。"
+            }
+          ]
+        },
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "id": "m15",
+        "x": 15,
+        "y": 1,
+        "next": ["n16"],
+        "label": "？ 正体不明の道",
+        "hint": "血の跡の先に荷車。大きな包みが見えるが、気配は読めない",
+        "danger": "unknown",
+        "mystery": true,
+        "weights": {
+          "battle": 4,
+          "treasure": 2,
+          "trap": 2,
+          "discovery": 2
+        },
+        "discovery": {
+          "title": "魔物の交換屋",
+          "description": "荷車の陰から声がする。「拾ったガラクタ、書と取り替えないか？ 帳面に付けとくから、ごまかしはしない」取引するか、体力を代償に品を得るか、立ち去るか。",
+          "choices": [
+            {
+              "id": "trade",
+              "label": "ガラクタ2個をスキルの書1冊と交換",
+              "description": "鑑定の機会を手放し、武器のランダムスキルを変更できる書を得る。",
+              "costGoods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ],
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "blood",
+              "label": "HPを渡して包みを得る",
+              "description": "全生存メンバーの最大HP15％と引き換えにガラクタ3個。支払いで倒れる場合は選べない。",
+              "healthCostRatio": 0.15,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "取引せずに進む",
+              "description": "品物と体力を温存する。"
+            }
+          ]
+        },
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 3
+          }
+        ]
+      }
+    ],
+    "weights": {
+      "battle": 2,
+      "treasure": 2,
+      "trap": 1
+    },
+    "treasure": {
+      "gold": [10, 25],
+      "goods": [
+        {
+          "good": "c2ff7c8e-a695-40ee-b992-55cd31f34f9b",
+          "count": 1
+        },
+        {
+          "good": "474f33dd-079e-46e8-b11b-8549f6cf48cf",
+          "count": 1
+        }
+      ],
+      "mimic": {
+        "foe": "14a5e502-2b0a-48d4-bc84-27421343ec23",
+        "chance": 0.15
+      }
+    },
+    "trap": [14, 28]
+  },
+  {
+    "id": "e350494d-9aa2-48a1-8b0d-58b170c11c67",
+    "slug": "layer1",
+    "no": 1,
+    "name": "巨人たちの墓場",
+    "foes": [
+      "feca401a-3c60-4777-972b-4d31f82e9d10",
+      "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd",
+      "4a9b6857-44d0-4495-b4a0-ca77daad9ba7",
+      "89831ecc-694f-489b-9b81-e6805b9e2371",
+      "077cf720-2ab2-4d30-8ce5-7e4223bd38e3",
+      "667e8819-89ef-4fdd-b59a-82b2b3517304",
+      "206aa3c3-431b-4e51-a587-c87701ac9091"
+    ],
+    "boss": "8aae8f96-edbf-4649-82cb-4c6d7b12d1a8",
+    "start": "s",
+    "stations": [
+      {
+        "id": "s",
+        "x": 0,
+        "y": 0,
+        "next": ["n1"]
+      },
+      {
+        "id": "n1",
+        "x": 1,
+        "y": 0,
+        "next": ["n2"],
+        "event": "battle"
+      },
+      {
+        "id": "n2",
+        "x": 2,
+        "y": 0,
+        "next": ["n3", "m3"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d013",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d014",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d015"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n3",
+        "x": 3,
+        "y": -1,
+        "next": ["l5"],
+        "event": "discovery",
+        "label": "魔物のショップ",
+        "hint": "呼び込みの声と、小銭を数える音。手当てと未鑑定の品を売っている",
+        "danger": "low",
+        "mystery": true,
+        "discovery": {
+          "title": "ククルスの露店",
+          "description": "「買うなら一つだけだぞ 墓場は帰りが長い」。今の傷を癒やすか、鑑定の楽しみを持ち帰るか。何も買わずに通り過ぎてもよい。",
+          "choices": [
+            {
+              "id": "heal",
+              "label": "手当てを受ける・45G",
+              "description": "生きている仲間全員のHPを40％回復。回復薬は消費しない。",
+              "cost": 45,
+              "healRatio": 0.4
+            },
+            {
+              "id": "goods",
+              "label": "未鑑定の包みを買う・65G",
+              "description": "ガラクタ3個。街で鑑定するまで、装備の種類や品質は分からない。",
+              "cost": 65,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "買わずに進む",
+              "description": "金貨を温存して先へ進む。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n4",
+        "x": 6,
+        "y": 0,
+        "next": ["n7"]
+      },
+      {
+        "id": "u5",
+        "x": 5,
+        "y": -1,
+        "next": ["u6"],
+        "event": "battle",
+        "label": "副葬品を守る敵",
+        "hint": "採集後に戦闘へ。勝利でガラクタ2個、次の宝箱でさらに1個",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "feca401a-3c60-4777-972b-4d31f82e9d10",
+          "89831ecc-694f-489b-9b81-e6805b9e2371"
+        ],
+        "danger": "high"
+      },
+      {
+        "id": "u6",
+        "x": 6,
+        "y": -1,
+        "next": ["n7"],
+        "event": "treasure",
+        "label": "墓守の副葬品",
+        "hint": "金貨と品物、ガラクタ1個確定。墓守の供物台からも寄れる",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 1
+          }
+        ],
+        "danger": "low"
+      },
+      {
+        "id": "l5",
+        "x": 4,
+        "y": 1,
+        "next": ["u5", "l6"],
+        "event": "discovery",
+        "label": "墓守の供物台",
+        "hint": "素材を使って回復するか、HPを払って素材とガラクタを得る",
+        "discovery": {
+          "title": "墓守の供物台",
+          "description": "墓守がいたころから続く供物台。干した果物が一つ、新しく置かれている。骨を納めて立て直すか、台の下を掘って持ち帰るか。",
+          "choices": [
+            {
+              "id": "rest",
+              "label": "骨を納めて休む",
+              "description": "骨2個を納め、HPを45％回復、疲れを12軽減。各人の各ワザの残り回数を2回戻す。",
+              "costGoods": [
+                {
+                  "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+                  "count": 2
+                }
+              ],
+              "healRatio": 0.45,
+              "fatigue": 12,
+              "refill": 2
+            },
+            {
+              "id": "salvage",
+              "label": "骨片を掘り出す",
+              "description": "全員が最大HPの10％の被害を受け、骨4個とガラクタ2個を得る。被害では倒れない。",
+              "damageRatio": 0.1,
+              "goods": [
+                {
+                  "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+                  "count": 4
+                },
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "何もせず進む",
+              "description": "HPと素材を温存する。"
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "l6",
+        "x": 5,
+        "y": 1,
+        "next": ["n4"],
+        "label": "墓碑の間を抜ける",
+        "hint": "未判明の出来事が2地点続く。副葬品の戦闘には挑まない"
+      },
+      {
+        "id": "n7",
+        "x": 7,
+        "y": 0,
+        "next": ["n8"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d014",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d015",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d010"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n8",
+        "x": 8,
+        "y": 0,
+        "next": ["n9"],
+        "event": "midboss",
+        "foes": ["4790537c-c395-4bc5-9649-005d2fcf52a5"]
+      },
+      {
+        "id": "n9",
+        "x": 9,
+        "y": 0,
+        "next": ["n10", "l10"]
+      },
+      {
+        "id": "n10",
+        "x": 10,
+        "y": -1,
+        "next": ["n11"],
+        "event": "treasure",
+        "label": "拾い物の道",
+        "hint": "安全に宝箱を開ける",
+        "danger": "low"
+      },
+      {
+        "id": "n11",
+        "x": 11,
+        "y": 0,
+        "next": ["u12", "l12"]
+      },
+      {
+        "id": "u12",
+        "x": 12,
+        "y": -1,
+        "next": ["u13"],
+        "event": "battle",
+        "label": "スキルの書を守る敵",
+        "hint": "勝てば書2冊。武器のランダム枠を鍛冶屋で変更できる",
+        "rewardGoods": [
+          {
+            "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "89831ecc-694f-489b-9b81-e6805b9e2371",
+          "077cf720-2ab2-4d30-8ce5-7e4223bd38e3"
+        ],
+        "danger": "high"
+      },
+      {
+        "id": "u13",
+        "x": 13,
+        "y": -1,
+        "next": ["n14"],
+        "event": "treasure",
+        "label": "埋もれた宝箱",
+        "hint": "金貨と品物。ガラクタ1個は必ず入っている",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "id": "l12",
+        "x": 12,
+        "y": 1,
+        "next": ["l13"],
+        "event": "discovery",
+        "label": "墓守の灯",
+        "hint": "素材でワザを補充するか、休息か、血の祝福か",
+        "discovery": {
+          "title": "墓守の灯",
+          "description": "誰かがまだ油を足している灯。集めた骨を使って備えるか、休息や血の祝福を選ぶか。",
+          "choices": [
+            {
+              "id": "rest",
+              "label": "休息を取る",
+              "description": "生きている仲間のHPを30％回復、疲れを12軽減。各人の各ワザの残り回数を2回戻す。",
+              "healRatio": 0.3,
+              "fatigue": 12,
+              "refill": 2
+            },
+            {
+              "id": "prepare",
+              "label": "素材でワザを補充する",
+              "description": "骨3個を使い、各人の各ワザの残り回数を4回戻す。HPは回復しない。",
+              "costGoods": [
+                {
+                  "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+                  "count": 3
+                }
+              ],
+              "refill": 4
+            },
+            {
+              "id": "blessing",
+              "label": "血の祝福を授かる",
+              "description": "生きている出撃メンバー全員が最大HPの25％を捧げる。支払いで倒れる場合は選べない。祝福は帰還まで。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d016",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d017"
+              ],
+              "healthCostRatio": 0.25
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "l13",
+        "x": 13,
+        "y": 1,
+        "next": ["n14"]
+      },
+      {
+        "id": "n14",
+        "x": 14,
+        "y": 0,
+        "next": ["n15", "m15"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d011",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d012",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d013"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n15",
+        "x": 15,
+        "y": -1,
+        "next": ["n16"],
+        "event": "battle",
+        "label": "魔物が待つ道",
+        "hint": "足音が重なる。ボス前に戦闘を越え、ガラクタ2個を狙う",
+        "danger": "high",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "206aa3c3-431b-4e51-a587-c87701ac9091",
+          "89831ecc-694f-489b-9b81-e6805b9e2371"
+        ]
+      },
+      {
+        "id": "n16",
+        "x": 16,
+        "y": 0,
+        "next": [],
+        "boss": true
+      },
+      {
+        "id": "l10",
+        "x": 10,
+        "y": 1,
+        "next": ["n11"],
+        "event": "discovery",
+        "label": "鑑定か、武器の付け替えか",
+        "hint": "HPを削ってガラクタ4個／金貨でスキルの書1冊／立ち去る",
+        "discovery": {
+          "title": "封じられた宝箱",
+          "description": "鍵穴のまわりに、先に来た誰かのこじ開け傷が残る箱。仕掛けはまだ生きている。無理に開けるか、道具を使うか。",
+          "choices": [
+            {
+              "id": "force",
+              "label": "強引に開ける",
+              "description": "全員が最大HPの20％を失う（倒れない）。ガラクタ4個を獲得。",
+              "damageRatio": 0.2,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 4
+                }
+              ]
+            },
+            {
+              "id": "tools",
+              "label": "金貨60でスキルの書を取り出す",
+              "description": "金貨60を支払い、武器のワザを変更できるスキルの書を1冊得る。",
+              "cost": 60,
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "手前の荷物だけ取る",
+              "description": "危険を避けて、ガラクタ1個を持ち帰る。",
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "m3",
+        "x": 3,
+        "y": 1,
+        "next": ["l5"],
+        "label": "？ 正体不明の道",
+        "hint": "車輪の跡と金属の音。商人か、宝か、それを狙う魔物か",
+        "danger": "unknown",
+        "mystery": true,
+        "weights": {
+          "battle": 3,
+          "treasure": 3,
+          "trap": 2,
+          "discovery": 2
+        },
+        "discovery": {
+          "title": "魔物の交換屋",
+          "description": "荷車の陰から声がする。「拾ったガラクタ、書と取り替えないか？ 帳面に付けとくから、ごまかしはしない」取引するか、体力を代償に品を得るか、立ち去るか。",
+          "choices": [
+            {
+              "id": "trade",
+              "label": "ガラクタ2個をスキルの書1冊と交換",
+              "description": "鑑定の機会を手放し、武器のランダムスキルを変更できる書を得る。",
+              "costGoods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ],
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "blood",
+              "label": "HPを渡して包みを得る",
+              "description": "全生存メンバーの最大HP15％と引き換えにガラクタ3個。支払いで倒れる場合は選べない。",
+              "healthCostRatio": 0.15,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "取引せずに進む",
+              "description": "品物と体力を温存する。"
+            }
+          ]
+        },
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "id": "m15",
+        "x": 15,
+        "y": 1,
+        "next": ["n16"],
+        "label": "？ 正体不明の道",
+        "hint": "血の跡の先に荷車。大きな包みが見えるが、気配は読めない",
+        "danger": "unknown",
+        "mystery": true,
+        "weights": {
+          "battle": 4,
+          "treasure": 2,
+          "trap": 2,
+          "discovery": 2
+        },
+        "discovery": {
+          "title": "魔物の交換屋",
+          "description": "荷車の陰から声がする。「拾ったガラクタ、書と取り替えないか？ 帳面に付けとくから、ごまかしはしない」取引するか、体力を代償に品を得るか、立ち去るか。",
+          "choices": [
+            {
+              "id": "trade",
+              "label": "ガラクタ2個をスキルの書1冊と交換",
+              "description": "鑑定の機会を手放し、武器のランダムスキルを変更できる書を得る。",
+              "costGoods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ],
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "blood",
+              "label": "HPを渡して包みを得る",
+              "description": "全生存メンバーの最大HP15％と引き換えにガラクタ3個。支払いで倒れる場合は選べない。",
+              "healthCostRatio": 0.15,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "取引せずに進む",
+              "description": "品物と体力を温存する。"
+            }
+          ]
+        },
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 3
+          }
+        ]
+      }
+    ],
+    "weights": {
+      "battle": 2,
+      "treasure": 2,
+      "trap": 1
+    },
+    "treasure": {
+      "gold": [20, 50],
+      "goods": [
+        {
+          "good": "c2ff7c8e-a695-40ee-b992-55cd31f34f9b",
+          "count": 1
+        },
+        {
+          "good": "444db350-800c-432d-bcaf-6d4a926597c2",
+          "count": 1
+        },
+        {
+          "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+          "count": 1
+        }
+      ],
+      "mimic": {
+        "foe": "14a5e502-2b0a-48d4-bc84-27421343ec23",
+        "chance": 0.15
+      }
+    },
+    "trap": [30, 60],
+    "group": [1, 2]
+  },
+  {
+    "id": "c4b1634c-03bc-4e65-8443-dcb1cbf44e98",
+    "slug": "layer2",
+    "no": 2,
+    "name": "錆びた鉄橋",
+    "foes": [
+      "f7e72b0b-c879-44b4-b85e-f26bb768002a",
+      "ec3ef953-0655-447e-be9f-a06f792e0b13",
+      "a429af02-f106-4a04-baed-d9d4eee614c5",
+      "71a02ed5-31dd-43c8-9192-94db906271ec",
+      "f190eccf-5c98-40d0-8ab6-03ede6cd0436",
+      "df3aa88c-51ff-4970-8ef6-9f9814d88266",
+      "20dd3be9-a532-4a33-8606-9b998eb9e888"
+    ],
+    "boss": "77f87869-8a88-4559-a8e8-f7f6f0828d9a",
+    "start": "s",
+    "stations": [
+      {
+        "id": "s",
+        "x": 0,
+        "y": 0,
+        "next": ["n1"]
+      },
+      {
+        "id": "n1",
+        "x": 1,
+        "y": 0,
+        "next": ["n2"],
+        "event": "battle"
+      },
+      {
+        "id": "n2",
+        "x": 2,
+        "y": 0,
+        "next": ["n3", "m3"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d014",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d015",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d010"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n3",
+        "x": 3,
+        "y": -1,
+        "next": ["n4"],
+        "event": "discovery",
+        "label": "魔物のショップ",
+        "hint": "呼び込みの声と、小銭を数える音。手当てと未鑑定の品を売っている",
+        "danger": "low",
+        "mystery": true,
+        "discovery": {
+          "title": "ククルスの露店",
+          "description": "「買うなら一つだけだぞ 橋の上で荷を増やすな」。今の傷を癒やすか、鑑定の楽しみを持ち帰るか。何も買わずに通り過ぎてもよい。",
+          "choices": [
+            {
+              "id": "heal",
+              "label": "手当てを受ける・55G",
+              "description": "生きている仲間全員のHPを40％回復。回復薬は消費しない。",
+              "cost": 55,
+              "healRatio": 0.4
+            },
+            {
+              "id": "goods",
+              "label": "未鑑定の包みを買う・80G",
+              "description": "ガラクタ3個。街で鑑定するまで、装備の種類や品質は分からない。",
+              "cost": 80,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "買わずに進む",
+              "description": "金貨を温存して先へ進む。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n4",
+        "x": 4,
+        "y": 0,
+        "next": ["u5", "l5"]
+      },
+      {
+        "id": "u5",
+        "x": 5,
+        "y": -1,
+        "next": ["u6"],
+        "event": "battle",
+        "label": "装備を掘る道",
+        "hint": "敵を倒してガラクタ2個。次の宝箱でさらに1個確定",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 2
+          }
+        ],
+        "foes": ["f190eccf-5c98-40d0-8ab6-03ede6cd0436"],
+        "danger": "high"
+      },
+      {
+        "id": "u6",
+        "x": 6,
+        "y": -1,
+        "next": ["n7"],
+        "event": "treasure",
+        "label": "埋もれた宝箱",
+        "hint": "金貨と品物。ガラクタ1個は必ず入っている",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "id": "l5",
+        "x": 5,
+        "y": 1,
+        "next": ["l6"],
+        "event": "discovery",
+        "label": "鉄橋の巻き上げ機",
+        "hint": "素材を使って回復するか、HPを払って素材とガラクタを得る",
+        "discovery": {
+          "title": "鉄橋の巻き上げ機",
+          "description": "止まったままの巻き上げ機。歯車をはめ直せば足場が戻る。直して休むか、危ない足場の下で部品を拾うか。",
+          "choices": [
+            {
+              "id": "rest",
+              "label": "歯車を使って足場を直す",
+              "description": "歯車2個を使い、安全な場所でHPを35％回復、各人の各ワザの残り回数を3回戻す。",
+              "costGoods": [
+                {
+                  "good": "ace6e36e-3471-4a7d-8cd8-d3ab1e418526",
+                  "count": 2
+                }
+              ],
+              "healRatio": 0.35,
+              "fatigue": 0,
+              "refill": 3
+            },
+            {
+              "id": "salvage",
+              "label": "足場の下を探る",
+              "description": "全員が最大HPの15％の被害を受け、歯車4個とガラクタ2個を得る。被害では倒れない。",
+              "damageRatio": 0.15,
+              "goods": [
+                {
+                  "good": "ace6e36e-3471-4a7d-8cd8-d3ab1e418526",
+                  "count": 4
+                },
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "何もせず進む",
+              "description": "HPと素材を温存する。"
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "l6",
+        "x": 6,
+        "y": 1,
+        "next": ["n7"]
+      },
+      {
+        "id": "n7",
+        "x": 7,
+        "y": 0,
+        "next": ["n8"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d015",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d010",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d011"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n8",
+        "x": 8,
+        "y": 0,
+        "next": ["n10"],
+        "event": "midboss",
+        "foes": ["3f93cd61-6218-4de9-921a-8ef69dd413e5"]
+      },
+      {
+        "id": "n9",
+        "x": 10,
+        "y": 0,
+        "next": ["n11"],
+        "label": "鉄路を調べる",
+        "hint": "戦闘・宝箱・罠のいずれか。次の分岐で書の戦闘か整備小屋を選ぶ"
+      },
+      {
+        "id": "n10",
+        "x": 9,
+        "y": -1,
+        "next": ["n9", "l10"],
+        "event": "treasure",
+        "label": "鉄橋の荷置き場",
+        "hint": "中ボスの後に宝箱。その後、未知の道か封印箱を選ぶ",
+        "danger": "low"
+      },
+      {
+        "id": "n11",
+        "x": 11,
+        "y": 0,
+        "next": ["u12", "l12"]
+      },
+      {
+        "id": "u12",
+        "x": 12,
+        "y": -1,
+        "next": ["u13"],
+        "event": "battle",
+        "label": "スキルの書を守る敵",
+        "hint": "勝てば書2冊。武器のランダム枠を鍛冶屋で変更できる",
+        "rewardGoods": [
+          {
+            "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "f190eccf-5c98-40d0-8ab6-03ede6cd0436",
+          "f7e72b0b-c879-44b4-b85e-f26bb768002a"
+        ],
+        "danger": "high"
+      },
+      {
+        "id": "u13",
+        "x": 13,
+        "y": -1,
+        "next": ["n14"],
+        "event": "treasure",
+        "label": "埋もれた宝箱",
+        "hint": "金貨と品物。ガラクタ1個は必ず入っている",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "id": "l12",
+        "x": 12,
+        "y": 1,
+        "next": ["l13"],
+        "event": "discovery",
+        "label": "橋脚の整備小屋",
+        "hint": "素材でワザを補充するか、休息か、血の祝福か",
+        "discovery": {
+          "title": "橋脚の整備小屋",
+          "description": "昔の保守係の当番表が貼られたままの小屋。拾った歯車で道具を整えるか、休息や血の祝福を選ぶか。",
+          "choices": [
+            {
+              "id": "rest",
+              "label": "休息を取る",
+              "description": "生きている仲間のHPを30％回復、疲れを12軽減。各人の各ワザの残り回数を2回戻す。",
+              "healRatio": 0.3,
+              "fatigue": 12,
+              "refill": 2
+            },
+            {
+              "id": "prepare",
+              "label": "素材でワザを補充する",
+              "description": "歯車3個を使い、各人の各ワザの残り回数を4回戻す。HPは回復しない。",
+              "costGoods": [
+                {
+                  "good": "ace6e36e-3471-4a7d-8cd8-d3ab1e418526",
+                  "count": 3
+                }
+              ],
+              "refill": 4
+            },
+            {
+              "id": "blessing",
+              "label": "血の祝福を授かる",
+              "description": "生きている出撃メンバー全員が最大HPの25％を捧げる。支払いで倒れる場合は選べない。祝福は帰還まで。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d016",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d017"
+              ],
+              "healthCostRatio": 0.25
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "l13",
+        "x": 13,
+        "y": 1,
+        "next": ["n14"]
+      },
+      {
+        "id": "n14",
+        "x": 14,
+        "y": 0,
+        "next": ["n15", "m15"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d012",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d013",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d014"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n15",
+        "x": 15,
+        "y": -1,
+        "next": ["n16"],
+        "event": "battle",
+        "label": "魔物が待つ道",
+        "hint": "足音が重なる。ボス前に戦闘を越え、ガラクタ2個を狙う",
+        "danger": "high",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "20dd3be9-a532-4a33-8606-9b998eb9e888",
+          "f190eccf-5c98-40d0-8ab6-03ede6cd0436"
+        ]
+      },
+      {
+        "id": "n16",
+        "x": 16,
+        "y": 0,
+        "next": [],
+        "boss": true
+      },
+      {
+        "id": "l10",
+        "x": 10,
+        "y": 1,
+        "next": ["n11"],
+        "event": "discovery",
+        "label": "封印箱に寄る",
+        "hint": "HPか金貨で取引。その後、書の戦闘か整備小屋を選ぶ",
+        "discovery": {
+          "title": "封じられた宝箱",
+          "description": "鍵穴のまわりに、先に来た誰かのこじ開け傷が残る箱。仕掛けはまだ生きている。無理に開けるか、道具を使うか。",
+          "choices": [
+            {
+              "id": "force",
+              "label": "強引に開ける",
+              "description": "全員が最大HPの20％を失う（倒れない）。ガラクタ4個を獲得。",
+              "damageRatio": 0.2,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 4
+                }
+              ]
+            },
+            {
+              "id": "tools",
+              "label": "金貨90でスキルの書を取り出す",
+              "description": "金貨90を支払い、武器のワザを変更できるスキルの書を1冊得る。",
+              "cost": 90,
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "手前の荷物だけ取る",
+              "description": "危険を避けて、ガラクタ1個を持ち帰る。",
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "m3",
+        "x": 3,
+        "y": 1,
+        "next": ["n4"],
+        "label": "？ 正体不明の道",
+        "hint": "車輪の跡と金属の音。商人か、宝か、それを狙う魔物か",
+        "danger": "unknown",
+        "mystery": true,
+        "weights": {
+          "battle": 3,
+          "treasure": 3,
+          "trap": 2,
+          "discovery": 2
+        },
+        "discovery": {
+          "title": "魔物の交換屋",
+          "description": "荷車の陰から声がする。「拾ったガラクタ、書と取り替えないか？ 帳面に付けとくから、ごまかしはしない」取引するか、体力を代償に品を得るか、立ち去るか。",
+          "choices": [
+            {
+              "id": "trade",
+              "label": "ガラクタ2個をスキルの書1冊と交換",
+              "description": "鑑定の機会を手放し、武器のランダムスキルを変更できる書を得る。",
+              "costGoods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ],
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "blood",
+              "label": "HPを渡して包みを得る",
+              "description": "全生存メンバーの最大HP15％と引き換えにガラクタ3個。支払いで倒れる場合は選べない。",
+              "healthCostRatio": 0.15,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "取引せずに進む",
+              "description": "品物と体力を温存する。"
+            }
+          ]
+        },
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "id": "m15",
+        "x": 15,
+        "y": 1,
+        "next": ["n16"],
+        "label": "？ 正体不明の道",
+        "hint": "血の跡の先に荷車。大きな包みが見えるが、気配は読めない",
+        "danger": "unknown",
+        "mystery": true,
+        "weights": {
+          "battle": 4,
+          "treasure": 2,
+          "trap": 2,
+          "discovery": 2
+        },
+        "discovery": {
+          "title": "魔物の交換屋",
+          "description": "荷車の陰から声がする。「拾ったガラクタ、書と取り替えないか？ 帳面に付けとくから、ごまかしはしない」取引するか、体力を代償に品を得るか、立ち去るか。",
+          "choices": [
+            {
+              "id": "trade",
+              "label": "ガラクタ2個をスキルの書1冊と交換",
+              "description": "鑑定の機会を手放し、武器のランダムスキルを変更できる書を得る。",
+              "costGoods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ],
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "blood",
+              "label": "HPを渡して包みを得る",
+              "description": "全生存メンバーの最大HP15％と引き換えにガラクタ3個。支払いで倒れる場合は選べない。",
+              "healthCostRatio": 0.15,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "取引せずに進む",
+              "description": "品物と体力を温存する。"
+            }
+          ]
+        },
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 3
+          }
+        ]
+      }
+    ],
+    "weights": {
+      "battle": 3,
+      "treasure": 2,
+      "trap": 1
+    },
+    "treasure": {
+      "gold": [45, 100],
+      "goods": [
+        {
+          "good": "e5951ae4-0a5b-436e-8720-286f9e2bfc0c",
+          "count": 1
+        },
+        {
+          "good": "ace6e36e-3471-4a7d-8cd8-d3ab1e418526",
+          "count": 1
+        },
+        {
+          "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+          "count": 1
+        }
+      ],
+      "mimic": {
+        "foe": "c7e4b60c-edc5-4071-b956-c883f1ca51b3",
+        "chance": 0.15
+      }
+    },
+    "trap": [70, 120],
+    "group": [1, 2]
+  },
+  {
+    "id": "9fc46fb5-0692-4472-b26d-8962e1837fd0",
+    "slug": "layer3",
+    "no": 3,
+    "name": "毒沼の温室",
+    "foes": [
+      "4eb40f75-7f55-4e04-85ee-de3b67f5111c",
+      "4ed3f555-e6d3-4213-a6c8-ec7a0af11e36",
+      "977c6c0b-b1ed-4a3c-9462-3c11607ad563",
+      "a93a40ce-dacc-4a01-a8c5-8ff7289b6650",
+      "a93a40ce-dacc-4a01-a8c5-8ff7289b6650"
+    ],
+    "boss": "85495e6d-9a6d-4b81-bc62-37ce73ee9722",
+    "start": "s",
+    "stations": [
+      {
+        "id": "s",
+        "x": 0,
+        "y": 0,
+        "next": ["n1"]
+      },
+      {
+        "id": "n1",
+        "x": 1,
+        "y": 0,
+        "next": ["n2"],
+        "event": "battle"
+      },
+      {
+        "id": "n2",
+        "x": 2,
+        "y": 0,
+        "next": ["n3", "m3"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d015",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d010",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d011"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n3",
+        "x": 3,
+        "y": -1,
+        "next": ["n4"],
+        "event": "discovery",
+        "label": "魔物のショップ",
+        "hint": "呼び込みの声と、小銭を数える音。手当てと未鑑定の品を売っている",
+        "danger": "low",
+        "mystery": true,
+        "discovery": {
+          "title": "ククルスの露店",
+          "description": "「買うなら一つだけだぞ 湿気で包みが傷む」。今の傷を癒やすか、鑑定の楽しみを持ち帰るか。何も買わずに通り過ぎてもよい。",
+          "choices": [
+            {
+              "id": "heal",
+              "label": "手当てを受ける・65G",
+              "description": "生きている仲間全員のHPを40％回復。回復薬は消費しない。",
+              "cost": 65,
+              "healRatio": 0.4
+            },
+            {
+              "id": "goods",
+              "label": "未鑑定の包みを買う・95G",
+              "description": "ガラクタ3個。街で鑑定するまで、装備の種類や品質は分からない。",
+              "cost": 95,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "買わずに進む",
+              "description": "金貨を温存して先へ進む。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n4",
+        "x": 4,
+        "y": 0,
+        "next": ["u5", "l5"]
+      },
+      {
+        "id": "u5",
+        "x": 5,
+        "y": -1,
+        "next": ["u6"],
+        "event": "battle",
+        "label": "装備を掘る道",
+        "hint": "敵を倒してガラクタ2個。次の宝箱でさらに1個確定",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "4ed3f555-e6d3-4213-a6c8-ec7a0af11e36",
+          "977c6c0b-b1ed-4a3c-9462-3c11607ad563"
+        ],
+        "danger": "high"
+      },
+      {
+        "id": "u6",
+        "x": 6,
+        "y": -1,
+        "next": ["n7"],
+        "event": "treasure",
+        "label": "埋もれた宝箱",
+        "hint": "金貨と品物。ガラクタ1個は必ず入っている",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "id": "l5",
+        "x": 5,
+        "y": 1,
+        "next": ["l6"],
+        "event": "discovery",
+        "label": "温室の種床",
+        "hint": "素材を使って回復するか、HPを払って素材とガラクタを得る",
+        "discovery": {
+          "title": "温室の種床",
+          "description": "誰かが手入れしていた種床に、やかんが残っている。種を煎じて休むか、傷を承知で毒の茂みを摘むか。",
+          "choices": [
+            {
+              "id": "rest",
+              "label": "種を煎じて休む",
+              "description": "種2個を使い、HPを55％回復。各人の各ワザの残り回数を1回戻す。",
+              "costGoods": [
+                {
+                  "good": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
+                  "count": 2
+                }
+              ],
+              "healRatio": 0.55,
+              "fatigue": 0,
+              "refill": 1
+            },
+            {
+              "id": "salvage",
+              "label": "毒の茂みで採集する",
+              "description": "全員が最大HPの20％の被害を受け、種5個とガラクタ3個を得る。被害では倒れない。",
+              "damageRatio": 0.2,
+              "goods": [
+                {
+                  "good": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
+                  "count": 5
+                },
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "何もせず進む",
+              "description": "HPと素材を温存する。"
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "l6",
+        "x": 6,
+        "y": 1,
+        "next": ["n7"]
+      },
+      {
+        "id": "n7",
+        "x": 7,
+        "y": 0,
+        "next": ["n8"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d010",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d011",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d012"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n8",
+        "x": 8,
+        "y": 0,
+        "next": ["n9"],
+        "event": "midboss",
+        "foes": ["0b27b6ee-377c-4c00-98b6-ff9fe53bfb78"]
+      },
+      {
+        "id": "n9",
+        "x": 9,
+        "y": 0,
+        "next": ["n10", "l10"]
+      },
+      {
+        "id": "n10",
+        "x": 10,
+        "y": -1,
+        "next": ["n11"],
+        "event": "treasure",
+        "label": "拾い物の道",
+        "hint": "安全に宝箱を開ける",
+        "danger": "low"
+      },
+      {
+        "id": "n11",
+        "x": 11,
+        "y": 0,
+        "next": ["u13", "l13"]
+      },
+      {
+        "id": "u12",
+        "x": 13,
+        "y": -1,
+        "next": ["n14"],
+        "event": "battle",
+        "label": "スキルの書を守る敵",
+        "hint": "勝てば書2冊。武器のランダム枠を鍛冶屋で変更できる",
+        "rewardGoods": [
+          {
+            "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+            "count": 2
+          }
+        ],
+        "foes": ["977c6c0b-b1ed-4a3c-9462-3c11607ad563"],
+        "danger": "high"
+      },
+      {
+        "id": "u13",
+        "x": 12,
+        "y": -1,
+        "next": ["u12"],
+        "event": "treasure",
+        "label": "温室の収穫箱",
+        "hint": "先に収穫を得てから、スキルの書2冊を守る敵に挑む",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 1
+          }
+        ],
+        "danger": "low"
+      },
+      {
+        "id": "l12",
+        "x": 13,
+        "y": 1,
+        "next": ["n14"],
+        "event": "discovery",
+        "label": "薬草の乾燥室",
+        "hint": "素材でワザを補充するか、休息か、血の祝福か",
+        "discovery": {
+          "title": "薬草の乾燥室",
+          "description": "札を付けた薬草の束が吊られたままの部屋。拾った種を煎じて備えるか、休息や血の祝福を選ぶか。",
+          "choices": [
+            {
+              "id": "rest",
+              "label": "休息を取る",
+              "description": "生きている仲間のHPを30％回復、疲れを12軽減。各人の各ワザの残り回数を2回戻す。",
+              "healRatio": 0.3,
+              "fatigue": 12,
+              "refill": 2
+            },
+            {
+              "id": "prepare",
+              "label": "素材でワザを補充する",
+              "description": "種3個を使い、各人の各ワザの残り回数を4回戻す。HPは回復しない。",
+              "costGoods": [
+                {
+                  "good": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
+                  "count": 3
+                }
+              ],
+              "refill": 4
+            },
+            {
+              "id": "blessing",
+              "label": "血の祝福を授かる",
+              "description": "生きている出撃メンバー全員が最大HPの25％を捧げる。支払いで倒れる場合は選べない。祝福は帰還まで。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d016",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d017"
+              ],
+              "healthCostRatio": 0.25
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "l13",
+        "x": 12,
+        "y": 1,
+        "next": ["l12"],
+        "label": "乾燥室へ向かう",
+        "hint": "未知の出来事の後、薬草の乾燥室で休む。書の戦闘には挑まない"
+      },
+      {
+        "id": "n14",
+        "x": 14,
+        "y": 0,
+        "next": ["n15", "m15"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d013",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d014",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d015"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n15",
+        "x": 15,
+        "y": -1,
+        "next": ["n16"],
+        "event": "battle",
+        "label": "魔物が待つ道",
+        "hint": "足音が重なる。ボス前に戦闘を越え、ガラクタ2個を狙う",
+        "danger": "high",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "4eb40f75-7f55-4e04-85ee-de3b67f5111c",
+          "977c6c0b-b1ed-4a3c-9462-3c11607ad563"
+        ]
+      },
+      {
+        "id": "n16",
+        "x": 16,
+        "y": 0,
+        "next": [],
+        "boss": true
+      },
+      {
+        "id": "l10",
+        "x": 10,
+        "y": 1,
+        "next": ["n11"],
+        "event": "discovery",
+        "label": "鑑定か、武器の付け替えか",
+        "hint": "HPを削ってガラクタ4個／金貨でスキルの書1冊／立ち去る",
+        "discovery": {
+          "title": "封じられた宝箱",
+          "description": "鍵穴のまわりに、先に来た誰かのこじ開け傷が残る箱。仕掛けはまだ生きている。無理に開けるか、道具を使うか。",
+          "choices": [
+            {
+              "id": "force",
+              "label": "強引に開ける",
+              "description": "全員が最大HPの20％を失う（倒れない）。ガラクタ4個を獲得。",
+              "damageRatio": 0.2,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 4
+                }
+              ]
+            },
+            {
+              "id": "tools",
+              "label": "金貨120でスキルの書を取り出す",
+              "description": "金貨120を支払い、武器のワザを変更できるスキルの書を1冊得る。",
+              "cost": 120,
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "手前の荷物だけ取る",
+              "description": "危険を避けて、ガラクタ1個を持ち帰る。",
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "m3",
+        "x": 3,
+        "y": 1,
+        "next": ["n4"],
+        "label": "？ 正体不明の道",
+        "hint": "車輪の跡と金属の音。商人か、宝か、それを狙う魔物か",
+        "danger": "unknown",
+        "mystery": true,
+        "weights": {
+          "battle": 3,
+          "treasure": 3,
+          "trap": 2,
+          "discovery": 2
+        },
+        "discovery": {
+          "title": "魔物の交換屋",
+          "description": "荷車の陰から声がする。「拾ったガラクタ、書と取り替えないか？ 帳面に付けとくから、ごまかしはしない」取引するか、体力を代償に品を得るか、立ち去るか。",
+          "choices": [
+            {
+              "id": "trade",
+              "label": "ガラクタ2個をスキルの書1冊と交換",
+              "description": "鑑定の機会を手放し、武器のランダムスキルを変更できる書を得る。",
+              "costGoods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ],
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "blood",
+              "label": "HPを渡して包みを得る",
+              "description": "全生存メンバーの最大HP15％と引き換えにガラクタ3個。支払いで倒れる場合は選べない。",
+              "healthCostRatio": 0.15,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "取引せずに進む",
+              "description": "品物と体力を温存する。"
+            }
+          ]
+        },
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "id": "m15",
+        "x": 15,
+        "y": 1,
+        "next": ["n16"],
+        "label": "？ 正体不明の道",
+        "hint": "血の跡の先に荷車。大きな包みが見えるが、気配は読めない",
+        "danger": "unknown",
+        "mystery": true,
+        "weights": {
+          "battle": 4,
+          "treasure": 2,
+          "trap": 2,
+          "discovery": 2
+        },
+        "discovery": {
+          "title": "魔物の交換屋",
+          "description": "荷車の陰から声がする。「拾ったガラクタ、書と取り替えないか？ 帳面に付けとくから、ごまかしはしない」取引するか、体力を代償に品を得るか、立ち去るか。",
+          "choices": [
+            {
+              "id": "trade",
+              "label": "ガラクタ2個をスキルの書1冊と交換",
+              "description": "鑑定の機会を手放し、武器のランダムスキルを変更できる書を得る。",
+              "costGoods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ],
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "blood",
+              "label": "HPを渡して包みを得る",
+              "description": "全生存メンバーの最大HP15％と引き換えにガラクタ3個。支払いで倒れる場合は選べない。",
+              "healthCostRatio": 0.15,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "取引せずに進む",
+              "description": "品物と体力を温存する。"
+            }
+          ]
+        },
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 3
+          }
+        ]
+      }
+    ],
+    "weights": {
+      "battle": 3,
+      "treasure": 2,
+      "trap": 1
+    },
+    "treasure": {
+      "gold": [122, 270],
+      "goods": [
+        {
+          "good": "e5951ae4-0a5b-436e-8720-286f9e2bfc0c",
+          "count": 1
+        },
+        {
+          "good": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
+          "count": 1
+        },
+        {
+          "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+          "count": 1
+        }
+      ],
+      "mimic": {
+        "foe": "c7e4b60c-edc5-4071-b956-c883f1ca51b3",
+        "chance": 0.15
+      }
+    },
+    "trap": [140, 220],
+    "group": [1, 3]
+  },
+  {
+    "id": "3d0fffc3-8e02-42c9-9733-bc1589520f52",
+    "slug": "layer4",
+    "no": 4,
+    "name": "底なしの祭壇",
+    "foes": [
+      "552ec59c-a774-42d0-8f12-f2963aeb417d",
+      "552ec59c-a774-42d0-8f12-f2963aeb417d",
+      "3776eb0a-02ac-4f4f-9c66-c4434164b2b9",
+      "0bd25319-47c6-4761-8c7a-49535e14a938",
+      "f8db80ab-a853-45d1-91c4-7a2fd0856aba",
+      "eb059c44-724e-44fc-909f-ab4fcda02df3"
+    ],
+    "boss": "b2dfcc17-8719-472a-9510-6564f6dd3818",
+    "start": "s",
+    "stations": [
+      {
+        "id": "s",
+        "x": 0,
+        "y": 0,
+        "next": ["n1"]
+      },
+      {
+        "id": "n1",
+        "x": 1,
+        "y": 0,
+        "next": ["n2"],
+        "event": "battle"
+      },
+      {
+        "id": "n2",
+        "x": 2,
+        "y": 0,
+        "next": ["n3", "m3"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d010",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d011",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d012"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n3",
+        "x": 3,
+        "y": -1,
+        "next": ["n4"],
+        "event": "discovery",
+        "label": "魔物のショップ",
+        "hint": "呼び込みの声と、小銭を数える音。手当てと未鑑定の品を売っている",
+        "danger": "low",
+        "mystery": true,
+        "discovery": {
+          "title": "ククルスの露店",
+          "description": "「買うなら一つだけだぞ ……ここまで来る客は少ない また来い」。今の傷を癒やすか、鑑定の楽しみを持ち帰るか。何も買わずに通り過ぎてもよい。",
+          "choices": [
+            {
+              "id": "heal",
+              "label": "手当てを受ける・75G",
+              "description": "生きている仲間全員のHPを40％回復。回復薬は消費しない。",
+              "cost": 75,
+              "healRatio": 0.4
+            },
+            {
+              "id": "goods",
+              "label": "未鑑定の包みを買う・110G",
+              "description": "ガラクタ3個。街で鑑定するまで、装備の種類や品質は分からない。",
+              "cost": 110,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "買わずに進む",
+              "description": "金貨を温存して先へ進む。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n4",
+        "x": 4,
+        "y": 0,
+        "next": ["u5", "l5"]
+      },
+      {
+        "id": "u5",
+        "x": 5,
+        "y": -1,
+        "next": ["u6"],
+        "event": "battle",
+        "label": "装備を掘る道",
+        "hint": "敵を倒してガラクタ2個。次の宝箱でさらに1個確定",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "552ec59c-a774-42d0-8f12-f2963aeb417d",
+          "0bd25319-47c6-4761-8c7a-49535e14a938"
+        ],
+        "danger": "high"
+      },
+      {
+        "id": "u6",
+        "x": 6,
+        "y": -1,
+        "next": ["n7"],
+        "event": "treasure",
+        "label": "埋もれた宝箱",
+        "hint": "金貨と品物。ガラクタ1個は必ず入っている",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "id": "l5",
+        "x": 5,
+        "y": 1,
+        "next": ["l6"],
+        "event": "discovery",
+        "label": "封蝋の巡礼所",
+        "hint": "素材を使って回復するか、HPを払って素材とガラクタを得る",
+        "discovery": {
+          "title": "封蝋の巡礼所",
+          "description": "巡礼者が休んだ古い場所で、今は冒険者の休憩所になっている。封蝋を捧げて休むか、封印を削って持ち帰るか。",
+          "choices": [
+            {
+              "id": "rest",
+              "label": "封蝋を捧げて休む",
+              "description": "封蝋2個を捧げ、HPを40％回復、各人の各ワザの残り回数を4回戻す。",
+              "costGoods": [
+                {
+                  "good": "57790d09-046e-4fc6-9f57-e285f8e4b890",
+                  "count": 2
+                }
+              ],
+              "healRatio": 0.4,
+              "fatigue": 0,
+              "refill": 4
+            },
+            {
+              "id": "salvage",
+              "label": "封印を削って持ち帰る",
+              "description": "全員が最大HPの25％の被害を受け、封蝋5個とガラクタ3個を得る。被害では倒れない。",
+              "damageRatio": 0.25,
+              "goods": [
+                {
+                  "good": "57790d09-046e-4fc6-9f57-e285f8e4b890",
+                  "count": 5
+                },
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "何もせず進む",
+              "description": "HPと素材を温存する。"
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "l6",
+        "x": 6,
+        "y": 1,
+        "next": ["n7"]
+      },
+      {
+        "id": "n7",
+        "x": 7,
+        "y": 0,
+        "next": ["n8"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d011",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d012",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d013"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n8",
+        "x": 8,
+        "y": 0,
+        "next": ["n9"],
+        "event": "midboss",
+        "foes": ["495dd552-d553-4a92-b408-6f336c221ae2"]
+      },
+      {
+        "id": "n9",
+        "x": 9,
+        "y": 0,
+        "next": ["n10", "l10"]
+      },
+      {
+        "id": "n10",
+        "x": 10,
+        "y": -1,
+        "next": ["l12"],
+        "event": "treasure",
+        "label": "巡礼者の宝箱",
+        "hint": "宝箱の後、最後の灯で準備してから戦闘路か未知の道を選ぶ",
+        "danger": "low"
+      },
+      {
+        "id": "n11",
+        "x": 13,
+        "y": 0,
+        "next": ["n14"]
+      },
+      {
+        "id": "u12",
+        "x": 12,
+        "y": -1,
+        "next": ["u13"],
+        "event": "battle",
+        "label": "最後の書を守る敵",
+        "hint": "最後の灯で準備してから挑む。勝利でスキルの書2冊",
+        "rewardGoods": [
+          {
+            "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "0bd25319-47c6-4761-8c7a-49535e14a938",
+          "3776eb0a-02ac-4f4f-9c66-c4434164b2b9"
+        ],
+        "danger": "high"
+      },
+      {
+        "id": "u13",
+        "x": 13,
+        "y": -1,
+        "next": ["n14"],
+        "event": "treasure",
+        "label": "埋もれた宝箱",
+        "hint": "金貨と品物。ガラクタ1個は必ず入っている",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "id": "l12",
+        "x": 11,
+        "y": 1,
+        "next": ["u12", "l13"],
+        "event": "discovery",
+        "label": "巡礼者の最後の灯",
+        "hint": "素材でワザを補充するか、休息か、血の祝福か",
+        "discovery": {
+          "title": "巡礼者の最後の灯",
+          "description": "長椅子の擦れた灯り場。集めた封蝋で灯を足して備えるか、休息や血の祝福を選ぶか。",
+          "choices": [
+            {
+              "id": "rest",
+              "label": "休息を取る",
+              "description": "生きている仲間のHPを30％回復、疲れを12軽減。各人の各ワザの残り回数を2回戻す。",
+              "healRatio": 0.3,
+              "fatigue": 12,
+              "refill": 2
+            },
+            {
+              "id": "prepare",
+              "label": "素材でワザを補充する",
+              "description": "封蝋3個を使い、各人の各ワザの残り回数を4回戻す。HPは回復しない。",
+              "costGoods": [
+                {
+                  "good": "57790d09-046e-4fc6-9f57-e285f8e4b890",
+                  "count": 3
+                }
+              ],
+              "refill": 4
+            },
+            {
+              "id": "blessing",
+              "label": "血の祝福を授かる",
+              "description": "生きている出撃メンバー全員が最大HPの25％を捧げる。支払いで倒れる場合は選べない。祝福は帰還まで。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d016",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d017"
+              ],
+              "healthCostRatio": 0.25
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "l13",
+        "x": 12,
+        "y": 1,
+        "next": ["n11"],
+        "label": "暗い巡礼路",
+        "hint": "未知の出来事が2地点続く。書の戦闘には挑まない"
+      },
+      {
+        "id": "n14",
+        "x": 14,
+        "y": 0,
+        "next": ["n15", "m15"],
+        "event": "discovery",
+        "label": "祝福の祭壇",
+        "hint": "祝福を選び、仲間ひとりに授ける",
+        "discovery": {
+          "title": "渓谷の祝福",
+          "description": "谷で働く者が、通りがかりに手を合わせていく古い祭壇。今日は誰の分を願う？ 祝福はこの探索中だけ有効。すでに持つ祝福は上書きされる。",
+          "choices": [
+            {
+              "id": "blessing",
+              "label": "祝福を授かる",
+              "description": "3つの祝福から1つ選び、仲間に授ける。",
+              "blessings": [
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d014",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d015",
+                "49c06f75-74e8-4a31-a9bb-d6b09e96d010"
+              ]
+            },
+            {
+              "id": "book",
+              "label": "スキルの書を持ち帰る",
+              "description": "祝福の代わりに、武器のワザを変更できる書を1冊手に入れる。",
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "n15",
+        "x": 15,
+        "y": -1,
+        "next": ["n16"],
+        "event": "battle",
+        "label": "魔物が待つ道",
+        "hint": "足音が重なる。ボス前に戦闘を越え、ガラクタ2個を狙う",
+        "danger": "high",
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 2
+          }
+        ],
+        "foes": [
+          "eb059c44-724e-44fc-909f-ab4fcda02df3",
+          "0bd25319-47c6-4761-8c7a-49535e14a938"
+        ]
+      },
+      {
+        "id": "n16",
+        "x": 16,
+        "y": 0,
+        "next": [],
+        "boss": true
+      },
+      {
+        "id": "l10",
+        "x": 10,
+        "y": 1,
+        "next": ["l12"],
+        "event": "discovery",
+        "label": "封印箱の取引",
+        "hint": "封印箱の後、最後の灯で準備してから戦闘路か未知の道を選ぶ",
+        "discovery": {
+          "title": "封じられた宝箱",
+          "description": "鍵穴のまわりに、先に来た誰かのこじ開け傷が残る箱。仕掛けはまだ生きている。無理に開けるか、道具を使うか。",
+          "choices": [
+            {
+              "id": "force",
+              "label": "強引に開ける",
+              "description": "全員が最大HPの20％を失う（倒れない）。ガラクタ4個を獲得。",
+              "damageRatio": 0.2,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 4
+                }
+              ]
+            },
+            {
+              "id": "tools",
+              "label": "金貨150でスキルの書を取り出す",
+              "description": "金貨150を支払い、武器のワザを変更できるスキルの書を1冊得る。",
+              "cost": 150,
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "手前の荷物だけ取る",
+              "description": "危険を避けて、ガラクタ1個を持ち帰る。",
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 1
+                }
+              ]
+            }
+          ]
+        },
+        "danger": "medium"
+      },
+      {
+        "id": "m3",
+        "x": 3,
+        "y": 1,
+        "next": ["n4"],
+        "label": "？ 正体不明の道",
+        "hint": "車輪の跡と金属の音。商人か、宝か、それを狙う魔物か",
+        "danger": "unknown",
+        "mystery": true,
+        "weights": {
+          "battle": 3,
+          "treasure": 3,
+          "trap": 2,
+          "discovery": 2
+        },
+        "discovery": {
+          "title": "魔物の交換屋",
+          "description": "荷車の陰から声がする。「拾ったガラクタ、書と取り替えないか？ 帳面に付けとくから、ごまかしはしない」取引するか、体力を代償に品を得るか、立ち去るか。",
+          "choices": [
+            {
+              "id": "trade",
+              "label": "ガラクタ2個をスキルの書1冊と交換",
+              "description": "鑑定の機会を手放し、武器のランダムスキルを変更できる書を得る。",
+              "costGoods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ],
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "blood",
+              "label": "HPを渡して包みを得る",
+              "description": "全生存メンバーの最大HP15％と引き換えにガラクタ3個。支払いで倒れる場合は選べない。",
+              "healthCostRatio": 0.15,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "取引せずに進む",
+              "description": "品物と体力を温存する。"
+            }
+          ]
+        },
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "id": "m15",
+        "x": 15,
+        "y": 1,
+        "next": ["n16"],
+        "label": "？ 正体不明の道",
+        "hint": "血の跡の先に荷車。大きな包みが見えるが、気配は読めない",
+        "danger": "unknown",
+        "mystery": true,
+        "weights": {
+          "battle": 4,
+          "treasure": 2,
+          "trap": 2,
+          "discovery": 2
+        },
+        "discovery": {
+          "title": "魔物の交換屋",
+          "description": "荷車の陰から声がする。「拾ったガラクタ、書と取り替えないか？ 帳面に付けとくから、ごまかしはしない」取引するか、体力を代償に品を得るか、立ち去るか。",
+          "choices": [
+            {
+              "id": "trade",
+              "label": "ガラクタ2個をスキルの書1冊と交換",
+              "description": "鑑定の機会を手放し、武器のランダムスキルを変更できる書を得る。",
+              "costGoods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 2
+                }
+              ],
+              "goods": [
+                {
+                  "good": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+                  "count": 1
+                }
+              ]
+            },
+            {
+              "id": "blood",
+              "label": "HPを渡して包みを得る",
+              "description": "全生存メンバーの最大HP15％と引き換えにガラクタ3個。支払いで倒れる場合は選べない。",
+              "healthCostRatio": 0.15,
+              "goods": [
+                {
+                  "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+                  "count": 3
+                }
+              ]
+            },
+            {
+              "id": "leave",
+              "label": "取引せずに進む",
+              "description": "品物と体力を温存する。"
+            }
+          ]
+        },
+        "rewardGoods": [
+          {
+            "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+            "count": 3
+          }
+        ]
+      }
+    ],
+    "weights": {
+      "battle": 3,
+      "treasure": 2,
+      "trap": 1
+    },
+    "treasure": {
+      "gold": [234, 494],
+      "goods": [
+        {
+          "good": "31640e26-28b2-4ef6-afb1-cc46dd80ac88",
+          "count": 1
+        },
+        {
+          "good": "57790d09-046e-4fc6-9f57-e285f8e4b890",
+          "count": 1
+        },
+        {
+          "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+          "count": 2
+        }
+      ],
+      "mimic": {
+        "foe": "e23fb92e-09c4-44d8-89cf-74fae002e8ae",
+        "chance": 0.15
+      }
+    },
+    "trap": [240, 380],
+    "group": [1, 3]
+  }
+]

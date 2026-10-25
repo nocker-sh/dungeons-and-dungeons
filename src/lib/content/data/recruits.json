@@ -1,0 +1,642 @@
+[
+  {
+    "id": "c4d0f5b8-6d31-4f2e-9a67-3f8b1d20a501",
+    "slug": "n-alda",
+    "price": 110,
+    "weight": 6,
+    "member": {
+      "id": "e7883b7f-237f-4de0-a73d-196b09e705b5",
+      "slug": "alda",
+      "role": "tank",
+      "lv": 3,
+      "stats": {
+        "maxHp": 176,
+        "str": 16,
+        "tec": 6,
+        "spd": 10
+      },
+      "skills": [
+        "b5c7ac1e-222a-4bb4-9e83-1d5bc4ca6101",
+        "eae8d826-4677-4a65-ae1c-8ebe25cfa137"
+      ],
+      "growth": {
+        "maxHp": 22,
+        "str": 2,
+        "tec": 2,
+        "spd": 0.8
+      },
+      "favorite": "greatsword",
+      "defaultWeapon": "48c90a78-fca9-495c-a2a1-5db9cfa0409f",
+      "gear": ["4ae0f777-d468-4e30-ac77-c8e23149f707"],
+      "schools": ["sun"],
+      "exploration": "trapper",
+      "combatStyle": "全体防護で味方を守る近接タンク"
+    }
+  },
+  {
+    "id": "f1a7c2de-5b94-4d08-8c31-7e6a9b40d512",
+    "slug": "n-mayu",
+    "price": 100,
+    "weight": 6,
+    "member": {
+      "id": "d312117e-1aa5-4e02-ae58-9b913f6b8917",
+      "slug": "mayu",
+      "role": "damage",
+      "lv": 3,
+      "stats": {
+        "maxHp": 118,
+        "str": 7,
+        "tec": 13,
+        "spd": 6
+      },
+      "skills": [
+        "6391bc8f-0654-4c4b-b229-a3d5958d9b2a",
+        "6c09f8d4-0cad-47ae-a3a9-fbff0f2f41e8",
+        "775625cf-3b7c-452e-aae8-1494babc0006"
+      ],
+      "favorite": "gun",
+      "defaultWeapon": "3a639b16-9c51-46f6-978d-733e02b4082c",
+      "gear": ["4ae0f777-d468-4e30-ac77-c8e23149f707"],
+      "schools": ["demon"],
+      "exploration": "scout",
+      "combatStyle": "毒・HP代償・吸収を使う遠距離火力"
+    }
+  },
+  {
+    "id": "0b5e9d34-8c72-4a16-b5d9-2f47c8e13a23",
+    "slug": "n-sion",
+    "price": 120,
+    "weight": 6,
+    "member": {
+      "id": "92994417-49e7-428b-9565-d050a6e8c3ab",
+      "slug": "sion",
+      "role": "healer",
+      "lv": 3,
+      "stats": {
+        "maxHp": 128,
+        "str": 10,
+        "tec": 13,
+        "spd": 9
+      },
+      "skills": [
+        "1058fc65-094d-4268-8c71-f25f0c43f05d",
+        "71d2194c-4c53-485e-8aaa-d3356533ba96",
+        "7b4e37f9-6616-40e2-a7ab-9fc124d04b67",
+        "3f7c0a52-9f0e-4d62-9a4d-7b1c5e0d84aa",
+        "84dc6631-f23f-4147-a232-166e7ba8e2b6",
+        "0b522417-ce8b-4e2c-88bd-b5e53f12880c"
+      ],
+      "favorite": "sword",
+      "defaultWeapon": "90bb29e1-d879-4287-8347-3db8dc732dfe",
+      "gear": ["4ae0f777-d468-4e30-ac77-c8e23149f707"],
+      "schools": ["sun"],
+      "exploration": "camp",
+      "combatStyle": "即時回復・浄化・修復で立て直す回復役"
+    }
+  },
+  {
+    "id": "ab10f491-b05d-462f-942e-26e24c0f6de1",
+    "slug": "r-jig",
+    "price": 80,
+    "weight": 6,
+    "member": {
+      "id": "f9298ba8-cd8f-4e88-b491-2d7e2c1f947d",
+      "slug": "jig",
+      "role": "healer",
+      "lv": 3,
+      "stats": {
+        "maxHp": 120,
+        "str": 11,
+        "tec": 14,
+        "spd": 11
+      },
+      "skills": [
+        "7833da07-ee5f-48fc-8e91-58d3fe4d1367",
+        "cffc2c24-4b7c-4c54-9aeb-3d7acb72fc45",
+        "775625cf-3b7c-452e-aae8-1494babc0005"
+      ],
+      "favorite": "dagger",
+      "defaultWeapon": "b299f848-948a-4a9d-ae7e-63dd050596d6",
+      "schools": ["plant"],
+      "growthType": "early",
+      "exploration": "trapper",
+      "combatStyle": "速さで先に動き、毒と縛りを解いて立て直す回復役。毒の敵を裂く"
+    }
+  },
+  {
+    "id": "3c72a37a-b67d-4645-9548-674b8898321f",
+    "slug": "r-alma",
+    "price": 180,
+    "weight": 3,
+    "rank": "R",
+    "member": {
+      "id": "950f4a1e-c783-4007-a6b2-6553906af367",
+      "slug": "alma",
+      "job": "自称勇者",
+      "role": "damage",
+      "growthType": "steady",
+      "lv": 3,
+      "stats": {
+        "maxHp": 120,
+        "str": 15,
+        "tec": 5,
+        "spd": 9
+      },
+      "skills": [
+        "cbd454cd-a51b-4a36-8a94-894ec3302061",
+        "bcb6d43d-5055-43a1-96a9-f2c93851b210",
+        "775625cf-3b7c-452e-aae8-1494babc0003"
+      ],
+      "favorite": "greatsword",
+      "defaultWeapon": "70717d91-d61f-4fa3-860f-e52753cc7945",
+      "schools": ["sun"],
+      "exploration": "bargain",
+      "combatStyle": "回復・蘇生で味方を支え、ケイヤクの一撃で一体を倒す救援役",
+      "pact": {
+        "modes": [
+          {
+            "level": 1,
+            "weapon": "70717d91-d61f-4fa3-860f-e52753cc7945",
+            "roles": ["damage"],
+            "combatStyle": "自己強化から高威力の一撃で一体を倒す。"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "645ad309-492b-44e7-906b-c2905b5a4bb8",
+    "slug": "n-luca",
+    "price": 110,
+    "weight": 6,
+    "member": {
+      "id": "585cfe02-653c-448a-b8f8-e2646f097091",
+      "slug": "luca",
+      "role": "damage",
+      "growthType": "late",
+      "lv": 3,
+      "stats": {
+        "maxHp": 116,
+        "str": 6,
+        "tec": 14,
+        "spd": 8
+      },
+      "skills": [
+        "002bfd2d-0deb-4f3a-bcf8-2f543edc3921",
+        "dd5acbb1-06f5-4879-90df-e3f0a1cae2c2",
+        "9f006a85-3aab-4b0f-8619-5def4d586a78"
+      ],
+      "favorite": "gun",
+      "defaultWeapon": "3a639b16-9c51-46f6-978d-733e02b4082c",
+      "gear": ["4ae0f777-d468-4e30-ac77-c8e23149f707"],
+      "schools": ["star"],
+      "exploration": "scout",
+      "combatStyle": "単体狙撃と範囲攻撃を使い分ける遠距離火力"
+    }
+  },
+  {
+    "id": "90627990-f1c2-4a65-865b-b3bf315c0e15",
+    "slug": "n-gald",
+    "price": 140,
+    "weight": 6,
+    "member": {
+      "id": "a43310c2-98c6-41e1-b8f6-facf50b5f413",
+      "slug": "gald",
+      "role": "tank",
+      "growthType": "normal",
+      "lv": 3,
+      "stats": {
+        "maxHp": 200,
+        "str": 18,
+        "tec": 5,
+        "spd": 5
+      },
+      "skills": [
+        "9278d955-740a-4b72-97da-dbff94e25989",
+        "775625cf-3b7c-452e-aae8-1494babc0007",
+        "71f9b056-3635-4d1e-a2c7-76af1d1c4166"
+      ],
+      "growth": {
+        "maxHp": 22,
+        "str": 2,
+        "tec": 2,
+        "spd": 0.8
+      },
+      "favorite": "axe",
+      "defaultWeapon": "9b1936ae-de99-41e5-a601-a496d0ea983f",
+      "gear": ["4ae0f777-d468-4e30-ac77-c8e23149f707"],
+      "schools": ["earth"],
+      "exploration": "camp",
+      "combatStyle": "自身を守り、敵を足止めする近接タンク"
+    }
+  },
+  {
+    "id": "f7252dab-3d97-45a9-a7b6-90abf7a75c37",
+    "slug": "n-gou",
+    "price": 130,
+    "weight": 6,
+    "member": {
+      "id": "b7925912-35a3-4f8f-b42e-d59581a71e19",
+      "slug": "gou",
+      "role": "damage",
+      "growthType": "late",
+      "lv": 3,
+      "stats": {
+        "maxHp": 144,
+        "str": 16,
+        "tec": 7,
+        "spd": 8
+      },
+      "skills": [
+        "775625cf-3b7c-452e-aae8-1494babc0004",
+        "ac12cea2-8107-45a9-8967-e5f77495a6fc",
+        "fd30ae14-70b1-412b-8756-85113a28e0dd"
+      ],
+      "favorite": "axe",
+      "defaultWeapon": "9b1936ae-de99-41e5-a601-a496d0ea983f",
+      "gear": ["4ae0f777-d468-4e30-ac77-c8e23149f707"],
+      "exploration": "hunter",
+      "combatStyle": "範囲攻撃と攻勢の合図で突破する近接火力"
+    }
+  },
+  {
+    "id": "885d75eb-d99c-472f-bf97-b27aff0fae69",
+    "slug": "n-rio",
+    "price": 120,
+    "weight": 6,
+    "member": {
+      "id": "cc5615da-77a2-4d94-8a50-54147f923397",
+      "slug": "rio",
+      "role": "damage",
+      "growthType": "late",
+      "lv": 3,
+      "stats": {
+        "maxHp": 122,
+        "str": 9,
+        "tec": 14,
+        "spd": 11
+      },
+      "skills": [
+        "4453ab0c-afd9-4597-a708-55b825673d43",
+        "722304a5-cb04-468c-9f2e-11df2311be52",
+        "16846e41-9426-44a4-9a60-3b79e8ad571d"
+      ],
+      "favorite": "dagger",
+      "defaultWeapon": "86172553-2914-4f88-b2a3-6f122ba739a4",
+      "gear": ["4ae0f777-d468-4e30-ac77-c8e23149f707"],
+      "schools": ["star"],
+      "exploration": "hunter",
+      "combatStyle": "遠くは三連星、近くは相棒の噛みつきと尾払いで戦う火力"
+    }
+  },
+  {
+    "id": "0f5ec726-8ac0-4b03-a36a-2aa09d287c13",
+    "slug": "n-mort",
+    "price": 120,
+    "weight": 6,
+    "member": {
+      "id": "1aac56f8-7a5c-4199-8100-91caf9e283a6",
+      "slug": "mort",
+      "role": "healer",
+      "growthType": "normal",
+      "lv": 3,
+      "stats": {
+        "maxHp": 132,
+        "str": 17,
+        "tec": 8,
+        "spd": 6
+      },
+      "skills": [
+        "f65dfc3f-4270-4b0c-9bf9-301afe329bf9",
+        "fdef2482-ebb4-4184-8638-4460daf0a370",
+        "dc9819b7-8cdd-4144-80a4-eee1484df447",
+        "6e7cc289-f522-4d88-9167-d4fb39973544",
+        "4b0ea7f4-3c91-44a6-a017-ba6bfc7a4875"
+      ],
+      "favorite": "axe",
+      "defaultWeapon": "9b1936ae-de99-41e5-a601-a496d0ea983f",
+      "gear": ["4ae0f777-d468-4e30-ac77-c8e23149f707"],
+      "schools": ["earth"],
+      "exploration": "camp",
+      "combatStyle": "重い防具で立ち、傷を押さえ、全体を少し癒やし、防具を繕い、倒れた仲間を起こす回復役。土くれ投げで後ろからも殴る"
+    }
+  },
+  {
+    "id": "9325b33d-d995-4403-ade7-2445f4317958",
+    "slug": "r-tsumugi",
+    "price": 180,
+    "weight": 3,
+    "rank": "R",
+    "member": {
+      "id": "2f1b2a8b-1e8d-4c76-b820-8d1bc1bb38df",
+      "slug": "tsumugi",
+      "role": "healer",
+      "growthType": "early",
+      "lv": 3,
+      "stats": {
+        "maxHp": 120,
+        "str": 7,
+        "tec": 13,
+        "spd": 9
+      },
+      "skills": [
+        "fb03dbf5-a8ec-45c6-8bcc-f7afdcf2bdce",
+        "da456b26-0ffd-49d0-8557-685dcce51c4b",
+        "7673320b-bc7f-4352-b4aa-501439288b65",
+        "775625cf-3b7c-452e-aae8-1494babc0001",
+        "775625cf-3b7c-452e-aae8-1494babc0002"
+      ],
+      "favorite": "dagger",
+      "defaultWeapon": "5ad89d9e-29c6-424d-ae22-ba335f3cfd2f",
+      "schools": ["plant"],
+      "exploration": "camp",
+      "combatStyle": "全体再生・浄化・蘇生で支える回復役",
+      "pact": {
+        "modes": [
+          {
+            "level": 1,
+            "weapon": "5ad89d9e-29c6-424d-ae22-ba335f3cfd2f",
+            "roles": ["healer"],
+            "combatStyle": "遠距離から単体回復と足止め。回復しながら後衛を守る。"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "2e03128d-aa0a-4170-89cb-819ec9931650",
+    "slug": "r-rivet",
+    "price": 180,
+    "weight": 3,
+    "rank": "R",
+    "member": {
+      "id": "cf7498a0-fa43-457f-b018-a9f19764645e",
+      "slug": "rivet",
+      "role": "tank",
+      "growthType": "early",
+      "lv": 3,
+      "stats": {
+        "maxHp": 196,
+        "str": 17,
+        "tec": 8,
+        "spd": 7
+      },
+      "skills": [
+        "f426868b-4d2b-4a2a-a10d-7a2adaeb39c5",
+        "531ebde5-db0a-4458-ba5b-a3daf3ed6df6",
+        "bfd094e2-1ecc-4f80-9eb5-ca49b31026b7"
+      ],
+      "growth": {
+        "maxHp": 22,
+        "str": 2,
+        "tec": 2,
+        "spd": 0.8
+      },
+      "favorite": "sword",
+      "defaultWeapon": "31936151-6472-474e-89d7-4d087c13b73f",
+      "schools": ["earth"],
+      "exploration": "trapper",
+      "combatStyle": "仲間全員の防具を直し、当て板で守る職人のタンク",
+      "pact": {
+        "modes": [
+          {
+            "level": 1,
+            "weapon": "31936151-6472-474e-89d7-4d087c13b73f",
+            "roles": ["tank", "damage"],
+            "combatStyle": "身を焼く拳と火の粉で、近くの敵を押し崩す。"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "ccfa57af-14ce-4d0b-a456-cd83d342a966",
+    "slug": "r-rize",
+    "price": 180,
+    "weight": 3,
+    "rank": "R",
+    "member": {
+      "id": "f2f638a7-7073-4d88-a779-bbba614db6dd",
+      "slug": "rize",
+      "role": "damage",
+      "growthType": "steady",
+      "lv": 3,
+      "stats": {
+        "maxHp": 108,
+        "str": 5,
+        "tec": 14,
+        "spd": 10
+      },
+      "skills": [
+        "9e66d6ac-db40-48ff-a268-3a170a823406",
+        "de2048dc-1ee5-44c9-b767-edb0662fba0a",
+        "8ec5b69e-371b-402e-929f-a1fb866809de"
+      ],
+      "favorite": "gun",
+      "defaultWeapon": "33ff5e49-81ed-4bb9-8d9b-c3951c387b8b",
+      "schools": ["demon"],
+      "exploration": "bargain",
+      "combatStyle": "敵を縛り、縛った敵を撃ち抜く遠距離の呪術役",
+      "pact": {
+        "modes": [
+          {
+            "level": 1,
+            "weapon": "33ff5e49-81ed-4bb9-8d9b-c3951c387b8b",
+            "roles": ["damage"],
+            "combatStyle": "HPを払う遠距離の一撃と、敵全体を切る紙吹雪で押し切る。"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "e551c36d-848a-4893-8668-ad77e9f0d1b4",
+    "slug": "r-sera",
+    "price": 180,
+    "weight": 3,
+    "rank": "R",
+    "member": {
+      "id": "e492df07-40d1-4352-bb4e-66877d6554e6",
+      "slug": "sera",
+      "role": "tank",
+      "growthType": "steady",
+      "lv": 3,
+      "stats": {
+        "maxHp": 144,
+        "str": 13,
+        "tec": 7,
+        "spd": 6
+      },
+      "skills": [
+        "28352369-1c2d-469a-ad4e-0e01736e0284",
+        "28a2bfa4-e971-4ccb-9ffe-a83299c5f82a",
+        "cf33e30b-3a10-499e-98e6-89998bcce9d8"
+      ],
+      "growth": {
+        "maxHp": 22,
+        "str": 2,
+        "tec": 2,
+        "spd": 0.8
+      },
+      "favorite": "sword",
+      "defaultWeapon": "c7a44829-433d-4b1a-af43-080407466aeb",
+      "schools": ["earth"],
+      "exploration": "trapper",
+      "combatStyle": "石の翼で味方を覆い、石の眠りで粘るタンク",
+      "pact": {
+        "modes": [
+          {
+            "level": 1,
+            "weapon": "c7a44829-433d-4b1a-af43-080407466aeb",
+            "roles": ["tank", "damage"],
+            "combatStyle": "石の翼で受けながら、空から石を落として敵の群れを崩す。"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "009056c3-c91c-4e8e-bc0f-1d1bf4f6d215",
+    "slug": "n-mimika",
+    "price": 110,
+    "weight": 6,
+    "member": {
+      "id": "56e31d5e-a23d-48b6-8152-ba781dd275f7",
+      "slug": "mimika",
+      "role": "damage",
+      "lv": 3,
+      "stats": {
+        "maxHp": 124,
+        "str": 8,
+        "tec": 15,
+        "spd": 10
+      },
+      "skills": [
+        "4e09d1d7-dd44-46a7-9c0c-b2eacaefcf43",
+        "fb2c2376-9adf-4859-98d7-e1051fb64565",
+        "dd34363a-15cf-4b81-9fc2-3d89dd8ca4e7"
+      ],
+      "favorite": "dagger",
+      "defaultWeapon": "86172553-2914-4f88-b2a3-6f122ba739a4",
+      "gear": ["4ae0f777-d468-4e30-ac77-c8e23149f707"],
+      "schools": ["demon"],
+      "exploration": "scout",
+      "combatStyle": "影の使い魔で敵全員を裂き、影踏みで溜めた一撃を叩き込む火力"
+    }
+  },
+  {
+    "id": "178d777b-9f4c-42bf-89c4-75acb990d8b8",
+    "slug": "n-clef",
+    "price": 140,
+    "weight": 6,
+    "member": {
+      "id": "54755854-24c1-4f9f-9feb-3075fe10ba8c",
+      "slug": "clef",
+      "role": "tank",
+      "growthType": "steady",
+      "lv": 3,
+      "stats": {
+        "maxHp": 140,
+        "str": 14,
+        "tec": 5,
+        "spd": 5
+      },
+      "skills": [
+        "00d806c9-63ec-4c9e-aa00-5399ac913892",
+        "5970f430-d9c1-48f8-a33f-15da21427ecf",
+        "dbeb25e3-c8bf-4b5e-8cbb-40128a21bf0d"
+      ],
+      "growth": {
+        "maxHp": 22,
+        "str": 2,
+        "tec": 2,
+        "spd": 0.8
+      },
+      "favorite": "sword",
+      "defaultWeapon": "90bb29e1-d879-4287-8347-3db8dc732dfe",
+      "weapon": "bb37b64c-6a42-4c4d-a9a3-bdf71e458f10",
+      "gear": ["2eb864d1-11fc-442a-b516-7b6efd4894ad"],
+      "exploration": "bargain",
+      "combatStyle": "鉄壁と扉受けで守り、閂で敵を押さえるタンク"
+    }
+  },
+  {
+    "id": "a65aea56-4323-4035-b956-aac363c97c0d",
+    "slug": "sr-husky",
+    "price": 220,
+    "weight": 1,
+    "rank": "SR",
+    "member": {
+      "id": "fd36c836-2564-415a-af21-14edc0a6c893",
+      "slug": "husky",
+      "role": "damage",
+      "unique": true,
+      "fixedArmor": true,
+      "growthType": "normal",
+      "lv": 3,
+      "stats": {
+        "maxHp": 132,
+        "str": 8,
+        "tec": 16,
+        "spd": 13
+      },
+      "skills": [
+        "d9836535-0f35-4b52-b67c-d9bb2256b2d6",
+        "775625cf-3b7c-452e-aae8-1494babc0008",
+        "8f8d36e7-f367-4135-879f-0ca24a00ae24"
+      ],
+      "favorite": "dagger",
+      "defaultWeapon": "86172553-2914-4f88-b2a3-6f122ba739a4",
+      "weapon": "a56fc6a8-31fa-4a7a-9041-5198ab40f010",
+      "gear": ["e39004ac-5205-4a52-9929-49783e738b3b"],
+      "exploration": "hunter",
+      "combatStyle": "吸収攻撃で自分を支える近接火力"
+    }
+  },
+  {
+    "id": "4925c738-5773-4f73-9b57-7874322943d7",
+    "slug": "r-nem",
+    "price": 180,
+    "weight": 3,
+    "rank": "R",
+    "member": {
+      "id": "15a86520-9b35-4adf-9f51-d467ee1c4c92",
+      "slug": "nem",
+      "role": "tank",
+      "growthType": "steady",
+      "lv": 3,
+      "stats": {
+        "maxHp": 128,
+        "str": 14,
+        "tec": 4,
+        "spd": 7
+      },
+      "skills": [
+        "cb3eafc7-034d-42f3-9ab5-761fbb1682c2",
+        "d0ec2659-9d7f-4b41-a442-cfd4287c4c97",
+        "3d839de7-4abc-44fc-9e15-3bea2ee2b60b"
+      ],
+      "growth": {
+        "maxHp": 22,
+        "str": 2,
+        "tec": 2,
+        "spd": 0.8
+      },
+      "favorite": "axe",
+      "defaultWeapon": "38044c40-1369-4c56-a3cf-5e2c6dcbe9f2",
+      "schools": ["demon"],
+      "exploration": "scout",
+      "combatStyle": "三つ首の威嚇で敵の足を止め、見張りで仲間を守るタンク",
+      "pact": {
+        "modes": [
+          {
+            "level": 1,
+            "weapon": "38044c40-1369-4c56-a3cf-5e2c6dcbe9f2",
+            "roles": ["tank", "damage"],
+            "combatStyle": "前衛で受け、全体噛みつきと鎖の足止めで敵を抑える。"
+          }
+        ]
+      }
+    }
+  }
+]

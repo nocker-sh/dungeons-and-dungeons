@@ -1,0 +1,128 @@
+[
+  {
+    "id": "a0364e00-663f-41a3-ba92-40ee77dcb99a",
+    "slug": "alda-greeting",
+    "speakerId": "e7883b7f-237f-4de0-a73d-196b09e705b5",
+    "scene": "ひとこと",
+    "text": "帰りの分、ちゃんと残してあるから 今日はもう少し奥まで行けるって！"
+  },
+  {
+    "id": "9c19a4e1-88d2-46c0-b757-82fe665f9827",
+    "slug": "mayu-greeting",
+    "speakerId": "d312117e-1aa5-4e02-ae58-9b913f6b8917",
+    "scene": "ひとこと",
+    "text": "ふぁ……おはよう 今日も、みんなで帰ろうね〜"
+  },
+  {
+    "id": "427b3e92-f6ff-4063-8e0e-5b6832df6531",
+    "slug": "sion-greeting",
+    "speakerId": "92994417-49e7-428b-9565-d050a6e8c3ab",
+    "scene": "ひとこと",
+    "text": "傷は私が 帰ったら、手を見せてくれればいい"
+  },
+  {
+    "id": "11020f42-c0ff-4b70-bd98-70c6b8f0f607",
+    "slug": "lloyd-greeting",
+    "speakerId": "f790642c-1e81-41e7-82cb-748b35d888a5",
+    "scene": "ひとこと",
+    "text": "どこまで降りる？"
+  },
+  {
+    "id": "eccf89af-bd6c-4ebb-bf53-010a8e8202b1",
+    "slug": "luca-greeting",
+    "speakerId": "585cfe02-653c-448a-b8f8-e2646f097091",
+    "scene": "ひとこと",
+    "text": "さあ、ご覧あれ 今日の稼ぎも、一座の旗揚げの元手さ"
+  },
+  {
+    "id": "58db1542-dcc4-4b26-9ba2-7012d0cc9396",
+    "slug": "mort-greeting",
+    "speakerId": "1aac56f8-7a5c-4199-8100-91caf9e283a6",
+    "scene": "ひとこと",
+    "text": "帰れなかった人を見つけたら教えてよ 名前が分かれば、ちゃんと石に彫ってやれるからさ"
+  },
+  {
+    "id": "81349118-d1f6-4c16-8956-0025e3db82c6",
+    "slug": "husky-greeting",
+    "speakerId": "fd36c836-2564-415a-af21-14edc0a6c893",
+    "scene": "ひとこと",
+    "text": "ほら、行くよ ……ちゃんとついてきてね 置いてかないから"
+  },
+  {
+    "id": "42ceea06-e9be-49a1-9395-51063daa984d",
+    "slug": "gald-greeting",
+    "speakerId": "a43310c2-98c6-41e1-b8f6-facf50b5f413",
+    "scene": "ひとこと",
+    "text": "大丈夫、俺が受け止める お前は自分のやることに集中しな"
+  },
+  {
+    "id": "96c03b03-a8dd-4073-ba0e-733fa6f88e07",
+    "slug": "tsumugi-greeting",
+    "speakerId": "2f1b2a8b-1e8d-4c76-b820-8d1bc1bb38df",
+    "scene": "ひとこと",
+    "text": "そのほつれ、直しておくね ……傷も隠してない？"
+  },
+  {
+    "id": "ce83f562-bc0a-4be4-a23c-3645fc6ab827",
+    "slug": "gou-greeting",
+    "speakerId": "b7925912-35a3-4f8f-b42e-d59581a71e19",
+    "scene": "ひとこと",
+    "text": "大物の依頼か？ 乗った 報酬は山分けな"
+  },
+  {
+    "id": "ad6c2e74-69c2-47eb-830f-f29f3c40799e",
+    "slug": "rize-greeting",
+    "speakerId": "f2f638a7-7073-4d88-a779-bbba614db6dd",
+    "scene": "ひとこと",
+    "text": "契約成立 ……あ、これは破らないやつね"
+  },
+  {
+    "id": "14b3c5d2-7696-4606-8f5d-45e4005a4932",
+    "slug": "sera-greeting",
+    "speakerId": "e492df07-40d1-4352-bb4e-66877d6554e6",
+    "scene": "ひとこと",
+    "text": "こっちこっち！ この翼の後ろなら安心だよ 守る相手がいると、私も落ち着くんだ"
+  },
+  {
+    "id": "2c686cd5-166c-425a-bda7-0acbc5cd1f6a",
+    "slug": "mimika-greeting",
+    "speakerId": "56e31d5e-a23d-48b6-8152-ba781dd275f7",
+    "scene": "ひとこと",
+    "text": "ほら、あんたの影、いま手を振ったでしょ？ 気に入ったから、小屋の切符を一枚あげる"
+  },
+  {
+    "id": "8be4bae4-3978-44f7-b44f-4c0adca8042b",
+    "slug": "alma-greeting",
+    "speakerId": "950f4a1e-c783-4007-a6b2-6553906af367",
+    "scene": "ひとこと",
+    "text": "見ろ、抜けたぞ！ 石碑ごとだがな 弁償はきちんと払う 勇者だからな！"
+  },
+  {
+    "id": "a87cdf3d-a87b-41a7-b21d-dd473e7740a6",
+    "slug": "rivet-greeting",
+    "speakerId": "cf7498a0-fa43-457f-b018-a9f19764645e",
+    "scene": "ひとこと",
+    "text": "給料ぶんは、きっちり前に立つよ 小さいからって、抜けると思わないでよね"
+  },
+  {
+    "id": "58e92ba7-e7aa-4164-a4f2-67b35f003945",
+    "slug": "rio-greeting",
+    "speakerId": "cc5615da-77a2-4d94-8a50-54147f923397",
+    "scene": "ひとこと",
+    "text": "しーっ、いま寝てるんだ 起きたら紹介するね"
+  },
+  {
+    "id": "33baef9b-9bab-43b2-b8c9-8d24e58d78db",
+    "slug": "clef-greeting",
+    "speakerId": "54755854-24c1-4f9f-9feb-3075fe10ba8c",
+    "scene": "ひとこと",
+    "text": "鍵もドアも持ってきた！ ドアのほうは、家より先に持ってるんだ"
+  },
+  {
+    "id": "70dd42d4-84de-4d88-9eeb-c8521438a08f",
+    "slug": "nem-greeting",
+    "speakerId": "15a86520-9b35-4adf-9f51-d467ee1c4c92",
+    "scene": "ひとこと",
+    "text": "こら、三人とも静かに ……大丈夫、ちゃんと言うこと聞くから"
+  }
+]

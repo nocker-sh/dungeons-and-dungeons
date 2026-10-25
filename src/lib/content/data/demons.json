@@ -1,0 +1,133 @@
+[
+  {
+    "id": "1cda31a8-f190-4c40-8b75-cff10de8d894",
+    "slug": "nui",
+    "skills": [
+      "b2216d3b-fb2b-49d3-b799-f07f9214f49e",
+      "c0448908-364a-496d-8565-ea898159a6d8",
+      "3cddb15d-abfd-4f65-8d98-6cc44cb3b502"
+    ],
+    "school": "demon",
+    "fusion": {
+      "attack": 0.03,
+      "resist": {
+        "bind": 0.08
+      },
+      "maxHp": 8
+    },
+    "contract": {
+      "encounter": "nui-encounter",
+      "gold": 100,
+      "materials": [
+        {
+          "good": "golden-apple",
+          "count": 1
+        }
+      ],
+      "paper": "contract-paper-nui"
+    }
+  },
+  {
+    "id": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+    "slug": "lox",
+    "skills": [
+      "8eef2842-2a49-4051-90fd-5c03957cd9b0",
+      "8882f142-16e3-4b7f-8b16-ab7da0bbfa94",
+      "3cddb15d-abfd-4f65-8d98-6cc44cb3b502"
+    ],
+    "school": "earth",
+    "fusion": {
+      "attack": 0.03,
+      "maxHp": 8,
+      "resist": {
+        "bind": 0.08
+      }
+    }
+  },
+  {
+    "id": "12217057-7b5b-4b60-9008-fcf68bd37723",
+    "slug": "tris",
+    "skills": [
+      "4453ab0c-afd9-4597-a708-55b825673d43",
+      "8885be68-e5a8-4485-b7d2-9cfc1dd16ad9",
+      "3cddb15d-abfd-4f65-8d98-6cc44cb3b502"
+    ],
+    "school": "star",
+    "fusion": {
+      "attack": 0.03,
+      "maxHp": 8,
+      "resist": {
+        "poison": 0.08
+      }
+    },
+    "contract": {
+      "encounter": "tris-encounter",
+      "gold": 100,
+      "materials": [
+        {
+          "good": "474f33dd-079e-46e8-b11b-8549f6cf48cf",
+          "count": 2
+        }
+      ],
+      "paper": "contract-paper-tris"
+    }
+  },
+  {
+    "id": "d8767e77-e0b8-4bde-a99e-e465e71a1a7b",
+    "slug": "haro",
+    "skills": [
+      "7673320b-bc7f-4352-b4aa-501439288b65",
+      "53f2fea7-9c77-41a6-a817-5329182d1e00",
+      "da456b26-0ffd-49d0-8557-685dcce51c4b",
+      "3cddb15d-abfd-4f65-8d98-6cc44cb3b502"
+    ],
+    "school": "plant",
+    "fusion": {
+      "attack": 0.03,
+      "maxHp": 8,
+      "resist": {
+        "poison": 0.08
+      }
+    },
+    "contract": {
+      "encounter": "haro-encounter",
+      "gold": 100,
+      "materials": [
+        {
+          "good": "wetland-flower",
+          "count": 1
+        }
+      ],
+      "paper": "contract-paper-haro"
+    }
+  },
+  {
+    "id": "22fc495f-8f5e-4239-93dc-03bd6841047b",
+    "slug": "zaza",
+    "skills": [
+      "4e09d1d7-dd44-46a7-9c0c-b2eacaefcf43",
+      "b82a464b-3de5-4eaa-bac0-0102742782f4",
+      "fb2c2376-9adf-4859-98d7-e1051fb64565",
+      "3cddb15d-abfd-4f65-8d98-6cc44cb3b502"
+    ],
+    "school": "demon",
+    "fusion": {
+      "attack": 0.03,
+      "maxHp": 8,
+      "resist": {
+        "bind": 0.08
+      }
+    },
+    "contract": {
+      "encounter": "zaza-encounter",
+      "gold": 100,
+      "materials": [
+        {
+          "good": "619ae895-2e95-4f01-ba6b-b78835debae7",
+          "count": 3
+        }
+      ],
+      "paper": "contract-paper-zaza"
+    }
+  }
+]

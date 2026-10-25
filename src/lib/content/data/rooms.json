@@ -1,0 +1,33 @@
+[
+  {
+    "id": "9900c60d-f620-48da-becd-3a16a7e8a150",
+    "slug": "attic",
+    "name": "屋根裏",
+    "price": 0,
+    "heal": "half",
+    "fatigue": -20,
+    "dirt": 10,
+    "levelUp": false
+  },
+  {
+    "id": "6c938d85-6f2c-4de6-bff5-c087fa431245",
+    "slug": "normal",
+    "name": "普通の部屋",
+    "price": 20,
+    "heal": "full",
+    "fatigue": -60,
+    "dirt": 0,
+    "levelUp": true
+  },
+  {
+    "id": "673d747a-621d-4f06-83d7-8a9f3e62a1e2",
+    "slug": "deluxe",
+    "name": "高い部屋",
+    "price": 80,
+    "heal": "full",
+    "fatigue": -100,
+    "dirt": 0,
+    "levelUp": true,
+    "clean": true
+  }
+]
