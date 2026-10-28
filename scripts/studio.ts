@@ -1,26 +1,26 @@
 #!/usr/bin/env bun
-import { layoutTime } from "../src/lib/dev/studio/patterns"
+import { contentSource } from "@/content/game-content"
+import { layoutTime } from "@/development/studio/layout-time"
 import { chromium, type Page } from "playwright"
 import { mkdir, readFile, writeFile } from "node:fs/promises"
 import { dirname, resolve } from "node:path"
 import { createHash } from "node:crypto"
-import {
-  defaultStudioConfig,
-  frameUrl,
-  parseStudioConfig,
-  type StudioConfig,
-} from "../src/lib/dev/studio/config"
-import type { StudioInspection } from "../src/lib/dev/studio/runtime"
+import { defaultStudioConfig } from "@/development/studio/config"
+import { frameUrl } from "@/development/studio/frame-url"
+import { parseStudioConfig } from "@/development/studio/parse-studio-config"
+import type { StudioConfig } from "@/development/studio/config"
+import { waitForStudio } from "@/scripts/studio-browser"
+import type { StudioInspection } from "@/client/dev/studio-types"
 
 /** UIと同じiframeを実寸で開き、仮想時計の指定時刻を描画する。 */
 const help = `ゲームの画像と検証記録を生成する（開発サーバーが必要）
-  bun scripts/studio.ts list
-  bun scripts/studio.ts capture --scene battle --party hero,alda,mayu,sion --foes mole,mole-king --at 2000 --out /tmp/battle.png
-  bun scripts/studio.ts frames --config /tmp/battle.json --times 0,700,1500,2000,3000 --out /tmp/battle-frames
-  bun scripts/studio.ts inspect --scene battle --at 2000 --out /tmp/battle.json
+  vp run studio list
+  vp run studio capture --scene battle --party hero,rivet,husky --foes haribote-adult,hiyokobu --at 2000 --out /tmp/battle.png
+  vp run studio frames --config /tmp/battle.json --times 0,700,1500,2000,3000 --out /tmp/battle-frames
+  vp run studio inspect --scene battle --at 2000 --out /tmp/battle.json
 
-  --size 1280x800  --seed 1  --hp 100,25,0,100  --duration 6000
-  --actions '[{"at":4000,"label":"発動"}]'
+  --size 1280x800  --seed 1  --hp 100,25,0  --duration 6000
+  --actions '[{"at":4000,"label":"放つ"}]'
   --config <JSONファイル> / --config-json '<JSON>'
   --base-url https://dnd.localhost
   --guides  配置の枠線を画像に入れる
@@ -97,11 +97,7 @@ async function configOf(): Promise<StudioConfig> {
 }
 async function open(page: Page, config: StudioConfig) {
   await page.goto(base + frameUrl(config), { waitUntil: "domcontentloaded" })
-  await page.waitForFunction(
-    () => window.__devStudio?.ready || !!window.__devStudioError,
-    {},
-    { timeout: 45000 }
-  )
+  await waitForStudio(page)
   const failure = await page.evaluate(() => window.__devStudioError)
   if (failure) throw new Error(failure)
   const initialized = await page.evaluate(() => window.__devStudio!.inspect())
@@ -139,6 +135,7 @@ async function capture(page: Page, config: StudioConfig, time: number) {
   }
   return result
 }
+
 async function save(
   path: string,
   result: { image: Buffer; inspection: StudioInspection; sha256: string }
@@ -192,7 +189,7 @@ async function main() {
     throw new Error(`コマンドがありません: ${command}`)
   const config = await configOf()
   if (command === "list") {
-    const catalog = await import("../src/lib/dev/studio/scenarios")
+    const catalog = await import("@/development/studio/scenarios")
     console.log(
       JSON.stringify(
         {
@@ -204,7 +201,7 @@ async function main() {
             slug,
             name,
           })),
-          foes: catalog.studioFoes.map(({ slug, name }) => ({ slug, name })),
+          foes: contentSource.foes.map(({ slug, name }) => ({ slug, name })),
           defaults: defaultStudioConfig,
         },
         null,

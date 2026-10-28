@@ -20,7 +20,9 @@ self.addEventListener("activate", (event) => {
       .keys()
       .then((keys) =>
         Promise.all(
-          keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))
+          keys
+            .filter((key) => /^dnd-v\d+$/.test(key) && key !== CACHE)
+            .map((key) => caches.delete(key))
         )
       )
       .then(() => self.clients.claim())
@@ -66,13 +68,21 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return
   const url = new URL(request.url)
   if (url.origin !== self.location.origin) return
+  const immutable = url.pathname.startsWith("/assets/")
+  // ビルド資源はURLで内容が決まる。一括保存とモジュール読込でOriginが違っても同じキーを使う。
+  const cacheKey = immutable ? request.url : request
+  // 同じオリジンにある他の用途のキャッシュは参照しない。
+  const cached = (key) => caches.match(key, { cacheName: CACHE })
   const fallback = async () =>
-    (await caches.match(request)) ??
-    (request.mode === "navigate" ? await caches.match("/") : null) ??
+    (await cached(request)) ??
+    (request.mode === "navigate" ? await cached("/") : null) ??
     Response.error()
   // Viteのビルド資源は内容のハッシュを含む。通常の画像は同名で更新される。
-  const response = url.pathname.startsWith("/assets/")
-    ? caches.match(request).then((hit) => hit ?? fetch(request))
+  const response = immutable
+    ? cached(cacheKey)
+        // 保存領域を読めなくても、オンラインの資源はそのまま取得する。
+        .catch(() => undefined)
+        .then((hit) => hit ?? fetch(request))
     : fetch(request, { cache: "no-cache" }).catch(fallback)
   // 保存の完了までWorkerを維持する。容量不足などは表示を妨げない。
   event.waitUntil(
@@ -80,7 +90,7 @@ self.addEventListener("fetch", (event) => {
       .then((result) => {
         if (!result.ok) return
         const copy = result.clone()
-        return caches.open(CACHE).then((cache) => cache.put(request, copy))
+        return caches.open(CACHE).then((cache) => cache.put(cacheKey, copy))
       })
       .catch(() => {})
   )

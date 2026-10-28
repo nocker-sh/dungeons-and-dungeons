@@ -1,8 +1,12 @@
-import { Session } from "@/../builder/lib/session"
-import { arenaContent, fightToEnd, newTally } from "@/../builder/lib/simulate"
-import { buyGear, equipBestWeapon, startParty } from "@/../builder/lib/policy"
-import { WeaponRules } from "@/lib/wiz/rules"
-import type { Rarity } from "@/lib/wiz/content"
+import { Session } from "@/builder/lib/session"
+import { arenaContent } from "@/builder/lib/simulation/arena-content"
+import { fightToEnd } from "@/builder/lib/simulation/fight-to-end"
+import { newTally } from "@/builder/lib/simulation/new-tally"
+import { buyGear } from "@/builder/lib/policy/buy-gear"
+import { equipBestWeapon } from "@/builder/lib/policy/equip-best-weapon"
+import { startParty } from "@/builder/lib/policy/start-party"
+import { WeaponRules } from "@/lib/wiz/rules/weapon-rules"
+import type { Rarity } from "@/lib/wiz/content/constants"
 
 /** 同じ育成・装備条件で、複数の編成と全現役キャラの戦闘を比較する。 */
 export class RosterTrials {

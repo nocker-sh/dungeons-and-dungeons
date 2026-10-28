@@ -1,5 +1,5 @@
-import { buildContent } from "../lib/content"
-import type { CliOptions } from "./options"
+import { buildContent } from "@/builder/lib/build-content"
+import type { CliOptions } from "@/builder/cli/options"
 
 export function commandInspect(options: CliOptions) {
   const { source, slugs } = buildContent(options.overrides)

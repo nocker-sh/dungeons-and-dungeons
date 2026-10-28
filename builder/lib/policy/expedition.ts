@@ -1,7 +1,7 @@
-import type { GameAction } from "@/lib/wiz"
-import type { SeededRandom } from "../random"
-import type { Session } from "../session"
-import { bestPotion } from "./healing"
+import type { GameAction } from "@/lib/wiz/commands"
+import type { SeededRandom } from "@/builder/lib/random"
+import type { Session } from "@/builder/lib/session"
+import { bestPotion } from "@/builder/lib/policy/best-potion"
 
 /** 探索の進め方。 */
 export type ExpeditionPlan = {
@@ -32,15 +32,15 @@ export const PUSH_PLAN: ExpeditionPlan = {
   heal: true,
 }
 
-/** 探索中（戦闘の外）に送る操作。 */
+/** 探索中（戦闘の外）に送る操作。routeは、状態を変更する前の同じ地点の表示を渡す。 */
 export function expeditionAction(
   session: Session,
   plan: ExpeditionPlan,
-  random: SeededRandom
+  random: SeededRandom,
+  route = session.queries.route(session.state)
 ): GameAction {
   const { state, queries } = session
   const expedition = queries.expedition(state)
-  const route = queries.route(state)
   if (!expedition || !route) throw new Error("探索中ではない")
   if (expedition.pending?.kind === "discovery" && route.discovery) {
     const hurt = queries
@@ -70,7 +70,10 @@ export function expeditionAction(
           (choice) =>
             choice.goods?.length && !choice.cost && !choice.damageRatio
         )
-    return { type: "discover", choice: (choice ?? choices[0]).id }
+    // 得る物がなければ先へ進む。先頭の選択肢が有料回復でも、満タンでは買わない。
+    const selected =
+      choice ?? choices.find((entry) => entry.id === "leave") ?? choices[0]
+    return { type: "discover", choice: selected.id }
   }
   if (expedition.pending) return { type: "acknowledge" }
   if (expedition.cleared || route.atEnd) return { type: "retreat" }

@@ -1,8 +1,9 @@
-// Run with Node and sharp available (NODE_PATH may point to an existing installation).
+// 元画像の変換。vp exec bun scripts/prepare-artwork.cjs で実行する。
 const sharp = require("sharp")
 const fs = require("node:fs/promises")
 const path = require("node:path")
-const { removeWhiteBackground } = require("./artwork-background.cjs")
+const { removeWhiteBackground } = require("@/scripts/artwork-background.cjs")
+const { artworkOutputPath } = require("@/scripts/artwork-paths.cjs")
 
 async function main() {
   const concurrency = Number(process.env.ARTWORK_CONCURRENCY ?? 1)
@@ -11,7 +12,7 @@ async function main() {
   const rows = JSON.parse(
     await fs.readFile("private/art/import-manifest.json", "utf8")
   )
-  await fs.mkdir("public/images", { recursive: true })
+  await fs.mkdir("public/tmp", { recursive: true })
   const filters = process.argv.slice(2)
   const report = filters.length
     ? JSON.parse(
@@ -19,7 +20,9 @@ async function main() {
       ).filter(
         (entry) =>
           !filters.some((filter) =>
-            entry.image.endsWith(filter.replace(/\.png$/, ".webp"))
+            entry.image.endsWith(
+              path.basename(filter).replace(/\.png$/, ".webp")
+            )
           )
       )
     : []
@@ -52,6 +55,7 @@ async function main() {
 }
 
 async function prepareRow(row) {
+  const output = artworkOutputPath(row.image)
   const scene = row.name.startsWith("scenes/")
   const original = path.join("private/art/originals", row.name)
   const cutout = path.join("private/art/cutouts", row.name)
@@ -151,20 +155,27 @@ async function prepareRow(row) {
     .raw()
     .toBuffer()
   const filename = row.name.replace(/\.png$/, ".webp")
-  const output = path.join(scene ? "public/art" : "public/images", filename)
   await fs.mkdir(path.dirname(output), { recursive: true })
   const originalSize = (await fs.stat(output).catch(() => null))?.size
   let psnr = 0
   let quality = 82
   let lossless = false
   let encoded
-  for (const setting of [82, 86, 90, 95, 100, "lossless"]) {
+  const compressionSettings = row.lossless
+    ? ["lossless"]
+    : [82, 86, 90, 95, 100, "lossless"]
+  for (const setting of compressionSettings) {
     lossless = setting === "lossless"
     quality = lossless ? 100 : setting
     encoded = await sharp(padded, {
       raw: { width: targetWidth, height: targetHeight, channels: 4 },
     })
-      .webp({ quality, lossless, alphaQuality: 100, effort: 6 })
+      .webp({
+        quality,
+        lossless,
+        alphaQuality: 100,
+        effort: row.lossless ? 0 : 6,
+      })
       .toBuffer()
     const decoded = await sharp(encoded).ensureAlpha().raw().toBuffer()
     let squaredError = 0
@@ -190,7 +201,7 @@ async function prepareRow(row) {
   const outputSize = (await fs.stat(output)).size
   const result = {
     old: row.old,
-    image: scene ? `/art/${filename}` : `/images/${filename}`,
+    image: row.image,
     width,
     height,
     targetWidth,

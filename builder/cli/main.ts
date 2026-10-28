@@ -1,14 +1,20 @@
-import { parseOptions, type CliOptions } from "./options"
-import { commandInspect } from "./inspect"
-import { commandPlay, commandAi } from "./play"
-import { commandBattle, commandCurve } from "./battle"
-import { commandDungeon, commandDepth, commandCampaign } from "./expedition"
-import { commandFun, commandPlaylog } from "./fun"
-import { commandReport, commandSweep } from "./report"
-import { commandTune } from "./tune"
-import { commandApply } from "./apply"
+import { parseOptions, type CliOptions } from "@/builder/cli/options"
+import { commandInspect } from "@/builder/cli/inspect"
+import { commandPlay } from "@/builder/cli/command-play"
+import { commandAi } from "@/builder/cli/command-ai"
+import { commandBattle } from "@/builder/cli/command-battle"
+import { commandCurve } from "@/builder/cli/command-curve"
+import { commandDungeon } from "@/builder/cli/command-dungeon"
+import { commandDepth } from "@/builder/cli/command-depth"
+import { commandCampaign } from "@/builder/cli/command-campaign"
+import { commandFun } from "@/builder/cli/command-fun"
+import { commandPlaylog } from "@/builder/cli/command-playlog"
+import { commandReport } from "@/builder/cli/command-report"
+import { commandSweep } from "@/builder/cli/command-sweep"
+import { commandTune } from "@/builder/cli/tune"
+import { commandApply } from "@/builder/cli/apply"
 
-const HELP = `bun builder/cli.ts <command> [options]
+const HELP = `vp run cli <command> [options]
   inspect                          データの数値を一覧
   ai [操作...]                     AIが遊ぶ入口。保存は /tmp/dnd/save.json（DND_SAVE で変更・ブラウザの ?save=tmp と共有）
                                    --new で最初から、--scene <場面slug> で途中の場面から、--script file で台本、--json で構造化
@@ -23,7 +29,7 @@ const HELP = `bun builder/cli.ts <command> [options]
   playlog                          一周を自動で遊び、出撃ごとの出来事を読める形で出す（--seed N）
   report                           バランス目標を測る
   check                            report と同じ。外れがあれば終了コード1
-  apply --set ... | --sets file     上書きを src/lib/content/data の JSON へ書き戻す
+  apply --set ... | --sets file     上書きを content/data の JSON へ書き戻す
   sweep --param <path> --values a,b [--metric report|battle:<foes>|curve:<foes>|dungeon:<layer>|campaign]
   tune <spec>                      目標から外れた数値を自動で範囲へ入れる（例: builder/tunings/layer0.ts）
 options: --runs N --seed N --set <path=value> --sets <file> --json --style smart|attack|random --no-cache

@@ -1,260 +1,31 @@
-/**
- * バランスの自動調整。目標（builder/targets.ts）から外れているとき、
- * つまみ（--set のパス）を少しずつ動かして範囲へ入れる。
- *
- * ここはゲームに触らない。測るのは外から渡す measure だけなので、
- * 作り物の指標でも同じ探索を試せる（builder/tune.test.ts）。
- */
+import {
+  TuningEvaluator,
+  type Evaluation,
+} from "@/builder/lib/tuning/evaluation"
+import {
+  type Knob,
+  type TuneOptions,
+  type TuneResult,
+  type TuneStop,
+  type TuneChange,
+} from "@/builder/lib/tuning/types"
+import { EPSILON } from "@/builder/lib/tuning/tolerance-of"
+import { withinTarget } from "@/builder/lib/tuning/within-target"
+import { knobLabel } from "@/builder/lib/tuning/knob-label"
+import { knobInteger } from "@/builder/lib/tuning/knob-integer"
+import { knobStep } from "@/builder/lib/tuning/knob-step"
+import { knobExpressions } from "@/builder/lib/tuning/knob-expressions"
+import { snapKnob } from "@/builder/lib/tuning/snap-knob"
+import { formatKnobValue } from "@/builder/lib/tuning/format-knob-value"
 
-/** つまみの動かし方。set は値を入れ替え、scale は今の値に倍率をかける。 */
-export type KnobMode = "set" | "scale"
-
-/** 動かす数値ひとつ。 */
-export type Knob = {
-  /** 上書きのパス（`--set` と同じ書き方）。複数書くと一緒に動く。 */
-  path: string | readonly string[]
-  mode?: KnobMode
-  min: number
-  max: number
-  /** 一度に動かす幅。省略すると幅の1/20。 */
-  step?: number
-  /** 整数に丸める。省略すると set は今の値が整数かどうか、scale は丸めない。 */
-  integer?: boolean
-  /** 大きいほど動かしたくない（既定1）。 */
-  keep?: number
-  label?: string
-}
-
-/** 調整の指定。TS か JSON のファイルで書く。 */
-export type TuningSpec = {
-  id: string
-  label?: string
-  /** 満たす目標の id（builder/targets.ts）。 */
-  targets: readonly string[]
-  knobs: readonly Knob[]
-}
-
-/** 目標のうち、合否の判定に要る分だけ。 */
-export type TuneTarget = {
-  id: string
-  label: string
-  min?: number
-  max?: number
-  unit: "rate" | "count"
-}
-
-/** 上書きと種を受けて、目標の id ごとの測定値を返す。 */
-export type TuneMeasure = (options: {
-  overrides: readonly string[]
-  seed: number
-}) => Record<string, number>
-
-export type TuneOptions = {
-  spec: TuningSpec
-  /** spec.targets を引いた目標。 */
-  targets: readonly TuneTarget[]
-  /** 調整を始める前から当てている上書き。 */
-  baseOverrides?: readonly string[]
-  /** つまみの今の値（scale は 1）。 */
-  baseValue: (knob: Knob) => number
-  /** 候補はこの全ての種で合格すること。 */
-  seeds?: readonly number[]
-  /** 測定の上限（上書き×種ひと組で1回）。既定60。 */
-  budget?: number
-  measure: TuneMeasure
-  onProgress?: (line: string) => void
-}
-
-export type TuneMetric = {
-  id: string
-  label: string
-  min?: number
-  max?: number
-  unit: "rate" | "count"
-  /** いちばん外れた種での値。 */
-  before: number
-  after: number
-  okBefore: boolean
-  okAfter: boolean
-}
-
-export type TuneChange = {
-  label: string
-  from: number
-  to: number
-  /** 書き出す上書き（パスが複数なら複数行）。 */
-  expressions: string[]
-}
-
-/** 探索を止めた理由。 */
-export type TuneStop = "already" | "passed" | "budget" | "no-progress"
-
-export type TuneResult = {
-  passed: boolean
-  stop: TuneStop
-  /** 測った回数（使い回した分は数えない）。 */
-  measurements: number
-  /** 使い回した回数。 */
-  cacheHits: number
-  iterations: number
-  deviationBefore: number
-  deviationAfter: number
-  metrics: TuneMetric[]
-  changes: TuneChange[]
-  /** 調整で足す上書き（baseOverrides は含まない）。 */
-  overrides: string[]
-}
-
-/** 届かない・測れないときの逸脱。有限の値ならここまで大きくならない。 */
-export const UNREACHABLE_DEVIATION = 8
 /** 動かした幅への罰（範囲の全幅を動かして 0.02）。 */
 const DISTANCE_COST = 0.02
+
 /** つまみを1つ動かすことへの罰。 */
 const KNOB_COST = 0.01
+
 /** 直線探索で伸ばす倍率の上限。 */
 const GROWTH_LIMIT = 64
-const EPSILON = 1e-9
-
-export function knobPaths(knob: Knob): readonly string[] {
-  return typeof knob.path === "string" ? [knob.path] : knob.path
-}
-
-export function knobLabel(knob: Knob): string {
-  if (knob.label) return knob.label
-  const paths = knobPaths(knob)
-  const head =
-    paths.length > 1 ? `${paths[0]} ほか${paths.length - 1}件` : paths[0]
-  return knob.mode === "scale" ? `${head}（倍率）` : head
-}
-
-/** 一度に動かす幅。 */
-export function knobStep(knob: Knob, integer: boolean): number {
-  if (knob.step !== undefined && knob.step > 0) return knob.step
-  const span = Math.abs(knob.max - knob.min) / 20
-  return integer ? Math.max(1, Math.round(span)) : span || 1
-}
-
-function knobInteger(knob: Knob, base: number): boolean {
-  if (knob.integer !== undefined) return knob.integer
-  return knob.mode === "scale" ? false : Number.isInteger(base)
-}
-
-const round6 = (value: number) => Math.round(value * 1e6) / 1e6
-
-/** 値を幅の刻みに乗せ、min/max に収める。刻みは今の値を起点にする。 */
-export function snapKnob(
-  knob: Knob,
-  base: number,
-  value: number,
-  options?: { step?: number; integer?: boolean }
-): number {
-  const integer = options?.integer ?? knobInteger(knob, base)
-  const step = options?.step ?? knobStep(knob, integer)
-  const low = Math.min(knob.min, knob.max)
-  const high = Math.max(knob.min, knob.max)
-  const snapped = base + Math.round((value - base) / step) * step
-  const clamped = Math.min(high, Math.max(low, snapped))
-  return integer ? Math.round(clamped) : round6(clamped)
-}
-
-/** 目標の「これくらい外れたら 1」の幅。 */
-export function toleranceOf(target: TuneTarget): number {
-  if (target.min !== undefined && target.max !== undefined)
-    return Math.max(Math.abs(target.max - target.min), EPSILON)
-  const bound = target.min ?? target.max ?? 1
-  if (target.unit === "rate") return 0.1
-  return Math.max(1, Math.abs(bound) * 0.2)
-}
-
-/** 範囲からの外れ具合。範囲の中なら0。 */
-export function deviationOf(target: TuneTarget, value: number): number {
-  if (!Number.isFinite(value)) return UNREACHABLE_DEVIATION
-  const tolerance = toleranceOf(target)
-  // 頭を押さえない。押さえると遠いところで傾きが消えて、動かす向きが分からなくなる。
-  if (target.min !== undefined && value < target.min)
-    return (target.min - value) / tolerance
-  if (target.max !== undefined && value > target.max)
-    return (value - target.max) / tolerance
-  return 0
-}
-
-/** 目標の範囲に入っているか。 */
-export function withinTarget(target: TuneTarget, value: number): boolean {
-  return deviationOf(target, value) === 0
-}
-
-/** 数値を上書きの書き方にする。 */
-export function formatKnobValue(value: number): string {
-  return Number.isInteger(value) ? String(value) : String(round6(value))
-}
-
-/** つまみの値を上書きの式にする。今の値と同じなら空。 */
-export function knobExpressions(
-  knob: Knob,
-  base: number,
-  value: number
-): string[] {
-  if (value === base) return []
-  const operator = knob.mode === "scale" ? "*=" : "="
-  const text = formatKnobValue(value)
-  return knobPaths(knob).map((path) => `${path}${operator}${text}`)
-}
-
-/** 読み込んだ指定を確かめる（JSON でも同じ形にする）。 */
-export function parseTuningSpec(raw: unknown): TuningSpec {
-  if (!raw || typeof raw !== "object") throw new Error("調整の指定が読めない")
-  const source = raw as Record<string, unknown>
-  const id = source.id
-  if (typeof id !== "string" || !id) throw new Error("調整の指定に id が要る")
-  const targets = source.targets
-  if (!Array.isArray(targets) || !targets.length)
-    throw new Error(`${id}: 満たす目標（targets）が要る`)
-  for (const target of targets)
-    if (typeof target !== "string")
-      throw new Error(`${id}: targets は目標の id の並び`)
-  const knobs = source.knobs
-  if (!Array.isArray(knobs) || !knobs.length)
-    throw new Error(`${id}: 動かす数値（knobs）が要る`)
-  const checked = knobs.map((entry, index) => {
-    if (!entry || typeof entry !== "object")
-      throw new Error(`${id}: ${index + 1}番目の knob が読めない`)
-    const knob = entry as Record<string, unknown>
-    const paths =
-      typeof knob.path === "string"
-        ? [knob.path]
-        : Array.isArray(knob.path) &&
-            knob.path.every((p) => typeof p === "string")
-          ? (knob.path as string[])
-          : undefined
-    if (!paths?.length)
-      throw new Error(`${id}: ${index + 1}番目の knob に path が要る`)
-    if (typeof knob.min !== "number" || typeof knob.max !== "number")
-      throw new Error(`${id}: ${paths[0]} に min と max が要る`)
-    if (knob.min > knob.max)
-      throw new Error(`${id}: ${paths[0]} の min が max より大きい`)
-    if (knob.mode !== undefined && knob.mode !== "set" && knob.mode !== "scale")
-      throw new Error(`${id}: ${paths[0]} の mode は set か scale`)
-    const number = (key: string) =>
-      typeof knob[key] === "number" ? (knob[key] as number) : undefined
-    const checkedKnob: Knob = {
-      path: paths,
-      mode: knob.mode,
-      min: knob.min,
-      max: knob.max,
-      step: number("step"),
-      integer: typeof knob.integer === "boolean" ? knob.integer : undefined,
-      keep: number("keep"),
-      label: typeof knob.label === "string" ? knob.label : undefined,
-    }
-    return checkedKnob
-  })
-  return {
-    id,
-    label: typeof source.label === "string" ? source.label : undefined,
-    targets: targets as string[],
-    knobs: checked,
-  }
-}
 
 type KnobState = {
   knob: Knob
@@ -263,17 +34,6 @@ type KnobState = {
   step: number
   span: number
   keep: number
-}
-
-type Evaluation = {
-  /** いちばん悪い種での逸脱の合計。 */
-  deviation: number
-  /** いちばん悪かった種。次の効き方はこの種で測る。 */
-  worstSeed: number
-  pass: boolean
-  /** 目標ごとの、いちばん外れた種での値。 */
-  values: Record<string, number>
-  failing: string[]
 }
 
 /**
@@ -286,20 +46,6 @@ const compareScore = (a: Score, b: Score) =>
   Math.abs(a.deviation - b.deviation) > EPSILON
     ? a.deviation - b.deviation
     : a.cost - b.cost
-
-const show = (target: TuneTarget, value: number) =>
-  !Number.isFinite(value)
-    ? "届かない"
-    : target.unit === "rate"
-      ? `${(value * 100).toFixed(1)}%`
-      : value.toFixed(1)
-
-/** 目標の範囲を文字にする。 */
-export function rangeText(target: TuneTarget): string {
-  const low = target.min !== undefined ? show(target, target.min) : ""
-  const high = target.max !== undefined ? show(target, target.max) : ""
-  return `${low}〜${high}`
-}
 
 /**
  * 目標から外れているつまみを動かして範囲へ入れる。
@@ -334,32 +80,16 @@ export function tune(options: TuneOptions): TuneResult {
     }
   })
 
-  const cache = new Map<string, Record<string, number>>()
-  let measurements = 0
-  let cacheHits = 0
-  let outOfBudget = false
+  const evaluator = new TuningEvaluator({
+    targets,
+    budget,
+    measure: options.measure,
+  })
 
   const overridesFor = (values: readonly number[]) =>
     states.flatMap((state, index) =>
       knobExpressions(state.knob, state.base, values[index])
     )
-
-  const measureOnce = (overrides: readonly string[], seed: number) => {
-    const key = JSON.stringify([overrides, seed])
-    const cached = cache.get(key)
-    if (cached) {
-      cacheHits++
-      return cached
-    }
-    if (measurements >= budget) {
-      outOfBudget = true
-      return undefined
-    }
-    measurements++
-    const measured = options.measure({ overrides, seed })
-    cache.set(key, measured)
-    return measured
-  }
 
   const changeCost = (values: readonly number[]) => {
     let cost = 0
@@ -371,47 +101,8 @@ export function tune(options: TuneOptions): TuneResult {
     return cost
   }
 
-  const evaluate = (
-    values: readonly number[],
-    seedList: readonly number[]
-  ): Evaluation | undefined => {
-    const overrides = [...baseOverrides, ...overridesFor(values)]
-    const worstValue: Record<string, number> = {}
-    const worstDeviation: Record<string, number> = {}
-    let deviation = 0
-    let worstSeed = seedList[0]
-    for (const seed of seedList) {
-      const measured = measureOnce(overrides, seed)
-      if (!measured) return undefined
-      let sum = 0
-      for (const target of targets) {
-        const value = measured[target.id] ?? Number.NaN
-        const single = deviationOf(target, value)
-        sum += single
-        if (
-          !(target.id in worstDeviation) ||
-          single > worstDeviation[target.id]
-        ) {
-          worstDeviation[target.id] = single
-          worstValue[target.id] = value
-        }
-      }
-      if (sum > deviation) {
-        deviation = sum
-        worstSeed = seed
-      }
-    }
-    const failing = targets
-      .filter((target) => worstDeviation[target.id] > 0)
-      .map((target) => target.id)
-    return {
-      deviation,
-      worstSeed,
-      pass: !failing.length,
-      values: worstValue,
-      failing,
-    }
-  }
+  const evaluate = (values: readonly number[], seedList: readonly number[]) =>
+    evaluator.evaluate([...baseOverrides, ...overridesFor(values)], seedList)
 
   const scoreOf = (
     evaluation: Evaluation,
@@ -483,8 +174,8 @@ export function tune(options: TuneOptions): TuneResult {
     return {
       passed: after.pass,
       stop,
-      measurements,
-      cacheHits,
+      measurements: evaluator.measurements,
+      cacheHits: evaluator.cacheHits,
       iterations,
       deviationBefore: before.deviation,
       deviationAfter: after.deviation,
@@ -535,7 +226,7 @@ export function tune(options: TuneOptions): TuneResult {
   let iterations = 0
   let stop: TuneStop = current.pass ? "passed" : "budget"
   while (!current.pass) {
-    if (measurements >= budget) {
+    if (evaluator.measurements >= budget) {
       stop = "budget"
       break
     }
@@ -617,7 +308,7 @@ export function tune(options: TuneOptions): TuneResult {
           if (blocked.has(`${index}:${direction}`)) continue
           const result = probeKnob(index, direction)
           if (result === "budget") {
-            outOfBudget = true
+            evaluator.outOfBudget = true
             break
           }
           if (result === "flat") {
@@ -630,10 +321,10 @@ export function tune(options: TuneOptions): TuneResult {
           // 効く向きが見つかったら、反対の向きは見ない。
           if (result.gain > EPSILON) break
         }
-        if (outOfBudget) break
+        if (evaluator.outOfBudget) break
       }
     if (!best || best.gain <= EPSILON) {
-      stop = outOfBudget ? "budget" : "no-progress"
+      stop = evaluator.outOfBudget ? "budget" : "no-progress"
       break
     }
 

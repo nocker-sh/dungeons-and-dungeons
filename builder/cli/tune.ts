@@ -1,11 +1,16 @@
 import { mkdirSync, writeFileSync } from "node:fs"
 import { dirname } from "node:path"
-import { formatKnobValue, rangeText, tune, type TuneResult } from "../lib/tune"
-import { knobBaseReader, loadTuningSpec } from "../lib/tuning-spec"
-import type { CliOptions } from "./options"
-import { formatPercent, formatNumber } from "./output"
-import { chooseTargets } from "./targets"
-import { commandApply } from "./apply"
+import { formatKnobValue } from "@/builder/lib/tuning/format-knob-value"
+import { rangeText } from "@/builder/lib/tuning/range-text"
+import { tune } from "@/builder/lib/tune"
+import type { TuneResult } from "@/builder/lib/tuning/types"
+import { knobBaseReader } from "@/builder/lib/knob-base-reader"
+import { loadTuningSpec } from "@/builder/lib/load-tuning-spec"
+import type { CliOptions } from "@/builder/cli/options"
+import { formatPercent } from "@/builder/cli/format-percent"
+import { formatNumber } from "@/builder/cli/format-number"
+import { chooseTargets } from "@/builder/cli/targets"
+import { commandApply } from "@/builder/cli/apply"
 
 /** tune の結果を表にする。 */
 function tuneReport(result: TuneResult): string {
@@ -75,9 +80,9 @@ export async function commandTune(options: CliOptions) {
   let written: string | undefined
   if (result.changes.length) {
     const lines = [
-      `# bun builder/cli.ts tune ${file} が作った上書き`,
+      `# vp run cli tune ${file} が作った上書き`,
       `# ${spec.label ?? spec.id} / 種 ${seeds.join(",")} / --runs ${runs} / 測定${result.measurements}回`,
-      `# 当てる: bun builder/cli.ts apply --sets ${outputPath}`,
+      `# 当てる: vp run cli apply --sets ${outputPath}`,
       ...(options.overrides.length
         ? ["# 呼び出し時の --set", ...options.overrides]
         : []),
@@ -110,7 +115,7 @@ export async function commandTune(options: CliOptions) {
         tuneReport(result),
         `${STOP_TEXT[result.stop]}（測定${result.measurements}回・使い回し${result.cacheHits}回・反復${result.iterations}回・${seconds.toFixed(1)}秒）`,
         written
-          ? `上書きを書き出した: ${written}\n当てる: bun builder/cli.ts apply --sets ${written}`
+          ? `上書きを書き出した: ${written}\n当てる: vp run cli apply --sets ${written}`
           : "書き戻すものはない",
       ].join("\n")
     )

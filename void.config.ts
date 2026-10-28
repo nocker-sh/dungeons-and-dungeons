@@ -1,7 +1,7 @@
 import { defineConfig } from "void/config"
+import { devCategories } from "./development/categories"
 
 export default defineConfig({
-  sourceDir: "src",
   // ゲームはブラウザだけで動くので、各ページを静的なHTMLに書き出す
   output: "static",
   head: {
@@ -36,11 +36,24 @@ export default defineConfig({
         href: "https://fonts.googleapis.com/css2?family=Reggae+One&display=swap",
       },
       { rel: "manifest", href: "/manifest.json" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
-      { rel: "icon", type: "image/png", href: "/icon-192.png" },
+      { rel: "apple-touch-icon", href: "/tmp/icons/apple-touch-icon.png" },
+      { rel: "icon", type: "image/png", href: "/tmp/icons/icon-192.png" },
     ],
   },
   routing: {
+    prerender: devCategories.map(
+      (category) => `/dev/${category.value}/category-index`
+    ),
+    // 公開URLを保ち、コンポーネントは名前と一致するファイルへ置く。
+    rewrites: {
+      "/": "/home",
+      "/previews": "/previews/preview-list",
+      "/previews/conversations": "/previews/conversation-frame",
+      "/previews/:slug": "/previews/:slug/preview-page",
+      "/dev/layouts": "/dev/layouts-page",
+      "/dev/:category/:entry": "/dev/:category/:entry/entry-page",
+      "/dev/:category": "/dev/:category/category-index",
+    },
     redirects: {
       "/dev": "/dev/characters",
       "/dev/goods": "/dev/weapons",

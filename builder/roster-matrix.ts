@@ -1,4 +1,4 @@
-import { RosterTrials } from "@/../builder/lib/roster-trials"
+import { RosterTrials } from "@/builder/lib/roster-trials"
 import { readFileSync } from "node:fs"
 
 const presets = [

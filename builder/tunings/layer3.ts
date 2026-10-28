@@ -1,9 +1,9 @@
-import type { TuningSpec } from "../lib/tune"
+import type { TuningSpec } from "@/builder/lib/tuning/types"
 
 /**
  * 3層（毒沼の温室）のバランスを自動で合わせる指定。
- *   bun builder/cli.ts tune builder/tunings/layer3.ts --targets midboss-layer3,fresh-boss-layer3
- *   bun builder/cli.ts tune builder/tunings/layer3.ts        # 一周の目標まで含める（重い）
+ *   vp run cli tune builder/tunings/layer3.ts --targets midboss-layer3,fresh-boss-layer3
+ *   vp run cli tune builder/tunings/layer3.ts        # 一周の目標まで含める（重い）
  *
  * ねらいは「前の層を抜けたばかりでは終点のボスに勝てないが、
  * 中ボスまでは通せて、街と探索をくり返すと突破できる」こと。

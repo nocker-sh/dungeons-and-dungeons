@@ -11,17 +11,21 @@
     "format": "vp fmt",
     "check": "vp check",
     "typecheck": "tsc --noEmit",
+    "check:concept": "bun scripts/check-concept.ts",
     "images": "bun scripts/images.ts",
     "studio": "bun scripts/studio.ts",
-    "e2e:studio": "bun e2e/studio.ts",
-    "e2e:conversations": "bun e2e/conversations.ts",
-    "e2e:layouts": "bun e2e/layouts.ts",
-    "e2e:timing": "bun e2e/timing.ts",
-    "e2e:animation": "bun e2e/animation.ts",
+    "e2e:studio": "bun tests/e2e/studio.ts",
+    "e2e:conversations": "bun tests/e2e/conversations.ts",
+    "e2e:layouts": "bun tests/e2e/layouts.ts",
+    "e2e:timing": "bun tests/e2e/timing.ts",
+    "e2e:animation": "bun tests/e2e/animation.ts",
     "deploy": "void deploy",
-    "e2e:flows": "bun e2e/flows.ts",
-    "e2e:visual:base": "bun e2e/visual.ts base",
-    "e2e:visual": "bun e2e/visual.ts check"
+    "e2e:flows": "bun tests/e2e/flows.ts",
+    "e2e:visual:base": "bun tests/e2e/visual.ts base",
+    "e2e:visual": "bun tests/e2e/visual.ts check",
+    "prepare": "void prepare",
+    "check:source": "bun scripts/check-source.ts",
+    "cli": "bun builder/cli.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
@@ -59,12 +63,11 @@
     "pixelmatch": "^7.2.0",
     "playwright": "1.63.0",
     "pngjs": "^7.0.0",
+    "sharp": "0.35.5",
     "typescript": "^6",
     "vite": "npm:@voidzero-dev/vite-plus-core@1.0.0-rc.0",
     "vite-plus": "1.0.0-rc.0",
     "void": "1.1.11"
   },
-  "overrides": {
-    "vite": "npm:@voidzero-dev/vite-plus-core@1.0.0-rc.0"
-  }
+  "packageManager": "pnpm@12.15.0"
 }

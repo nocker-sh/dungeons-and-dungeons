@@ -1,6 +1,6 @@
 /**
  * 仲間と構成の比較。
- *   bun builder/roster.ts [試行数]
+ *   vp exec bun builder/roster.ts [試行数]
  * 方針：レア度は強さではなく効果の珍しさ。一人ずつの能力は控えめでも、構成とビルド次第で同じ強さになる。
  * 基本はタンク・ヒール・ダメージの構成。
  *
@@ -9,8 +9,8 @@
  * 2. 構成：役割がそろった構成と、タンクやヒールを欠いた構成で差があるか（構成の価値）を見る。
  * 場面：序盤のボス（0層・Lv6）、中盤のボス（2層・Lv12）、中盤の群れ（2層の敵3体・Lv8）。結果は JSON 行。
  */
-import { RosterTrials } from "@/../builder/lib/roster-trials"
-import { contentSource } from "@/lib/content/game-content"
+import { RosterTrials } from "@/builder/lib/roster-trials"
+import { contentSource } from "@/content/game-content"
 import { readFileSync } from "node:fs"
 
 const overrides = process.argv[4]

@@ -13,15 +13,11 @@ import {
   writeFileSync,
 } from "node:fs"
 import { dirname, join } from "node:path"
+import { z } from "zod"
 
 const FILE = "node_modules/.cache/builder/results.json"
 /** 結果に効くソースの置き場。テストは除く。 */
-const SOURCES = [
-  "src/lib/wiz",
-  "src/lib/content",
-  "src/lib/concept/data",
-  "builder",
-]
+const SOURCES = ["lib/wiz", "content", "concept/data", "builder"]
 const KEEP = 400
 
 function files(dir: string): string[] {
@@ -46,17 +42,20 @@ export function sourceFingerprint() {
   return hash.digest("hex")
 }
 
-type Store = Record<string, number | null>
+const storeSchema = z.record(z.string(), z.number().nullable())
+type Store = z.infer<typeof storeSchema>
 
 export class ResultCache {
   readonly #store: Store
   readonly #fingerprint: string
   #dirty = false
 
-  constructor() {
+  constructor(private readonly file = FILE) {
     this.#fingerprint = sourceFingerprint()
     try {
-      this.#store = JSON.parse(readFileSync(FILE, "utf8")) as Store
+      this.#store = storeSchema.parse(
+        JSON.parse(readFileSync(this.file, "utf8"))
+      )
     } catch {
       this.#store = {}
     }
@@ -81,7 +80,7 @@ export class ResultCache {
   save() {
     if (!this.#dirty) return
     const entries = Object.entries(this.#store).slice(-KEEP)
-    mkdirSync(dirname(FILE), { recursive: true })
-    writeFileSync(FILE, JSON.stringify(Object.fromEntries(entries)))
+    mkdirSync(dirname(this.file), { recursive: true })
+    writeFileSync(this.file, JSON.stringify(Object.fromEntries(entries)))
   }
 }

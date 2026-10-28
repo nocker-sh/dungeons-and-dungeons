@@ -1,20 +1,21 @@
 import { afterEach, describe, expect, it, vi } from "vite-plus/test"
-import { runCli } from "./main"
+import { runCli } from "@/builder/cli/main"
 
 const handlers = vi.hoisted(() => ({
   play: vi.fn(),
   battle: vi.fn(),
   report: vi.fn(),
 }))
-vi.mock("./play", () => ({ commandPlay: handlers.play, commandAi: vi.fn() }))
-vi.mock("./battle", () => ({
+vi.mock("@/builder/cli/command-play", () => ({ commandPlay: handlers.play }))
+vi.mock("@/builder/cli/command-ai", () => ({ commandAi: vi.fn() }))
+vi.mock("@/builder/cli/command-battle", () => ({
   commandBattle: handlers.battle,
-  commandCurve: vi.fn(),
 }))
-vi.mock("./report", () => ({
+vi.mock("@/builder/cli/command-curve", () => ({ commandCurve: vi.fn() }))
+vi.mock("@/builder/cli/command-report", () => ({
   commandReport: handlers.report,
-  commandSweep: vi.fn(),
 }))
+vi.mock("@/builder/cli/command-sweep", () => ({ commandSweep: vi.fn() }))
 
 afterEach(() => {
   vi.clearAllMocks()
@@ -22,6 +23,28 @@ afterEach(() => {
 })
 
 describe("CLIの入口", () => {
+  it.each([
+    ["battle", "--runs", "banana"],
+    ["report", "--runs", "0"],
+    ["play", "--seed", "NaN"],
+    ["report", "--seeds", "1,wrong,7"],
+    ["battle", "--style", "attak"],
+    ["play", "--style", "--json"],
+  ])("不正な指定では処理を開始しない: %s %s %s", async (...args) => {
+    const previous = process.exitCode
+    const error = vi.spyOn(console, "error").mockImplementation(() => {})
+    try {
+      await runCli(args)
+      expect(process.exitCode).toBe(1)
+      expect(error).toHaveBeenCalledWith(expect.stringContaining(args[1]))
+      expect(handlers.battle).not.toHaveBeenCalled()
+      expect(handlers.report).not.toHaveBeenCalled()
+      expect(handlers.play).not.toHaveBeenCalled()
+    } finally {
+      process.exitCode = previous
+    }
+  })
+
   it("一歩ずつ遊ぶ操作はコマンド名と引用された一行をそのまま渡す", async () => {
     await runCli(["play", "depart layer0", "--seed", "7"])
     expect(handlers.play).toHaveBeenCalledWith(

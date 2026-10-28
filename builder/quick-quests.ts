@@ -1,7 +1,9 @@
-import { buildContent } from "@/../builder/lib/content"
-import { Session } from "@/../builder/lib/session"
-import { startParty, buyGear } from "@/../builder/lib/policy"
-import { fightToEnd, newTally } from "@/../builder/lib/simulate"
+import { buildContent } from "@/builder/lib/build-content"
+import { Session } from "@/builder/lib/session"
+import { startParty } from "@/builder/lib/policy/start-party"
+import { buyGear } from "@/builder/lib/policy/buy-gear"
+import { fightToEnd } from "@/builder/lib/simulation/fight-to-end"
+import { newTally } from "@/builder/lib/simulation/new-tally"
 
 /** 単発依頼の実際の開始・戦闘・自動精算を測る。敵や報酬を変更しない。 */
 const built = buildContent()

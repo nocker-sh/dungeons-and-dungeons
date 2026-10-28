@@ -9,11 +9,11 @@ const config = defineConfig({
   lint: {
     plugins: ["oxc", "typescript", "unicorn", "import"],
     categories: { correctness: "warn" },
-    // forEach ではなく for...of で書く（src/components/ui と core は除く）
+    // forEach ではなく for...of で書く（client/components/ui と core は除く）
     rules: { "unicorn/no-array-for-each": "warn" },
     overrides: [
       {
-        files: ["src/lib/wiz/core/**", "src/components/ui/**"],
+        files: ["lib/wiz/core/**", "client/components/ui/**"],
         rules: { "unicorn/no-array-for-each": "off" },
       },
     ],
@@ -28,10 +28,10 @@ const config = defineConfig({
     printWidth: 80,
     sortPackageJson: false,
     sortTailwindcss: {
-      stylesheet: "src/styles.css",
+      stylesheet: "client/styles.css",
       functions: ["cn", "cva"],
     },
-    ignorePatterns: ["src/lib/wiz/core/**"],
+    ignorePatterns: ["lib/wiz/core/**"],
   },
   resolve: { tsconfigPaths: true },
   // 複数の作業が同時にテストを回してもマシン（8コア）を使い切らないよう、1回の実行の並列数を抑える
@@ -53,7 +53,7 @@ const config = defineConfig({
         "**/.docs/**",
         "**/.wrangler/**",
         "**/.claude/**",
-        "**/e2e/**",
+        "**/tests/**",
         "**/builder/**",
         "**/*.test.ts",
         "**/*.test.tsx",

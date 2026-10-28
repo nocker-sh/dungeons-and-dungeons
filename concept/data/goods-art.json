@@ -1,0 +1,865 @@
+[
+  {
+    "id": "43e8c836-8d6c-47f5-bd33-e8a1e6aabc67",
+    "image": "/tmp/weapons/good_001_greatsword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_greatsword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "22dd429d-10e7-4abc-aa42-536ba50e657f",
+    "image": "/tmp/weapons/good_002_sword_broad-planes.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_sword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "b24c170d-ef52-4f5c-8140-49ab20033a5d",
+    "image": "/tmp/weapons/good_003_sword-shield.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_sword-shield_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "9ffc0d44-726d-4e5d-8104-4d1c79066597",
+    "image": "/tmp/weapons/good_004_axe.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_axe_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "f70679d7-3f97-4bec-9bef-a49c3127e0b9",
+    "image": "/tmp/weapons/good_005_dagger.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_dagger_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "4e2a2cc8-3f32-46d8-b6fe-52351c4c7553",
+    "image": "/tmp/weapons/good_006_gun.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_gun_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "48c90a78-fca9-495c-a2a1-5db9cfa0409f",
+    "image": "/tmp/weapons/good_007_old-greatsword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_old-greatsword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "90bb29e1-d879-4287-8347-3db8dc732dfe",
+    "image": "/tmp/weapons/good_008_old-sword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_old-sword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "3a639b16-9c51-46f6-978d-733e02b4082c",
+    "image": "/tmp/weapons/good_009_old-gun.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_old-gun_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "86172553-2914-4f88-b2a3-6f122ba739a4",
+    "image": "/tmp/weapons/good_010_old-dagger.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_old-dagger_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "b299f848-948a-4a9d-ae7e-63dd050596d6",
+    "image": "/tmp/weapons/good_011_old-knife.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_old-knife_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "4ae0f777-d468-4e30-ac77-c8e23149f707",
+    "image": "/tmp/armor/good_013_coat_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_coat_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "2eb864d1-11fc-442a-b516-7b6efd4894ad",
+    "image": "/tmp/armor/good_014_leather_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_leather_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "8f7db974-0adf-4b73-81ba-44494112f3bd",
+    "image": "/tmp/armor/good_015_robe_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_robe_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "e39004ac-5205-4a52-9929-49783e738b3b",
+    "image": "/tmp/armor/good_016_mail_halftone_v3.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_mail_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "c2ff7c8e-a695-40ee-b992-55cd31f34f9b",
+    "image": "/tmp/items/good_017_potion_broad-planes.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_potion_practical_retro.webp"
+    }
+  },
+  {
+    "id": "9c7cd391-4d94-40d6-8794-3e66cefaa830",
+    "image": "/tmp/items/good_018_ether.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_ether_practical_retro.webp"
+    }
+  },
+  {
+    "id": "f6ad082e-8d68-467f-835c-a583a7970ffe",
+    "image": "/tmp/items/good_019_antidote.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_antidote_practical.webp"
+    }
+  },
+  {
+    "id": "2179c5a7-ee93-41f6-a03c-6d818e7410be",
+    "image": "/tmp/items/good_020_bomb.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_bomb_practical.webp"
+    }
+  },
+  {
+    "id": "ca607fe8-e8f3-4acf-9bc3-82586b094609",
+    "image": "/tmp/items/good_021_smoke.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_smoke_practical.webp"
+    }
+  },
+  {
+    "id": "a9c88a41-4ed0-4675-8be5-7b42430fd3cb",
+    "image": "/tmp/items/good_022_rope.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/rope-clean-texture-20261027-matte-v2.webp"
+    }
+  },
+  {
+    "id": "ccda2f48-5454-46f4-9ef3-5e91793d9196",
+    "image": "/tmp/items/good_023_torch.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/torch-clean-texture-20261027-flat-v2.webp"
+    }
+  },
+  {
+    "id": "e5951ae4-0a5b-436e-8720-286f9e2bfc0c",
+    "image": "/tmp/items/good_024_hipotion.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_hipotion_practical.webp"
+    }
+  },
+  {
+    "id": "31640e26-28b2-4ef6-afb1-cc46dd80ac88",
+    "image": "/tmp/items/good_025_elixir.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_elixir_practical.webp"
+    }
+  },
+  {
+    "id": "4443a01d-85b5-453f-8bb9-47adf6b1de70",
+    "image": "/tmp/items/good_026_revive.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_revive_practical_retro.webp"
+    }
+  },
+  {
+    "id": "76fa8f5b-906b-4732-9ccb-44e03ce98b4a",
+    "image": "/tmp/items/good_027_eyedrop.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_eyedrop_practical.webp"
+    }
+  },
+  {
+    "id": "3d9538c4-0e42-4d30-b477-01dc2430e9ba",
+    "image": "/tmp/items/good_028_strength.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_strength_practical_retro.webp"
+    }
+  },
+  {
+    "id": "8958e700-3c52-4eb4-bfaa-e9e7ff933301",
+    "image": "/tmp/items/good_029_guardpot.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_guardpot_practical.webp"
+    }
+  },
+  {
+    "id": "444db350-800c-432d-bcaf-6d4a926597c2",
+    "image": "/tmp/materials/good_030_bone.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_bone_rounded.webp"
+    }
+  },
+  {
+    "id": "474f33dd-079e-46e8-b11b-8549f6cf48cf",
+    "image": "/tmp/materials/good_031_crystal.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_crystal_rounded.webp"
+    }
+  },
+  {
+    "id": "619ae895-2e95-4f01-ba6b-b78835debae7",
+    "image": "/tmp/materials/good_032_junk.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_junk_rounded.webp"
+    }
+  },
+  {
+    "id": "35a9f50a-24c2-449b-a570-8b191b09ce5c",
+    "image": "/tmp/materials/good_112_rare-junk.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_rare-junk_rounded.webp"
+    }
+  },
+  {
+    "id": "8dc8e419-7020-4cb2-8ce5-19052f378521",
+    "image": "/tmp/materials/good_033_cinder.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_cinder_rounded.webp"
+    }
+  },
+  {
+    "id": "9b1936ae-de99-41e5-a601-a496d0ea983f",
+    "image": "/tmp/weapons/good_034_old-axe.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_old-axe_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "a56fc6a8-31fa-4a7a-9041-5198ab40f010",
+    "image": "/tmp/weapons/good_035_iron-gloves.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_iron-gloves_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "92808423-dcd8-477d-96a7-8b6299988e4e",
+    "image": "/tmp/weapons/good_038_great-key.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_great-key_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "bb37b64c-6a42-4c4d-a9a3-bdf71e458f10",
+    "image": "/tmp/weapons/good_039_dungeon-door.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_dungeon-door_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "38044c40-1369-4c56-a3cf-5e2c6dcbe9f2",
+    "image": "/tmp/weapons/good_040_cerberus-chain.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_cerberus-chain_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "0f2614f4-3626-4857-9684-38e53aaaae23",
+    "image": "/tmp/weapons/good_042_bone-greatsword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_bone-greatsword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "1f654359-b1fc-4d04-bc45-f2b9fbffa177",
+    "image": "/tmp/weapons/good_043_bone-axe.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_bone-axe_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "ac6c13dd-8348-4583-992a-f640b6564581",
+    "image": "/tmp/weapons/good_044_bone-sword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_bone-sword_clean_alpha_v2_20261026.webp"
+    }
+  },
+  {
+    "id": "ecf99492-3941-44db-a41c-aa5a16e95744",
+    "image": "/tmp/weapons/good_045_bone-gun.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_bone-gun_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "dd95ea84-4cb4-4577-bbbe-2d80f26cd8a0",
+    "image": "/tmp/weapons/good_046_bone-dagger.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_bone-dagger_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "e30acc12-af1a-4905-bb4e-fba3ef23057c",
+    "image": "/tmp/armor/good_047_bone-armor_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_bone-armor_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "4ca6d4fb-0266-40b2-bec2-553bb5cff5ee",
+    "image": "/tmp/weapons/good_048_steel-greatsword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_steel-greatsword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "75069fff-88f1-4ca3-a55d-b1b86ee1553f",
+    "image": "/tmp/weapons/good_049_gear-axe.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_gear-axe_clean_alpha_v2_20261026.webp"
+    }
+  },
+  {
+    "id": "8a517ec5-46c0-4d68-b091-4a636209847c",
+    "image": "/tmp/weapons/good_050_steel-sword-shield.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_steel-sword-shield_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "771448b7-c64c-41e9-8567-3fc1a24394a7",
+    "image": "/tmp/weapons/good_051_gear-gun.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_gear-gun_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "597fb8b2-503b-4557-9b81-177fd30514a9",
+    "image": "/tmp/weapons/good_052_gear-dagger.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_gear-dagger_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "2ff3f42f-7cbd-4808-a607-315a1873e15c",
+    "image": "/tmp/armor/good_053_steel-armor_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_steel-armor_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "b0e9c352-340d-4854-9b82-1dd7a310453c",
+    "image": "/tmp/weapons/good_054_vine-greatsword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_vine-greatsword_matte_details_20261027.webp"
+    }
+  },
+  {
+    "id": "318d897d-1b43-46b7-8d98-239fc71ca28d",
+    "image": "/tmp/weapons/good_055_vine-axe.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_vine-axe_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "466b25ec-4eb2-4032-abfe-4ad8b498d8b1",
+    "image": "/tmp/weapons/good_056_vine-sword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_vine-sword_matte_details_20261027.webp"
+    }
+  },
+  {
+    "id": "78d2503e-bd28-401a-84ac-d517b8ca36e7",
+    "image": "/tmp/weapons/good_057_poison-gun.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_poison-gun_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "1e8c194d-60c0-4f5d-bfa7-f43cde325e03",
+    "image": "/tmp/weapons/good_058_poison-dagger.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_poison-dagger_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "90c0e8f9-f8e9-4d1d-954d-719a2c20365c",
+    "image": "/tmp/armor/good_059_vine-armor_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_vine-armor_reimagined_20261025_margin_v2.webp"
+    }
+  },
+  {
+    "id": "0c5c9671-4d51-4c45-a807-3821ef7a2274",
+    "image": "/tmp/weapons/good_060_seal-greatsword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_seal-greatsword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "b9dcebb0-767a-481c-801b-e416fcba8229",
+    "image": "/tmp/weapons/good_061_seal-axe.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_seal-axe_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "d4f20cf1-73d8-410b-adf5-de38b38fb5e6",
+    "image": "/tmp/weapons/good_062_seal-sword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_seal-sword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "1c43f660-0f3d-4606-9c2d-5c128a487a28",
+    "image": "/tmp/weapons/good_063_seal-gun.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_seal-gun_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "63eec065-9e2d-479c-b5f0-901137573470",
+    "image": "/tmp/weapons/good_064_seal-dagger.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_seal-dagger_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "1cf811a3-4709-4578-967a-c236127ce41e",
+    "image": "/tmp/armor/good_065_seal-armor_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_seal-armor_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "ace6e36e-3471-4a7d-8cd8-d3ab1e418526",
+    "image": "/tmp/materials/good_066_gear.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_gear_rounded.webp"
+    }
+  },
+  {
+    "id": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
+    "image": "/tmp/materials/good_067_seed.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_seed_rounded.webp"
+    }
+  },
+  {
+    "id": "57790d09-046e-4fc6-9f57-e285f8e4b890",
+    "image": "/tmp/materials/good_068_wax.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_wax_rounded.webp"
+    }
+  },
+  {
+    "id": "daab17e1-102d-4617-b101-fc9ef383dfec",
+    "image": "/tmp/items/good_069_greatpotion.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_greatpotion_practical_retro.webp"
+    }
+  },
+  {
+    "id": "c7fee833-bc0c-43e0-87b7-eab7329c594b",
+    "image": "/tmp/items/good_070_secretpotion.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_secretpotion_practical.webp"
+    }
+  },
+  {
+    "id": "b3e6c0d1-5a47-4f92-8c3b-0d715e4a92c8",
+    "image": "/tmp/materials/good_071_stone.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_stone_rounded.webp"
+    }
+  },
+  {
+    "id": "3b0e9d6b-1acd-49fa-a8cc-916dd299b757",
+    "image": "/tmp/weapons/weapon_01_crystal-pickaxe.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_crystal-pickaxe_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "b2ea6a78-9a9f-4438-b576-b30d5a6d5e68",
+    "image": "/tmp/weapons/good_073_cave-lantern-gun.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_cave-lantern-gun_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "ce60edbf-3d18-4abd-898c-0b5395225822",
+    "image": "/tmp/weapons/good_074_mole-claw-dagger.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_mole-claw-dagger_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "2cf10e6b-78f7-4014-8c85-a508a5fc858d",
+    "image": "/tmp/weapons/good_075_grave-slab-greatsword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_grave-slab-greatsword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "6382fe20-e213-44a7-b4e5-a303d9e20226",
+    "image": "/tmp/weapons/good_076_grave-bell-sword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_grave-bell-sword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "cecdd05c-59b7-4894-801e-0e72d055f6bf",
+    "image": "/tmp/weapons/good_077_grave-robber-dagger.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_grave-robber-dagger_clean_alpha_v2_20261026.webp"
+    }
+  },
+  {
+    "id": "21af0d43-ad21-4cfe-91f6-c41fb694fd1c",
+    "image": "/tmp/weapons/good_078_bridge-hook-axe.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_bridge-hook-axe_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "079d1785-3128-4abe-aa3a-f45b568850ff",
+    "image": "/tmp/weapons/good_079_signal-gun.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_signal-gun_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "510d6568-da42-4601-b37c-40f35e7af226",
+    "image": "/tmp/weapons/good_080_rivet-sword-shield.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_rivet-sword-shield_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "5e523f7b-ae78-4c56-8934-245db1e3374d",
+    "image": "/tmp/weapons/good_081_pruning-greatsword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_pruning-greatsword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "92151fb0-b36c-4ebf-8c77-ffa1a7e83ed5",
+    "image": "/tmp/weapons/good_082_watering-gun.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_watering-gun_matte_details_20261027.webp"
+    }
+  },
+  {
+    "id": "ff56a697-28ba-46cf-9c3e-4d593596db1e",
+    "image": "/tmp/weapons/good_083_flytrap-dagger.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_flytrap-dagger_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "62c82e0a-5efe-4fbc-85c1-16d8b18b2ed5",
+    "image": "/tmp/weapons/good_084_votive-greatsword.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_votive-greatsword_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "2733c21b-a20b-4e68-a0b6-44aa3fb94966",
+    "image": "/tmp/weapons/good_085_seal-chain-axe.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_seal-chain-axe_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "f2058503-e2a3-4e29-8f74-7c608e09e64e",
+    "image": "/tmp/weapons/good_086_censer-gun.webp",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_censer-gun_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "25d73565-9f7c-4d82-a0dc-3a2aa783397a",
+    "image": "/tmp/armor/good_087_bone-runner-coat_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_bone-runner-coat_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "af75af93-b0e0-41ed-9482-fbe8aea55be6",
+    "image": "/tmp/armor/good_088_burial-robe_halftone_v3.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_burial-robe_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "2e0443af-58e5-4ef0-957b-c33b8de359aa",
+    "image": "/tmp/armor/good_089_bridge-runner-coat_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_bridge-runner-coat_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "c60dd47d-3327-4844-8c11-96ed0db8643c",
+    "image": "/tmp/armor/good_090_gearweave-robe_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_gearweave-robe_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "f25bd1f5-b00e-44d5-8976-406eb0803995",
+    "image": "/tmp/armor/good_091_moss-runner-coat_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_moss-runner-coat_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "1713ddf5-586c-4615-bc49-4f84d45556c6",
+    "image": "/tmp/armor/good_092_root-plate_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_root-plate_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "6fe9788e-08e1-4b8c-b84a-b51b2e5ae4e0",
+    "image": "/tmp/armor/good_093_pilgrim-coat_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_pilgrim-coat_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "29e01669-5b76-457c-b34a-336aba77e53c",
+    "image": "/tmp/armor/good_094_ritual-robe_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_ritual-robe_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "41c01291-5faa-4cd4-940e-7fd0963d6488",
+    "image": "/tmp/items/good_095_group-potion.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_group-potion_practical.webp"
+    }
+  },
+  {
+    "id": "0f48a9dc-8200-4850-a578-4842a570e1df",
+    "image": "/tmp/items/good_096_group-hipotion.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_group-hipotion_practical.webp"
+    }
+  },
+  {
+    "id": "1975f149-6547-410b-92ac-6e59d21cfd17",
+    "image": "/tmp/items/good_097_great-ether.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_great-ether_practical_retro.webp"
+    }
+  },
+  {
+    "id": "9a2f38cc-68d4-4cd1-b95a-ac17c2d83f1b",
+    "image": "/tmp/items/good_098_revival-incense.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_revival-incense_practical.webp"
+    }
+  },
+  {
+    "id": "b5648a53-aca7-4dc5-a458-b34547ac09a9",
+    "image": "/tmp/items/good_099_charge-incense.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_charge-incense_practical.webp"
+    }
+  },
+  {
+    "id": "7a332053-4962-4a65-b0e6-fd8b0309a21c",
+    "image": "/tmp/items/good_100_guard-incense.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_guard-incense_practical.webp"
+    }
+  },
+  {
+    "id": "3974dc6e-7fb7-48ca-9eef-d2e75213df59",
+    "image": "/tmp/items/good_101_regen-seed.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_regen-seed_practical.webp"
+    }
+  },
+  {
+    "id": "11a03289-b827-40b1-a003-d491e21b5a45",
+    "image": "/tmp/items/good_102_regen-incense.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_regen-incense_practical.webp"
+    }
+  },
+  {
+    "id": "fb663f87-0438-4dc6-a7d0-dd34ce1932bc",
+    "image": "/tmp/items/good_103_cleansing-mist.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_cleansing-mist_practical_retro.webp"
+    }
+  },
+  {
+    "id": "763af6c7-47db-4e32-af40-8615e38fec70",
+    "image": "/tmp/items/good_104_burst-bomb.webp",
+    "imageVersions": {
+      "v1": "/tmp/items/v1/tool_burst-bomb_practical_retro.webp"
+    }
+  },
+  {
+    "id": "22a3c18b-089e-4297-8738-70f32c911479",
+    "image": "/tmp/materials/good_105_crystal-claw.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_crystal-claw_rounded.webp"
+    }
+  },
+  {
+    "id": "8c647c6b-18c9-4f19-828d-dd312d0afd43",
+    "image": "/tmp/materials/good_106_statue-shard.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_statue-shard_rounded.webp"
+    }
+  },
+  {
+    "id": "5d2bca64-e580-4543-8966-7a1d3e0435da",
+    "image": "/tmp/materials/good_107_rust-fang.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_rust-fang_rounded.webp"
+    }
+  },
+  {
+    "id": "a3bb2f9e-c479-4c07-95c8-af1b2967bb8f",
+    "image": "/tmp/materials/good_108_venom-petal.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_venom-petal_rounded.webp"
+    }
+  },
+  {
+    "id": "ce408ebe-b853-47ad-89c3-d91c90ac0a8b",
+    "image": "/tmp/materials/good_109_spore-pouch.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_spore-pouch_rounded.webp"
+    }
+  },
+  {
+    "id": "9afe2fed-97ff-4669-90ec-1c9bcd9979d6",
+    "image": "/tmp/materials/good_110_contract-scrap.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_contract-scrap_rounded.webp"
+    }
+  },
+  {
+    "id": "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
+    "image": "/tmp/materials/good_111_skill-book.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_skill-book_rounded.webp"
+    }
+  },
+  {
+    "id": "279b51a4-efe5-49ea-b72c-6a43ca9afaf9",
+    "image": "/tmp/armor/good_113_crystal-liner_halftone_v3.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_crystal-liner_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "5d0af7c1-f593-4c9d-b673-35d34f6e81f3",
+    "image": "/tmp/armor/good_114_gravekeeper-vest_halftone_v3.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_gravekeeper-vest_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "2dbc9d05-8e6f-4bdb-9f2e-13c53a3b182a",
+    "image": "/tmp/armor/good_115_bridge-harness_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_bridge-harness_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "c145a4a8-8cb1-451c-98a1-9b05709efea1",
+    "image": "/tmp/armor/good_116_seedweave-robe_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_seedweave-robe_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "d53d6f50-87bd-4582-8a87-50fbc510079c",
+    "image": "/tmp/armor/good_117_sealed-vow-armor_halftone_v2.webp",
+    "imageVersions": {
+      "v1": "/tmp/armor/v1/armor_sealed-vow-armor_reimagined_20261025.webp"
+    }
+  },
+  {
+    "id": "contract-paper-nui",
+    "image": "/tmp/materials/good_118_demon-contract_v1.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_demon-contract_rounded.webp"
+    }
+  },
+  {
+    "id": "contract-paper-tris",
+    "image": "/tmp/materials/good_118_demon-contract_v1.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_demon-contract_rounded.webp"
+    }
+  },
+  {
+    "id": "contract-paper-haro",
+    "image": "/tmp/materials/good_118_demon-contract_v1.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_demon-contract_rounded.webp"
+    }
+  },
+  {
+    "id": "contract-paper-zaza",
+    "image": "/tmp/materials/good_118_demon-contract_v1.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_demon-contract_rounded.webp"
+    }
+  },
+  {
+    "id": "golden-apple",
+    "image": "/tmp/materials/good_119_golden-apple_v1.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_golden-apple_rounded.webp"
+    }
+  },
+  {
+    "id": "wetland-flower",
+    "image": "/tmp/materials/good_120_wetland-flower_v1.webp",
+    "imageVersions": {
+      "v1": "/tmp/materials/v1/good_wetland-flower_rounded.webp"
+    }
+  },
+  {
+    "id": "70717d91-d61f-4fa3-860f-e52753cc7945",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_pact-alma-name_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "5ad89d9e-29c6-424d-ae22-ba335f3cfd2f",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_pact-tsumugi-patch_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "31936151-6472-474e-89d7-4d087c13b73f",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_pact-rivet-forge_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "33ff5e49-81ed-4bb9-8d9b-c3951c387b8b",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_pact-rize-blank_clean_flat_20261026.webp"
+    }
+  },
+  {
+    "id": "c7a44829-433d-4b1a-af43-080407466aeb",
+    "imageVersions": {
+      "v1": "/tmp/weapons/v1/weapon_pact-sera-wings_clean_flat_20261026.webp"
+    }
+  }
+]

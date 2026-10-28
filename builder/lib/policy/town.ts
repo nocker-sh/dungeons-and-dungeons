@@ -1,13 +1,15 @@
-import type { Session } from "../session"
-import { fillParty, hireRecruits, chooseFirstPartner } from "./party"
-import { healItemFor } from "./healing"
-import {
-  buyGear,
-  equipBestArmor,
-  equipBestWeapon,
-  reforgeUnique,
-  appraiseJunk,
-} from "./equipment"
+import type { Session } from "@/builder/lib/session"
+import { Bag } from "@/lib/wiz/rules/bag"
+import { fillParty } from "@/builder/lib/policy/fill-party"
+import { hireRecruits } from "@/builder/lib/policy/hire-recruits"
+import { chooseFirstPartner } from "@/builder/lib/policy/choose-first-partner"
+import { healItemFor } from "@/builder/lib/policy/heal-item-for"
+import { protectFragileFront } from "@/builder/lib/policy/formation"
+import { buyGear } from "@/builder/lib/policy/buy-gear"
+import { equipBestArmor } from "@/builder/lib/policy/equip-best-armor"
+import { equipBestWeapon } from "@/builder/lib/policy/equip-best-weapon"
+import { reforgeUnique } from "@/builder/lib/policy/reforge-unique"
+import { appraiseJunk } from "@/builder/lib/policy/appraise-junk"
 
 /** 街での一日の結果。出撃する層と、その日の鑑定・修理・買い物。 */
 export type TownDayResult = {
@@ -21,8 +23,8 @@ export type TownDayResult = {
 }
 
 type UpgradeEntry = NonNullable<
-  ReturnType<Session["queries"]["smithy"]>
->["upgrades"][number]
+  ReturnType<Session["queries"]["smithyUpgrades"]>
+>[number]
 
 /**
  * 素材だけが足りない強化のうち、足りない素材がすべて店で買えて、
@@ -139,8 +141,7 @@ export function townDay(
           )
         : options.potions
     for (let guard = 0; guard < 30; guard++) {
-      const have =
-        state().bag.find((entry) => entry.good === potion.id)?.count ?? 0
+      const have = Bag.count(state().bag, potion.id)
       if (have >= want) break
       if (state().gold - (potion.price ?? 0) < reserve) break
       if (
@@ -193,21 +194,23 @@ export function townDay(
   // 着けている装備を強化する
   if (options.upgrade)
     for (let guard = 0; guard < 20; guard++) {
-      const smithy = queries.smithy(state())
+      // 素材を買い足す費用も、その日の支出に含める。
+      const before = state().gold
+      const upgrades = queries.smithyUpgrades(state()) ?? []
       const next =
-        smithy?.upgrades.find(
+        upgrades.find(
           (entry) =>
             entry.ownerId &&
             entry.ready &&
             (entry.gold ?? 0) <= state().gold - reserve
-        ) ?? buyUpgradeMaterials(session, smithy?.upgrades ?? [], reserve)
+        ) ?? buyUpgradeMaterials(session, upgrades, reserve)
       if (!next) break
-      const before = state().gold
       session.send({ type: "upgrade", gear: next.gear })
       spentGold += before - state().gold
     }
   // ユニークの仲間の固有の武器を、余った N の武器を素材にして鍛え直す
   spentGold += reforgeUnique(session, reserve)
+  protectFragileFront(session)
   return {
     layer:
       session.catalog.data.layers[

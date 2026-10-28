@@ -1,8 +1,8 @@
 /// <reference types="node" />
-import { GameCatalog } from "../src/lib/wiz/content/game-catalog"
-import { contentSource, toGameContent } from "../src/lib/content/game-content"
-import foes from "../src/lib/content/data/foes.json"
-import world from "../src/lib/concept/data/world.json"
+import { GameCatalog } from "@/lib/wiz/content/game-catalog"
+import { contentSource, toGameContent } from "@/content/game-content"
+import foes from "@/content/data/foes.json"
+import world from "@/concept/data/world.json"
 
 type Foe = { id: string; slug: string }
 type Artwork = {

@@ -1,17 +1,13 @@
-import { DEFAULT_PLAN, PUSH_PLAN } from "./lib/policy"
-import { withinTarget } from "./lib/tune"
-import {
-  meanInterval,
-  rateInterval,
-  settled,
-  type Range,
-} from "./lib/sequential"
-import {
-  battleTrials,
-  campaignTrials,
-  dungeonTrials,
-  levelFor,
-} from "./lib/simulate"
+import { DEFAULT_PLAN, PUSH_PLAN } from "@/builder/lib/policy/expedition"
+import { withinTarget } from "@/builder/lib/tuning/within-target"
+import { meanInterval } from "@/builder/lib/mean-interval"
+import { rateInterval } from "@/builder/lib/rate-interval"
+import { settled } from "@/builder/lib/settled"
+import type { Range } from "@/builder/lib/settled"
+import { battleTrials } from "@/builder/lib/simulation/battle-trials"
+import { dungeonTrials } from "@/builder/lib/simulation/dungeon-trials"
+import { campaignTrials } from "@/builder/lib/simulation/campaign-trials"
+import { levelFor } from "@/builder/lib/simulation/level-for"
 
 /**
  * バランスの目標。report / check が測って合否を出す。
@@ -329,11 +325,11 @@ export const TARGETS: readonly Target[] = [
      * （以前は 50〜60 まで伸びていた）。
      */
     id: "campaign-ending-level",
-    label: "踏破したときの出撃メンバーの平均レベル",
+    label: "踏破したときの育成対象の仲間の平均レベル（主人公を除く）",
     min: 22,
     max: 40,
     unit: "count",
-    measure: (options) => campaign(options).layers[LAYERS - 1].level,
+    measure: (options) => campaign(options).layers[LAYERS - 1].companionLevel,
   },
 ]
 

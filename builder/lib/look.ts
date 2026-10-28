@@ -2,7 +2,7 @@
  * `look`：画面で見える情報を、AIが読めるテキストで出す。
  * 値はすべてエンジンの Query から受け取る（画面と同じ判断材料）。id は slug で出す。
  */
-import type { Session } from "./session"
+import type { Session } from "@/builder/lib/session"
 
 const yen = (value: number) => `${value}G`
 
@@ -61,13 +61,14 @@ export function look(session: Session, args: readonly string[]): string[] {
           `${room.affordable ? "○" : "×"} ${slug(room.id)}：${room.name} ${yen(room.price)}${room.levelUp ? "・レベルが上がる" : ""}`
       )
   if (topic === "smithy") {
-    const smithy = queries.smithy(state)
-    if (!smithy) return ["鍛冶屋がない"]
+    const overview = queries.smithyOverview(state)
+    if (!overview) return ["鍛冶屋がない"]
+    const upgrades = queries.smithyUpgrades(state)!
     return [
-      `スキルの書 ${smithy.books}冊`,
-      ...smithy.upgrades.map(
+      `スキルの書 ${overview.books}冊`,
+      ...upgrades.map(
         (entry) =>
-          `${entry.ready ? "○" : "×"} 強化 ${entry.gear}：${entry.name}${entry.owner ? `（${entry.owner}）` : ""} ${entry.gold === undefined ? "上限" : yen(entry.gold)}`
+          `${entry.ready ? "○" : "×"} 強化 ${entry.gear}：${entry.name}${entry.owner ? `（${entry.owner}）` : ""} ${entry.max ? "上限" : yen(entry.gold)}`
       ),
       ...queries
         .repairs(state)

@@ -1,7 +1,8 @@
-import { buildContent } from "./lib/content"
-import { Session } from "./lib/session"
-import { DEFAULT_PLAN, PUSH_PLAN, townDay } from "./lib/policy"
-import { runExpedition } from "./lib/simulate"
+import { buildContent } from "@/builder/lib/build-content"
+import { Session } from "@/builder/lib/session"
+import { DEFAULT_PLAN, PUSH_PLAN } from "@/builder/lib/policy/expedition"
+import { townDay } from "@/builder/lib/policy/town"
+import { runExpedition } from "@/builder/lib/simulation/expedition"
 
 const runs = Number(process.argv[2] ?? 5)
 if (!Number.isInteger(runs) || runs < 1) throw new Error("試行数は正の整数")

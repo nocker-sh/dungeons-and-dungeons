@@ -24,8 +24,7 @@ todos.json
 /.claude/
 
 # Image assets are managed in R2; local copies stay outside Git
-/public/images/
-/public/art/
+/public/tmp/
 *.png
 *.jpg
 *.jpeg

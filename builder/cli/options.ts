@@ -1,10 +1,18 @@
-import { readFileSync } from "node:fs"
-import {
-  DEFAULT_PLAN,
-  PUSH_PLAN,
-  type BattleStyle,
-  type ExpeditionPlan,
-} from "../lib/policy"
+import { z } from "zod"
+import { readLineFile } from "@/builder/cli/line-file"
+import { DEFAULT_PLAN, PUSH_PLAN } from "@/builder/lib/policy/expedition"
+import type { ExpeditionPlan } from "@/builder/lib/policy/expedition"
+import type { BattleStyle } from "@/builder/lib/policy/battle"
+
+const battleStyleSchema = z.enum(["smart", "attack", "random"])
+
+const numberRules = {
+  positive: { schema: z.number().int().positive(), label: "1以上の整数" },
+  count: { schema: z.number().int().nonnegative(), label: "0以上の整数" },
+  seed: { schema: z.number().int(), label: "整数" },
+  ratio: { schema: z.number().min(0).max(1), label: "0から1までの数値" },
+  depth: { schema: z.number().nonnegative(), label: "0以上の数値" },
+} as const
 
 export type CliOptions = {
   positional: string[]
@@ -79,48 +87,61 @@ export function parseOptions(argv: string[]): CliOptions {
       if (value === undefined) throw new Error(`${argument} の値がない`)
       return value
     }
+    const readNumber = (rule: keyof typeof numberRules, value = readNext()) => {
+      const { schema, label } = numberRules[rule]
+      const parsed = schema.safeParse(value.trim() ? Number(value) : NaN)
+      if (!parsed.success)
+        throw new Error(
+          `${argument} は${label}で指定してください: ${JSON.stringify(value)}`
+        )
+      return parsed.data
+    }
     if (argument === "--runs") {
-      options.runs = Number(readNext())
+      options.runs = readNumber("positive")
       options.runsGiven = true
-    } else if (argument === "--seed") options.seed = Number(readNext())
+    } else if (argument === "--seed") options.seed = readNumber("seed")
     else if (argument === "--seeds")
-      options.seeds = readNext().split(",").map(Number).filter(Number.isFinite)
-    else if (argument === "--budget") options.budget = Number(readNext())
+      options.seeds = readNext()
+        .split(",")
+        .map((value) => readNumber("seed", value))
+    else if (argument === "--budget") options.budget = readNumber("positive")
     else if (argument === "--out") options.outputPath = readNext()
     else if (argument === "--targets") options.targetIds = readNext().split(",")
     else if (argument === "--apply") options.apply = true
     else if (argument === "--no-cache") options.cache = false
     else if (argument === "--set") options.overrides.push(readNext())
     else if (argument === "--sets")
-      options.overrides.push(
-        ...readFileSync(readNext(), "utf8")
-          .split("\n")
-          .map((line) => line.replace(/#.*/, "").trim())
-          .filter(Boolean)
-      )
+      options.overrides.push(...readLineFile(readNext()))
     else if (argument === "--json") options.json = true
-    else if (argument === "--style") options.style = readNext() as BattleStyle
-    else if (argument === "--level") options.level = Number(readNext())
+    else if (argument === "--style") {
+      const value = readNext()
+      const parsed = battleStyleSchema.safeParse(value)
+      if (!parsed.success)
+        throw new Error(
+          `--style は ${battleStyleSchema.options.join(" / ")} で指定してください: ${JSON.stringify(value)}`
+        )
+      options.style = parsed.data
+    } else if (argument === "--level") options.level = readNumber("positive")
     else if (argument === "--boss") options.boss = true
     else if (argument === "--push") options.plan = { ...PUSH_PLAN }
     else if (argument === "--retreat")
-      options.plan.retreatBelow = Number(readNext())
+      options.plan.retreatBelow = readNumber("ratio")
     else if (argument === "--boss-ready")
-      options.plan.bossReady = Number(readNext())
+      options.plan.bossReady = readNumber("ratio")
     else if (argument === "--no-heal") options.plan.heal = false
     else if (argument === "--save") options.save = readNext()
     else if (argument === "--new") options.fresh = true
     else if (argument === "--expeditions")
-      options.expeditions = Number(readNext())
-    else if (argument === "--layers") options.layers = Number(readNext())
-    else if (argument === "--potions") options.potions = Number(readNext())
+      options.expeditions = readNumber("positive")
+    else if (argument === "--layers") options.layers = readNumber("positive")
+    else if (argument === "--potions") options.potions = readNumber("count")
     else if (argument === "--no-shop") options.shop = false
     else if (argument === "--weapons") options.weapons = true
-    else if (argument === "--reached") options.reached = Number(readNext())
+    else if (argument === "--reached") options.reached = readNumber("count")
     else if (argument === "--depths")
       options.depths = readNext()
         .split(",")
-        .map((value) => Number(value))
+        .map((value) => readNumber("depth", value))
     else if (argument === "--scene") options.scene = readNext()
     else if (argument === "--script") options.script = readNext()
     else if (argument === "--param") options.parameterPath = readNext()

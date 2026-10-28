@@ -1,15 +1,15 @@
-import { stateSchema } from "@/lib/wiz/state"
-import {
-  GameCommandError,
-  GameDefinition,
-  WizWorldEnvironment,
-  type Game,
-  type GameAction,
-  type GameEvent,
-  type GameState,
-} from "@/lib/wiz"
-import { buildContent, idOf, type Built } from "./content"
-import { SeededRandom } from "./random"
+import { stateSchema } from "@/lib/wiz/state/state-schema"
+import { GameCommandError } from "@/lib/wiz/game/game-command-error"
+import { GameDefinition } from "@/lib/wiz/definition/game-definition"
+import { WizWorldEnvironment } from "@/lib/wiz/core/world/world"
+import type { Game } from "@/lib/wiz/game/game"
+import type { GameAction } from "@/lib/wiz/commands"
+import type { GameEvent } from "@/lib/wiz/state/game-event"
+import type { GameState } from "@/lib/wiz/state/state-schema"
+import { buildContent } from "@/builder/lib/build-content"
+import { idOf } from "@/builder/lib/id-of"
+import type { Built } from "@/builder/lib/build-content"
+import { SeededRandom } from "@/builder/lib/random"
 
 /** 同じデータの定義は使い回す（検証は一度だけ）。 */
 const definitions = new WeakMap<Built, GameDefinition>()

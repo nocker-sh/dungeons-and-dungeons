@@ -1,8 +1,8 @@
 import { readFileSync, writeFileSync } from "node:fs"
-import { applyOverride } from "../lib/content"
-import { type CliOptions } from "./options"
+import { applyOverride } from "@/builder/lib/apply-override"
+import { type CliOptions } from "@/builder/cli/options"
 
-const DATA = new URL("../../src/lib/content/data/", import.meta.url)
+const DATA = new URL("../../content/data", import.meta.url)
 
 const FILES: Record<string, string> = {
   party: "party.json",
@@ -18,7 +18,7 @@ const FILES: Record<string, string> = {
   smithy: "smithy.json",
 }
 
-/** 上書きを src/lib/content/data の JSON へ書き戻す。 */
+/** 上書きを content/data の JSON へ書き戻す。 */
 export function commandApply(options: CliOptions) {
   if (!options.overrides.length) throw new Error("--set か --sets が要る")
   const read = (name: string) =>
@@ -35,6 +35,6 @@ export function commandApply(options: CliOptions) {
     Object.fromEntries(Object.keys(settings).map((key) => [key, raw[key]]))
   )
   console.log(
-    `${options.overrides.length}件を書き戻した。bun builder/cli.ts check で確かめる。`
+    `${options.overrides.length}件を書き戻した。vp run cli check で確かめる。`
   )
 }

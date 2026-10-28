@@ -1,0 +1,130 @@
+[
+  {
+    "id": "comic-hit",
+    "name": "Hit",
+    "sound": "BAM!",
+    "description": "A yellow-and-red jagged burst. The standard hit.",
+    "image": "/tmp/effects/effect_00_comic-hit.webp",
+    "group": "Attack"
+  },
+  {
+    "id": "comic-slash",
+    "name": "Slash",
+    "sound": "SWISH!",
+    "description": "Three sharp slashes with blue shadows and thick ink lines.",
+    "image": "/tmp/effects/effect_01_comic-slash.webp",
+    "group": "Attack"
+  },
+  {
+    "id": "comic-critical",
+    "name": "Critical",
+    "sound": "WHAM!",
+    "description": "A big red-and-yellow shockwave. A powerful hit.",
+    "image": "/tmp/effects/effect_02_comic-critical.webp",
+    "group": "Attack"
+  },
+  {
+    "id": "comic-thrust",
+    "name": "Thrust",
+    "sound": "SHUK!",
+    "group": "Attack",
+    "description": "A thin, sharp impact piercing one point. For thrusts, thrown daggers and piercing shots.",
+    "image": "/tmp/effects/effect_03_comic-thrust.webp"
+  },
+  {
+    "id": "comic-shot",
+    "name": "Shot",
+    "sound": "BANG!",
+    "group": "Attack",
+    "description": "A star-shaped flash of a bursting bullet. For magic guns, rapid fire and scattershot.",
+    "image": "/tmp/effects/effect_04_comic-shot.webp"
+  },
+  {
+    "id": "comic-magic",
+    "name": "Magic",
+    "sound": "ZAP!",
+    "group": "Attack",
+    "description": "A flash of purple and white magic. For holy light, magic bullets, curse waves and more.",
+    "image": "/tmp/effects/effect_05_comic-magic.webp"
+  },
+  {
+    "id": "comic-guard",
+    "name": "Guard",
+    "sound": "CLANG!",
+    "group": "Defense & Gear",
+    "description": "A blue barrier absorbs the impact. For guarding, protective blessings and parries.",
+    "image": "/tmp/effects/effect_06_comic-guard.webp"
+  },
+  {
+    "id": "comic-armor-break",
+    "name": "Armor Break",
+    "sound": "KRAK!",
+    "group": "Defense & Gear",
+    "description": "Armor cracks and shards scatter. For running out of durability or breaking.",
+    "image": "/tmp/effects/effect_07_comic-armor-break.webp"
+  },
+  {
+    "id": "comic-repair",
+    "name": "Repair",
+    "sound": "KLINK!",
+    "group": "Defense & Gear",
+    "description": "Blue shards gather to repair armor. For restoring durability.",
+    "image": "/tmp/effects/effect_08_comic-repair.webp"
+  },
+  {
+    "id": "comic-heal",
+    "name": "Heal",
+    "sound": "FWOOSH!",
+    "group": "Recovery",
+    "description": "Soft green light rises. For restoring HP and healing potions.",
+    "image": "/tmp/effects/effect_09_comic-heal.webp"
+  },
+  {
+    "id": "comic-regen",
+    "name": "Regen",
+    "sound": "SHIMMER!",
+    "group": "Recovery",
+    "description": "Fresh green light circles around. For healing over time and regeneration.",
+    "image": "/tmp/effects/effect_10_comic-regen.webp"
+  },
+  {
+    "id": "comic-purify",
+    "name": "Purify",
+    "sound": "SHING!",
+    "group": "Recovery",
+    "description": "Platinum light sweeps away purple grime. For curing poison and status ailments.",
+    "image": "/tmp/effects/effect_11_comic-purify.webp"
+  },
+  {
+    "id": "comic-revive",
+    "name": "Revive",
+    "sound": "FLASH!",
+    "group": "Recovery",
+    "description": "Platinum light surges upward. For the moment a fallen ally gets back up.",
+    "image": "/tmp/effects/effect_12_comic-revive.webp"
+  },
+  {
+    "id": "comic-poison",
+    "name": "Poison",
+    "sound": "SIZZLE!",
+    "group": "Status",
+    "description": "Purple poison clings on. For inflicting poison and poison damage.",
+    "image": "/tmp/effects/effect_13_comic-poison.webp"
+  },
+  {
+    "id": "comic-bind",
+    "name": "Bind",
+    "sound": "CLAMP!",
+    "group": "Status",
+    "description": "Purple chains tighten. For binding and stun effects.",
+    "image": "/tmp/effects/effect_14_comic-bind.webp"
+  },
+  {
+    "id": "comic-charge",
+    "name": "Charge",
+    "sound": "RUMBLE!",
+    "group": "Status",
+    "description": "Red and yellow power wells up. For focusing and attack boosts.",
+    "image": "/tmp/effects/effect_15_comic-charge.webp"
+  }
+]

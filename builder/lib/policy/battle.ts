@@ -1,7 +1,7 @@
-import type { GameAction } from "@/lib/wiz"
-import type { SeededRandom } from "../random"
-import type { Session } from "../session"
-import { bestPotion } from "./healing"
+import type { GameAction } from "@/lib/wiz/commands"
+import type { SeededRandom } from "@/builder/lib/random"
+import type { Session } from "@/builder/lib/session"
+import { bestPotion } from "@/builder/lib/policy/best-potion"
 
 /**
  * 自動で遊ぶ方針。
@@ -13,14 +13,14 @@ export type BattleStyle = "smart" | "attack" | "random"
 
 type Choice = { action: GameAction; score: number }
 
-/** 戦闘の手番で送る操作。 */
+/** 戦闘の手番で送る操作。viewは、状態を変更する前の同じ手番の表示を渡す。 */
 export function battleAction(
   session: Session,
   style: BattleStyle,
-  random: SeededRandom
+  random: SeededRandom,
+  view = session.queries.battle(session.state)
 ): GameAction {
   const { state, queries, catalog } = session
-  const view = queries.battle(state)
   if (!view) throw new Error("戦闘中ではない")
   if (view.current.kind === "foe") return { type: "foe-turn" }
   const id = view.current.id

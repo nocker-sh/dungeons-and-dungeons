@@ -1,5 +1,26 @@
-import type { GameAction } from "@/lib/wiz"
-import type { Session } from "./session"
+import type { GameAction } from "@/lib/wiz/commands"
+import type { Session } from "@/builder/lib/session"
+
+/** 作品データを参照する項目だけを解決する。操作名・個体ID・自由入力はそのまま。 */
+const referenceKinds = new Map<string, string | undefined>([
+  ["layer", "layers"],
+  ["skill", "skills"],
+  ["good", "goods"],
+  ["room", "rooms"],
+  ["shop", "shops"],
+  ["recruit", "recruits"],
+  ["demon", "demons"],
+  ["quest", "quests"],
+  ["recipe", "smithy.recipes"],
+  // 仲間は初期パーティと求人の両方にいる。
+  ["member", undefined],
+  ["target", undefined],
+  ["out", undefined],
+  ["in", undefined],
+  ["a", undefined],
+  ["b", undefined],
+  ["liked", undefined],
+])
 
 /**
  * 短い書き方を操作にする。slug は id に直す。JSON の操作もそのまま受ける（中の slug も直す）。
@@ -12,7 +33,9 @@ export function parseCommand(session: Session, line: string): GameAction {
     const action = Object.fromEntries(
       Object.entries(raw).map(([key, value]) => [
         key,
-        key !== "type" && typeof value === "string" ? session.id(value) : value,
+        referenceKinds.has(key) && typeof value === "string"
+          ? session.id(value, referenceKinds.get(key))
+          : value,
       ])
     )
     return action as GameAction

@@ -1,8 +1,8 @@
-import type { TuningSpec } from "../lib/tune"
+import type { TuningSpec } from "@/builder/lib/tuning/types"
 
 /**
  * 0層のバランスを自動で合わせる指定。
- *   bun builder/cli.ts tune builder/tunings/layer0.ts
+ *   vp run cli tune builder/tunings/layer0.ts
  *
  * targets は builder/targets.ts の id。knobs は `--set` と同じパスで、
  * min / max は「ここまでなら動かしてよい」幅。keep が大きいほど動かさない。

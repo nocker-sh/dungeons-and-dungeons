@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vite-plus/test"
-import { auditFoes } from "./audit-foes"
+import { auditFoes } from "@/scripts/audit-foes"
 const definitions = [
   { id: "base", slug: "base" },
   { id: "variant", slug: "variant" },

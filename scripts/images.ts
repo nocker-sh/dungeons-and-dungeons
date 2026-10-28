@@ -1,11 +1,11 @@
 /// <reference types="node" />
 /**
- * 公開画像の一覧（src/lib/concept/data/images.json）と、人の目視確認の記録を扱う。
- *   bun scripts/images.ts sync                    公開画像を一覧へ追加する
- *   bun scripts/images.ts check [--strict]        一覧・参照・確認状況を検査する
- *   bun scripts/images.ts preview <画像>          透過を色付き背景に重ねた確認用PNGを書き出す
- *   bun scripts/images.ts approve <画像> [--note <メモ>]  人が目視で合格にした記録を残す
- *   bun scripts/images.ts reject <画像> --note <理由>     人が目視で差し戻した記録を残す
+ * 公開画像の一覧（concept/data/images.json）と、人の目視確認の記録を扱う。
+ *   vp run images sync                    公開画像を一覧へ追加する
+ *   vp run images check [--strict]        一覧・参照・確認状況を検査する
+ *   vp run images preview <画像>          透過を色付き背景に重ねた確認用PNGを書き出す
+ *   vp run images approve <画像> [--note <メモ>]  人が目視で合格にした記録を残す
+ *   vp run images reject <画像> --note <理由>     人が目視で差し戻した記録を残す
  * 確認はその時点の画像のハッシュに紐づく。画像を作り直すと「要再確認」に戻る。
  */
 import { createHash } from "node:crypto"
@@ -17,14 +17,39 @@ import {
   writeFileSync,
 } from "node:fs"
 import path from "node:path"
+import { checkImageIntegrity } from "@/scripts/image-integrity"
 
-const INDEX_FILE = "src/lib/concept/data/images.json"
+const INDEX_FILE = "concept/data/images.json"
 const PUBLIC_DIRECTORY = "public"
-const IMAGE_DIRECTORIES = ["public/images", "public/art"]
+const IMAGE_DIRECTORY = "public/tmp"
 const IMPORT_MANIFEST = "private/art/import-manifest.json"
+const OUTPUT_MANIFEST = "private/art/output-manifest.json"
+const IMAGE_LEDGER = ".docs/artwork-analysis/image-ledger.json"
 const PREVIEW_DIRECTORY = "private/art/review"
-const REFERENCE_SOURCES = ["src"]
-const IMAGE_EXTENSIONS = [".webp", ".png", ".jpg", ".jpeg"]
+const REFERENCE_SOURCES = [
+  "pages",
+  "client",
+  "lib",
+  "content",
+  "concept",
+  "development",
+  "tests/lib",
+  "tests/client",
+  "tests/content",
+  "tests/concept",
+  "tests/development",
+]
+
+const IMAGE_EXTENSIONS = [
+  ".webp",
+  ".png",
+  ".jpg",
+  ".jpeg",
+  ".avif",
+  ".gif",
+  ".svg",
+  ".ico",
+]
 
 type Review = {
   status: "approved" | "rejected"
@@ -62,7 +87,7 @@ function listFiles(directory: string): string[] {
 }
 
 function publicImages(): string[] {
-  return IMAGE_DIRECTORIES.flatMap(listFiles)
+  return listFiles(IMAGE_DIRECTORY)
     .filter((file) => IMAGE_EXTENSIONS.includes(path.extname(file)))
     .map((file) => `/${path.relative(PUBLIC_DIRECTORY, file)}`)
     .sort()
@@ -81,16 +106,16 @@ function hashOf(image: string) {
 /** 元PNGの対応。立ち絵は取り込み表、背景は scenes の同名PNG。 */
 function originalOf(image: string): string | null {
   const baseName = path.basename(image, path.extname(image))
-  if (image.startsWith("/art/scenes/")) {
+  if (image.startsWith("/tmp/scenes/")) {
     const scene = `scenes/${baseName}.png`
     return existsSync(path.join("private/art/originals", scene)) ? scene : null
   }
   if (!existsSync(IMPORT_MANIFEST)) return null
   const rows = JSON.parse(readFileSync(IMPORT_MANIFEST, "utf8")) as {
     name: string
+    image: string
   }[]
-  const name = image.replace(/^\/images\//, "").replace(/\.webp$/, ".png")
-  return rows.find((row) => row.name === name)?.name ?? null
+  return rows.find((row) => row.image === image)?.name ?? null
 }
 
 function reviewState(entry: ImageEntry): ReviewState {
@@ -135,11 +160,17 @@ function sync() {
 
 function referencedImages(): Map<string, string[]> {
   const references = new Map<string, string[]>()
-  const pattern = /["'`](\/(?:images|art)\/[^"'`$]+?\.(?:webp|png|jpe?g))["'`]/g
-  const sources = REFERENCE_SOURCES.flatMap(listFiles).filter(
+  const pattern =
+    /["'`](\/tmp\/[^"'`$]+?\.(?:webp|png|jpe?g|avif|gif|svg|ico))["'`]/g
+  const sources = [
+    ...REFERENCE_SOURCES.flatMap(listFiles),
+    "public/manifest.json",
+    "void.config.ts",
+  ].filter(
     (file) =>
       /\.(tsx?|json)$/.test(file) &&
-      path.resolve(file) !== path.resolve(INDEX_FILE)
+      path.resolve(file) !== path.resolve(INDEX_FILE) &&
+      !file.startsWith("tests/e2e/")
   )
   for (const file of sources) {
     for (const match of readFileSync(file, "utf8").matchAll(pattern)) {
@@ -153,9 +184,26 @@ function check(strict: boolean) {
   const index = readIndex()
   const problems: string[] = []
   const indexed = new Set(index.images.map((entry) => entry.image))
+  const integrity = checkImageIntegrity({
+    images: index.images,
+    publicImages: publicImages(),
+    imports: existsSync(IMPORT_MANIFEST)
+      ? JSON.parse(readFileSync(IMPORT_MANIFEST, "utf8"))
+      : [],
+    outputs: existsSync(OUTPUT_MANIFEST)
+      ? JSON.parse(readFileSync(OUTPUT_MANIFEST, "utf8"))
+      : [],
+    ledger: existsSync(IMAGE_LEDGER)
+      ? JSON.parse(readFileSync(IMAGE_LEDGER, "utf8")).images
+      : [],
+    fileExists: existsSync,
+    hashFile: (file) =>
+      createHash("sha256").update(readFileSync(file)).digest("hex"),
+  })
+  problems.push(...integrity.map((problem) => problem.message))
   for (const image of publicImages())
     if (!indexed.has(image))
-      problems.push(`一覧にない画像: ${image}（bun scripts/images.ts sync）`)
+      problems.push(`一覧にない画像: ${image}（vp run images sync）`)
   for (const entry of index.images)
     if (!existsSync(filePath(entry.image)))
       problems.push(`ファイルがない: ${entry.image}`)
@@ -247,7 +295,7 @@ switch (command) {
     break
   default:
     console.log(
-      "使い方: bun scripts/images.ts <sync|check [--strict]|preview <画像>|approve <画像> [--note]|reject <画像> --note>"
+      "使い方: vp run images <sync|check [--strict]|preview <画像>|approve <画像> [--note]|reject <画像> --note>"
     )
     process.exit(command ? 1 : 0)
 }

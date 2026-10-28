@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs"
-import { RosterTrials } from "@/../builder/lib/roster-trials"
+import { RosterTrials } from "@/builder/lib/roster-trials"
 
 /** 探索試行で決めた編成を固定し、別シードで最深層を再測定する。 */
 const selected: { slug: string; party: string[] }[] = JSON.parse(

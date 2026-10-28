@@ -1,5 +1,5 @@
-import { TARGETS } from "../targets"
-import type { CliOptions } from "./options"
+import { TARGETS } from "@/builder/targets"
+import type { CliOptions } from "@/builder/cli/options"
 
 /** --targets id,id で測る目標を絞る。 */
 export function chooseTargets(options: CliOptions, ids?: readonly string[]) {
