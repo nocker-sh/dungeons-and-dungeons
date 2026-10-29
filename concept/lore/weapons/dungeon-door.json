@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "id": "bb37b64c-6a42-4c4d-a9a3-bdf71e458f10",
+  "slug": "dungeon-door",
+  "kind": "weapons",
+  "title": "門衛の剣盾",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "bb37b64c-6a42-4c4d-a9a3-bdf71e458f10"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "weapons",
+    "weapon",
+    "手入れと流通"
+  ],
+  "relations": [],
+  "authorship": {
+    "basis": "2026-10-28 全ての内容に意味と生活を持たせる資料制作依頼",
+    "scope": "手入れと運搬の制作設定",
+    "changes_game_rules": false
+  },
+  "handling": {
+    "rule_source": {
+      "file": "[[content/data/goods.json]]",
+      "id": "bb37b64c-6a42-4c4d-a9a3-bdf71e458f10"
+    },
+    "routine_section": "暮らしの中での取り扱い"
+  }
+}

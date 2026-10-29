@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "id": "241f8f9b-45d4-4df3-97e0-979ccde5d22c",
+  "slug": "storage-mimic",
+  "kind": "residents",
+  "title": "保管庫のミミック（仮）",
+  "runtime": null,
+  "related": [],
+  "sources": [],
+  "entity_type": "monster",
+  "lore_status": "supporting",
+  "tags": [
+    "residents",
+    "monster"
+  ],
+  "continuity": {
+    "withheld": [
+      "名前、性別、見た目、置き場所、預かり物の受け渡し仕様は未設定。"
+    ],
+    "keep": [
+      "住人の制作案。実装済みの預かり機能として扱わない。"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "id": "920b6fd0-4562-46c9-b9a4-717d7a87b5da",
+  "slug": "place-layer4",
+  "kind": "backgrounds",
+  "title": "底なしの祭壇",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "920b6fd0-4562-46c9-b9a4-717d7a87b5da"
+  },
+  "related": [],
+  "sources": [],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "site"
+  ]
+}

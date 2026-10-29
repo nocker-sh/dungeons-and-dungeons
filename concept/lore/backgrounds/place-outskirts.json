@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "id": "745cd2b6-bf2e-4cd7-ab49-0ebe92d08eec",
+  "slug": "place-outskirts",
+  "kind": "backgrounds",
+  "title": "街はずれ・乗り場",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "745cd2b6-bf2e-4cd7-ab49-0ebe92d08eec"
+  },
+  "related": [
+    {
+      "id": "f790642c-1e81-41e7-82cb-748b35d888a5",
+      "document": "[[concept/residents/lloyd]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "dungeons-concept / README.md・home.html"
+    }
+  ],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "site"
+  ]
+}

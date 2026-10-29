@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "id": "188f5731-cac5-47e1-87e4-52ce5029a985",
+  "slug": "place-campfire-forest",
+  "kind": "backgrounds",
+  "title": "夜の森の焚き火",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "188f5731-cac5-47e1-87e4-52ce5029a985"
+  },
+  "related": [
+    {
+      "id": "607cef76-34b8-4650-9d94-aa002c504b16",
+      "document": "[[concept/world/world-space-camera]]"
+    },
+    {
+      "id": "4629d05a-8b24-48ac-bc4d-b87f7712c07a",
+      "document": "[[concept/backgrounds/place-highway]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示 / 外の世界のワールドマップを後で実装する。外の夜の森の焚き火の背景を作り、そこでムービー"
+    }
+  ],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "ワールド地図",
+    "暮らし"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一街一地点の資料制作依頼",
+    "scope": "空間と流通の制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "map:world",
+    "map": "map:world",
+    "zone": "world-forest-camp"
+  },
+  "bindings": [
+    {
+      "file": "[[content/data/world-map.json]]",
+      "id": "world-forest-camp"
+    }
+  ],
+  "relations": [
+    {
+      "type": "mapped_by",
+      "target": "map:world",
+      "meaning": "抽象的な経路上の位置。町内の実寸ではない。"
+    }
+  ]
+}

@@ -1,9 +1,11 @@
+import { readConceptMetadata } from "@/scripts/concept-check/read-concept-metadata"
+import { conceptDocumentPath } from "@/scripts/concept-check/concept-document-path"
 import { verifyLivingLinks } from "@/scripts/concept-check/living-links"
 import { verifyLocations } from "@/scripts/concept-check/locations"
 import { verifyMetadata } from "@/scripts/concept-check/metadata"
 import { pathToFileURL } from "node:url"
 import { readdir, readFile } from "node:fs/promises"
-import { resolve, join, relative, dirname } from "node:path"
+import { resolve, join, relative } from "node:path"
 import { object } from "@/scripts/concept-check/object"
 import type { ConceptDocuments } from "@/scripts/concept-check/types"
 import { createRuntimeReader } from "@/scripts/concept-check/create-runtime-reader"
@@ -29,9 +31,9 @@ export async function checkConcept(root: string): Promise<string[]> {
         }
         let data: unknown
         try {
-          data = Bun.YAML.parse(match[1])
+          data = await readConceptMetadata(root, Bun.YAML.parse(match[1]))
         } catch {
-          problems.push(`${label}: YAMLを解析できない`)
+          problems.push(`${label}: Front Matterまたは正本JSONを読めない`)
           continue
         }
         if (!object(data) || typeof data.id !== "string" || !data.id.trim()) {
@@ -117,7 +119,7 @@ export async function checkConcept(root: string): Promise<string[]> {
           target &&
           document &&
           (typeof relation.document !== "string" ||
-            resolve(root, dirname(file), relation.document) !==
+            conceptDocumentPath(root, file, relation.document) !==
               resolve(root, document.file))
         )
           problems.push(

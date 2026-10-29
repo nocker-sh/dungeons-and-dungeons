@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "b2368153-19b7-45b8-bf77-6c520afb485e",
+  "slug": "mitsuashi-marsh",
+  "kind": "monsters",
+  "title": "スワンプアイ",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "b2368153-19b7-45b8-bf77-6c520afb485e"
+  },
+  "related": [
+    {
+      "id": "3f93cd61-6218-4de9-921a-8ef69dd413e5",
+      "document": "[[concept/monsters/mitsuashi]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：採用モンスターの亜種・大人を内蔵image_genで制作"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "b2368153-19b7-45b8-bf77-6c520afb485e"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "b2368153-19b7-45b8-bf77-6c520afb485e"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "b2368153-19b7-45b8-bf77-6c520afb485e"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

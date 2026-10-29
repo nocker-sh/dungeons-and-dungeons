@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "id": "e014c850-9102-4a16-b578-6913f9f49fa2",
+  "slug": "place-apothecary",
+  "kind": "backgrounds",
+  "title": "薬屋",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "e014c850-9102-4a16-b578-6913f9f49fa2"
+  },
+  "related": [
+    {
+      "id": "eab50e26-0001-4116-8158-bd248f514e56",
+      "document": "[[concept/residents/morna]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "dungeons-concept / README.md・home.html"
+    }
+  ],
+  "entity_type": "building",
+  "lore_status": "active",
+  "tags": [
+    "街",
+    "商い",
+    "住まい"
+  ],
+  "relations": [
+    {
+      "type": "mapped_by",
+      "target": "map:apothecary",
+      "meaning": "既存の仕事場の画面寸法を保ち、奥の生活区画をつなぐ。"
+    },
+    {
+      "type": "depicts",
+      "target": "room:apothecary-work",
+      "meaning": "背景で見えるのは建物内の仕事場。居住部分を同じ床へ詰め込まない。"
+    }
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/shops.json]]",
+      "id": "63228b54-3a1f-4a3a-940d-7b0f5103b87d"
+    }
+  ]
+}

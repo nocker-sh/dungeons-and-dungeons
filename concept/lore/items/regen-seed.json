@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "id": "3974dc6e-7fb7-48ca-9eef-d2e75213df59",
+  "slug": "regen-seed",
+  "kind": "items",
+  "title": "芽吹きの丸薬",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "3974dc6e-7fb7-48ca-9eef-d2e75213df59"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "items",
+    "item",
+    "手入れと流通"
+  ],
+  "relations": [
+    {
+      "type": "sold_by",
+      "target": "eab50e26-0001-4116-8158-bd248f514e56",
+      "meaning": "薬屋の正本の販売対象。価格と在庫規則は店データに従う。"
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 全ての内容に意味と生活を持たせる資料制作依頼",
+    "scope": "手入れと運搬の制作設定",
+    "changes_game_rules": false
+  },
+  "handling": {
+    "rule_source": {
+      "file": "[[content/data/goods.json]]",
+      "id": "3974dc6e-7fb7-48ca-9eef-d2e75213df59"
+    },
+    "routine_section": "暮らしの中での取り扱い"
+  }
+}

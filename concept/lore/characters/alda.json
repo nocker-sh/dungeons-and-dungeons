@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "id": "e7883b7f-237f-4de0-a73d-196b09e705b5",
+  "slug": "alda",
+  "kind": "characters",
+  "title": "アルダ",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "e7883b7f-237f-4de0-a73d-196b09e705b5"
+  },
+  "related": [
+    {
+      "id": "73a5f30f-e162-4eee-848c-13ee7265953e",
+      "document": "[[concept/residents/hilde]]"
+    },
+    {
+      "id": "d5100106-ff86-494b-a10b-b11255b0b932",
+      "document": "[[concept/residents/milena]]"
+    },
+    {
+      "id": "room:guild-normal-rear",
+      "document": "[[concept/rooms/guild-normal-rear]]"
+    }
+  ],
+  "sources": [],
+  "gender": "女性",
+  "growth_intent": {
+    "rate": "普通",
+    "early": "普通",
+    "middle": "普通",
+    "late": "普通"
+  },
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "characters",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "e7883b7f-237f-4de0-a73d-196b09e705b5"
+    },
+    "routine_section": "生活動線の制作設計",
+    "lodging": {
+      "target": "room:guild-normal-rear",
+      "condition": "ギルドで宿泊契約を結び、空床の割当てを受けた場合の制作上の部屋割り。常住・無料宿泊・実行時の購入済み状態を意味しない。",
+      "routine_section": "宿泊する場合の寝床と移動"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "支払いのために自分の食事と睡眠を抜き続ける設計にしない。"
+    ]
+  }
+}

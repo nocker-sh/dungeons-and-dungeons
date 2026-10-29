@@ -1,3 +1,5 @@
+import { referenceTarget } from "@/scripts/concept-check/reference-target"
+import { existsSync } from "node:fs"
 import { readFile } from "node:fs/promises"
 import { join, resolve } from "node:path"
 import { object } from "@/scripts/concept-check/object"
@@ -10,7 +12,19 @@ export async function verifyCoverage(
 ): Promise<void> {
   let coverage: unknown
   try {
-    coverage = JSON.parse(await readFile(join(root, "coverage.json"), "utf8"))
+    const databaseCoverage = resolve(
+      root,
+      "../..",
+      "concept/lore/coverage.json"
+    )
+    coverage = JSON.parse(
+      await readFile(
+        existsSync(databaseCoverage)
+          ? databaseCoverage
+          : join(root, "coverage.json"),
+        "utf8"
+      )
+    )
   } catch (error) {
     if (!object(error) || error.code !== "ENOENT")
       problems.push("coverage.json: 検査方針を読めない")
@@ -33,7 +47,10 @@ export async function verifyCoverage(
         let value: unknown
         try {
           value = JSON.parse(
-            await readFile(resolve(root, "../..", source.file), "utf8")
+            await readFile(
+              resolve(root, "../..", referenceTarget(source.file)),
+              "utf8"
+            )
           )
         } catch {
           problems.push(`coverage.json: 正本を読めない ${source.file}`)
@@ -71,7 +88,9 @@ export async function verifyCoverage(
             return bindings.some(
               (binding) =>
                 object(binding) &&
-                binding.file === source.file &&
+                typeof binding.file === "string" &&
+                referenceTarget(binding.file) ===
+                  referenceTarget(source.file as string) &&
                 binding.id === entry.id
             )
           })
@@ -95,7 +114,9 @@ export async function verifyCoverage(
               !bindings.some(
                 (binding) =>
                   object(binding) &&
-                  binding.file === source.file &&
+                  typeof binding.file === "string" &&
+                  referenceTarget(binding.file) ===
+                    referenceTarget(source.file as string) &&
                   binding.id === entry.id
               )
             )

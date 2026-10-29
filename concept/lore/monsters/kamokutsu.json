@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "id": "29ed2718-1c81-4e16-9230-2e80870a0298",
+  "slug": "kamokutsu",
+  "kind": "monsters",
+  "title": "スタンプダック",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "29ed2718-1c81-4e16-9230-2e80870a0298"
+  },
+  "related": [
+    {
+      "id": "6a239a4b-bd2d-4905-a4d8-f08c7b42dbb4",
+      "document": "[[concept/monsters/tosakado]]"
+    },
+    {
+      "id": "f2bb31d9-6c17-4443-963d-3e95907cc7ef",
+      "document": "[[concept/monsters/haneboots]]"
+    },
+    {
+      "id": "61893649-624b-4c84-882b-5d4df3e8a8bb",
+      "document": "[[concept/monsters/hiyokobu]]"
+    },
+    {
+      "id": "569b9fb2-dbc4-4d55-8ff5-796134341dc5",
+      "document": "[[concept/monsters/kamokutsu-mud]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー提供の原資料：113_カモクツ.png"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "29ed2718-1c81-4e16-9230-2e80870a0298"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-0",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "29ed2718-1c81-4e16-9230-2e80870a0298"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "29ed2718-1c81-4e16-9230-2e80870a0298"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

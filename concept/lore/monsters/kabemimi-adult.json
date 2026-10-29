@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "id": "31c63acd-0086-4843-8428-1842dfe200be",
+  "slug": "kabemimi-adult",
+  "kind": "monsters",
+  "title": "モスウォール",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "31c63acd-0086-4843-8428-1842dfe200be"
+  },
+  "related": [
+    {
+      "id": "89831ecc-694f-489b-9b81-e6805b9e2371",
+      "document": "[[concept/monsters/kabemimi]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー依頼：カベミミの大人と強い姿"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "31c63acd-0086-4843-8428-1842dfe200be"
+    },
+    "encounter_source": null
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

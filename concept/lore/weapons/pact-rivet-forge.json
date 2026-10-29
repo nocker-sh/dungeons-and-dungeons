@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "id": "31936151-6472-474e-89d7-4d087c13b73f",
+  "slug": "pact-rivet-forge",
+  "kind": "weapons",
+  "title": "借り火の炉心",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "31936151-6472-474e-89d7-4d087c13b73f"
+  },
+  "related": [
+    {
+      "id": "cf7498a0-fa43-457f-b018-a9f19764645e",
+      "document": "[[concept/characters/rivet]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/goods.json"
+    },
+    {
+      "reference": "生活上の取り扱い: 2026-10-28 資料制作依頼"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "weapons",
+    "weapon",
+    "手入れと流通"
+  ],
+  "authorship": {
+    "basis": "全内容の生活と整合性の資料制作依頼",
+    "scope": "取り扱いの制作設定",
+    "changes_game_rules": false
+  },
+  "relations": [
+    {
+      "type": "associated_with",
+      "target": "cf7498a0-fa43-457f-b018-a9f19764645e",
+      "meaning": "契約に関わる人物。人格を物品へ置き換える根拠にはしない。"
+    }
+  ]
+}

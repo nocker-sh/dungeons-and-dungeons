@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "id": "5bb9ce59-fdd5-40e1-b136-15f02b17bfe8",
+  "slug": "place-room-attic",
+  "kind": "backgrounds",
+  "title": "屋根裏",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "5bb9ce59-fdd5-40e1-b136-15f02b17bfe8"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "dungeons-concept / README.md・home.html"
+    }
+  ],
+  "lore_status": "active",
+  "tags": [
+    "ギルド",
+    "空間"
+  ],
+  "entity_type": "scene-template",
+  "bindings": [
+    {
+      "file": "[[content/data/rooms.json]]",
+      "id": "9900c60d-f620-48da-becd-3a16a7e8a150"
+    }
+  ],
+  "relations": [
+    {
+      "type": "drawn_as",
+      "target": "room:guild-attic",
+      "meaning": "同じ宿泊区分の複数の実室が使う描画のひな形。ひな形を追加の客室に数えない。"
+    }
+  ]
+}

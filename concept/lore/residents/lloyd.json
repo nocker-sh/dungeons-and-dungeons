@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "id": "f790642c-1e81-41e7-82cb-748b35d888a5",
+  "slug": "lloyd",
+  "kind": "residents",
+  "title": "ロイド",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "f790642c-1e81-41e7-82cb-748b35d888a5"
+  },
+  "related": [
+    {
+      "id": "building:lloyd-home",
+      "document": "[[concept/locations/lloyd-home]]"
+    },
+    {
+      "id": "room:lloyd-home-bedroom",
+      "document": "[[concept/rooms/lloyd-home-bedroom]]"
+    }
+  ],
+  "sources": [],
+  "gender": "女性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "residents",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "f790642c-1e81-41e7-82cb-748b35d888a5"
+    },
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "線路、駅、鉄道員の来歴を足さない。片目を閉じる理由を負傷に置き換えない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:lloyd-home-bedroom",
+      "meaning": "運行を終えた後に、乗り場の外で本人が休息する寝台。空間の制作設定。"
+    }
+  ]
+}

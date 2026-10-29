@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "id": "ed5dff36-ce21-4b3d-8cda-0a995e57ca38",
+  "slug": "hero-sword",
+  "kind": "weapons",
+  "title": "勇者の剣",
+  "runtime": null,
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "historical_runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "ed5dff36-ce21-4b3d-8cda-0a995e57ca38"
+  },
+  "entity_type": "visual-record",
+  "lore_status": "reference",
+  "tags": [
+    "装備造形",
+    "実行用データなし"
+  ]
+}

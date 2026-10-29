@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "id": "creature:rio-companion",
+  "slug": "rio-companion",
+  "kind": "monsters",
+  "title": "リオの相棒の幼竜",
+  "runtime": null,
+  "related": [
+    {
+      "id": "cc5615da-77a2-4d94-8a50-54147f923397",
+      "document": "[[concept/characters/rio]]"
+    }
+  ],
+  "sources": [
+    {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "cc5615da-77a2-4d94-8a50-54147f923397",
+      "reference": "既存のリオの来歴と相棒の習慣。造形はリオの画像観察記録を参照する。"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "supporting",
+  "tags": [
+    "相棒",
+    "幼竜",
+    "共同生活"
+  ],
+  "relations": [
+    {
+      "type": "companion_of",
+      "target": "cc5615da-77a2-4d94-8a50-54147f923397",
+      "meaning": "リオが卵の殻の籠に入れて連れ歩く、一体の相棒。"
+    }
+  ],
+  "ecology": {
+    "food": "結晶のかけらを好む。餌代と、きれいな粒を換金せず残す習慣はリオの正本を参照する。",
+    "rest": "卵の殻の籠でよく眠る。籠を下ろすと起き、大きな音には丸くなる。",
+    "routine_section": "滞在先での世話"
+  },
+  "continuity": {
+    "keep": [
+      "リオの造形資料にある緑の小生物と、白黄の卵形の籠を別の配色・別の器へ置き換えない。",
+      "成長で籠が窮屈になる動機を、永久に快適な容器という設定で消さない。"
+    ],
+    "withheld": [
+      "相棒の固有名、種と故郷、卵を得た場所、帰郷や別れの結末は決めない。",
+      "既存台本にない炎・飛行・召喚・独立した戦闘能力を追加しない。"
+    ]
+  },
+  "authorship": {
+    "basis": "ユーザーの一対象一資料・生活の整合を求める依頼",
+    "scope": "既存の相棒の個別資料化と、滞在先での世話の制作設計",
+    "changes_game_rules": false
+  }
+}

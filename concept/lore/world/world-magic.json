@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "id": "145d972f-ef3b-4adc-9114-8ad28a6b3d43",
+  "slug": "world-magic",
+  "kind": "world",
+  "title": "魔法の流派",
+  "runtime": null,
+  "related": [
+    {
+      "id": "c2bdf79a-f233-439e-a825-7cee02a19c6b",
+      "document": "[[concept/world/world-contract]]"
+    },
+    {
+      "id": "d312117e-1aa5-4e02-ae58-9b913f6b8917",
+      "document": "[[concept/characters/mayu]]"
+    }
+  ],
+  "sources": [],
+  "entity_type": "world-system",
+  "lore_status": "active",
+  "tags": [
+    "world",
+    "world-system"
+  ]
+}

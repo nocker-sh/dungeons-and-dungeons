@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "id": "eb059c44-724e-44fc-909f-ab4fcda02df3",
+  "slug": "tsunofood-bone",
+  "kind": "monsters",
+  "title": "ボーンククルス",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "eb059c44-724e-44fc-909f-ab4fcda02df3"
+  },
+  "related": [
+    {
+      "id": "3776eb0a-02ac-4f4f-9c66-c4434164b2b9",
+      "document": "[[concept/monsters/tsunofood]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：内蔵画像生成で亜種・大人を制作"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "eb059c44-724e-44fc-909f-ab4fcda02df3"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-4",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "eb059c44-724e-44fc-909f-ab4fcda02df3"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "eb059c44-724e-44fc-909f-ab4fcda02df3"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

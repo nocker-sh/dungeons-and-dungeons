@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "id": "763af6c7-47db-4e32-af40-8615e38fec70",
+  "slug": "burst-bomb",
+  "kind": "items",
+  "title": "破裂弾",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "763af6c7-47db-4e32-af40-8615e38fec70"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "items",
+    "item",
+    "手入れと流通"
+  ],
+  "relations": [
+    {
+      "type": "sold_by",
+      "target": "c6a065ae-8bbd-44a3-85bb-42215cceca56",
+      "meaning": "正本の販売対象。価格と在庫規則は店データに従う。"
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 全ての内容に意味と生活を持たせる資料制作依頼",
+    "scope": "手入れと運搬の制作設定",
+    "changes_game_rules": false
+  },
+  "handling": {
+    "rule_source": {
+      "file": "[[content/data/goods.json]]",
+      "id": "763af6c7-47db-4e32-af40-8615e38fec70"
+    },
+    "routine_section": "暮らしの中での取り扱い"
+  }
+}

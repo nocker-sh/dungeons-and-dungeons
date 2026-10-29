@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "id": "9fc46fb5-0692-4472-b26d-8962e1837fd0:station:u13",
+  "slug": "valley-3-u13",
+  "kind": "sites",
+  "title": "毒沼の温室・奥側の拾得場所",
+  "runtime": {
+    "file": "[[content/data/layers.json]]",
+    "id": "u13",
+    "parent_id": "9fc46fb5-0692-4472-b26d-8962e1837fd0"
+  },
+  "related": [
+    {
+      "id": "map:valley-3",
+      "document": "[[concept/maps/valley-3]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "地点の存在と接続: content/data/layers.json"
+    },
+    {
+      "reference": "生活動線と役割: 2026-10-28 資料制作依頼"
+    }
+  ],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "谷",
+    "3層",
+    "u13"
+  ],
+  "authorship": {
+    "basis": "一地点ずつ意味と生活を整える依頼",
+    "scope": "地点の使い方の制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "map:valley-3",
+    "map": "map:valley-3",
+    "zone": "u13"
+  },
+  "relations": [
+    {
+      "type": "route_to",
+      "target": "9fc46fb5-0692-4472-b26d-8962e1837fd0:station:u12",
+      "meaning": "ゲームの進行経路。実寸の通路長を表さない。"
+    }
+  ],
+  "continuity": {
+    "keep": [
+      "実際の遭遇・報酬・解放条件は実行用データを正とする。",
+      "第四層より先の内容を確定しない。"
+    ]
+  }
+}

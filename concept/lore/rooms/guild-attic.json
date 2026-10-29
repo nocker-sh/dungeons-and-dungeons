@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "id": "room:guild-attic",
+  "slug": "guild-attic",
+  "kind": "rooms",
+  "title": "屋根裏客室",
+  "runtime": null,
+  "related": [
+    {
+      "id": "898b2804-3b16-4560-a125-94abbe843c6b",
+      "document": "[[concept/backgrounds/place-guild]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "2026-10-28 ユーザー依頼：一室一資料と生活できる設計"
+    }
+  ],
+  "entity_type": "room",
+  "lore_status": "active",
+  "authorship": {
+    "basis": "今回の資料制作依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "tags": [
+    "ギルド",
+    "寝室"
+  ],
+  "location": {
+    "parent": "898b2804-3b16-4560-a125-94abbe843c6b",
+    "map": "map:guild",
+    "zone": "2"
+  },
+  "spatial": {
+    "width_m": 5,
+    "depth_m": 5,
+    "ceiling_m": 2.4,
+    "capacity": 4,
+    "egress": "棟の高い正面の戸から前室へ出て、客室階段で一つ下の客室階へ降りる。西の客室階段を続けて下りてホール正面口へ向かうか、客室階の共用通路を東へ進んで外階段へ出る。低い側壁からの脱出を前提にしない。",
+    "beds": [
+      {
+        "x_m": 0.1,
+        "y_m": 0.2,
+        "width_m": 0.9,
+        "depth_m": 2.1
+      },
+      {
+        "x_m": 0.1,
+        "y_m": 2.7,
+        "width_m": 0.9,
+        "depth_m": 2.1
+      },
+      {
+        "x_m": 4.0,
+        "y_m": 0.2,
+        "width_m": 0.9,
+        "depth_m": 2.1
+      },
+      {
+        "x_m": 4.0,
+        "y_m": 2.7,
+        "width_m": 0.9,
+        "depth_m": 2.1
+      }
+    ],
+    "ceiling_min_m": 1.3
+  },
+  "life_support": {
+    "sleep": {
+      "target": "room:guild-attic",
+      "provision": "就寝は寝室で行う。仕事場の床や炉前を寝床に数えない。"
+    },
+    "food": {
+      "target": "room:guild-kitchen",
+      "provision": "調理した食事をホールで取る。"
+    },
+    "water": {
+      "target": "room:guild-kitchen",
+      "provision": "蓋付きの飲用水容器から分ける。洗い物用と区別する。"
+    },
+    "wash": {
+      "target": "room:guild-wash",
+      "provision": "体を洗い、着替える。"
+    },
+    "toilet": {
+      "target": "room:guild-upper-latrine",
+      "provision": "居室を横切らず廊下から利用する。"
+    },
+    "air": {
+      "target": "room:guild-attic",
+      "provision": "外壁の窓または独立した換気口。便所や炉の排気を居室へ戻さない。"
+    },
+    "light": {
+      "target": "room:guild-attic",
+      "provision": "入口と足元の固定灯、作業位置の手元灯。寝具の横に裸火を置かない。"
+    },
+    "storage": {
+      "target": "room:guild-attic",
+      "provision": "出入りを塞がない壁際の収納。用途の違う荷物を分ける。"
+    },
+    "access": {
+      "target": "zone:guild-roof-landing",
+      "provision": "前室から棟の高い正面中央の幅1.2mの戸へ入る。低い側壁や寝台の間を入口にしない。"
+    }
+  }
+}

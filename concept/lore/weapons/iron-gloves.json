@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "id": "a56fc6a8-31fa-4a7a-9041-5198ab40f010",
+  "slug": "iron-gloves",
+  "kind": "weapons",
+  "title": "鋼拳の手甲",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "a56fc6a8-31fa-4a7a-9041-5198ab40f010"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "weapons",
+    "weapon",
+    "手入れと流通"
+  ],
+  "relations": [],
+  "authorship": {
+    "basis": "2026-10-28 全ての内容に意味と生活を持たせる資料制作依頼",
+    "scope": "手入れと運搬の制作設定",
+    "changes_game_rules": false
+  },
+  "handling": {
+    "rule_source": {
+      "file": "[[content/data/goods.json]]",
+      "id": "a56fc6a8-31fa-4a7a-9041-5198ab40f010"
+    },
+    "routine_section": "暮らしの中での取り扱い"
+  }
+}

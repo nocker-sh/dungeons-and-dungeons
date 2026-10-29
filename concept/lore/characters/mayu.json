@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "id": "d312117e-1aa5-4e02-ae58-9b913f6b8917",
+  "slug": "mayu",
+  "kind": "characters",
+  "title": "マユ",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "d312117e-1aa5-4e02-ae58-9b913f6b8917"
+  },
+  "related": [
+    {
+      "id": "145d972f-ef3b-4adc-9114-8ad28a6b3d43",
+      "document": "[[concept/world/world-magic]]"
+    },
+    {
+      "id": "2f1b2a8b-1e8d-4c76-b820-8d1bc1bb38df",
+      "document": "[[concept/characters/tsumugi]]"
+    },
+    {
+      "id": "room:guild-deluxe-rear",
+      "document": "[[concept/rooms/guild-deluxe-rear]]"
+    }
+  ],
+  "sources": [],
+  "gender": "女性",
+  "growth_intent": {
+    "rate": "普通",
+    "early": "普通",
+    "middle": "普通",
+    "late": "普通"
+  },
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "characters",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "d312117e-1aa5-4e02-ae58-9b913f6b8917"
+    },
+    "routine_section": "生活動線の制作設計",
+    "lodging": {
+      "target": "room:guild-deluxe-rear",
+      "condition": "ギルドで宿泊契約を結び、空床の割当てを受けた場合の制作上の部屋割り。常住・無料宿泊・実行時の購入済み状態を意味しない。",
+      "routine_section": "宿泊する場合の寝床と移動"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "人数の多い家族のための動機を、本人が無制限に料理を提供する仕組みに変えない。"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "id": "c2bdf79a-f233-439e-a825-7cee02a19c6b",
+  "slug": "world-contract",
+  "kind": "world",
+  "title": "召喚師と悪魔の契約",
+  "runtime": null,
+  "related": [
+    {
+      "id": "34233f3c-e646-40c6-8a1e-7c93b27be0a4",
+      "document": "[[concept/players/hero]]"
+    },
+    {
+      "id": "1cda31a8-f190-4c40-8b75-cff10de8d894",
+      "document": "[[concept/demons/nui]]"
+    },
+    {
+      "id": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+      "document": "[[concept/demons/lox]]"
+    },
+    {
+      "id": "12217057-7b5b-4b60-9008-fcf68bd37723",
+      "document": "[[concept/demons/tris]]"
+    },
+    {
+      "id": "d8767e77-e0b8-4bde-a99e-e465e71a1a7b",
+      "document": "[[concept/demons/haro]]"
+    },
+    {
+      "id": "22fc495f-8f5e-4239-93dc-03bd6841047b",
+      "document": "[[concept/demons/zaza]]"
+    },
+    {
+      "id": "39323fee-cdc9-438c-933a-94ce75f3c63f",
+      "document": "[[concept/backgrounds/place-secret]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "dungeons-concept / README.md・home.html"
+    }
+  ],
+  "entity_type": "world-system",
+  "lore_status": "active",
+  "tags": [
+    "world",
+    "world-system"
+  ]
+}

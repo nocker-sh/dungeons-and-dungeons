@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "id": "creature:nem-companion",
+  "slug": "nem-companion",
+  "kind": "monsters",
+  "title": "ネムの相棒のケルベロス",
+  "runtime": null,
+  "related": [
+    {
+      "id": "15a86520-9b35-4adf-9f51-d467ee1c4c92",
+      "document": "[[concept/characters/nem]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "concept/data/conversation-profiles.json のネム"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "supporting",
+  "tags": [
+    "相棒",
+    "共同生活"
+  ],
+  "relations": [
+    {
+      "type": "companion_of",
+      "target": "15a86520-9b35-4adf-9f51-d467ee1c4c92",
+      "meaning": "三つの頭を持つ一体の相棒。"
+    },
+    {
+      "type": "resides_in",
+      "target": "room:nem-home-living",
+      "meaning": "人の寝室と分けた乾いた床で休む。"
+    }
+  ],
+  "continuity": {
+    "keep": [
+      "三匹の犬として数えない。",
+      "二つの首輪と中央の頭の縄を保つ。"
+    ],
+    "withheld": [
+      "固有名、出会いの過去、新しい戦闘能力は決めない。"
+    ]
+  },
+  "authorship": {
+    "basis": "2026-10-28 一対象一資料・生活と整合性の資料制作依頼",
+    "scope": "追加した空間と暮らしの制作設定。既存の出典と人の画像承認は変更しない。",
+    "changes_game_rules": false
+  }
+}

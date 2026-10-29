@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "199b1ab4-6794-4a36-a3ea-9bf4dfacc6ec",
+  "slug": "kemurimaki-ice",
+  "kind": "monsters",
+  "title": "フロストレイス",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "199b1ab4-6794-4a36-a3ea-9bf4dfacc6ec"
+  },
+  "related": [
+    {
+      "id": "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd",
+      "document": "[[concept/monsters/kemurimaki]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：内蔵画像生成で亜種・大人を制作"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "199b1ab4-6794-4a36-a3ea-9bf4dfacc6ec"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "199b1ab4-6794-4a36-a3ea-9bf4dfacc6ec"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "199b1ab4-6794-4a36-a3ea-9bf4dfacc6ec"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

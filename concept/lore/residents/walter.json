@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "id": "c6a065ae-8bbd-44a3-85bb-42215cceca56",
+  "slug": "walter",
+  "kind": "residents",
+  "title": "ウォルター",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "c6a065ae-8bbd-44a3-85bb-42215cceca56"
+  },
+  "related": [],
+  "sources": [],
+  "gender": "男性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "residents",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "c6a065ae-8bbd-44a3-85bb-42215cceca56"
+    },
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "扉を開けない理由を技術不足に変えない。戸の向こうの音や正体を付け足さない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:tools-bedroom",
+      "meaning": "仕事と切り離して睡眠と着替えを行う。"
+    },
+    {
+      "type": "works_in",
+      "target": "room:tools-work",
+      "meaning": "既存の店の仕事場。"
+    }
+  ]
+}

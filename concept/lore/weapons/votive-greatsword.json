@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "id": "62c82e0a-5efe-4fbc-85c1-16d8b18b2ed5",
+  "slug": "votive-greatsword",
+  "kind": "weapons",
+  "title": "赫誓の大剣",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "62c82e0a-5efe-4fbc-85c1-16d8b18b2ed5"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "weapons",
+    "weapon",
+    "手入れと流通"
+  ],
+  "relations": [
+    {
+      "type": "appraised_by",
+      "target": "75f62b3a-a441-453c-a80a-37549e63f458",
+      "meaning": "正本の鑑定対象。出る品と確率を資料で固定しない。"
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 全ての内容に意味と生活を持たせる資料制作依頼",
+    "scope": "手入れと運搬の制作設定",
+    "changes_game_rules": false
+  },
+  "handling": {
+    "rule_source": {
+      "file": "[[content/data/goods.json]]",
+      "id": "62c82e0a-5efe-4fbc-85c1-16d8b18b2ed5"
+    },
+    "routine_section": "暮らしの中での取り扱い"
+  }
+}

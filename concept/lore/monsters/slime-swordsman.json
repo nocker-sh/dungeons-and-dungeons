@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "id": "b2dfcc17-8719-472a-9510-6564f6dd3818",
+  "slug": "slime-swordsman",
+  "kind": "monsters",
+  "title": "タールフェンサー",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "b2dfcc17-8719-472a-9510-6564f6dd3818"
+  },
+  "related": [
+    {
+      "id": "fed79135-c848-48e8-ad83-bf3b4a657247",
+      "document": "[[concept/monsters/black-slime]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：黒スライムを拡張してどろどろの人型にして剣を持たせる"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "b2dfcc17-8719-472a-9510-6564f6dd3818"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-4",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "b2dfcc17-8719-472a-9510-6564f6dd3818"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "b2dfcc17-8719-472a-9510-6564f6dd3818"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

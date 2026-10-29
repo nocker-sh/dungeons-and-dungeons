@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "id": "c60dd47d-3327-4844-8c11-96ed0db8643c",
+  "slug": "gearweave-robe",
+  "kind": "armor",
+  "title": "鉄綴じの術師服",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "c60dd47d-3327-4844-8c11-96ed0db8643c"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "armor",
+    "armor",
+    "手入れと流通"
+  ],
+  "relations": [
+    {
+      "type": "sold_by",
+      "target": "75f62b3a-a441-453c-a80a-37549e63f458",
+      "meaning": "正本の販売対象。価格と在庫規則は店データに従う。"
+    },
+    {
+      "type": "appraised_by",
+      "target": "75f62b3a-a441-453c-a80a-37549e63f458",
+      "meaning": "正本の鑑定対象。出る品と確率を資料で固定しない。"
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 全ての内容に意味と生活を持たせる資料制作依頼",
+    "scope": "手入れと運搬の制作設定",
+    "changes_game_rules": false
+  },
+  "handling": {
+    "rule_source": {
+      "file": "[[content/data/goods.json]]",
+      "id": "c60dd47d-3327-4844-8c11-96ed0db8643c"
+    },
+    "routine_section": "暮らしの中での取り扱い"
+  }
+}

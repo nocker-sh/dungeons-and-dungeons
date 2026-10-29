@@ -1,0 +1,84 @@
+{
+  "schema_version": 2,
+  "id": "room:bridge-maintenance",
+  "slug": "bridge-maintenance",
+  "kind": "rooms",
+  "title": "橋脚の整備小屋",
+  "runtime": null,
+  "related": [
+    {
+      "id": "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:l12",
+      "document": "[[concept/sites/valley-2-l12]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "[[concept/backgrounds/discovery-bridge-rest]]"
+    },
+    {
+      "reference": "生活の具体化: 2026-10-28 資料制作依頼"
+    }
+  ],
+  "entity_type": "room",
+  "lore_status": "active",
+  "tags": [
+    "谷",
+    "2層",
+    "仕事と休息"
+  ],
+  "authorship": {
+    "basis": "全ての部屋を生活できる設計にする依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:l12",
+    "map": "map:valley-2",
+    "zone": "足場の脇"
+  },
+  "spatial": {
+    "width_m": 3,
+    "depth_m": 4,
+    "ceiling_m": 2.4,
+    "capacity": 2,
+    "egress": "戸口から固定された足場、主道へ戻る階段へ。小屋の床から空中へ出る窓を避難路と呼ばない。"
+  },
+  "life_support": {
+    "sleep": {
+      "target": "room:guild-normal-front",
+      "provision": "夜は帰還して宿の寝台へ。作業室の床を恒久的な寝床にしない。"
+    },
+    "food": {
+      "target": "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:l12",
+      "provision": "隣の足場の粉の少ない面で持参の食事を取る。作業台と分ける。"
+    },
+    "water": {
+      "target": "room:bridge-maintenance",
+      "provision": "街から運んだ蓋付きの飲用水。湿地の水や機械の洗浄水を使わない。"
+    },
+    "wash": {
+      "target": "room:bridge-maintenance",
+      "provision": "携行した清潔な水と布で手を洗い、使用済みの布と水を回収する。全身の洗浄は帰還後に宿の洗い場へ。"
+    },
+    "toilet": {
+      "target": "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:l12",
+      "provision": "人目と作業を避けた足場で携行の密閉容器を使い、地上の回収へ戻す。谷へ捨てない。"
+    },
+    "air": {
+      "target": "room:bridge-maintenance",
+      "provision": "向かい合う外気口を設ける。灯りと植物の束で塞がない。"
+    },
+    "light": {
+      "target": "room:bridge-maintenance",
+      "provision": "固定した手元灯。薬草や布に裸火を近付けない。"
+    },
+    "storage": {
+      "target": "room:bridge-maintenance",
+      "provision": "道具、採集物、食事、回収物を別の容器へ分ける。"
+    },
+    "access": {
+      "target": "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:l12",
+      "provision": "高さ2.1m・幅0.9mの戸から幅0.9mの固定足場へ。主道へ戻る階段を荷で塞がない。"
+    }
+  }
+}

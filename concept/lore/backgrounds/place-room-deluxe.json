@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "id": "b01ba591-ef86-4206-8b75-a8619fde277a",
+  "slug": "place-room-deluxe",
+  "kind": "backgrounds",
+  "title": "高い部屋",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "b01ba591-ef86-4206-8b75-a8619fde277a"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "dungeons-concept / README.md・home.html"
+    }
+  ],
+  "lore_status": "active",
+  "tags": [
+    "ギルド",
+    "空間"
+  ],
+  "entity_type": "scene-template",
+  "bindings": [
+    {
+      "file": "[[content/data/rooms.json]]",
+      "id": "673d747a-621d-4f06-83d7-8a9f3e62a1e2"
+    }
+  ],
+  "relations": [
+    {
+      "type": "drawn_as",
+      "target": "room:guild-deluxe-front",
+      "meaning": "同じ宿泊区分の複数の実室が使う描画のひな形。ひな形を追加の客室に数えない。"
+    }
+  ]
+}

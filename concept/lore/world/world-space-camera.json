@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "id": "607cef76-34b8-4650-9d94-aa002c504b16",
+  "slug": "world-space-camera",
+  "kind": "world",
+  "title": "空間とカメラの共通設計",
+  "runtime": null,
+  "related": [
+    {
+      "id": "fb52305e-51df-4209-a1c4-8029a506da56",
+      "document": "[[concept/backgrounds/place-town]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示 / 街のトンマナへの統一、スケールの整合、魚眼と映画的なカメラ、生成前の設定資料"
+    }
+  ],
+  "entity_type": "world-system",
+  "lore_status": "active",
+  "tags": [
+    "world",
+    "world-system"
+  ]
+}

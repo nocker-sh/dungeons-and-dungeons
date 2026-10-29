@@ -25,7 +25,8 @@
     "e2e:visual": "bun tests/e2e/visual.ts check",
     "prepare": "void prepare",
     "check:source": "bun scripts/check-source.ts",
-    "cli": "bun builder/cli.ts"
+    "cli": "bun builder/cli.ts",
+    "check:docs": "bun scripts/check-docs.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

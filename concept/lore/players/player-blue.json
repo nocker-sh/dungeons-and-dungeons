@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "id": "b7cdab32-f48f-4ae0-aba8-591814af0b0f",
+  "slug": "player-blue",
+  "kind": "players",
+  "title": "青髪",
+  "runtime": {
+    "file": "[[concept/data/players.json]]",
+    "id": "b7cdab32-f48f-4ae0-aba8-591814af0b0f"
+  },
+  "related": [
+    {
+      "id": "34233f3c-e646-40c6-8a1e-7c93b27be0a4",
+      "document": "[[concept/players/hero]]"
+    }
+  ],
+  "sources": [],
+  "entity_type": "visual-record",
+  "lore_status": "active",
+  "tags": [
+    "players",
+    "visual-record"
+  ],
+  "continuity": {
+    "keep": [
+      "プレイヤーの外見候補。独立した台詞・人格・来歴を付けない。"
+    ]
+  }
+}

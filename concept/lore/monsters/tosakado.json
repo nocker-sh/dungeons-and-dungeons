@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "id": "6a239a4b-bd2d-4905-a4d8-f08c7b42dbb4",
+  "slug": "tosakado",
+  "kind": "monsters",
+  "gender": "女性",
+  "title": "ベレーダック",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "6a239a4b-bd2d-4905-a4d8-f08c7b42dbb4"
+  },
+  "related": [
+    {
+      "id": "29ed2718-1c81-4e16-9230-2e80870a0298",
+      "document": "[[concept/monsters/kamokutsu]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー提供の原資料：108_トサカド.png"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "6a239a4b-bd2d-4905-a4d8-f08c7b42dbb4"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "6a239a4b-bd2d-4905-a4d8-f08c7b42dbb4"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "6a239a4b-bd2d-4905-a4d8-f08c7b42dbb4"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

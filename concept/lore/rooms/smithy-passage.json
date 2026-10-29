@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "id": "room:smithy-passage",
+  "slug": "smithy-passage",
+  "kind": "rooms",
+  "title": "鍛冶屋の生活用通路",
+  "runtime": null,
+  "related": [
+    {
+      "id": "93ae2581-e948-4b30-a79b-0afb847347f4",
+      "document": "[[concept/backgrounds/place-smithy]]"
+    },
+    {
+      "id": "73a5f30f-e162-4eee-848c-13ee7265953e",
+      "document": "[[concept/residents/hilde]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "仕事場の見え方: .docs/concept/backgrounds/place-smithy.md"
+    },
+    {
+      "reference": "住まいの制作: 2026-10-28 ユーザー依頼"
+    }
+  ],
+  "entity_type": "room",
+  "lore_status": "active",
+  "tags": [
+    "鍛冶屋",
+    "生活設備"
+  ],
+  "authorship": {
+    "basis": "全ての部屋を生活できる設計にする依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "93ae2581-e948-4b30-a79b-0afb847347f4",
+    "map": "map:smithy",
+    "zone": "地上階"
+  },
+  "spatial": {
+    "width_m": 1.2,
+    "depth_m": 12.6,
+    "ceiling_m": 2.8,
+    "capacity": 2,
+    "egress": "仕事場側の表口と、生活用通路の裏口へ出られる。店の道具を通路と扉の前へ置かない。"
+  },
+  "life_support": {
+    "sleep": {
+      "target": "room:smithy-bedroom",
+      "provision": "仕事を終え、衣服を替えて寝室で休む。"
+    },
+    "food": {
+      "target": "room:smithy-kitchen",
+      "provision": "仕事の鍋と別の台所で食事を作り食べる。"
+    },
+    "water": {
+      "target": "room:smithy-kitchen",
+      "provision": "配られた飲用水を蓋付き容器で保管する。"
+    },
+    "wash": {
+      "target": "room:smithy-wash",
+      "provision": "通路から入り、身体と作業の汚れを落とす。"
+    },
+    "toilet": {
+      "target": "room:smithy-toilet",
+      "provision": "通路から利用し、密閉回収を行う。"
+    },
+    "air": {
+      "target": "room:smithy-passage",
+      "provision": "外壁の窓または専用換気口を外へ抜き、炉や便所の空気を寝室へ戻さない。"
+    },
+    "light": {
+      "target": "room:smithy-passage",
+      "provision": "入口の固定灯と用途に合った手元灯。布と紙へ裸火を近付けない。"
+    },
+    "storage": {
+      "target": "room:smithy-passage",
+      "provision": "用途ごとの壁際収納。通路と扉の前を空ける。"
+    },
+    "access": {
+      "target": "room:smithy-passage",
+      "provision": "表口と裏口をつなぐ幅1.2mの経路を使う。"
+    }
+  }
+}

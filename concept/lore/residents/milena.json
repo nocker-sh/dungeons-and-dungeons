@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "id": "d5100106-ff86-494b-a10b-b11255b0b932",
+  "slug": "milena",
+  "kind": "residents",
+  "title": "ミレナ",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "d5100106-ff86-494b-a10b-b11255b0b932"
+  },
+  "related": [],
+  "sources": [],
+  "gender": "女性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "residents",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "d5100106-ff86-494b-a10b-b11255b0b932"
+    },
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "宿の当番全員を受付係の私室へ泊めない。港町からの移動に列車を足さない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:guild-milena-bedroom",
+      "meaning": "最終帰還の受付後、客の動線と離れた私室へ戻る。"
+    },
+    {
+      "type": "works_in",
+      "target": "room:guild-hall",
+      "meaning": "受付の記録と帰還者の確認。"
+    }
+  ]
+}

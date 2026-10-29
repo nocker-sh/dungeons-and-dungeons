@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "id": "a5c09011-ddae-4bfb-8f07-dc82dfc58951",
+  "slug": "rengaeru",
+  "kind": "monsters",
+  "title": "ブリックトード",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "a5c09011-ddae-4bfb-8f07-dc82dfc58951"
+  },
+  "related": [
+    {
+      "id": "f1211d70-3fc4-4803-84ef-d1c3bfaa98c5",
+      "document": "[[concept/backgrounds/place-layer0]]"
+    },
+    {
+      "id": "077cf720-2ab2-4d30-8ce5-7e4223bd38e3",
+      "document": "[[concept/monsters/koke-gaeru]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー選定のモンスター案（デスクトップ「内定」）"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "a5c09011-ddae-4bfb-8f07-dc82dfc58951"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-0",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "a5c09011-ddae-4bfb-8f07-dc82dfc58951"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "a5c09011-ddae-4bfb-8f07-dc82dfc58951"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

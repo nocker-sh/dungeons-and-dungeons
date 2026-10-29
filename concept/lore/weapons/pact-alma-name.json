@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "id": "70717d91-d61f-4fa3-860f-e52753cc7945",
+  "slug": "pact-alma-name",
+  "kind": "weapons",
+  "title": "欠けゆく勇者",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "70717d91-d61f-4fa3-860f-e52753cc7945"
+  },
+  "related": [
+    {
+      "id": "950f4a1e-c783-4007-a6b2-6553906af367",
+      "document": "[[concept/characters/alma]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/goods.json"
+    },
+    {
+      "reference": "生活上の取り扱い: 2026-10-28 資料制作依頼"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "weapons",
+    "weapon",
+    "手入れと流通"
+  ],
+  "authorship": {
+    "basis": "全内容の生活と整合性の資料制作依頼",
+    "scope": "取り扱いの制作設定",
+    "changes_game_rules": false
+  },
+  "relations": [
+    {
+      "type": "associated_with",
+      "target": "950f4a1e-c783-4007-a6b2-6553906af367",
+      "meaning": "契約に関わる人物。人格を物品へ置き換える根拠にはしない。"
+    }
+  ]
+}

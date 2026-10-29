@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "3f93cd61-6218-4de9-921a-8ef69dd413e5",
+  "slug": "mitsuashi",
+  "kind": "monsters",
+  "title": "スクラップアイ",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "3f93cd61-6218-4de9-921a-8ef69dd413e5"
+  },
+  "related": [
+    {
+      "id": "b2368153-19b7-45b8-bf77-6c520afb485e",
+      "document": "[[concept/monsters/mitsuashi-marsh]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー提供の原資料：06_ミツアシ・のぞき目_2本足.png"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "3f93cd61-6218-4de9-921a-8ef69dd413e5"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "3f93cd61-6218-4de9-921a-8ef69dd413e5"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "3f93cd61-6218-4de9-921a-8ef69dd413e5"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

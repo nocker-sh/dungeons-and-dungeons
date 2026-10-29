@@ -1,0 +1,94 @@
+{
+  "schema_version": 2,
+  "id": "map:town",
+  "slug": "town",
+  "kind": "maps",
+  "title": "街の生活動線図",
+  "runtime": null,
+  "related": [
+    {
+      "id": "fb52305e-51df-4209-a1c4-8029a506da56",
+      "document": "[[concept/backgrounds/place-town]]"
+    },
+    {
+      "id": "898b2804-3b16-4560-a125-94abbe843c6b",
+      "document": "[[concept/backgrounds/place-guild]]"
+    },
+    {
+      "id": "88a1ef98-fc3f-4c4e-a049-59feecd9f55e",
+      "document": "[[concept/backgrounds/place-shop]]"
+    },
+    {
+      "id": "6945cb51-820e-4538-8be2-c5b866d9e18e",
+      "document": "[[concept/backgrounds/place-shop-street]]"
+    },
+    {
+      "id": "328e65c5-a87d-47fd-92ce-df1e24af418f",
+      "document": "[[concept/backgrounds/place-back-alley]]"
+    },
+    {
+      "id": "93ae2581-e948-4b30-a79b-0afb847347f4",
+      "document": "[[concept/backgrounds/place-smithy]]"
+    },
+    {
+      "id": "bfa763f0-cfe8-4ea2-b6c9-fbe244d7db46",
+      "document": "[[concept/backgrounds/place-armory]]"
+    },
+    {
+      "id": "8d377a5e-e603-427e-a218-ef986eb5e8bf",
+      "document": "[[concept/backgrounds/place-tools]]"
+    },
+    {
+      "id": "e014c850-9102-4a16-b578-6913f9f49fa2",
+      "document": "[[concept/backgrounds/place-apothecary]]"
+    },
+    {
+      "id": "60712f03-1916-4afd-972e-f50c0c28960a",
+      "document": "[[concept/backgrounds/place-farm]]"
+    },
+    {
+      "id": "c01170e2-38cd-4668-a21e-4a679ab5ac7c",
+      "document": "[[concept/backgrounds/place-rim-road]]"
+    },
+    {
+      "id": "745cd2b6-bf2e-4cd7-ab49-0ebe92d08eec",
+      "document": "[[concept/backgrounds/place-outskirts]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "[[concept/world/world-space-camera]]"
+    },
+    {
+      "reference": "2026-10-28 一街一地図の資料制作依頼"
+    }
+  ],
+  "entity_type": "map",
+  "lore_status": "active",
+  "tags": [
+    "街",
+    "流通",
+    "生活"
+  ],
+  "topology": {
+    "nodes": [
+      "fb52305e-51df-4209-a1c4-8029a506da56",
+      "898b2804-3b16-4560-a125-94abbe843c6b",
+      "88a1ef98-fc3f-4c4e-a049-59feecd9f55e",
+      "6945cb51-820e-4538-8be2-c5b866d9e18e",
+      "328e65c5-a87d-47fd-92ce-df1e24af418f",
+      "93ae2581-e948-4b30-a79b-0afb847347f4",
+      "bfa763f0-cfe8-4ea2-b6c9-fbe244d7db46",
+      "8d377a5e-e603-427e-a218-ef986eb5e8bf",
+      "e014c850-9102-4a16-b578-6913f9f49fa2",
+      "60712f03-1916-4afd-972e-f50c0c28960a",
+      "c01170e2-38cd-4668-a21e-4a679ab5ac7c",
+      "745cd2b6-bf2e-4cd7-ab49-0ebe92d08eec"
+    ]
+  },
+  "authorship": {
+    "basis": "生活できる街と部屋の制作依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "id": "552ec59c-a774-42d0-8f12-f2963aeb417d",
+  "slug": "makurayume",
+  "kind": "monsters",
+  "title": "ナイトキャップ",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "552ec59c-a774-42d0-8f12-f2963aeb417d"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "ユーザー選定のモンスター案（デスクトップ「内定」）"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "552ec59c-a774-42d0-8f12-f2963aeb417d"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-4",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "552ec59c-a774-42d0-8f12-f2963aeb417d"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "552ec59c-a774-42d0-8f12-f2963aeb417d"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

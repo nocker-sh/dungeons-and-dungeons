@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "id": "569b9fb2-dbc4-4d55-8ff5-796134341dc5",
+  "slug": "kamokutsu-mud",
+  "kind": "monsters",
+  "gender": "男性",
+  "title": "マッドダック",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "569b9fb2-dbc4-4d55-8ff5-796134341dc5"
+  },
+  "related": [
+    {
+      "id": "29ed2718-1c81-4e16-9230-2e80870a0298",
+      "document": "[[concept/monsters/kamokutsu]]"
+    },
+    {
+      "id": "61893649-624b-4c84-882b-5d4df3e8a8bb",
+      "document": "[[concept/monsters/hiyokobu]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：採用モンスターの亜種・大人を内蔵image_genで制作"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "569b9fb2-dbc4-4d55-8ff5-796134341dc5"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-0",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "569b9fb2-dbc4-4d55-8ff5-796134341dc5"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "569b9fb2-dbc4-4d55-8ff5-796134341dc5"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

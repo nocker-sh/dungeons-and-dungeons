@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "id": "5ad89d9e-29c6-424d-ae22-ba335f3cfd2f",
+  "slug": "pact-tsumugi-patch",
+  "kind": "weapons",
+  "title": "縫い代の身体",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "5ad89d9e-29c6-424d-ae22-ba335f3cfd2f"
+  },
+  "related": [
+    {
+      "id": "2f1b2a8b-1e8d-4c76-b820-8d1bc1bb38df",
+      "document": "[[concept/characters/tsumugi]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/goods.json"
+    },
+    {
+      "reference": "生活上の取り扱い: 2026-10-28 資料制作依頼"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "weapons",
+    "weapon",
+    "手入れと流通"
+  ],
+  "authorship": {
+    "basis": "全内容の生活と整合性の資料制作依頼",
+    "scope": "取り扱いの制作設定",
+    "changes_game_rules": false
+  },
+  "relations": [
+    {
+      "type": "associated_with",
+      "target": "2f1b2a8b-1e8d-4c76-b820-8d1bc1bb38df",
+      "meaning": "契約に関わる人物。人格を物品へ置き換える根拠にはしない。"
+    }
+  ]
+}

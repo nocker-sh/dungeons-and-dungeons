@@ -1,0 +1,39 @@
+{
+  "schema_version": 2,
+  "id": "12217057-7b5b-4b60-9008-fcf68bd37723",
+  "slug": "tris",
+  "kind": "demons",
+  "title": "トリス",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "12217057-7b5b-4b60-9008-fcf68bd37723"
+  },
+  "related": [],
+  "sources": [],
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "悪魔",
+    "共同生活"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 生活をつなぐ資料制作依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:secret-nui-tris",
+      "meaning": "召喚中だけの仮置きではなく、ヨルたちと暮らす住まい。"
+    },
+    {
+      "type": "shares",
+      "target": "room:secret-common",
+      "meaning": "仕事の支度と会話をする。寝室とは分ける。"
+    }
+  ],
+  "livelihood": {
+    "routine_section": "帰宅と生活の設計"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "id": "f190eccf-5c98-40d0-8ab6-03ede6cd0436",
+  "slug": "kemurimaki-ash",
+  "kind": "monsters",
+  "title": "アッシュレイス",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "f190eccf-5c98-40d0-8ab6-03ede6cd0436"
+  },
+  "related": [
+    {
+      "id": "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd",
+      "document": "[[concept/monsters/kemurimaki]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：採用モンスターの亜種・大人を内蔵image_genで制作"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "f190eccf-5c98-40d0-8ab6-03ede6cd0436"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-2",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "f190eccf-5c98-40d0-8ab6-03ede6cd0436"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "f190eccf-5c98-40d0-8ab6-03ede6cd0436"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

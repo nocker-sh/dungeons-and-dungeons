@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "id": "c7a44829-433d-4b1a-af43-080407466aeb",
+  "slug": "pact-sera-wings",
+  "kind": "weapons",
+  "title": "開門の石群",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "c7a44829-433d-4b1a-af43-080407466aeb"
+  },
+  "related": [
+    {
+      "id": "e492df07-40d1-4352-bb4e-66877d6554e6",
+      "document": "[[concept/characters/sera]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/goods.json"
+    },
+    {
+      "reference": "生活上の取り扱い: 2026-10-28 資料制作依頼"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "weapons",
+    "weapon",
+    "手入れと流通"
+  ],
+  "authorship": {
+    "basis": "全内容の生活と整合性の資料制作依頼",
+    "scope": "取り扱いの制作設定",
+    "changes_game_rules": false
+  },
+  "relations": [
+    {
+      "type": "associated_with",
+      "target": "e492df07-40d1-4352-bb4e-66877d6554e6",
+      "meaning": "契約に関わる人物。人格を物品へ置き換える根拠にはしない。"
+    }
+  ]
+}

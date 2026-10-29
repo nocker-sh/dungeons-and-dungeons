@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "id": "e327f5ef-d000-4708-ad46-f9707d8153a6",
+  "slug": "torn-contract",
+  "kind": "weapons",
+  "title": "破れた契約書",
+  "runtime": null,
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "historical_runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "e327f5ef-d000-4708-ad46-f9707d8153a6"
+  },
+  "entity_type": "visual-record",
+  "lore_status": "reference",
+  "tags": [
+    "装備造形",
+    "実行用データなし"
+  ]
+}

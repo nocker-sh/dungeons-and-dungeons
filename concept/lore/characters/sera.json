@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "id": "e492df07-40d1-4352-bb4e-66877d6554e6",
+  "slug": "sera",
+  "kind": "characters",
+  "title": "セラ",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "e492df07-40d1-4352-bb4e-66877d6554e6"
+  },
+  "related": [
+    {
+      "id": "room:guild-deluxe-front",
+      "document": "[[concept/rooms/guild-deluxe-front]]"
+    }
+  ],
+  "sources": [],
+  "growth_intent": {
+    "rate": "普通",
+    "early": "少し強い",
+    "middle": "安定して少し強い",
+    "late": "最終的な強さは他のキャラと同等"
+  },
+  "gender": "女性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "characters",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "e492df07-40d1-4352-bb4e-66877d6554e6"
+    },
+    "routine_section": "生活動線の制作設計",
+    "lodging": {
+      "target": "room:guild-deluxe-front",
+      "condition": "ギルドで宿泊契約を結び、空床の割当てを受けた場合の制作上の部屋割り。常住・無料宿泊・実行時の購入済み状態を意味しない。",
+      "routine_section": "宿泊する場合の寝床と移動"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "家主が戻らない理由や生死を確定しない。空き家の警護と本人の就寝場所を混同しない。"
+    ]
+  }
+}

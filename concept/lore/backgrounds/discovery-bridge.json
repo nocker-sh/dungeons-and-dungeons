@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "id": "d8319cd0-dab4-4df8-9954-5c4a12b0ffbd",
+  "slug": "discovery-bridge",
+  "kind": "backgrounds",
+  "title": "鉄橋の巻き上げ機",
+  "runtime": null,
+  "related": [
+    {
+      "id": "607cef76-34b8-4650-9d94-aa002c504b16",
+      "document": "[[concept/world/world-space-camera]]"
+    },
+    {
+      "id": "82a283db-d672-4a55-907b-a238cd2802ed",
+      "document": "[[concept/backgrounds/place-layer2]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/layers.json / 既存イベントの場所と用事"
+    },
+    {
+      "reference": "ユーザー指示 / 生成前の空間計画と映画的なカメラ"
+    }
+  ],
+  "entity_type": "scene-template",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "scene-template"
+  ]
+}

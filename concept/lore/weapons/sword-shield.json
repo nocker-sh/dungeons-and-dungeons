@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "id": "b24c170d-ef52-4f5c-8140-49ab20033a5d",
+  "slug": "sword-shield",
+  "kind": "weapons",
+  "title": "前衛の剣盾",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "b24c170d-ef52-4f5c-8140-49ab20033a5d"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "weapons",
+    "weapon",
+    "手入れと流通"
+  ],
+  "relations": [
+    {
+      "type": "sold_by",
+      "target": "75f62b3a-a441-453c-a80a-37549e63f458",
+      "meaning": "正本の販売対象。価格と在庫規則は店データに従う。"
+    },
+    {
+      "type": "appraised_by",
+      "target": "75f62b3a-a441-453c-a80a-37549e63f458",
+      "meaning": "正本の鑑定対象。出る品と確率を資料で固定しない。"
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 全ての内容に意味と生活を持たせる資料制作依頼",
+    "scope": "手入れと運搬の制作設定",
+    "changes_game_rules": false
+  },
+  "handling": {
+    "rule_source": {
+      "file": "[[content/data/goods.json]]",
+      "id": "b24c170d-ef52-4f5c-8140-49ab20033a5d"
+    },
+    "routine_section": "暮らしの中での取り扱い"
+  }
+}

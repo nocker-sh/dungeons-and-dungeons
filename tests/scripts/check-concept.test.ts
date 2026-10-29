@@ -62,6 +62,51 @@ function fixture() {
   }
 }
 describe("設定資料の実ファイル検査", () => {
+  it("設定の属性を資料へ複製せずJSON正本から読む", () => {
+    const { root, room, run } = fixture()
+    const database = resolve(root, "../../concept/lore")
+    mkdirSync(database, { recursive: true })
+    writeFileSync(join(database, "room.json"), JSON.stringify(room))
+    writeFileSync(
+      join(root, "a.md"),
+      '---\n{"entity":"[[concept/lore/room.json]]"}\n---\n# 客室\n'
+    )
+    expect(run().status).toBe(0)
+    writeFileSync(
+      join(database, "room.json"),
+      JSON.stringify({ ...room, spatial: { width_m: -1 } })
+    )
+    expect(run().status).toBe(1)
+  })
+  it("Wikiリンクの正本と資料参照を同じIDで照合する", () => {
+    const { root, write, run } = fixture()
+    writeFileSync(
+      resolve(root, "../../profiles.json"),
+      JSON.stringify([{ id: "person:a" }])
+    )
+    writeFileSync(
+      join(root, "coverage.json"),
+      JSON.stringify({
+        sources: [{ file: "[[profiles.json]]", collection: "array" }],
+      })
+    )
+    write("person", {
+      id: "person:a",
+      entity_type: "person",
+      runtime: { file: "[[profiles.json]]", id: "person:a" },
+      related: [{ id: "room:a", document: "[[concept/a|客室]]" }],
+    })
+    expect(run().status).toBe(0)
+    write("person", {
+      id: "person:a",
+      entity_type: "person",
+      runtime: { file: "[[profiles.json]]", id: "person:a" },
+      related: [{ id: "room:a", document: "[[concept/person]]" }],
+    })
+    const rejected = run()
+    expect(rejected.status).toBe(1)
+    expect(rejected.stderr).toContain("relatedのIDとファイルが一致しない")
+  })
   it.each([
     { label: "存在するID", rows: [{ id: "person:a" }], valid: true },
     { label: "存在しないID", rows: [], valid: false },

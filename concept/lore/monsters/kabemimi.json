@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "id": "89831ecc-694f-489b-9b81-e6805b9e2371",
+  "slug": "kabemimi",
+  "kind": "monsters",
+  "title": "ミミウォール",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "89831ecc-694f-489b-9b81-e6805b9e2371"
+  },
+  "related": [
+    {
+      "id": "742dad77-7906-47fb-b167-c1a20ed6b24c",
+      "document": "[[concept/backgrounds/place-layer1]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー選定のモンスター案（デスクトップ「内定」）"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "89831ecc-694f-489b-9b81-e6805b9e2371"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-1",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "89831ecc-694f-489b-9b81-e6805b9e2371"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "89831ecc-694f-489b-9b81-e6805b9e2371"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

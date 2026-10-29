@@ -1,0 +1,39 @@
+{
+  "schema_version": 2,
+  "id": "c39344d9-2458-4bf6-93d2-36f385239d33",
+  "slug": "place-guild-reception",
+  "kind": "backgrounds",
+  "title": "ギルドの受付",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "c39344d9-2458-4bf6-93d2-36f385239d33"
+  },
+  "related": [
+    {
+      "id": "898b2804-3b16-4560-a125-94abbe843c6b",
+      "document": "[[concept/backgrounds/place-guild]]"
+    },
+    {
+      "id": "d5100106-ff86-494b-a10b-b11255b0b932",
+      "document": "[[concept/residents/milena]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示 / ギルドの中の受付へ遷移する"
+    }
+  ],
+  "lore_status": "active",
+  "tags": [
+    "ギルド",
+    "空間"
+  ],
+  "entity_type": "room-zone",
+  "relations": [
+    {
+      "type": "part_of",
+      "target": "room:guild-hall",
+      "meaning": "同じ建物内の受付の寄り。別棟や独立した一室として数えない。"
+    }
+  ]
+}

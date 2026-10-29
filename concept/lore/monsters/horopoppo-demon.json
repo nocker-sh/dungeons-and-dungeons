@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "a760dba6-ff96-4ddc-8a3b-efb37a8e77fa",
+  "slug": "horopoppo-demon",
+  "kind": "monsters",
+  "title": "デビルコルンバ",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "a760dba6-ff96-4ddc-8a3b-efb37a8e77fa"
+  },
+  "related": [
+    {
+      "id": "db6663f0-a18e-440f-90ea-f79e5db93727",
+      "document": "[[concept/monsters/horopoppo-speckled]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：毒・火・悪魔の亜種を追加"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "a760dba6-ff96-4ddc-8a3b-efb37a8e77fa"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "a760dba6-ff96-4ddc-8a3b-efb37a8e77fa"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "a760dba6-ff96-4ddc-8a3b-efb37a8e77fa"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

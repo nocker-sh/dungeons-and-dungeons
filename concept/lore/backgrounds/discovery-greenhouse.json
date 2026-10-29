@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "id": "569b440b-6037-43b3-8ada-e3a1904d1f02",
+  "slug": "discovery-greenhouse",
+  "kind": "backgrounds",
+  "title": "温室の種床",
+  "runtime": null,
+  "related": [
+    {
+      "id": "607cef76-34b8-4650-9d94-aa002c504b16",
+      "document": "[[concept/world/world-space-camera]]"
+    },
+    {
+      "id": "b693cf1b-a67d-4bde-a47f-808689a0870a",
+      "document": "[[concept/backgrounds/place-layer3]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/layers.json / 既存イベントの場所と用事"
+    },
+    {
+      "reference": "ユーザー指示 / 生成前の空間計画と映画的なカメラ"
+    }
+  ],
+  "entity_type": "scene-template",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "scene-template"
+  ]
+}

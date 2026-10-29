@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "id": "fd36c836-2564-415a-af21-14edc0a6c893",
+  "slug": "husky",
+  "kind": "characters",
+  "title": "ハスキー",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "fd36c836-2564-415a-af21-14edc0a6c893"
+  },
+  "related": [],
+  "sources": [],
+  "growth_intent": {
+    "rate": "普通",
+    "early": "普通",
+    "middle": "普通",
+    "late": "普通"
+  },
+  "gender": "不明",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "characters",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "fd36c836-2564-415a-af21-14edc0a6c893"
+    },
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "相棒は生きている前提を保ち、所在や再会の結末は決めない。二人部屋を宿の四人相部屋と同一室にしない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:husky-home-bedroom",
+      "meaning": "既存の生活動機を具体化する寝室。"
+    }
+  ]
+}

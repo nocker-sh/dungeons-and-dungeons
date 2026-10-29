@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "id": "ffd1746a-a5fd-48fc-9971-091a979461bb",
+  "slug": "discovery-monster-trade",
+  "kind": "backgrounds",
+  "title": "魔物の交換屋",
+  "runtime": null,
+  "related": [
+    {
+      "id": "607cef76-34b8-4650-9d94-aa002c504b16",
+      "document": "[[concept/world/world-space-camera]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/layers.json / 既存イベントの場所と用事"
+    },
+    {
+      "reference": "ユーザー指示 / 生成前の空間計画と映画的なカメラ"
+    }
+  ],
+  "entity_type": "scene-template",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "scene-template"
+  ]
+}

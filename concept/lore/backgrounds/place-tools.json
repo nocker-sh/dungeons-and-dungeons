@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "id": "8d377a5e-e603-427e-a218-ef986eb5e8bf",
+  "slug": "place-tools",
+  "kind": "backgrounds",
+  "title": "道具屋",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "8d377a5e-e603-427e-a218-ef986eb5e8bf"
+  },
+  "related": [
+    {
+      "id": "c6a065ae-8bbd-44a3-85bb-42215cceca56",
+      "document": "[[concept/residents/walter]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "dungeons-concept / README.md・home.html"
+    }
+  ],
+  "entity_type": "building",
+  "lore_status": "active",
+  "tags": [
+    "街",
+    "商い",
+    "住まい"
+  ],
+  "relations": [
+    {
+      "type": "mapped_by",
+      "target": "map:tools",
+      "meaning": "既存の仕事場の画面寸法を保ち、奥の生活区画をつなぐ。"
+    },
+    {
+      "type": "depicts",
+      "target": "room:tools-work",
+      "meaning": "背景で見えるのは建物内の仕事場。居住部分を同じ床へ詰め込まない。"
+    }
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/shops.json]]",
+      "id": "b56e681e-43b0-4b94-bafd-25a80eace908"
+    }
+  ]
+}

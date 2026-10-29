@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "id": "room:pim-home-living",
+  "slug": "pim-home-living",
+  "kind": "rooms",
+  "title": "ピムの住まいの居間",
+  "runtime": null,
+  "related": [
+    {
+      "id": "building:pim-home",
+      "document": "[[concept/locations/pim-home]]"
+    },
+    {
+      "id": "2f11c0f1-1df0-436d-8124-0dd5801ed9f5",
+      "document": "[[concept/residents/pim]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "[[mob-residents]]"
+    },
+    {
+      "reference": "2026-10-28 一室一資料と暮らしの制作依頼"
+    }
+  ],
+  "entity_type": "room",
+  "lore_status": "active",
+  "tags": [
+    "住まい",
+    "生活"
+  ],
+  "authorship": {
+    "basis": "一室ごとの生活できる設計の依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "building:pim-home",
+    "map": "map:pim-home",
+    "zone": "地上階"
+  },
+  "spatial": {
+    "width_m": 4.5,
+    "depth_m": 4.2,
+    "ceiling_m": 2.7,
+    "capacity": 4,
+    "egress": "表の入口と生活用通路の裏口へ抜ける。扉の前を荷や家具で塞がない。"
+  },
+  "life_support": {
+    "sleep": {
+      "target": "room:pim-home-bedroom",
+      "provision": "ピム本人の寝台のある寝室で休む。仕事場や居間の床を寝床に数えない。"
+    },
+    "food": {
+      "target": "room:pim-home-kitchen",
+      "provision": "台所で調理し、人の食事とほかの用途の器を分ける。"
+    },
+    "water": {
+      "target": "room:pim-home-kitchen",
+      "provision": "街の飲用水を覆った容器で運び入れる。"
+    },
+    "wash": {
+      "target": "room:pim-home-wash",
+      "provision": "通路から洗い場へ入って清潔を保つ。"
+    },
+    "toilet": {
+      "target": "room:pim-home-toilet",
+      "provision": "裏口へ回収できる密閉式便所を使う。"
+    },
+    "air": {
+      "target": "room:pim-home-living",
+      "provision": "窓または外気口で外へ換気する。便所の空気を寝室へ通さない。"
+    },
+    "light": {
+      "target": "room:pim-home-living",
+      "provision": "手元と足元の固定灯を使い、裸火を寝具や紙から離す。"
+    },
+    "storage": {
+      "target": "room:pim-home-living",
+      "provision": "壁際の収納。入口と通る面を空ける。"
+    },
+    "access": {
+      "target": "room:pim-home-passage",
+      "provision": "居間から生活用通路を通り、個々の生活設備の扉へ入る。"
+    }
+  }
+}

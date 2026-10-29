@@ -1,0 +1,106 @@
+{
+  "schema_version": 2,
+  "id": "room:guild-deluxe-front",
+  "slug": "guild-deluxe-front",
+  "kind": "rooms",
+  "title": "上等客室・通り側",
+  "runtime": null,
+  "related": [
+    {
+      "id": "898b2804-3b16-4560-a125-94abbe843c6b",
+      "document": "[[concept/backgrounds/place-guild]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "2026-10-28 ユーザー依頼：一室一資料と生活できる設計"
+    }
+  ],
+  "entity_type": "room",
+  "lore_status": "active",
+  "authorship": {
+    "basis": "今回の資料制作依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "tags": [
+    "ギルド",
+    "寝室"
+  ],
+  "location": {
+    "parent": "898b2804-3b16-4560-a125-94abbe843c6b",
+    "map": "map:guild",
+    "zone": "1"
+  },
+  "spatial": {
+    "width_m": 6,
+    "depth_m": 5,
+    "ceiling_m": 2.7,
+    "capacity": 4,
+    "egress": "客室階の共用通路から、西の客室階段を下りてホール正面口へ向かう。東端の外階段からも屋外へ退避できる。通路と踊り場へ荷物を置かない。",
+    "beds": [
+      {
+        "x_m": 0.1,
+        "y_m": 0.2,
+        "width_m": 1,
+        "depth_m": 2.1
+      },
+      {
+        "x_m": 0.1,
+        "y_m": 2.7,
+        "width_m": 1,
+        "depth_m": 2.1
+      },
+      {
+        "x_m": 4.9,
+        "y_m": 0.2,
+        "width_m": 1,
+        "depth_m": 2.1
+      },
+      {
+        "x_m": 4.9,
+        "y_m": 2.7,
+        "width_m": 1,
+        "depth_m": 2.1
+      }
+    ]
+  },
+  "life_support": {
+    "sleep": {
+      "target": "room:guild-deluxe-front",
+      "provision": "就寝は寝室で行う。仕事場の床や炉前を寝床に数えない。"
+    },
+    "food": {
+      "target": "room:guild-kitchen",
+      "provision": "調理した食事をホールで取る。"
+    },
+    "water": {
+      "target": "room:guild-kitchen",
+      "provision": "蓋付きの飲用水容器から分ける。洗い物用と区別する。"
+    },
+    "wash": {
+      "target": "room:guild-wash",
+      "provision": "体を洗い、着替える。"
+    },
+    "toilet": {
+      "target": "room:guild-upper-latrine",
+      "provision": "居室を横切らず廊下から利用する。"
+    },
+    "air": {
+      "target": "room:guild-deluxe-front",
+      "provision": "外壁の窓または独立した換気口。便所や炉の排気を居室へ戻さない。"
+    },
+    "light": {
+      "target": "room:guild-deluxe-front",
+      "provision": "入口と足元の固定灯、作業位置の手元灯。寝具の横に裸火を置かない。"
+    },
+    "storage": {
+      "target": "room:guild-deluxe-front",
+      "provision": "出入りを塞がない壁際の収納。用途の違う荷物を分ける。"
+    },
+    "access": {
+      "target": "room:guild-deluxe-front",
+      "provision": "幅0.9m以上の室内経路から階の共用通路へ出る。"
+    }
+  }
+}

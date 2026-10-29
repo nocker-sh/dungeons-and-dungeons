@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "id": "b59082ce-5bf6-41f5-9707-18e072031b05",
+  "slug": "yoru",
+  "kind": "residents",
+  "title": "ヨル",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "b59082ce-5bf6-41f5-9707-18e072031b05"
+  },
+  "related": [],
+  "sources": [],
+  "gender": "女性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "residents",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "b59082ce-5bf6-41f5-9707-18e072031b05"
+    },
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "秘密の部屋の起源とロクスの約束の中身は明かさない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:secret-yoru",
+      "meaning": "共用室と分けた暗い寝室で休む。"
+    }
+  ]
+}

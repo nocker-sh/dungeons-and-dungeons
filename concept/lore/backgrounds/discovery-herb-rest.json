@@ -1,0 +1,39 @@
+{
+  "schema_version": 2,
+  "id": "90ca77a5-bcd3-46ab-ae0a-127b58bec6d0",
+  "slug": "discovery-herb-rest",
+  "kind": "backgrounds",
+  "title": "薬草の乾燥室",
+  "runtime": null,
+  "related": [
+    {
+      "id": "607cef76-34b8-4650-9d94-aa002c504b16",
+      "document": "[[concept/world/world-space-camera]]"
+    },
+    {
+      "id": "b693cf1b-a67d-4bde-a47f-808689a0870a",
+      "document": "[[concept/backgrounds/place-layer3]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/layers.json / 既存イベントの場所と用事"
+    },
+    {
+      "reference": "ユーザー指示 / 生成前の空間計画と映画的なカメラ"
+    }
+  ],
+  "entity_type": "scene-template",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "scene-template"
+  ],
+  "relations": [
+    {
+      "type": "depicts",
+      "target": "room:herb-drying",
+      "meaning": "実際の室内の見え方。寸法と生活設備は一室の資料へ束ねる。"
+    }
+  ]
+}

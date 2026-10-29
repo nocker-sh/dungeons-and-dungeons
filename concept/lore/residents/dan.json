@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "id": "b603b139-fe9d-4b84-b830-908ca8a1d6f7",
+  "slug": "dan",
+  "kind": "residents",
+  "title": "ダン",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "b603b139-fe9d-4b84-b830-908ca8a1d6f7"
+  },
+  "related": [
+    {
+      "id": "building:dan-home",
+      "document": "[[concept/locations/dan-home]]"
+    },
+    {
+      "id": "room:dan-home-bedroom",
+      "document": "[[concept/rooms/dan-home-bedroom]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示（2026-10-12 モブの住民を増やす）"
+    }
+  ],
+  "gender": "男性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "residents",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "屋根を直す家族の住所や構成は新しく決めない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:dan-home-bedroom",
+      "meaning": "本人が仕事と分けて休む寝台。住まいの空間は今回の制作設定。"
+    }
+  ]
+}

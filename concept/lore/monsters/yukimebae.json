@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "id": "85495e6d-9a6d-4b81-bc62-37ce73ee9722",
+  "slug": "yukimebae",
+  "kind": "monsters",
+  "title": "シードロード",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "85495e6d-9a6d-4b81-bc62-37ce73ee9722"
+  },
+  "related": [
+    {
+      "id": "0b27b6ee-377c-4c00-98b6-ff9fe53bfb78",
+      "document": "[[concept/monsters/futabane]]"
+    },
+    {
+      "id": "977c6c0b-b1ed-4a3c-9462-3c11607ad563",
+      "document": "[[concept/monsters/tsubomimu]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー提供の原資料：039_ユキメバエ.png"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "85495e6d-9a6d-4b81-bc62-37ce73ee9722"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-3",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "85495e6d-9a6d-4b81-bc62-37ce73ee9722"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "85495e6d-9a6d-4b81-bc62-37ce73ee9722"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

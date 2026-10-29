@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "id": "room:shadow-theatre-kitchen",
+  "slug": "shadow-theatre-kitchen",
+  "kind": "rooms",
+  "title": "六席の影絵小屋の台所",
+  "runtime": null,
+  "related": [
+    {
+      "id": "building:shadow-theatre",
+      "document": "[[concept/locations/shadow-theatre]]"
+    },
+    {
+      "id": "56e31d5e-a23d-48b6-8152-ba781dd275f7",
+      "document": "[[concept/characters/mimika]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "人物の動機: concept/data/conversation-profiles.json"
+    },
+    {
+      "reference": "空間の具体化: 2026-10-28 資料制作依頼"
+    }
+  ],
+  "entity_type": "room",
+  "lore_status": "active",
+  "tags": [
+    "住まい",
+    "生活"
+  ],
+  "authorship": {
+    "basis": "一室ごとの生活できる設計の依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "building:shadow-theatre",
+    "map": "map:shadow-theatre",
+    "zone": "地上階"
+  },
+  "spatial": {
+    "width_m": 3.1,
+    "depth_m": 3,
+    "ceiling_m": 2.7,
+    "capacity": 1,
+    "egress": "表の入口と生活用通路の裏口へ抜ける。扉の前を荷や家具で塞がない。"
+  },
+  "life_support": {
+    "sleep": {
+      "target": "room:shadow-theatre-bedroom",
+      "provision": "人の就寝は独立した寝室。仕事や興行の床へ寝具を広げない。"
+    },
+    "food": {
+      "target": "room:shadow-theatre-kitchen",
+      "provision": "台所で調理し、人の食事とほかの用途の器を分ける。"
+    },
+    "water": {
+      "target": "room:shadow-theatre-kitchen",
+      "provision": "街の飲用水を覆った容器で運び入れる。"
+    },
+    "wash": {
+      "target": "room:shadow-theatre-wash",
+      "provision": "通路から洗い場へ入って清潔を保つ。"
+    },
+    "toilet": {
+      "target": "room:shadow-theatre-toilet",
+      "provision": "裏口へ回収できる密閉式便所を使う。"
+    },
+    "air": {
+      "target": "room:shadow-theatre-kitchen",
+      "provision": "窓または外気口で外へ換気する。便所の空気を寝室へ通さない。"
+    },
+    "light": {
+      "target": "room:shadow-theatre-kitchen",
+      "provision": "手元と足元の固定灯を使い、裸火を寝具や紙から離す。"
+    },
+    "storage": {
+      "target": "room:shadow-theatre-kitchen",
+      "provision": "壁際の収納。入口と通る面を空ける。"
+    },
+    "access": {
+      "target": "room:shadow-theatre-passage",
+      "provision": "居間から生活用通路を通り、個々の生活設備の扉へ入る。"
+    }
+  }
+}

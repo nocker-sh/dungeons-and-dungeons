@@ -24,7 +24,7 @@ const PUBLIC_DIRECTORY = "public"
 const IMAGE_DIRECTORY = "public/tmp"
 const IMPORT_MANIFEST = "private/art/import-manifest.json"
 const OUTPUT_MANIFEST = "private/art/output-manifest.json"
-const IMAGE_LEDGER = ".docs/artwork-analysis/image-ledger.json"
+const IMAGE_LEDGER = "private/art/image-ledger.json"
 const PREVIEW_DIRECTORY = "private/art/review"
 const REFERENCE_SOURCES = [
   "pages",

@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "id": "comic-bind",
+  "slug": "comic-bind",
+  "kind": "effects",
+  "title": "Bind",
+  "runtime": {
+    "file": "[[concept/data/effects.json]]",
+    "id": "comic-bind"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "effect",
+  "lore_status": "active",
+  "tags": [
+    "effects",
+    "effect"
+  ],
+  "continuity": {
+    "keep": [
+      "演出画像の資料。画像から追加の能力やゲーム効果を決めない。"
+    ]
+  }
+}

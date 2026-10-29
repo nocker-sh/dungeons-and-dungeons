@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "id": "map:valley-2",
+  "slug": "valley-2",
+  "kind": "maps",
+  "title": "錆びた鉄橋の地点配置図",
+  "runtime": {
+    "file": "[[content/data/layers.json]]",
+    "id": "c4b1634c-03bc-4e65-8443-dcb1cbf44e98"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "content/data/layers.json の地点と接続"
+    }
+  ],
+  "entity_type": "map",
+  "lore_status": "active",
+  "tags": [
+    "谷",
+    "2層",
+    "経路"
+  ],
+  "topology": {
+    "source": "content/data/layers.json",
+    "parent_id": "c4b1634c-03bc-4e65-8443-dcb1cbf44e98",
+    "nodes": [
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:s",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n1",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n2",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n3",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n4",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:u5",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:u6",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:l5",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:l6",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n7",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n8",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n9",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n10",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n11",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:u12",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:u13",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:l12",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:l13",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n14",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n15",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:n16",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:l10",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:m3",
+      "c4b1634c-03bc-4e65-8443-dcb1cbf44e98:station:m15"
+    ]
+  },
+  "authorship": {
+    "basis": "2026-10-28 一対象一資料・生活と整合性の資料制作依頼",
+    "scope": "追加した空間と暮らしの制作設定。既存の出典と人の画像承認は変更しない。",
+    "changes_game_rules": false
+  }
+}

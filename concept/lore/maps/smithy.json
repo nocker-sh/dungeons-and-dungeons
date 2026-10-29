@@ -1,0 +1,149 @@
+{
+  "schema_version": 2,
+  "id": "map:smithy",
+  "slug": "smithy",
+  "kind": "maps",
+  "title": "鍛冶屋の仕事と住まいの配置図",
+  "runtime": null,
+  "related": [
+    {
+      "id": "93ae2581-e948-4b30-a79b-0afb847347f4",
+      "document": "[[concept/backgrounds/place-smithy]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "2026-10-28 一室一資料の制作依頼"
+    }
+  ],
+  "entity_type": "map",
+  "lore_status": "active",
+  "tags": [
+    "店舗",
+    "住まい"
+  ],
+  "bounds": {
+    "width_m": 6,
+    "depth_m": 19.8
+  },
+  "placements": [
+    {
+      "target": "room:smithy-work",
+      "level": 0,
+      "x_m": 0,
+      "y_m": 0
+    },
+    {
+      "target": "room:smithy-kitchen",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 7.2
+    },
+    {
+      "target": "room:smithy-bedroom",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 11
+    },
+    {
+      "target": "room:smithy-wash",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 15.2
+    },
+    {
+      "target": "room:smithy-toilet",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 17.8
+    },
+    {
+      "target": "room:smithy-passage",
+      "level": 0,
+      "x_m": 0,
+      "y_m": 7.2
+    }
+  ],
+  "doors": [
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:smithy-work",
+        "wall": "south",
+        "offset_m": 0.15
+      },
+      "b": {
+        "target": "room:smithy-passage",
+        "wall": "north",
+        "offset_m": 0.15
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:smithy-kitchen",
+        "wall": "west",
+        "offset_m": 0.8
+      },
+      "b": {
+        "target": "room:smithy-passage",
+        "wall": "east",
+        "offset_m": 0.8
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:smithy-bedroom",
+        "wall": "west",
+        "offset_m": 2.8
+      },
+      "b": {
+        "target": "room:smithy-passage",
+        "wall": "east",
+        "offset_m": 6.6
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:smithy-wash",
+        "wall": "west",
+        "offset_m": 0.5
+      },
+      "b": {
+        "target": "room:smithy-passage",
+        "wall": "east",
+        "offset_m": 8.5
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:smithy-toilet",
+        "wall": "west",
+        "offset_m": 0.5
+      },
+      "b": {
+        "target": "room:smithy-passage",
+        "wall": "east",
+        "offset_m": 11.1
+      }
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一対象一資料・生活と整合性の資料制作依頼",
+    "scope": "追加した空間と暮らしの制作設定。既存の出典と人の画像承認は変更しない。",
+    "changes_game_rules": false
+  }
+}

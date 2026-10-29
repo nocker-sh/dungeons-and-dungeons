@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "id": "a3bb2f9e-c479-4c07-95c8-af1b2967bb8f",
+  "slug": "venom-petal",
+  "kind": "materials",
+  "title": "毒花の花弁",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "a3bb2f9e-c479-4c07-95c8-af1b2967bb8f"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "materials",
+    "material",
+    "手入れと流通"
+  ],
+  "relations": [],
+  "authorship": {
+    "basis": "2026-10-28 全ての内容に意味と生活を持たせる資料制作依頼",
+    "scope": "手入れと運搬の制作設定",
+    "changes_game_rules": false
+  },
+  "handling": {
+    "rule_source": {
+      "file": "[[content/data/goods.json]]",
+      "id": "a3bb2f9e-c479-4c07-95c8-af1b2967bb8f"
+    },
+    "routine_section": "暮らしの中での取り扱い"
+  }
+}

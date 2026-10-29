@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "id": "88a1ef98-fc3f-4c4e-a049-59feecd9f55e",
+  "slug": "place-shop",
+  "kind": "backgrounds",
+  "title": "商店街",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "88a1ef98-fc3f-4c4e-a049-59feecd9f55e"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "dungeons-concept / README.md・home.html"
+    }
+  ],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "site"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "id": "f25bd1f5-b00e-44d5-8976-406eb0803995",
+  "slug": "moss-runner-coat",
+  "kind": "armor",
+  "title": "苔綿の跳躍装",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "f25bd1f5-b00e-44d5-8976-406eb0803995"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "armor",
+    "armor",
+    "手入れと流通"
+  ],
+  "relations": [
+    {
+      "type": "sold_by",
+      "target": "75f62b3a-a441-453c-a80a-37549e63f458",
+      "meaning": "正本の販売対象。価格と在庫規則は店データに従う。"
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 全ての内容に意味と生活を持たせる資料制作依頼",
+    "scope": "手入れと運搬の制作設定",
+    "changes_game_rules": false
+  },
+  "handling": {
+    "rule_source": {
+      "file": "[[content/data/goods.json]]",
+      "id": "f25bd1f5-b00e-44d5-8976-406eb0803995"
+    },
+    "routine_section": "暮らしの中での取り扱い"
+  }
+}

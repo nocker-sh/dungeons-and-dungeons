@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "id": "building:toma-home",
+  "slug": "toma-home",
+  "kind": "locations",
+  "title": "トーマの住まい",
+  "runtime": null,
+  "related": [
+    {
+      "id": "030f73c9-8333-4cdc-8591-85a53f9a6ba8",
+      "document": "[[concept/residents/toma]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "[[mob-residents]]"
+    },
+    {
+      "reference": "2026-10-28 一室一資料と暮らしの制作依頼"
+    }
+  ],
+  "entity_type": "building",
+  "lore_status": "active",
+  "tags": [
+    "街",
+    "住まい"
+  ],
+  "authorship": {
+    "basis": "生活の設計の依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "fb52305e-51df-4209-a1c4-8029a506da56",
+    "map": "map:town",
+    "zone": "町家と路地"
+  },
+  "relations": [
+    {
+      "type": "mapped_by",
+      "target": "map:toma-home",
+      "meaning": "暮らせる各室の寸法と接続。"
+    }
+  ]
+}

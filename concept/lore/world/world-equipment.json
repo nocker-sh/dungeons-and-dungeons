@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "id": "98962441-67d2-4c84-8612-b9e8ad4335ca",
+  "slug": "world-equipment",
+  "kind": "world",
+  "title": "谷の素材を装備へ仕立てる",
+  "runtime": null,
+  "related": [
+    {
+      "id": "3bf2d69d-74f4-47e6-ace6-d72ba9b2ad46",
+      "document": "[[concept/world/world-ravine]]"
+    },
+    {
+      "id": "928b482e-bd5b-4bb7-8f47-589557f48ab2",
+      "document": "[[concept/world/world-armor]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示 / 武器と防具の格好よさ・実用性、剪定大剣と燭台の両手剣を含めた設定と世界観の見直し"
+    },
+    {
+      "reference": "ユーザー指示 / 欠けゆく勇者の造形は好評、両手剣という分類との不一致"
+    }
+  ],
+  "entity_type": "world-system",
+  "lore_status": "active",
+  "tags": [
+    "world",
+    "world-system"
+  ]
+}

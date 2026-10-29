@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "id": "fb52305e-51df-4209-a1c4-8029a506da56",
+  "slug": "place-town",
+  "kind": "backgrounds",
+  "title": "街",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "fb52305e-51df-4209-a1c4-8029a506da56"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "dungeons-concept / README.md・home.html"
+    }
+  ],
+  "entity_type": "town",
+  "lore_status": "active",
+  "tags": [
+    "ワールド地図",
+    "暮らし"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一街一地点の資料制作依頼",
+    "scope": "空間と流通の制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "map:world",
+    "map": "map:world",
+    "zone": "world-town"
+  },
+  "bindings": [
+    {
+      "file": "[[content/data/world-map.json]]",
+      "id": "world-town"
+    }
+  ],
+  "relations": [
+    {
+      "type": "mapped_by",
+      "target": "map:world",
+      "meaning": "抽象的な経路上の位置。町内の実寸ではない。"
+    }
+  ]
+}

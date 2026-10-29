@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "id": "map:world",
+  "slug": "world",
+  "kind": "maps",
+  "title": "街道と谷のワールド地図",
+  "runtime": {
+    "file": "[[content/data/world-map.json]]",
+    "pointer": ""
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "content/data/world-map.json"
+    }
+  ],
+  "entity_type": "map",
+  "lore_status": "active",
+  "tags": [
+    "街道",
+    "地理"
+  ],
+  "topology": {
+    "source": "content/data/world-map.json",
+    "nodes": [
+      "fb52305e-51df-4209-a1c4-8029a506da56",
+      "4629d05a-8b24-48ac-bc4d-b87f7712c07a",
+      "location:village",
+      "location:forest-road",
+      "location:orchard",
+      "188f5731-cac5-47e1-87e4-52ce5029a985",
+      "location:north-road",
+      "location:mountain",
+      "location:south-road",
+      "location:wetland"
+    ]
+  },
+  "authorship": {
+    "basis": "2026-10-28 一対象一資料・生活と整合性の資料制作依頼",
+    "scope": "追加した空間と暮らしの制作設定。既存の出典と人の画像承認は変更しない。",
+    "changes_game_rules": false
+  }
+}

@@ -13,7 +13,8 @@
 ## データとエンジン
 
 - 名前・紹介文・セリフ・画像参照は `concept/data/`、数値・会話台本は `content/data/` のJSONを正とする。
-- 裏設定・出典・制作意図は `.docs/concept/`。1データ1ファイルとし、形式・Front Matterは `.docs/concept-data.md` に従う。実行用データを複製しない。
+- 設定の構造化データは `concept/lore/` のJSONを正本とし、資料は `entity` のWikiリンクで参照する。寸法・設備・関係・出典を本文やFront Matterへ複製しない。
+- 裏設定・出典・制作意図の説明は `.docs/concept/`。1データ1ファイルとし、形式・Front Matterは `.docs/concept-data.md` に従う。実行用データを複製しない。
 - `/dev` は実行用データと育成シミュレーションの確認用。裏設定・制作メモを表示せず、アプリから `.docs` をimportしない。
 - `lib/wiz/` はクラスベースのゲームエンジン。React・DOM・localStorage・作品固有データから独立させる。
 - 操作は具象ユースケース、表示値と操作可否はQuery。乱数・時計・ID・保存先をDIで差し替える。
@@ -45,4 +46,5 @@
 - Portless名は `dnd`、URLは `https://dnd.localhost`。
 - 場面確認は `/previews/{slug}`。`?still` で動きを止める。
 - 数値・ワザ・敵・規則を変えたら `vp run cli check`。CLIの操作・測定方法は `builder/README.md`。
+- 資料への参照はWikiリンクだけを使う。名前・IDだけの索引、日付別の作業実況、一時画像の一覧は作らない。固有の設定・判断・手順を残し、正本を複製しない。
 - `.docs/` と画像本体はコミットしない。元画像は `private/art/originals/`、R2移行前の表示用画像は `public/tmp/`。

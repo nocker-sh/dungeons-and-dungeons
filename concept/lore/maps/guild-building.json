@@ -1,0 +1,674 @@
+{
+  "schema_version": 2,
+  "id": "map:guild",
+  "slug": "guild-building",
+  "kind": "maps",
+  "title": "ギルド建物の生活配置図",
+  "runtime": null,
+  "related": [
+    {
+      "id": "898b2804-3b16-4560-a125-94abbe843c6b",
+      "document": "[[concept/backgrounds/place-guild]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "2026-10-28 一室一資料の制作依頼"
+    }
+  ],
+  "entity_type": "map",
+  "lore_status": "active",
+  "tags": [
+    "ギルド",
+    "平面計画"
+  ],
+  "bounds": {
+    "width_m": 17.4,
+    "depth_m": 13.4
+  },
+  "placements": [
+    {
+      "target": "room:guild-hall",
+      "level": 0,
+      "x_m": 0,
+      "y_m": 0
+    },
+    {
+      "target": "room:guild-kitchen",
+      "level": 0,
+      "x_m": 13,
+      "y_m": 0
+    },
+    {
+      "target": "room:guild-laundry",
+      "level": 0,
+      "x_m": 13,
+      "y_m": 5.8
+    },
+    {
+      "target": "room:guild-wash",
+      "level": 0,
+      "x_m": 13,
+      "y_m": 8.8
+    },
+    {
+      "target": "room:guild-latrine",
+      "level": 0,
+      "x_m": 13,
+      "y_m": 11.4
+    },
+    {
+      "target": "room:guild-milena-bedroom",
+      "level": 0,
+      "x_m": 6.2,
+      "y_m": 8.6
+    },
+    {
+      "target": "room:guild-normal-front",
+      "level": 1,
+      "x_m": 3.4,
+      "y_m": 0
+    },
+    {
+      "target": "room:guild-deluxe-front",
+      "level": 1,
+      "x_m": 8.6,
+      "y_m": 0
+    },
+    {
+      "target": "room:guild-normal-rear",
+      "level": 1,
+      "x_m": 3.4,
+      "y_m": 8.4
+    },
+    {
+      "target": "room:guild-deluxe-rear",
+      "level": 1,
+      "x_m": 8.6,
+      "y_m": 8.4
+    },
+    {
+      "target": "room:guild-attic",
+      "level": 2,
+      "x_m": 3.4,
+      "y_m": 8.4
+    },
+    {
+      "target": "room:guild-upper-latrine",
+      "level": 1,
+      "x_m": 14.8,
+      "y_m": 8.4
+    },
+    {
+      "target": "room:guild-linen",
+      "level": 1,
+      "x_m": 14.8,
+      "y_m": 0
+    },
+    {
+      "target": "room:guild-staff-bedroom",
+      "level": 1,
+      "x_m": 0,
+      "y_m": 0
+    },
+    {
+      "target": "room:secret-haro",
+      "level": -1,
+      "x_m": 0,
+      "y_m": 0
+    },
+    {
+      "target": "room:secret-lox-zaza",
+      "level": -1,
+      "x_m": 0,
+      "y_m": 4.2
+    },
+    {
+      "target": "room:secret-yoru",
+      "level": -1,
+      "x_m": 0,
+      "y_m": 9.2
+    },
+    {
+      "target": "room:secret-nui-tris",
+      "level": -1,
+      "x_m": 6.8,
+      "y_m": 0
+    },
+    {
+      "target": "room:secret-common",
+      "level": -1,
+      "x_m": 6.8,
+      "y_m": 3.4
+    },
+    {
+      "target": "room:secret-food",
+      "level": -1,
+      "x_m": 13,
+      "y_m": 0
+    },
+    {
+      "target": "room:secret-wash",
+      "level": -1,
+      "x_m": 13,
+      "y_m": 4.2
+    },
+    {
+      "target": "room:secret-latrine",
+      "level": -1,
+      "x_m": 13,
+      "y_m": 7.4
+    },
+    {
+      "target": "room:secret-linen",
+      "level": -1,
+      "x_m": 13,
+      "y_m": 10.2
+    },
+    {
+      "target": "zone:secret-west-passage",
+      "level": -1,
+      "x_m": 5.2,
+      "y_m": 0
+    },
+    {
+      "target": "zone:secret-east-passage",
+      "level": -1,
+      "x_m": 11.4,
+      "y_m": 0
+    },
+    {
+      "target": "zone:guild-service-passage",
+      "level": 0,
+      "x_m": 11.4,
+      "y_m": 0
+    },
+    {
+      "target": "zone:guild-upper-passage",
+      "level": 1,
+      "x_m": 0,
+      "y_m": 5.2
+    },
+    {
+      "target": "zone:secret-common-vestibule",
+      "level": -1,
+      "x_m": 10.8,
+      "y_m": 7.1
+    },
+    {
+      "target": "zone:guild-guest-stairs",
+      "level": 1,
+      "x_m": 0,
+      "y_m": 8.6
+    },
+    {
+      "target": "zone:guild-guest-stairs",
+      "level": 2,
+      "x_m": 0,
+      "y_m": 8.6
+    },
+    {
+      "target": "zone:guild-secret-stairs",
+      "level": 0,
+      "x_m": 8.4,
+      "y_m": 8.6
+    },
+    {
+      "target": "zone:guild-secret-stairs",
+      "level": -1,
+      "x_m": 8.4,
+      "y_m": 8.6
+    },
+    {
+      "target": "zone:guild-roof-landing",
+      "level": 2,
+      "x_m": 0,
+      "y_m": 7.2
+    }
+  ],
+  "doors": [
+    {
+      "level": 0,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-hall",
+        "wall": "east",
+        "offset_m": 4,
+        "part": 0
+      },
+      "b": {
+        "target": "zone:guild-service-passage",
+        "wall": "west",
+        "offset_m": 4
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-hall",
+        "wall": "east",
+        "offset_m": 3,
+        "part": 1
+      },
+      "b": {
+        "target": "room:guild-milena-bedroom",
+        "wall": "west",
+        "offset_m": 2.8
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-kitchen",
+        "wall": "west",
+        "offset_m": 0.6
+      },
+      "b": {
+        "target": "zone:guild-service-passage",
+        "wall": "east",
+        "offset_m": 0.6
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-laundry",
+        "wall": "west",
+        "offset_m": 0.8
+      },
+      "b": {
+        "target": "zone:guild-service-passage",
+        "wall": "east",
+        "offset_m": 6.6
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-wash",
+        "wall": "west",
+        "offset_m": 0.5
+      },
+      "b": {
+        "target": "zone:guild-service-passage",
+        "wall": "east",
+        "offset_m": 9.3
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-latrine",
+        "wall": "west",
+        "offset_m": 0.5
+      },
+      "b": {
+        "target": "zone:guild-service-passage",
+        "wall": "east",
+        "offset_m": 11.9
+      }
+    },
+    {
+      "level": 1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-normal-front",
+        "wall": "south",
+        "offset_m": 1.9
+      },
+      "b": {
+        "target": "zone:guild-upper-passage",
+        "wall": "north",
+        "offset_m": 5.3
+      }
+    },
+    {
+      "level": 1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-normal-rear",
+        "wall": "north",
+        "offset_m": 1.9
+      },
+      "b": {
+        "target": "zone:guild-upper-passage",
+        "wall": "south",
+        "offset_m": 5.3
+      }
+    },
+    {
+      "level": 1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-deluxe-front",
+        "wall": "south",
+        "offset_m": 2.4
+      },
+      "b": {
+        "target": "zone:guild-upper-passage",
+        "wall": "north",
+        "offset_m": 11
+      }
+    },
+    {
+      "level": 1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-deluxe-rear",
+        "wall": "north",
+        "offset_m": 2.4
+      },
+      "b": {
+        "target": "zone:guild-upper-passage",
+        "wall": "south",
+        "offset_m": 11
+      }
+    },
+    {
+      "level": 1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-staff-bedroom",
+        "wall": "south",
+        "offset_m": 1
+      },
+      "b": {
+        "target": "zone:guild-upper-passage",
+        "wall": "north",
+        "offset_m": 1
+      }
+    },
+    {
+      "level": 1,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-linen",
+        "wall": "south",
+        "offset_m": 0.8
+      },
+      "b": {
+        "target": "zone:guild-upper-passage",
+        "wall": "north",
+        "offset_m": 15.6
+      }
+    },
+    {
+      "level": 1,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-upper-latrine",
+        "wall": "north",
+        "offset_m": 0.8
+      },
+      "b": {
+        "target": "zone:guild-upper-passage",
+        "wall": "south",
+        "offset_m": 15.6
+      }
+    },
+    {
+      "level": 1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "zone:guild-upper-passage",
+        "wall": "south",
+        "offset_m": 1.9
+      },
+      "b": {
+        "target": "zone:guild-guest-stairs",
+        "wall": "north",
+        "offset_m": 1.9
+      }
+    },
+    {
+      "level": 2,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "zone:guild-roof-landing",
+        "wall": "south",
+        "offset_m": 1.9
+      },
+      "b": {
+        "target": "zone:guild-guest-stairs",
+        "wall": "north",
+        "offset_m": 1.9
+      }
+    },
+    {
+      "level": 2,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-attic",
+        "wall": "north",
+        "offset_m": 1.9
+      },
+      "b": {
+        "target": "zone:guild-roof-landing",
+        "wall": "south",
+        "offset_m": 5.3
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:guild-hall",
+        "wall": "south",
+        "offset_m": 8.5,
+        "part": 0
+      },
+      "b": {
+        "target": "zone:guild-secret-stairs",
+        "wall": "north",
+        "offset_m": 0.1
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "zone:guild-secret-stairs",
+        "wall": "east",
+        "offset_m": 0
+      },
+      "b": {
+        "target": "zone:secret-east-passage",
+        "wall": "west",
+        "offset_m": 8.6
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:secret-haro",
+        "wall": "east",
+        "offset_m": 1.2
+      },
+      "b": {
+        "target": "zone:secret-west-passage",
+        "wall": "west",
+        "offset_m": 1.2
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:secret-lox-zaza",
+        "wall": "east",
+        "offset_m": 2.8
+      },
+      "b": {
+        "target": "zone:secret-west-passage",
+        "wall": "west",
+        "offset_m": 7
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:secret-yoru",
+        "wall": "east",
+        "offset_m": 1.2
+      },
+      "b": {
+        "target": "zone:secret-west-passage",
+        "wall": "west",
+        "offset_m": 10.4
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:secret-nui-tris",
+        "wall": "west",
+        "offset_m": 2.3
+      },
+      "b": {
+        "target": "zone:secret-west-passage",
+        "wall": "east",
+        "offset_m": 2.3
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "zone:secret-west-passage",
+        "wall": "east",
+        "offset_m": 7.1
+      },
+      "b": {
+        "target": "room:secret-common",
+        "wall": "west",
+        "offset_m": 3.7
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:secret-common",
+        "wall": "east",
+        "offset_m": 3.7
+      },
+      "b": {
+        "target": "zone:secret-common-vestibule",
+        "wall": "west",
+        "offset_m": 0
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "zone:secret-common-vestibule",
+        "wall": "east",
+        "offset_m": 0
+      },
+      "b": {
+        "target": "zone:secret-east-passage",
+        "wall": "west",
+        "offset_m": 7.1
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:secret-food",
+        "wall": "west",
+        "offset_m": 1
+      },
+      "b": {
+        "target": "zone:secret-east-passage",
+        "wall": "east",
+        "offset_m": 1
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:secret-wash",
+        "wall": "west",
+        "offset_m": 0.8
+      },
+      "b": {
+        "target": "zone:secret-east-passage",
+        "wall": "east",
+        "offset_m": 5
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:secret-latrine",
+        "wall": "west",
+        "offset_m": 0.7
+      },
+      "b": {
+        "target": "zone:secret-east-passage",
+        "wall": "east",
+        "offset_m": 8.1
+      }
+    },
+    {
+      "level": -1,
+      "width_m": 1.2,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:secret-linen",
+        "wall": "west",
+        "offset_m": 1
+      },
+      "b": {
+        "target": "zone:secret-east-passage",
+        "wall": "east",
+        "offset_m": 11.2
+      }
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一対象一資料・生活と整合性の資料制作依頼",
+    "scope": "追加した空間と暮らしの制作設定。既存の出典と人の画像承認は変更しない。",
+    "changes_game_rules": false
+  }
+}

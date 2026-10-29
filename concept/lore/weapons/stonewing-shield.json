@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "id": "1c249804-6077-4efe-b57c-8baaff86231f",
+  "slug": "stonewing-shield",
+  "kind": "weapons",
+  "title": "石翼の盾",
+  "runtime": null,
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "historical_runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "1c249804-6077-4efe-b57c-8baaff86231f"
+  },
+  "entity_type": "visual-record",
+  "lore_status": "reference",
+  "tags": [
+    "装備造形",
+    "実行用データなし"
+  ]
+}

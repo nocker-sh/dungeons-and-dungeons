@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "id": "22fc495f-8f5e-4239-93dc-03bd6841047b",
+  "slug": "zaza",
+  "kind": "demons",
+  "title": "ザザ",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "22fc495f-8f5e-4239-93dc-03bd6841047b"
+  },
+  "related": [
+    {
+      "id": "1cda31a8-f190-4c40-8b75-cff10de8d894",
+      "document": "[[concept/demons/nui]]"
+    }
+  ],
+  "sources": [],
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "悪魔",
+    "共同生活"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 生活をつなぐ資料制作依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:secret-lox-zaza",
+      "meaning": "召喚中だけの仮置きではなく、ヨルたちと暮らす住まい。"
+    },
+    {
+      "type": "shares",
+      "target": "room:secret-common",
+      "meaning": "仕事の支度と会話をする。寝室とは分ける。"
+    }
+  ],
+  "livelihood": {
+    "routine_section": "帰宅と生活の設計"
+  }
+}

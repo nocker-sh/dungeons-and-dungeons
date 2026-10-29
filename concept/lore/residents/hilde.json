@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "id": "73a5f30f-e162-4eee-848c-13ee7265953e",
+  "slug": "hilde",
+  "kind": "residents",
+  "title": "ヒルデ",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "73a5f30f-e162-4eee-848c-13ee7265953e"
+  },
+  "related": [],
+  "sources": [],
+  "gender": "女性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "residents",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "73a5f30f-e162-4eee-848c-13ee7265953e"
+    },
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "父のハンマーを遺品と扱わず、骨の加工と寝具の保管を隣接させない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:smithy-bedroom",
+      "meaning": "仕事と切り離して睡眠と着替えを行う。"
+    },
+    {
+      "type": "works_in",
+      "target": "room:smithy-work",
+      "meaning": "既存の店の仕事場。"
+    }
+  ]
+}

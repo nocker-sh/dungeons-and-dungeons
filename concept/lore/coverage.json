@@ -1,0 +1,44 @@
+{
+  "sources": [
+    {
+      "file": "[[concept/data/characters.json]]",
+      "collection": "character-groups"
+    },
+    {
+      "file": "[[concept/data/players.json]]",
+      "collection": "array"
+    },
+    {
+      "file": "[[concept/data/world.json]]",
+      "collection": "array"
+    },
+    {
+      "file": "[[concept/data/effects.json]]",
+      "collection": "array"
+    },
+    {
+      "file": "[[content/data/goods.json]]",
+      "collection": "array"
+    },
+    {
+      "file": "[[content/data/foes.json]]",
+      "collection": "array"
+    },
+    {
+      "file": "[[content/data/rooms.json]]",
+      "collection": "array"
+    },
+    {
+      "file": "[[content/data/layers.json]]",
+      "collection": "array"
+    },
+    {
+      "file": "[[content/data/shops.json]]",
+      "collection": "array"
+    },
+    {
+      "file": "[[content/data/world-map.json]]",
+      "collection": "world-tiles"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "id": "61893649-624b-4c84-882b-5d4df3e8a8bb",
+  "slug": "hiyokobu",
+  "kind": "monsters",
+  "title": "ダックリング",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "61893649-624b-4c84-882b-5d4df3e8a8bb"
+  },
+  "related": [
+    {
+      "id": "29ed2718-1c81-4e16-9230-2e80870a0298",
+      "document": "[[concept/monsters/kamokutsu]]"
+    },
+    {
+      "id": "569b9fb2-dbc4-4d55-8ff5-796134341dc5",
+      "document": "[[concept/monsters/kamokutsu-mud]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー提供の原資料：112_ヒヨコブ.png"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "61893649-624b-4c84-882b-5d4df3e8a8bb"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-0",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "61893649-624b-4c84-882b-5d4df3e8a8bb"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "61893649-624b-4c84-882b-5d4df3e8a8bb"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

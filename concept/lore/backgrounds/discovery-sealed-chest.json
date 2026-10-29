@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "id": "7c534df4-b7c9-4b3a-90c7-dd57f0eaa2a9",
+  "slug": "discovery-sealed-chest",
+  "kind": "backgrounds",
+  "title": "封じられた宝箱",
+  "runtime": null,
+  "related": [
+    {
+      "id": "607cef76-34b8-4650-9d94-aa002c504b16",
+      "document": "[[concept/world/world-space-camera]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/layers.json / 既存イベントの場所と用事"
+    },
+    {
+      "reference": "ユーザー指示 / 生成前の空間計画と映画的なカメラ"
+    }
+  ],
+  "entity_type": "scene-template",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "scene-template"
+  ]
+}

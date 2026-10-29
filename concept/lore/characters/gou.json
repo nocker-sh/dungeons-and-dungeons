@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "id": "b7925912-35a3-4f8f-b42e-d59581a71e19",
+  "slug": "gou",
+  "kind": "characters",
+  "title": "ゴウ",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "b7925912-35a3-4f8f-b42e-d59581a71e19"
+  },
+  "related": [
+    {
+      "id": "room:guild-normal-front",
+      "document": "[[concept/rooms/guild-normal-front]]"
+    }
+  ],
+  "sources": [],
+  "gender": "男性",
+  "growth_intent": {
+    "rate": "遅い",
+    "early": "伸びにくい",
+    "middle": "普通",
+    "late": "伸びやすい"
+  },
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "characters",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "b7925912-35a3-4f8f-b42e-d59581a71e19"
+    },
+    "routine_section": "生活動線の制作設計",
+    "lodging": {
+      "target": "room:guild-normal-front",
+      "condition": "ギルドで宿泊契約を結び、空床の割当てを受けた場合の制作上の部屋割り。常住・無料宿泊・実行時の購入済み状態を意味しない。",
+      "routine_section": "宿泊する場合の寝床と移動"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "取り戻したい斧を、現在の部屋に所有している道具として置かない。"
+    ]
+  }
+}

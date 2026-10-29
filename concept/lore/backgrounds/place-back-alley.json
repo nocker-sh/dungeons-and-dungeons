@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "id": "328e65c5-a87d-47fd-92ce-df1e24af418f",
+  "slug": "place-back-alley",
+  "kind": "backgrounds",
+  "title": "路地裏",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "328e65c5-a87d-47fd-92ce-df1e24af418f"
+  },
+  "related": [
+    {
+      "id": "88a1ef98-fc3f-4c4e-a049-59feecd9f55e",
+      "document": "[[concept/backgrounds/place-shop]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示 / クエストで戦う場所を増やす（道・街中）"
+    }
+  ],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "site"
+  ]
+}

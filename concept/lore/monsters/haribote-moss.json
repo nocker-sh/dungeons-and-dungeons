@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "id": "90b7be26-2a70-4c76-bea3-5c8c840a860e",
+  "slug": "haribote-moss",
+  "kind": "monsters",
+  "title": "アンバーホッグ",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "90b7be26-2a70-4c76-bea3-5c8c840a860e"
+  },
+  "related": [
+    {
+      "id": "539a2b7f-8e2b-4484-882a-ca1c50be7709",
+      "document": "[[concept/monsters/haribote]]"
+    },
+    {
+      "id": "0db315b8-06b0-4c86-817a-5f50ab70e30a",
+      "document": "[[concept/monsters/haribote-adult]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：採用モンスターの亜種・大人を内蔵image_genで制作"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "90b7be26-2a70-4c76-bea3-5c8c840a860e"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "90b7be26-2a70-4c76-bea3-5c8c840a860e"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "90b7be26-2a70-4c76-bea3-5c8c840a860e"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "id": "8f7db974-0adf-4b73-81ba-44494112f3bd",
+  "slug": "robe",
+  "kind": "armor",
+  "title": "符綴じの戦闘外套",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "8f7db974-0adf-4b73-81ba-44494112f3bd"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "armor",
+    "armor",
+    "手入れと流通"
+  ],
+  "relations": [
+    {
+      "type": "sold_by",
+      "target": "75f62b3a-a441-453c-a80a-37549e63f458",
+      "meaning": "正本の販売対象。価格と在庫規則は店データに従う。"
+    },
+    {
+      "type": "appraised_by",
+      "target": "75f62b3a-a441-453c-a80a-37549e63f458",
+      "meaning": "正本の鑑定対象。出る品と確率を資料で固定しない。"
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 全ての内容に意味と生活を持たせる資料制作依頼",
+    "scope": "手入れと運搬の制作設定",
+    "changes_game_rules": false
+  },
+  "handling": {
+    "rule_source": {
+      "file": "[[content/data/goods.json]]",
+      "id": "8f7db974-0adf-4b73-81ba-44494112f3bd"
+    },
+    "routine_section": "暮らしの中での取り扱い"
+  }
+}

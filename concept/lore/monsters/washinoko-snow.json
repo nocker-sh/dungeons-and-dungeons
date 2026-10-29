@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "id": "ab2284ee-ddb0-4da3-9f14-c5e1a09bc916",
+  "slug": "washinoko-snow",
+  "kind": "monsters",
+  "title": "アッシュホーク",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "ab2284ee-ddb0-4da3-9f14-c5e1a09bc916"
+  },
+  "related": [
+    {
+      "id": "4790537c-c395-4bc5-9649-005d2fcf52a5",
+      "document": "[[concept/monsters/washinoko]]"
+    },
+    {
+      "id": "8aae8f96-edbf-4649-82cb-4c6d7b12d1a8",
+      "document": "[[concept/monsters/washinoko-adult]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：採用モンスターの亜種・大人を内蔵image_genで制作"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "ab2284ee-ddb0-4da3-9f14-c5e1a09bc916"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "ab2284ee-ddb0-4da3-9f14-c5e1a09bc916"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "ab2284ee-ddb0-4da3-9f14-c5e1a09bc916"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

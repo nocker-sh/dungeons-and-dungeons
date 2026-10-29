@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "id": "room:armory-work",
+  "slug": "armory-work",
+  "kind": "rooms",
+  "title": "武具店の仕事場",
+  "runtime": null,
+  "related": [
+    {
+      "id": "bfa763f0-cfe8-4ea2-b6c9-fbe244d7db46",
+      "document": "[[concept/backgrounds/place-armory]]"
+    },
+    {
+      "id": "75f62b3a-a441-453c-a80a-37549e63f458",
+      "document": "[[concept/residents/otto]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "仕事場の見え方: .docs/concept/backgrounds/place-armory.md"
+    },
+    {
+      "reference": "住まいの制作: 2026-10-28 ユーザー依頼"
+    }
+  ],
+  "entity_type": "room",
+  "lore_status": "active",
+  "tags": [
+    "武具店",
+    "生活設備"
+  ],
+  "authorship": {
+    "basis": "全ての部屋を生活できる設計にする依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "bfa763f0-cfe8-4ea2-b6c9-fbe244d7db46",
+    "map": "map:armory",
+    "zone": "地上階"
+  },
+  "spatial": {
+    "width_m": 5,
+    "depth_m": 6,
+    "ceiling_m": 2.8,
+    "capacity": 5,
+    "egress": "仕事場側の表口と、生活用通路の裏口へ出られる。店の道具を通路と扉の前へ置かない。"
+  },
+  "life_support": {
+    "sleep": {
+      "target": "room:armory-bedroom",
+      "provision": "仕事を終え、衣服を替えて寝室で休む。"
+    },
+    "food": {
+      "target": "room:armory-kitchen",
+      "provision": "仕事の鍋と別の台所で食事を作り食べる。"
+    },
+    "water": {
+      "target": "room:armory-kitchen",
+      "provision": "配られた飲用水を蓋付き容器で保管する。"
+    },
+    "wash": {
+      "target": "room:armory-wash",
+      "provision": "通路から入り、身体と作業の汚れを落とす。"
+    },
+    "toilet": {
+      "target": "room:armory-toilet",
+      "provision": "通路から利用し、密閉回収を行う。"
+    },
+    "air": {
+      "target": "room:armory-work",
+      "provision": "外壁の窓または専用換気口を外へ抜き、炉や便所の空気を寝室へ戻さない。"
+    },
+    "light": {
+      "target": "room:armory-work",
+      "provision": "入口の固定灯と用途に合った手元灯。布と紙へ裸火を近付けない。"
+    },
+    "storage": {
+      "target": "room:armory-work",
+      "provision": "用途ごとの壁際収納。通路と扉の前を空ける。"
+    },
+    "access": {
+      "target": "room:armory-passage",
+      "provision": "表口と裏口をつなぐ幅1.2mの経路を使う。"
+    }
+  }
+}

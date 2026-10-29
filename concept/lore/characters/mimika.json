@@ -1,0 +1,51 @@
+{
+  "schema_version": 2,
+  "id": "56e31d5e-a23d-48b6-8152-ba781dd275f7",
+  "slug": "mimika",
+  "kind": "characters",
+  "title": "ミミカ",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "56e31d5e-a23d-48b6-8152-ba781dd275f7"
+  },
+  "related": [],
+  "sources": [],
+  "growth_intent": {
+    "rate": "普通",
+    "early": "普通",
+    "middle": "普通",
+    "late": "普通"
+  },
+  "gender": "女性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "characters",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "56e31d5e-a23d-48b6-8152-ba781dd275f7"
+    },
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "客席を増やすために固有の一席をなくさない。興行の成功を決定済みの未来にしない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:shadow-theatre-bedroom",
+      "meaning": "既存の生活動機を具体化する寝室。"
+    }
+  ]
+}

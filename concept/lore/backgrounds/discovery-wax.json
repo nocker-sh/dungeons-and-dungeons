@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "id": "01f3798d-92c0-4395-8991-09288b8b742d",
+  "slug": "discovery-wax",
+  "kind": "backgrounds",
+  "title": "封蝋の巡礼所",
+  "runtime": null,
+  "related": [
+    {
+      "id": "607cef76-34b8-4650-9d94-aa002c504b16",
+      "document": "[[concept/world/world-space-camera]]"
+    },
+    {
+      "id": "920b6fd0-4562-46c9-b9a4-717d7a87b5da",
+      "document": "[[concept/backgrounds/place-layer4]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/layers.json / 既存イベントの場所と用事"
+    },
+    {
+      "reference": "ユーザー指示 / 生成前の空間計画と映画的なカメラ"
+    }
+  ],
+  "entity_type": "scene-template",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "scene-template"
+  ]
+}

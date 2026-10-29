@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "id": "898b2804-3b16-4560-a125-94abbe843c6b",
+  "slug": "place-guild",
+  "kind": "backgrounds",
+  "title": "冒険者ギルド",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "898b2804-3b16-4560-a125-94abbe843c6b"
+  },
+  "related": [
+    {
+      "id": "d5100106-ff86-494b-a10b-b11255b0b932",
+      "document": "[[concept/residents/milena]]"
+    },
+    {
+      "id": "c39344d9-2458-4bf6-93d2-36f385239d33",
+      "document": "[[concept/backgrounds/place-guild-reception]]"
+    },
+    {
+      "id": "e6da2353-9c69-47c7-8a4f-564899e3d92d",
+      "document": "[[concept/backgrounds/place-inn]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "dungeons-concept / README.md・home.html"
+    },
+    {
+      "reference": "ユーザー指示 / 宿屋はギルドの中に入れる・ギルドの中の受付"
+    }
+  ],
+  "lore_status": "active",
+  "tags": [
+    "ギルド",
+    "空間"
+  ],
+  "entity_type": "building",
+  "relations": [
+    {
+      "type": "mapped_by",
+      "target": "map:guild",
+      "meaning": "客室と生活設備を含む建物の配置。"
+    }
+  ]
+}

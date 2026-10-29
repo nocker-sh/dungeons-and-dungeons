@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "id": "93ae2581-e948-4b30-a79b-0afb847347f4",
+  "slug": "place-smithy",
+  "kind": "backgrounds",
+  "title": "鍛冶屋",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "93ae2581-e948-4b30-a79b-0afb847347f4"
+  },
+  "related": [
+    {
+      "id": "73a5f30f-e162-4eee-848c-13ee7265953e",
+      "document": "[[concept/residents/hilde]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示"
+    }
+  ],
+  "entity_type": "building",
+  "lore_status": "active",
+  "tags": [
+    "街",
+    "商い",
+    "住まい"
+  ],
+  "relations": [
+    {
+      "type": "mapped_by",
+      "target": "map:smithy",
+      "meaning": "既存の仕事場の画面寸法を保ち、奥の生活区画をつなぐ。"
+    },
+    {
+      "type": "depicts",
+      "target": "room:smithy-work",
+      "meaning": "背景で見えるのは建物内の仕事場。居住部分を同じ床へ詰め込まない。"
+    }
+  ]
+}

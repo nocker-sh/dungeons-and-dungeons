@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "id": "973c11c6-e9d2-423f-bcbc-f2ae9d7a5a20",
+  "slug": "kubikoki",
+  "kind": "monsters",
+  "title": "クビコキ",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "973c11c6-e9d2-423f-bcbc-f2ae9d7a5a20"
+  },
+  "related": [
+    {
+      "id": "4ae48d64-3bc0-4bff-9ef9-fc30e3d49c84",
+      "document": "[[concept/monsters/numa-koki]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー選定のモンスター案（デスクトップ「内定」）"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "archived",
+  "tags": [
+    "モンスター",
+    "不採用"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "973c11c6-e9d2-423f-bcbc-f2ae9d7a5a20"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "973c11c6-e9d2-423f-bcbc-f2ae9d7a5a20"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "973c11c6-e9d2-423f-bcbc-f2ae9d7a5a20"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。",
+      "不採用の個体を現行の出現生物へ戻さない。"
+    ]
+  }
+}

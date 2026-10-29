@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "id": "6b08dfbc-bfb1-42fb-82ad-a9ade5d3a727",
+  "slug": "discovery-gravekeeper-rest",
+  "kind": "backgrounds",
+  "title": "墓守の灯",
+  "runtime": null,
+  "related": [
+    {
+      "id": "607cef76-34b8-4650-9d94-aa002c504b16",
+      "document": "[[concept/world/world-space-camera]]"
+    },
+    {
+      "id": "742dad77-7906-47fb-b167-c1a20ed6b24c",
+      "document": "[[concept/backgrounds/place-layer1]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/layers.json / 既存イベントの場所と用事"
+    },
+    {
+      "reference": "ユーザー指示 / 生成前の空間計画と映画的なカメラ"
+    }
+  ],
+  "entity_type": "scene-template",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "scene-template"
+  ]
+}

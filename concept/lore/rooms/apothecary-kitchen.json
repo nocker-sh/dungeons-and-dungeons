@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "id": "room:apothecary-kitchen",
+  "slug": "apothecary-kitchen",
+  "kind": "rooms",
+  "title": "薬屋の台所",
+  "runtime": null,
+  "related": [
+    {
+      "id": "e014c850-9102-4a16-b578-6913f9f49fa2",
+      "document": "[[concept/backgrounds/place-apothecary]]"
+    },
+    {
+      "id": "eab50e26-0001-4116-8158-bd248f514e56",
+      "document": "[[concept/residents/morna]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "仕事場の見え方: .docs/concept/backgrounds/place-apothecary.md"
+    },
+    {
+      "reference": "住まいの制作: 2026-10-28 ユーザー依頼"
+    }
+  ],
+  "entity_type": "room",
+  "lore_status": "active",
+  "tags": [
+    "薬屋",
+    "生活設備"
+  ],
+  "authorship": {
+    "basis": "全ての部屋を生活できる設計にする依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "e014c850-9102-4a16-b578-6913f9f49fa2",
+    "map": "map:apothecary",
+    "zone": "地上階"
+  },
+  "spatial": {
+    "width_m": 3.1,
+    "depth_m": 3.6,
+    "ceiling_m": 2.8,
+    "capacity": 1,
+    "egress": "仕事場側の表口と、生活用通路の裏口へ出られる。店の道具を通路と扉の前へ置かない。"
+  },
+  "life_support": {
+    "sleep": {
+      "target": "room:apothecary-bedroom",
+      "provision": "仕事を終え、衣服を替えて寝室で休む。"
+    },
+    "food": {
+      "target": "room:apothecary-kitchen",
+      "provision": "調合用の器と薬の材料を持ち込まず、生活用の竈・食器・一人分の食卓で食べる。"
+    },
+    "water": {
+      "target": "room:apothecary-kitchen",
+      "provision": "配られた飲用水を蓋付き容器で保管する。"
+    },
+    "wash": {
+      "target": "room:apothecary-wash",
+      "provision": "通路から入り、身体と作業の汚れを落とす。"
+    },
+    "toilet": {
+      "target": "room:apothecary-toilet",
+      "provision": "通路から利用し、密閉回収を行う。"
+    },
+    "air": {
+      "target": "room:apothecary-kitchen",
+      "provision": "東の外壁に高窓と給気口を設け、生活用の竈の煙は専用の煙突で屋外へ出す。仕事場と便所の排気にはつながない。"
+    },
+    "light": {
+      "target": "room:apothecary-kitchen",
+      "provision": "入口の固定灯と用途に合った手元灯。布と紙へ裸火を近付けない。"
+    },
+    "storage": {
+      "target": "room:apothecary-kitchen",
+      "provision": "食材と清潔な食器は東壁の蓋付き棚に保管する。仕事の器、燃料、油布は仕事場側に置く。"
+    },
+    "access": {
+      "target": "room:apothecary-passage",
+      "provision": "表口と裏口をつなぐ幅1.2mの経路を使う。"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "0e84d744-7f37-4871-84f0-f6bfc46209ee",
+  "slug": "agohitsu-stone",
+  "kind": "monsters",
+  "title": "サバトホーン",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "0e84d744-7f37-4871-84f0-f6bfc46209ee"
+  },
+  "related": [
+    {
+      "id": "495dd552-d553-4a92-b408-6f336c221ae2",
+      "document": "[[concept/monsters/agohitsu]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：採用モンスターの亜種・大人を内蔵image_genで制作"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "0e84d744-7f37-4871-84f0-f6bfc46209ee"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "0e84d744-7f37-4871-84f0-f6bfc46209ee"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "0e84d744-7f37-4871-84f0-f6bfc46209ee"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

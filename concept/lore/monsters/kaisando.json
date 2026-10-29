@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "id": "0bd25319-47c6-4761-8c7a-49535e14a938",
+  "slug": "kaisando",
+  "kind": "monsters",
+  "title": "パッチクローク",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "0bd25319-47c6-4761-8c7a-49535e14a938"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "ユーザー提供の原資料：069_カイサンド.png"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "0bd25319-47c6-4761-8c7a-49535e14a938"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-4",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "0bd25319-47c6-4761-8c7a-49535e14a938"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "0bd25319-47c6-4761-8c7a-49535e14a938"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

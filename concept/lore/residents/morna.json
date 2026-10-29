@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "id": "eab50e26-0001-4116-8158-bd248f514e56",
+  "slug": "morna",
+  "kind": "residents",
+  "title": "モルナ",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "eab50e26-0001-4116-8158-bd248f514e56"
+  },
+  "related": [],
+  "sources": [],
+  "gender": "女性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "residents",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "eab50e26-0001-4116-8158-bd248f514e56"
+    },
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "師匠を故人として扱わず、現在の所在や花の具体的な位置を新しく確定しない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:apothecary-bedroom",
+      "meaning": "仕事と切り離して睡眠と着替えを行う。"
+    },
+    {
+      "type": "works_in",
+      "target": "room:apothecary-work",
+      "meaning": "既存の店の仕事場。"
+    }
+  ]
+}

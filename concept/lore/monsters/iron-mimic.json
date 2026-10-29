@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "id": "c7e4b60c-edc5-4071-b956-c883f1ca51b3",
+  "slug": "iron-mimic",
+  "kind": "monsters",
+  "title": "アイアンミミック",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "c7e4b60c-edc5-4071-b956-c883f1ca51b3"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "ユーザー指示：黒いどろどろのスライムと、宝箱として登場する3段階のミミック"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "c7e4b60c-edc5-4071-b956-c883f1ca51b3"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "c7e4b60c-edc5-4071-b956-c883f1ca51b3"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "c7e4b60c-edc5-4071-b956-c883f1ca51b3"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

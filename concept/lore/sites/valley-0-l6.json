@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "id": "9de7d35a-f278-4a77-8017-92c121958caa:station:l6",
+  "slug": "valley-0-l6",
+  "kind": "sites",
+  "title": "結晶の洞窟・下側の戻り口",
+  "runtime": {
+    "file": "[[content/data/layers.json]]",
+    "id": "l6",
+    "parent_id": "9de7d35a-f278-4a77-8017-92c121958caa"
+  },
+  "related": [
+    {
+      "id": "map:valley-0",
+      "document": "[[concept/maps/valley-0]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "地点の存在と接続: content/data/layers.json"
+    },
+    {
+      "reference": "生活動線と役割: 2026-10-28 資料制作依頼"
+    }
+  ],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "谷",
+    "0層",
+    "l6"
+  ],
+  "authorship": {
+    "basis": "一地点ずつ意味と生活を整える依頼",
+    "scope": "地点の使い方の制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "map:valley-0",
+    "map": "map:valley-0",
+    "zone": "l6"
+  },
+  "relations": [
+    {
+      "type": "route_to",
+      "target": "9de7d35a-f278-4a77-8017-92c121958caa:station:n7",
+      "meaning": "ゲームの進行経路。実寸の通路長を表さない。"
+    }
+  ],
+  "continuity": {
+    "keep": [
+      "実際の遭遇・報酬・解放条件は実行用データを正とする。",
+      "第四層より先の内容を確定しない。"
+    ]
+  }
+}

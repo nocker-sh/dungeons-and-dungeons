@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "id": "0e6cb683-9ead-4be4-82ce-25185c958902",
+  "slug": "zepp",
+  "kind": "residents",
+  "title": "ゼップ",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "0e6cb683-9ead-4be4-82ce-25185c958902"
+  },
+  "related": [
+    {
+      "id": "building:zepp-home",
+      "document": "[[concept/locations/zepp-home]]"
+    },
+    {
+      "id": "room:zepp-home-bedroom",
+      "document": "[[concept/rooms/zepp-home-bedroom]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示（2026-10-12 モブの住民を増やす）"
+    }
+  ],
+  "gender": "男性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "residents",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "現在も第四層へ降りている設定にしない。口調をワルターへ寄せない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:zepp-home-bedroom",
+      "meaning": "本人が仕事と分けて休む寝台。住まいの空間は今回の制作設定。"
+    }
+  ]
+}

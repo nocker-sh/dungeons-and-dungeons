@@ -108,7 +108,7 @@ vp exec bun tests/e2e/night-talk.ts # 初期編成で宿泊から二人雑談へ
 | [bag-equipment-cost.ts](bag-equipment-cost.ts)       | 装備150個追加時の候補Query回数・一覧件数・閲覧中の保存保持（3幅）                             |
 | [bag-broken-comparison.ts](bag-broken-comparison.ts) | 耐久切れ防具を渡す前の警告、取消の保存全体保持（3ケース）                                     |
 
-到達層・消耗・防具なしは保存境界で準備する。比較と案内の検証を、自然な入手頻度の測定とは区別する。鑑定の実入手と装備は `content/exploration-armor.test.ts`、進行の目標は `vp run cli check --json` で確認する。最近の測定は [魔術系防具の追加記録](../.docs/verification/mage-armor-appraisal-2026-10-10.json)。
+到達層・消耗・防具なしは保存境界で準備する。比較と案内の検証を、自然な入手頻度の測定とは区別する。鑑定の実入手と装備は `content/exploration-armor.test.ts`、進行の目標は `vp run cli check --json` で確認する。
 
 ## 宿の金貨不足と突破後の帰還
 

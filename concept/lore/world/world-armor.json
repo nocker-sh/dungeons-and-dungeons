@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "id": "928b482e-bd5b-4bb7-8f47-589557f48ab2",
+  "slug": "world-armor",
+  "kind": "world",
+  "title": "防具の素材とキャラごとの仕立て",
+  "runtime": null,
+  "related": [
+    {
+      "id": "e7883b7f-237f-4de0-a73d-196b09e705b5",
+      "document": "[[concept/characters/alda]]"
+    },
+    {
+      "id": "a43310c2-98c6-41e1-b8f6-facf50b5f413",
+      "document": "[[concept/characters/gald]]"
+    },
+    {
+      "id": "1aac56f8-7a5c-4199-8100-91caf9e283a6",
+      "document": "[[concept/characters/mort]]"
+    },
+    {
+      "id": "cf7498a0-fa43-457f-b018-a9f19764645e",
+      "document": "[[concept/characters/rivet]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：素材を生かした服、コンセプトを保った個別の仕立て、性別で分けずキャラの個性に合わせる"
+    }
+  ],
+  "entity_type": "world-system",
+  "lore_status": "active",
+  "tags": [
+    "world",
+    "world-system"
+  ]
+}

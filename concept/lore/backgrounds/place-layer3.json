@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "id": "b693cf1b-a67d-4bde-a47f-808689a0870a",
+  "slug": "place-layer3",
+  "kind": "backgrounds",
+  "title": "毒沼の温室",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "b693cf1b-a67d-4bde-a47f-808689a0870a"
+  },
+  "related": [],
+  "sources": [],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "site"
+  ]
+}

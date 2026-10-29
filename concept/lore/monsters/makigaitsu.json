@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "id": "a93a40ce-dacc-4a01-a8c5-8ff7289b6650",
+  "slug": "makigaitsu",
+  "kind": "monsters",
+  "title": "スピラスネイル",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "a93a40ce-dacc-4a01-a8c5-8ff7289b6650"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "ユーザー選定のモンスター案（デスクトップ「内定」）"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "a93a40ce-dacc-4a01-a8c5-8ff7289b6650"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-3",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "a93a40ce-dacc-4a01-a8c5-8ff7289b6650"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "a93a40ce-dacc-4a01-a8c5-8ff7289b6650"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

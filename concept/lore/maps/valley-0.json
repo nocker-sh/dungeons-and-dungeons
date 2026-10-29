@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "id": "map:valley-0",
+  "slug": "valley-0",
+  "kind": "maps",
+  "title": "結晶の洞窟の地点配置図",
+  "runtime": {
+    "file": "[[content/data/layers.json]]",
+    "id": "9de7d35a-f278-4a77-8017-92c121958caa"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "content/data/layers.json の地点と接続"
+    }
+  ],
+  "entity_type": "map",
+  "lore_status": "active",
+  "tags": [
+    "谷",
+    "0層",
+    "経路"
+  ],
+  "topology": {
+    "source": "content/data/layers.json",
+    "parent_id": "9de7d35a-f278-4a77-8017-92c121958caa",
+    "nodes": [
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:s",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n1",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n2",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n3",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n4",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:u5",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:u6",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:l5",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:l6",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n7",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n8",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n9",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n10",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n11",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:u12",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:u13",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:l12",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:l13",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n14",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n15",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:n16",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:l10",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:m3",
+      "9de7d35a-f278-4a77-8017-92c121958caa:station:m15"
+    ]
+  },
+  "authorship": {
+    "basis": "2026-10-28 一対象一資料・生活と整合性の資料制作依頼",
+    "scope": "追加した空間と暮らしの制作設定。既存の出典と人の画像承認は変更しない。",
+    "changes_game_rules": false
+  }
+}

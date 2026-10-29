@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "id": "71a02ed5-31dd-43c8-9192-94db906271ec",
+  "slug": "peripoke",
+  "kind": "monsters",
+  "title": "ペリカーゴ",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "71a02ed5-31dd-43c8-9192-94db906271ec"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "ユーザー選定のモンスター案（デスクトップ「内定」）"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "71a02ed5-31dd-43c8-9192-94db906271ec"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-2",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "71a02ed5-31dd-43c8-9192-94db906271ec"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "71a02ed5-31dd-43c8-9192-94db906271ec"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

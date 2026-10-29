@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "dd7b3ed3-0726-4725-92f7-51ceee2a40e6",
+  "slug": "yadocup-demon",
+  "kind": "monsters",
+  "title": "デビルカリクス",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "dd7b3ed3-0726-4725-92f7-51ceee2a40e6"
+  },
+  "related": [
+    {
+      "id": "a429af02-f106-4a04-baed-d9d4eee614c5",
+      "document": "[[concept/monsters/yadocup]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：毒・火・悪魔の亜種を追加"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "dd7b3ed3-0726-4725-92f7-51ceee2a40e6"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "dd7b3ed3-0726-4725-92f7-51ceee2a40e6"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "dd7b3ed3-0726-4725-92f7-51ceee2a40e6"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

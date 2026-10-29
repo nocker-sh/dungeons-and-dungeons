@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "id": "44ee6282-9cfc-4ac6-be7e-1acf32e2732a",
+  "slug": "irma",
+  "kind": "residents",
+  "title": "イルマ",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "44ee6282-9cfc-4ac6-be7e-1acf32e2732a"
+  },
+  "related": [
+    {
+      "id": "building:irma-home",
+      "document": "[[concept/locations/irma-home]]"
+    },
+    {
+      "id": "room:irma-home-bedroom",
+      "document": "[[concept/rooms/irma-home-bedroom]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示（2026-10-12 モブの住民を増やす）"
+    }
+  ],
+  "gender": "女性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "residents",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "代金を出す人の素性を、帳簿の空欄を埋めるために創作しない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:irma-home-bedroom",
+      "meaning": "本人が仕事と分けて休む寝台。住まいの空間は今回の制作設定。"
+    }
+  ]
+}

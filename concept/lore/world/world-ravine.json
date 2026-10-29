@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "3bf2d69d-74f4-47e6-ace6-d72ba9b2ad46",
+  "slug": "world-ravine",
+  "kind": "world",
+  "title": "底の見えない大渓谷",
+  "runtime": null,
+  "related": [
+    {
+      "id": "745cd2b6-bf2e-4cd7-ab49-0ebe92d08eec",
+      "document": "[[concept/backgrounds/place-outskirts]]"
+    },
+    {
+      "id": "f1211d70-3fc4-4803-84ef-d1c3bfaa98c5",
+      "document": "[[concept/backgrounds/place-layer0]]"
+    },
+    {
+      "id": "742dad77-7906-47fb-b167-c1a20ed6b24c",
+      "document": "[[concept/backgrounds/place-layer1]]"
+    },
+    {
+      "id": "82a283db-d672-4a55-907b-a238cd2802ed",
+      "document": "[[concept/backgrounds/place-layer2]]"
+    },
+    {
+      "id": "b693cf1b-a67d-4bde-a47f-808689a0870a",
+      "document": "[[concept/backgrounds/place-layer3]]"
+    },
+    {
+      "id": "920b6fd0-4562-46c9-b9a4-717d7a87b5da",
+      "document": "[[concept/backgrounds/place-layer4]]"
+    },
+    {
+      "id": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+      "document": "[[concept/demons/lox]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "dungeons-concept / README.md・home.html"
+    },
+    {
+      "reference": "ユーザー指示（2026-10-10 トーンと物語の軸）"
+    }
+  ],
+  "entity_type": "world-system",
+  "lore_status": "active",
+  "tags": [
+    "world",
+    "world-system"
+  ]
+}

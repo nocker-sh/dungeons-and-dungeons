@@ -1,0 +1,152 @@
+{
+  "schema_version": 2,
+  "id": "map:hanna-home",
+  "slug": "hanna-home",
+  "kind": "maps",
+  "title": "ハンナの住まいの生活配置図",
+  "runtime": null,
+  "related": [
+    {
+      "id": "building:hanna-home",
+      "document": "[[concept/locations/hanna-home]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "[[mob-residents]]"
+    },
+    {
+      "reference": "2026-10-28 一室一資料と暮らしの制作依頼"
+    }
+  ],
+  "entity_type": "map",
+  "lore_status": "active",
+  "tags": [
+    "住まい",
+    "配置"
+  ],
+  "bounds": {
+    "width_m": 4.5,
+    "depth_m": 17.6
+  },
+  "placements": [
+    {
+      "target": "room:hanna-home-living",
+      "level": 0,
+      "x_m": 0,
+      "y_m": 0
+    },
+    {
+      "target": "room:hanna-home-kitchen",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 4.4
+    },
+    {
+      "target": "room:hanna-home-bedroom",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 7.6
+    },
+    {
+      "target": "room:hanna-home-wash",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 13.4
+    },
+    {
+      "target": "room:hanna-home-toilet",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 15.6
+    },
+    {
+      "target": "room:hanna-home-passage",
+      "level": 0,
+      "x_m": 0,
+      "y_m": 4.4
+    }
+  ],
+  "doors": [
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:hanna-home-living",
+        "wall": "south",
+        "offset_m": 0.15
+      },
+      "b": {
+        "target": "room:hanna-home-passage",
+        "wall": "north",
+        "offset_m": 0.15
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:hanna-home-kitchen",
+        "wall": "west",
+        "offset_m": 0.8
+      },
+      "b": {
+        "target": "room:hanna-home-passage",
+        "wall": "east",
+        "offset_m": 0.8
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:hanna-home-bedroom",
+        "wall": "west",
+        "offset_m": 2.35
+      },
+      "b": {
+        "target": "room:hanna-home-passage",
+        "wall": "east",
+        "offset_m": 5.55
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:hanna-home-wash",
+        "wall": "west",
+        "offset_m": 0.5
+      },
+      "b": {
+        "target": "room:hanna-home-passage",
+        "wall": "east",
+        "offset_m": 9.5
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:hanna-home-toilet",
+        "wall": "west",
+        "offset_m": 0.5
+      },
+      "b": {
+        "target": "room:hanna-home-passage",
+        "wall": "east",
+        "offset_m": 11.7
+      }
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一対象一資料・生活と整合性の資料制作依頼",
+    "scope": "追加した空間と暮らしの制作設定。既存の出典と人の画像承認は変更しない。",
+    "changes_game_rules": false
+  }
+}

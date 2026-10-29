@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "id": "34233f3c-e646-40c6-8a1e-7c93b27be0a4",
+  "slug": "hero",
+  "kind": "players",
+  "title": "紫髪",
+  "runtime": {
+    "file": "[[concept/data/players.json]]",
+    "id": "34233f3c-e646-40c6-8a1e-7c93b27be0a4"
+  },
+  "related": [
+    {
+      "id": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+      "document": "[[concept/demons/lox]]"
+    },
+    {
+      "id": "c2bdf79a-f233-439e-a825-7cee02a19c6b",
+      "document": "[[concept/world/world-contract]]"
+    }
+  ],
+  "sources": [],
+  "entity_type": "visual-record",
+  "lore_status": "active",
+  "tags": [
+    "players",
+    "visual-record"
+  ],
+  "continuity": {
+    "keep": [
+      "プレイヤーの外見候補。独立した台詞・人格・来歴を付けない。"
+    ]
+  }
+}

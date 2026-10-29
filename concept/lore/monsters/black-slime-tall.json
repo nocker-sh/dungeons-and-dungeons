@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "id": "fed79135-c848-48e8-ad83-bf3b4a657247:black-slime-tall",
+  "slug": "black-slime-tall",
+  "kind": "monsters",
+  "title": "タールスライム（縦長）",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "fed79135-c848-48e8-ad83-bf3b4a657247"
+  },
+  "related": [
+    {
+      "id": "fed79135-c848-48e8-ad83-bf3b4a657247",
+      "document": "[[concept/monsters/black-slime]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "visual-record",
+  "lore_status": "reference",
+  "tags": [
+    "モンスター",
+    "個体の造形"
+  ],
+  "relations": [
+    {
+      "type": "depicts",
+      "target": "fed79135-c848-48e8-ad83-bf3b4a657247",
+      "meaning": "同じ種や本体の見え方の資料。別の生態と数値を新設しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "本体資料の暮らしと、この資料の個体の造形を参照",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "fed79135-c848-48e8-ad83-bf3b4a657247"
+    },
+    "encounter_source": null
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

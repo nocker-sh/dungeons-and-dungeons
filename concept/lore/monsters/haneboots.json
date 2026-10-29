@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "id": "f2bb31d9-6c17-4443-963d-3e95907cc7ef",
+  "slug": "haneboots",
+  "kind": "monsters",
+  "gender": "男性",
+  "title": "ブーツダック",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "f2bb31d9-6c17-4443-963d-3e95907cc7ef"
+  },
+  "related": [
+    {
+      "id": "29ed2718-1c81-4e16-9230-2e80870a0298",
+      "document": "[[concept/monsters/kamokutsu]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー提供の原資料：117_ハネブーツ.png"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "f2bb31d9-6c17-4443-963d-3e95907cc7ef"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "f2bb31d9-6c17-4443-963d-3e95907cc7ef"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "f2bb31d9-6c17-4443-963d-3e95907cc7ef"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

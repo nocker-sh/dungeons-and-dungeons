@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "id": "2ea1b696-2332-4a72-bf80-0debe88d2525",
+  "slug": "player-red",
+  "kind": "players",
+  "title": "赤髪",
+  "runtime": {
+    "file": "[[concept/data/players.json]]",
+    "id": "2ea1b696-2332-4a72-bf80-0debe88d2525"
+  },
+  "related": [
+    {
+      "id": "34233f3c-e646-40c6-8a1e-7c93b27be0a4",
+      "document": "[[concept/players/hero]]"
+    }
+  ],
+  "sources": [],
+  "entity_type": "visual-record",
+  "lore_status": "active",
+  "tags": [
+    "players",
+    "visual-record"
+  ],
+  "continuity": {
+    "keep": [
+      "プレイヤーの外見候補。独立した台詞・人格・来歴を付けない。"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "id": "6945cb51-820e-4538-8be2-c5b866d9e18e",
+  "slug": "place-shop-street",
+  "kind": "backgrounds",
+  "title": "商店街の曲がり角",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "6945cb51-820e-4538-8be2-c5b866d9e18e"
+  },
+  "related": [
+    {
+      "id": "88a1ef98-fc3f-4c4e-a049-59feecd9f55e",
+      "document": "[[concept/backgrounds/place-shop]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示 / クエストで戦う場所を増やす（道・街中）"
+    }
+  ],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "site"
+  ]
+}

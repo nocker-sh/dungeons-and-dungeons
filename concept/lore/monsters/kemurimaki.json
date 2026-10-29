@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "id": "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd",
+  "slug": "kemurimaki",
+  "kind": "monsters",
+  "title": "ケムレイス",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd"
+  },
+  "related": [
+    {
+      "id": "f190eccf-5c98-40d0-8ab6-03ede6cd0436",
+      "document": "[[concept/monsters/kemurimaki-ash]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー提供の原資料：155_ケムリマキ.png"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-1",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

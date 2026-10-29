@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "6c57887e-9c87-4b45-b225-9c5c5c881193",
+  "slug": "tsunofood-blue",
+  "kind": "monsters",
+  "title": "ルリククルス",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "6c57887e-9c87-4b45-b225-9c5c5c881193"
+  },
+  "related": [
+    {
+      "id": "3776eb0a-02ac-4f4f-9c66-c4434164b2b9",
+      "document": "[[concept/monsters/tsunofood]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：内蔵画像生成で亜種・大人を制作"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "6c57887e-9c87-4b45-b225-9c5c5c881193"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "6c57887e-9c87-4b45-b225-9c5c5c881193"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "6c57887e-9c87-4b45-b225-9c5c5c881193"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

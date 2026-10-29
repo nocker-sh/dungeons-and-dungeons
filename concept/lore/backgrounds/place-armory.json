@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "id": "bfa763f0-cfe8-4ea2-b6c9-fbe244d7db46",
+  "slug": "place-armory",
+  "kind": "backgrounds",
+  "title": "武器と防具",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "bfa763f0-cfe8-4ea2-b6c9-fbe244d7db46"
+  },
+  "related": [
+    {
+      "id": "75f62b3a-a441-453c-a80a-37549e63f458",
+      "document": "[[concept/residents/otto]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "dungeons-concept / README.md・home.html"
+    }
+  ],
+  "entity_type": "building",
+  "lore_status": "active",
+  "tags": [
+    "街",
+    "商い",
+    "住まい"
+  ],
+  "relations": [
+    {
+      "type": "mapped_by",
+      "target": "map:armory",
+      "meaning": "既存の仕事場の画面寸法を保ち、奥の生活区画をつなぐ。"
+    },
+    {
+      "type": "depicts",
+      "target": "room:armory-work",
+      "meaning": "背景で見えるのは建物内の仕事場。居住部分を同じ床へ詰め込まない。"
+    }
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/shops.json]]",
+      "id": "355d68f3-0162-40cf-ba89-0e8c3ea373b1"
+    }
+  ]
+}

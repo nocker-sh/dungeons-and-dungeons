@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "id": "a429af02-f106-4a04-baed-d9d4eee614c5",
+  "slug": "yadocup",
+  "kind": "monsters",
+  "title": "カリクス",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "a429af02-f106-4a04-baed-d9d4eee614c5"
+  },
+  "related": [
+    {
+      "id": "2b2fb38d-87fc-4490-a4be-4c582618aab5",
+      "document": "[[concept/monsters/yadocup-teapot]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー提供の原資料：077_ヤドカップ.png"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "a429af02-f106-4a04-baed-d9d4eee614c5"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-2",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "a429af02-f106-4a04-baed-d9d4eee614c5"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "a429af02-f106-4a04-baed-d9d4eee614c5"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

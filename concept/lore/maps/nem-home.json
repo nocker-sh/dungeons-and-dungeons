@@ -1,0 +1,170 @@
+{
+  "schema_version": 2,
+  "id": "map:nem-home",
+  "slug": "nem-home",
+  "kind": "maps",
+  "title": "ネムと相棒の住まいの生活配置図",
+  "runtime": null,
+  "related": [
+    {
+      "id": "building:nem-home",
+      "document": "[[concept/locations/nem-home]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "2026-10-28 生活できる部屋の制作依頼"
+    }
+  ],
+  "entity_type": "map",
+  "lore_status": "active",
+  "tags": [
+    "住まい",
+    "配置"
+  ],
+  "bounds": {
+    "width_m": 8.7,
+    "depth_m": 16
+  },
+  "placements": [
+    {
+      "target": "room:nem-home-living",
+      "level": 0,
+      "x_m": 0,
+      "y_m": 0
+    },
+    {
+      "target": "room:nem-home-kitchen",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 4.4
+    },
+    {
+      "target": "room:nem-home-bedroom",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 7.6
+    },
+    {
+      "target": "room:nem-home-wash",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 11.8
+    },
+    {
+      "target": "room:nem-home-toilet",
+      "level": 0,
+      "x_m": 1.4,
+      "y_m": 14
+    },
+    {
+      "target": "room:nem-home-passage",
+      "level": 0,
+      "x_m": 0,
+      "y_m": 4.4
+    },
+    {
+      "target": "site:nem-yard",
+      "level": 0,
+      "x_m": 4.7,
+      "y_m": 0
+    }
+  ],
+  "doors": [
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:nem-home-living",
+        "wall": "south",
+        "offset_m": 0.15
+      },
+      "b": {
+        "target": "room:nem-home-passage",
+        "wall": "north",
+        "offset_m": 0.15
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:nem-home-kitchen",
+        "wall": "west",
+        "offset_m": 0.8
+      },
+      "b": {
+        "target": "room:nem-home-passage",
+        "wall": "east",
+        "offset_m": 0.8
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:nem-home-bedroom",
+        "wall": "west",
+        "offset_m": 2.8
+      },
+      "b": {
+        "target": "room:nem-home-passage",
+        "wall": "east",
+        "offset_m": 6
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:nem-home-wash",
+        "wall": "west",
+        "offset_m": 0.5
+      },
+      "b": {
+        "target": "room:nem-home-passage",
+        "wall": "east",
+        "offset_m": 7.9
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 0.9,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:nem-home-toilet",
+        "wall": "west",
+        "offset_m": 0.5
+      },
+      "b": {
+        "target": "room:nem-home-passage",
+        "wall": "east",
+        "offset_m": 10.1
+      }
+    },
+    {
+      "level": 0,
+      "width_m": 1.6,
+      "height_m": 2.1,
+      "a": {
+        "target": "room:nem-home-living",
+        "wall": "east",
+        "offset_m": 1.5
+      },
+      "b": {
+        "target": "site:nem-yard",
+        "wall": "west",
+        "offset_m": 1.5
+      }
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一対象一資料・生活と整合性の資料制作依頼",
+    "scope": "追加した空間と暮らしの制作設定。既存の出典と人の画像承認は変更しない。",
+    "changes_game_rules": false
+  }
+}

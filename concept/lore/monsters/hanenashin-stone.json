@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "id": "51726071-a80b-49d9-82f0-8a7272b4b3f9",
+  "slug": "hanenashin-stone",
+  "kind": "monsters",
+  "title": "ロックヴルム",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "51726071-a80b-49d9-82f0-8a7272b4b3f9"
+  },
+  "related": [
+    {
+      "id": "69d0b191-9c2e-446f-8763-9d2b2138a3c3",
+      "document": "[[concept/monsters/hanenashin]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：内蔵画像生成で亜種を制作"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "51726071-a80b-49d9-82f0-8a7272b4b3f9"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "51726071-a80b-49d9-82f0-8a7272b4b3f9"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "51726071-a80b-49d9-82f0-8a7272b4b3f9"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

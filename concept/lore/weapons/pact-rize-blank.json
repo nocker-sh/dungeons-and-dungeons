@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "id": "33ff5e49-81ed-4bb9-8d9b-c3951c387b8b",
+  "slug": "pact-rize-blank",
+  "kind": "weapons",
+  "title": "影貸しの白紙",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "33ff5e49-81ed-4bb9-8d9b-c3951c387b8b"
+  },
+  "related": [
+    {
+      "id": "f2f638a7-7073-4d88-a779-bbba614db6dd",
+      "document": "[[concept/characters/rize]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/goods.json"
+    },
+    {
+      "reference": "生活上の取り扱い: 2026-10-28 資料制作依頼"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "weapons",
+    "weapon",
+    "手入れと流通"
+  ],
+  "authorship": {
+    "basis": "全内容の生活と整合性の資料制作依頼",
+    "scope": "取り扱いの制作設定",
+    "changes_game_rules": false
+  },
+  "relations": [
+    {
+      "type": "associated_with",
+      "target": "f2f638a7-7073-4d88-a779-bbba614db6dd",
+      "meaning": "契約に関わる人物。人格を物品へ置き換える根拠にはしない。"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "id": "building:gantz-home",
+  "slug": "gantz-home",
+  "kind": "locations",
+  "title": "ガンツの住まい",
+  "runtime": null,
+  "related": [
+    {
+      "id": "f78fdf65-7f1f-4ae7-9860-30ebafd3ebc4",
+      "document": "[[concept/residents/gantz]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "[[mob-residents]]"
+    },
+    {
+      "reference": "2026-10-28 一室一資料と暮らしの制作依頼"
+    }
+  ],
+  "entity_type": "building",
+  "lore_status": "active",
+  "tags": [
+    "街",
+    "住まい"
+  ],
+  "authorship": {
+    "basis": "生活の設計の依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "fb52305e-51df-4209-a1c4-8029a506da56",
+    "map": "map:town",
+    "zone": "町家と路地"
+  },
+  "relations": [
+    {
+      "type": "mapped_by",
+      "target": "map:gantz-home",
+      "meaning": "暮らせる各室の寸法と接続。"
+    }
+  ]
+}

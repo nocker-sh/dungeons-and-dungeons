@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "id": "cf7498a0-fa43-457f-b018-a9f19764645e",
+  "slug": "rivet",
+  "kind": "characters",
+  "title": "リベット",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "cf7498a0-fa43-457f-b018-a9f19764645e"
+  },
+  "related": [
+    {
+      "id": "73a5f30f-e162-4eee-848c-13ee7265953e",
+      "document": "[[concept/residents/hilde]]"
+    },
+    {
+      "id": "75f62b3a-a441-453c-a80a-37549e63f458",
+      "document": "[[concept/residents/otto]]"
+    },
+    {
+      "id": "room:guild-normal-front",
+      "document": "[[concept/rooms/guild-normal-front]]"
+    }
+  ],
+  "sources": [],
+  "gender": "女性",
+  "growth_intent": {
+    "rate": "早い",
+    "early": "伸びやすい",
+    "middle": "普通",
+    "late": "伸びにくい"
+  },
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "characters",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "cf7498a0-fa43-457f-b018-a9f19764645e"
+    },
+    "routine_section": "生活動線の制作設計",
+    "lodging": {
+      "target": "room:guild-normal-front",
+      "condition": "ギルドで宿泊契約を結び、空床の割当てを受けた場合の制作上の部屋割り。常住・無料宿泊・実行時の購入済み状態を意味しない。",
+      "routine_section": "宿泊する場合の寝床と移動"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "父の負傷と炉の買い戻しを守り、父を故人と扱わない。"
+    ]
+  }
+}

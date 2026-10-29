@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "id": "site:guild-yard",
+  "slug": "guild-service-yard",
+  "kind": "sites",
+  "title": "ギルドの裏庭と搬入・回収",
+  "runtime": null,
+  "related": [
+    {
+      "id": "map:guild",
+      "document": "[[concept/maps/guild-building]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "2026-10-28 生活できる部屋と整合する動線の制作依頼"
+    }
+  ],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "ギルド",
+    "水と清潔",
+    "搬入",
+    "避難"
+  ],
+  "authorship": {
+    "basis": "生活を成立させる資料制作依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "898b2804-3b16-4560-a125-94abbe843c6b",
+    "map": "map:town",
+    "zone": "ギルド背面"
+  },
+  "spatial": {
+    "width_m": 17.4,
+    "depth_m": 6
+  },
+  "relations": [
+    {
+      "type": "serves",
+      "target": "room:guild-kitchen",
+      "meaning": "食料と飲用水の搬入。"
+    },
+    {
+      "type": "serves",
+      "target": "room:guild-laundry",
+      "meaning": "布を乾かす面と回収の動線。"
+    },
+    {
+      "type": "collects_from",
+      "target": "room:guild-latrine",
+      "meaning": "密閉容器を回収する。"
+    },
+    {
+      "type": "collects_from",
+      "target": "room:secret-latrine",
+      "meaning": "地下から専用の密閉容器を運ぶ。"
+    }
+  ]
+}

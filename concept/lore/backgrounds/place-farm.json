@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "id": "60712f03-1916-4afd-972e-f50c0c28960a",
+  "slug": "place-farm",
+  "kind": "backgrounds",
+  "title": "農場",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "60712f03-1916-4afd-972e-f50c0c28960a"
+  },
+  "related": [],
+  "sources": [],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "site"
+  ]
+}

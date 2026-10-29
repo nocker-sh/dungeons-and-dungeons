@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "id": "82a283db-d672-4a55-907b-a238cd2802ed",
+  "slug": "place-layer2",
+  "kind": "backgrounds",
+  "title": "錆びた鉄橋",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "82a283db-d672-4a55-907b-a238cd2802ed"
+  },
+  "related": [],
+  "sources": [],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "site"
+  ]
+}

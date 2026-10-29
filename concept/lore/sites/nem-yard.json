@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "id": "site:nem-yard",
+  "slug": "nem-yard",
+  "kind": "sites",
+  "title": "ネムの住まいの庭",
+  "runtime": null,
+  "related": [
+    {
+      "id": "room:nem-home-living",
+      "document": "[[concept/rooms/nem-home-living]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "2026-10-28 生活できる住まいの制作依頼"
+    }
+  ],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "街",
+    "庭",
+    "相棒"
+  ],
+  "location": {
+    "parent": "building:nem-home",
+    "map": "map:nem-home",
+    "zone": "居間の東"
+  },
+  "spatial": {
+    "width_m": 4,
+    "depth_m": 4.2
+  },
+  "relations": [
+    {
+      "type": "serves",
+      "target": "creature:nem-companion",
+      "meaning": "安全な出入り、洗浄、排泄物の回収を人の台所から分ける。"
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一対象一資料・生活と整合性の資料制作依頼",
+    "scope": "追加した空間と暮らしの制作設定。既存の出典と人の画像承認は変更しない。",
+    "changes_game_rules": false
+  }
+}

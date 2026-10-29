@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "id": "2fbe680a-9371-4127-99c2-5447723ef43c",
+  "slug": "discovery-camp",
+  "kind": "backgrounds",
+  "title": "見捨てられた野営地",
+  "runtime": null,
+  "related": [
+    {
+      "id": "607cef76-34b8-4650-9d94-aa002c504b16",
+      "document": "[[concept/world/world-space-camera]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "content/data/layers.json / 既存イベントの場所と用事"
+    },
+    {
+      "reference": "ユーザー指示 / 生成前の空間計画と映画的なカメラ"
+    }
+  ],
+  "entity_type": "scene-template",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "scene-template"
+  ]
+}

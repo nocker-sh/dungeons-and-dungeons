@@ -1,0 +1,95 @@
+{
+  "schema_version": 2,
+  "id": "room:irma-home-bedroom",
+  "slug": "irma-home-bedroom",
+  "kind": "rooms",
+  "title": "イルマの住まいの寝室",
+  "runtime": null,
+  "related": [
+    {
+      "id": "building:irma-home",
+      "document": "[[concept/locations/irma-home]]"
+    },
+    {
+      "id": "44ee6282-9cfc-4ac6-be7e-1acf32e2732a",
+      "document": "[[concept/residents/irma]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "[[mob-residents]]"
+    },
+    {
+      "reference": "2026-10-28 一室一資料と暮らしの制作依頼"
+    }
+  ],
+  "entity_type": "room",
+  "lore_status": "active",
+  "tags": [
+    "住まい",
+    "寝室"
+  ],
+  "authorship": {
+    "basis": "一室ごとの生活できる設計の依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "building:irma-home",
+    "map": "map:irma-home",
+    "zone": "地上階"
+  },
+  "spatial": {
+    "width_m": 3.1,
+    "depth_m": 4,
+    "ceiling_m": 2.7,
+    "capacity": 1,
+    "egress": "表の入口と生活用通路の裏口へ抜ける。扉の前を荷や家具で塞がない。",
+    "beds": [
+      {
+        "x_m": 0.1,
+        "y_m": 0.2,
+        "width_m": 0.9,
+        "depth_m": 2.1
+      }
+    ]
+  },
+  "life_support": {
+    "sleep": {
+      "target": "room:irma-home-bedroom",
+      "provision": "イルマ本人の寝台のある寝室で休む。仕事場や居間の床を寝床に数えない。"
+    },
+    "food": {
+      "target": "room:irma-home-kitchen",
+      "provision": "台所で調理し、人の食事とほかの用途の器を分ける。"
+    },
+    "water": {
+      "target": "room:irma-home-kitchen",
+      "provision": "街の飲用水を覆った容器で運び入れる。"
+    },
+    "wash": {
+      "target": "room:irma-home-wash",
+      "provision": "通路から洗い場へ入って清潔を保つ。"
+    },
+    "toilet": {
+      "target": "room:irma-home-toilet",
+      "provision": "裏口へ回収できる密閉式便所を使う。"
+    },
+    "air": {
+      "target": "room:irma-home-bedroom",
+      "provision": "窓または外気口で外へ換気する。便所の空気を寝室へ通さない。"
+    },
+    "light": {
+      "target": "room:irma-home-bedroom",
+      "provision": "手元と足元の固定灯を使い、裸火を寝具や紙から離す。"
+    },
+    "storage": {
+      "target": "room:irma-home-bedroom",
+      "provision": "壁際の収納。入口と通る面を空ける。"
+    },
+    "access": {
+      "target": "room:irma-home-passage",
+      "provision": "居間から生活用通路を通り、個々の生活設備の扉へ入る。"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "id": "map:valley-4",
+  "slug": "valley-4",
+  "kind": "maps",
+  "title": "底なしの祭壇の地点配置図",
+  "runtime": {
+    "file": "[[content/data/layers.json]]",
+    "id": "3d0fffc3-8e02-42c9-9733-bc1589520f52"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "content/data/layers.json の地点と接続"
+    }
+  ],
+  "entity_type": "map",
+  "lore_status": "active",
+  "tags": [
+    "谷",
+    "4層",
+    "経路"
+  ],
+  "topology": {
+    "source": "content/data/layers.json",
+    "parent_id": "3d0fffc3-8e02-42c9-9733-bc1589520f52",
+    "nodes": [
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:s",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n1",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n2",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n3",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n4",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:u5",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:u6",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:l5",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:l6",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n7",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n8",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n9",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n10",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n11",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:u12",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:u13",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:l12",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:l13",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n14",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n15",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:n16",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:l10",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:m3",
+      "3d0fffc3-8e02-42c9-9733-bc1589520f52:station:m15"
+    ]
+  },
+  "authorship": {
+    "basis": "2026-10-28 一対象一資料・生活と整合性の資料制作依頼",
+    "scope": "追加した空間と暮らしの制作設定。既存の出典と人の画像承認は変更しない。",
+    "changes_game_rules": false
+  }
+}

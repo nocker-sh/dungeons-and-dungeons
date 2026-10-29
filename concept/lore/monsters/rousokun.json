@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "id": "4a9b6857-44d0-4495-b4a0-ca77daad9ba7",
+  "slug": "rousokun",
+  "kind": "monsters",
+  "title": "キャンドラ",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "4a9b6857-44d0-4495-b4a0-ca77daad9ba7"
+  },
+  "related": [
+    {
+      "id": "742dad77-7906-47fb-b167-c1a20ed6b24c",
+      "document": "[[concept/backgrounds/place-layer1]]"
+    },
+    {
+      "id": "f8db80ab-a853-45d1-91c4-7a2fd0856aba",
+      "document": "[[concept/monsters/kuro-rousoku]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー選定のモンスター案（デスクトップ「内定」）"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "4a9b6857-44d0-4495-b4a0-ca77daad9ba7"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-1",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "4a9b6857-44d0-4495-b4a0-ca77daad9ba7"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "4a9b6857-44d0-4495-b4a0-ca77daad9ba7"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

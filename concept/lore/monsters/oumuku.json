@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "id": "f7e72b0b-c879-44b4-b85e-f26bb768002a",
+  "slug": "oumuku",
+  "kind": "monsters",
+  "title": "エコーパロット",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "f7e72b0b-c879-44b4-b85e-f26bb768002a"
+  },
+  "related": [
+    {
+      "id": "5f10327a-44ce-480e-b5a3-ded71a959cf8",
+      "document": "[[concept/monsters/oumuku-forest]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー提供の原資料：115_オウムク.png"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "f7e72b0b-c879-44b4-b85e-f26bb768002a"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-2",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "f7e72b0b-c879-44b4-b85e-f26bb768002a"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "f7e72b0b-c879-44b4-b85e-f26bb768002a"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

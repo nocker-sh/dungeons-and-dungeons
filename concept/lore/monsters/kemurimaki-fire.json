@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "id": "206aa3c3-431b-4e51-a587-c87701ac9091",
+  "slug": "kemurimaki-fire",
+  "kind": "monsters",
+  "title": "フレアレイス",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "206aa3c3-431b-4e51-a587-c87701ac9091"
+  },
+  "related": [
+    {
+      "id": "bc7581dc-5ede-47ba-8cf8-fb57004a1cdd",
+      "document": "[[concept/monsters/kemurimaki]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示：内蔵画像生成で亜種・大人を制作"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "206aa3c3-431b-4e51-a587-c87701ac9091"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-1",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "206aa3c3-431b-4e51-a587-c87701ac9091"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "206aa3c3-431b-4e51-a587-c87701ac9091"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

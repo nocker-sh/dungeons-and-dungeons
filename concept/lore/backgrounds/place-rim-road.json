@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "id": "c01170e2-38cd-4668-a21e-4a679ab5ac7c",
+  "slug": "place-rim-road",
+  "kind": "backgrounds",
+  "title": "谷縁の道",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "c01170e2-38cd-4668-a21e-4a679ab5ac7c"
+  },
+  "related": [
+    {
+      "id": "745cd2b6-bf2e-4cd7-ab49-0ebe92d08eec",
+      "document": "[[concept/backgrounds/place-outskirts]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー指示 / クエストで戦う場所を増やす（道・街中）"
+    }
+  ],
+  "entity_type": "site",
+  "lore_status": "active",
+  "tags": [
+    "backgrounds",
+    "site"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "id": "ca607fe8-e8f3-4acf-9bc3-82586b094609",
+  "slug": "smoke",
+  "kind": "items",
+  "title": "煙玉",
+  "runtime": {
+    "file": "[[content/data/goods.json]]",
+    "id": "ca607fe8-e8f3-4acf-9bc3-82586b094609"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "[[private/art/image-ledger.json]]"
+    }
+  ],
+  "entity_type": "good",
+  "lore_status": "active",
+  "tags": [
+    "items",
+    "item",
+    "手入れと流通"
+  ],
+  "relations": [
+    {
+      "type": "sold_by",
+      "target": "c6a065ae-8bbd-44a3-85bb-42215cceca56",
+      "meaning": "正本の販売対象。価格と在庫規則は店データに従う。"
+    }
+  ],
+  "authorship": {
+    "basis": "2026-10-28 全ての内容に意味と生活を持たせる資料制作依頼",
+    "scope": "手入れと運搬の制作設定",
+    "changes_game_rules": false
+  },
+  "handling": {
+    "rule_source": {
+      "file": "[[content/data/goods.json]]",
+      "id": "ca607fe8-e8f3-4acf-9bc3-82586b094609"
+    },
+    "routine_section": "暮らしの中での取り扱い"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "id": "room:tools-work",
+  "slug": "tools-work",
+  "kind": "rooms",
+  "title": "道具屋の仕事場",
+  "runtime": null,
+  "related": [
+    {
+      "id": "8d377a5e-e603-427e-a218-ef986eb5e8bf",
+      "document": "[[concept/backgrounds/place-tools]]"
+    },
+    {
+      "id": "c6a065ae-8bbd-44a3-85bb-42215cceca56",
+      "document": "[[concept/residents/walter]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "仕事場の見え方: .docs/concept/backgrounds/place-tools.md"
+    },
+    {
+      "reference": "住まいの制作: 2026-10-28 ユーザー依頼"
+    }
+  ],
+  "entity_type": "room",
+  "lore_status": "active",
+  "tags": [
+    "道具屋",
+    "生活設備"
+  ],
+  "authorship": {
+    "basis": "全ての部屋を生活できる設計にする依頼",
+    "scope": "制作設定",
+    "changes_game_rules": false
+  },
+  "location": {
+    "parent": "8d377a5e-e603-427e-a218-ef986eb5e8bf",
+    "map": "map:tools",
+    "zone": "地上階"
+  },
+  "spatial": {
+    "width_m": 4.5,
+    "depth_m": 6,
+    "ceiling_m": 2.8,
+    "capacity": 3,
+    "egress": "仕事場側の表口と、生活用通路の裏口へ出られる。店の道具を通路と扉の前へ置かない。"
+  },
+  "life_support": {
+    "sleep": {
+      "target": "room:tools-bedroom",
+      "provision": "仕事を終え、衣服を替えて寝室で休む。"
+    },
+    "food": {
+      "target": "room:tools-kitchen",
+      "provision": "仕事の鍋と別の台所で食事を作り食べる。"
+    },
+    "water": {
+      "target": "room:tools-kitchen",
+      "provision": "配られた飲用水を蓋付き容器で保管する。"
+    },
+    "wash": {
+      "target": "room:tools-wash",
+      "provision": "通路から入り、身体と作業の汚れを落とす。"
+    },
+    "toilet": {
+      "target": "room:tools-toilet",
+      "provision": "通路から利用し、密閉回収を行う。"
+    },
+    "air": {
+      "target": "room:tools-work",
+      "provision": "外壁の窓または専用換気口を外へ抜き、炉や便所の空気を寝室へ戻さない。"
+    },
+    "light": {
+      "target": "room:tools-work",
+      "provision": "入口の固定灯と用途に合った手元灯。布と紙へ裸火を近付けない。"
+    },
+    "storage": {
+      "target": "room:tools-work",
+      "provision": "用途ごとの壁際収納。通路と扉の前を空ける。"
+    },
+    "access": {
+      "target": "room:tools-passage",
+      "provision": "表口と裏口をつなぐ幅1.2mの経路を使う。"
+    }
+  }
+}

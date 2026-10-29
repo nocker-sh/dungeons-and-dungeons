@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "id": "77f87869-8a88-4559-a8e8-f7f6f0828d9a",
+  "slug": "kabemimi-fortress",
+  "kind": "monsters",
+  "title": "ウォールタイタン",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "77f87869-8a88-4559-a8e8-f7f6f0828d9a"
+  },
+  "related": [
+    {
+      "id": "89831ecc-694f-489b-9b81-e6805b9e2371",
+      "document": "[[concept/monsters/kabemimi]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー依頼：カベミミの大人と強い姿"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "77f87869-8a88-4559-a8e8-f7f6f0828d9a"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-2",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "77f87869-8a88-4559-a8e8-f7f6f0828d9a"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "77f87869-8a88-4559-a8e8-f7f6f0828d9a"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

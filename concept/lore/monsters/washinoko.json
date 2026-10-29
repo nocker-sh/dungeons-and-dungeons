@@ -1,0 +1,56 @@
+{
+  "schema_version": 2,
+  "id": "4790537c-c395-4bc5-9649-005d2fcf52a5",
+  "slug": "washinoko",
+  "kind": "monsters",
+  "title": "ボーンホーク",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "4790537c-c395-4bc5-9649-005d2fcf52a5"
+  },
+  "related": [
+    {
+      "id": "ab2284ee-ddb0-4da3-9f14-c5e1a09bc916",
+      "document": "[[concept/monsters/washinoko-snow]]"
+    },
+    {
+      "id": "8aae8f96-edbf-4649-82cb-4c6d7b12d1a8",
+      "document": "[[concept/monsters/washinoko-adult]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "ユーザー提供の原資料：118_ワシノコ.png"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "4790537c-c395-4bc5-9649-005d2fcf52a5"
+    }
+  ],
+  "relations": [],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "4790537c-c395-4bc5-9649-005d2fcf52a5"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "4790537c-c395-4bc5-9649-005d2fcf52a5"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

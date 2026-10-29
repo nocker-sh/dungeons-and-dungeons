@@ -1,3 +1,4 @@
+import { referenceTarget } from "@/scripts/concept-check/reference-target"
 import { readFile } from "node:fs/promises"
 import { resolve } from "node:path"
 import { object } from "@/scripts/concept-check/object"
@@ -20,7 +21,7 @@ export function createRuntimeReader(root: string, problems: string[]) {
       problems.push(`${file}: runtimeの形式が不正`)
       return
     }
-    const path = resolve(root, "../..", binding.file)
+    const path = resolve(root, "../..", referenceTarget(binding.file))
     if (!runtimeFiles.has(path)) {
       try {
         runtimeFiles.set(path, JSON.parse(await readFile(path, "utf8")))

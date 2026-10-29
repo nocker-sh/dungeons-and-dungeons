@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "id": "fed79135-c848-48e8-ad83-bf3b4a657247",
+  "slug": "black-slime",
+  "kind": "monsters",
+  "title": "タールスライム",
+  "runtime": {
+    "file": "[[concept/data/world.json]]",
+    "id": "fed79135-c848-48e8-ad83-bf3b4a657247"
+  },
+  "related": [],
+  "sources": [
+    {
+      "reference": "ユーザー指示：黒いどろどろのスライムと、宝箱として登場する3段階のミミック"
+    }
+  ],
+  "entity_type": "monster",
+  "lore_status": "active",
+  "tags": [
+    "モンスター",
+    "生態"
+  ],
+  "bindings": [
+    {
+      "file": "[[content/data/foes.json]]",
+      "id": "fed79135-c848-48e8-ad83-bf3b4a657247"
+    }
+  ],
+  "relations": [
+    {
+      "type": "encountered_in",
+      "target": "map:valley-0",
+      "meaning": "出現候補の正本に含まれる層。全地点・毎回の出現を意味しない。"
+    }
+  ],
+  "ecology": {
+    "profile_section": "暮らし（制作案）",
+    "appearance_source": {
+      "file": "[[concept/data/world.json]]",
+      "id": "fed79135-c848-48e8-ad83-bf3b4a657247"
+    },
+    "encounter_source": {
+      "file": "[[content/data/foes.json]]",
+      "id": "fed79135-c848-48e8-ad83-bf3b4a657247"
+    }
+  },
+  "continuity": {
+    "keep": [
+      "外見の差分から新しい能力や報酬を決めない。",
+      "出現・行動・落とす物は実行用データを正とする。"
+    ]
+  }
+}

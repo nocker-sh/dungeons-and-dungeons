@@ -1,0 +1,50 @@
+{
+  "schema_version": 2,
+  "id": "75f62b3a-a441-453c-a80a-37549e63f458",
+  "slug": "otto",
+  "kind": "residents",
+  "title": "オットー",
+  "runtime": {
+    "file": "[[concept/data/characters.json]]",
+    "id": "75f62b3a-a441-453c-a80a-37549e63f458"
+  },
+  "related": [],
+  "sources": [],
+  "gender": "男性",
+  "entity_type": "person",
+  "lore_status": "active",
+  "tags": [
+    "residents",
+    "暮らし",
+    "仕事"
+  ],
+  "authorship": {
+    "basis": "2026-10-28 一人ずつ生活をつなぐ資料制作依頼",
+    "scope": "生活動線の制作設定",
+    "changes_game_rules": false
+  },
+  "livelihood": {
+    "canonical_profile": {
+      "file": "[[concept/data/conversation-profiles.json]]",
+      "id": "75f62b3a-a441-453c-a80a-37549e63f458"
+    },
+    "routine_section": "生活動線の制作設計"
+  },
+  "continuity": {
+    "keep": [
+      "十六歳で作った兜を商品や実装済み装備枠に昇格させない。"
+    ]
+  },
+  "relations": [
+    {
+      "type": "resides_in",
+      "target": "room:armory-bedroom",
+      "meaning": "仕事と切り離して睡眠と着替えを行う。"
+    },
+    {
+      "type": "works_in",
+      "target": "room:armory-work",
+      "meaning": "既存の店の仕事場。"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "id": "zone:guild-guest-stairs",
+  "slug": "guild-guest-stairs",
+  "kind": "rooms",
+  "title": "宿の客室階段",
+  "runtime": null,
+  "related": [
+    {
+      "id": "map:guild",
+      "document": "[[concept/maps/guild-building]]"
+    }
+  ],
+  "sources": [
+    {
+      "reference": "2026-10-28 生活できる動線の制作依頼"
+    }
+  ],
+  "entity_type": "room-zone",
+  "lore_status": "active",
+  "tags": [
+    "ギルド",
+    "階段と通路"
+  ],
+  "location": {
+    "parent": "898b2804-3b16-4560-a125-94abbe843c6b",
+    "map": "map:guild",
+    "zone": "0,1,2"
+  },
+  "spatial": {
+    "width_m": 3.2,
+    "depth_m": 4.4,
+    "ceiling_m": 2.7,
+    "capacity": 2,
+    "levels": [
+      0,
+      1,
+      2
+    ],
+    "egress": "踊り場と出入口を空け、地上の表口と裏庭への経路へつなぐ。"
+  },
+  "life_support": {
+    "food": {
+      "target": "room:guild-kitchen",
+      "provision": "各自の食事を準備する室へつなぐ。通る面で食器を広げない。"
+    },
+    "water": {
+      "target": "room:guild-kitchen",
+      "provision": "蓋付きの飲用水を専用容器で受け取る。洗浄と回収の容器とは分ける。"
+    },
+    "wash": {
+      "target": "room:guild-wash",
+      "provision": "衣服と身体を洗う設備へつなぐ。"
+    },
+    "toilet": {
+      "target": "room:guild-upper-latrine",
+      "provision": "通路から便所へ入り、密閉回収の経路を空ける。"
+    },
+    "air": {
+      "target": "zone:guild-guest-stairs",
+      "provision": "外気口と階段の通気を塞がない。便所や炉の排気を居室へ戻さない。"
+    },
+    "light": {
+      "target": "zone:guild-guest-stairs",
+      "provision": "段と足元の固定灯を保ち、荷を運ぶ両手を空ける。"
+    },
+    "storage": {
+      "target": "zone:guild-guest-stairs",
+      "provision": "通路と段へ私物や回収物を置かず、各自の収納へ戻す。"
+    },
+    "access": {
+      "target": "zone:guild-guest-stairs",
+      "provision": "本文と配置図の接続先へ通る。扉の前と踊り場を空ける。"
+    },
+    "sleep": {
+      "targets": [
+        "room:guild-normal-front",
+        "room:guild-normal-rear",
+        "room:guild-deluxe-front",
+        "room:guild-deluxe-rear",
+        "room:guild-attic",
+        "room:guild-staff-bedroom",
+        "room:guild-milena-bedroom"
+      ],
+      "provision": "就寝は各自に割り当てられた寝室。通路や階段は寝床に数えない。接続先は私室への無制限の立入りを意味しない。"
+    }
+  },
+  "authorship": {
+    "basis": "2026-10-28 一対象一資料・生活と整合性の資料制作依頼",
+    "scope": "追加した空間と暮らしの制作設定。既存の出典と人の画像承認は変更しない。",
+    "changes_game_rules": false
+  }
+}
