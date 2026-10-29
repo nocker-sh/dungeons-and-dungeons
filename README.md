@@ -27,3 +27,7 @@ vp build
 画像はGit管理外。元画像は `private/art/originals/`、表示用はR2移行まで `public/tmp/` に置く。
 
 CLIは `vp run cli`、任意のBunスクリプトは `vp exec bun <file>` で実行する。CLIのimportは `@/` の絶対パスで統一する。依存は `pnpm-lock.yaml` で固定し、CIでは `vp install --frozen-lockfile` を使う。
+
+仕様と設計は [[.docs/index|資料の入口]]、構造化した設定は [[concept/lore]]、公開プロンプトは [[concept/prompts]]。資料はWikiリンクを使う。画像本体・原画・ローカルの制作環境は含まれない。
+
+資料を変更したら `vp run check:docs` と `vp run check:concept` で参照・設定・生活設備・配置の整合を確認する。

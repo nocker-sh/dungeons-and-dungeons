@@ -19,8 +19,7 @@ todos.json
 .void
 .void-wrangler.jsonc
 
-# Local documentation and agent workspace
-/.docs/
+# Local agent workspace
 /.claude/
 
 # Image assets are managed in R2; local copies stay outside Git

@@ -11,7 +11,7 @@
   "related": [],
   "sources": [
     {
-      "reference": "[[private/art/image-ledger.json]]"
+      "reference": "既存の採用画像を観察した制作資料。画像の採用・承認状態は実行用画像一覧を参照する。"
     }
   ],
   "entity_type": "good",
@@ -44,5 +44,9 @@
       "id": "af75af93-b0e0-41ed-9482-fbe8aea55be6"
     },
     "routine_section": "暮らしの中での取り扱い"
+  },
+  "construction": {
+    "material_process": "重ねた墓布",
+    "protection": "整った襟と補強した袖を持つ厚い法衣。破れた布の飾りを減らす"
   }
 }

@@ -11,7 +11,7 @@
   "related": [],
   "sources": [
     {
-      "reference": "[[private/art/image-ledger.json]]"
+      "reference": "既存の採用画像を観察した制作資料。画像の採用・承認状態は実行用画像一覧を参照する。"
     }
   ],
   "entity_type": "good",
@@ -39,5 +39,9 @@
       "id": "90c0e8f9-f8e9-4d1d-954d-719a2c20365c"
     },
     "routine_section": "暮らしの中での取り扱い"
+  },
+  "construction": {
+    "material_process": "蔦を加工した繊維",
+    "protection": "補強した織物の上着。葉形の肩当てを少数に絞る。生の蔦で縛らない"
   }
 }

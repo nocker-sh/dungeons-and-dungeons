@@ -27,6 +27,9 @@ it.each([
   "[[../rooms/bedroom]]",
   "[[rooms/missing]]",
   "[[public/tmp/portrait.webp]]",
+  "[[private/art/original.png]]",
+  "[[node_modules/.cache/result.json]]",
+  "[[.env]]",
 ])("維持できない参照を検出する: %s", (source) => {
   expect(
     documentLinkProblems({

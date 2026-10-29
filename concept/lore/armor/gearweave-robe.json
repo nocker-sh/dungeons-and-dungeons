@@ -11,7 +11,7 @@
   "related": [],
   "sources": [
     {
-      "reference": "[[private/art/image-ledger.json]]"
+      "reference": "既存の採用画像を観察した制作資料。画像の採用・承認状態は実行用画像一覧を参照する。"
     }
   ],
   "entity_type": "good",
@@ -44,5 +44,9 @@
       "id": "c60dd47d-3327-4844-8c11-96ed0db8643c"
     },
     "routine_section": "暮らしの中での取り扱い"
+  },
+  "construction": {
+    "material_process": "作業用の厚布と革、金属の留め具",
+    "protection": "胸前掛け、袖口、小さな道具入れ。歯車は働く留め具に絞る"
   }
 }

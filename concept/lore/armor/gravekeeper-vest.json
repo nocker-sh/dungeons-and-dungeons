@@ -11,7 +11,7 @@
   "related": [],
   "sources": [
     {
-      "reference": "[[private/art/image-ledger.json]]"
+      "reference": "既存の採用画像を観察した制作資料。画像の採用・承認状態は実行用画像一覧を参照する。"
     }
   ],
   "entity_type": "good",
@@ -39,5 +39,9 @@
       "id": "5d0af7c1-f593-4c9d-b673-35d34f6e81f3"
     },
     "routine_section": "暮らしの中での取り扱い"
+  },
+  "construction": {
+    "material_process": "厚布、加工した骨の留め具",
+    "protection": "体幹を支える仕事用の胴着。髑髏や骨だらけの装飾にしない"
   }
 }

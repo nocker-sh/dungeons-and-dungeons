@@ -1,3 +1,4 @@
+import { publicDocumentProblems } from "@/scripts/public-document-problems"
 import { existsSync } from "node:fs"
 import { readdir, readFile } from "node:fs/promises"
 import { join, relative, resolve } from "node:path"
@@ -10,19 +11,25 @@ export async function checkDocs(root: string): Promise<string[]> {
     for (const entry of await readdir(directory, { withFileTypes: true })) {
       const file = join(directory, entry.name)
       if (entry.isDirectory()) await visit(file)
-      else if (/\.(?:md|json)$/.test(entry.name))
+      else if (/\.(?:md|json)$/.test(entry.name)) {
+        const source = await readFile(file, "utf8")
+        const label = relative(root, file)
+        problems.push(...publicDocumentProblems({ file: label, source }))
         problems.push(
           ...documentLinkProblems({
             root,
             file: relative(root, file),
-            source: await readFile(file, "utf8"),
+            source,
           })
         )
+      }
     }
   }
   await visit(join(root, ".docs"))
   if (existsSync(join(root, "concept/lore")))
     await visit(join(root, "concept/lore"))
+  if (existsSync(join(root, "concept/prompts")))
+    await visit(join(root, "concept/prompts"))
   return problems
 }
 

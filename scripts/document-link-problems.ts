@@ -1,4 +1,5 @@
-import { existsSync } from "node:fs"
+import { documentAnchorProblems } from "@/scripts/document-anchor-problems"
+import { existsSync, readFileSync } from "node:fs"
 import { resolve } from "node:path"
 
 type Props = { root: string; file: string; source: string }
@@ -17,22 +18,33 @@ export function documentLinkProblems(props: Props): string[] {
       target.startsWith("/") ||
       target.split("/").some((part) => part === "." || part === "..") ||
       target.startsWith("public/tmp/") ||
-      target.startsWith("tmp/")
+      target.startsWith("tmp/") ||
+      /^(?:private|node_modules|dist|dist-ssr|\.git|\.claude|\.void|\.wrangler)(?:\/|$)/.test(
+        target
+      ) ||
+      /^\.env(?:\.|$)/.test(target)
     ) {
       problems.push(
         `${props.file}: Wikiリンクに相対移動・一時パスを使わない ${target}`
       )
       continue
     }
-    if (
-      ![
-        resolve(props.root, ".docs", target),
-        resolve(props.root, ".docs", `${target}.md`),
-        resolve(props.root, target),
-        resolve(props.root, `${target}.md`),
-      ].some((file) => existsSync(file))
-    )
-      problems.push(`${props.file}: Wikiリンクの対象がない ${target}`)
+    const file = [
+      resolve(props.root, ".docs", target),
+      resolve(props.root, ".docs", `${target}.md`),
+      resolve(props.root, target),
+      resolve(props.root, `${target}.md`),
+    ].find((file) => existsSync(file))
+    if (!file) problems.push(`${props.file}: Wikiリンクの対象がない ${target}`)
+    const anchor = match[1].split("|")[0].split("#").slice(1).join("#")
+    if (file?.endsWith(".md") && anchor)
+      problems.push(
+        ...documentAnchorProblems({
+          file: props.file,
+          source: readFileSync(file, "utf8"),
+          anchor,
+        })
+      )
   }
   return problems
 }

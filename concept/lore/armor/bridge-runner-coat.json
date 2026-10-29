@@ -11,7 +11,7 @@
   "related": [],
   "sources": [
     {
-      "reference": "[[private/art/image-ledger.json]]"
+      "reference": "既存の採用画像を観察した制作資料。画像の採用・承認状態は実行用画像一覧を参照する。"
     }
   ],
   "entity_type": "good",
@@ -39,5 +39,9 @@
       "id": "2e0443af-58e5-4ef0-957b-c33b8de359aa"
     },
     "routine_section": "暮らしの中での取り扱い"
+  },
+  "construction": {
+    "material_process": "布、革帯、小さな補強板",
+    "protection": "足場で引っ掛からない短い裾と肩・肘の補強"
   }
 }

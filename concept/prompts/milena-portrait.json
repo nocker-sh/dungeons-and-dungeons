@@ -1,0 +1,11 @@
+{
+  "purpose": "過去の生成指示。現在の採用画像・実装状態・人の承認を示すものではない。",
+  "entries": [
+    {
+      "id": "d5100106-ff86-494b-a10b-b11255b0b932",
+      "slug": "milena",
+      "name": "ミレナ",
+      "prompt": "Edit MILENA in reference1 using reference2 only for rounded face and soft silhouette style. Critical failures to fix now:\n1. Her lower face is STILL TRIANGULAR and chin has a sharp vertex. REPLACE entire cheek-to-chin outline with a visibly WIDE ROUND OVAL / U: fuller rounded cheek arcs, broad rounded chin, NO straight jaw line ending in a point. Head remains adult same size. Skin shadow under chin must be a SMALL LIGHT WARM CURVED BAND with black manga dots, absolutely no black triangle or dark angular neck wedge.\n2. Both CYAN eyes must have one unbroken DARK OUTLINE ALL AROUND white sclera: upper lid joins lower lid at BOTH inner/outer corners. Draw a clear lower eyelid line at same visible weight, no open eye contour near nose. Keep fluorescent cyan flat iris/pupil touching upper lid and no highlights.\n3. Hair and clothes silhouette corners need visibly softer ROUND CURVES, not polygon hair blocks. Preserve broad faceted FLAT INTERIOR color planes, no gradients.\n4. Top forelock, raised mug, all hands and sleeves fully INSIDE frame with2–3% transparent margin. No cropped hair or knuckles. Torso and clothing still continue to bottom edge. Recompose without tiny head or elongated neck.\nKeep exact MILENA red-brown hair and thick braid on right, pale-gold forelock, studded headband, warm tan skin, cream blouse, rust scarf, dark teal vest, brown straps, gold guild badge and belt, scroll, wooden tankard raised in left hand, friendly smile and all body proportions. Retain warm retro muted colors. Strengthen clean regular BLACK round manga dots in shadow regions to4–6px at1086width, readable at300px. No grunge, shine, gradients, dense triangle mosaic, text or extra items. Actual transparent background. Change jaw shape and eye outlines clearly; do not simply return same face."
+    }
+  ]
+}
