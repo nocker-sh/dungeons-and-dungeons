@@ -1,8 +1,8 @@
 ---
 title: 開発スタジオ
 status: active
-updated: 2026-10-27
-routes: [/dev/layouts, /dev/studio, /dev/frame]
+updated: 2026-10-31
+routes: [/dev/layouts, /dev/studio, /dev/frame, /dev/view, /dev/play]
 source: "[[development/studio/scenarios.ts]]"
 ---
 
@@ -89,6 +89,8 @@ PNGと同名の `.inspection.json` を保存する。`frames` は指定順のPNG
 条件入力は `studio-conditions.tsx`、再生とフレームの操作は既存の再生フックが持つ。戦闘では進行管理の `BattleDirector` と一行動の結果を見せる `result-playback.ts` を分け、どちらもゲームの数値や行動結果を決めない。
 
 ## AIからの操作
+
+直接のグラフィック確認は `/dev/view?...`、同じ初期状態からの動作確認は `/dev/play/{scene}?...` を使う。用途・URL・検査窓口は[[dev-preview]]を参照する。
 
 `/dev/frame/{scene}?config={JSON}` は単独でゲームを開く。JSONはURLエンコードする。初期化エラーは `window.__devStudioError`、操作可能な起動状態と処理完了は `window.__devStudio.ready` と `settled` を確認する。最初の画面は `advance` が指定時刻の描画を終えてから表示する。それ以前の `snapshot` は拒否する。初期化中のエラーと終了時には表示待ちを解除する。単独フレームの起動待ちは [[scripts/studio-browser.ts]] の `waitForStudio` を使う。フレーム内のrAF・タイマーは仮想時計で止まるため、起動前後で捕まえた時計に左右されないよう、監視はNode側の時計で行う。
 

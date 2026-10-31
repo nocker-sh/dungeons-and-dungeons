@@ -6,6 +6,29 @@ import { devSave } from "./scripts/dev-save"
 import { devQuietData } from "./scripts/dev-quiet-data"
 
 const config = defineConfig({
+  // 複数の開発サーバーとテストが、別条件で作った依存キャッシュを上書きしない。
+  cacheDir: process.env.VITEST
+    ? "node_modules/.cache/vite-test"
+    : `node_modules/.cache/vite-dev-${process.env.PORT ?? "default"}`,
+  // 時計を設置した後にGameAppを遅延読込しても、依存の再最適化で初回表示を中断しない。
+  optimizeDeps: {
+    // Voidの軽いESM補助はそのまま配信し、遅い発見による再最適化を起こさない。
+    exclude: ["void/pages-prefetch"],
+    include: [
+      "react",
+      "react-dom",
+      "react-dom/client",
+      "react-dom/server",
+      "react/jsx-runtime",
+      "react/jsx-dev-runtime",
+      "motion",
+      "motion/react",
+      "motion/mini",
+      "zod",
+      "cn",
+      "class-variance-authority",
+    ],
+  },
   lint: {
     plugins: ["oxc", "typescript", "unicorn", "import"],
     categories: { correctness: "warn" },
@@ -41,6 +64,14 @@ const config = defineConfig({
     exclude: [...configDefaults.exclude, "**/.claude/worktrees/**"],
   },
   server: {
+    // 大きいゲームのimportグラフを初回のiframe表示と同時に変換しない。
+    warmup: {
+      clientFiles: [
+        "./pages/dev/view-page.tsx",
+        "./pages/dev/preview-frame-page.tsx",
+        "./client/components/game/game-app.tsx",
+      ],
+    },
     host: process.env.HOST || "localhost",
     port: Number(process.env.PORT ?? 0),
     strictPort: true,

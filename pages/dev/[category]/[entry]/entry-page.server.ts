@@ -1,3 +1,4 @@
+import { getPreviewPage } from "@/development/studio/get-preview-page"
 import { defineHandler, type InferProps } from "void"
 import { gameContent } from "@/content/game-content"
 import {
@@ -24,6 +25,12 @@ export const loader = defineHandler((c) => {
   const category = c.req.param("category") ?? ""
   const entry = c.req.param("entry") ?? ""
   // shortcut: Void 1.1.11 は動的なページ同士を文字列順に並べ、/dev/studio/{scene} もここに当たるので、ここで受ける。順序が直ったら pages/dev/studio に戻す
+  if (category === "play")
+    return {
+      category,
+      entry,
+      preview: getPreviewPage(new URL(c.req.url).searchParams, entry),
+    }
   if (category === "studio" || category === "frame") return { category, entry }
   if (!devCategories.some((item) => item.value === category))
     return c.redirect("/dev/characters")

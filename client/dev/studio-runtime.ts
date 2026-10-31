@@ -47,6 +47,7 @@ export class StudioRuntime implements StudioBridge {
   private cleanups: (() => void)[] = []
   private busy = false
   private disposed = false
+  private playing = false
   private serial = 0
   private recordLimit = 10000
   get settled() {
@@ -379,7 +380,7 @@ export class StudioRuntime implements StudioBridge {
     this.assertActive()
     if (!this.ready) throw new Error("起動の完了を待ってください")
     if (this.busy) throw new Error("時計の移動中です")
-    if (time > this.config.duration)
+    if (time > this.config.duration && !this.playing)
       throw new Error("指定時刻がタイムラインを超えています")
     this.busy = true
     try {
@@ -406,6 +407,46 @@ export class StudioRuntime implements StudioBridge {
       this.busy = false
       this.showInitialFrame()
     }
+  }
+  /** 鑑賞専用の画は補間中の合成レイヤーを残さず、指定時刻のスタイルへ確定する。 */
+  async freeze() {
+    this.assertActive()
+    for (const track of this.tracks) {
+      if (track.animation.playState === "idle") continue
+      if (track.element.isConnected && track.element.getClientRects().length)
+        track.animation.commitStyles()
+      track.animation.cancel()
+    }
+    await this.waitForPaint()
+    this.assertActive()
+  }
+  /** 初期状態を高速に再現した後、同じ時計を実時間で動かして遊ぶ。 */
+  play() {
+    if (this.playing) return
+    this.playing = true
+    const playback: { frame: number; previousFrame: number | null } = {
+      frame: 0,
+      previousFrame: null,
+    }
+    // performance.nowは仮想時計なので、rAFの実時間を基準に差分を取る。
+    const tick = (time: number) => {
+      if (this.disposed) return
+      const elapsed =
+        playback.previousFrame === null
+          ? 0
+          : Math.max(0, Math.min(250, time - playback.previousFrame))
+      playback.previousFrame = time
+      const target = this.clock.now + elapsed
+      void this.advance(target)
+        .then(() => {
+          if (!this.disposed) playback.frame = this.nativeFrame(tick)
+        })
+        .catch((problem) => {
+          if (!this.disposed) this.errors.push(String(problem))
+        })
+    }
+    playback.frame = this.nativeFrame(tick)
+    this.cleanups.push(() => this.nativeCancelFrame(playback.frame))
   }
   /** 描画が確定した時点のゲーム・配置・演出を取得する。ゲームのDOMは変更しない。 */
   async snapshot() {

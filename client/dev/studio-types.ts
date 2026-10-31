@@ -1,3 +1,4 @@
+import type { PreviewBridge } from "@/client/dev/preview-bridge"
 import type { StudioConfig } from "@/development/studio/config"
 
 export type AnimationTrack = {
@@ -33,6 +34,7 @@ export type StudioInspection = {
   }[]
 }
 export type StudioBridge = {
+  readonly errors: readonly string[]
   ready: boolean
   readonly settled: boolean
   advance: (time: number) => Promise<StudioInspection>
@@ -44,6 +46,7 @@ export type StudioBridge = {
 }
 declare global {
   interface Window {
+    __devPreview?: PreviewBridge
     __devStudio?: StudioBridge
     __devStudioError?: string
   }

@@ -44,7 +44,7 @@
 - CLIはBunを実行環境にし、`vp run cli` または `vp exec bun <file>` から実行する。CLIのimportは `@/` の絶対パスにする。
 
 - Portless名は `dnd`、URLは `https://dnd.localhost`。
-- 場面確認は `/previews/{slug}`。`?still` で動きを止める。
+- AIのグラフィック確認は `/dev/view?scene={slug}&seed={seed}&at={ms}`（入力無効）、動作確認は `/dev/play/{slug}?seed={seed}`。場面一覧は `/dev/view?catalog=1`、手順は [[.docs/dev-preview]]。従来の場面確認は `/previews/{slug}`、`?still` で動きを止める。
 - 数値・ワザ・敵・規則を変えたら `vp run cli check`。CLIの操作・測定方法は `builder/README.md`。
 - 資料への参照はWikiリンクだけを使う。名前・IDだけの索引、日付別の作業実況、一時画像の一覧は作らない。固有の設定・判断・手順を残し、正本を複製しない。
 - `.docs/` は公開する仕様・設計資料としてGit管理する。画像本体はコミットしない。元画像は `private/art/originals/`、R2移行前の表示用画像は `public/tmp/`。

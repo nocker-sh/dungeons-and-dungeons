@@ -31,3 +31,5 @@ CLIは `vp run cli`、任意のBunスクリプトは `vp exec bun <file>` で実
 仕様と設計は [[.docs/index|資料の入口]]、構造化した設定は [[concept/lore]]、公開プロンプトは [[concept/prompts]]。資料はWikiリンクを使う。画像本体・原画・ローカルの制作環境は含まれない。
 
 資料を変更したら `vp run check:docs` と `vp run check:concept` で参照・設定・生活設備・配置の整合を確認する。
+
+AI向けのグラフィック確認は `/dev/view?scene=battle&seed=77&at=2000`（入力無効）、動作確認は `/dev/play/town?seed=77`。指定可能な場面は `/dev/view?catalog=1`、詳しい手順は [[.docs/dev-preview]]。
