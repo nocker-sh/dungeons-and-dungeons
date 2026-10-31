@@ -1,5 +1,5 @@
 export const BASE_URL = (
-  process.env.E2E_BASE_URL ?? "https://dnd.localhost"
+  process.env.E2E_BASE_URL ?? "https://dungeon.localhost"
 ).replace(/\/$/, "")
 
 /** スマホ（縦長）とPC（横長）。 */

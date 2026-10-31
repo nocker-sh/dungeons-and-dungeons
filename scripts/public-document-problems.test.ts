@@ -13,7 +13,7 @@ it("プロンプト・公開URL・CLIの一時保存例は公開できる", () =
   expect(
     publicDocumentProblems({
       file: "guide.md",
-      source: "Use case: portrait. https://dnd.localhost /tmp/run.json",
+      source: "Use case: portrait. https://dungeon.localhost /tmp/run.json",
     })
   ).toEqual([])
 })

@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vp dev",
+    "dev": "portless",
+    "dev:app": "vp dev",
     "build": "vp build",
     "preview": "vp preview",
     "test": "vp test run",

@@ -1,6 +1,6 @@
 # e2e：ブラウザで画面を確かめる
 
-開発サーバー（`https://dnd.localhost`）が動いている前提。相手は `E2E_BASE_URL` で変えられる。
+開発サーバー（`https://dungeon.localhost`）が動いている前提。相手は `E2E_BASE_URL` で変えられる。
 
 ```sh
 vp run e2e:flows          # 操作の確認（バッグ・対象選び・戦闘・召喚・会話・出撃）をスマホとPCで
@@ -138,7 +138,7 @@ vp exec bun tests/e2e/night-talk.ts # 初期編成で宿泊から二人雑談へ
 
 ## 最初の相棒ロクスと主人公の衣装
 
-`vp exec bun tests/e2e/lox.ts` は320・390・1280幅で、初期契約ロクス、街の「ロクスと話す」、初回会話と選択肢、次の会話、主人公の防具・本人の成長案内なし、既存衣装への着替えと資産・能力保持を実際の操作で確認する。PNGは `/tmp/dnd-lox-*`。接続先は既定のPortless `https://dnd.localhost`、必要なら `E2E_BASE_URL` で稼働中の開発サーバーを指定する。会話の保存再開と物語の条件は `demon-hero.test.ts` で確認する。
+`vp exec bun tests/e2e/lox.ts` は320・390・1280幅で、初期契約ロクス、街の「ロクスと話す」、初回会話と選択肢、次の会話、主人公の防具・本人の成長案内なし、既存衣装への着替えと資産・能力保持を実際の操作で確認する。PNGは `/tmp/dnd-lox-*`。接続先は既定のPortless `https://dungeon.localhost`、必要なら `E2E_BASE_URL` で稼働中の開発サーバーを指定する。会話の保存再開と物語の条件は `demon-hero.test.ts` で確認する。
 
 ## 物語から悪魔と契約する
 

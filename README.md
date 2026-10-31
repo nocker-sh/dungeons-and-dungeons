@@ -4,10 +4,10 @@
 
 ```sh
 vp install
-portless dnd vp run dev
+vp run dev
 ```
 
-開発URL: https://dnd.localhost
+開発URL: https://dungeon.localhost
 
 - `pages/`: Voidのページとローダー
 - `client/`: 画面・ブラウザ保存・プレビュー実行

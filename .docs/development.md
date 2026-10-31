@@ -4,10 +4,10 @@
 
 ```sh
 vp install
-portless dnd vp run dev
+vp run dev
 ```
 
-開発URLは `https://dnd.localhost`。依存は[[pnpm-lock.yaml]]で固定し、CIは `vp install --frozen-lockfile` を使う。CLIは `vp run cli`、直接実行は `vp exec bun <file>`。CLIのimportは `@/` から定義元を参照する。
+開発URLは `https://dungeon.localhost`。依存は[[pnpm-lock.yaml]]で固定し、CIは `vp install --frozen-lockfile` を使う。CLIは `vp run cli`、直接実行は `vp exec bun <file>`。CLIのimportは `@/` から定義元を参照する。
 
 ## 責務と依存
 

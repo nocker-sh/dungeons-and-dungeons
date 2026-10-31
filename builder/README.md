@@ -67,7 +67,7 @@ vp run cli ai --json "auto"                            # 出来事と画面の�
 
 - 毎回の出力の最後に、いまの状態（パーティ・持ち物・路線・分かれ目の行き先・祭壇の選択肢・戦闘・今できる操作）が出る。
 - `look` で画面の細部を読む：`shops`・`shop <店>`（値段・買えるか・持つと強くなる仲間）・`recruits`・`quests`・`rooms`・`smithy`・`gear`（持つと強くなる仲間）・`member <仲間>`・`skill <ワザ>`・`foe <敵>`。
-- ブラウザと同じ保存を使える：開発サーバー（`https://dnd.localhost/?save=tmp`）で開くと、保存を localStorage ではなく同じ `/tmp/dnd/save.json` に読み書きする。AI が CLI で作った場面をブラウザで開き直せば、そのまま見た目を確かめられる。ブラウザで遊んだ続きを CLI で再現することもできる。本番のビルドには入らない（`scripts/dev-save.ts`）。
+- ブラウザと同じ保存を使える：開発サーバー（`https://dungeon.localhost/?save=tmp`）で開くと、保存を localStorage ではなく同じ `/tmp/dnd/save.json` に読み書きする。AI が CLI で作った場面をブラウザで開き直せば、そのまま見た目を確かめられる。ブラウザで遊んだ続きを CLI で再現することもできる。本番のビルドには入らない（`scripts/dev-save.ts`）。
 
 ## 一手ずつ遊ぶ（play）
 

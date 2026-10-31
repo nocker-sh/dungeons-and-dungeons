@@ -22,7 +22,7 @@ const help = `ゲームの画像と検証記録を生成する（開発サーバ
   --size 1280x800  --seed 1  --hp 100,25,0  --duration 6000
   --actions '[{"at":4000,"label":"放つ"}]'
   --config <JSONファイル> / --config-json '<JSON>'
-  --base-url https://dnd.localhost
+  --base-url https://dungeon.localhost
   --guides  配置の枠線を画像に入れる
   --verify  同じ条件を2回描画し、PNGのハッシュの一致を検証
 
@@ -67,7 +67,7 @@ for (const key of args.keys())
 const base = (
   args.get("base-url") ??
   process.env.E2E_BASE_URL ??
-  "https://dnd.localhost"
+  "https://dungeon.localhost"
 ).replace(/\/$/, "")
 
 async function configOf(): Promise<StudioConfig> {

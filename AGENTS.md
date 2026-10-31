@@ -43,7 +43,7 @@
 - 依存の導入は `vp install`、ロックは `pnpm-lock.yaml`。`bun.lock` は使わない。
 - CLIはBunを実行環境にし、`vp run cli` または `vp exec bun <file>` から実行する。CLIのimportは `@/` の絶対パスにする。
 
-- Portless名は `dnd`、URLは `https://dnd.localhost`。
+- Portless名は `dungeon`（`portless.json`）、URLは `https://dungeon.localhost`。起動は `vp run dev`（`dev` が portless 経由で `dev:app` を実行する）。
 - AIのグラフィック確認は `/dev/view?scene={slug}&seed={seed}&at={ms}`（入力無効）、動作確認は `/dev/play/{slug}?seed={seed}`。場面一覧は `/dev/view?catalog=1`、手順は [[.docs/dev-preview]]。従来の場面確認は `/previews/{slug}`、`?still` で動きを止める。
 - 数値・ワザ・敵・規則を変えたら `vp run cli check`。CLIの操作・測定方法は `builder/README.md`。
 - 資料への参照はWikiリンクだけを使う。名前・IDだけの索引、日付別の作業実況、一時画像の一覧は作らない。固有の設定・判断・手順を残し、正本を複製しない。
