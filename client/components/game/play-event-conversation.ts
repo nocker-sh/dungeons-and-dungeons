@@ -13,9 +13,21 @@ export function playEventConversation(
   signal?: AbortSignal,
   subject: ConversationSubject = {}
 ): Promise<void> {
+  const active = game.queries.activeConversation(game.state)
+  const resuming =
+    active?.trigger === trigger &&
+    (trigger !== "visit" ||
+      subject.place === undefined ||
+      active.place === subject.place) &&
+    (trigger !== "talk" ||
+      subject.resident === undefined ||
+      (active.sharedTalk
+        ? active.participants.includes(subject.resident)
+        : active.participants[0] === subject.resident))
   if (
     signal?.aborted ||
-    !game.queries.canStartConversation(game.state, trigger, subject)
+    (!resuming &&
+      !game.queries.canStartConversation(game.state, trigger, subject))
   )
     return Promise.resolve()
   return new Promise((resolve) => {
@@ -29,6 +41,7 @@ export function playEventConversation(
       if (!game.state.conversation?.active) finish()
     })
     signal?.addEventListener("abort", finish, { once: true })
+    if (resuming) return
     const town = inPhase(game, "town")
     const result = eventsOf(
       trigger === "inn"
