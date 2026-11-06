@@ -77,6 +77,23 @@ export class Victory {
           }
         : member
     )
+    const quests = state.quests.map((quest) => {
+      const def = this.deps.catalog.quest(quest.id)
+      if (!def || def.encounter || quest.claimed) return quest
+      if (def.requiresCleared && !state.cleared) return quest
+      if (def.requiresBossVictory && !battle.boss) return quest
+      if (
+        def.requiresFullPartyAlive &&
+        (state.party.length !== PARTY_SLOTS ||
+          state.party.some(
+            (id) =>
+              !state.members.some((member) => member.id === id && member.hp > 0)
+          ))
+      )
+        return quest
+      const hits = battle.foes.filter((foe) => foe.foe === def.foe).length
+      return { ...quest, progress: Math.min(def.count, quest.progress + hits) }
+    })
     if (phase.townQuest) {
       const quest = this.deps.catalog.quest(phase.townQuest)!
       const totalGold = gold + quest.reward.gold
@@ -89,7 +106,7 @@ export class Victory {
           stones: state.stones + stones,
           bag: Bag.add(state.bag, totalGoods),
           gear: [...state.gear, ...dropped],
-          quests: state.quests.map((entry) =>
+          quests: quests.map((entry) =>
             entry.id === quest.id
               ? { ...entry, progress: quest.count, claimed: true }
               : entry
@@ -111,23 +128,6 @@ export class Victory {
         { type: "quest-claimed", quest: quest.id, gold: quest.reward.gold }
       )
     }
-    const quests = state.quests.map((quest) => {
-      const def = this.deps.catalog.quest(quest.id)
-      if (!def || def.encounter || quest.claimed) return quest
-      if (def.requiresCleared && !state.cleared) return quest
-      if (def.requiresBossVictory && !battle.boss) return quest
-      if (
-        def.requiresFullPartyAlive &&
-        (state.party.length !== PARTY_SLOTS ||
-          state.party.some(
-            (id) =>
-              !state.members.some((member) => member.id === id && member.hp > 0)
-          ))
-      )
-        return quest
-      const hits = battle.foes.filter((foe) => foe.foe === def.foe).length
-      return { ...quest, progress: Math.min(def.count, quest.progress + hits) }
-    })
     const layerIndex = this.deps.catalog.layerIndex(phase.expedition.layer)
     const opened =
       battle.boss && layerIndex + 1 < this.deps.catalog.data.layers.length

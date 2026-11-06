@@ -7,7 +7,7 @@
     "build": "vp build",
     "preview": "vp preview",
     "test": "vp test run",
-    "test:story": "vp test run conversation onboarding --maxWorkers=1",
+    "test:story": "vp test run conversation onboarding quest --maxWorkers=1",
     "lint": "vp lint",
     "format": "vp fmt",
     "check": "vp check",
