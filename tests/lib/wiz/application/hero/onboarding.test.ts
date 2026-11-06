@@ -5,6 +5,9 @@ import { inPhase } from "@/lib/wiz/phases/in-phase"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { realContent } from "@/lib/wiz/testing/real-content"
 import { saveIdentity } from "@/lib/wiz/definition/save-identity"
+import { testEnvironment } from "@/lib/wiz/testing/test-environment"
+import type { Game } from "@/lib/wiz/game/game"
+import type { GameAction } from "@/lib/wiz/commands"
 
 const gameContent = realContent()
 
@@ -26,6 +29,170 @@ function arriveInTown() {
 }
 
 describe("三人で始めてギルド登録", () => {
+  it("開幕の全選択経路を実操作で進め、保存復元と同じ操作の再実行で状態・出力を保つ", () => {
+    const definition = new GameDefinition(gameContent)
+    const openings = definition.catalog.data.conversations!.filter(
+      (entry) => entry.trigger === "opening"
+    )
+    let sample = 0.5
+    const fresh = () => {
+      sample = 0.5
+      return definition.create(testEnvironment({ random: () => sample }))
+    }
+    type Observation = Readonly<{
+      action: GameAction
+      random: number
+      saved: ReturnType<Game["save"]>
+      events: ReturnType<typeof eventsOrThrow>
+      conversation: ReturnType<Game["queries"]["activeConversation"]>
+    }>
+    const record = (
+      game: Game,
+      action: GameAction,
+      random: number,
+      trace: Observation[]
+    ) => {
+      sample = random
+      const events = eventsOrThrow(game.send(action))
+      const saved = game.save()
+      trace.push({
+        action,
+        random,
+        saved,
+        events,
+        conversation: game.queries.activeConversation(game.state),
+      })
+      expect(game.restore(JSON.parse(JSON.stringify(saved)))).toBeUndefined()
+      expect(game.save()).toEqual(saved)
+    }
+    const replay = (trace: Observation[]) => {
+      const game = fresh()
+      const actual: Observation[] = []
+      for (const step of trace) record(game, step.action, step.random, actual)
+      expect(actual).toEqual(trace)
+    }
+    const finishInTown = (game: Game, trace: Observation[]) => {
+      expect(game.queries.canStartConversation(game.state, "opening")).toBe(
+        false
+      )
+      record(game, { type: "leave-camp" }, 0.5, trace)
+      record(game, { type: "register-hero", name: "ノア" }, 0.5, trace)
+      const reception = definition.catalog.data.conversations!.find(
+        (entry) => entry.id === "registered-at-guild"
+      )!
+      record(
+        game,
+        {
+          type: "start-conversation",
+          trigger: "visit",
+          place: reception.place,
+        },
+        0.5,
+        trace
+      )
+      expect(game.state.conversation?.active).toBe(reception.id)
+      record(game, { type: "finish-conversation" }, 0.5, trace)
+      expect(game.state.hero.registrationPending).toBe(false)
+      expect(game.state.conversation?.seen).toContain(reception.id)
+      replay(trace)
+    }
+    const initial = fresh()
+    const queue = [{ saved: initial.save(), trace: [] as Observation[] }]
+    const visited = new Set([JSON.stringify(initial.save().snapshot)])
+    const transitions = new Map<string, Set<string>>()
+    const ended = new Set<string>()
+    const played = new Set<string>()
+    const answered = new Set<string>()
+    for (let at = 0; at < queue.length; at++) {
+      expect(queue.length, "開幕の状態探索が有限に収まる").toBeLessThan(256)
+      const node = queue[at]
+      const game = fresh()
+      expect(game.restore(node.saved)).toBeUndefined()
+      const nodeKey = JSON.stringify(node.saved.snapshot)
+      const destinations = new Set<string>()
+      transitions.set(nodeKey, destinations)
+      if (!game.queries.canStartConversation(game.state, "opening")) {
+        ended.add(nodeKey)
+        finishInTown(game, [...node.trace])
+        continue
+      }
+      const selected = new Set<string>()
+      for (let index = 0; index < openings.length; index++) {
+        expect(game.restore(node.saved)).toBeUndefined()
+        const random = (index + 0.5) / openings.length
+        const started = [...node.trace]
+        record(
+          game,
+          { type: "start-conversation", trigger: "opening" },
+          random,
+          started
+        )
+        const script = game.queries.activeConversation(game.state)!
+        if (selected.has(script.id)) continue
+        selected.add(script.id)
+        played.add(script.id)
+        const active = game.save()
+        const choices = script.choice
+          ? script.choice.options.map((_, choice) => choice)
+          : [undefined]
+        for (const choice of choices) {
+          expect(game.restore(active)).toBeUndefined()
+          const before = game.state
+          const trace = [...started]
+          record(game, { type: "finish-conversation", choice }, 0.5, trace)
+          answered.add(`${script.id}:${choice ?? "none"}`)
+          expect(game.state).toEqual({
+            ...before,
+            conversation: game.state.conversation,
+          })
+          expect(game.state.conversation?.flags ?? []).toEqual([
+            ...new Set([
+              ...(before.conversation?.flags ?? []),
+              ...script.sets,
+              ...(choice === undefined
+                ? []
+                : script.choice!.options[choice].sets),
+            ]),
+          ])
+          replay(trace)
+          const saved = game.save()
+          const key = JSON.stringify(saved.snapshot)
+          destinations.add(key)
+          if (!visited.has(key)) {
+            visited.add(key)
+            queue.push({ saved, trace })
+          }
+        }
+      }
+    }
+    expect(ended.size, "開幕から受付まで到達する経路がある").toBeGreaterThan(0)
+    const reachesEnd = new Set(ended)
+    for (let changed = true; changed;) {
+      changed = false
+      for (const [key, destinations] of transitions)
+        if (
+          !reachesEnd.has(key) &&
+          [...destinations].some((next) => reachesEnd.has(next))
+        ) {
+          reachesEnd.add(key)
+          changed = true
+        }
+    }
+    expect([...reachesEnd].sort(), "どの到達状態も開幕を終えられる").toEqual(
+      [...visited].sort()
+    )
+    expect([...played].sort()).toEqual(openings.map((entry) => entry.id).sort())
+    expect([...answered].sort()).toEqual(
+      openings
+        .flatMap((entry) =>
+          entry.choice
+            ? entry.choice.options.map((_, choice) => `${entry.id}:${choice}`)
+            : [`${entry.id}:none`]
+        )
+        .sort()
+    )
+  })
+
   it("[feature:W045] 開幕は街へ着く前だけ。会話中は街へ出られず、見終えた場面は繰り返さない", () => {
     const game = new GameDefinition(gameContent).create()
     expect(game.queries.canStartConversation(game.state, "opening")).toBe(true)

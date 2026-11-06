@@ -11,6 +11,11 @@ export function verifyConversations({ catalog, need }: ContentVerification) {
       `会話 ID が重複: ${conversation.id}`
     )
     conversationIds.add(conversation.id)
+    for (const flag of conversation.requires)
+      need(
+        !conversation.excludes.includes(flag),
+        `会話 ${conversation.id} のフラグ ${flag} は要求と除外を同時に指定できない`
+      )
     need(
       new Set(conversation.participants).size ===
         conversation.participants.length,
