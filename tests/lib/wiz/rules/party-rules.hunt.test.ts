@@ -200,13 +200,13 @@ describe("仲間の能力と成長の不変条件", () => {
       skill,
       count: rules.skills.maxUses(ada, base, skill) ?? 0,
     }))
-    expect(rules.skills.canBrawl({ ...ada, used: spent }, base)).toBe(true)
+    expect(rules.canBrawl({ ...ada, used: spent }, base)).toBe(true)
     // 一つでも残っていれば殴れない
     const oneLeft = spent.map((entry, index) =>
       index === 0 ? { ...entry, count: entry.count - 1 } : entry
     )
-    expect(rules.skills.canBrawl({ ...ada, used: oneLeft }, base)).toBe(false)
-    expect(rules.skills.canBrawl(ada, base)).toBe(false)
+    expect(rules.canBrawl({ ...ada, used: oneLeft }, base)).toBe(false)
+    expect(rules.canBrawl(ada, base)).toBe(false)
   })
 
   it("[feature:W007] 次のレベルまでの経験値はレベル×expBase", () => {

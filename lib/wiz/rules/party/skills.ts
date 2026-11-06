@@ -128,16 +128,6 @@ export class PartySkills {
     return { used, restored }
   }
 
-  /** 攻撃できるワザが一つも残っていないと「殴る」が使える。 */
-  canBrawl(member: Member, state: Pick<GameState, "gear" | "contract">) {
-    return !this.battleSkills(member, state).some((id) => {
-      const skill = this.catalog.skill(id)
-      if (skill?.kind !== "hit") return false
-      const left = this.leftOf(member, state, id)
-      return left === null || left > 0
-    })
-  }
-
   /** 「殴る」のワザ。 */
   brawl(): WizDeepReadonly<SkillDef> | undefined {
     return this.catalog.skill(this.catalog.data.brawl)

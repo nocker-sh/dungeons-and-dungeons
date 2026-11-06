@@ -209,7 +209,7 @@ export class BattleViews {
           : null,
       /** 使える手が尽きたときだけ出る弱い攻撃。 */
       brawl:
-        brawl && this.rules.skills.canBrawl(member, state)
+        brawl && this.rules.canBrawl(member, state)
           ? {
               name: brawl.name,
               desc: brawl.desc,

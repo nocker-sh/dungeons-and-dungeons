@@ -5,6 +5,8 @@ import { createTestPlay } from "@/lib/wiz/testing/create-test-play"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { startedState } from "@/lib/wiz/testing/started-state"
 import { turnActionFor } from "@/lib/wiz/testing/turn-action-for"
+import { aState } from "@/lib/wiz/testing/state-builder"
+import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { WizWorldEnvironment } from "@/lib/wiz/core/world/world"
 import type { GameState } from "@/lib/wiz/state/state-schema"
@@ -76,4 +78,71 @@ describe("殴る（使える手が尽きたとき）", () => {
       game.state.members.find((member) => member.id === alda)?.used
     ).toHaveLength(spent)
   })
+
+  it.each(["HP1", "代償と同じHP", "代償より1多いHP"])(
+    "[feature:W004] 残る攻撃のHP代償を払えるかで殴るを決める（%s）",
+    (boundary) => {
+      const hero = memberBySlug("hero").id
+      const builder = aState().withDemons([{ id: "zaza", lv: 1, exp: 0 }])
+      const state = builder
+        .inBattle({ order: [...builder.build().party, "foe-1"] })
+        .build()
+      const probe = createTestGame({ state })
+      const commands = probe.queries.commands(probe.state, hero)!
+      const attacks = [...commands.weaponSkills, ...commands.skills].filter(
+        (skill) => skill.kind === "hit"
+      )
+      const sacrifice = attacks.find((skill) => skill.cost > 0)!
+      expect(sacrifice.left).toBeGreaterThan(0)
+      const used = attacks
+        .filter((skill) => skill.cost === 0)
+        .map((skill) => ({ skill: skill.id, count: skill.uses! }))
+      const hp =
+        boundary === "HP1"
+          ? 1
+          : sacrifice.cost + (boundary === "代償より1多いHP" ? 1 : 0)
+      const game = createTestGame({
+        state: {
+          ...state,
+          members: state.members.map((member) =>
+            member.id === hero ? { ...member, hp, used } : member
+          ),
+        },
+      })
+      const view = game.queries.commands(game.state, hero)!
+      const canAttack = hp > sacrifice.cost
+      expect(
+        [...view.weaponSkills, ...view.skills].some(
+          (skill) => skill.kind === "hit" && skill.usable
+        )
+      ).toBe(canAttack)
+      expect(view.brawl !== null).toBe(!canAttack)
+      if (canAttack) {
+        const before = game.state
+        expect(game.send({ type: "act", command: "brawl" })).toMatchObject({
+          code: "UNAVAILABLE",
+        })
+        expect(game.state).toBe(before)
+        const acted = eventsOrThrow(
+          game.send({
+            type: "act",
+            command: "skill",
+            skill: sacrifice.id,
+          })
+        ).find((event) => event.type === "acted")
+        expect(acted).toMatchObject({ paid: sacrifice.cost })
+      } else {
+        const acted = eventsOrThrow(
+          game.send({
+            type: "act",
+            command: "brawl",
+          })
+        ).find((event) => event.type === "acted")
+        expect(acted).toMatchObject({ command: "brawl" })
+        expect(
+          game.state.members.find((member) => member.id === hero)
+        ).toMatchObject({ hp, used })
+      }
+    }
+  )
 })

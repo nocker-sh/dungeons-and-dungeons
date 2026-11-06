@@ -116,6 +116,24 @@ export class PartyRules {
     return Math.max(1, Math.floor(this.stats(member, state).maxHp * share))
   }
 
+  /** 流派・回数・HPの代償を満たす攻撃が一つもないと「殴る」を使える。 */
+  canBrawl(
+    member: Member,
+    state: Pick<GameState, "gear" | "demons" | "contract">
+  ) {
+    return !this.skills.battleSkills(member, state).some((id) => {
+      if (
+        this.catalog.skill(id)?.kind !== "hit" ||
+        !this.skills.canUseSchool(member, state, id)
+      )
+        return false
+      const left = this.skills.leftOf(member, state, id)
+      if (left !== null && left <= 0) return false
+      const cost = this.sacrificeCost(member, state, id)
+      return cost === 0 || member.hp > cost
+    })
+  }
+
   /**
    * その道具がこの仲間に効くか。効かない相手に使うと道具が無駄になるので選ばせない。
    * 回復＝HPが減っている、使用回数の戻し＝使ったワザがある、治療＝その状態がある、蘇生＝倒れている。

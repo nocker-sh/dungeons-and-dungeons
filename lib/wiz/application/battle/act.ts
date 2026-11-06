@@ -52,7 +52,7 @@ export class Act {
       if (!skill) return reject("UNAVAILABLE")
       if (input.command === "brawl") {
         // 攻撃できるワザが残っている間は「殴る」を使えない
-        if (!this.deps.party.skills.canBrawl(member, state))
+        if (!this.deps.party.canBrawl(member, state))
           return reject("UNAVAILABLE")
       } else {
         if (
