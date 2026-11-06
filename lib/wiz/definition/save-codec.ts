@@ -82,7 +82,11 @@ export function createSaveCodec(
     // 悪魔と契約して戦う仲間（R）は装備を持たないので、着けていた装備を外す
     // 4人で出撃していた保存は3人へ移す
     const state = fitPartySize(
-      releasePactGear(giveSignatureWeapons(decoded, catalog, weapons), catalog),
+      releasePactGear(
+        giveSignatureWeapons(decoded, catalog, weapons),
+        catalog,
+        party
+      ),
       catalog
     )
     const oldOutfit = state.gear.find(

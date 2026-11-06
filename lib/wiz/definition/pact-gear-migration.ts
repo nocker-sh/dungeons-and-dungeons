@@ -1,4 +1,5 @@
 import type { GameCatalog } from "@/lib/wiz/content/game-catalog"
+import type { PartyRules } from "@/lib/wiz/rules/party-rules"
 import type { GameState } from "@/lib/wiz/state/state-schema"
 
 /**
@@ -8,7 +9,8 @@ import type { GameState } from "@/lib/wiz/state/state-schema"
  */
 export function releasePactGear(
   state: GameState,
-  catalog: GameCatalog
+  catalog: GameCatalog,
+  party: PartyRules
 ): GameState {
   const modeWeapons = (owner: string) =>
     new Set(
@@ -18,12 +20,21 @@ export function releasePactGear(
     (gear) => gear.owner && catalog.member(gear.owner)?.pact
   )
   if (!held.length) return state
-  return {
+  const owners = new Set(held.map((gear) => gear.owner))
+  const next: GameState = {
     ...state,
     gear: state.gear.flatMap((gear) => {
       if (!gear.owner || !catalog.member(gear.owner)?.pact) return [gear]
       if (modeWeapons(gear.owner).has(gear.good)) return []
       return [{ ...gear, owner: null }]
+    }),
+  }
+  return {
+    ...next,
+    members: next.members.map((member) => {
+      if (!owners.has(member.id)) return member
+      const maximum = party.stats(member, next).maxHp
+      return member.hp > maximum ? { ...member, hp: maximum } : member
     }),
   }
 }
