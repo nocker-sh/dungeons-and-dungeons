@@ -22,7 +22,6 @@ export type BattleDirectorDeps = {
   /** 戦う場所の背景（エンジンの戦う場所から作品のデータで引いた絵）。 */
   scene: string | null
   gone: readonly string[]
-  shownHp: Record<string, number>
   /** 今の中断の合図（画面を離れたら止める）。 */
   signal: () => AbortSignal
   onEnd: (result: "victory" | "defeat") => void

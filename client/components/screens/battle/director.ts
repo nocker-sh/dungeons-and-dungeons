@@ -143,9 +143,18 @@ export class BattleDirector {
     }, signal)
   }
 
-  /** 削った後の敵のHPを覚える。敵のHPは画面に出さず、倒れたかの見た目にだけ使う。 */
-  recordFoeHp(foeId: string, to: number) {
-    this.deps.setShownHp((hp) => ({ ...hp, [foeId]: to }))
+  /** 演出済みのHPへ増減を当てる。同じ手番の攻撃・回復・毒を順に引き継ぐ。 */
+  changeFoeHp(foeId: string, change: number, down = false) {
+    const foe = this.deps.view?.foes.find((entry) => entry.id === foeId)
+    this.deps.setShownHp((hp) => ({
+      ...hp,
+      [foeId]: down
+        ? 0
+        : Math.min(
+            foe?.maxHp ?? Infinity,
+            Math.max(0, (hp[foeId] ?? foe?.hp ?? 0) + change)
+          ),
+    }))
   }
 
   /** 倒れた敵は回りながら画面外へ吹き飛ぶ。 */
@@ -267,14 +276,14 @@ export class BattleDirector {
   /** 相手が誰でも同じ見せ方：敵へ・仲間へ、被害・回復・状態。 */
   playResults(acted: Acted, big: boolean, over: boolean) {
     return playBattleResults(this.deps, acted, big, over, {
-      recordFoeHp: (id, hp) => this.recordFoeHp(id, hp),
+      changeFoeHp: (id, change, down) => this.changeFoeHp(id, change, down),
       knockOut: (id, delay) => this.knockOut(id, delay),
     })
   }
 
   /** 手番の終わりの出来事：毒で削られる、縛られて動けない。 */
   async playAfter(events: readonly GameEvent[], signal: AbortSignal) {
-    const { fx, game, parts, shownHp } = this.deps
+    const { fx, game, parts } = this.deps
     for (const event of events) {
       if (signal.aborted) return
       if (event.type === "ticked") {
@@ -298,12 +307,7 @@ export class BattleDirector {
           fx.shake(0.5)
           if (event.target.kind === "foe") {
             const id = event.target.id
-            const from = shownHp[id] ?? 0
-            const foe = this.deps.view?.foes.find((entry) => entry.id === id)
-            const to = heal
-              ? Math.min(foe?.maxHp ?? from + heal, from + heal)
-              : Math.max(0, from - damage)
-            this.recordFoeHp(id, to)
+            this.changeFoeHp(id, heal - damage, event.down)
             if (event.down && !events.some((entry) => entry.type === "victory"))
               this.knockOut(id, 300)
           }

@@ -88,7 +88,6 @@ export function Battle(props: Props) {
     view,
     scene,
     gone,
-    shownHp,
     signal: signalOf,
     onEnd: props.onEnd,
     setPhase,

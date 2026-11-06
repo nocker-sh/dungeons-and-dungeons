@@ -14,7 +14,7 @@ import {
 import type { BattleDirectorDeps } from "./director-context"
 
 type ResultCallbacks = {
-  recordFoeHp: (foeId: string, to: number) => void
+  changeFoeHp: (foeId: string, change: number, down?: boolean) => void
   knockOut: (foeId: string, delay: number) => Playback
 }
 
@@ -26,7 +26,7 @@ export function playBattleResults(
   over: boolean,
   callbacks: ResultCallbacks
 ) {
-  const { fx, game, parts, view, shownHp } = deps
+  const { fx, game, parts } = deps
   const { width, height } = fx.size()
   const results: readonly ActionResult[] = acted.results
   const impact = attackEffect(
@@ -46,7 +46,6 @@ export function playBattleResults(
       const delay = i * animationTiming.stagger
       const ref = result.target
       if (ref.kind === "foe") {
-        const foe = view?.foes.find((entry) => entry.id === ref.id)
         const c = parts.foeCenter(ref.id)
         let damagePlayback: Playback | undefined
         if (result.blocked && !result.damage) {
@@ -55,8 +54,6 @@ export function playBattleResults(
             text: "防がれた！",
           })
         } else if (result.damage !== undefined && acted.command !== "guard") {
-          const from = shownHp[ref.id] ?? foe?.hp ?? 0
-          const to = result.down ? 0 : Math.max(0, from - result.damage)
           fx.hitStop(big ? 1.6 : 1)
           fx.comic(
             result.blocked ? "comic-guard" : impact,
@@ -93,7 +90,7 @@ export function playBattleResults(
           after(
             damage,
             () => {
-              callbacks.recordFoeHp(ref.id, to)
+              callbacks.changeFoeHp(ref.id, -result.damage!, result.down)
               if (result.down && !over) callbacks.knockOut(ref.id, 0)
             },
             deps.signal()
@@ -101,11 +98,16 @@ export function playBattleResults(
         }
         if (result.heal) {
           fx.comic("comic-heal", c.x, c.y - c.h * 0.12, c.w * 0.8, { delay })
-          fx.numberAt(c.x, c.y, `+${result.heal}`, {
+          const healing = fx.numberAt(c.x, c.y, `+${result.heal}`, {
             size: 10,
             color: COLOR.sage,
             delay,
           })
+          after(
+            healing,
+            () => callbacks.changeFoeHp(ref.id, result.heal!),
+            deps.signal()
+          )
         }
         if (result.status || result.resisted) {
           // 飛んでいるダメージ数字に状態の文字を重ねない。
