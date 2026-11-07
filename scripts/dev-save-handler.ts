@@ -1,7 +1,5 @@
-import { randomUUID } from "node:crypto"
-import { mkdirSync, renameSync, rmSync, writeFileSync } from "node:fs"
 import type { IncomingMessage, ServerResponse } from "node:http"
-import { dirname } from "node:path"
+import { replaceTextFile } from "../lib/files/replace-text-file"
 import { readEnvelope } from "./read-envelope"
 
 export const DEV_SAVE_PATH = process.env.DND_SAVE ?? "/tmp/dnd/save.json"
@@ -49,15 +47,7 @@ export function devSaveHandler(path = DEV_SAVE_PATH) {
             before = {}
           }
           const next = { ...before, save }
-          mkdirSync(dirname(path), { recursive: true })
-          // 書き込み失敗で元の保存を切り詰めない。同じ場所へ書き終えてから置き換える。
-          const temporary = `${path}.${randomUUID()}.tmp`
-          try {
-            writeFileSync(temporary, JSON.stringify(next), { flag: "wx" })
-            renameSync(temporary, path)
-          } finally {
-            rmSync(temporary, { force: true })
-          }
+          replaceTextFile(path, JSON.stringify(next))
           response.statusCode = 204
           response.end()
         } catch {

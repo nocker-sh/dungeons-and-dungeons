@@ -2,8 +2,16 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { createServer, type Server } from "node:http"
 import { tmpdir } from "node:os"
 import { join } from "node:path"
-import { afterEach, beforeEach, describe, expect, it } from "vite-plus/test"
+import * as crypto from "node:crypto"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test"
 import { devSaveHandler } from "@/scripts/dev-save-handler"
+
+vi.mock("node:crypto", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("node:crypto")>()
+  return { ...actual, randomUUID: vi.fn(actual.randomUUID) }
+})
+const actualCrypto =
+  await vi.importActual<typeof import("node:crypto")>("node:crypto")
 
 let directory: string
 let path: string
@@ -21,6 +29,8 @@ beforeEach(async () => {
 })
 
 afterEach(async () => {
+  vi.mocked(crypto.randomUUID).mockImplementation(actualCrypto.randomUUID)
+  vi.restoreAllMocks()
   await new Promise<void>((resolve, reject) => {
     server.close((error) => (error ? reject(error) : resolve()))
     server.closeAllConnections()
@@ -29,6 +39,33 @@ afterEach(async () => {
 })
 
 describe("開発用保存 HTTP", () => {
+  it.each(["PUT", "DELETE"])(
+    "%sで同名の一時ファイルを削除せず再試行できる",
+    async (method) => {
+      const metadata = { seed: 42, rng: 11, serial: 9 }
+      const original = JSON.stringify({ ...metadata, save: { old: true } })
+      writeFileSync(path, original)
+      const id = "00000000-0000-4000-8000-000000000000"
+      const temporary = `${path}.${id}.tmp`
+      writeFileSync(temporary, "another pending save")
+      vi.mocked(crypto.randomUUID).mockReturnValue(id)
+      const request = {
+        method,
+        ...(method === "PUT" ? { body: '{"new":true}' } : {}),
+      }
+      expect((await fetch(url, request)).status).toBe(500)
+      expect(readFileSync(temporary, "utf8")).toBe("another pending save")
+      expect(readFileSync(path, "utf8")).toBe(original)
+      expect(await (await fetch(url)).json()).toEqual({ old: true })
+      vi.mocked(crypto.randomUUID).mockImplementation(actualCrypto.randomUUID)
+      expect((await fetch(url, request)).status).toBe(204)
+      expect(JSON.parse(readFileSync(path, "utf8"))).toEqual({
+        ...metadata,
+        ...(method === "PUT" ? { save: { new: true } } : {}),
+      })
+      expect(readFileSync(temporary, "utf8")).toBe("another pending save")
+    }
+  )
   it("保存がないときだけ204を返す", async () => {
     expect((await fetch(url)).status).toBe(204)
     writeFileSync(path, JSON.stringify({ seed: 1 }))

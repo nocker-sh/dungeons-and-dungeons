@@ -1,13 +1,5 @@
-import { randomUUID } from "node:crypto"
-import {
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  renameSync,
-  rmSync,
-  writeFileSync,
-} from "node:fs"
-import { dirname } from "node:path"
+import { existsSync, readFileSync } from "node:fs"
+import { replaceTextFile } from "@/lib/files/replace-text-file"
 import { buildContent } from "@/builder/lib/build-content"
 import { parseCommand } from "@/builder/lib/commands"
 import { battleAction } from "@/builder/lib/policy/battle"
@@ -139,22 +131,9 @@ export function commandPlay(options: CliOptions) {
     console.log(output.join("\n"))
   }
   if (file) {
-    mkdirSync(dirname(file), { recursive: true })
-    // 元の保存は、同じ場所の一時ファイルへ書き終えてから置き換える。
-    const temporary = `${file}.${randomUUID()}.tmp`
-    try {
-      writeFileSync(
-        temporary,
-        JSON.stringify({
-          seed,
-          ...session.dump(),
-          policyRng: random.state,
-        }),
-        { flag: "wx" }
-      )
-      renameSync(temporary, file)
-    } finally {
-      rmSync(temporary, { force: true })
-    }
+    replaceTextFile(
+      file,
+      JSON.stringify({ seed, ...session.dump(), policyRng: random.state })
+    )
   }
 }

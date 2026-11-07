@@ -1,9 +1,15 @@
 import { afterEach, expect, test, vi } from "vite-plus/test"
 import * as fs from "node:fs"
+import * as crypto from "node:crypto"
 import { tmpdir } from "node:os"
 import { join } from "node:path"
 import { commandPlay } from "@/builder/cli/command-play"
 import { parseOptions } from "@/builder/cli/options"
+
+vi.mock("node:crypto", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("node:crypto")>()
+  return { ...actual, randomUUID: vi.fn(actual.randomUUID) }
+})
 
 vi.mock("node:fs", async (importOriginal) => {
   const actual = await importOriginal<typeof import("node:fs")>()
@@ -14,13 +20,61 @@ vi.mock("node:fs", async (importOriginal) => {
   }
 })
 const actualFs = await vi.importActual<typeof import("node:fs")>("node:fs")
+const actualCrypto =
+  await vi.importActual<typeof import("node:crypto")>("node:crypto")
 const folders: string[] = []
 afterEach(() => {
   vi.mocked(fs.writeFileSync).mockImplementation(actualFs.writeFileSync)
   vi.mocked(fs.renameSync).mockImplementation(actualFs.renameSync)
+  vi.mocked(crypto.randomUUID).mockImplementation(actualCrypto.randomUUID)
   vi.restoreAllMocks()
   for (const folder of folders.splice(0)) fs.rmSync(folder, { recursive: true })
 })
+
+for (const existing of [false, true])
+  test(`a temporary collision preserves the other writer and ${existing ? "the previous save" : "an absent save"}`, () => {
+    const folder = fs.mkdtempSync(join(tmpdir(), "dnd-cli-save-collision-"))
+    folders.push(folder)
+    const file = join(folder, "save.json")
+    const expected = join(folder, "expected.json")
+    const output = vi.spyOn(console, "log").mockImplementation(() => {})
+    const play = (path: string, ...commands: string[]) => {
+      commandPlay(
+        parseOptions([
+          "play",
+          "--json",
+          "--seed",
+          "42",
+          "--save",
+          path,
+          ...commands,
+        ])
+      )
+      const result = JSON.parse(output.mock.calls.at(-1)![0] as string)
+      expect(result.log.join("\n")).not.toMatch(/拒否:|エラー:/)
+    }
+    if (existing) {
+      play(file, "buy armory sword")
+      fs.copyFileSync(file, expected)
+    }
+    const before = existing ? fs.readFileSync(file, "utf8") : undefined
+    play(expected, "buy armory sword")
+    const target = fs.readFileSync(expected, "utf8")
+    const id = "00000000-0000-4000-8000-000000000000"
+    const temporary = `${file}.${id}.tmp`
+    fs.writeFileSync(temporary, "another pending save")
+    vi.mocked(crypto.randomUUID).mockReturnValue(id)
+    expect(() => play(file, "buy armory sword")).toThrow(/EEXIST/)
+    expect(fs.readFileSync(temporary, "utf8")).toBe("another pending save")
+    if (existing) expect(fs.readFileSync(file, "utf8")).toBe(before)
+    else expect(fs.existsSync(file)).toBe(false)
+    vi.mocked(crypto.randomUUID).mockImplementation(actualCrypto.randomUUID)
+    play(file, "buy armory sword")
+    expect(fs.readFileSync(file, "utf8")).toBe(target)
+    expect(fs.readFileSync(temporary, "utf8")).toBe("another pending save")
+    play(file, "state")
+    expect(fs.readFileSync(file, "utf8")).toBe(target)
+  })
 
 for (const existing of [false, true])
   for (const failure of ["partial-write", "replace"])
