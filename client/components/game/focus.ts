@@ -112,12 +112,13 @@ export function useKeyboardNav(view: RefObject<HTMLElement | null>) {
         null
       )
     }
-    let queued = false
+    let disposed = false
+    let queued: number | null = null
     const observer = new MutationObserver(() => {
-      if (queued) return
-      queued = true
-      requestAnimationFrame(() => {
-        queued = false
+      if (disposed || queued !== null) return
+      queued = requestAnimationFrame(() => {
+        queued = null
+        if (disposed) return
         // 再保存中の決定連打を背面へ送らない。方向操作で離れることはできる。
         if (
           active?.matches('[data-save-retry][aria-busy="true"]') &&
@@ -352,6 +353,7 @@ export function useKeyboardNav(view: RefObject<HTMLElement | null>) {
     let frame = 0
     let previousPollTime: number | null = null
     const poll = (time: number) => {
+      if (disposed) return
       const elapsed =
         previousPollTime === null
           ? 0
@@ -366,6 +368,7 @@ export function useKeyboardNav(view: RefObject<HTMLElement | null>) {
       }
       const connected = new Set<number>()
       for (const pad of pads) {
+        if (disposed) return
         if (!pad || pad.connected === false) continue
         connected.add(pad.index)
         const scrollAxis = pad.axes[3] ?? 0
@@ -403,7 +406,8 @@ export function useKeyboardNav(view: RefObject<HTMLElement | null>) {
           next: b(5),
         }
         const prev = previous.get(pad.index) ?? {}
-        const edge = (name: keyof typeof now) => now[name] && !prev[name]
+        const edge = (name: keyof typeof now) =>
+          !disposed && now[name] && !prev[name]
         const send = (keyName: string) =>
           dispatchEvent(
             new KeyboardEvent("keydown", { key: keyName, cancelable: true })
@@ -441,14 +445,16 @@ export function useKeyboardNav(view: RefObject<HTMLElement | null>) {
       }
       for (const index of previous.keys())
         if (!connected.has(index)) previous.delete(index)
-      frame = requestAnimationFrame(poll)
+      if (!disposed) frame = requestAnimationFrame(poll)
     }
     frame = requestAnimationFrame(poll)
     document.addEventListener("pointermove", pointerMoved)
     document.addEventListener("focusin", focused)
     addEventListener("keydown", key)
     return () => {
+      disposed = true
       observer.disconnect()
+      if (queued !== null) cancelAnimationFrame(queued)
       document.removeEventListener("pointermove", pointerMoved)
       document.removeEventListener("focusin", focused)
       removeEventListener("keydown", key)
