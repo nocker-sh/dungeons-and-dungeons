@@ -191,3 +191,164 @@ for (const scene of scenes)
       }
     }
   )
+
+for (const phase of ["town", "expedition"])
+  test.each(
+    definition.catalog.data.goods.filter(
+      (good) => good.kind === "weapon" || good.kind === "armor"
+    )
+  )(
+    `${phase}: real bag equipment selection and autosave agree with native equip for $id`,
+    async (good) => {
+      // One unowned item and its wear/upgrade are local possessions, not an acquisition playthrough.
+      const builder = aState(definition.catalog)
+        .withGear([])
+        .withEquipped("alda", good.id, {
+          owner: null,
+          plus: 2,
+          wear: good.kind === "armor" ? 7 : 0,
+        })
+      const initial = (
+        phase === "town" ? builder : builder.inExpedition()
+      ).build()
+      const game = definition.create(testEnvironment(), initial)
+      const control = definition.create(testEnvironment(), initial)
+      const storage = new MemoryStorage()
+      const session = connectSave(game, storage)
+      vi.spyOn(FxStore.prototype, "add").mockImplementation(() =>
+        playback(Promise.resolve(), () => {})
+      )
+      try {
+        render(
+          <GameProvider game={game}>
+            <Shell
+              game={game}
+              unreadable={null}
+              onDiscard={async () => {}}
+              saveFailed={false}
+              preview={{
+                screen: { name: "town", intro: false },
+                overlay: { kind: "bag" },
+                render: <BagSurface />,
+              }}
+            />
+          </GameProvider>
+        )
+        const gear = game.queries
+          .gear(game.state)
+          .find((entry) => entry.id === good.id)!
+        expect(gear).toBeDefined()
+        const eligible =
+          phase === "town"
+            ? game.state.party.filter((member) =>
+                game.queries
+                  .equipOptions(game.state, member)
+                  .some((entry) => entry.gear === gear.gear)
+              )
+            : []
+        fireEvent.click(screen.getByRole("button", { name: "装備" }))
+        fireEvent.click(screen.getByRole("button", { name: gear.name }))
+        const before = game.save()
+        if (!eligible.length) {
+          expect(
+            screen.queryByRole("button", { name: "仲間に装備" })
+          ).toBeNull()
+          expect(game.save()).toEqual(before)
+          expect(storage.read()).toBeNull()
+          return
+        }
+        fireEvent.click(screen.getByRole("button", { name: "仲間に装備" }))
+        const cards = [
+          ...document.querySelectorAll<HTMLButtonElement>(
+            ".formation .card .hit"
+          ),
+        ]
+        expect(cards).toHaveLength(game.state.party.length)
+        expect(
+          game.state.party.filter((_member, index) => !cards[index].disabled)
+        ).toEqual(eligible)
+        for (const [index, member] of game.state.party.entries()) {
+          if (!eligible.includes(member)) {
+            fireEvent.click(cards[index])
+            expect(game.save()).toEqual(before)
+            expect(storage.read()).toBeNull()
+            expect(screen.getByRole("button", { name: "やめる" })).toBeDefined()
+          }
+        }
+        fireEvent.click(screen.getByRole("button", { name: "やめる" }))
+        expect(screen.queryByRole("button", { name: "やめる" })).toBeNull()
+        expect(game.save()).toEqual(before)
+        expect(storage.read()).toBeNull()
+        fireEvent.click(screen.getByRole("button", { name: "仲間に装備" }))
+        const chosen = document.querySelectorAll<HTMLButtonElement>(
+          ".formation .card .hit"
+        )[game.state.party.indexOf(eligible[0])]
+        await act(async () => fireEvent.click(chosen))
+        expect(screen.queryByRole("button", { name: "やめる" })).toBeNull()
+        eventsOrThrow(
+          control.send({
+            type: "equip",
+            gear: gear.gear,
+            member: eligible[0],
+          })
+        )
+        expect(game.save()).toEqual(control.save())
+        expect(game.save()).not.toEqual(before)
+        const equipped = game.save()
+        await act(async () => fireEvent.click(chosen))
+        expect(game.save()).toEqual(equipped)
+        expect(JSON.parse(storage.read()!)).toEqual(equipped)
+        const remaining = game.state.party.filter((member) =>
+          game.queries
+            .equipOptions(game.state, member)
+            .some((entry) => entry.gear === gear.gear)
+        )
+        expect(remaining).not.toContain(eligible[0])
+        if (remaining.length) {
+          fireEvent.click(screen.getByRole("button", { name: "仲間に装備" }))
+          const nextCards = [
+            ...document.querySelectorAll<HTMLButtonElement>(
+              ".formation .card .hit"
+            ),
+          ]
+          expect(
+            game.state.party.filter(
+              (_member, index) => !nextCards[index].disabled
+            )
+          ).toEqual(remaining)
+          const recipient = remaining[0]
+          await act(async () =>
+            fireEvent.click(nextCards[game.state.party.indexOf(recipient)])
+          )
+          eventsOrThrow(
+            control.send({ type: "equip", gear: gear.gear, member: recipient })
+          )
+          expect(game.save()).toEqual(control.save())
+          expect(
+            game.state.gear.find((entry) => entry.id === gear.gear)!.owner
+          ).toBe(recipient)
+          expect(JSON.parse(storage.read()!)).toEqual(game.save())
+          const transferred = game.save()
+          await act(async () =>
+            fireEvent.click(nextCards[game.state.party.indexOf(recipient)])
+          )
+          expect(game.save()).toEqual(transferred)
+          expect(JSON.parse(storage.read()!)).toEqual(transferred)
+        } else {
+          expect(
+            screen.queryByRole("button", { name: "仲間に装備" })
+          ).toBeNull()
+        }
+        const restored = definition.create(testEnvironment())
+        const resumed = connectSave(restored, storage)
+        try {
+          expect(resumed.status).toBe("restored")
+          expect(restored.state).toEqual(game.state)
+        } finally {
+          resumed.disconnect()
+        }
+      } finally {
+        session.disconnect()
+      }
+    }
+  )
