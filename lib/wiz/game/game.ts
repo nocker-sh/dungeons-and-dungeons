@@ -91,6 +91,15 @@ export class Game {
   }
 
   #publish() {
-    for (const listener of Array.from(this.#listeners)) listener()
+    const failures: unknown[] = []
+    for (const listener of Array.from(this.#listeners)) {
+      try {
+        listener()
+      } catch (error) {
+        failures.push(error)
+      }
+    }
+    // 表示の失敗で後続の保存通知を止めず、元の例外は呼出し側へ返す。
+    if (failures.length) throw failures[0]
   }
 }
