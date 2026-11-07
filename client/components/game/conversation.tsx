@@ -87,7 +87,7 @@ export function Conversation(props: Props) {
   const previousFocus = useRef<HTMLElement | null>(null)
   const line = queue[index]
   // 返事を選ぶ間も、何に対する返事か分かるよう最後のセリフを窓に残す
-  const typing = useTyping(line?.[1] ?? "")
+  const typing = useTyping(line?.[1] ?? "", line)
 
   useLayoutEffect(() => {
     const element = dialog.current

@@ -1,23 +1,26 @@
 import { tween } from "@/client/components/canvas/tween"
 import { useEffect, useState } from "react"
 
-/** 押すと全文、もう一度押すと次へ。 */
-export function useTyping(text: string) {
-  // 何文字出したかは、どのセリフの分かと組で持つ。セリフが替わった最初の描画で、
-  // 前のセリフの文字数のまま新しいセリフを一瞬出さないため
-  const [typed, setTyped] = useState({ text, count: 0 })
-  const shown = typed.text === text ? typed.count : 0
-  const [revealed, setRevealed] = useState<string | null>(null)
+/** 押すと全文、もう一度押すと次へ。同じ文章も台詞ごとに送り直す。 */
+export function useTyping(text: string, line: object | undefined) {
+  const [typed, setTyped] = useState({ text, line, count: 0, revealed: false })
+  const current = typed.text === text && typed.line === line
   useEffect(() => {
-    setTyped({ text, count: 0 })
+    setTyped({ text, line, count: 0, revealed: false })
     const animation = tween(0, text.length, text.length * 26, (value) =>
-      setTyped({ text, count: Math.floor(value) })
+      setTyped((previous) =>
+        previous.text === text && previous.line === line
+          ? { ...previous, count: Math.floor(value) }
+          : previous
+      )
     )
     return animation.cancel
-  }, [text])
+  }, [text, line])
   return {
-    shown: revealed === text ? text : text.slice(0, shown),
-    done: revealed === text || shown >= text.length,
-    finish: () => setRevealed(text),
+    shown: current ? (typed.revealed ? text : text.slice(0, typed.count)) : "",
+    done: current
+      ? typed.revealed || typed.count >= text.length
+      : text.length === 0,
+    finish: () => setTyped({ text, line, count: text.length, revealed: true }),
   }
 }
