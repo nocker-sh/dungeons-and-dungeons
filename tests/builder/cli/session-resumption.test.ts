@@ -169,3 +169,40 @@ test("a legacy save without policy RNG keeps the gameplay snapshot and initializ
   expect(current.policyRng).toBeGreaterThanOrEqual(0)
   expect(current.policyRng).toBeLessThanOrEqual(0xffffffff)
 })
+
+for (const override of [[], ["--seed", "7"]])
+  test(`a state-only reopen preserves the original seed metadata, override=${override.join(" ")}`, () => {
+    const folder = mkdtempSync(join(tmpdir(), "dnd-cli-seed-resumption-"))
+    folders.push(folder)
+    const file = join(folder, "save.json")
+    const output = vi.spyOn(console, "log").mockImplementation(() => {})
+    commandPlay(
+      parseOptions([
+        "play",
+        "--new",
+        "--json",
+        "--seed",
+        "42",
+        "--save",
+        file,
+        "buy armory sword",
+      ])
+    )
+    const before = readFileSync(file, "utf8")
+    const saved = JSON.parse(before)
+    expect(saved.seed).toBe(42)
+    const purchased = JSON.parse(output.mock.calls.at(-1)![0] as string)
+    expect(purchased.log.join("\n")).not.toMatch(/拒否:|エラー:/)
+    commandPlay(
+      parseOptions(["play", "--json", "--save", file, ...override, "state"])
+    )
+    expect(readFileSync(file, "utf8")).toBe(before)
+    expect(JSON.parse(output.mock.calls.at(-1)![0] as string).view).toEqual(
+      purchased.view
+    )
+    expect(JSON.parse(output.mock.calls.at(-1)![0] as string).save).toEqual({
+      rng: saved.rng,
+      serial: saved.serial,
+      save: saved.save,
+    })
+  })

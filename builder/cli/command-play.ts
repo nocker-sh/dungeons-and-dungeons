@@ -28,10 +28,10 @@ import { snapshotView } from "@/builder/cli/snapshot-view"
 export function commandPlay(options: CliOptions) {
   const built = buildContent(options.overrides)
   const file = options.save
+  let seed = options.seed
   let session: Session
   let policyRng: number | undefined
-  if (options.scene)
-    session = sessionFromScene(built, options.seed, options.scene)
+  if (options.scene) session = sessionFromScene(built, seed, options.scene)
   else if (file && existsSync(file) && !options.fresh) {
     const saved = JSON.parse(readFileSync(file, "utf8"))
     if (saved.policyRng !== undefined) {
@@ -44,13 +44,13 @@ export function commandPlay(options: CliOptions) {
       policyRng = saved.policyRng
     }
     // ブラウザが書いた保存は乱数の状態を持たないので、種から始める
-    const seed = saved.seed ?? options.seed
+    seed = saved.seed ?? seed
     session = new Session(built, seed, {
       rng: saved.rng ?? new SeededRandom(seed).state,
       serial: saved.serial ?? 1000,
       save: saved.save,
     })
-  } else session = new Session(built, options.seed)
+  } else session = new Session(built, seed)
   if (options.level) session.levelTo(options.level)
   const random =
     policyRng === undefined
@@ -146,7 +146,7 @@ export function commandPlay(options: CliOptions) {
       writeFileSync(
         temporary,
         JSON.stringify({
-          seed: options.seed,
+          seed,
           ...session.dump(),
           policyRng: random.state,
         }),
