@@ -1,4 +1,5 @@
 import { mean } from "@/builder/lib/simulation/mean"
+import { median } from "@/builder/lib/simulation/median"
 import { FUN_GOALS } from "@/builder/lib/fun"
 import type { Playthrough } from "@/builder/lib/fun"
 
@@ -62,8 +63,6 @@ export function funMetrics(playthroughs: readonly Playthrough[]): FunMetrics {
             .filter((trip) => trip.result.outcome === "wiped").length
       )
     ),
-    endingTrips: endings.length
-      ? [...endings].sort((a, b) => a - b)[Math.floor(endings.length / 2)]
-      : Number.NaN,
+    endingTrips: median(endings),
   }
 }
