@@ -69,14 +69,13 @@ export class GameDefinition {
         this.rules.expedition
       ),
       world as never,
-      createSaveCodec(
-        this.identity,
-        this.catalog,
-        this.legacyIdentity,
-        this.previousIdentity,
-        this.rules.party,
-        this.rules.weapons
-      )
+      createSaveCodec({
+        identity: this.identity,
+        legacyIdentity: this.legacyIdentity,
+        previousIdentity: this.previousIdentity,
+        dependencies: this.rules,
+        environment,
+      })
     )
   }
 

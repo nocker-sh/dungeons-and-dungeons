@@ -438,6 +438,26 @@ export class Combat {
     if (!this.over())
       battle = { ...battle, turn: this.advance(battle), foes: this.foes }
     const events = [acted, ...this.events]
+    return this.settle(battle, events)
+  }
+
+  /** 編成の移行で消えた手番を、行動の消費なしで次の生存者へ送る。 */
+  resume(): Transition {
+    let battle: Battle = {
+      ...this.phase.battle,
+      foes: this.foes,
+      guarding: this.guarding,
+    }
+    if (!this.over())
+      battle = {
+        ...battle,
+        turn: this.advance({ ...battle, turn: battle.turn - 1 }),
+        foes: this.foes,
+      }
+    return this.settle(battle, [...this.events])
+  }
+
+  private settle(battle: Battle, events: GameEvent[]): Transition {
     // 仲間が全員倒れたら、敵を倒し切っていても全滅。
     // 勝利を先に見ると、全員倒れたまま探索が続いて次の戦闘で誰も動けなくなる。
     if (this.living("member").length === 0 && this.phase.townQuest)

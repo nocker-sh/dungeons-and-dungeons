@@ -7,6 +7,9 @@ import provenance from "@/lib/wiz/core/provenance.json"
 
 const engineRoot = resolve(import.meta.dirname, "../../../lib/wiz")
 
+const isUiImplementation = (name: string) =>
+  /\.tsx?$/.test(name) && !/\.test\.tsx?$/.test(name)
+
 function sourceFiles(root: string): string[] {
   return readdirSync(root, { withFileTypes: true }).flatMap((entry) =>
     entry.isDirectory()
@@ -303,6 +306,19 @@ describe("エンジンの境界", () => {
       )
   })
 
+  it.each([
+    ["view.ts", true],
+    ["view.tsx", true],
+    ["view.test.ts", false],
+    ["view.test.tsx", false],
+    ["send.test-button.tsx", true],
+  ] as const)(
+    "画面の実装と同じ場所の試験をファイル名で区別する: %s",
+    (name, expected) => {
+      expect(isUiImplementation(name)).toBe(expected)
+    }
+  )
+
   it("画面はフェーズのクラスを通してだけ操作する（game.send を直接呼ばない）", () => {
     const uiRoots = ["../../client/components", "../../client/contexts"].map(
       (dir) => resolve(engineRoot, dir)
@@ -311,7 +327,7 @@ describe("エンジンの境界", () => {
       readdirSync(root, { withFileTypes: true }).flatMap((entry) =>
         entry.isDirectory()
           ? files(resolve(root, entry.name))
-          : /\.tsx?$/.test(entry.name)
+          : isUiImplementation(entry.name)
             ? [resolve(root, entry.name)]
             : []
       )

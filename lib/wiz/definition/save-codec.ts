@@ -1,37 +1,41 @@
+import { resumeMigratedBattle } from "@/lib/wiz/definition/resume-migrated-battle"
+import type { GameDependencies } from "@/lib/wiz/application/game-dependencies"
+import type { WizWorldEnvironment } from "@/lib/wiz/core/world/world"
 import type { WizStandardSchemaDefinition } from "@/lib/wiz/core/standard-schema"
 import { WizWorldSaveCodec } from "@/lib/wiz/core/save/world-save-codec"
 import { stateSchema } from "@/lib/wiz/state/state-schema"
 import type { GameState } from "@/lib/wiz/state/state-schema"
 import { stateProblems } from "@/lib/wiz/integrity/state-problems"
 import { StateIntegrityError } from "@/lib/wiz/integrity/state-integrity-error"
-import type { PartyRules } from "@/lib/wiz/rules/party-rules"
-import type { WeaponRules } from "@/lib/wiz/rules/weapon-rules"
 import { giveSignatureWeapons } from "@/lib/wiz/definition/signature-weapon-migration"
 import { releasePactGear } from "@/lib/wiz/definition/pact-gear-migration"
 import { fitPartySize } from "@/lib/wiz/definition/party-size-migration"
 import { z } from "zod"
-import type { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import { validateState } from "@/lib/wiz/definition/validate-state"
 type SaveCodec = Pick<WizWorldSaveCodec<GameState>, "encode" | "decodeSnapshot">
 
+type Props = Readonly<{
+  identity: string
+  legacyIdentity: string
+  previousIdentity: string
+  dependencies: GameDependencies
+  environment: WizWorldEnvironment
+}>
+
 /** 保存の入出力。構成 identity が違う保存は読み込まない。 */
-export function createSaveCodec(
-  identity: string,
-  catalog: GameCatalog,
-  legacyIdentity: string,
-  previousIdentity: string,
-  party: PartyRules,
-  weapons: WeaponRules
-): SaveCodec {
+export function createSaveCodec(props: Props): SaveCodec {
+  const catalog = props.dependencies.catalog
+  const party = props.dependencies.party
+  const weapons = props.dependencies.weapons
   // 同じ検証器を、読み取り専用のゲーム状態の入出力として型付けする。
   const currentSchema: WizStandardSchemaDefinition<GameState> = stateSchema
   const codec = WizWorldSaveCodec.define({
-    contentVersion: identity,
+    contentVersion: props.identity,
     schema: currentSchema,
   })
   // 直前の保存には登録待ちの項目がない。名前・装備を保ち、登録済みとして読む。
   const previous = WizWorldSaveCodec.define({
-    contentVersion: previousIdentity,
+    contentVersion: props.previousIdentity,
     schema: currentSchema,
   })
   const gear = stateSchema.shape.gear.element
@@ -67,7 +71,7 @@ export function createSaveCodec(
     }))
   const compatibleSchema: WizStandardSchemaDefinition<GameState> = legacySchema
   const legacy = WizWorldSaveCodec.define({
-    contentVersion: legacyIdentity,
+    contentVersion: props.legacyIdentity,
     schema: compatibleSchema,
   })
   const compatible = (decoded: GameState): GameState => {
@@ -146,7 +150,18 @@ export function createSaveCodec(
     encode: <const Snapshot extends GameState>(state: Snapshot) =>
       codec.encode(state),
     // 読み込んだ保存は、今のコンテンツと食い違いがないかを確かめてから渡す（操作ごとには検証しない）
-    decodeSnapshot: (input: unknown) =>
-      validateState(compatible(decode(input)), catalog),
+    decodeSnapshot: (input: unknown) => {
+      const previous = decode(input)
+      const state = compatible(previous)
+      return validateState(
+        resumeMigratedBattle({
+          previous,
+          state,
+          dependencies: props.dependencies,
+          environment: props.environment,
+        }),
+        catalog
+      )
+    },
   }
 }
