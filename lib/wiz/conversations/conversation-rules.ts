@@ -164,6 +164,7 @@ export class ConversationRules {
       : notLast.length
         ? notLast
         : available
+    if (!candidates.length) return null
     const priority = Math.max(...candidates.map((entry) => entry.priority ?? 0))
     const prioritized = candidates.filter(
       (entry) => (entry.priority ?? 0) === priority
