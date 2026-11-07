@@ -66,18 +66,45 @@ export function verifyConversations({ catalog, need }: ContentVerification) {
       `会話 ${conversation.id} の進行度が範囲外`
     )
   }
-  // 条件のフラグは、どこかの会話で立てられないと永遠に出ない
-  const raised = new Set([
+  // Engine actions are possible entry points; dialogue conditions are checked optimistically.
+  const external = [
     HERO_REGISTERED_FLAG,
-    ...(data.conversations ?? []).flatMap((conversation) => [
+    ...data.demons
+      .filter((demon) => demon.contract?.paper)
+      .map((demon) => `demon-called:${demon.id}`),
+  ]
+  const scripts = (data.conversations ?? []).map((conversation) => ({
+    conversation,
+    flags: [
       ...conversation.sets,
       ...(conversation.choice?.options.flatMap((option) => option.sets) ?? []),
-    ]),
+    ],
+  }))
+  const raised = new Set([
+    ...external,
+    ...scripts.flatMap((entry) => entry.flags),
   ])
   for (const conversation of data.conversations ?? [])
     for (const flag of [...conversation.requires, ...conversation.excludes])
       need(
         raised.has(flag),
         `会話 ${conversation.id} のフラグ ${flag} を立てる会話がない`
+      )
+
+  // Even with choices combined and exclusions/non-flag conditions ignored, requirements need an entry.
+  // This over-approximation detects impossible cycles without rejecting valid exclusive branches.
+  const reachable = new Set(external)
+  let previous = -1
+  while (previous !== reachable.size) {
+    previous = reachable.size
+    for (const entry of scripts)
+      if (entry.conversation.requires.every((flag) => reachable.has(flag)))
+        for (const flag of entry.flags) reachable.add(flag)
+  }
+  for (const conversation of data.conversations ?? [])
+    for (const flag of conversation.requires)
+      need(
+        !raised.has(flag) || reachable.has(flag),
+        `会話 ${conversation.id} の要求フラグへ到達できない: ${flag}`
       )
 }
