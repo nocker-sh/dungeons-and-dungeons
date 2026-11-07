@@ -26,6 +26,16 @@ export function summarizeCampaign(
       layer: built.slugs.get(built.content.layers[index].id) ?? String(index),
       clear: rate(at.length, runs.length),
       medianTrip: median(at),
+      medianGap: median(
+        runs.flatMap((entry) => {
+          if (index === 0) return []
+          const previous = entry.clearedAt[index - 1]
+          const current = entry.clearedAt[index]
+          return previous === null || current === null
+            ? []
+            : [current - previous]
+        })
+      ),
       level: mean(levels),
       companionLevel: mean(
         runs

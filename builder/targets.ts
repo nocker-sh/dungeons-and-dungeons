@@ -179,10 +179,7 @@ const deepTargets: Target[] = [1, 2, 3, 4].flatMap((no) => [
     min: 2,
     max: 14,
     unit: "count" as const,
-    measure: (options) => {
-      const result = campaign(options)
-      return tripOf(result, no) - tripOf(result, no - 1)
-    },
+    measure: (options) => campaign(options).layers[no].medianGap,
   },
 ])
 

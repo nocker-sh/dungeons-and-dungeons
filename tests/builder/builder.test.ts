@@ -1,3 +1,7 @@
+import { DEFAULT_PLAN } from "@/builder/lib/policy/expedition"
+import { buildContent } from "@/builder/lib/build-content"
+import { campaignRun } from "@/builder/lib/simulation/campaign-run"
+import { median } from "@/builder/lib/simulation/median"
 import { describe, expect, it } from "vite-plus/test"
 import { readdirSync, readFileSync } from "node:fs"
 import { resolve, relative } from "node:path"
@@ -112,6 +116,47 @@ describe("ブラウザなしで動かす", () => {
  */
 const spansLayers = (id: string) => id.startsWith("campaign")
 const measureCampaign = process.env.BUILDER_CAMPAIGN === "1"
+
+const campaignInvariant = measureCampaign ? it : it.skip
+
+campaignInvariant(
+  "campaign-gap-pairs: each layer gap is the median of real paired playthroughs",
+  () => {
+    const built = buildContent([])
+    const options = {
+      overrides: [],
+      runs: 8,
+      seed: 1,
+      style: "smart" as const,
+      plan: DEFAULT_PLAN,
+      expeditions: 60,
+      layers: built.content.layers.length,
+      potions: 4,
+      shop: true,
+    }
+    const traces = Array.from({ length: options.runs }, (_, index) =>
+      campaignRun(built, options, index)
+    )
+    const targets = TARGETS.filter((target) =>
+      target.id.startsWith("campaign-gap-layer")
+    )
+    expect(targets.length).toBeGreaterThan(0)
+    for (const target of targets) {
+      const layer = Number(target.id.slice("campaign-gap-layer".length))
+      const differences = traces.flatMap((trace) => {
+        const previous = trace.clearedAt[layer - 1]
+        const current = trace.clearedAt[layer]
+        return previous === null || current === null ? [] : [current - previous]
+      })
+      const expected = median(differences)
+      const measured = target.measure({ overrides: [], runs: 100, seed: 1 })
+      expect(measured, `${target.id}: per-playthrough median ${expected}`).toBe(
+        expected
+      )
+    }
+  },
+  900_000
+)
 
 describe("バランスの目標（builder/targets.ts）", () => {
   for (const target of TARGETS) {
