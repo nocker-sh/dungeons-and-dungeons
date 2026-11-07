@@ -39,10 +39,6 @@ export class Session {
   ) {
     this.random = new SeededRandom(seed)
     this.serial = 0
-    if (resume) {
-      this.random.state = resume.rng
-      this.serial = resume.serial
-    }
     this.definition = definitionOf(built)
     this.game = this.definition.create(
       WizWorldEnvironment.create({
@@ -52,6 +48,9 @@ export class Session {
       })
     )
     if (resume) {
+      // Discard the provisional new game's draws before restoring the saved streams.
+      this.random.state = resume.rng
+      this.serial = resume.serial
       const failed = this.game.restore(resume.save)
       if (failed) throw failed
     }
