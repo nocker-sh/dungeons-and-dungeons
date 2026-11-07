@@ -16,6 +16,7 @@ import type { CliOptions } from "@/builder/cli/options"
 import { readLineFile } from "@/builder/cli/line-file"
 import { sessionFromScene } from "@/builder/cli/session-from-scene"
 import { snapshotView } from "@/builder/cli/snapshot-view"
+import { readPlaySave } from "@/builder/cli/read-play-save"
 
 export function commandPlay(options: CliOptions) {
   const built = buildContent(options.overrides)
@@ -25,16 +26,8 @@ export function commandPlay(options: CliOptions) {
   let policyRng: number | undefined
   if (options.scene) session = sessionFromScene(built, seed, options.scene)
   else if (file && existsSync(file) && !options.fresh) {
-    const saved = JSON.parse(readFileSync(file, "utf8"))
-    if (saved.policyRng !== undefined) {
-      if (
-        !Number.isInteger(saved.policyRng) ||
-        saved.policyRng < 0 ||
-        saved.policyRng > 0xffffffff
-      )
-        throw new Error("自動方策の乱数記録を読み込めません")
-      policyRng = saved.policyRng
-    }
+    const saved = readPlaySave(readFileSync(file, "utf8"))
+    policyRng = saved.policyRng
     // ブラウザが書いた保存は乱数の状態を持たないので、種から始める
     seed = saved.seed ?? seed
     session = new Session(built, seed, {
