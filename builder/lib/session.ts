@@ -1,3 +1,4 @@
+import { savedSessionIds } from "@/builder/lib/saved-session-ids"
 import { stateSchema } from "@/lib/wiz/state/state-schema"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
@@ -31,6 +32,7 @@ export class Session {
   readonly definition: GameDefinition
   readonly random: SeededRandom
   serial: number
+  private readonly reservedIds: ReadonlySet<string>
 
   constructor(
     readonly built: Built,
@@ -39,6 +41,7 @@ export class Session {
   ) {
     this.random = new SeededRandom(seed)
     this.serial = 0
+    this.reservedIds = savedSessionIds(resume?.save)
     this.definition = definitionOf(built)
     this.game = this.definition.create(
       WizWorldEnvironment.create({
@@ -73,6 +76,7 @@ export class Session {
         throw new Error("個体IDの連番を増やせません")
       this.serial = next
       const id = `g${next}`
+      if (this.reservedIds.has(id)) continue
       if (this.game?.state.gear.some((gear) => gear.id === id)) continue
       const phase = this.game?.state.phase
       if (
