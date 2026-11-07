@@ -348,7 +348,7 @@ export function useKeyboardNav(view: RefObject<HTMLElement | null>) {
         back()
       }
     }
-    const previous: Record<number, Record<string, boolean>> = {}
+    const previous = new Map<number, Record<string, boolean>>()
     let frame = 0
     let previousPollTime: number | null = null
     const poll = (time: number) => {
@@ -357,8 +357,17 @@ export function useKeyboardNav(view: RefObject<HTMLElement | null>) {
           ? 0
           : Math.min(50, Math.max(0, time - previousPollTime))
       previousPollTime = time
-      for (const pad of navigator.getGamepads?.() ?? []) {
-        if (!pad) continue
+      let pads: ReadonlyArray<Gamepad | null>
+      try {
+        pads = navigator.getGamepads?.() ?? []
+      } catch {
+        // 機器の読取り失敗は未接続として扱い、次のフレームで再試行する。
+        pads = []
+      }
+      const connected = new Set<number>()
+      for (const pad of pads) {
+        if (!pad || pad.connected === false) continue
+        connected.add(pad.index)
         const scrollAxis = pad.axes[3] ?? 0
         if (
           Number.isFinite(scrollAxis) &&
@@ -393,7 +402,7 @@ export function useKeyboardNav(view: RefObject<HTMLElement | null>) {
           previous: b(4),
           next: b(5),
         }
-        const prev = previous[pad.index] ?? {}
+        const prev = previous.get(pad.index) ?? {}
         const edge = (name: keyof typeof now) => now[name] && !prev[name]
         const send = (keyName: string) =>
           dispatchEvent(
@@ -428,8 +437,10 @@ export function useKeyboardNav(view: RefObject<HTMLElement | null>) {
           }
         }
         if (edge("back")) back()
-        previous[pad.index] = now
+        previous.set(pad.index, now)
       }
+      for (const index of previous.keys())
+        if (!connected.has(index)) previous.delete(index)
       frame = requestAnimationFrame(poll)
     }
     frame = requestAnimationFrame(poll)
