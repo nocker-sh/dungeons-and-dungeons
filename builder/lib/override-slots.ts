@@ -18,9 +18,12 @@ export function overrideSlots(
     const parent = get(root, rest.slice(0, -1))
     if (!parent || typeof parent !== "object")
       throw new Error(`項目が見つからない: ${pathText}`)
+    const key = rest[rest.length - 1]
+    if (!key || (!Object.hasOwn(parent, key) && key in parent))
+      throw new Error(`項目が見つからない: ${pathText}`)
     slots.push({
       parent: parent as Record<string, unknown>,
-      key: rest[rest.length - 1],
+      key,
     })
   }
   if (listName) {

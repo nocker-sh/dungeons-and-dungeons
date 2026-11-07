@@ -17,19 +17,22 @@ export function applyOverride(source: Source, expression: string) {
   const [, pathText, op, raw] = match
   const targets = overrideSlots(source, pathText)
   const value = parseValue(source, raw)
-  for (const { parent, key } of targets) {
+  const changes = targets.map(({ parent, key }) => {
     const current = parent[key]
-    if (op === "=") parent[key] = value
-    else {
-      if (typeof current !== "number" || typeof value !== "number")
-        throw new Error(`${pathText} は数値でない`)
-      const next =
-        op === "*="
-          ? current * value
-          : op === "+="
-            ? current + value
-            : current - value
-      parent[key] = Number.isInteger(current) ? Math.round(next) : next
+    if (op === "=") return { parent, key, value }
+    if (typeof current !== "number" || typeof value !== "number")
+      throw new Error(`${pathText} は数値でない`)
+    const next =
+      op === "*="
+        ? current * value
+        : op === "+="
+          ? current + value
+          : current - value
+    return {
+      parent,
+      key,
+      value: Number.isInteger(current) ? Math.round(next) : next,
     }
-  }
+  })
+  for (const change of changes) change.parent[change.key] = change.value
 }
