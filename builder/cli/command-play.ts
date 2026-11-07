@@ -21,10 +21,20 @@ export function commandPlay(options: CliOptions) {
   const built = buildContent(options.overrides)
   const file = options.save
   let session: Session
+  let policyRng: number | undefined
   if (options.scene)
     session = sessionFromScene(built, options.seed, options.scene)
   else if (file && existsSync(file) && !options.fresh) {
     const saved = JSON.parse(readFileSync(file, "utf8"))
+    if (saved.policyRng !== undefined) {
+      if (
+        !Number.isInteger(saved.policyRng) ||
+        saved.policyRng < 0 ||
+        saved.policyRng > 0xffffffff
+      )
+        throw new Error("自動方策の乱数記録を読み込めません")
+      policyRng = saved.policyRng
+    }
     // ブラウザが書いた保存は乱数の状態を持たないので、種から始める
     const seed = saved.seed ?? options.seed
     session = new Session(built, seed, {
@@ -34,7 +44,10 @@ export function commandPlay(options: CliOptions) {
     })
   } else session = new Session(built, options.seed)
   if (options.level) session.levelTo(options.level)
-  const random = session.random.fork(3)
+  const random =
+    policyRng === undefined
+      ? session.random.fork(3)
+      : new SeededRandom(policyRng)
   const run = (line: string): string[] => {
     const text = line.trim()
     if (!text || text === "state") return []
@@ -103,7 +116,12 @@ export function commandPlay(options: CliOptions) {
   if (options.json)
     console.log(
       JSON.stringify(
-        { log: output, view: snapshotView(session), save: session.dump() },
+        {
+          log: output,
+          view: snapshotView(session),
+          save: session.dump(),
+          policyRng: random.state,
+        },
         null,
         2
       )
@@ -116,7 +134,11 @@ export function commandPlay(options: CliOptions) {
     mkdirSync(dirname(file), { recursive: true })
     writeFileSync(
       file,
-      JSON.stringify({ seed: options.seed, ...session.dump() })
+      JSON.stringify({
+        seed: options.seed,
+        ...session.dump(),
+        policyRng: random.state,
+      })
     )
   }
 }
