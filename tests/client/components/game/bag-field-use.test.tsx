@@ -1,17 +1,12 @@
 // @vitest-environment jsdom
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react"
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test"
-import { AnimationBarrier } from "@/client/components/canvas/animation"
 import { playback } from "@/client/components/canvas/playback"
-import { FormationCards } from "@/client/components/game/formation-cards"
-import { FormationContext } from "@/client/components/game/formation/context"
-import type { FormationControl } from "@/client/components/game/formation/context"
+import { useFormation } from "@/client/components/game/formation/context"
+import { Shell } from "@/client/components/game/shell"
+import { TargetDim } from "@/client/components/game/target-dim"
 import { BagView } from "@/client/components/screens/bag-view"
-import { Camera } from "@/client/components/stage/camera"
-import { StageDirector } from "@/client/components/stage/director"
 import { FxStore } from "@/client/components/stage/fx/store"
-import { StageContext } from "@/client/components/stage/use-stage"
-import type { StageApi } from "@/client/components/stage/use-stage"
 import { GameProvider } from "@/client/contexts/game-provider"
 import { connectSave } from "@/client/game/connect-save"
 import { MemoryStorage } from "@/client/game/memory-storage"
@@ -39,6 +34,16 @@ afterEach(() => {
 })
 
 const definition = new GameDefinition(realContent())
+// Substitute only the background scene. Shell owns the real overlay machine and member cards.
+function BagSurface() {
+  const formation = useFormation()
+  return (
+    <>
+      <BagView onClose={() => {}} closeSignal={0} />
+      {formation.target ? <TargetDim request={formation.target} /> : null}
+    </>
+  )
+}
 const scenes: ReadonlyArray<{ name: string; pending?: Expedition["pending"] }> =
   [
     { name: "town" },
@@ -98,47 +103,24 @@ for (const scene of scenes)
       const control = definition.create(testEnvironment(), initial)
       const storage = new MemoryStorage()
       const session = connectSave(game, storage)
-      const stage: StageApi = {
-        exits: new AnimationBarrier(),
-        updates: new AnimationBarrier(),
-        camera: new Camera(),
-        fxStore: new FxStore(),
-        director: new StageDirector(),
-        canvas: { current: null },
-        set: { current: null },
-        artboard: null,
-        chrome: null,
-        solo: null,
-        art: async () => {},
-        bars: () => {},
-      }
-      // Effects and the target request are display outputs; no item rule or query is replaced.
-      vi.spyOn(stage.fxStore, "add").mockImplementation(() =>
+      // Only effect output is replaced; item rules, target requests and overlay transitions are real.
+      vi.spyOn(FxStore.prototype, "add").mockImplementation(() =>
         playback(Promise.resolve(), () => {})
       )
-      const target = vi.fn<FormationControl["requestTarget"]>()
-      const formation: FormationControl = {
-        cards: new FormationCards(),
-        lifted: null,
-        lift() {},
-        press() {},
-        openBag() {},
-        bagOpen: true,
-        cardsHidden: true,
-        target: null,
-        requestTarget: target,
-        setPress() {},
-        frozen: false,
-        freeze() {},
-      }
       try {
         render(
           <GameProvider game={game}>
-            <StageContext value={stage}>
-              <FormationContext value={formation}>
-                <BagView onClose={() => {}} closeSignal={0} />
-              </FormationContext>
-            </StageContext>
+            <Shell
+              game={game}
+              unreadable={null}
+              onDiscard={async () => {}}
+              saveFailed={false}
+              preview={{
+                screen: { name: "town", intro: false },
+                overlay: { kind: "bag" },
+                render: <BagSurface />,
+              }}
+            />
           </GameProvider>
         )
         const item = game.queries
@@ -155,14 +137,36 @@ for (const scene of scenes)
         expect(item.usable).toBe(true)
         fireEvent.click(screen.getByRole("button", { name: "使う" }))
         if (item.target === "ally") {
-          const request = target.mock.calls.at(-1)![0]!
-          expect(request.eligible).toEqual(item.targets)
-          request.onCancel()
+          const cards = [
+            ...document.querySelectorAll<HTMLButtonElement>(
+              ".formation .card .hit"
+            ),
+          ]
+          expect(cards).toHaveLength(game.state.party.length)
+          for (const [index, member] of game.state.party.entries()) {
+            expect(cards[index].disabled).toBe(!item.targets.includes(member))
+            if (!item.targets.includes(member)) {
+              fireEvent.click(cards[index])
+              expect(game.save()).toEqual(before)
+              expect(storage.read()).toBeNull()
+              expect(
+                screen.getByRole("button", { name: "やめる" })
+              ).toBeDefined()
+            }
+          }
+          fireEvent.click(screen.getByRole("button", { name: "やめる" }))
+          expect(screen.queryByRole("button", { name: "やめる" })).toBeNull()
           expect(game.save()).toEqual(before)
           expect(storage.read()).toBeNull()
           fireEvent.click(screen.getByRole("button", { name: "使う" }))
-          const chosen = target.mock.calls.at(-1)![0]!
-          await act(async () => chosen.onPick(item.targets[0]))
+          const chosen = document.querySelectorAll<HTMLButtonElement>(
+            ".formation .card .hit"
+          )[game.state.party.indexOf(item.targets[0])]
+          await act(async () => fireEvent.click(chosen))
+          expect(screen.queryByRole("button", { name: "やめる" })).toBeNull()
+          const used = game.save()
+          await act(async () => fireEvent.click(chosen))
+          expect(game.save()).toEqual(used)
         }
         eventsOrThrow(
           control.send({
