@@ -1,7 +1,10 @@
 // @vitest-environment jsdom
 import { act, cleanup, renderHook } from "@testing-library/react"
 import { afterEach, expect, test, vi } from "vite-plus/test"
-import { AnimationBarrier } from "@/client/components/canvas/animation"
+import {
+  AnimationBarrier,
+  animationClock,
+} from "@/client/components/canvas/animation"
 import { playback } from "@/client/components/canvas/playback"
 import { FormationCards } from "@/client/components/game/formation-cards"
 import type { FormationControl } from "@/client/components/game/formation/context"
@@ -18,9 +21,11 @@ import type { StageApi } from "@/client/components/stage/use-stage"
 import { connectSave } from "@/client/game/connect-save"
 import { MemoryStorage } from "@/client/game/memory-storage"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
+import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { realContent } from "@/lib/wiz/testing/real-content"
 import { aState } from "@/lib/wiz/testing/state-builder"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
+import type { Status } from "@/lib/wiz/state/state-schema"
 
 // Only image decoding and effect output are replaced; battle rules and save IO are real.
 vi.mock("@/client/components/screens/battle/artwork", () => ({
@@ -30,6 +35,7 @@ vi.mock("@/client/components/screens/battle/artwork", () => ({
 afterEach(() => {
   cleanup()
   vi.restoreAllMocks()
+  animationClock.scale = 1
 })
 
 const definition = new GameDefinition(realContent())
@@ -40,17 +46,36 @@ const foe = definition.catalog.data.foes.reduce((strongest, entry) =>
   entry.hp > strongest.hp ? entry : strongest
 )
 
-function fixture(foeFirst = false) {
-  const initial = aState(definition.catalog)
+function fixture(
+  foeFirst = false,
+  opponent = foe,
+  status: readonly Status[] = []
+) {
+  let initial = aState(definition.catalog)
     .withBag([{ good: potion.id, count: 2 }])
     .withMember("alda", { hp: 1 })
     .inBattle({
-      foes: [foe.id],
+      foes: [opponent.id],
       order: foeFirst
         ? ["foe-1", "hero", "alda", "mort"]
         : ["hero", "foe-1", "alda", "mort"],
     })
     .build()
+  if (status.length && initial.phase.type === "battle")
+    initial = {
+      ...initial,
+      phase: {
+        ...initial.phase,
+        battle: {
+          ...initial.phase.battle,
+          foes: initial.phase.battle.foes.map((entry) => ({
+            ...entry,
+            hp: foeFirst ? 1 : Math.max(1, entry.maxHp - 1),
+            status,
+          })),
+        },
+      },
+    }
   const game = definition.create(testEnvironment({ random: 0 }), initial)
   const storage = new MemoryStorage()
   const session = connectSave(game, storage)
@@ -90,6 +115,11 @@ function fixture(foeFirst = false) {
   const setMenu = vi.fn()
   const setAttacking = vi.fn()
   const setSettled = vi.fn()
+  let shownHp = Object.fromEntries(
+    view.foes.map((entry) => [entry.id, entry.hp])
+  )
+  let gone: string[] = []
+  const onEnd = vi.fn()
   const hook = renderHook(
     () => {
       const fx = useFx()
@@ -112,12 +142,16 @@ function fixture(foeFirst = false) {
           go: async () => {},
           arrived: () => {},
         },
-        onEnd: vi.fn(),
+        onEnd,
         setPhase: vi.fn(),
         setMenu,
         setPeek: vi.fn(),
-        setShownHp: vi.fn(),
-        setGone: vi.fn(),
+        setShownHp: (next) => {
+          shownHp = typeof next === "function" ? next(shownHp) : next
+        },
+        setGone: (next) => {
+          gone = typeof next === "function" ? next(gone) : next
+        },
       })
       return useBattleTurns({
         game,
@@ -161,6 +195,9 @@ function fixture(foeFirst = false) {
     setSettled,
     hook,
     input,
+    shownHp: () => shownHp,
+    gone: () => gone,
+    onEnd,
   }
 }
 
@@ -218,6 +255,82 @@ for (const interruption of ["before-call", "lift-output", "freeze-output"])
       f.session.disconnect()
     }
   })
+
+for (const foeFirst of [false, true])
+  test.each(definition.catalog.data.foes)(
+    `$slug: native status results, shown HP and saved resumption agree, foeFirst=${foeFirst}`,
+    async (opponent) => {
+      // The battle, injury and statuses are local starting conditions. No event or result is fabricated.
+      animationClock.scale = 0
+      const status: Status[] = foeFirst
+        ? [{ kind: "poison", turns: 2 }]
+        : [
+            { kind: "regen", turns: 2 },
+            { kind: "poison", turns: 2 },
+            { kind: "bind", turns: 1 },
+          ]
+      const f = fixture(foeFirst, opponent, status)
+      const sent = vi.spyOn(f.game, "send")
+      try {
+        await act(async () => {
+          if (foeFirst) await f.hook.result.current.foeTurn()
+          else await f.hook.result.current.act({ command: "guard" })
+        })
+        expect(sent).toHaveBeenCalledTimes(1)
+        const events: ReturnType<typeof f.game.send> =
+          sent.mock.results[0].value
+        if (events instanceof GameCommandError) throw events
+        expect(
+          events.some(
+            (event) =>
+              event.type === "ticked" &&
+              event.target.id === "foe-1" &&
+              event.status === "poison"
+          )
+        ).toBe(true)
+        if (!foeFirst) {
+          expect(
+            events.some(
+              (event) => event.type === "skipped" && event.actor.id === "foe-1"
+            )
+          ).toBe(true)
+          expect(
+            events.some(
+              (event) =>
+                event.type === "ticked" &&
+                event.target.id === "foe-1" &&
+                event.status === "regen" &&
+                (event.heal ?? 0) > 0
+            )
+          ).toBe(true)
+        }
+        expect(f.game.getSnapshot().error).toBeNull()
+        const live = f.game.queries.battle(f.game.state)
+        const hp = live?.foes.find((entry) => entry.id === "foe-1")?.hp ?? 0
+        expect(f.shownHp()).toEqual({ "foe-1": hp })
+        if (hp === 0) {
+          expect(f.onEnd).toHaveBeenCalledExactlyOnceWith("victory")
+          expect(f.gone()).toEqual(["foe-1"])
+        } else {
+          expect(f.onEnd).not.toHaveBeenCalled()
+          expect(f.gone()).toEqual([])
+        }
+        expect(f.hook.result.current.busy.current).toBe(false)
+        expect(f.setSettled).toHaveBeenCalledTimes(1)
+        expect(JSON.parse(f.storage.read()!)).toEqual(f.game.save())
+        const restored = definition.create(testEnvironment({ random: 0 }))
+        const resumed = connectSave(restored, f.storage)
+        try {
+          expect(resumed.status).toBe("restored")
+          expect(restored.state).toEqual(f.game.state)
+        } finally {
+          resumed.disconnect()
+        }
+      } finally {
+        f.session.disconnect()
+      }
+    }
+  )
 
 for (const command of ["guard", "item"] as const)
   test(`ending after the actual ${command} is committed keeps its one result and autosave`, async () => {
