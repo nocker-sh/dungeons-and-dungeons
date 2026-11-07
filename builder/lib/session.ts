@@ -44,7 +44,7 @@ export class Session {
       WizWorldEnvironment.create({
         random: this.random.next,
         now: () => 0,
-        nextId: () => `g${++this.serial}`,
+        nextId: this.nextId,
       })
     )
     if (resume) {
@@ -62,6 +62,25 @@ export class Session {
         name: hero.suggestion,
         look: hero.look,
       })
+    }
+  }
+
+  /** Browser saves omit our counter; never allocate an identity already in their state. */
+  private nextId = (): string => {
+    for (;;) {
+      const next = this.serial + 1
+      if (!Number.isSafeInteger(next))
+        throw new Error("個体IDの連番を増やせません")
+      this.serial = next
+      const id = `g${next}`
+      if (this.game?.state.gear.some((gear) => gear.id === id)) continue
+      const phase = this.game?.state.phase
+      if (
+        phase?.type === "battle" &&
+        phase.battle.foes.some((foe) => foe.appearanceId === id)
+      )
+        continue
+      return id
     }
   }
 
