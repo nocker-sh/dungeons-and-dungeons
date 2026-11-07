@@ -59,7 +59,7 @@ const config = defineConfig({
   resolve: { tsconfigPaths: true },
   // 複数の作業が同時にテストを回してもマシン（8コア）を使い切らないよう、1回の実行の並列数を抑える
   test: {
-    maxWorkers: 3,
+    maxWorkers: 1,
     // 別のcheckoutを重複実行しない。本体のテストは既定の探索規則で全件実行する。
     exclude: [...configDefaults.exclude, "**/.claude/worktrees/**"],
   },
