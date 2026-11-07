@@ -1,0 +1,245 @@
+// @vitest-environment jsdom
+import { act, cleanup, renderHook } from "@testing-library/react"
+import { afterEach, expect, test, vi } from "vite-plus/test"
+import { AnimationBarrier } from "@/client/components/canvas/animation"
+import { playback } from "@/client/components/canvas/playback"
+import { FormationCards } from "@/client/components/game/formation-cards"
+import type { FormationControl } from "@/client/components/game/formation/context"
+import { BattleDirector } from "@/client/components/screens/battle/director"
+import { BattleParts } from "@/client/components/screens/battle/parts"
+import { useBattleTurns } from "@/client/components/screens/battle/use-battle-turns"
+import type { ActInput } from "@/client/components/screens/battle/use-battle-turns"
+import { Camera } from "@/client/components/stage/camera"
+import { StageDirector } from "@/client/components/stage/director"
+import { FxStore } from "@/client/components/stage/fx/store"
+import { useFx } from "@/client/components/stage/use-fx"
+import { StageContext } from "@/client/components/stage/use-stage"
+import type { StageApi } from "@/client/components/stage/use-stage"
+import { connectSave } from "@/client/game/connect-save"
+import { MemoryStorage } from "@/client/game/memory-storage"
+import { GameDefinition } from "@/lib/wiz/definition/game-definition"
+import { realContent } from "@/lib/wiz/testing/real-content"
+import { aState } from "@/lib/wiz/testing/state-builder"
+import { testEnvironment } from "@/lib/wiz/testing/test-environment"
+
+// Only image decoding and effect output are replaced; battle rules and save IO are real.
+vi.mock("@/client/components/screens/battle/artwork", () => ({
+  loadBattleArtwork: async () => false,
+}))
+
+afterEach(() => {
+  cleanup()
+  vi.restoreAllMocks()
+})
+
+const definition = new GameDefinition(realContent())
+const potion = definition.catalog.data.goods.find(
+  (good) => good.kind === "item" && good.effect?.type === "heal"
+)!
+const foe = definition.catalog.data.foes.reduce((strongest, entry) =>
+  entry.hp > strongest.hp ? entry : strongest
+)
+
+function fixture(foeFirst = false) {
+  const initial = aState(definition.catalog)
+    .withBag([{ good: potion.id, count: 2 }])
+    .withMember("alda", { hp: 1 })
+    .inBattle({
+      foes: [foe.id],
+      order: foeFirst
+        ? ["foe-1", "hero", "alda", "mort"]
+        : ["hero", "foe-1", "alda", "mort"],
+    })
+    .build()
+  const game = definition.create(testEnvironment({ random: 0 }), initial)
+  const storage = new MemoryStorage()
+  const session = connectSave(game, storage)
+  const controller = new AbortController()
+  const view = game.queries.battle(game.state)!
+  const stage: StageApi = {
+    exits: new AnimationBarrier(),
+    updates: new AnimationBarrier(),
+    camera: new Camera(),
+    fxStore: new FxStore(),
+    set: { current: null },
+    artboard: null,
+    chrome: null,
+    solo: null,
+    art: async () => {},
+    bars: () => {},
+    canvas: { current: null },
+    director: new StageDirector(),
+  }
+  vi.spyOn(stage.fxStore, "add").mockImplementation(() =>
+    playback(Promise.resolve(), () => {})
+  )
+  const formation: FormationControl = {
+    cards: new FormationCards(),
+    lifted: null,
+    lift: vi.fn(),
+    press: vi.fn(),
+    openBag: vi.fn(),
+    bagOpen: false,
+    cardsHidden: false,
+    target: null,
+    requestTarget: vi.fn(),
+    setPress: vi.fn(),
+    frozen: false,
+    freeze: vi.fn(),
+  }
+  const setMenu = vi.fn()
+  const setAttacking = vi.fn()
+  const setSettled = vi.fn()
+  const hook = renderHook(
+    () => {
+      const fx = useFx()
+      const parts = new BattleParts(fx, formation.cards)
+      const director = new BattleDirector({
+        game,
+        fx,
+        stage,
+        formation,
+        parts,
+        view,
+        scene: null,
+        gone: [],
+        signal: () => controller.signal,
+        nav: {
+          screen: { name: "town" },
+          enter: undefined,
+          leaving: false,
+          phase: { kind: "showing", screen: { name: "town" } },
+          go: async () => {},
+          arrived: () => {},
+        },
+        onEnd: vi.fn(),
+        setPhase: vi.fn(),
+        setMenu,
+        setPeek: vi.fn(),
+        setShownHp: vi.fn(),
+        setGone: vi.fn(),
+      })
+      return useBattleTurns({
+        game,
+        fx,
+        formation,
+        parts,
+        director,
+        wide: false,
+        signal: () => controller.signal,
+        actorId: view.current.kind === "member" ? view.current.id : null,
+        current: view.current,
+        aim: view.foes[0].id,
+        setMenu,
+        setAttacking,
+        setSettled,
+      })
+    },
+    {
+      wrapper: (props) => (
+        <StageContext value={stage}>{props.children}</StageContext>
+      ),
+    }
+  )
+  const item = game.queries
+    .commands(game.state, game.state.party[0])!
+    .items.find((entry) => entry.id === potion.id)!
+  expect(item.usable).toBe(true)
+  const input: ActInput = {
+    command: "item",
+    good: potion.id,
+    target: item.targets[0],
+  }
+  return {
+    game,
+    storage,
+    session,
+    controller,
+    formation,
+    setMenu,
+    setAttacking,
+    setSettled,
+    hook,
+    input,
+  }
+}
+
+for (const command of ["guard", "item"] as const)
+  for (const interruption of ["before-call", "menu-output", "freeze-output"])
+    test(`${command}: ending the screen ${interruption} cannot spend a turn, an item or publish a save`, async () => {
+      const f = fixture()
+      try {
+        const before = f.game.save()
+        const action = f.hook.result.current.act
+        if (interruption === "before-call") {
+          f.controller.abort()
+          f.hook.unmount()
+        }
+        if (interruption === "menu-output")
+          f.setMenu.mockImplementation(() => f.controller.abort())
+        if (interruption === "freeze-output")
+          vi.mocked(f.formation.freeze).mockImplementation(() =>
+            f.controller.abort()
+          )
+        await act(async () => {
+          await action(command === "item" ? f.input : { command })
+        })
+        expect(f.game.save()).toEqual(before)
+        expect(f.storage.read()).toBeNull()
+        expect(f.setAttacking).not.toHaveBeenCalled()
+        expect(f.setSettled).not.toHaveBeenCalled()
+      } finally {
+        f.session.disconnect()
+      }
+    })
+
+for (const interruption of ["before-call", "lift-output", "freeze-output"])
+  test(`a foe turn ending ${interruption} cannot damage the party or publish a save`, async () => {
+    const f = fixture(true)
+    try {
+      const before = f.game.save()
+      if (interruption === "before-call") f.controller.abort()
+      if (interruption === "lift-output")
+        vi.mocked(f.formation.lift).mockImplementation(() =>
+          f.controller.abort()
+        )
+      if (interruption === "freeze-output")
+        vi.mocked(f.formation.freeze).mockImplementation(() =>
+          f.controller.abort()
+        )
+      await act(async () => {
+        await f.hook.result.current.foeTurn()
+      })
+      expect(f.game.save()).toEqual(before)
+      expect(f.storage.read()).toBeNull()
+      expect(f.setAttacking).not.toHaveBeenCalled()
+      expect(f.setSettled).not.toHaveBeenCalled()
+    } finally {
+      f.session.disconnect()
+    }
+  })
+
+for (const command of ["guard", "item"] as const)
+  test(`ending after the actual ${command} is committed keeps its one result and autosave`, async () => {
+    const f = fixture()
+    try {
+      const before = f.game.save()
+      const stop = f.game.subscribe(() => f.controller.abort())
+      await act(async () => {
+        await f.hook.result.current.act(
+          command === "item" ? f.input : { command }
+        )
+      })
+      stop()
+      expect(f.game.save()).not.toEqual(before)
+      expect(JSON.parse(f.storage.read()!)).toEqual(f.game.save())
+      expect(f.setSettled).not.toHaveBeenCalled()
+      const restored = definition.create(testEnvironment({ random: 0 }))
+      const resumed = connectSave(restored, f.storage)
+      expect(resumed.status).toBe("restored")
+      expect(restored.state).toEqual(f.game.state)
+      resumed.disconnect()
+    } finally {
+      f.session.disconnect()
+    }
+  })

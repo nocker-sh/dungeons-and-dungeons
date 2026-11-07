@@ -79,9 +79,11 @@ export function useBattleTurns(props: Props) {
       await Promise.resolve()
       if (signal.aborted) return
       props.formation.lift(null)
+      if (signal.aborted) return
       const battle = props.game.queries.battle(props.game.state)
       // 結果は先にエンジンで一度だけ決める。表示HPは演出完了まで直前の値を保つ。
       flushSync(() => props.formation.freeze(true))
+      if (signal.aborted) return
       const events = eventsOf(inPhase(props.game, "foe-turn")?.resolve())
       if (events instanceof GameCommandError) return
       const acted = events.find(
@@ -150,12 +152,15 @@ export function useBattleTurns(props: Props) {
 
   const act = async (input: ActInput) => {
     if (busy.current || !props.actorId) return
-    busy.current = true
-    props.setMenu(null)
     const signal = props.signal()
+    if (signal.aborted) return
+    busy.current = true
     const actor = props.actorId
     try {
+      props.setMenu(null)
+      if (signal.aborted) return
       flushSync(() => props.formation.freeze(true))
+      if (signal.aborted) return
       const turn = inPhase(props.game, "member-turn")
       const events = eventsOf(
         input.command === "brawl"
