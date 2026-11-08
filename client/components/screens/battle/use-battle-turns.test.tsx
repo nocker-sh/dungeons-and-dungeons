@@ -720,3 +720,67 @@ for (const recovery of ["retry", "restart", "screen-ended"] as const)
       }
     }
   )
+
+for (const foeFirst of [false, true])
+  for (const interruption of [
+    "before-call",
+    "first-output",
+    "freeze-output",
+  ] as const)
+    test.each(definition.catalog.data.foes)(
+      `$id: a ${foeFirst ? "foe" : "member"} callback cannot act on a restored turn at ${interruption}`,
+      async (opponent) => {
+        animationClock.scale = 0
+        const f = fixture(foeFirst, opponent)
+        try {
+          const foeAction = f.hook.result.current.foeTurn
+          const memberAction = f.hook.result.current.act
+          const invoke = foeFirst
+            ? foeAction
+            : () => memberAction({ command: "guard" })
+          const saved = JSON.parse(JSON.stringify(f.game.save())) as unknown
+          const replace = () => {
+            expect(f.game.restore(saved)).toBeUndefined()
+          }
+          if (interruption === "before-call") replace()
+          else if (interruption === "first-output") {
+            if (foeFirst)
+              vi.mocked(f.formation.lift).mockImplementationOnce(replace)
+            else f.setMenu.mockImplementationOnce(replace)
+          } else vi.mocked(f.formation.freeze).mockImplementationOnce(replace)
+          // Restore uses the actual decoder. Native reads may normalize the local battle fixture.
+          const control = definition.create(testEnvironment({ random: 0 }))
+          expect(control.restore(saved)).toBeUndefined()
+          const restored = control.save()
+          await act(async () => {
+            await invoke()
+          })
+          expect(f.game.save()).toEqual(restored)
+          expect(f.game.queries.problems(f.game.state)).toEqual([])
+          const bytes = f.storage.read()
+          expect(bytes).not.toBeNull()
+          expect(JSON.parse(bytes!)).toEqual(restored)
+          // A new render must still accept exactly one native action on that same restored turn.
+          f.setMenu.mockReset()
+          vi.mocked(f.formation.freeze).mockReset()
+          vi.mocked(f.formation.lift).mockReset()
+          f.hook.rerender()
+          const expected = eventsOrThrow(
+            control.send(
+              foeFirst
+                ? { type: "foe-turn" }
+                : { type: "act", command: "guard" }
+            )
+          )
+          expect(expected.length).toBeGreaterThan(0)
+          await act(async () => {
+            if (foeFirst) await f.hook.result.current.foeTurn()
+            else await f.hook.result.current.act({ command: "guard" })
+          })
+          expect(f.game.save()).toEqual(control.save())
+          expect(JSON.parse(f.storage.read()!)).toEqual(control.save())
+        } finally {
+          f.session.disconnect()
+        }
+      }
+    )

@@ -62,6 +62,8 @@ type Props = {
 export function useBattleTurns(props: Props) {
   const busy = useRef(false)
   const stage = useStage()
+  const memberTurn = inPhase(props.game, "member-turn")
+  const enemyTurn = inPhase(props.game, "foe-turn")
   const revealParty = async (signal: AbortSignal) => {
     if (signal.aborted) return
     flushSync(() => props.formation.freeze(false))
@@ -70,21 +72,28 @@ export function useBattleTurns(props: Props) {
   }
 
   const foeTurn = async () => {
-    if (busy.current || !props.current || props.current.kind !== "foe") return
+    if (
+      busy.current ||
+      !props.current ||
+      props.current.kind !== "foe" ||
+      !enemyTurn?.current ||
+      enemyTurn.actor !== props.current.id
+    )
+      return
     busy.current = true
     const signal = props.signal()
     const foeId = props.current.id
     try {
       // effect の中から呼ばれるので、描画が終わってから flushSync する
       await Promise.resolve()
-      if (signal.aborted) return
+      if (signal.aborted || !enemyTurn.current) return
       props.formation.lift(null)
-      if (signal.aborted) return
+      if (signal.aborted || !enemyTurn.current) return
       const battle = props.game.queries.battle(props.game.state)
       // 結果は先にエンジンで一度だけ決める。表示HPは演出完了まで直前の値を保つ。
       flushSync(() => props.formation.freeze(true))
-      if (signal.aborted) return
-      const events = eventsOf(inPhase(props.game, "foe-turn")?.resolve())
+      if (signal.aborted || !enemyTurn.current) return
+      const events = eventsOf(enemyTurn.resolve())
       if (events instanceof GameCommandError) return
       const acted = events.find(
         (event): event is Acted => event.type === "acted"
@@ -151,17 +160,23 @@ export function useBattleTurns(props: Props) {
   }
 
   const act = async (input: ActInput) => {
-    if (busy.current || !props.actorId) return
+    if (
+      busy.current ||
+      !props.actorId ||
+      !memberTurn?.current ||
+      memberTurn.actor !== props.actorId
+    )
+      return
     const signal = props.signal()
-    if (signal.aborted) return
+    if (signal.aborted || !memberTurn.current) return
     busy.current = true
     const actor = props.actorId
     try {
       props.setMenu(null)
-      if (signal.aborted) return
+      if (signal.aborted || !memberTurn.current) return
       flushSync(() => props.formation.freeze(true))
-      if (signal.aborted) return
-      const turn = inPhase(props.game, "member-turn")
+      if (signal.aborted || !memberTurn.current) return
+      const turn = memberTurn
       const itemAim =
         input.command === "item" &&
         props.game.queries
