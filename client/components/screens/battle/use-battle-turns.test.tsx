@@ -27,7 +27,7 @@ import { aState } from "@/lib/wiz/testing/state-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
-import type { Status } from "@/lib/wiz/state/state-schema"
+import type { GameState, Status } from "@/lib/wiz/state/state-schema"
 
 // Only image decoding and effect output are replaced; battle rules and save IO are real.
 vi.mock("@/client/components/screens/battle/artwork", () => ({
@@ -55,6 +55,7 @@ function fixture(
   options: {
     good?: (typeof definition.catalog.data.goods)[number]
     secondFoe?: boolean
+    state?: GameState
   } = {}
 ) {
   const itemGood = options.good ?? potion
@@ -96,7 +97,10 @@ function fixture(
         },
       },
     }
-  const game = definition.create(testEnvironment({ random: 0 }), initial)
+  const game = definition.create(
+    testEnvironment({ random: 0 }),
+    options.state ?? initial
+  )
   const storage = new MemoryStorage()
   const session = connectSave(game, storage)
   const controller = new AbortController()
@@ -429,3 +433,144 @@ test.each(definition.catalog.data.goods.filter((good) => good.kind === "item"))(
     }
   }
 )
+
+const nativeMembers = [
+  ...definition.catalog.data.party,
+  ...definition.catalog.data.recruits.map((entry) => entry.member),
+]
+for (const critical of [false, true])
+  for (const member of nativeMembers)
+    for (const contract of member.hero
+      ? [null, ...definition.catalog.data.demons.map((entry) => entry.id)]
+      : [aState(definition.catalog).build().contract]) {
+      let builder = aState(definition.catalog)
+      if (!builder.build().members.some((entry) => entry.id === member.id))
+        builder = builder.withJoined(member.id)
+      builder =
+        contract === null
+          ? builder.withoutDemon()
+          : builder.withDemons([{ id: contract, lv: 1, exp: 0 }], contract)
+      const companions = builder
+        .build()
+        .members.filter((entry) => entry.id !== member.id)
+        .slice(0, 2)
+      expect(companions).toHaveLength(2)
+      // Recruitment, contract, wounds, supplies and battle entry are local starting conditions.
+      const initial = builder
+        .withParty([member.id, ...companions.map((entry) => entry.id)])
+        .withMembers({ hp: 1, used: [], status: [] })
+        .withMember(member.id, {
+          hp: critical
+            ? 1
+            : definition.rules.party.stats(
+                builder
+                  .build()
+                  .members.find((entry) => entry.id === member.id)!,
+                builder.build()
+              ).maxHp,
+        })
+        .withMember(companions[0].id, { hp: 0 })
+        .withBag([{ good: potion.id, count: 2 }])
+        .inBattle({
+          foes: [foe.id, foe.id],
+          order: [member.id, "foe-1", "foe-2", companions[1].id],
+        })
+        .build()
+      const probe = definition.create(testEnvironment({ random: 0 }), initial)
+      expect(probe.queries.problems(probe.state)).toEqual([])
+      const commands = probe.queries.commands(probe.state, member.id)!
+      const skills = [
+        ...commands.weaponSkills,
+        ...commands.skills,
+        ...(commands.blessing ? [commands.blessing] : []),
+      ]
+      expect(skills.length).toBeGreaterThan(0)
+      test.each(skills)(
+        `${member.id}, contract=${contract}, critical=${critical}: native UI skill $name ($id) matches direct execution and saved recovery`,
+        async (skill) => {
+          animationClock.scale = 0
+          const f = fixture(false, foe, [], { state: initial })
+          const control = definition.create(testEnvironment({ random: 0 }))
+          expect(
+            control.restore(JSON.parse(JSON.stringify(f.game.save())))
+          ).toBeUndefined()
+          await f.session.retrySave?.()
+          const bytes = f.storage.read()
+          const before = structuredClone(f.game.save())
+          const target =
+            skill.target === "ally"
+              ? skill.targets[0]
+              : skill.target === "foe"
+                ? "foe-2"
+                : undefined
+          const expected = control.send({
+            type: "act",
+            command: "skill",
+            skill: skill.id,
+            target,
+          })
+          expect(!(expected instanceof GameCommandError)).toBe(skill.usable)
+          const input: ActInput = {
+            command: "skill",
+            skill: skill.id,
+            target: skill.target === "ally" ? target : undefined,
+          }
+          const failedWrite = critical
+            ? vi.spyOn(f.storage, "write").mockImplementationOnce(() => {
+                throw new Error("Storage unavailable")
+              })
+            : null
+          try {
+            await act(async () => {
+              const pending = f.hook.result.current.act(input)
+              if (!(expected instanceof GameCommandError))
+                await f.hook.result.current.act(input)
+              await pending
+            })
+            expect(f.game.save()).toEqual(control.save())
+            expect(f.hook.result.current.busy.current).toBe(false)
+            expect(f.setSettled).toHaveBeenCalledTimes(1)
+            if (critical) {
+              expect(failedWrite).toHaveBeenCalledTimes(1)
+              expect(f.storage.read()).toBe(bytes)
+              await f.session.retrySave?.()
+              expect(failedWrite).toHaveBeenCalledTimes(2)
+            }
+            if (expected instanceof GameCommandError) {
+              expect(f.game.save()).toEqual(before)
+              expect(f.setMenu).toHaveBeenLastCalledWith("command")
+              expect(f.storage.read()).toBe(bytes)
+            } else {
+              expect(f.game.getSnapshot().error).toBeNull()
+              expect(JSON.parse(f.storage.read()!)).toEqual(control.save())
+              const acted = expected.find((event) => event.type === "acted")
+              expect(acted?.command).toBe("skill")
+              if (skill.target === "foe")
+                expect(
+                  acted?.results
+                    .filter((entry) => entry.target.kind === "foe")
+                    .map((entry) => entry.target.id)
+                ).toEqual(["foe-2"])
+            }
+            const restored = definition.create(testEnvironment({ random: 0 }))
+            const resumed = connectSave(restored, f.storage)
+            try {
+              expect(resumed.status).toBe("restored")
+              expect(restored.save()).toEqual(control.save())
+              expect(restored.queries.problems(restored.state)).toEqual([])
+              expect(restored.queries.battle(restored.state)).toEqual(
+                control.queries.battle(control.state)
+              )
+              for (const id of restored.state.party)
+                expect(restored.queries.commands(restored.state, id)).toEqual(
+                  control.queries.commands(control.state, id)
+                )
+            } finally {
+              resumed.disconnect()
+            }
+          } finally {
+            f.session.disconnect()
+          }
+        }
+      )
+    }
