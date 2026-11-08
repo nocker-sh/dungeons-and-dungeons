@@ -162,6 +162,13 @@ export function useBattleTurns(props: Props) {
       flushSync(() => props.formation.freeze(true))
       if (signal.aborted) return
       const turn = inPhase(props.game, "member-turn")
+      const itemAim =
+        input.command === "item" &&
+        props.game.queries
+          .commands(props.game.state, actor)
+          ?.items.find((item) => item.id === input.good)?.target === "foe"
+          ? (props.aim ?? undefined)
+          : undefined
       const events = eventsOf(
         input.command === "brawl"
           ? turn?.brawl(props.aim ?? undefined)
@@ -170,7 +177,7 @@ export function useBattleTurns(props: Props) {
             : input.command === "skill"
               ? turn?.skill(input.skill, input.target ?? props.aim ?? undefined)
               : input.command === "item"
-                ? turn?.item(input.good, input.target ?? props.aim ?? undefined)
+                ? turn?.item(input.good, input.target ?? itemAim)
                 : input.command === "pact"
                   ? turn?.pact(input.mode)
                   : null

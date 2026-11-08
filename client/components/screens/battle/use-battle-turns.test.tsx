@@ -24,6 +24,8 @@ import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { realContent } from "@/lib/wiz/testing/real-content"
 import { aState } from "@/lib/wiz/testing/state-builder"
+import { contentId } from "@/lib/wiz/testing/content-id"
+import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 import type { Status } from "@/lib/wiz/state/state-schema"
 
@@ -49,16 +51,34 @@ const foe = definition.catalog.data.foes.reduce((strongest, entry) =>
 function fixture(
   foeFirst = false,
   opponent = foe,
-  status: readonly Status[] = []
+  status: readonly Status[] = [],
+  options: {
+    good?: (typeof definition.catalog.data.goods)[number]
+    secondFoe?: boolean
+  } = {}
 ) {
+  const itemGood = options.good ?? potion
   let initial = aState(definition.catalog)
-    .withBag([{ good: potion.id, count: 2 }])
-    .withMember("alda", { hp: 1 })
+    .withBag([{ good: itemGood.id, count: 2 }])
+    .withMember("alda", {
+      hp: itemGood.effect?.type === "revive" ? 0 : 1,
+      used:
+        itemGood.effect?.type === "refill"
+          ? [{ skill: contentId("helmsplit"), count: 3 }]
+          : [],
+      status:
+        itemGood.effect?.type === "cure"
+          ? itemGood.effect.kinds.map((kind) => ({ kind, turns: 3 }))
+          : [],
+    })
     .inBattle({
-      foes: [opponent.id],
-      order: foeFirst
-        ? ["foe-1", "hero", "alda", "mort"]
-        : ["hero", "foe-1", "alda", "mort"],
+      foes: options.secondFoe ? [opponent.id, opponent.id] : [opponent.id],
+      order: [
+        ...(foeFirst
+          ? ["foe-1", "hero", "alda", "mort"]
+          : ["hero", "foe-1", "alda", "mort"]),
+        ...(options.secondFoe ? ["foe-2"] : []),
+      ],
     })
     .build()
   if (status.length && initial.phase.type === "battle")
@@ -163,7 +183,7 @@ function fixture(
         signal: () => controller.signal,
         actorId: view.current.kind === "member" ? view.current.id : null,
         current: view.current,
-        aim: view.foes[0].id,
+        aim: view.foes.at(-1)!.id,
         setMenu,
         setAttacking,
         setSettled,
@@ -177,12 +197,12 @@ function fixture(
   )
   const item = game.queries
     .commands(game.state, game.state.party[0])!
-    .items.find((entry) => entry.id === potion.id)!
+    .items.find((entry) => entry.id === itemGood.id)!
   expect(item.usable).toBe(true)
   const input: ActInput = {
     command: "item",
-    good: potion.id,
-    target: item.targets[0],
+    good: itemGood.id,
+    target: item.target === "ally" ? item.targets[0] : undefined,
   }
   return {
     game,
@@ -356,3 +376,56 @@ for (const command of ["guard", "item"] as const)
       f.session.disconnect()
     }
   })
+
+test.each(definition.catalog.data.goods.filter((good) => good.kind === "item"))(
+  "$name ($id): native battle input preserves ally groups, selected enemies and the saved item outcome",
+  async (good) => {
+    animationClock.scale = 0
+    const f = fixture(false, foe, [], { good, secondFoe: true })
+    const control = definition.create(testEnvironment({ random: 0 }))
+    expect(
+      control.restore(JSON.parse(JSON.stringify(f.game.save())))
+    ).toBeUndefined()
+    const item = f.game.queries
+      .commands(f.game.state, f.game.state.party[0])!
+      .items.find((entry) => entry.id === good.id)!
+    expect(item.usable).toBe(true)
+    // Battle.pick sends no individual target for groups and hostile items; only a
+    // single ally is chosen on a party card. The enemy cursor here points at foe-2.
+    const target =
+      item.target === "foe"
+        ? "foe-2"
+        : f.input.command === "item"
+          ? f.input.target
+          : undefined
+    const expected = eventsOrThrow(
+      control.send({ type: "act", command: "item", good: good.id, target })
+    )
+    try {
+      await act(async () => {
+        await f.hook.result.current.act(f.input)
+      })
+      expect(f.game.save()).toEqual(control.save())
+      expect(f.game.getSnapshot().error).toBeNull()
+      expect(JSON.parse(f.storage.read()!)).toEqual(control.save())
+      const acted = expected.find((event) => event.type === "acted")
+      expect(acted?.command).toBe("item")
+      if (item.target === "foe")
+        expect(acted?.results.map((entry) => entry.target.id)).toEqual([
+          "foe-2",
+        ])
+      expect(f.hook.result.current.busy.current).toBe(false)
+      expect(f.setSettled).toHaveBeenCalledTimes(1)
+      const restored = definition.create(testEnvironment({ random: 0 }))
+      const resumed = connectSave(restored, f.storage)
+      try {
+        expect(resumed.status).toBe("restored")
+        expect(restored.save()).toEqual(control.save())
+      } finally {
+        resumed.disconnect()
+      }
+    } finally {
+      f.session.disconnect()
+    }
+  }
+)
