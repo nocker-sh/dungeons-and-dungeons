@@ -7,11 +7,12 @@ export function EventConversationScene() {
   const game = useGame()
   const state = useGameState()
   const script = game.queries.activeConversation(state)!
+  const conversation = inPhase(game, "conversation")
   return (
     <EventConversationView
       script={script}
       onDone={(picked) => {
-        inPhase(game, "conversation")?.finish(picked < 0 ? undefined : picked)
+        conversation?.finish(picked < 0 ? undefined : picked)
       }}
     />
   )
