@@ -412,7 +412,11 @@ export function Layer(props: Props) {
           items={lootItems(game, pending)}
           onOk={() => {
             void (async () => {
-              if (game.state.conversation?.active) return
+              if (
+                game.state.conversation?.active ||
+                game.queries.route(game.state)?.pending !== pending
+              )
+                return
               if (pending.kind === "loot")
                 await playEventConversation(
                   game,
@@ -420,6 +424,7 @@ export function Layer(props: Props) {
                   lifetime.current.signal
                 )
               lifetime.current.assertActive()
+              if (game.queries.route(game.state)?.pending !== pending) return
               inPhase(game, "pending")?.acknowledge()
             })().catch(reportAnimationError)
           }}
