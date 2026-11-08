@@ -574,3 +574,149 @@ for (const critical of [false, true])
         }
       )
     }
+
+for (const recovery of ["retry", "restart", "screen-ended"] as const)
+  test.each(definition.catalog.data.foes)(
+    `$id: final native attack settles once across ${recovery}, loot confirmation and return`,
+    async (opponent) => {
+      animationClock.scale = 0
+      // Battle position and the remaining one HP are local conditions, not a fabricated victory.
+      const state = aState(definition.catalog)
+        .withBag([{ good: potion.id, count: 2 }])
+        .withMember("alda", { hp: 1 })
+        .inBattle({
+          foes: [opponent.id],
+          order: ["hero", "foe-1", "alda", "mort"],
+        })
+        .build()
+      if (state.phase.type !== "battle") throw new Error("Expected battle")
+      const initial: GameState = {
+        ...state,
+        phase: {
+          ...state.phase,
+          battle: {
+            ...state.phase.battle,
+            foes: state.phase.battle.foes.map((entry) => ({ ...entry, hp: 1 })),
+          },
+        },
+      }
+      const f = fixture(false, opponent, [], { state: initial })
+      const control = definition.create(testEnvironment({ random: 0 }))
+      expect(
+        control.restore(JSON.parse(JSON.stringify(f.game.save())))
+      ).toBeUndefined()
+      const commands = control.queries.commands(
+        control.state,
+        control.state.party[0]
+      )!
+      const skill = [...commands.weaponSkills, ...commands.skills].find(
+        (entry) => entry.kind === "hit" && entry.usable
+      )
+      expect(skill).toBeDefined()
+      const command = {
+        type: "act",
+        command: "skill",
+        skill: skill!.id,
+        target: "foe-1",
+      } as const
+      const input: ActInput = {
+        command: "skill",
+        skill: skill!.id,
+        target: "foe-1",
+      }
+      const events = eventsOrThrow(control.send(command))
+      expect(events.filter((event) => event.type === "victory")).toHaveLength(1)
+      const victory = events.find((event) => event.type === "victory")!
+      expect(victory.exp).toBe(opponent.exp)
+      expect(control.state.gold).toBe(initial.gold + victory.gold)
+      expect(control.state.stones).toBe(initial.stones + (opponent.stones ?? 0))
+      for (const member of initial.members) {
+        const earns =
+          initial.party.includes(member.id) &&
+          member.hp > 0 &&
+          !definition.catalog.member(member.id)?.hero
+        expect(
+          control.state.members.find((entry) => entry.id === member.id)!.exp
+        ).toBe(member.exp + (earns ? opponent.exp : 0))
+      }
+      const expected = structuredClone(control.save())
+      await f.session.retrySave?.()
+      const previous = f.storage.read()
+      const write =
+        recovery === "screen-ended"
+          ? null
+          : vi.spyOn(f.storage, "write").mockImplementationOnce(() => {
+              throw new Error("Storage unavailable")
+            })
+      const stop =
+        recovery === "screen-ended"
+          ? f.game.subscribe(() => f.controller.abort())
+          : () => {}
+      try {
+        await act(async () => {
+          const pending = f.hook.result.current.act(input)
+          await f.hook.result.current.act(input)
+          await pending
+        })
+        expect(f.game.save()).toEqual(expected)
+        if (recovery === "screen-ended") {
+          expect(f.onEnd).not.toHaveBeenCalled()
+          expect(f.setSettled).not.toHaveBeenCalled()
+          expect(JSON.parse(f.storage.read()!)).toEqual(expected)
+        } else {
+          expect(f.onEnd).toHaveBeenCalledExactlyOnceWith("victory")
+          expect(f.setSettled).toHaveBeenCalledTimes(1)
+          expect(write).toHaveBeenCalledTimes(1)
+          expect(f.storage.read()).toBe(previous)
+          if (recovery === "retry") {
+            await f.session.retrySave?.()
+            expect(write).toHaveBeenCalledTimes(2)
+          }
+        }
+        stop()
+        f.session.disconnect()
+        f.controller.abort()
+        f.hook.unmount()
+        const restored = definition.create(testEnvironment({ random: 0 }))
+        const resumed = connectSave(restored, f.storage)
+        try {
+          expect(resumed.status).toBe("restored")
+          if (recovery === "restart") {
+            expect(restored.save()).toEqual(JSON.parse(previous!))
+            eventsOrThrow(restored.send(command))
+          }
+          expect(restored.save()).toEqual(expected)
+          expect(JSON.parse(f.storage.read()!)).toEqual(expected)
+          expect(restored.send(command)).toMatchObject({ code: "WRONG_PHASE" })
+          expect(restored.save()).toEqual(expected)
+          eventsOrThrow(restored.send({ type: "acknowledge" }))
+          const acknowledged = structuredClone(restored.save())
+          expect({ ...restored.state, phase: control.state.phase }).toEqual(
+            control.state
+          )
+          expect(restored.send({ type: "acknowledge" })).toBeInstanceOf(
+            GameCommandError
+          )
+          expect(restored.save()).toEqual(acknowledged)
+          eventsOrThrow(restored.send({ type: "retreat" }))
+          const returned = structuredClone(restored.save())
+          expect(restored.state.phase.type).toBe("town")
+          expect(restored.state.gold).toBe(control.state.gold)
+          expect(restored.state.bag).toEqual(control.state.bag)
+          expect(restored.state.gear).toEqual(control.state.gear)
+          expect(restored.state.members).toEqual(control.state.members)
+          expect(restored.send({ type: "retreat" })).toMatchObject({
+            code: "WRONG_PHASE",
+          })
+          expect(restored.save()).toEqual(returned)
+          expect(restored.queries.problems(restored.state)).toEqual([])
+          expect(JSON.parse(f.storage.read()!)).toEqual(returned)
+        } finally {
+          resumed.disconnect()
+        }
+      } finally {
+        stop()
+        f.session.disconnect()
+      }
+    }
+  )
