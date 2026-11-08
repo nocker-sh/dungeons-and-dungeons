@@ -295,14 +295,12 @@ export function BagView(props: Props) {
           }
           const item = items.find((entry) => itemKey(entry.id) === row.key)
           if (!item) return
+          const phase =
+            inPhase(game, "town") ??
+            inPhase(game, "expedition") ??
+            inPhase(game, "pending")
           const use = (member?: string) => {
-            const events = eventsOf(
-              (
-                inPhase(game, "town") ??
-                inPhase(game, "expedition") ??
-                inPhase(game, "pending")
-              )?.use(item.id, member)
-            )
+            const events = eventsOf(phase?.use(item.id, member))
             if (events instanceof GameCommandError) return fx.shake(0.6)
             const used = events.find((event) => event.type === "used")
             if (used?.type !== "used") return

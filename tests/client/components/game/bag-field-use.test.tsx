@@ -10,6 +10,8 @@ import { FxStore } from "@/client/components/stage/fx/store"
 import { GameProvider } from "@/client/contexts/game-provider"
 import { connectSave } from "@/client/game/connect-save"
 import { MemoryStorage } from "@/client/game/memory-storage"
+import { usableInField } from "@/lib/wiz/rules/field-usable"
+import { effectSpec } from "@/lib/wiz/rules/item-effect-spec"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { aState } from "@/lib/wiz/testing/state-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
@@ -186,6 +188,111 @@ for (const scene of scenes)
         } finally {
           resumed.disconnect()
         }
+      } finally {
+        session.disconnect()
+      }
+    }
+  )
+
+for (const scene of scenes)
+  test.each(
+    definition.catalog.data.goods.filter(
+      (good) =>
+        good.kind === "item" &&
+        good.effect &&
+        usableInField(good.effect) &&
+        effectSpec(good.effect).target === "ally"
+    )
+  )(
+    `${scene.name}: a target selected before restoring cannot consume $id in the restored game`,
+    async (good) => {
+      if (!good.effect) throw new Error(`${good.id}: missing effect`)
+      const builder = aState(definition.catalog)
+        .withBag([{ good: good.id, count: 2 }])
+        .withMember("alda", {
+          hp: good.effect.type === "revive" ? 0 : 1,
+          used:
+            good.effect.type === "refill"
+              ? [{ skill: contentId("helmsplit"), count: 3 }]
+              : [],
+          status:
+            good.effect.type === "cure"
+              ? good.effect.kinds.map((kind) => ({ kind, turns: 3 }))
+              : [],
+        })
+      const discoveryLayer = definition.catalog.data.layers.find((layer) =>
+        layer.stations.some((station) => station.discovery)
+      )!
+      const discovery = discoveryLayer.stations.find(
+        (station) => station.discovery
+      )!
+      const initial = (
+        scene.name === "town"
+          ? builder
+          : builder.inExpedition({
+              pending: scene.pending,
+              ...(scene.name === "discovery"
+                ? {
+                    layer: discoveryLayer.id,
+                    at: discovery.id,
+                    visited: [discoveryLayer.start, discovery.id],
+                  }
+                : {}),
+            })
+      ).build()
+      const game = definition.create(testEnvironment(), initial)
+      const control = definition.create(testEnvironment(), initial)
+      const storage = new MemoryStorage()
+      const session = connectSave(game, storage)
+      vi.spyOn(FxStore.prototype, "add").mockImplementation(() =>
+        playback(Promise.resolve(), () => {})
+      )
+      try {
+        render(
+          <GameProvider game={game}>
+            <Shell
+              game={game}
+              unreadable={null}
+              onDiscard={async () => {}}
+              saveFailed={false}
+              preview={{
+                screen: { name: "town", intro: false },
+                overlay: { kind: "bag" },
+                render: <BagSurface />,
+              }}
+            />
+          </GameProvider>
+        )
+        const item = game.queries
+          .items(game.state)
+          .find((entry) => entry.id === good.id)!
+        expect(item.field && item.usable).toBe(true)
+        expect(item.target).toBe("ally")
+        fireEvent.click(screen.getByRole("button", { name: item.name }))
+        fireEvent.click(screen.getByRole("button", { name: "使う" }))
+        const saved = game.save()
+        await act(async () => {
+          expect(game.restore(saved)).toBeUndefined()
+        })
+        expect(control.restore(saved)).toBeUndefined()
+        const before = game.save()
+        const bytes = storage.read()
+        const choose = () =>
+          document.querySelectorAll<HTMLButtonElement>(".formation .card .hit")[
+            game.state.party.indexOf(item.targets[0])
+          ]
+        await act(async () => fireEvent.click(choose()))
+        expect(game.save()).toEqual(before)
+        expect(storage.read()).toBe(bytes)
+        expect(screen.queryByRole("button", { name: "やめる" })).toBeNull()
+        fireEvent.click(screen.getByRole("button", { name: "使う" }))
+        await act(async () => fireEvent.click(choose()))
+        eventsOrThrow(
+          control.send({ type: "use", good: good.id, member: item.targets[0] })
+        )
+        expect(game.save()).toEqual(control.save())
+        expect(game.save()).not.toEqual(before)
+        expect(JSON.parse(storage.read()!)).toEqual(game.save())
       } finally {
         session.disconnect()
       }
