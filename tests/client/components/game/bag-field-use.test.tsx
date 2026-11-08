@@ -299,14 +299,15 @@ for (const scene of scenes)
     }
   )
 
-for (const phase of ["town", "expedition"])
+for (const scenario of ["town", "expedition", "restored-town"] as const)
   test.each(
     definition.catalog.data.goods.filter(
       (good) => good.kind === "weapon" || good.kind === "armor"
     )
   )(
-    `${phase}: real bag equipment selection and autosave agree with native equip for $id`,
+    `${scenario}: real bag equipment selection and autosave agree with native equip for $id`,
     async (good) => {
+      const phase = scenario === "expedition" ? "expedition" : "town"
       // One unowned item and its wear/upgrade are local possessions, not an acquisition playthrough.
       const builder = aState(definition.catalog)
         .withGear([])
@@ -387,6 +388,23 @@ for (const phase of ["town", "expedition"])
         expect(game.save()).toEqual(before)
         expect(storage.read()).toBeNull()
         fireEvent.click(screen.getByRole("button", { name: "仲間に装備" }))
+        if (scenario === "restored-town") {
+          const saved = game.save()
+          await act(async () => {
+            expect(game.restore(saved)).toBeUndefined()
+          })
+          expect(control.restore(saved)).toBeUndefined()
+          const restored = game.save()
+          const bytes = storage.read()
+          const oldChoice = document.querySelectorAll<HTMLButtonElement>(
+            ".formation .card .hit"
+          )[game.state.party.indexOf(eligible[0])]
+          await act(async () => fireEvent.click(oldChoice))
+          expect(game.save()).toEqual(restored)
+          expect(storage.read()).toBe(bytes)
+          expect(screen.queryByRole("button", { name: "やめる" })).toBeNull()
+          fireEvent.click(screen.getByRole("button", { name: "仲間に装備" }))
+        }
         const chosen = document.querySelectorAll<HTMLButtonElement>(
           ".formation .card .hit"
         )[game.state.party.indexOf(eligible[0])]

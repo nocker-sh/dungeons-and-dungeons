@@ -238,6 +238,7 @@ export function BagView(props: Props) {
           if (equipment) {
             const eligible = equipmentTargets(equipment.gear)
             if (!eligible.length) return fx.shake(0.6)
+            const phase = inPhase(game, "town")
             formation.requestTarget({
               eligible,
               label: `${equipment.name}を誰に装備する？`,
@@ -283,9 +284,7 @@ export function BagView(props: Props) {
                 }
               }),
               onPick: (member) => {
-                const sent = eventsOf(
-                  inPhase(game, "town")?.equip(equipment.gear, member)
-                )
+                const sent = eventsOf(phase?.equip(equipment.gear, member))
                 if (Array.isArray(sent)) burst(at, "")
                 else fx.shake(0.6)
               },
