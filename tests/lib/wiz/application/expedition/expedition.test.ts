@@ -21,7 +21,10 @@ describe("出撃と探索", () => {
     expect(
       destinations.map((entry) => [entry.id, entry.open, entry.state])
     ).toEqual(
-      realContent().layers.map((layer, index) => [
+      // まだ開いていない層（openLayers より先）は行き先に出ない
+      realContent()
+        .layers.slice(0, realContent().openLayers)
+        .map((layer, index) => [
         layer.id,
         index === 0,
         index === 0 ? "ここから" : "未到達",

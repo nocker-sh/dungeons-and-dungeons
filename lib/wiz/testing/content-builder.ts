@@ -60,6 +60,11 @@ export class GameContentBuilder {
     })
   }
 
+  /** 行き先に選べる層の数を決める（省略で全ての層を開く）。 */
+  withOpenLayers(openLayers?: number) {
+    return this.#with({ openLayers })
+  }
+
   withReached(reached: number) {
     return this.#with({ reached })
   }

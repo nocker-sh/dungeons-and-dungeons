@@ -24,7 +24,12 @@ export class Depart {
     if (state.wipe) return reject("WRONG_PHASE")
     const layer = this.deps.catalog.layer(input.layer)
     if (!layer) return reject("UNKNOWN")
-    if (this.deps.catalog.layerIndex(layer.id) > state.reached)
+    const layerIndex = this.deps.catalog.layerIndex(layer.id)
+    // 到達していない層と、まだ開いていない層（`openLayers` より先）へは降りない
+    if (
+      layerIndex > state.reached ||
+      layerIndex >= this.deps.catalog.openLayerCount()
+    )
       return reject("LOCKED")
     const party = partyMembers(state)
     // 出撃は3人編成。そろうまでは酒場の募集で仲間を集める

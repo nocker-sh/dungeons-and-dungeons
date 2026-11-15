@@ -296,7 +296,15 @@ describe("探索限定防具", () => {
       const candidates = game.queries.shop(before, armory)!.appraisalArmor
       expect(
         destinations.flatMap((entry) => entry.armorFinds).map((good) => good.id)
-      ).toEqual(candidates.map((good) => good.id))
+      ).toEqual(
+        // 乗り場に出るのは開いている層だけ。その先の層の品は鑑定の候補にだけ残る
+        candidates
+          .filter(
+            (good) =>
+              catalog.good(good.id)!.appraiseFrom! < catalog.openLayerCount()
+          )
+          .map((good) => good.id)
+      )
       for (const destination of destinations) {
         if (!destination.open) {
           expect(destination.name).toBe("？？？")
@@ -448,12 +456,14 @@ describe("探索限定防具", () => {
       const shopCount = game.queries
         .shop(game.state, armory)!
         .appraisalArmor.find((entry) => entry.id === id)!.own
-      expect(
-        game.queries
-          .destinations(game.state)
-          .flatMap((entry) => entry.armorFinds)
-          .find((entry) => entry.id === id)!.own
-      ).toBe(shopCount)
+      // 開いていない層の品は乗り場に出ない
+      if (good.appraiseFrom! < catalog.openLayerCount())
+        expect(
+          game.queries
+            .destinations(game.state)
+            .flatMap((entry) => entry.armorFinds)
+            .find((entry) => entry.id === id)!.own
+        ).toBe(shopCount)
       return shopCount
     }
     expect(owned()).toBe(0)

@@ -29,6 +29,7 @@
   "rareJunk": "35a9f50a-24c2-449b-a570-8b191b09ce5c",
   "brawl": "fe055010-6b2b-42a7-b0e5-5de0b97407eb",
   "reached": 0,
+  "openLayers": 3,
   "summon": {
     "success": 0.6,
     "failure": [

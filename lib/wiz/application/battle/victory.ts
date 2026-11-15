@@ -130,7 +130,7 @@ export class Victory {
     }
     const layerIndex = this.deps.catalog.layerIndex(phase.expedition.layer)
     const opened =
-      battle.boss && layerIndex + 1 < this.deps.catalog.data.layers.length
+      battle.boss && layerIndex + 1 < this.deps.catalog.openLayerCount()
         ? this.deps.catalog.data.layers[layerIndex + 1].id
         : null
     // 最後の層のボスを倒すと踏破（クリア）。踏破後も遊べる

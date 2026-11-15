@@ -38,7 +38,10 @@ export function routeEntryPreviews(
       title: "探索：宝箱のある分岐",
       start: () => prepared(progressed("chest-branch"), { name: "expedition" }),
     },
-    ...[2, 3, 4].map((layerIndex) => ({
+    // まだ開いていない層（openLayers より先）へは出撃できないので、場面も作らない
+    ...[2, 3, 4]
+      .filter((layerIndex) => layerIndex < (content.openLayers ?? Infinity))
+      .map((layerIndex) => ({
       slug: `route-layer${layerIndex}`,
       title: `探索：${content.layers[layerIndex].name}`,
       start: () => {

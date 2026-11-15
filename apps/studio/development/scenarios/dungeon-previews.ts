@@ -92,7 +92,8 @@ export function dungeonPreviews(
           return prepared(game, { name: "expedition" })
         },
       })),
-    ...content.layers.map((layer, index) => ({
+    // まだ開いていない層（openLayers より先）へは出撃できないので、場面も作らない
+    ...content.layers.slice(0, content.openLayers).map((layer, index) => ({
       slug: `battle-layer${index}`,
       title: `戦闘：${layer.name}の敵`,
       start: () => prepared(battleIn(index), { name: "expedition" }),

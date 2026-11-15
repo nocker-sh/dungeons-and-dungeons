@@ -93,6 +93,8 @@ describe("全滅と踏破", () => {
     )!.hp
     const definition = new GameDefinition(
       aContent()
+        // 踏破の規則を測るので、全ての層を開く
+        .withOpenLayers()
         .withWeaponPower(bossHealth * 3)
         .build()
     )

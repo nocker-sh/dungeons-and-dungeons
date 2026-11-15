@@ -177,6 +177,13 @@ export class GameCatalog {
   station(layerId: string, stationId: string) {
     return this.layer(layerId)?.stations.find((entry) => entry.id === stationId)
   }
+  /** 行き先に選べる層の数。`openLayers` より先の層は開かない。 */
+  openLayerCount() {
+    return Math.min(
+      this.data.layers.length,
+      this.data.openLayers ?? this.data.layers.length
+    )
+  }
   layerIndex(layerId: string) {
     return this.data.layers.findIndex((entry) => entry.id === layerId)
   }

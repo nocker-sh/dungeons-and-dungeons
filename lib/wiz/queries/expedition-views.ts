@@ -21,14 +21,18 @@ export class ExpeditionViews {
     private readonly goods: GoodViews
   ) {}
 
-  /** 行き先の層。到達していない層は名前を伏せる。 */
+  /** 行き先の層。到達していない層は名前を伏せる。まだ開いていない層（`openLayers` より先）は出さない。 */
   destinations(state: GameState) {
     const appraisalPool = new Set(
       this.catalog.data.shops.flatMap((shop) =>
         this.catalog.appraisalPool(shop.id, state.reached)
       )
     )
-    return this.catalog.data.layers.map((layer, index) => {
+    const layers = this.catalog.data.layers.slice(
+      0,
+      this.catalog.openLayerCount()
+    )
+    return layers.map((layer, index) => {
       const open = index <= state.reached
       const finds = (kind: "armor" | "weapon") =>
         open
@@ -102,7 +106,17 @@ export class ExpeditionViews {
 
   /** 乗り場で最初に選んでおく層：前回の層、まだなら到達している一番深い層。 */
   defaultDestination(state: GameState) {
-    return state.lastLayer ?? this.catalog.data.layers[state.reached].id
+    const deepest = Math.min(
+      state.reached,
+      this.catalog.openLayerCount() - 1
+    )
+    // 前回の層がいまは選べない（古い保存で、開いていない層まで進んでいた）なら、選べる一番深い層にする
+    const last =
+      state.lastLayer !== null &&
+      this.catalog.layerIndex(state.lastLayer) <= deepest
+        ? state.lastLayer
+        : null
+    return last ?? this.catalog.data.layers[deepest].id
   }
 
   expedition(state: GameState): Expedition | null {

@@ -5,6 +5,14 @@ export function verifyLayers({ catalog, need, problems }: ContentVerification) {
   const data = catalog.data
 
   need(data.reached < data.layers.length, "reached が層の数を超えている")
+  need(
+    data.openLayers === undefined || data.openLayers <= data.layers.length,
+    "openLayers が層の数を超えている"
+  )
+  need(
+    data.reached < catalog.openLayerCount(),
+    "reached が開いている層の数を超えている"
+  )
   for (const layer of data.layers) {
     const stations = byId(layer.stations, `${layer.id} の地点`, problems)
     need(

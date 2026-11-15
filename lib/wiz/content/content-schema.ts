@@ -64,6 +64,11 @@ export const contentSchema = z.strictObject({
   /** 使える手が尽きたときの弱い攻撃（使用回数なし）。 */
   brawl: id,
   reached: count,
+  /**
+   * 行き先に選べる層の数（浅い方から）。この数より先の層は、手前の層のボスを倒しても開かず、
+   * 行き先にも出さない。省略すると全ての層を開く。
+   */
+  openLayers: positive.optional(),
   /** 最初からいる仲間（今は主人公だけ）。残りは募集で集める。 */
   party: z.array(member).min(1).max(PARTY_SLOTS),
   skills: z.array(skill),
