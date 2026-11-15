@@ -1,11 +1,11 @@
 import layers from "@/content/data/layers.json"
 import recruits from "@/content/data/recruits.json"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const mayu = recruits.find((recruit) => recruit.member.slug === "mayu")!
 const blessing = (await import("@/content/data/skills.json")).default.find(
@@ -21,12 +21,12 @@ try {
   ]) {
     const page = await openPage(browser, viewport, errors)
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "stand-2",
             // マユは初期の仲間にいないので、出撃の3人目（stand-2）に入れて開く
-            party: ["hero", "alda", mayu.member.slug],
+            party: ["rio", "alda", mayu.member.slug],
             duration: 15000,
             width: viewport.width,
             height: viewport.height,

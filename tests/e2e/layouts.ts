@@ -5,7 +5,7 @@ import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import { viewportPresets } from "@/development/studio/config"
 import { layoutTime } from "@/development/studio/layout-time"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { PARTY_SLOTS } from "@/lib/wiz/content/constants"
 
@@ -32,7 +32,7 @@ try {
       const onError = (error: Error) => errors.push(error.message)
       page.on("pageerror", onError)
       try {
-        await page.goto(BASE_URL + frameUrl(config))
+        await page.goto(STUDIO_URL + frameUrl(config))
         await page.waitForFunction(
           () => window.__devStudio?.ready || window.__devStudioError
         )
@@ -75,7 +75,7 @@ try {
     ignoreHTTPSErrors: true,
   })
   console.log("一覧：起動")
-  await page.goto(BASE_URL + "/dev/layouts")
+  await page.goto(STUDIO_URL + "/layouts")
   await page.waitForFunction(
     () =>
       document.querySelectorAll('iframe[data-layout-ready="true"]').length ===
@@ -112,7 +112,7 @@ try {
     .getByRole("link", { name: "ギルド：クエスト", exact: true })
     .last()
     .click()
-  await page.waitForURL("**/dev/studio/guild-quests")
+  await page.waitForURL("**/studio/guild-quests")
   await page.waitForFunction(() => {
     const frame = document.querySelector(
       'iframe[title="ゲームプレビュー"]'

@@ -1,11 +1,11 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import goods from "@/content/data/goods.json"
 import shops from "@/content/data/shops.json"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 const errors: string[] = []
@@ -18,7 +18,7 @@ try {
     for (const kind of ["weapon", "armor"] as const) {
       const page = await openPage(browser, viewport, errors)
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
               scene: "bag",
@@ -496,16 +496,17 @@ try {
           const runtime = window.__devStudio as StudioRuntime
           const game = runtime.game!
           const saved = game.save()
-          // 編成には主人公が必ず入る。武器は主人公に持たせ、主人公だけの編成にする。
-          // 主人公は防具を着ないので、防具は着ている仲間と主人公だけの編成にする
-          const hero = saved.snapshot.party.find(
-            (member) => game.queries.member(game.state, member)?.hero
-          )
-          if (!hero) throw new Error("編成に主人公がいない")
+          // 装備中の持ち主だけの編成にして、変更できる仲間がいない状態を作る。
+          // 武器は、まだ持ち主がいなければ持てる仲間に持たせてから絞る
           const owner =
-            kind === "weapon"
-              ? hero
-              : saved.snapshot.gear.find((entry) => entry.id === id)?.owner
+            saved.snapshot.gear.find((entry) => entry.id === id)?.owner ??
+            (kind === "weapon"
+              ? saved.snapshot.party.find((member) =>
+                  game.queries
+                    .equipOptions(game.state, member)
+                    .some((entry) => entry.gear === id)
+                )
+              : undefined)
           if (!owner) throw new Error("装備中の持ち主がいない")
           const issue = game.restore({
             ...saved,
@@ -523,14 +524,14 @@ try {
                 game.send({ type: "equip", gear: id, member: owner })
               )
             )
-              throw new Error("主人公へ武器を持たせられない")
+              throw new Error("仲間へ武器を持たせられない")
           }
           const equipped = game.save()
           const narrowed = game.restore({
             ...equipped,
             snapshot: {
               ...equipped.snapshot,
-              party: [...new Set([hero, owner])],
+              party: [owner],
             },
           })
           if (narrowed) throw narrowed
@@ -541,7 +542,7 @@ try {
                 .some((entry) => entry.gear === id)
             )
           )
-            throw new Error("既に装備中の個体か着られない仲間を変更対象にした")
+            throw new Error("既に装備中の個体を変更対象にした")
           await runtime.advance(12000)
         },
         { id: expected.id, kind }

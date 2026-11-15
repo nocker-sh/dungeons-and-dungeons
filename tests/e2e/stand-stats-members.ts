@@ -1,9 +1,9 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 const browser = await launch()
 const errors: string[] = []
 try {
@@ -13,14 +13,12 @@ try {
     { name: "desktop", width: 1280, height: 900 },
   ]) {
     for (const scene of [
-      "stand-find-armor-gald-4",
       "stand-find-armor-mort-4",
-      "stand-find-armor-luca-3",
       "stand-find-armor-mimika-3",
     ]) {
       const page = await openPage(browser, viewport, errors)
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
               scene,

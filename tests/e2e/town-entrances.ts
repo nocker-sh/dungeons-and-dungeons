@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { mkdir } from "node:fs/promises"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { press } from "@/tests/e2e/press"
@@ -59,7 +59,7 @@ try {
   ]) {
     const errors: string[] = []
     const page = await openPage(browser, viewport, errors)
-    await page.goto(`${BASE_URL}/previews/town`)
+    await page.goto(`${STUDIO_URL}/previews/town`)
     const dungeon = page.getByRole("button", {
       name: "ダンジョン",
       exact: true,

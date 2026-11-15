@@ -88,16 +88,6 @@ try {
       exact: true,
     })
     await name.fill("ノア")
-    const photo = page
-      .locator('[aria-label^="写真 "][aria-label$=" を貼る"]')
-      .first()
-    const chosen = (await photo.getAttribute("aria-label"))!.replace(
-      /^写真 (.+) を貼る$/,
-      "$1"
-    )
-    await photo.click()
-    const pasted = registration.locator(`[aria-label="貼った写真 ${chosen}"]`)
-    await pasted.waitFor()
     const before = await page.evaluate(() => window.__registrationSave.latest)
     assert.ok(before)
     if (width === 390)
@@ -126,7 +116,6 @@ try {
       "ノア",
       "再保存で書きかけの名前が消えた"
     )
-    assert.equal(await pasted.isVisible(), true, "再保存で選んだ写真が戻った")
     assert.equal(await registration.isVisible(), true)
     assert.equal(
       await page.locator('[aria-label="設定"]').isVisible(),
@@ -139,7 +128,7 @@ try {
       "再保存で未確定の登録を進めた"
     )
     console.log(
-      `${width}: 登録中も保存失敗を表示・Enterで復旧・名前と写真の下書き保持・背面非表示 OK`
+      `${width}: 登録中も保存失敗を表示・Enterで復旧・名前の下書き保持・背面非表示 OK`
     )
     await page.close()
   }

@@ -1,21 +1,21 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 try {
   for (const [width, party] of [
-    [320, ["hero", "alda", "mort"]],
-    [1280, ["hero", "rivet", "husky"]],
+    [320, ["alda", "mort", "mayu"]],
+    [1280, ["mayu", "sera", "husky"]],
   ] as const) {
     const errors: string[] = []
     const page = await openPage(browser, { width, height: 800 }, errors)
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "room-growth",

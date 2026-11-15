@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
@@ -6,7 +6,7 @@ import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import goods from "@/content/data/goods.json"
 import shops from "@/content/data/shops.json"
 import skills from "@/content/data/skills.json"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 const browser = await launch()
 const errors: string[] = []
 try {
@@ -18,7 +18,7 @@ try {
     for (const weaponSlug of ["sword", "gun"]) {
       const page = await openPage(browser, viewport, errors)
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
               scene: "smithy-repair",

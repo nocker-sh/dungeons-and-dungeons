@@ -1,15 +1,13 @@
 import { describe, expect, it } from "vite-plus/test"
 import { contentSource } from "@/content/game-content"
 import { growthMemberOf } from "@/development/growth-member-of"
-import { heroGrowthMember } from "@/development/growth"
 import { simulateGrowth } from "@/development/simulate-growth"
 
 describe("成長のシミュレーション", () => {
-  it("ゲームの数値を持つ仲間と主人公を引ける", () => {
-    const first = contentSource.party[0]
+  it("ゲームの数値を持つ仲間を引ける", () => {
+    const first = contentSource.recruits[0].member
     expect(growthMemberOf(first.id)?.startLevel).toBe(first.lv)
     expect(growthMemberOf("存在しないID")).toBeUndefined()
-    expect(heroGrowthMember).toBeDefined()
   })
 
   it("加入時の能力から始まり、必要経験値を積み上げる", () => {
@@ -27,15 +25,6 @@ describe("成長のシミュレーション", () => {
         rows[index - 1].stats.maxHp.average
       )
     }
-  })
-
-  it("主人公は成長せず、計測も初期能力の一行で終了する", () => {
-    const hero = contentSource.party[0]
-    expect(heroGrowthMember?.grows).toBe(false)
-    const rows = simulateGrowth(hero.id, 20, 200)
-    expect(rows).toHaveLength(1)
-    expect(rows[0].expToNext).toBe(0)
-    expect(rows[0].stats.maxHp.average).toBe(hero.stats.maxHp)
   })
 
   it("同じ条件なら毎回同じ結果になる", () => {

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict"
-import { BASE_URL, VIEWPORTS } from "@/tests/e2e/lib"
+import { STUDIO_URL, VIEWPORTS } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 
@@ -10,7 +10,7 @@ try {
     const page = await openPage(browser, viewport, errors)
     await page.routeWebSocket("**/*", () => {})
     for (const scene of ["town", "outskirts-deep"]) {
-      await page.goto(`${BASE_URL}/previews/${scene}?still`)
+      await page.goto(`${STUDIO_URL}/previews/${scene}?still`)
       await page.locator(".formation .card .hit").first().waitFor()
       await page.waitForTimeout(1200)
       const selection = page.locator('.revolver .dest[aria-selected="true"]')
@@ -56,7 +56,7 @@ try {
         await page.locator(".stand").waitFor()
       }
     }
-    await page.goto(`${BASE_URL}/previews/conversations?id=alda-mayu-inn`)
+    await page.goto(`${STUDIO_URL}/previews/conversations?id=alda-mayu-inn`)
     const dialogue = page.locator("[data-conversation-dialog]")
     await dialogue.locator("[data-conversation-ready]").waitFor()
     const before = await dialogue.innerText()

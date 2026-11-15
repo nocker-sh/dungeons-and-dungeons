@@ -1,5 +1,12 @@
 // @vitest-environment jsdom
-import { act, cleanup, fireEvent, render, screen } from "@testing-library/react"
+import {
+  act,
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  within,
+} from "@testing-library/react"
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test"
 import { useState } from "react"
 import { playback } from "@/client/components/canvas/playback"
@@ -16,6 +23,7 @@ import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { realContent } from "@/lib/wiz/testing/real-content"
 import { startedState } from "@/lib/wiz/testing/started-state"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
+import { fullRun } from "@/tests/full-run"
 
 type Props = { menu: "craft" | "upgrade" }
 function SmithySurface(props: Props) {
@@ -89,7 +97,38 @@ const cases = smithy.recipes.flatMap((recipe) => {
   })
 })
 
-test.each(cases)(
+type Scenario = (typeof cases)[number]
+/** 最後の強化の段。この強化で最大になる。 */
+const lastStep = smithy.upgrades.length
+const kindOf = (recipe: Scenario["recipe"]) =>
+  definition.catalog.good(recipe.good)?.kind
+
+/**
+ * ふだんの実行（`vp test run`）で回す代表。全件は `vp run test:full` で回す。
+ * 全レシピ・全段の費用・不足・保存の復元は、エンジン側の smithy-save-roundtrip.test.ts がふだんから回す。
+ * - 生産：費用はレシピごとに違うので、どのレシピも成功とお金・素材ごとの不足を全部回す。
+ * - 強化：費用と不足の判定は品物によらず段ごとに共通。全段・全不足は品物の種類（武器・防具など）ごとに
+ *   最初のレシピで回し、種類ごとに段で変わる表示（攻撃力・耐久）も通す。
+ *   ほかのレシピは、最初の強化と最大になる強化の成功を回す。
+ * レシピや品物の種類が増えれば、データから自動で代表に入る。
+ */
+function representative(all: readonly Scenario[]) {
+  const firstOfKind = new Map<unknown, string>()
+  for (const scenario of all)
+    if (!firstOfKind.has(kindOf(scenario.recipe)))
+      firstOfKind.set(kindOf(scenario.recipe), scenario.recipe.id)
+  const everyStage = new Set(firstOfKind.values())
+  return all.filter(
+    (scenario) =>
+      scenario.step === 0 ||
+      everyStage.has(scenario.recipe.id) ||
+      (scenario.mode === "ready" &&
+        (scenario.step === 1 || scenario.step === lastStep))
+  )
+}
+const selected = fullRun ? cases : representative(cases)
+
+test.each(selected)(
   "$recipe.id/step=$step/$mode: real smithy controls preserve the operation, costs and save resumption",
   async (scenario) => {
     const input = scenario.action
@@ -130,6 +169,8 @@ test.each(cases)(
           />
         </GameProvider>
       )
+      // 鍛冶屋の行と操作の札は場面（main）の中にある。場面の外の隊列の札・バッグは名前を調べない
+      const scene = within(screen.getByRole("main", { name: "場面" }))
       const row =
         input.type === "craft"
           ? game.queries
@@ -139,7 +180,8 @@ test.each(cases)(
               .smithyUpgrades(game.state)!
               .find((entry) => entry.gear === input.gear)!
       expect(row.ready).toBe(scenario.mode === "ready")
-      fireEvent.click(await screen.findByRole("button", { name: row.name }))
+      // 一覧の行は最初の描画で並ぶ（render の act で反映済み）ので待たない
+      fireEvent.click(scene.getByRole("button", { name: row.name }))
       const before = game.save()
       const label =
         scenario.mode === "gold"
@@ -150,7 +192,7 @@ test.each(cases)(
               ? "作る"
               : `${game.queries.smithyUpgrades(game.state)!.find((entry) => entry.gear === input.gear)!.next!.name}にする`
       if (scenario.mode !== "ready") {
-        fireEvent.click(screen.getByRole("button", { name: label }))
+        fireEvent.click(scene.getByRole("button", { name: label }))
         expect(control.send(input)).toBeInstanceOf(GameCommandError)
         expect(game.save()).toEqual(before)
         expect(storage.read()).toBe(previous)
@@ -159,7 +201,7 @@ test.each(cases)(
       }
       fail = true
       await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: label }))
+        fireEvent.click(scene.getByRole("button", { name: label }))
       })
       eventsOrThrow(control.send(input))
       expect(game.save()).toEqual(control.save())
@@ -180,7 +222,7 @@ test.each(cases)(
           : `${upgraded.name}に強化しました。`
       )
       if (menu === "upgrade" && upgraded.max)
-        expect(screen.queryByRole("button", { name: /にする$/ })).toBeNull()
+        expect(scene.queryByRole("button", { name: /にする$/ })).toBeNull()
       for (const material of scenario.cost.materials)
         expect(
           Bag.count(ready.bag, material.good) -
@@ -188,7 +230,7 @@ test.each(cases)(
         ).toBe(material.count)
       expect(storage.read()).toBe(previous)
       const completed = game.save()
-      const again = screen.queryByRole("button", { name: /足りない/ })
+      const again = scene.queryByRole("button", { name: /足りない/ })
       if (again) fireEvent.click(again)
       else
         expect(
@@ -216,3 +258,29 @@ test.each(cases)(
     }
   }
 )
+
+// 作品データが変わっても、ふだんの代表が空になったり分岐の種類を落としたりしていないか
+test("default slice keeps every smithy branch class", () => {
+  const slice = representative(cases)
+  const classes = (
+    list: readonly Scenario[],
+    key: (scenario: Scenario) => string | null
+  ) => [...new Set(list.map(key).filter((value) => value !== null))].sort()
+  expect(slice.length).toBeGreaterThan(0)
+  for (const key of [
+    // 生産・強化それぞれの、成功・お金の不足・素材の不足
+    (scenario: Scenario) =>
+      `${scenario.action.type}/${scenario.mode === "ready" || scenario.mode === "gold" ? scenario.mode : "material"}`,
+    // 品物の種類ごとの、全段・全不足
+    (scenario: Scenario) =>
+      `${kindOf(scenario.recipe)}/${scenario.step}/${scenario.mode}`,
+    // どのレシピも、生産の全不足と、最初の強化・最大になる強化の成功
+    (scenario: Scenario) =>
+      scenario.step === 0 ||
+      (scenario.mode === "ready" &&
+        (scenario.step === 1 || scenario.step === lastStep))
+        ? `${scenario.recipe.id}/${scenario.step}/${scenario.mode}`
+        : null,
+  ])
+    expect(classes(slice, key)).toEqual(classes(cases, key))
+})

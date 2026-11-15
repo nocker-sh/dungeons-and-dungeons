@@ -1,5 +1,5 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
@@ -8,7 +8,7 @@ import { nightTalks } from "@/content/looks/night-talks"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { realContent } from "@/lib/wiz/testing/real-content"
 import { startedState } from "@/lib/wiz/testing/started-state"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const definition = new GameDefinition(realContent())
 const initial = startedState(definition)
@@ -27,7 +27,7 @@ try {
       const page = await openPage(browser, { width, height: 844 }, errors)
       await page.routeWebSocket("**/*", () => {})
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
               scene: "room-normal",

@@ -1,9 +1,9 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 import goods from "@/content/data/goods.json"
 import shops from "@/content/data/shops.json"
 const browser = await launch()
@@ -16,7 +16,7 @@ try {
   ]) {
     const page = await openPage(browser, viewport, errors)
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "stand",
@@ -32,7 +32,7 @@ try {
     await page.evaluate(async () => {
       await window.__devStudio!.advance(2500)
     })
-    // 主人公の能力は育たない（作品データの値で固定）ので、剣を持てる仲間の立ち絵で確かめる
+    // 剣を持てる仲間の立ち絵で確かめる
     const target = await page.evaluate(
       ({ sword, shop }) => {
         const game = (window.__devStudio as StudioRuntime).game!
@@ -45,12 +45,10 @@ try {
         if (!Array.isArray(game.send({ type: "buy", shop, good: sword })))
           throw new Error("購入失敗")
         const gear = game.state.gear.at(-1)!
-        const member = game.state.party.find(
-          (id) =>
-            !game.queries.member(game.state, id)!.hero &&
-            game.queries
-              .equipOptions(game.state, id)
-              .some((entry) => entry.gear === gear.id)
+        const member = game.state.party.find((id) =>
+          game.queries
+            .equipOptions(game.state, id)
+            .some((entry) => entry.gear === gear.id)
         )
         const reverted = game.restore(saved)
         if (reverted) throw reverted

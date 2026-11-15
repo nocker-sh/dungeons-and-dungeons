@@ -1,5 +1,5 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { openPreview } from "@/tests/e2e/open-preview"
@@ -7,7 +7,7 @@ import { tap } from "@/tests/e2e/tap"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import { layoutTime } from "@/development/studio/layout-time"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 try {
@@ -30,12 +30,12 @@ try {
   await preview.close()
 
   for (const [width, party] of [
-    [390, ["hero", "alda", "mort"]],
-    [1280, ["hero", "rivet", "husky"]],
+    [390, ["alda", "mort", "mayu"]],
+    [1280, ["mayu", "sera", "husky"]],
   ] as const) {
     const page = await openPage(browser, { width, height: 844 }, errors)
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({ scene: "room-levelup", width, party: [...party] })
         )
@@ -48,9 +48,7 @@ try {
       const runtime = window.__devStudio as StudioRuntime
       await runtime.advance(1500)
       const game = runtime.game!
-      const member = game.queries
-        .party(game.state)
-        .find((entry) => !entry.hero)!
+      const member = game.queries.party(game.state)[0]!
       return {
         member,
         gold: game.state.gold,

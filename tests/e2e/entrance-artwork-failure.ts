@@ -1,5 +1,5 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { press } from "@/tests/e2e/press"
 import { sceneOf } from "@/content/looks/scene-of"
@@ -31,7 +31,7 @@ try {
       await route.abort("failed")
     })
     try {
-      await page.goto(`${BASE_URL}/previews/town`)
+      await page.goto(`${STUDIO_URL}/previews/town`)
       await page.getByRole("button", { name: "設定", exact: true }).waitFor()
       assert.ok(blocked.has(sceneOf("town", viewport.width > viewport.height)!))
       await page

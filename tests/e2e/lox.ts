@@ -1,10 +1,10 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 const errors: string[] = []
@@ -13,7 +13,7 @@ try {
     const page = await openPage(browser, { width, height: 844 }, errors)
     await page.routeWebSocket("**/*", () => {})
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "town",
@@ -94,44 +94,26 @@ try {
           .click()
       await advance()
     }
-    await page
-      .locator(".formation")
-      .getByRole("button", { name: /^あなた HP/ })
-      .click()
-    await advance()
-    assert.equal(await page.locator("[data-stand-armor]").count(), 0)
-    assert.equal(await page.locator("[data-stand-level-up]").count(), 0)
-    await page.getByRole("button", { name: "容姿", exact: true }).click()
-    await advance()
-    const appearance = page.locator(".hero-appearance")
-    await appearance.waitFor({ state: "visible" })
-    const savedBefore = await page.evaluate(
-      () => (window.__devStudio as StudioRuntime).game!.state
-    )
-    await page
-      .getByRole("combobox", { name: "主人公の衣装" })
-      .selectOption({ index: 1 })
-    await page.waitForFunction(() =>
-      Array.from(
-        document.querySelectorAll<HTMLImageElement>(".hero-appearance img")
-      ).every((image) => image.complete && image.naturalWidth > 0)
-    )
-    await page.screenshot({ path: `/tmp/dnd-lox-${width}-outfit.png` })
-    await page
-      .getByRole("button", { name: "この容姿にする", exact: true })
-      .click()
-    await advance()
+    // プレイヤーは戦わない運営役。ロクスと話しても隊列・資産は変わらない
     const savedAfter = await page.evaluate(
       () => (window.__devStudio as StudioRuntime).game!.state
     )
-    assert.ok(savedAfter.hero.outfit)
-    assert.deepEqual(savedAfter.members, savedBefore.members)
-    assert.deepEqual(savedAfter.gear, savedBefore.gear)
-    assert.equal(savedAfter.gold, savedBefore.gold)
-    assert.equal(await page.locator("[data-stand-armor]").count(), 0)
-    await page.screenshot({ path: `/tmp/dnd-lox-${width}-stand.png` })
+    assert.deepEqual(savedAfter.members, before.members)
+    assert.deepEqual(savedAfter.party, before.party)
+    assert.deepEqual(savedAfter.gear, before.gear)
+    assert.equal(savedAfter.gold, before.gold)
+    assert.equal(savedAfter.contract, before.contract)
+    assert.equal(
+      await page
+        .locator(".formation")
+        .getByRole("button", { name: /^あなた HP/ })
+        .count(),
+      0,
+      "プレイヤーが隊列に出ている"
+    )
+    await page.screenshot({ path: `/tmp/dnd-lox-${width}-town.png` })
     console.log(
-      `PASS ${width}: 初期ロクス・直接会話・選択肢・次の会話・防具なし・衣装の変更と能力保持`
+      `PASS ${width}: 初期ロクス・直接会話・選択肢・次の会話・隊列と資産の保持`
     )
     await page.close()
   }

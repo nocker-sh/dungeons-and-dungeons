@@ -1,6 +1,6 @@
 # e2e：ブラウザで画面を確かめる
 
-開発サーバー（`https://dnd.localhost`）が動いている前提。相手は `E2E_BASE_URL` で変えられる。
+開発サーバー（`https://dnd.localhost`）が動いている前提。相手は `E2E_BASE_URL` で変えられる。開発用のプレビューは `https://dev.dnd.localhost` を使う（上書きは `E2E_STUDIO_URL`）。
 
 ```sh
 vp run e2e:flows          # 操作の確認（バッグ・対象選び・戦闘・召喚・会話・出撃）をスマホとPCで
@@ -16,8 +16,9 @@ vp exec bun tests/e2e/unreadable-save.ts # 読めない保存の安全な初期�
 vp exec bun tests/e2e/settings-keyboard.ts # 設定のTab循環・確認取消・閉じるキーとパッドB・フォーカス復帰・保存保持
 vp exec bun tests/e2e/battle-picker-keyboard.ts # 戦闘の道具の使用可否、戻ると道具決定をEnter/Space/パッドAで操作・対象取消・連打時の消費と手番
 vp exec bun tests/e2e/battle-menu-selection.ts # 3画面幅で道具・スキルから戻ったときの武器選択保持、取消時の状態不変、選択したワザの実行
-vp exec bun tests/e2e/battle-artwork-failure.ts # スマホ・PCで味方のワザ・敵の攻撃・突入エフェクトの通信失敗を再現し、勝利後の探索と敗北後の街へ戻れることを確認
-vp exec bun tests/e2e/shop-stone-stock.ts # 説明欄のキーで誤購入しないこと、契約石の購入前後・保存復元・所持金不足での資産保持
+vp exec bun tests/e2e/battle-artwork-failure.ts # スマホ・PCで仲間（アルダ）のワザ・敵の攻撃・突入エフェクトの通信失敗を再現し、勝利後の探索と敗北後の街へ戻れることを確認
+vp exec bun tests/e2e/demon-call.ts # 3幅で「〇〇を呼ぶ」を押し、敵全員への命中・同じ仲間の手番の継続・1戦闘1回でボタンが消えること・保存のdemonCalledを確認
+vp exec bun tests/e2e/shop-stock-keys.ts # 説明欄のキーで誤購入しないこと、品物の購入前後・保存復元・所持金不足での資産保持
 vp exec bun tests/e2e/list-exit-lock.ts  # 募集入替ボタンの重なり・退場中の操作と資産保持・開き直した後の操作
 vp exec bun tests/e2e/list-sale-input.ts # 売切後に残りの行へ選択を戻し、Enter／パッドAの連打で閉じたり別の品を売ったりしない（3幅）
 vp exec bun tests/e2e/list-scroll.ts     # 長い一覧のつまみで両端へ移動・ドラッグ取消・複数ポインター・タッチ操作
@@ -30,16 +31,16 @@ vp exec bun tests/e2e/item-target-cancel.ts # 対象選択の取消・再選択�
 vp exec bun tests/e2e/discovery-gold.ts # 露店での支払い後、持ち帰り金貨・帰還手当て・保存復元・帰還後の残高を確認（3幅）
 vp exec bun tests/e2e/discovery-gamepad.ts # 探索イベントの選択肢へスクロール追従し、右スティックで説明を読む。祝福の取消・確定も確認
 vp exec bun tests/e2e/bag-dialogs.ts # 背景の持ち出し設定・ワザ付け替えがキーを奪わず、前面から順に閉じて元に戻る
-vp exec bun tests/e2e/hero-editing.ts # 改名・容姿のTab循環、IME・文字削除、衣装欄のキー保持、パッド選択後のEnter、写真選択、取消・保存範囲
 vp exec bun tests/e2e/modal-gamepad-scroll.ts # ワザ付け替えと持ち出し準備のパッド選択・固定見出し・右スティック・マウス切替・保存保持
 vp exec bun tests/e2e/list-detail-scroll.ts # 短いスマホ画面の品物説明をキー・右スティックで読み、選択・保存を保持
 vp exec bun tests/e2e/result-scroll.ts # 全滅・踏破の結果をTabで選び、キー・右スティックで末尾まで読む。終了と資産保持も確認
 vp exec bun tests/e2e/return-summary.ts # 全層の帰還まとめをキー・右スティックで読み、誤帰還の防止・収支・持ち帰る物を確認
 vp exec bun tests/e2e/supplies-save.ts   # 旧保存で道具が別の束に分かれている場合の持ち替え・自動保存・再起動
-vp exec bun tests/e2e/onboarding.ts     # 初期3人・容姿選択・IME確定での誤登録防止・ギルド登録・容姿変更・初出撃と途中再開
+vp exec bun tests/e2e/onboarding.ts     # 初期3人（プレイヤーは隊列に出ない）・名前だけの登録用紙・IME確定での誤登録防止・初出撃と途中再開・設定からの改名
 vp exec bun tests/e2e/battle-effects.ts  # 漫画画像の実再生を停止・再開し、手番の完了と動きを減らす設定を確認
 vp run e2e:animation      # 実再生を停止・再開し、ダメージ・手番・二重入力・施設遷移を確認
 vp run e2e:studio         # スタジオの時計・条件・描画・操作・保存保護を確認
+vp run e2e:save-message   # スタジオからiframeへセーブを送り、ゲームの本来のセーブを変えないことを確認
 vp exec bun tests/e2e/studio-input.ts    # スタジオの修飾キー・入力部品・ボタンと再生ショートカットの共存を確認
 vp exec bun tests/e2e/studio-lifecycle.ts # スタジオの起動失敗・処理待ちからの場面切り替えと時計の再起動を確認
 vp exec bun tests/e2e/studio-import.ts   # シナリオJSONの再選択・読込順・時刻の上限・場面変更後の読込取消を確認
@@ -61,7 +62,7 @@ vp exec bun tests/e2e/night-talk.ts # 初期編成で宿泊から二人雑談へ
 
 任意時刻のPNG、配置・状態・演出の検査、時刻付き操作のCLIは [開発スタジオ](../.docs/dev-studio.md)。
 
-レイアウトの成果物は `node_modules/.cache/studio/layouts/`。問題の再確認は `LAYOUT_SCENES=bag-target LAYOUT_VIEWPORTS=スマホ vp run e2e:layouts`。画像の厳密一致を調べる `e2e:studio` は許容差を持たず、ブラウザの中間画像に差がある場合は失敗する。
+レイアウトの成果物は `node_modules/.cache/studio/layouts/`。問題の再確認は `LAYOUT_SCENES=bag-target LAYOUT_VIEWPORTS=スマホ vp run e2e:layouts`。画像の厳密一致を調べる `e2e:studio` は許容差を持たない。GPU描画では同じ配置でも輪郭に微差が出るため、ソフトウェア描画（`PLAYWRIGHT_SOFTWARE=1`、スクリプトに指定済み）で比較する。
 
 `e2e:animation` はダメージの実アニメーションを1.8秒停止し、行動順・入力が先へ進まないこと、再開後にダメージの数字が数え上がり次の手番（行動順の顔）へ1つだけ進むことを確認する。敵のHPは画面に出さない。停止・再開後のPNGと状態JSONは `node_modules/.cache/studio/animation/`。進行を制御する実装は固定タイマーを使わず、Motionの完了通知を待つ。
 
@@ -73,7 +74,7 @@ vp exec bun tests/e2e/night-talk.ts # 初期編成で宿泊から二人雑談へ
 
 | 台本                                                     | 確認する内容                                                                                                  |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| [inscription-rarity-uses.ts](inscription-rarity-uses.ts) | N/R/SR、未装備/主人公装備の名前・持ち主・操作グループ、現在と候補の最大使用回数、選択取消の保存保持           |
+| [inscription-rarity-uses.ts](inscription-rarity-uses.ts) | N/R/SR、未装備/仲間装備の名前・持ち主・操作グループ、現在と候補の最大使用回数、選択取消の保存保持           |
 | [inscription-weapon-plus.ts](inscription-weapon-plus.ts) | 未強化と+3の識別、候補の強化込み使用回数、選択取消の保存保持                                                  |
 | [inscription-use.ts](inscription-use.ts)                 | 強化武器の指定枠だけを変更、書1冊の実消費、他の武器と金貨の保持                                               |
 | [inscription-reach.ts](inscription-reach.ts)             | 剣・魔法銃の現在の効果説明と射程、候補の近接/遠距離・射程なし                                                 |
@@ -136,13 +137,13 @@ vp exec bun tests/e2e/night-talk.ts # 初期編成で宿泊から二人雑談へ
 
 `vp exec bun tests/e2e/quick-quests.ts` は320/390/1280幅で6依頼を実際の「戦う」と戦闘のボタンで操作し、背景・自動精算・探索進行の保持を確認する。表示・操作を安定して検査するため高いHP・能力と最深層の店装備を用意し、難度は `builder/quick-quests.ts` の実際の敵を使う別測定で確認する。仮想時計を進める前に戦闘エフェクトの画像デコードを待つ。編集中のHMRは検査ページのWebSocketだけで止める。`vp exec bun tests/e2e/quick-quest-entry.ts` は街からギルドのクエストへの入口と戻る操作、3人編成を3幅、`vp exec bun tests/e2e/quick-quest-defeat.ts` は敗北後の復帰・没収なし・再挑戦を3幅で確認する。
 
-## 最初の相棒ロクスと主人公の衣装
+## 最初の相棒ロクス
 
-`vp exec bun tests/e2e/lox.ts` は320・390・1280幅で、初期契約ロクス、街の「ロクスと話す」、初回会話と選択肢、次の会話、主人公の防具・本人の成長案内なし、既存衣装への着替えと資産・能力保持を実際の操作で確認する。PNGは `/tmp/dnd-lox-*`。接続先は既定のPortless `https://dnd.localhost`、必要なら `E2E_BASE_URL` で稼働中の開発サーバーを指定する。会話の保存再開と物語の条件は `demon-hero.test.ts` で確認する。
+`vp exec bun tests/e2e/lox.ts` は320・390・1280幅で、初期契約ロクス、街の「ロクスと話す」、初回会話と選択肢、次の会話、プレイヤーが隊列に出ないこと、会話の前後で隊列・装備・資産を保持することを実際の操作で確認する。PNGは `/tmp/dnd-lox-*`。接続先はスタジオ（`https://dev.dnd.localhost`、上書きは `E2E_STUDIO_URL`）。会話の保存再開と物語の条件は `demon-hero.test.ts` で確認する。
 
 ## 物語から悪魔と契約する
 
-`vp exec bun tests/e2e/demon-contracts.ts` は320・390・1280幅で秘密の部屋を開き、ヌイとの出会い・選択肢・素材と契約料の支払い・ロクスの合体維持・ヌイとザザが並ぶ友達の場面・加入後の直接会話を実際の操作で確認する。進行と資金・素材は検証用に用意する。自然な素材入手や探索難度は別測定。PNGは `/tmp/dnd-contract-*`。
+`vp exec bun tests/e2e/demon-contracts.ts` は320・390・1280幅で秘密の部屋を開き、ヌイとの出会い・選択肢・素材と契約料の支払い・ロクスとの契約維持・ヌイとザザが並ぶ友達の場面・加入後の直接会話を実際の操作で確認する。進行と資金・素材は検証用に用意する。自然な素材入手や探索難度は別測定。PNGは `/tmp/dnd-contract-*`。
 
 ## 世界地図・契約書・四人の冒頭
 
@@ -159,3 +160,5 @@ vp exec bun tests/e2e/night-talk.ts # 初期編成で宿泊から二人雑談へ
 `vp exec bun tests/e2e/service-worker-cache.ts` は実際のサービスワーカーを専用のローカルサーバーに登録し、同名画像の更新・オフライン取得・保存領域の読み書き失敗を確認する。別用途のキャッシュに同じURLの応答を用意し、旧版だけの削除・別用途の内容保持・ゲーム専用キャッシュからの読み込みも確認する。
 
 `vp exec bun tests/e2e/keyboard-shortcuts.ts` はスマホ・PC幅でCtrl/Cmd/Alt付きのキーイベントを送り、仲間の詳細・行き先・会話を変更せず、標準動作を妨げないことを確認する。修飾キーなしの数字・方向キー・Enterは引き続きゲームを操作できることも確認する。
+
+`PLAYWRIGHT_CHANNEL=chrome vp exec bun tests/e2e/retired-roster.ts` はスマホとPCで現役キャラの一覧、装備、会話、プレビューのカタログを開き、廃止した仲間と契約武器が制作対象へ戻らないことを検査する。

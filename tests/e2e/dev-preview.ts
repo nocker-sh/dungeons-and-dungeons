@@ -4,7 +4,7 @@ import assert from "node:assert/strict"
 import { mkdir, writeFile } from "node:fs/promises"
 import type { Page } from "playwright"
 import { launch } from "@/tests/e2e/launch"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 
 const output = "/tmp/product-test/dnd-preview"
 await mkdir(output, { recursive: true })
@@ -19,7 +19,7 @@ await page.addInitScript(() =>
   localStorage.setItem("dungeons-and-dungeons/save", "preserve-preview-save")
 )
 async function open(target: Page, path: string) {
-  await target.goto(BASE_URL + path)
+  await target.goto(STUDIO_URL + path)
   await target.waitForFunction(
     () =>
       window.__devPreview?.ready ||
@@ -33,7 +33,7 @@ async function open(target: Page, path: string) {
   assert.equal(await target.evaluate(() => window.__devPreview?.ready), true)
 }
 try {
-  await page.goto(BASE_URL + "/dev/view?catalog=1")
+  await page.goto(STUDIO_URL + "/view?catalog=1")
   const catalog = JSON.parse(
     await page.getByLabel("プレビューの指定一覧").innerText()
   )
@@ -42,7 +42,7 @@ try {
       (scene: { slug: string }) => scene.slug === "guild-quests"
     )
   )
-  const url = "/dev/view?scene=town&seed=77&at=2000"
+  const url = "/view?scene=town&seed=77&at=2000"
   await open(page, url)
   const first = await page.evaluate(() => window.__devPreview!.inspect())
   assert.ok(first)
@@ -63,7 +63,7 @@ try {
   assert.deepEqual(repeated?.elements, first?.elements)
   assert.deepEqual(await page.screenshot(), image)
   console.log("view: 入力無効・状態と配置・PNGの完全一致 OK")
-  await open(page, "/dev/view?scene=guild-quests&seed=77")
+  await open(page, "/view?scene=guild-quests&seed=77")
   assert.ok(
     (
       await page.evaluate(() => window.__devPreview!.inspect())
@@ -72,7 +72,7 @@ try {
     )
   )
   console.log("view: メニューの台本 OK")
-  await open(page, "/dev/play/town?seed=77&at=2000")
+  await open(page, "/play/town?seed=77&at=2000")
   const play = page.frameLocator('iframe[title="動作の確認"]')
   await play.getByRole("button", { name: "冒険者ギルド", exact: true }).click()
   await play
@@ -93,7 +93,7 @@ try {
   )
   await open(
     page,
-    "/dev/view?scene=battle&seed=77&party=hero,rivet,husky&foes=haribote-adult,hiyokobu&hp=100,25,0&width=1280&height=800&guides=1"
+    "/view?scene=battle&seed=77&party=mayu,sera,husky&foes=haribote-adult,hiyokobu&hp=100,25,0&width=1280&height=800&guides=1"
   )
   assert.equal(
     await page
@@ -109,14 +109,14 @@ try {
     (await page.evaluate(() => window.__devPreview!.inspect()))?.config.hp,
     [100, 25, 0]
   )
-  await page.goto(BASE_URL + frameUrl(first.config))
+  await page.goto(STUDIO_URL + frameUrl(first.config))
   const legacyReady = await waitForStudio(page)
   assert.equal(legacyReady.error, undefined)
   assert.equal(legacyReady.ready, true)
   const legacy = await page.evaluate(() => window.__devStudio!.advance(2000))
   assert.equal(legacy.time, 2000)
   assert.deepEqual(legacy.errors, [])
-  await page.goto(BASE_URL + "/dev/view?scene=missing")
+  await page.goto(STUDIO_URL + "/view?scene=missing")
   await page.getByRole("alert").waitFor()
   assert.match(
     await page.evaluate(() => window.__devPreview?.error ?? ""),

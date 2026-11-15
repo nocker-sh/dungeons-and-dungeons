@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { readFile } from "node:fs/promises"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 
@@ -45,7 +45,7 @@ async function release() {
   await page.waitForTimeout(150)
 }
 try {
-  await page.goto(`${BASE_URL}/dev/studio/town`)
+  await page.goto(`${STUDIO_URL}/studio/town`)
   await ready("town", 1, 2000)
   const original = await page.evaluate(
     () =>
@@ -85,7 +85,7 @@ try {
     "1000"
   )
   await release()
-  assert.ok(page.url().endsWith("/dev/studio/town"))
+  assert.ok(page.url().endsWith("/studio/town"))
   await ready("town", 22, 1000)
   const downloading = page.waitForEvent("download")
   await page.getByRole("button", { name: "シナリオJSON", exact: true }).click()
@@ -102,7 +102,7 @@ try {
     .click()
   await ready("components", 22, 2000)
   await release()
-  assert.ok(page.url().endsWith("/dev/studio/components"))
+  assert.ok(page.url().endsWith("/studio/components"))
   await ready("components", 22, 2000)
 
   await upload("slow-bad.json", "{")
@@ -120,16 +120,16 @@ try {
   await ready("town", 33, 2000)
   await release()
   await ready("town", 33, 2000)
-  assert.ok(page.url().endsWith("/dev/studio/town"))
+  assert.ok(page.url().endsWith("/studio/town"))
 
   const otherScene = parseStudioConfig({
     scene: "components",
     seed: 44,
     width: 1280,
-    party: ["hero", "rivet", "husky"],
+    party: ["mayu", "sera", "husky"],
   })
   await upload("components.json", otherScene)
-  await page.waitForURL("**/dev/studio/components")
+  await page.waitForURL("**/studio/components")
   await ready("components", 44, 2000)
   assert.deepEqual(
     await page.evaluate(

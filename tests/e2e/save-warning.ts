@@ -1,11 +1,11 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import { contentId } from "@/lib/wiz/testing/content-id"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 type SaveProbe = {
   fail: boolean
@@ -38,7 +38,7 @@ try {
           storageModule = request.url()
       })
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
               scene: "town",

@@ -1,7 +1,7 @@
 import { resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { mkdir } from "node:fs/promises"
-import { BASE_URL, VIEWPORTS } from "@/tests/e2e/lib"
+import { STUDIO_URL, VIEWPORTS } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import conversations from "@/content/data/conversations.json"
@@ -50,7 +50,7 @@ export async function checkConversationPages() {
         }
         requestAnimationFrame(sample)
       })
-      await page.goto(`${BASE_URL}/dev/conversations`, {
+      await page.goto(`${STUDIO_URL}/conversations`, {
         waitUntil: "domcontentloaded",
       })
       const frame = page.frameLocator('iframe[title="会話プレビュー"]')
@@ -117,7 +117,7 @@ export async function checkConversationPages() {
       await page
         .getByRole("button", { name: "宝箱を前に：アルダ", exact: true })
         .click({ noWaitAfter: true })
-      await page.waitForURL("**/dev/conversations/alda-chest-01", {
+      await page.waitForURL("**/conversations/alda-chest-01", {
         waitUntil: "domcontentloaded",
       })
       await page.reload({ waitUntil: "domcontentloaded" })
@@ -133,7 +133,7 @@ export async function checkConversationPages() {
       await page
         .getByRole("button", { name: timeline.title, exact: true })
         .click({ noWaitAfter: true })
-      await page.waitForURL(`**/dev/conversations/${timeline.id}`, {
+      await page.waitForURL(`**/conversations/${timeline.id}`, {
         waitUntil: "domcontentloaded",
       })
       const lines = page

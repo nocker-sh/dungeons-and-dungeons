@@ -1,11 +1,11 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { waitForStudio } from "@/scripts/studio-browser"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import shops from "@/content/data/shops.json"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 const errors: string[] = []
@@ -17,7 +17,7 @@ try {
   ]) {
     const page = await openPage(browser, viewport, errors)
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "shop-armory",
@@ -81,20 +81,19 @@ try {
       JSON.stringify((window.__devStudio as StudioRuntime).game!.save())
     )
     if (after !== expected.save) throw new Error("購入前の確認で資産が変化")
+    // 編成を1人に絞ると、装備対象もその1人だけに変わる（対象は今の編成に従う）
     const unavailable = await page.evaluate(
       async (shop) => {
         const runtime = window.__devStudio as StudioRuntime
         const game = runtime.game!
         const saved = game.save()
+        const only = saved.snapshot.party[0]
         const issue = game.restore({
           ...saved,
-          snapshot: {
-            ...saved.snapshot,
-            party: [saved.snapshot.party[0]],
-            hero: { ...saved.snapshot.hero, name: "コハク" },
-          },
+          snapshot: { ...saved.snapshot, party: [only] },
         })
         if (issue) throw issue
+        const name = game.queries.member(game.state, only)!.name
         const goods = game.queries.shop(game.state, shop)!.goods
         const armor = goods.find(
           (good) => good.kind === "armor" && good.equipMembers?.length === 0
@@ -102,12 +101,14 @@ try {
         const weapon = goods.find(
           (good) =>
             good.kind === "weapon" &&
-            good.equipMembers?.some((member) => member.name === "コハク")
+            good.equipMembers?.length === 1 &&
+            good.equipMembers[0]!.name === name
         )
         if (!armor || !weapon)
-          throw new Error("対象なしと登録名の検証前提がない")
+          throw new Error("対象なしと編成に従う対象の検証前提がない")
         await runtime.advance(7000)
         return {
+          name,
           armor: armor.name,
           weapon: weapon.name,
           save: JSON.stringify(game.save()),
@@ -125,8 +126,9 @@ try {
       name: "選んだ品の詳細",
       exact: true,
     })
-    if (!(await details.innerText()).includes("装備できる仲間：コハク"))
-      throw new Error("登録名が対象へ反映されない")
+    const targets = /装備できる仲間：(\S+)/.exec(await details.innerText())?.[1]
+    if (targets !== unavailable.name)
+      throw new Error(`装備対象が今の編成に従わない: ${targets}`)
     await page
       .getByRole("button", { name: unavailable.armor, exact: true })
       .click()

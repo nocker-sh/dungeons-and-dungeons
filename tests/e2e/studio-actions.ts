@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { waitForStudio } from "@/scripts/studio-browser"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
@@ -12,7 +12,7 @@ try {
     const errors: string[] = []
     const page = await openPage(browser, { width, height: 844 }, errors)
     const config = parseStudioConfig({ width })
-    await page.goto(BASE_URL + frameUrl(config))
+    await page.goto(STUDIO_URL + frameUrl(config))
     await waitForStudio(page)
     assert.equal(await page.evaluate(() => window.__devStudioError), undefined)
     await page.evaluate(() => window.__devStudio!.advance(3000))
@@ -49,7 +49,7 @@ try {
 
     // ネイティブbuttonの操作も同じ経路で演出を開始できる。
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "components",

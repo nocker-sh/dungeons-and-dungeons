@@ -1,9 +1,9 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 import goods from "@/content/data/goods.json"
 import shops from "@/content/data/shops.json"
 const browser = await launch()
@@ -16,7 +16,7 @@ try {
   ]) {
     const page = await openPage(browser, viewport, errors)
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "battle-layer4",
@@ -50,7 +50,7 @@ try {
           if (!Array.isArray(game.send({ type: "buy", shop, good: sword })))
             throw new Error("購入失敗")
           const gear = game.state.gear.at(-1)!
-          // 主人公は防具を着ないので、剣を持てて防具を着ている仲間で確かめる
+          // 剣を持てて防具を着ている仲間で確かめる
           const member = game.state.party.find(
             (id) =>
               game.queries.member(game.state, id)?.armor &&

@@ -3,7 +3,7 @@ import { waitForStudio } from "@/scripts/studio-browser"
 import { mkdir, readFile, writeFile } from "node:fs/promises"
 import { createHash } from "node:crypto"
 import { chromium, type Page } from "playwright"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import type { StudioConfig } from "@/development/studio/config"
@@ -25,7 +25,7 @@ async function capture(
   name: string
 ) {
   await target.setViewportSize({ width: config.width, height: config.height })
-  await target.goto(BASE_URL + frameUrl(config))
+  await target.goto(STUDIO_URL + frameUrl(config))
   await waitForStudio(target)
   const error = await target.evaluate(() => window.__devStudioError)
   assert.equal(error, undefined)
@@ -52,7 +52,7 @@ async function capture(
 
 try {
   // 本番の保存が壊れていても開発用の戦闘が起動し、上書きしない。
-  await page.goto(BASE_URL + "/dev/frame/battle")
+  await page.goto(STUDIO_URL + "/frame/battle")
   await page.evaluate(() =>
     localStorage.setItem("dungeons-and-dungeons/save", "preserve-this")
   )
@@ -66,7 +66,7 @@ try {
     )
   )
   const config = parseStudioConfig({
-    party: ["hero", "rivet", "husky"],
+    party: ["mayu", "sera", "husky"],
     foes: ["haribote-adult", "hiyokobu"],
     hp: [100, 25, 0],
     seed: 77,
@@ -76,14 +76,15 @@ try {
   const repeat = await capture(page, config, 2000, "battle-2000-repeat")
   assert.equal(first.sha, repeat.sha, "同じ時刻の画像")
   assert.notEqual(zero.sha, first.sha, "登場演出が進む")
-  const party = first.inspection.party as {
+  // 指定したHPは開始時点で確かめる（2秒までに敵の先制が入ることがある）
+  const party = zero.inspection.party as {
     name: string
     hp: number
     maxHp: number
   }[]
   assert.deepEqual(
     party.map((member) => member.name),
-    ["あなた", "リベット", "ハスキー"]
+    ["マユ", "セラ", "ハスキー"]
   )
   assert.equal(party[2].hp, 0)
   assert.equal(party[1].hp, Math.round(party[1].maxHp / 4))
@@ -151,8 +152,8 @@ try {
 
   // 親の縮尺とゲームの実寸、パス遷移、巻き戻し、コマ送り、停止を実際のUIで通す。
   await page.setViewportSize({ width: 1600, height: 1100 })
-  await page.goto(BASE_URL + "/dev/studio")
-  await page.waitForURL("**/dev/studio/battle")
+  await page.goto(STUDIO_URL + "/studio")
+  await page.waitForURL("**/studio/battle")
   const ready = async (time: number) => {
     await page.waitForFunction(
       (time) => {
@@ -197,7 +198,7 @@ try {
   await page
     .getByRole("link", { name: "コンポーネント・演出", exact: true })
     .click()
-  await page.waitForURL("**/dev/studio/components")
+  await page.waitForURL("**/studio/components")
   await page.waitForFunction(
     () => document.querySelector("iframe")?.contentWindow?.__devStudio?.ready
   )
@@ -215,7 +216,7 @@ try {
   const imported = parseStudioConfig({
     ...saved,
     seed: 99,
-    party: ["hero", "rivet", "mayu"],
+    party: ["rio", "sera", "mayu"],
   })
   await page.locator('input[type="file"]').setInputFiles({
     name: "scenario.json",

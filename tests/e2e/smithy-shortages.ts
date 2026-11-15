@@ -1,10 +1,10 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import smithy from "@/content/data/smithy.json"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 const browser = await launch()
 const errors: string[] = []
 try {
@@ -17,7 +17,7 @@ try {
       for (const condition of ["gold", "materials", "both"] as const) {
         const page = await openPage(browser, viewport, errors)
         await page.goto(
-          BASE_URL +
+          STUDIO_URL +
             frameUrl(
               parseStudioConfig({
                 scene: "smithy-repair",

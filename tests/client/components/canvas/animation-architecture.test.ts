@@ -17,7 +17,7 @@ describe("ゲーム演出のライブラリ境界", () => {
   it("完了を秒数で推測するタイマーと、ライブラリ外のCSS transitionを戻さない", () => {
     const violations: string[] = []
     for (const directory of ["canvas", "stage", "game", "screens"]) {
-      for (const path of sources(`client/components/${directory}`)) {
+      for (const path of sources(`apps/main/client/components/${directory}`)) {
         const source = readFileSync(path, "utf8")
         if (/\bset(?:Timeout|Interval)\s*\(/.test(source))
           violations.push(`${path}: timer`)

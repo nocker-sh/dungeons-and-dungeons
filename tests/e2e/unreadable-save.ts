@@ -51,6 +51,7 @@ try {
     )
     await page.keyboard.press("Enter")
     await warning.waitFor({ state: "detached" })
+    await page.locator("[data-unsaved-notice]").waitFor()
     const dialogue = page.locator("[data-conversation-dialog]")
     await dialogue.locator("[data-conversation-ready]").waitFor()
     await page.keyboard.press("Enter")

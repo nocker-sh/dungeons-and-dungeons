@@ -3,7 +3,8 @@ import { aState } from "@/lib/wiz/testing/state-builder"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { memberBySlug } from "@/lib/wiz/testing/member-by-slug"
-import { skillPortraitOf } from "@/content/looks/skill-portrait-of"
+import { frameOf } from "@/content/looks/frame-of"
+import { specialArtOf } from "@/content/looks/special-art-of"
 import { foeAppearance } from "@/content/foe-appearance"
 import { foeAttackImage } from "@/content/foe-attack-image"
 import effects from "@/concept/data/effects.json"
@@ -21,8 +22,8 @@ try {
           foes: ["kamokutsu"],
           order:
             failure === "foe"
-              ? ["foe-1", "hero", "alda", "mort"]
-              : ["hero", "foe-1", "alda", "mort"],
+              ? ["foe-1", "alda", "mort", "mayu"]
+              : ["alda", "foe-1", "mort", "mayu"],
         })
         .build()
       assert.equal(initial.phase.type, "battle")
@@ -48,16 +49,24 @@ try {
           },
         },
       })
-      const hero = memberBySlug("hero").id
+      // 仲間（アルダ）の武器のワザ。専用イラストがなければ今の立ち絵でワザを見せる
+      const actor = memberBySlug("alda").id
       const skill = game.queries
-        .commands(game.state, hero)!
+        .commands(game.state, actor)!
         .weaponSkills.find((entry) => entry.usable && entry.kind === "hit")!
       assert.ok(skill)
       const save = game.save()
+      const look = game.queries.look(game.state, actor)
+      const member = game.queries.member(game.state, actor)
       let path =
         failure === "intro"
           ? effects[0]!.image
-          : skillPortraitOf(game.state.contract!, skill.id)
+          : (specialArtOf(look, skill.id) ??
+            frameOf(
+              look,
+              member?.armor?.good,
+              member?.pact?.find((mode) => mode.current)?.index
+            ).img)
       if (failure === "foe") {
         const foe = game.queries.battle(game.state)!.foes[0]!
         const acted = eventsOrThrow(game.send({ type: "foe-turn" })).find(
@@ -135,19 +144,19 @@ try {
         await talkUntil(page, next, 30000)
         await next.waitFor()
         const used = await page.evaluate(
-          ({ hero, skill }) =>
+          ({ actor, skill }) =>
             JSON.parse(localStorage.getItem("dungeons-and-dungeons/save")!)
               .snapshot.members.find(
-                (member: { id: string }) => member.id === hero
+                (member: { id: string }) => member.id === actor
               )
               .used.find((entry: { skill: string }) => entry.skill === skill)
               ?.count,
-          { hero, skill: skill.id }
+          { actor, skill: skill.id }
         )
         assert.equal(
           used,
           (save.snapshot.members
-            .find((member) => member.id === hero)!
+            .find((member) => member.id === actor)!
             .used.find((entry) => entry.skill === skill.id)?.count ?? 0) + 1,
           "画像失敗時もワザの実行は一度だけ"
         )

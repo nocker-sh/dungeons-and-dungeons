@@ -118,7 +118,6 @@ const flows: Flow[] = [
   {
     name: "stand-equip",
     // 街で仲間の札を押すと立ち絵が上がり、「装備」が見えていて押せる
-    // 主人公は装備を持たないので、武器と防具を持つ2人目で確かめる
     run: async (page) => {
       await openPreview(page, "town", false)
       await tap(page, page.locator(".card .hit").nth(1))
@@ -263,7 +262,7 @@ const flows: Flow[] = [
   },
   {
     name: "create",
-    // 開幕は会話だけ。ギルドの受付の登録用紙で名前と写真（容姿）を決める
+    // 開幕は会話だけ。ギルドの受付の登録用紙で名前だけを書く。プレイヤーは戦わず、隊列に出ない
     run: async (page) => {
       await startFresh(page)
       await page.locator("[data-conversation-dialog]").waitFor()
@@ -276,18 +275,32 @@ const flows: Flow[] = [
         exact: true,
       })
       await talkUntil(page, registration)
+      expect(
+        (await registration.getByRole("button").allTextContents()).every(
+          (text) => !text.includes("写真")
+        ) && (await registration.locator("img").count()) === 0,
+        "登録用紙に写真が残っている"
+      )
       await registration
         .getByRole("textbox", { name: "名前（カタカナ）", exact: true })
         .fill("ノア")
-      const photo = (await labels(page)).find(
-        (label) => label.startsWith("写真 ") && label.endsWith(" を貼る")
-      )!
-      const chosen = photo.replace(/^写真 (.+) を貼る$/, "$1")
-      await press(page, photo)
-      await waitForLabel(page, (label) => label === `貼った写真 ${chosen}`)
       await press(page, "この内容で登録する")
-      // 名前は隊列の札に出る
-      await waitForLabel(page, (label) => label.startsWith("ノア HP"), 20_000)
+      // 名前は保存に入り、隊列の札には出ない（隊列は最初の3人）
+      await page.waitForFunction(
+        () => {
+          const hero = JSON.parse(
+            localStorage.getItem("dungeons-and-dungeons/save") ?? "null"
+          )?.snapshot?.hero
+          return hero?.name === "ノア" && !hero.registrationPending
+        },
+        undefined,
+        { timeout: 20_000 }
+      )
+      await waitForLabel(page, (label) => / HP\d+\/\d+/.test(label), 20_000)
+      expect(
+        (await labels(page)).every((label) => !label.startsWith("ノア")),
+        "プレイヤーの名前が隊列に出た"
+      )
     },
   },
   {
@@ -312,7 +325,11 @@ const flows: Flow[] = [
         / HP\d+\/\d+/.test(label)
       )
       expect(
-        party.length === PARTY_SLOTS && party[0].startsWith("ノア HP"),
+        party.length === PARTY_SLOTS &&
+          ["アルダ", "モート", "マユ"].every((name) =>
+            party.some((label) => label.startsWith(`${name} HP`))
+          ) &&
+          party.every((label) => !label.startsWith("ノア")),
         `${PARTY_SLOTS}人で出撃していない: ${party.join(" / ")}`
       )
     },

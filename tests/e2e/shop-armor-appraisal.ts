@@ -1,9 +1,9 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 import shops from "@/content/data/shops.json"
 import goods from "@/content/data/goods.json"
 const shop = shops.find((shop) => shop.slug === "armory")!
@@ -14,7 +14,7 @@ try {
     for (const reached of [0, 1, 2]) {
       const page = await openPage(browser, { width, height: 900 }, errors)
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
               scene: "shop-armory",

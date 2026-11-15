@@ -1,10 +1,10 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 const errors: string[] = []
@@ -16,14 +16,16 @@ try {
     [568, 320],
     [844, 390],
   ]) {
-    for (const legacyName of [false, true]) {
+    // 長い名前は、仲間でいちばん長い名前（ハスキー）を後衛に置いて確かめる
+    for (const longName of [false, true]) {
       const page = await openPage(browser, { width, height }, errors)
       await page.routeWebSocket("**/*", () => {})
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
-              scene: legacyName ? "town" : "stand",
+              scene: longName ? "town" : "stand",
+              ...(longName ? { party: ["alda", "mort", "husky"] } : {}),
               width,
               height,
               duration: 15000,
@@ -33,27 +35,10 @@ try {
       await page.waitForFunction(
         () => window.__devStudio?.ready || window.__devStudioError
       )
-      const expected = await page.evaluate(async (legacyName) => {
+      const expected = await page.evaluate(async () => {
         const runtime = window.__devStudio as StudioRuntime
         await runtime.advance(3500)
         const game = runtime.game!
-        if (legacyName) {
-          const saved = game.save()
-          const issue = game.restore({
-            ...saved,
-            snapshot: {
-              ...saved.snapshot,
-              hero: { ...saved.snapshot.hero, name: "アカサタナハマヤ" },
-            },
-          })
-          if (issue) throw issue
-          const moved = game.send({
-            type: "swap-rows",
-            a: game.state.party[0],
-            b: game.state.party[2],
-          })
-          if (!Array.isArray(moved)) throw moved
-        }
         await runtime.advance(4000)
         const party = game.queries.party(game.state)
         return {
@@ -62,8 +47,8 @@ try {
           target: party[2].id,
           name: party[2].name,
         }
-      }, legacyName)
-      if (legacyName) {
+      })
+      if (longName) {
         await page.locator(".formation .card .hit").first().click()
         await page.evaluate(async () => window.__devStudio!.advance(4500))
       }
@@ -140,7 +125,7 @@ try {
         expected.save
       )
       await page.screenshot({
-        path: `/tmp/dnd-action-bounds-${width}-${height}-${legacyName ? "long" : "normal"}.png`,
+        path: `/tmp/dnd-action-bounds-${width}-${height}-${longName ? "long" : "normal"}.png`,
       })
       await button.click()
       await page.evaluate(async () => window.__devStudio!.advance(8500))

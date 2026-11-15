@@ -9,10 +9,11 @@ import type { GameAction } from "@/lib/wiz/commands"
 import { Bag } from "@/lib/wiz/rules/bag"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { startedState } from "@/lib/wiz/testing/started-state"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 
-const definition = new GameDefinition(realContent())
+const definition = new GameDefinition(catalogOf(realContent()))
 const sale = definition.catalog.data.shops
   .flatMap((shop) =>
     shop.goods.map((id) => ({

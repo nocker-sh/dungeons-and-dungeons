@@ -1,9 +1,9 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 const errors: string[] = []
@@ -16,7 +16,7 @@ try {
     const page = await openPage(browser, viewport, errors)
     page.setDefaultTimeout(15000)
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "stand-find-armor-1",
@@ -33,23 +33,23 @@ try {
       const runtime = window.__devStudio as StudioRuntime
       await runtime.advance(2500)
       const game = runtime.game!
-      const hero = game.state.gear.find(
+      const wearer = game.state.gear.find(
         (gear) => gear.id === "preview-find-armor"
       )!.owner!
-      const maxHp = game.queries.member(game.state, hero)!.maxHp
+      const maxHp = game.queries.member(game.state, wearer)!.maxHp
       const saved = game.save()
       const problem = game.restore({
         ...saved,
         snapshot: {
           ...saved.snapshot,
           members: saved.snapshot.members.map((member) =>
-            member.id === hero ? { ...member, hp: maxHp } : member
+            member.id === wearer ? { ...member, hp: maxHp } : member
           ),
         },
       })
       if (problem) throw new Error(String(problem))
       await runtime.advance(3000)
-      return hero
+      return wearer
     })
     await page.getByRole("button", { name: "装備", exact: true }).click()
     await page.evaluate(async () => {

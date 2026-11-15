@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { waitForStudio } from "@/scripts/studio-browser"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { tap } from "@/tests/e2e/tap"
@@ -9,7 +9,7 @@ import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import { FOE_ART } from "@/content/looks/combat-art"
 import { foeImagePaths } from "@/content/foe-image-paths"
 import { contentSource } from "@/content/game-content"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const enemyPaths = new Set(
   Object.values(FOE_ART).flatMap((art) =>
@@ -44,7 +44,7 @@ try {
       await route.abort("failed")
     })
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "quick-quests",
@@ -113,7 +113,7 @@ try {
     }
   )
   await page.goto(
-    BASE_URL + frameUrl(parseStudioConfig({ foes: ["kamokutsu"] }))
+    STUDIO_URL + frameUrl(parseStudioConfig({ foes: ["kamokutsu"] }))
   )
   await waitForStudio(page)
   assert.equal(blocked, true)

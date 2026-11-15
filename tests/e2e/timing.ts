@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { mkdir, writeFile } from "node:fs/promises"
-import { BASE_URL, VIEWPORTS } from "@/tests/e2e/lib"
+import { STUDIO_URL, VIEWPORTS } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
@@ -21,7 +21,7 @@ try {
       foes: ["haribote-adult"],
       actions: [{ at: 2500, label: "放つ" }],
     })
-    await page.goto(BASE_URL + frameUrl(config))
+    await page.goto(STUDIO_URL + frameUrl(config))
     await page.waitForFunction(
       () => window.__devStudio?.ready || window.__devStudioError
     )
@@ -85,7 +85,7 @@ try {
     )
 
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "components",

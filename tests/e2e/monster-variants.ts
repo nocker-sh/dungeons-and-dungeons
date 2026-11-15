@@ -1,10 +1,10 @@
 import { assertFoeHpHidden } from "@/tests/e2e/assert-foe-hp-hidden"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 import { contentSource } from "@/content/game-content"
 import world from "@/concept/data/world.json"
 
@@ -35,7 +35,7 @@ try {
       const image = world.find((entry) => entry.id === foe.id)!.image!
       const page = await openPage(browser, { width, height: 844 }, errors)
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
               scene: "battle",

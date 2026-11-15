@@ -1,9 +1,9 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 const errors: string[] = []
@@ -20,7 +20,7 @@ try {
         artwork: "discovery-camp-fisheye-comic-v3",
         choice: "rest",
         // 出撃は3人。野営の追加回復は野営役（モート）が担う
-        party: ["hero", "alda", "mort"],
+        party: ["alda", "mort", "mayu"],
         reward: "619ae895-2e95-4f01-ba6b-b78835debae7",
         count: 0,
       },
@@ -30,7 +30,7 @@ try {
         artwork: "discovery-sealed-chest-fisheye-comic-v4",
         choice: "tools",
         // 支払いの軽減は交渉役（アルマ）が担う
-        party: ["hero", "alda", "alma"],
+        party: ["mayu", "alda", "alma"],
         reward: "49c06f75-74e8-4a31-a9bb-d6b09e96d001",
         count: 1,
       },
@@ -39,7 +39,7 @@ try {
       page.setDefaultTimeout(15000)
       console.log(`start: ${viewport.name} ${encounter.title}`)
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
               scene: "route-discovery",

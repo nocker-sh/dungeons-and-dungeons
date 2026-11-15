@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import conversations from "@/content/data/conversations.json"
@@ -48,7 +48,7 @@ try {
   ]) {
     const page = await openPage(browser, viewport, errors)
     page.setDefaultTimeout(15000)
-    await page.goto(`${BASE_URL}/previews/route-loot-rare?still`)
+    await page.goto(`${STUDIO_URL}/previews/route-loot-rare?still`)
     await page.getByRole("button", { name: "OK", exact: true }).click()
     const talk = page.getByRole("button", { name: "会話を進める", exact: true })
     const dialog = page.locator('[role="dialog"][aria-modal="true"]')
@@ -107,7 +107,7 @@ try {
     )
 
     const script = conversations.find((entry) => entry.id === "alda-mayu-inn")!
-    await page.goto(`${BASE_URL}/previews/conversations?id=${script.id}`)
+    await page.goto(`${STUDIO_URL}/previews/conversations?id=${script.id}`)
     await talk.waitFor()
     for (let index = 0; index < script.lines.length; index++) {
       await page.waitForFunction(
@@ -129,7 +129,7 @@ try {
       `${viewport.name}: Enter・Space・右キーで一行ずつ進み、最後に終了`
     )
 
-    await page.goto(`${BASE_URL}/previews/room-attic?still`)
+    await page.goto(`${STUDIO_URL}/previews/room-attic?still`)
     await page.getByRole("button", { name: "泊まる", exact: true }).click()
     await page.getByRole("button", { name: "雑談する", exact: true }).click()
     await talk.waitFor()

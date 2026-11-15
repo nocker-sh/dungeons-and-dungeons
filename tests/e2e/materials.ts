@@ -1,5 +1,5 @@
 import { mkdir } from "node:fs/promises"
-import { BASE_URL, VIEWPORTS } from "@/tests/e2e/lib"
+import { STUDIO_URL, VIEWPORTS } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import goods from "@/content/data/goods.json"
@@ -23,7 +23,7 @@ try {
     const page = await openPage(browser, viewport, errors)
     for (const slug of added) {
       const good = materials.find((material) => material.slug === slug)!
-      await page.goto(`${BASE_URL}/dev/materials/${slug}`, {
+      await page.goto(`${STUDIO_URL}/materials/${slug}`, {
         waitUntil: "domcontentloaded",
       })
       await page

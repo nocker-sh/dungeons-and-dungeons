@@ -1,5 +1,5 @@
 import { checkConversationPages } from "@/tests/e2e/conversations-page"
-import { BASE_URL, VIEWPORTS } from "@/tests/e2e/lib"
+import { STUDIO_URL, VIEWPORTS } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import conversations from "@/content/data/conversations.json"
@@ -11,7 +11,7 @@ const browser = await launch()
 const errors: string[] = []
 try {
   const page = await openPage(browser, VIEWPORTS[1], errors)
-  await page.goto(`${BASE_URL}/previews/route-chest-branch`)
+  await page.goto(`${STUDIO_URL}/previews/route-chest-branch`)
   await page.getByRole("button", { name: /^拾い物の道/ }).click()
   await page.getByRole("button", { name: "進む", exact: true }).click()
   for (const trigger of ["branch", "chest", "item"]) {

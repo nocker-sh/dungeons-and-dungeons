@@ -1,3 +1,8 @@
+export const STUDIO_URL =
+  process.env.E2E_STUDIO_URL ??
+  process.env.E2E_BASE_URL ??
+  "https://dev.dnd.localhost"
+
 export const BASE_URL = (
   process.env.E2E_BASE_URL ?? "https://dnd.localhost"
 ).replace(/\/$/, "")

@@ -1,6 +1,7 @@
 import { expect, test } from "vite-plus/test"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { startedState } from "@/lib/wiz/testing/started-state"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 import { contentId } from "@/lib/wiz/testing/content-id"
@@ -10,7 +11,7 @@ import { MemoryStorage } from "@/client/game/memory-storage"
 
 for (const failure of [new Error("Display failed"), undefined])
   test(`a failing display cannot prevent an earned purchase from being saved (error: ${String(failure)})`, () => {
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const game = definition.create(testEnvironment(), startedState(definition))
     const storage = new MemoryStorage()
     const order: string[] = []
@@ -68,7 +69,7 @@ for (const failure of [new Error("Display failed"), undefined])
   })
 
 test("a display failure during restore still publishes the restored state to autosave", () => {
-  const definition = new GameDefinition(realContent())
+  const definition = new GameDefinition(catalogOf(realContent()))
   const source = definition.create(testEnvironment(), startedState(definition))
   eventsOrThrow(
     source.send({

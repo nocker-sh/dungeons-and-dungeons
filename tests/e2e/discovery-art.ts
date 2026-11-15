@@ -1,9 +1,9 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 const errors: string[] = []
@@ -31,7 +31,7 @@ try {
       page.setDefaultTimeout(15000)
       console.log(`start: ${viewport.name} ${encounter.title}`)
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
               scene: "route-discovery",
@@ -179,7 +179,7 @@ try {
     const altar = await openPage(browser, viewport, errors)
     altar.setDefaultTimeout(15000)
     await altar.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "route-discovery",
@@ -230,8 +230,7 @@ try {
       const text = await button.textContent()
       if (!text?.includes(`HP（生命力） ${member.hp}/${member.maxHp}`))
         throw new Error("相手のHP表示が一致しない")
-      if (member.hp === 0 && !text.includes("戦闘不能（復活するまで使えない）"))
-        throw new Error("戦闘不能が分からない")
+      if (member.hp <= 0) throw new Error("戦闘不能の仲間が祝福の対象にある")
     }
     await altar.screenshot({
       path: `/tmp/dnd-blessing-recipient-${viewport.name}.png`,

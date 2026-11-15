@@ -1,9 +1,9 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 import rooms from "@/content/data/rooms.json"
 const browser = await launch()
 const errors: string[] = []
@@ -12,7 +12,7 @@ try {
     for (const room of rooms) {
       const page = await openPage(browser, { width, height: 760 }, errors)
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
               scene: `room-${room.slug}`,
@@ -45,7 +45,7 @@ try {
         await runtime.advance(5500)
         return {
           save: JSON.stringify(game.save()),
-          // 主人公は宿では成長しない。成長できる仲間はQueryが決める
+          // 成長できる仲間はQueryが決める
           name: game.queries
             .party(game.state)
             .filter((member) => member.levelUpReady)

@@ -5,6 +5,7 @@ import { aState } from "@/lib/wiz/testing/state-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { goodBySlug } from "@/lib/wiz/testing/good-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { startedState } from "@/lib/wiz/testing/started-state"
 import { connectSave } from "@/client/game/connect-save"
 import { discardSave } from "@/client/game/discard-save"
@@ -13,7 +14,7 @@ import { MemoryStorage } from "@/client/game/memory-storage"
 describe("保存先", () => {
   it("敵の個体が重複した保存は読み込まず、保存しないで遊んでも元の内容を残す", () => {
     const storage = new MemoryStorage()
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const game = definition.create(undefined, startedState(definition))
     const state = aState()
       .inBattle({ foes: ["kamokutsu"] })
@@ -51,7 +52,7 @@ describe("保存先", () => {
 
   it("操作のたびに書き、次に開くと戻る", () => {
     const storage = new MemoryStorage()
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const first = definition.create(undefined, startedState(definition))
     const session = connectSave(first, storage)
     expect(session.status).toBe("fresh")
@@ -62,7 +63,7 @@ describe("保存先", () => {
     })
     expect(first.state.gold).toBeLessThan(startedState(definition).gold)
     session.disconnect()
-    const second = new GameDefinition(realContent()).create()
+    const second = new GameDefinition(catalogOf(realContent())).create()
     expect(connectSave(second, storage).status).toBe("restored")
     expect(second.state.gold).toBe(first.state.gold)
   })
@@ -74,7 +75,7 @@ describe("保存先", () => {
       contentVersion: "old",
       snapshot: {},
     })
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const game = definition.create(undefined, startedState(definition))
     const session = connectSave(game, storage)
     expect(session.status).toBe("unreadable")
@@ -95,7 +96,7 @@ describe("保存先", () => {
 
   it("保存が指す品物がコンテンツから消えたら、その理由を返す", () => {
     const storage = new MemoryStorage()
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const game = definition.create(undefined, startedState(definition))
     connectSave(game, storage)
     const rope = goodBySlug("rope")
@@ -120,7 +121,7 @@ describe("保存先", () => {
         if (mode === "async") return Promise.reject(error)
         throw error
       }
-      const definition = new GameDefinition(realContent())
+      const definition = new GameDefinition(catalogOf(realContent()))
       const game = definition.create(undefined, startedState(definition))
       const report = vi.fn()
       const session = connectSave(game, storage, report)
@@ -144,7 +145,7 @@ describe("保存先", () => {
   )
 
   it("古い非同期保存の完了で最新の失敗を消さず、切断後に再保存しない", async () => {
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const game = definition.create(undefined, startedState(definition))
     let finish!: () => void
     const write = vi
@@ -184,7 +185,7 @@ describe("保存先", () => {
   })
 
   it("保存中に切断したら、遅れて失敗しても画面へ通知しない", async () => {
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const game = definition.create(undefined, startedState(definition))
     let fail!: (reason: Error) => void
     const write = () =>

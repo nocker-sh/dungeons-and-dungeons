@@ -1,10 +1,10 @@
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioBridge } from "@/client/dev/studio-types"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioBridge } from "@/development/preview/studio-types"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 const errors: string[] = []
@@ -16,7 +16,7 @@ try {
   ]) {
     const page = await openPage(browser, viewport, errors)
     page.setDefaultTimeout(15000)
-    await page.goto(`${BASE_URL}/previews/route-chest-branch?still`)
+    await page.goto(`${STUDIO_URL}/previews/route-chest-branch?still`)
     const sealed = page.locator('[data-route-choice="l10"]')
     const treasure = page.locator('[data-route-choice="n10"]')
     const details = page.getByRole("region", { name: "選んだ道の見通し" })
@@ -183,10 +183,10 @@ try {
         width: viewport.width,
         height: viewport.height,
         // 交渉役（アルマ）を出撃の3人目に置く
-        party: ["hero", "alda", "alma"],
+        party: ["mayu", "alda", "alma"],
         hp: [100, 100, 100],
       })
-      await frame.goto(BASE_URL + frameUrl(config))
+      await frame.goto(STUDIO_URL + frameUrl(config))
       await frame.waitForFunction(
         () => window.__devStudio?.ready || window.__devStudioError
       )

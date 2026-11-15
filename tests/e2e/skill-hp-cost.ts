@@ -1,12 +1,13 @@
-import demons from "@/content/data/demons.json"
-import { BASE_URL } from "@/tests/e2e/lib"
+import goods from "@/content/data/goods.json"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
-const demon = demons.find((entry) => entry.slug === "zaza")!
+/** HPを払うワザ（生贄の一撃）が付く武器。先頭の仲間に持たせて確かめる。 */
+const votive = goods.find((entry) => entry.slug === "votive-greatsword")!
 const browser = await launch()
 const errors: string[] = []
 try {
@@ -18,7 +19,7 @@ try {
     for (const enough of [false, true]) {
       const page = await openPage(browser, viewport, errors)
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({
               scene: "stand",
@@ -32,32 +33,41 @@ try {
         () => window.__devStudio?.ready || window.__devStudioError
       )
       const expected = await page.evaluate(
-        async ({ demon, enough }) => {
+        async ({ votive, enough }) => {
           const runtime = window.__devStudio as StudioRuntime
           await runtime.advance(2500)
           const game = runtime.game!
           const saved = game.save()
-          const hero = saved.snapshot.party[0]
-          const owned = saved.snapshot.demons.some(
-            (entry) => entry.id === demon
-          )
+          const actor = saved.snapshot.party[0]!
           const problem = game.restore({
             ...saved,
             snapshot: {
               ...saved.snapshot,
-              demons: owned
-                ? saved.snapshot.demons
-                : [...saved.snapshot.demons, { id: demon, lv: 1, exp: 0 }],
-              contract: demon,
+              gear: [
+                ...saved.snapshot.gear.map((entry) =>
+                  entry.owner === actor && entry.weapon
+                    ? { ...entry, owner: null }
+                    : entry
+                ),
+                {
+                  id: "skill-hp-cost-weapon",
+                  good: votive.id,
+                  owner: actor,
+                  plus: 0,
+                  progress: 0,
+                  wear: 0,
+                  weapon: { rarity: "N", extraPower: 0, skills: votive.skills },
+                },
+              ],
               members: saved.snapshot.members.map((member) =>
-                member.id === hero ? { ...member, used: [] } : member
+                member.id === actor ? { ...member, used: [] } : member
               ),
             },
           })
           if (problem) throw problem
           const skill = game.queries
-            .commands(game.state, hero)!
-            .skills.find((skill) => skill.cost > 0)!
+            .commands(game.state, actor)!
+            .weaponSkills.find((skill) => skill.cost > 0)!
           if (!skill) throw new Error("HP消費ワザがない")
           const next = game.save()
           const issue = game.restore({
@@ -65,7 +75,7 @@ try {
             snapshot: {
               ...next.snapshot,
               members: next.snapshot.members.map((member) =>
-                member.id === hero
+                member.id === actor
                   ? { ...member, hp: skill.cost + (enough ? 1 : 0) }
                   : member
               ),
@@ -74,8 +84,8 @@ try {
           if (issue) throw issue
           await runtime.advance(3000)
           const actual = game.queries
-            .commands(game.state, hero)!
-            .skills.find((entry) => entry.id === skill.id)!
+            .commands(game.state, actor)!
+            .weaponSkills.find((entry) => entry.id === skill.id)!
           if (actual.usable !== enough)
             throw new Error("使用可能の境界が想定と違う")
           return {
@@ -84,7 +94,7 @@ try {
             save: JSON.stringify(game.save()),
           }
         },
-        { demon: demon.id, enough }
+        { votive: { id: votive.id, skills: votive.skills! }, enough }
       )
       await page
         .getByRole("button", { name: "ワザの残りを見る", exact: true })

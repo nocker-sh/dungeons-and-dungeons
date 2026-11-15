@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { mkdir } from "node:fs/promises"
-import { BASE_URL, VIEWPORTS } from "@/tests/e2e/lib"
+import { STUDIO_URL, VIEWPORTS } from "@/tests/e2e/lib"
 import { FIRE, fire } from "@/tests/e2e/fire"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
@@ -13,7 +13,7 @@ try {
   for (const viewport of VIEWPORTS) {
     const errors: string[] = []
     const page = await openPage(browser, viewport, errors)
-    await page.goto(`${BASE_URL}/previews/battle`)
+    await page.goto(`${STUDIO_URL}/previews/battle`)
     await page.locator(FIRE).waitFor()
     const order = await page.locator(".order").getAttribute("aria-label")
     await fire(page)
@@ -67,7 +67,7 @@ try {
     assert.deepEqual(errors, [])
 
     await page.emulateMedia({ reducedMotion: "reduce" })
-    await page.goto(`${BASE_URL}/previews/battle`)
+    await page.goto(`${STUDIO_URL}/previews/battle`)
     await page.locator(FIRE).waitFor()
     const reducedOrder = await page.locator(".order").getAttribute("aria-label")
     await fire(page)

@@ -1,6 +1,7 @@
 import { Bag } from "@/lib/wiz/rules/bag"
 import { describe, expect, it } from "vite-plus/test"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { inPhase } from "@/lib/wiz/phases/in-phase"
 import { createStudioStart } from "@/development/studio/create-studio-start"
 import { studioScenes } from "@/development/studio/scenarios"
@@ -16,7 +17,7 @@ describe("ゲームと共通の開始状態", () => {
   it.each(studioScenes)("$slug がエンジンの検証を通して起動する", (scene) => {
     const config = parseStudioConfig({ scene: scene.slug })
     const start = createStudioStart(config)
-    const game = new GameDefinition(start.content!).create(
+    const game = new GameDefinition(catalogOf(start.content!)).create(
       start.environment,
       start.initialState
     )
@@ -26,18 +27,20 @@ describe("ゲームと共通の開始状態", () => {
   it("戦闘以外の保存付きシナリオでも隊列と種を反映する", () => {
     const config = parseStudioConfig({
       scene: "route-loot",
-      party: ["hero", "rivet", "mayu"],
+      party: ["sera", "mayu", "husky"],
       seed: 77,
     })
     const first = createStudioStart(config)
     const repeat = createStudioStart(config)
     expect(first.save).toEqual(repeat.save)
-    const game = new GameDefinition(first.content!).create(first.environment)
+    const game = new GameDefinition(catalogOf(first.content!)).create(
+      first.environment
+    )
     expect(game.restore(first.save)).toBeUndefined()
     expect(game.queries.party(game.state).map((entry) => entry.name)).toEqual([
-      "あなた",
-      "リベット",
+      "セラ",
       "マユ",
+      "ハスキー",
     ])
     expect(game.queries.route(game.state)?.pending?.kind).toBe("loot")
     const result = inPhase(game, "pending")?.acknowledge()
@@ -47,7 +50,9 @@ describe("ゲームと共通の開始状態", () => {
     const start = createStudioStart(
       parseStudioConfig({ scene: "route-loot-rare" })
     )
-    const game = new GameDefinition(start.content!).create(start.environment)
+    const game = new GameDefinition(catalogOf(start.content!)).create(
+      start.environment
+    )
     expect(game.restore(start.save)).toBeUndefined()
     const rare = start.content!.rareJunk!
     expect(Bag.count(game.state.bag, rare)).toBe(1)
@@ -62,7 +67,9 @@ describe("ゲームと共通の開始状態", () => {
     const start = createStudioStart(
       parseStudioConfig({ scene: "route-chest-branch" })
     )
-    const game = new GameDefinition(start.content!).create(start.environment)
+    const game = new GameDefinition(catalogOf(start.content!)).create(
+      start.environment
+    )
     expect(game.restore(start.save)).toBeUndefined()
     const route = game.queries.route(game.state)!
     expect(route.pending).toBeNull()
@@ -109,7 +116,9 @@ describe("ゲームと共通の開始状態", () => {
     const start = createStudioStart(
       parseStudioConfig({ scene: "route-retreat-bonus" })
     )
-    const game = new GameDefinition(start.content!).create(start.environment)
+    const game = new GameDefinition(catalogOf(start.content!)).create(
+      start.environment
+    )
     expect(game.restore(start.save)).toBeUndefined()
     const route = game.queries.route(game.state)!
     expect(route.passedMidboss).toBe(true)
@@ -131,7 +140,9 @@ describe("ゲームと共通の開始状態", () => {
     const start = createStudioStart(
       parseStudioConfig({ scene: "route-loot-rare" })
     )
-    const game = new GameDefinition(start.content!).create(start.environment)
+    const game = new GameDefinition(catalogOf(start.content!)).create(
+      start.environment
+    )
     expect(game.restore(start.save)).toBeUndefined()
     const saved = game.save()
     const carried = game.queries.carried(game.state)!

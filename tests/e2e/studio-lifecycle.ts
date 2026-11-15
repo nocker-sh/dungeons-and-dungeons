@@ -1,5 +1,5 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { contentSource } from "@/content/game-content"
 import { foeImagePaths } from "@/content/foe-image-paths"
@@ -37,7 +37,7 @@ try {
     blocked++
     await route.abort("failed")
   })
-  await page.goto(`${BASE_URL}/dev/studio/battle`)
+  await page.goto(`${STUDIO_URL}/studio/battle`)
   await page.getByRole("alert").waitFor()
   assert.ok(blocked > 0)
   assert.ok((await page.getByRole("alert").innerText()).includes(path))

@@ -1,10 +1,10 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 import layers from "@/content/data/layers.json"
 import settings from "@/content/data/settings.json"
 import { PARTY_SLOTS } from "@/lib/wiz/content/constants"
@@ -19,7 +19,7 @@ try {
       for (const empty of layer.no === 0 ? [false, true] : [false]) {
         const page = await openPage(browser, { width, height: 760 }, errors)
         await page.goto(
-          BASE_URL +
+          STUDIO_URL +
             frameUrl(
               parseStudioConfig({
                 scene: "route",
@@ -108,9 +108,7 @@ try {
                 .party(game.state)
                 .filter((member) => member.levelUpReady)
                 .map((member) => member.name),
-              growable: game.queries
-                .party(game.state)
-                .filter((member) => !member.hero).length,
+              growable: game.queries.party(game.state).length,
             }
           },
           { layer, empty, junk: settings.junk, rareJunk: settings.rareJunk }
@@ -194,12 +192,12 @@ try {
           if (!(await summary.getByText("なし", { exact: true }).isVisible()))
             throw new Error("空の戦利品表示なし")
         } else {
-          // 主人公は経験値で育たないので、出撃の3人のうち主人公以外の全員
+          // 出撃の3人は全員が仲間なので、全員が経験値で育つ
           if (
-            fixture.names.length !== PARTY_SLOTS - 1 ||
+            fixture.names.length !== PARTY_SLOTS ||
             fixture.names.length !== fixture.growable
           )
-            throw new Error(`${PARTY_SLOTS - 1}人成長の前提が違う`)
+            throw new Error(`${PARTY_SLOTS}人成長の前提が違う`)
           for (const name of fixture.names)
             if (!(await growth.innerText()).includes(name))
               throw new Error("成長の名前が欠ける")

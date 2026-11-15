@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { mkdir, writeFile } from "node:fs/promises"
-import { BASE_URL, VIEWPORTS } from "@/tests/e2e/lib"
+import { STUDIO_URL, VIEWPORTS } from "@/tests/e2e/lib"
 import { FIRE } from "@/tests/e2e/fire"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
@@ -14,7 +14,7 @@ try {
   for (const viewport of VIEWPORTS) {
     const errors: string[] = []
     const page = await openPage(browser, viewport, errors)
-    await page.goto(`${BASE_URL}/previews/battle`)
+    await page.goto(`${STUDIO_URL}/previews/battle`)
     await page.locator(FIRE).waitFor()
     const read = () =>
       page.evaluate((fire) => {
@@ -107,7 +107,7 @@ try {
     )
     assert.deepEqual(errors, [])
     // 画面の退場完了後にだけ、次の施設を表示する。
-    await page.goto(`${BASE_URL}/previews/town`)
+    await page.goto(`${STUDIO_URL}/previews/town`)
     await press(page, "冒険者ギルド")
     await page.getByRole("button", { name: "受付", exact: true }).waitFor()
     await press(page, "受付")

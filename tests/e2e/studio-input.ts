@@ -1,5 +1,5 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 
 const browser = await launch()
@@ -19,7 +19,7 @@ async function ready(time: number) {
 }
 
 try {
-  await page.goto(`${BASE_URL}/dev/studio/town`)
+  await page.goto(`${STUDIO_URL}/studio/town`)
   await ready(2000)
   const step = page.getByRole("button", { name: "＋1コマ", exact: true })
   const time = page.getByRole("spinbutton", { name: "時刻（ms）", exact: true })

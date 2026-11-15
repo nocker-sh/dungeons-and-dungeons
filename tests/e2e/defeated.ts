@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { mkdir } from "node:fs/promises"
-import { BASE_URL, VIEWPORTS } from "@/tests/e2e/lib"
+import { STUDIO_URL, VIEWPORTS } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
@@ -24,7 +24,7 @@ try {
         height: viewport.height,
         duration: 30000,
       })
-      await page.goto(BASE_URL + frameUrl(config))
+      await page.goto(STUDIO_URL + frameUrl(config))
       await page.waitForFunction(
         () => window.__devStudio?.ready || window.__devStudioError
       )

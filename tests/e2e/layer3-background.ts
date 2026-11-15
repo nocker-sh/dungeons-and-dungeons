@@ -1,10 +1,10 @@
 import world from "@/concept/data/world.json"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 // 探索の背景は資料の場所の絵（横長ならその横長版）
 const place = world.find((entry) => entry.slug === "place-layer3")!
@@ -25,7 +25,7 @@ try {
       (response) => response.url().endsWith(background) && response.ok()
     )
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "route-layer3",

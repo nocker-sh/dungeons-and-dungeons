@@ -1,13 +1,15 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 import goods from "@/content/data/goods.json"
 
-const stone = goods.find((good) => good.slug === "stone")!
+const potion = goods.find((good) => good.slug === "potion")!
+const owned = (snapshot: { bag: readonly { good: string; count: number }[] }) =>
+  snapshot.bag.find((entry) => entry.good === potion.id)?.count ?? 0
 const browser = await launch()
 const errors: string[] = []
 try {
@@ -15,7 +17,7 @@ try {
     const page = await openPage(browser, { width, height: 844 }, errors)
     await page.routeWebSocket("**/*", () => {})
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(
           parseStudioConfig({
             scene: "shop-tools",
@@ -28,21 +30,31 @@ try {
     await page.waitForFunction(
       () => window.__devStudio?.ready || window.__devStudioError
     )
-    const before = await page.evaluate(async (price) => {
-      const runtime = window.__devStudio as StudioRuntime
-      await runtime.advance(3500)
-      const game = runtime.game!
-      const saved = game.save()
-      const issue = game.restore({
-        ...saved,
-        snapshot: { ...saved.snapshot, stones: 7, gold: price },
-      })
-      if (issue) throw issue
-      return game.save()
-    }, stone.price!)
+    const before = await page.evaluate(
+      async ({ id, price }) => {
+        const runtime = window.__devStudio as StudioRuntime
+        await runtime.advance(3500)
+        const game = runtime.game!
+        const saved = game.save()
+        const issue = game.restore({
+          ...saved,
+          snapshot: {
+            ...saved.snapshot,
+            bag: [
+              ...saved.snapshot.bag.filter((entry) => entry.good !== id),
+              { good: id, count: 7 },
+            ],
+            gold: price,
+          },
+        })
+        if (issue) throw issue
+        return game.save()
+      },
+      { id: potion.id, price: potion.price! }
+    )
     await page.getByRole("button", { name: "購入", exact: true }).click()
     await page.evaluate(async () => window.__devStudio!.advance(4500))
-    const row = page.getByRole("button", { name: stone.name, exact: true })
+    const row = page.getByRole("button", { name: potion.name, exact: true })
     assert.ok(
       (await row.innerText()).includes("所持 7"),
       "購入前の所持数が残高と違う"
@@ -50,7 +62,7 @@ try {
     await row.click()
     await page.evaluate(async () => window.__devStudio!.advance(5500))
     const buy = page.getByRole("button", {
-      name: `${stone.price}G で買う`,
+      name: `${potion.price}G で買う`,
       exact: true,
     })
     await buy.focus()
@@ -88,16 +100,17 @@ try {
       true
     )
     await page
-      .getByRole("button", { name: `${stone.price}G で買う`, exact: true })
+      .getByRole("button", { name: `${potion.price}G で買う`, exact: true })
       .click()
     await page.evaluate(async () => window.__devStudio!.advance(6500))
     const after = await page.evaluate(() =>
       (window.__devStudio as StudioRuntime).game!.save()
     )
+    assert.equal(owned(after.snapshot), 8, "購入した品が袋に入らない")
     assert.deepEqual(
-      after.snapshot,
-      { ...before.snapshot, stones: 8, gold: 0 },
-      "石と代金以外が変わった"
+      { ...after.snapshot, bag: [] },
+      { ...before.snapshot, bag: [], gold: 0 },
+      "品物と代金以外が変わった"
     )
     assert.ok(
       (await row.innerText()).includes("所持 8"),
@@ -125,7 +138,7 @@ try {
       "保存を復元した後の所持数が違う"
     )
     console.log(
-      `${width}: 契約石の所持7→8・代金のみ消費・不足時の拒否・保存復元 OK`
+      `${width}: 回復薬の所持7→8・代金のみ消費・不足時の拒否・保存復元 OK`
     )
     await page.close()
   }

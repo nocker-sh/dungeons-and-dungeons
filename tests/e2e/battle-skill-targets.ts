@@ -1,12 +1,12 @@
 import assert from "node:assert/strict"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { waitForStudio } from "@/scripts/studio-browser"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import skills from "@/content/data/skills.json"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 try {
@@ -17,7 +17,7 @@ try {
       await page.routeWebSocket("**/*", () => {})
       const skill = skills.find((entry) => entry.slug === slug)!
       await page.goto(
-        BASE_URL +
+        STUDIO_URL +
           frameUrl(
             parseStudioConfig({ width, duration: 15000, hp: [100, 0, 100] })
           )
@@ -30,7 +30,7 @@ try {
         const saved = game.save()
         if (saved.snapshot.phase.type !== "battle")
           throw new Error("戦闘ではない")
-        const [hero, fallen, actor] = saved.snapshot.party
+        const [healthy, fallen, actor] = saved.snapshot.party
         const issue = game.restore({
           ...saved,
           snapshot: {
@@ -58,7 +58,7 @@ try {
         const commands = game.queries.commands(game.state, actor)!
         return {
           last: commands.weaponSkills.length,
-          names: (skill.revive ? [fallen] : [hero, actor]).map(
+          names: (skill.revive ? [fallen] : [healthy, actor]).map(
             (id) => game.queries.member(game.state, id)!.name
           ),
           save: JSON.stringify(game.save()),

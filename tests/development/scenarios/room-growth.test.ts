@@ -16,8 +16,8 @@ const scenarios = [
   },
   ...["room-growth", "room-levelup"].flatMap((scene) =>
     [
-      ["hero", "alda", "mort"],
-      ["hero", "rivet", "husky"],
+      ["alda", "mort", "mayu"],
+      ["mayu", "sera", "husky"],
     ].map((party) => ({
       name: `${scene}/${party.join(",")}`,
       start: () => createStudioStart(parseStudioConfig({ scene, party })),
@@ -33,17 +33,17 @@ it.each(scenarios)("$name は編成した仲間が実際に1段階成長する",
   )
   expect(game.restore(preview.save)).toBeUndefined()
   const party = game.queries.party(game.state)
-  const target = party.find((member) => !member.hero)!
+  const [target, ...others] = party
   expect(
     party.filter((member) => member.levelUpReady).map((member) => member.id)
   ).toEqual([target.id])
   expect(
     game.state.members.find((member) => member.id === target.id)?.exp
   ).toBe(target.next)
-  const hero = party.find((member) => member.hero)!
-  expect(game.state.members.find((member) => member.id === hero.id)?.exp).toBe(
-    0
-  )
+  for (const other of others)
+    expect(
+      game.state.members.find((member) => member.id === other.id)?.exp
+    ).toBe(0)
   const screen = preview.screen
   if (screen?.name !== "room") throw new Error("宿のプレビューではありません")
   const room = game.queries

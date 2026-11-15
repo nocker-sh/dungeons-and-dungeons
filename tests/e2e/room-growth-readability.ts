@@ -1,12 +1,12 @@
 import assert from "node:assert/strict"
 import { PNG } from "pngjs"
-import { BASE_URL } from "@/tests/e2e/lib"
+import { STUDIO_URL } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import { layoutTime } from "@/development/studio/layout-time"
-import type { StudioRuntime } from "@/client/dev/studio-runtime"
+import type { StudioRuntime } from "@/development/preview/studio-runtime"
 
 const browser = await launch()
 try {
@@ -20,7 +20,7 @@ try {
     const errors: string[] = []
     const page = await openPage(browser, { width, height }, errors)
     await page.goto(
-      BASE_URL +
+      STUDIO_URL +
         frameUrl(parseStudioConfig({ scene: "room-levelup", width, height }))
     )
     await page.waitForFunction(

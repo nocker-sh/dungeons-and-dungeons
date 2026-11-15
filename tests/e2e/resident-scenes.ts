@@ -3,7 +3,7 @@
  * 街とギルドを行き来して場面が始まり、終わったら同じ夜に繰り返さないこと、
  * ギルドの「会話」で受付嬢の台本が始まり、続けて話すと未読の別の台本になることを確かめる。
  */
-import { BASE_URL, VIEWPORTS } from "@/tests/e2e/lib"
+import { STUDIO_URL, VIEWPORTS } from "@/tests/e2e/lib"
 import { launch } from "@/tests/e2e/launch"
 import { openPage } from "@/tests/e2e/open-page"
 import { press } from "@/tests/e2e/press"
@@ -45,7 +45,7 @@ try {
   for (const viewport of VIEWPORTS) {
     const page = await openPage(browser, viewport, errors)
     page.setDefaultTimeout(15000)
-    await page.goto(`${BASE_URL}/previews/town-scenes`)
+    await page.goto(`${STUDIO_URL}/previews/town-scenes`)
     const played: string[] = []
     let first = await sceneOnArrival(page, "冒険者ギルド")
     // 確率に当たるまで、街とギルドを行き来する
