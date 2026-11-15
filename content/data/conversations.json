@@ -12154,6 +12154,98 @@
     ]
   },
   {
+    "id": "visit-town-bridge-cable",
+    "title": "街：鉄橋の先の綱",
+    "trigger": "visit",
+    "place": "fb52305e-51df-4209-a1c4-8029a506da56",
+    "participants": [
+      "d5100106-ff86-494b-a10b-b11255b0b932",
+      "f790642c-1e81-41e7-82cb-748b35d888a5"
+    ],
+    "minimumReached": 2,
+    "requires": ["layer:cleared:2"],
+    "once": true,
+    "lines": [
+      {
+        "speaker": "d5100106-ff86-494b-a10b-b11255b0b932",
+        "text": "聞いたわよ！ 鉄橋の主を落としたんですって！",
+        "expression": "happy"
+      },
+      {
+        "speaker": "f790642c-1e81-41e7-82cb-748b35d888a5",
+        "text": "ああ、今朝は橋の揺れが止まっていた",
+        "expression": "normal"
+      },
+      {
+        "speaker": "d5100106-ff86-494b-a10b-b11255b0b932",
+        "text": "じゃあ次は、もっと下の踊り場ね",
+        "expression": "talk"
+      },
+      {
+        "speaker": "f790642c-1e81-41e7-82cb-748b35d888a5",
+        "text": "それがな、籠の綱が足りない",
+        "expression": "sigh"
+      },
+      {
+        "speaker": "f790642c-1e81-41e7-82cb-748b35d888a5",
+        "text": "鉄橋から下へ降ろすのは、綱を継ぎ足してからだ",
+        "expression": "normal"
+      },
+      {
+        "speaker": "f790642c-1e81-41e7-82cb-748b35d888a5",
+        "text": "いつになるかは、まだ言えない",
+        "expression": "normal"
+      },
+      {
+        "speaker": "d5100106-ff86-494b-a10b-b11255b0b932",
+        "text": "それまでは鉄橋までが、みんなの仕事場ってことね",
+        "expression": "talk"
+      },
+      {
+        "speaker": "f790642c-1e81-41e7-82cb-748b35d888a5",
+        "text": "降ろせるところまでは、毎朝降ろすよ",
+        "expression": "normal"
+      }
+    ],
+    "choice": {
+      "ask": "ロイドに答える",
+      "options": [
+        {
+          "label": "綱が届くまで鍛えておく",
+          "lines": [
+            {
+              "speaker": "f790642c-1e81-41e7-82cb-748b35d888a5",
+              "text": "頼もしいな",
+              "expression": "happy"
+            },
+            {
+              "speaker": "f790642c-1e81-41e7-82cb-748b35d888a5",
+              "text": "継ぎ足しが済んだら、一番に声をかける",
+              "expression": "normal"
+            }
+          ],
+          "sets": ["town:bridge-cable-train"]
+        },
+        {
+          "label": "それまで稼がせてもらう",
+          "lines": [
+            {
+              "speaker": "d5100106-ff86-494b-a10b-b11255b0b932",
+              "text": "いい返事！ 依頼なら、まだ山ほど貼ってあるわよ",
+              "expression": "happy"
+            },
+            {
+              "speaker": "f790642c-1e81-41e7-82cb-748b35d888a5",
+              "text": "稼いだ分は、ちゃんと持って上がれよ",
+              "expression": "normal"
+            }
+          ],
+          "sets": ["town:bridge-cable-earn"]
+        }
+      ]
+    }
+  },
+  {
     "id": "visit-town-greenhouse-worry",
     "title": "街：温室へ向かう前の心配",
     "trigger": "visit",
@@ -14933,6 +15025,80 @@
             {
               "speaker": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
               "text": "キミとなら待つのも好きだよ",
+              "expression": "happy"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "lox-bridge-cable",
+    "title": "橋の下の扉",
+    "trigger": "talk",
+    "participants": ["7a09e178-f9cc-40fc-b87b-472250f3dc35"],
+    "minimumReached": 2,
+    "requires": ["layer:cleared:2"],
+    "once": true,
+    "minimumNights": 0,
+    "sets": ["lox:bridge-cable"],
+    "requiresCleared": false,
+    "lines": [
+      {
+        "speaker": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+        "text": "鉄橋の主、開いたね！ いちばん硬い錠前だった！",
+        "expression": "happy"
+      },
+      {
+        "speaker": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+        "text": "でも、その下の扉はまだ遠いみたい",
+        "expression": "normal"
+      },
+      {
+        "speaker": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+        "text": "籠の綱が足りないんだって",
+        "expression": "sigh"
+      },
+      {
+        "speaker": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+        "text": "……ワタシ、待つのは得意じゃないのに",
+        "expression": "sigh"
+      },
+      {
+        "speaker": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+        "text": "ねえ、綱が届くまで、キミは何をしてる？",
+        "expression": "talk"
+      }
+    ],
+    "choice": {
+      "ask": "ロクスに答える",
+      "options": [
+        {
+          "label": "もっと強くなっておく",
+          "lines": [
+            {
+              "speaker": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+              "text": "いいね！ 次の扉は、一発でこじ開けよう！",
+              "expression": "happy"
+            },
+            {
+              "speaker": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+              "text": "約束の場所は、まだ先だからね",
+              "expression": "talk"
+            }
+          ]
+        },
+        {
+          "label": "一緒に待とう",
+          "lines": [
+            {
+              "speaker": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+              "text": "……うん",
+              "expression": "happy"
+            },
+            {
+              "speaker": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
+              "text": "キミとなら、待つのもわるくないや",
               "expression": "happy"
             }
           ]
