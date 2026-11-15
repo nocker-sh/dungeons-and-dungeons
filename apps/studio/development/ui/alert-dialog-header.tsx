@@ -1,0 +1,20 @@
+import { omitProps } from "@/client/utils/omit-props"
+import * as React from "react"
+import { cn } from "cn"
+
+type Props = React.ComponentProps<"div">
+
+export function AlertDialogHeader(props: Props) {
+  const restProps = omitProps(props, ["className"])
+
+  return (
+    <div
+      data-slot="alert-dialog-header"
+      className={cn(
+        "grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-4 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr]",
+        props.className
+      )}
+      {...restProps}
+    />
+  )
+}

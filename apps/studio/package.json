@@ -1,0 +1,38 @@
+{
+  "name": "dnd-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "VOID_INSPECTOR_PORT=false vp dev --mode studio",
+    "build": "vp build --mode studio",
+    "preview": "VOID_INSPECTOR_PORT=false vp preview --mode studio"
+  },
+  "dependencies": {
+    "@base-ui/react": "catalog:",
+    "@shadcn/react": "catalog:",
+    "class-variance-authority": "catalog:",
+    "cmdk": "catalog:",
+    "cn": "catalog:",
+    "embla-carousel-react": "catalog:",
+    "input-otp": "catalog:",
+    "lucide-react": "catalog:",
+    "motion": "catalog:",
+    "react": "catalog:",
+    "react-day-picker": "catalog:",
+    "react-dom": "catalog:",
+    "react-resizable-panels": "catalog:",
+    "recharts": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@void/react": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "void": "catalog:"
+  }
+}
