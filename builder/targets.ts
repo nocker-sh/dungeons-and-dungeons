@@ -94,7 +94,8 @@ type CampaignKey = { overrides: readonly string[]; runs: number; seed: number }
 const campaignKey = (options: CampaignKey) =>
   JSON.stringify([options.overrides, options.runs, options.seed])
 const campaignOptions = (options: CampaignKey) => ({
-  overrides: options.overrides,
+  // 公開では先の層を閉じている（`openLayers`）。一周の目標は閉じた層の数値も保つために全ての層を開いて測る
+  overrides: [...options.overrides, `openLayers=${LAYERS}`],
   runs: campaignRuns(options.runs),
   seed: options.seed,
   style: "smart" as const,

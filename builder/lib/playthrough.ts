@@ -8,7 +8,7 @@ import { runExpedition } from "@/builder/lib/simulation/expedition"
 import type { Playthrough, Trip } from "@/builder/lib/fun"
 import { attackOf } from "@/builder/lib/attack-of"
 
-/** 一周を遊ぶ。踏破するか、出撃の上限まで。 */
+/** 一周を遊ぶ。開いている一番深い層を突破するか、出撃の上限まで。 */
 export function playthrough(options: {
   overrides: readonly string[]
   seed: number
@@ -56,7 +56,12 @@ export function playthrough(options: {
       result,
       firstClear: firstClear ? (layer?.name ?? firstClear) : null,
     })
-    if (firstClear && layers[layers.length - 1].id === firstClear) {
+    // 先の層を閉じている（`openLayers`）なら、開いている一番深い層の突破で一周を終える
+    const deepest = Math.min(
+      layers.length,
+      built.content.openLayers ?? layers.length
+    )
+    if (firstClear && layers[deepest - 1].id === firstClear) {
       endingAt = no
       break
     }

@@ -59,7 +59,11 @@ export const FUN_GOALS = {
     label: "最初の3出撃での全滅の回数（始めたてに何も持ち帰れない回数）",
     range: [null, 1],
   },
-  endingTrips: { label: "踏破までの出撃回数", range: [28, 45] },
+  // 公開版は2層まで（`openLayers`）。5層を踏破する 28〜45 回から、3層ぶんの目安へ直した
+  endingTrips: {
+    label: "開いている一番深い層を突破するまでの出撃回数",
+    range: [14, 26],
+  },
 } as const satisfies Record<
   string,
   { label: string; range: readonly [number | null, number | null] }
