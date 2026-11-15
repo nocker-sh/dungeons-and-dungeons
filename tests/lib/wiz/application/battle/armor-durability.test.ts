@@ -47,12 +47,12 @@ describe("防具の耐久", () => {
     .mapFoes((foe) => ({ ...foe, atk: 40 }))
     .build()
 
-  /** 出撃の3人のうち主人公以外に同じ防具だけを着せた状態。最初から着けている防具は外す。 */
+  /** 出撃の3人のうちマユ以外に同じ防具だけを着せた状態。最初から着けている防具は外す。 */
   function armored(slug: string, content: unknown = armorContent) {
     // 防具の修復は最初の仲間にいないシオンのワザなので、モートと入れ替えて出撃させる
     let builder = aState(content)
       .withJoined("sion", { replacing: "mort" })
-      .withParty(["alda", "hero", "sion"])
+      .withParty(["alda", "mayu", "sion"])
       .withGear([])
       .withGold(5000)
     for (const member of ["alda", "sion"])
@@ -68,7 +68,7 @@ describe("防具の耐久", () => {
     const good = goodBySlug(slug)
     const definition = new GameDefinition(content)
     let serial = 0
-    const party = ["alda", "hero", "sion"]
+    const party = ["alda", "mayu", "sion"]
     const game = definition.create(
       WizWorldEnvironment.create({
         random: () => 0,

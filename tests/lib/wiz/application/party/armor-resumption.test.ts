@@ -9,11 +9,12 @@ import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 
 const content = realContent()
 const definition = new GameDefinition(content)
+// 主人公は出撃も雇用もしない管理者なので、装備の対象は仲間だけ。
 const members = [
   ...new Map(
-    [...content.party, ...content.recruits.map((entry) => entry.member)].map(
-      (member) => [member.id, member] as const
-    )
+    [...content.party, ...content.recruits.map((entry) => entry.member)]
+      .filter((member) => !member.hero)
+      .map((member) => [member.id, member] as const)
   ).values(),
 ]
 let builder = aState(definition.catalog)
@@ -40,7 +41,6 @@ for (const armor of content.goods.filter((good) => good.kind === "armor"))
   for (const target of members)
     test(`${armor.id}: ${target.id}, preview and actual armor transfer survive restoration`, () => {
       const accepts = (member: typeof target) =>
-        !member.hero &&
         !member.pact &&
         !(member.unique && member.fixedArmor) &&
         (!armor.allowedJobs || armor.allowedJobs.includes(member.job))

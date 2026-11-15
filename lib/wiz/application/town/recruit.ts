@@ -39,17 +39,11 @@ export class Recruit {
     if (state.gold < recruit.price) return reject("NO_GOLD")
     const joins = state.party.length < PARTY_SLOTS
     const party = joins ? [...state.party, recruit.member.id] : [...state.party]
-    // 初めて3人が揃うときだけ、主人公・守り役を前衛へ。以後の手動編成は変えない。
+    // 初めて3人が揃うときだけ、守り役を前衛へ。以後の手動編成は変えない。
     if (joins && party.length === PARTY_SLOTS) {
       const priority = (id: string) => {
         const member = this.deps.catalog.member(id)!
-        return member.hero
-          ? 0
-          : member.role === "tank"
-            ? 1
-            : member.role === "healer"
-              ? 3
-              : 2
+        return member.role === "tank" ? 1 : member.role === "healer" ? 3 : 2
       }
       party.sort((left, right) => priority(left) - priority(right))
     }

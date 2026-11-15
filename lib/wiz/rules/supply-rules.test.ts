@@ -3,9 +3,10 @@ import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { aState } from "@/lib/wiz/testing/state-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { SupplyRules } from "./supply-rules"
 
-const catalog = new GameDefinition(realContent()).catalog
+const catalog = new GameDefinition(catalogOf(realContent())).catalog
 const potion = contentId("potion")
 const ether = contentId("ether")
 const antidote = contentId("antidote")

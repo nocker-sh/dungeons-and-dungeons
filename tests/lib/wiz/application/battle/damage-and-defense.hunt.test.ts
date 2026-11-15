@@ -53,7 +53,7 @@ describe("被害と守り（hunt）", () => {
     .build()
   // 乱数0のとき敵が狙うのは並びの一人目
   const front = idOf("alda")
-  const alda = idOf("hero")
+  const mayu = idOf("mayu")
   const sion = idOf("sion")
   /** 一撃で分かるよう攻撃力を上げた敵。 */
   const heavyFoe = (content: GameContent, atk: number) =>
@@ -69,14 +69,14 @@ describe("被害と守り（hunt）", () => {
       .build()
     const damageWith = (protect: boolean, guard: boolean) => {
       const state = aState(content)
-        .withParty(["alda", "hero", "mort"])
+        .withParty(["alda", "mayu", "mort"])
         .withMember(
           "alda",
           protect ? { status: [{ kind: "protect", turns: 1 }] } : {}
         )
         .inBattle({
           foes: ["kamokutsu"],
-          order: ["foe-1", "hero", "alda", "mort"],
+          order: ["foe-1", "mayu", "alda", "mort"],
           guarding: guard ? ["alda"] : [],
         })
         .build()
@@ -102,14 +102,14 @@ describe("被害と守り（hunt）", () => {
       .build()
     const resultWith = (protect: boolean) => {
       const state = aState(content)
-        .withParty(["alda", "hero", "mort"])
+        .withParty(["alda", "mayu", "mort"])
         .withMember(
           "alda",
           protect ? { status: [{ kind: "protect", turns: 1 }] } : {}
         )
         .inBattle({
           foes: ["kamokutsu"],
-          order: ["foe-1", "hero", "alda", "mort"],
+          order: ["foe-1", "mayu", "alda", "mort"],
         })
         .build()
       const game = createTestGame({ content, state, random: 0 })
@@ -128,7 +128,7 @@ describe("被害と守り（hunt）", () => {
       .withBalance({ protect: 0 })
       .build()
     const base = aState(content)
-      .withParty(["alda", "hero", "mort"])
+      .withParty(["alda", "mayu", "mort"])
       .withMember("alda", {
         status: [{ kind: "protect", turns: 1 }],
       })
@@ -136,7 +136,7 @@ describe("被害と守り（hunt）", () => {
       .withGear(withArmor(base.build(), front, "robe"))
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["foe-1", "hero", "alda", "mort"],
+        order: ["foe-1", "mayu", "alda", "mort"],
       })
       .build()
     const game = createTestGame({ content, state, random: 0 })
@@ -163,11 +163,11 @@ describe("被害と守り（hunt）", () => {
       })
       .build()
     const state = aState(content)
-      .withParty(["alda", "hero", "mort"])
+      .withParty(["alda", "mayu", "mort"])
       .withMember("alda", { status: [{ kind: "protect", turns: 1 }] })
       .inBattle({
         foes: ["kamokutsu", "kamokutsu"],
-        order: ["foe-1", "foe-2", "hero", "alda", "mort"],
+        order: ["foe-1", "foe-2", "mayu", "alda", "mort"],
       })
       .build()
     const game = createTestGame({ content, state, random: 0 })
@@ -188,7 +188,7 @@ describe("被害と守り（hunt）", () => {
         .withBalance({ backRow: { melee, hit: 1 } })
         .build()
       const state = aState(content)
-        .withParty(["alda", "mort", "hero"])
+        .withParty(["alda", "mayu", "mort"])
         .inBattle({
           foes: ["kamokutsu"],
           order: [member, "foe-1"],
@@ -200,14 +200,14 @@ describe("被害と守り（hunt）", () => {
         eventsOrThrow(game.send({ type: "act", command: "skill", skill }))
       ).damage!
     }
-    // 主人公は並びの3番目（後衛）。短剣の「刺突」は近接、「投げ短剣」は遠距離
-    const melee = skillBySlug("thrust").id
-    const ranged = skillBySlug("throwknife").id
+    // モートは並びの3番目（後衛）。鎚の「叩き割り」は近接、固有の「土くれ投げ」は遠距離
+    const melee = skillBySlug("cleave").id
+    const ranged = skillBySlug("clod-throw").id
     const aldaMelee = skillBySlug("helmsplit").id
-    expect(damageOf(0.5, melee, "hero")).toBeLessThan(
-      damageOf(1, melee, "hero")
+    expect(damageOf(0.5, melee, "mort")).toBeLessThan(
+      damageOf(1, melee, "mort")
     )
-    expect(damageOf(0.5, ranged, "hero")).toBe(damageOf(1, ranged, "hero"))
+    expect(damageOf(0.5, ranged, "mort")).toBe(damageOf(1, ranged, "mort"))
     // 前衛の近接は減らない
     expect(damageOf(0.5, aldaMelee, "alda")).toBe(
       damageOf(1, aldaMelee, "alda")
@@ -217,12 +217,12 @@ describe("被害と守り（hunt）", () => {
   it("[feature:W005] 被害は防具の耐久から先に減り、超えた分だけHPへ届く", () => {
     const content = heavyFoe(fixture, 100)
     const coat = goodBySlug("coat")
-    const base = aState(content).withParty(["alda", "hero", "mort"])
+    const base = aState(content).withParty(["alda", "mayu", "mort"])
     const state = base
       .withGear(withArmor(base.build(), front, "coat"))
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["foe-1", "hero", "alda", "mort"],
+        order: ["foe-1", "mayu", "alda", "mort"],
       })
       .build()
     const game = createTestGame({ content, state, random: 0 })
@@ -240,12 +240,12 @@ describe("被害と守り（hunt）", () => {
     const content = aContent(fixture)
       .withFoe("kamokutsu", { atk: 9, hp: 4000 })
       .build()
-    const base = aState(content).withParty(["alda", "hero", "mort"])
+    const base = aState(content).withParty(["alda", "mayu", "mort"])
     const state = base
       .withGear(withArmor(base.build(), front, "coat"))
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["foe-1", "hero", "alda", "mort"],
+        order: ["foe-1", "mayu", "alda", "mort"],
       })
       .build()
     // 乱数0では敵はいつも並びの一人目を狙う
@@ -264,11 +264,11 @@ describe("被害と守り（hunt）", () => {
   it("[feature:W005] 一撃でHPを超える被害を受けてもHPは0で止まり、状態を失う", () => {
     const content = heavyFoe(fixture, 999)
     const state = aState(content)
-      .withParty(["alda", "hero", "mort"])
+      .withParty(["alda", "mayu", "mort"])
       .withMember("alda", { status: [{ kind: "poison", turns: 3 }] })
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["foe-1", "hero", "alda", "mort"],
+        order: ["foe-1", "mayu", "alda", "mort"],
       })
       .build()
     const game = createTestGame({ content, state, random: 0 })
@@ -286,13 +286,13 @@ describe("被害と守り（hunt）", () => {
     const fullState = aState(content).build()
     const maxHp = createTestGame({ content, state: fullState }).queries.member(
       fullState,
-      alda
+      mayu
     )!.maxHp
     const healOf = (hp: number) => {
       const state = aState(content)
         .withJoined("sion", { replacing: "mort" })
-        .withParty(["alda", "hero", "sion"])
-        .withMember("hero", { hp })
+        .withParty(["alda", "mayu", "sion"])
+        .withMember("mayu", { hp })
         .inBattle({ foes: ["kamokutsu"], order: ["sion", "foe-1"] })
         .build()
       const game = createTestGame({ content, state, random: 0.5 })
@@ -302,11 +302,11 @@ describe("被害と守り（hunt）", () => {
             type: "act",
             command: "skill",
             skill: contentId("prayer"),
-            target: alda,
+            target: mayu,
           })
         )
       )
-      return { result, hp: game.queries.member(game.state, alda)!.hp }
+      return { result, hp: game.queries.member(game.state, mayu)!.hp }
     }
     const brimming = healOf(maxHp - 1)
     expect(brimming.result.heal).toBe(1)
@@ -323,8 +323,8 @@ describe("被害と守り（hunt）", () => {
     const content = fixture
     const state = aState(content)
       .withJoined("sion", { replacing: "mort" })
-      .withParty(["alda", "hero", "sion"])
-      .withMember("hero", { hp: 1 })
+      .withParty(["alda", "mayu", "sion"])
+      .withMember("mayu", { hp: 1 })
       .inBattle({ foes: ["kamokutsu"], order: ["sion", "foe-1"] })
       .build()
     const catalog = new GameCatalog(content)
@@ -340,7 +340,7 @@ describe("被害と守り（hunt）", () => {
           type: "act",
           command: "skill",
           skill: contentId("prayer"),
-          target: alda,
+          target: mayu,
         })
       )
     )
@@ -356,9 +356,9 @@ describe("被害と守り（hunt）", () => {
     const content = fixture
     const bombOf = (random: number) => {
       const state = aState(content)
-        .withParty(["alda", "hero", "mort"])
+        .withParty(["alda", "mayu", "mort"])
         .withItem("bomb", 2)
-        .inBattle({ foes: ["kamokutsu"], order: ["hero", "foe-1"] })
+        .inBattle({ foes: ["kamokutsu"], order: ["mayu", "foe-1"] })
         .build()
       const game = createTestGame({ content, state, random })
       return firstResult(
@@ -376,10 +376,10 @@ describe("被害と守り（hunt）", () => {
   it("[feature:W005] 防御しても被害は1より下がらない", () => {
     const content = aContent(fixture).withFoe("kamokutsu", { atk: 1 }).build()
     const state = aState(content)
-      .withParty(["alda", "hero", "mort"])
+      .withParty(["alda", "mayu", "mort"])
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["foe-1", "hero", "alda", "mort"],
+        order: ["foe-1", "mayu", "alda", "mort"],
         guarding: ["alda"],
       })
       .build()
@@ -392,11 +392,11 @@ describe("被害と守り（hunt）", () => {
   it("[feature:W004] 敵全員を狙うワザは生きている敵だけに一度ずつ当たる", () => {
     const content = aContent(fixture).withFoe("kamokutsu", { hp: 4000 }).build()
     const state = aState(content)
-      .withParty(["alda", "hero", "mort"])
-      .withWeaponSkills("hero", ["whirl"])
+      .withParty(["alda", "mayu", "mort"])
+      .withWeaponSkills("mayu", ["whirl"])
       .inBattle({
         foes: ["kamokutsu", "kamokutsu", "kamokutsu"],
-        order: ["hero", "foe-1", "foe-2", "foe-3"],
+        order: ["mayu", "foe-1", "foe-2", "foe-3"],
       })
       .build()
     const withDead: GameState = {

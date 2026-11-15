@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vite-plus/test"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { seededRandom } from "@/lib/wiz/testing/seeded-random"
 import { sequenceRandom } from "@/lib/wiz/testing/sequence-random"
 import { GameCatalog } from "@/lib/wiz/content/game-catalog"
@@ -11,7 +12,7 @@ import type { Rarity } from "@/lib/wiz/content/constants"
 const rarities = ["N", "R", "SR"] as const
 
 describe("武器の個体の規則", () => {
-  const catalog = new GameCatalog(realContent())
+  const catalog = catalogOf(realContent())
   const weapons = new WeaponRules(catalog)
   const table = realContent().balance.weapon.rarity
 

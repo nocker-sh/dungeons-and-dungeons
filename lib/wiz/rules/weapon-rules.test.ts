@@ -4,18 +4,18 @@ import { contentId } from "@/lib/wiz/testing/content-id"
 import { goodBySlug } from "@/lib/wiz/testing/good-by-slug"
 import { memberBySlug } from "@/lib/wiz/testing/member-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { seededRandom } from "@/lib/wiz/testing/seeded-random"
 import { sequenceRandom } from "@/lib/wiz/testing/sequence-random"
-import { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { PartyRules } from "@/lib/wiz/rules/party-rules"
 import { WeaponRules } from "@/lib/wiz/rules/weapon-rules"
 import { baseSellPrice } from "@/lib/wiz/rules/base-sell-price"
 
 describe("武器の個体（レア度）", () => {
-  const catalog = new GameCatalog(realContent())
+  const catalog = catalogOf(realContent())
   const weapons = new WeaponRules(catalog)
   const greatsword = goodBySlug("greatsword")
   const table = realContent().balance.weapon.rarity

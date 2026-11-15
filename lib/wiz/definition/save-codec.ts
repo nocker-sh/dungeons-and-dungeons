@@ -10,6 +10,7 @@ import { StateIntegrityError } from "@/lib/wiz/integrity/state-integrity-error"
 import { giveSignatureWeapons } from "@/lib/wiz/definition/signature-weapon-migration"
 import { releasePactGear } from "@/lib/wiz/definition/pact-gear-migration"
 import { fitPartySize } from "@/lib/wiz/definition/party-size-migration"
+import { retireHeroFromParty } from "@/lib/wiz/definition/hero-retirement-migration"
 import { z } from "zod"
 import { validateState } from "@/lib/wiz/definition/validate-state"
 type SaveCodec = Pick<WizWorldSaveCodec<GameState>, "encode" | "decodeSnapshot">
@@ -80,71 +81,51 @@ export function createSaveCodec(props: Props): SaveCodec {
       allowLegacyHeroArmor: true,
       allowLegacyPartySize: true,
       allowLegacyPactGear: true,
+      allowLegacyHeroMember: true,
     })
     if (problems.length) throw new StateIntegrityError(problems)
     // 専用の武器を持つことになった R の仲間へ、専用の武器を着ける（今の武器は袋へ）
     // 悪魔と契約して戦う仲間（R）は装備を持たないので、着けていた装備を外す
+    // プレイヤーが戦っていた保存は、プレイヤーを隊列から外して初期の仲間を迎える
     // 4人で出撃していた保存は3人へ移す
     const state = fitPartySize(
-      releasePactGear(
-        giveSignatureWeapons(decoded, catalog, weapons),
+      retireHeroFromParty({
+        state: releasePactGear(
+          giveSignatureWeapons(decoded, catalog, weapons),
+          catalog,
+          party
+        ),
         catalog,
-        party
-      ),
-      catalog
+        weapons,
+        nextId: props.environment.nextId,
+        random: props.environment.random,
+      })
     )
-    const oldOutfit = state.gear.find(
-      (entry) =>
-        entry.owner &&
-        catalog.member(entry.owner)?.hero &&
-        catalog.good(entry.good)?.kind === "armor"
-    )?.good
-    const needsClamp = state.members.some(
-      (member) =>
-        catalog.member(member.id)?.hero &&
-        member.hp > party.stats(member, state).maxHp
-    )
-    if (!oldOutfit && !needsClamp) return state
-    // 装備制限の変更前に保存した主人公の防具だけを移行する。
-    return {
-      ...state,
-      hero:
-        state.hero.outfit === undefined &&
-        oldOutfit &&
-        catalog.data.hero.outfits?.includes(oldOutfit)
-          ? { ...state.hero, outfit: oldOutfit }
-          : state.hero,
-      members: state.members.map((member) =>
-        catalog.member(member.id)?.hero
-          ? {
-              ...member,
-              hp: Math.min(member.hp, party.stats(member, state).maxHp),
-            }
-          : member
-      ),
-      gear: state.gear.map((entry) =>
-        entry.owner &&
-        catalog.member(entry.owner)?.hero &&
-        catalog.good(entry.good)?.kind === "armor"
-          ? { ...entry, owner: null }
-          : entry
-      ),
-    }
+    // プレイヤーが持っていた装備は、外すときに持ち主のない品へ戻している
+    return state
   }
+  // 保存が名乗る版の読み方を先に試し、読めなければその版の誤りを伝える。
+  // 旧版の保存が壊れているのに「以前の版の保存です」と誤って案内しない。
   const decode = (input: unknown) => {
-    try {
-      return codec.decodeSnapshot(input)
-    } catch (error) {
+    const version =
+      typeof input === "object" && input !== null && "contentVersion" in input
+        ? input.contentVersion
+        : undefined
+    const order =
+      version === props.previousIdentity
+        ? [previous, codec, legacy]
+        : version === props.legacyIdentity
+          ? [legacy, codec, previous]
+          : [codec, previous, legacy]
+    let first: unknown
+    for (const decoder of order) {
       try {
-        return previous.decodeSnapshot(input)
-      } catch {
-        try {
-          return legacy.decodeSnapshot(input)
-        } catch {
-          throw error
-        }
+        return decoder.decodeSnapshot(input)
+      } catch (error) {
+        if (first === undefined) first = error
       }
     }
+    throw first
   }
   return {
     encode: <const Snapshot extends GameState>(state: Snapshot) =>

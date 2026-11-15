@@ -29,21 +29,21 @@ it("購入前の装備対象が実際に購入した個体の装備対象と一�
   }
 })
 
-it("登録名と現在の編成を購入前の対象へ反映する", () => {
+it("現在の編成を購入前の対象へ反映し、登録した主人公は対象に入らない", () => {
   const initial = aState().withHero("コハク").build()
   const game = createTestGame({
     state: { ...initial, party: [initial.party[0]] },
   })
+  const first = game.queries.member(game.state, initial.party[0])!
   const goods = game.queries.shop(game.state, contentId("armory"))!.goods
   const weapon = goods.find((good) => good.kind === "weapon")!
-  expect(weapon.equipMembers!.map((member) => member.name)).toEqual(["コハク"])
-  expect(
-    goods.some(
-      (good) => good.kind === "armor" && good.equipMembers?.length === 0
-    )
-  ).toBe(true)
+  expect(weapon.equipMembers!.map((member) => member.name)).toEqual([
+    first.name,
+  ])
   for (const good of goods) {
-    for (const member of good.equipMembers ?? [])
+    for (const member of good.equipMembers ?? []) {
       expect(member.id).toBe(initial.party[0])
+      expect(member.name).not.toBe("コハク")
+    }
   }
 })

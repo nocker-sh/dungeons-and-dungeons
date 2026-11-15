@@ -35,6 +35,8 @@ const lineSchema = z.strictObject({
 })
 export const conversationSchema = z.strictObject({
   id: z.string().min(1),
+  /** 新規には始めず、旧セーブで再生中の会話だけを完了できる。 */
+  retired: z.boolean().optional(),
   title: z.string().min(1),
   priority: z.number().int().optional(),
   trigger: z.enum(conversationTriggers),

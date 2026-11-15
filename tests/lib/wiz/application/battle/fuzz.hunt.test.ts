@@ -36,6 +36,7 @@ describe("戦闘にでたらめな指示を送る（hunt）", () => {
     if (roll < 0.2) return { type: "foe-turn" }
     if (roll < 0.3) return { type: "act", command: "guard" }
     if (roll < 0.4) return { type: "act", command: "brawl" }
+    if (roll < 0.45) return { type: "call-demon" }
     if (roll < 0.6)
       return {
         type: "act",
@@ -118,7 +119,7 @@ describe("戦闘にでたらめな指示を送る（hunt）", () => {
         ])
         .inBattle({
           foes: ["kamokutsu", "koburakuda"],
-          order: ["alda", "foe-1", "hero", "foe-2", "mort"],
+          order: ["alda", "foe-1", "mayu", "foe-2", "mort"],
         })
         .build()
       const game = createTestGame({ content, state, random })

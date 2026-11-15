@@ -19,7 +19,15 @@ export function resumeMigratedBattle(props: Props): GameState {
   )
     return props.state
   const actor = currentActor(props.previous.phase.battle)
-  if (actor.kind !== "member" || props.state.party.includes(actor.id))
+  const state = props.state
+  // 移行で隊列から外れた者の手番だったか、残った仲間が誰も戦えないときだけ進める
+  const anyoneLeft = state.members.some(
+    (member) => state.party.includes(member.id) && member.hp > 0
+  )
+  if (
+    anyoneLeft &&
+    (actor.kind !== "member" || props.state.party.includes(actor.id))
+  )
     return props.state
   const combat = new Combat(
     props.dependencies,

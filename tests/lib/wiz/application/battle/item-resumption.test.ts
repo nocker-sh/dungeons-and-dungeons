@@ -36,7 +36,7 @@ for (const good of content.goods.filter((entry) => entry.kind === "item"))
       })
       .inBattle({
         foes: [foe.id, foe.id],
-        order: ["hero", "foe-1", "foe-2", "alda", "mort"],
+        order: ["mayu", "foe-1", "foe-2", "alda", "mort"],
       })
       .build()
     const actionFor = {
@@ -52,7 +52,7 @@ for (const good of content.goods.filter((entry) => entry.kind === "item"))
       })
       const before = uncarried.save()
       expect(
-        uncarried.queries.commands(uncarried.state, contentId("hero"))!.items
+        uncarried.queries.commands(uncarried.state, contentId("mayu"))!.items
       ).toEqual([])
       expect(uncarried.send(actionFor)).toMatchObject({ code: "NO_ITEM" })
       expect(uncarried.save()).toEqual(before)
@@ -64,13 +64,13 @@ for (const good of content.goods.filter((entry) => entry.kind === "item"))
           .withBag([{ good: good.id, count: 2 }])
           .inBattle({
             foes: [foe.id],
-            order: ["hero", "foe-1", "alda", "mort"],
+            order: ["mayu", "foe-1", "alda", "mort"],
           })
           .build()
       )
       const before = healthy.save()
       const view = healthy.queries
-        .commands(healthy.state, contentId("hero"))!
+        .commands(healthy.state, contentId("mayu"))!
         .items.find((entry) => entry.id === good.id)
       expect(view).toMatchObject({ count: 2, usable: false, targets: [] })
       expect(healthy.send(actionFor)).toMatchObject({ code: "NO_EFFECT" })

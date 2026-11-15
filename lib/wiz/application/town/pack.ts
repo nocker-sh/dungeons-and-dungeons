@@ -2,6 +2,7 @@ import type { GameActionOf } from "@/lib/wiz/commands"
 import type { GameDependencies } from "@/lib/wiz/application/game-dependencies"
 import { accept } from "@/lib/wiz/application/accept"
 import { reject } from "@/lib/wiz/application/reject"
+import { inTown } from "@/lib/wiz/application/in-town"
 import type { Transition } from "@/lib/wiz/application/transition"
 import { Bag } from "@/lib/wiz/rules/bag"
 import { SupplyRules } from "@/lib/wiz/rules/supply-rules"
@@ -10,7 +11,8 @@ import type { GameState } from "@/lib/wiz/state/state-schema"
 export class Pack {
   constructor(private readonly deps: Pick<GameDependencies, "catalog">) {}
   execute(state: GameState, input: GameActionOf<"pack">): Transition {
-    if (state.phase.type !== "town") return reject("WRONG_PHASE")
+    if (!inTown(state) || state.conversation?.active || state.wipe)
+      return reject("WRONG_PHASE")
     if (this.deps.catalog.good(input.good)?.kind !== "item")
       return reject("UNAVAILABLE")
     if (Bag.count(state.bag, input.good) < input.count) return reject("NO_ITEM")

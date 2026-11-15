@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vite-plus/test"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { fixedClock } from "@/lib/wiz/testing/fixed-clock"
 import { startedState } from "@/lib/wiz/testing/started-state"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
@@ -9,7 +10,7 @@ import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 
 /** 名前を登録する前（はじめからの直後）の街。 */
 function unregistered() {
-  const definition = new GameDefinition(realContent())
+  const definition = new GameDefinition(catalogOf(realContent()))
   const started = startedState(definition)
   return definition.create(
     testEnvironment({ random: 0.5, clock: fixedClock(1000) }),
@@ -42,7 +43,7 @@ describe("名前の登録とダンジョン", () => {
   })
 
   it("登録の印がない古い保存は、登録済みとして出られる", () => {
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const started = startedState(definition)
     const game = definition.create(
       testEnvironment({ random: 0.5, clock: fixedClock(1000) }),

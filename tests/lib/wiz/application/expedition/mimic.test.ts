@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vite-plus/test"
-import { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import { ExpeditionRules } from "@/lib/wiz/rules/expedition-rules"
 import { aContent } from "@/lib/wiz/testing/content-builder"
 import { aState } from "@/lib/wiz/testing/state-builder"
@@ -7,6 +6,7 @@ import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { fightToEnd } from "@/lib/wiz/testing/fight-to-end"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 
 describe("宝箱に潜むミミック", () => {
   it("ミミックを倒してから戦利品を得る。宝箱として二重精算しない", () => {
@@ -80,7 +80,7 @@ describe("宝箱に潜むミミック", () => {
   })
 
   it("固定の宝箱と確定報酬をミミックに変えない", () => {
-    const catalog = new GameCatalog(realContent())
+    const catalog = catalogOf(realContent())
     const layer = catalog.data.layers[0]
     const rules = new ExpeditionRules(catalog)
     for (const station of layer.stations.filter(

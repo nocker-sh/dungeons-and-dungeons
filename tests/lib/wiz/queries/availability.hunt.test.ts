@@ -185,7 +185,7 @@ describe("操作できるかの表示と、実際の受理（hunt）", () => {
         healer === "mort"
           ? aState()
           : aState().withJoined("sion", { replacing: "mort" })
-      const order = ["alda", healer, "hero", "foe-1"]
+      const order = ["alda", healer, "mayu", "foe-1"]
       return [
         base.inBattle({ foes: ["kamokutsu"], order }).build(),
         base
@@ -195,7 +195,7 @@ describe("操作できるかの表示と、実際の受理（hunt）", () => {
       ].map((state) => ({ state, healer }))
     }
     for (const { state, healer } of [...scenes("mort"), ...scenes("sion")])
-      for (const memberId of ["alda", healer, "hero"].map(idOf)) {
+      for (const memberId of ["alda", healer, "mayu"].map(idOf)) {
         const probe = gameOf(state)
         advanceUntilActor(probe, memberId)
         // 倒れている仲間には手番が回らない
@@ -350,7 +350,7 @@ describe("操作できるかの表示と、実際の受理（hunt）", () => {
     expect(melee).toBeLessThan(1)
     // 並びの右1人が後衛。アルダを3番目に置く
     const state = aState()
-      .withParty(["hero", "mort", "alda"])
+      .withParty(["mayu", "mort", "alda"])
       .inBattle({ foes: ["kamokutsu"], order: ["alda", "foe-1"] })
       .build()
     const view = gameOf(state).queries.commands(state, idOf("alda"))!
@@ -360,7 +360,7 @@ describe("操作できるかの表示と、実際の受理（hunt）", () => {
       )
     // 前衛に置けば弱くならない
     const front = aState()
-      .withParty(["alda", "hero", "mort"])
+      .withParty(["alda", "mayu", "mort"])
       .inBattle({ foes: ["kamokutsu"], order: ["alda", "foe-1"] })
       .build()
     for (const skill of gameOf(front).queries.commands(front, idOf("alda"))!
@@ -374,6 +374,13 @@ describe("操作できるかの表示と、実際の受理（hunt）", () => {
       aState().withMember("alda", { hp: 0 }).build(),
       aState().withMember("mort", { fatigue: 100 }).build(),
       aState().withMember("mort", { fatigue: 99 }).build(),
+      aState()
+        .withWipe({ layer: contentId("layer0"), gold: 10, goods: [] })
+        .build(),
+      (() => {
+        const state = aState().build()
+        return { ...state, hero: { ...state.hero, registrationPending: true } }
+      })(),
     ]
     for (const state of cases) {
       const game = gameOf(state)
@@ -406,30 +413,34 @@ describe("操作できるかの表示と、実際の受理（hunt）", () => {
 
   it("夜の雑談ができる表示は、雑談の受理と一致する（仲間ひとりにつき一晩に一度）", () => {
     const first = aState().build()
+    const [mate, other, last] = first.party
+    const hero = idOf("hero")
     for (const nights of [0, 1]) {
       const state = aState().withNights(nights, []).build()
       const game = gameOf(state)
       const can = game.queries.canChat(state)
       expect(can).toBe(nights > 0)
-      expect(game.queries.canChatWith(state, first.party[0])).toBe(can)
-      expect(accepted(game.send({ type: "chat", liked: state.party[0] }))).toBe(
-        can
-      )
+      expect(game.queries.canChatWith(state, mate)).toBe(can)
+      expect(accepted(game.send({ type: "chat", liked: mate }))).toBe(can)
     }
+    // 主人公は親しさの対象外。表示も受理もしない
+    const night = aState().withNights(1, []).build()
+    const withHero = gameOf(night)
+    expect(withHero.queries.canChatWith(night, hero)).toBe(false)
+    expect(accepted(withHero.send({ type: "chat", liked: hero }))).toBe(false)
     // 同じ相手とは今夜もう話せないが、まだ話していない仲間とは話せる
-    const done = aState().withNights(1, [first.party[0]]).build()
+    const done = aState().withNights(1, [mate]).build()
     const game = gameOf(done)
-    expect(game.queries.canChatWith(done, done.party[0])).toBe(false)
-    expect(accepted(game.send({ type: "chat", liked: done.party[0] }))).toBe(
-      false
-    )
-    expect(game.queries.canChat(done)).toBe(done.party.length > 1)
-    if (done.party.length > 1) {
-      expect(game.queries.canChatWith(done, done.party[1])).toBe(true)
-      expect(accepted(game.send({ type: "chat", liked: done.party[1] }))).toBe(
-        true
-      )
-    }
+    expect(game.queries.canChatWith(done, mate)).toBe(false)
+    expect(accepted(game.send({ type: "chat", liked: mate }))).toBe(false)
+    expect(game.queries.canChat(done)).toBe(true)
+    expect(game.queries.canChatWith(done, other)).toBe(true)
+    expect(accepted(game.send({ type: "chat", liked: other }))).toBe(true)
+    expect(game.queries.canChat(game.state)).toBe(true)
+    expect(accepted(game.send({ type: "chat", liked: last }))).toBe(true)
+    // 出撃の3人全員と話したら今夜はもう話せない（主人公は相手にならない）
+    expect(game.queries.canChat(game.state)).toBe(false)
+    expect(game.queries.canChatWith(game.state, hero)).toBe(false)
   })
 
   it("街の結果の板は、閉じる操作の受理と一致する", () => {
@@ -479,10 +490,24 @@ describe("操作できるかの表示と、実際の受理（hunt）", () => {
     ])
     expect(locations("q-rematch-4")).toEqual([{ no: 4, name: "底なしの祭壇" }])
     const shallow = game.queries.quests(base)
+    // まだ行けない層の討伐依頼は掲示せず、直接受けようとしても状態を変えない
     expect(
       shallow.find((quest) => quest.id === contentId("q-the-waiting"))
-        ?.locations
-    ).toEqual([])
+    ).toBeUndefined()
+    expect(
+      shallow.find((quest) => quest.id === contentId("q-mole"))?.locations
+    ).toEqual([{ no: 0, name: "結晶の洞窟" }])
+    const shallowGame = gameOf(base)
+    const shallowSave = JSON.stringify(shallowGame.save())
+    expect(
+      accepted(
+        shallowGame.send({
+          type: "accept-quest",
+          quest: contentId("q-the-waiting"),
+        })
+      )
+    ).toBe(false)
+    expect(JSON.stringify(shallowGame.save())).toBe(shallowSave)
     expect(
       shallow.find((quest) => quest.id === contentId("q-rematch-4"))
     ).toBeUndefined()

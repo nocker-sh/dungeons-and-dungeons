@@ -191,7 +191,8 @@ describe("会話の条件と進行", () => {
     const game = definition.create(undefined, state())
     game.send({ type: "start-conversation", trigger: "inn" })
     const saved = game.save()
-    const loaded = definition.create()
+    // 初期の仲間がいない作品なので、はじめからではなく別の会話前の状態へ読み込む
+    const loaded = definition.create(undefined, state({ trigger: "chest" }))
     expect(loaded.restore(saved)).toBeUndefined()
     expect(loaded.state.conversation?.active).toBe(
       game.state.conversation?.active
@@ -204,7 +205,11 @@ describe("会話の条件と進行", () => {
     ).toBe(true)
   })
   it("不正な再生中の保存を拒否し、現在の状態を保持する", () => {
-    const game = definition.create(undefined, state({ owned: [] }))
+    // 再生中のアルダの台本を、アルダを雇っていない保存に入れる
+    const game = definition.create(
+      undefined,
+      state({ owned: [contentId("mayu")], party: [contentId("mayu")] })
+    )
     const before = game.state
     const save = game.save()
     const result = game.restore({

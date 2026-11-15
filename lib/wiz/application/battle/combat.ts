@@ -23,6 +23,7 @@ import type { Mutable } from "@/lib/wiz/application/mutable"
 import type { BattlePhase } from "@/lib/wiz/application/battle/battle-phase"
 import { Victory } from "@/lib/wiz/application/battle/victory"
 import { defeat } from "@/lib/wiz/application/battle/defeat"
+import { fillEmptyPartySlots } from "@/lib/wiz/members/fill-empty-party-slots"
 
 type Unit = {
   ref: ActorRef
@@ -248,9 +249,8 @@ export class Combat {
       const foe = this.phase.battle.foes.find((entry) => entry.id === ref.id)
       return this.deps.catalog.foe(foe?.foe ?? "")?.resist?.[kind] ?? 0
     }
-    const member = this.member(ref.id)
-    if (!member) return 0
-    return this.deps.party.magic.fusionOf(member, this.state).resist[kind] ?? 0
+    // 仲間は状態異常への耐性を持たない（合体の効果は廃止）
+    return 0
   }
 
   /**
@@ -333,6 +333,7 @@ export class Combat {
           const member = this.member(ref.id)!
           const { used, restored } = this.deps.party.skills.refillUses(
             member,
+            this.state,
             spec.refill
           )
           member.used = used
@@ -441,6 +442,17 @@ export class Combat {
     return this.settle(battle, events)
   }
 
+  /** 手番を進めずに精算する（悪魔を呼ぶ必殺技）。勝敗が決まればいつもどおり精算する。 */
+  hold(acted: GameEvent, change: Partial<Battle> = {}): Transition {
+    const battle: Battle = {
+      ...this.phase.battle,
+      foes: this.foes,
+      guarding: this.guarding,
+      ...change,
+    }
+    return this.settle(battle, [acted, ...this.events])
+  }
+
   /** 編成の移行で消えた手番を、行動の消費なしで次の生存者へ送る。 */
   resume(): Transition {
     let battle: Battle = {
@@ -458,6 +470,16 @@ export class Combat {
   }
 
   private settle(battle: Battle, events: GameEvent[]): Transition {
+    const result = this.outcome(battle, events)
+    // 戦闘中に移行した旧保存は隊列が欠けたままなので、戦闘を抜けた精算で控えから埋める
+    if (!result.accepted || result.state.phase.type === "battle") return result
+    return {
+      ...result,
+      state: fillEmptyPartySlots(result.state, this.deps.catalog),
+    }
+  }
+
+  private outcome(battle: Battle, events: GameEvent[]): Transition {
     // 仲間が全員倒れたら、敵を倒し切っていても全滅。
     // 勝利を先に見ると、全員倒れたまま探索が続いて次の戦闘で誰も動けなくなる。
     if (this.living("member").length === 0 && this.phase.townQuest)

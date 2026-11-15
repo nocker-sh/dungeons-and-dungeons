@@ -15,7 +15,7 @@ function rulesOf(content: GameContent) {
   return new BattleRules(catalog, new PartyRules(catalog))
 }
 
-/** 出撃の並び順の仲間（前衛2人・後衛1人）。主人公・アルダ（タンク）・モート。 */
+/** 出撃の並び順の仲間（前衛2人・後衛1人）。アルダ（タンク）・モート・マユ。 */
 function partyMembers(content: GameContent): Member[] {
   const state = aState(content).build()
   return state.party.map((id) =>
@@ -160,11 +160,11 @@ describe("戦闘の計算（hunt）", () => {
       hits.set(target.id, (hits.get(target.id) ?? 0) + 1)
     }
     expect(hits.get(members[2].id)).toBeUndefined()
-    expect(hits.get(members[0].id)).toBeGreaterThan(40)
-    // タンクのアルダ（重み tankTarget）は主人公（重み1）より狙われる
+    expect(hits.get(members[1].id)).toBeGreaterThan(40)
+    // タンクのアルダ（重み tankTarget）は前衛のモート（重み1）より狙われる
     expect(content.balance.tankTarget).toBeGreaterThan(1)
-    expect(hits.get(members[1].id)!).toBeGreaterThan(
-      hits.get(members[0].id)! * 2
+    expect(hits.get(members[0].id)!).toBeGreaterThan(
+      hits.get(members[1].id)! * 2
     )
   })
 
@@ -191,8 +191,8 @@ describe("戦闘の計算（hunt）", () => {
     }
     for (const member of members)
       expect(hits.get(member.id)).toBeGreaterThan(40)
-    expect(hits.get(members[1].id)!).toBeGreaterThan(hits.get(members[0].id)!)
-    expect(hits.get(members[1].id)!).toBeGreaterThan(hits.get(members[2].id)!)
+    expect(hits.get(members[0].id)!).toBeGreaterThan(hits.get(members[1].id)!)
+    expect(hits.get(members[0].id)!).toBeGreaterThan(hits.get(members[2].id)!)
     // 届く相手：近接は前衛だけ、遠距離は全員
     expect(
       rules.reachable(members, "melee").map((entry) => entry.member.id)

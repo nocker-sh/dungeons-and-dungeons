@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vite-plus/test"
-import { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { createGame } from "@/lib/wiz/definition/create-game"
@@ -8,6 +7,7 @@ import { aState } from "@/lib/wiz/testing/state-builder"
 import { advancingClock } from "@/lib/wiz/testing/advancing-clock"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { seededRandom } from "@/lib/wiz/testing/seeded-random"
 import { sequenceRandom } from "@/lib/wiz/testing/sequence-random"
@@ -170,7 +170,7 @@ describe("プレイの持ち物（hunt）", () => {
   })
 
   it("一つの定義から作ったプレイは、状態を共有しない", () => {
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const first = definition.create(undefined, startedState(definition))
     const second = definition.create(undefined, startedState(definition))
     expect(first.state).toEqual(second.state)
@@ -189,7 +189,7 @@ describe("プレイの持ち物（hunt）", () => {
   })
 
   it("はじめからの状態は何度作っても同じで、作り直しても混ざらない", () => {
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const first = definition.initialState()
     const second = definition.initialState()
     expect(first).toEqual(second)
@@ -198,15 +198,24 @@ describe("プレイの持ち物（hunt）", () => {
     expect(first.gear.map((gear) => gear.id)).toEqual(
       first.gear.map((_, index) => `starter-${index + 1}`)
     )
-    expect(first.gear).toHaveLength(2) // 主人公以外の二人の仲間の初期防具
+    // 初期の仲間3人それぞれの初期装備（作品データの weapon と gear）
+    const starter = first.party.flatMap((id) => {
+      const member = definition.catalog.member(id)!
+      return [...(member.weapon ? [member.weapon] : []), ...(member.gear ?? [])]
+    })
+    expect(starter.length).toBeGreaterThan(0)
+    expect(first.gear.map((gear) => gear.good).toSorted()).toEqual(
+      starter.toSorted()
+    )
+    // プレイヤーは仲間ではないので、装備を持たない
     expect(first.gear.some((gear) => gear.owner === contentId("hero"))).toBe(
       false
     )
   })
 
   it("同じデータから別に組み立てた定義でも、保存を読み合える", () => {
-    const first = new GameDefinition(realContent())
-    const second = new GameDefinition(new GameCatalog(realContent()))
+    const first = new GameDefinition(catalogOf(realContent()))
+    const second = new GameDefinition(catalogOf(realContent()))
     expect(second.identity).toBe(first.identity)
     const game = playScript({
       content: realContent(),

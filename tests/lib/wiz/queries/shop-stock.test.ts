@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vite-plus/test"
 import { aState } from "@/lib/wiz/testing/state-builder"
+import { aContent } from "@/lib/wiz/testing/content-builder"
+import { realContent } from "@/lib/wiz/testing/real-content"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
@@ -8,8 +10,20 @@ describe("購入前後の所持数", () => {
   it.each([0, 7])(
     "契約石を%s個持っているとき、袋ではなく石の残高を表示する",
     (stones) => {
+      // 本番の店は石を売らないので、石の品物を並べた店で仕組みだけを確かめる
+      const content = aContent()
+        .withShop("tools", {
+          goods: [
+            ...realContent().shops.find(
+              (shop) => shop.id === contentId("tools")
+            )!.goods,
+            contentId("stone"),
+          ],
+        })
+        .build()
       const game = createTestGame({
-        state: aState().withGold(2000).withStones(stones).build(),
+        content,
+        state: aState(content).withGold(2000).withStones(stones).build(),
       })
       const shop = contentId("tools")
       const good = contentId("stone")

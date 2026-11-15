@@ -177,6 +177,7 @@ export class InventoryViews {
                               name: memberName(this.catalog, state, id),
                               restored: this.rules.skills.refillUses(
                                 member,
+                                state,
                                 refillUses
                               ).restored,
                             },

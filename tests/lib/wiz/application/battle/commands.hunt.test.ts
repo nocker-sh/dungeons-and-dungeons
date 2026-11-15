@@ -41,10 +41,10 @@ describe("戦闘の指示の受け付け（hunt）", () => {
   const base = aContent().build()
   const alda = idOf("alda")
   const mort = idOf("mort")
-  const hero = idOf("hero")
+  const mayu = idOf("mayu")
   /** アルダの素の武器（両手剣）に付くワザ。 */
   const whirl = skillBySlug("whirl")
-  const charge = skillBySlug("charge")
+  const helmsplit = skillBySlug("helmsplit")
   /** 倒れも倒されもしない相手（長く手番を回すため）。 */
   const dummyFoe = aContent(base)
     .withFoe("kamokutsu", { hp: 100000, atk: 1 })
@@ -66,7 +66,7 @@ describe("戦闘の指示の受け付け（hunt）", () => {
       .withWeaponSkills("alda", ["whirl", "helmsplit"])
       .inBattle({
         foes: ["kamokutsu"],
-        order: options.order ?? ["alda", "hero", "mort", "foe-1"],
+        order: options.order ?? ["alda", "mayu", "mort", "foe-1"],
       })
       .build()
     return createTestGame({ content, state, random: options.random ?? 0.5 })
@@ -82,7 +82,7 @@ describe("戦闘の指示の受け付け（hunt）", () => {
   }
 
   it("[feature:W004] 敵の手番に仲間の指示を送っても断られ、状態も袋も変わらない", () => {
-    const game = battle({ order: ["foe-1", "alda", "hero", "mort"] })
+    const game = battle({ order: ["foe-1", "alda", "mayu", "mort"] })
     expect(
       rejectsWithoutChange(game, {
         type: "act",
@@ -109,13 +109,10 @@ describe("戦闘の指示の受け付け（hunt）", () => {
     )
   })
 
-  it("[feature:W004] 倒れている仲間の手番では指示を出せない", () => {
-    const game = battle({
-      patch: (builder) => builder.withMember("alda", { hp: 0 }),
-    })
-    expect(rejectsWithoutChange(game, { type: "act", command: "guard" })).toBe(
-      "NOT_YOUR_TURN"
-    )
+  it("[feature:W004] 倒れている仲間の手番では指示を出せない（その手番で止まった保存は読み込まない）", () => {
+    expect(() =>
+      battle({ patch: (builder) => builder.withMember("alda", { hp: 0 }) })
+    ).toThrow("倒れた者の手番で止まっている")
   })
 
   it("[feature:W004] 街では戦闘の指示を送れない", () => {
@@ -263,7 +260,7 @@ describe("戦闘の指示の受け付け（hunt）", () => {
           .withBag([{ good: contentId("ether"), count: 1 }])
           .withUses("alda", [
             { skill: whirl.id, count: whirl.uses! },
-            { skill: charge.id, count: 1 },
+            { skill: helmsplit.id, count: 1 },
           ]),
     })
     const acted = actedOf(
@@ -361,7 +358,7 @@ describe("戦闘の指示の受け付け（hunt）", () => {
         builder
           .withBag([{ good: contentId("potion"), count: 2 }])
           .withMember("alda", { hp: 100 })
-          .withMember("hero", { hp: 20 }),
+          .withMember("mayu", { hp: 20 }),
     })
     const chosen = actedOf(
       eventsOrThrow(
@@ -380,6 +377,6 @@ describe("戦闘の指示の受け付け（hunt）", () => {
         game.send({ type: "act", command: "item", good: contentId("potion") })
       )
     )
-    expect(auto.results[0].target.id).toBe(hero)
+    expect(auto.results[0].target.id).toBe(mayu)
   })
 })

@@ -4,6 +4,7 @@ import type { GameDependencies } from "@/lib/wiz/application/game-dependencies"
 import { inTown } from "@/lib/wiz/application/in-town"
 import { accept } from "@/lib/wiz/application/accept"
 import { reject } from "@/lib/wiz/application/reject"
+import { questLayers } from "@/lib/wiz/rules/quest-layers"
 import type { Transition } from "@/lib/wiz/application/transition"
 
 /** 討伐依頼を受ける。同じ依頼は一度だけ。 */
@@ -17,6 +18,11 @@ export class AcceptQuest {
     if (!definition) return reject("UNKNOWN")
     if (definition.encounter) return reject("UNAVAILABLE")
     if (definition.requiresCleared && !state.cleared)
+      return reject("UNAVAILABLE")
+    // まだ行けない層の討伐は掲示していないので受けられない
+    if (
+      !questLayers(this.deps.catalog, definition, state.reached, false).length
+    )
       return reject("UNAVAILABLE")
     if (state.quests.some((quest) => quest.id === input.quest))
       return reject("ALREADY")

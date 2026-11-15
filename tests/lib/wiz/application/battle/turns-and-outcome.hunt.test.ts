@@ -57,7 +57,7 @@ function victoryOf(events: readonly GameEvent[]) {
 
 describe("手番と決着（hunt）", () => {
   const fixture = aContent().build()
-  const hero = idOf("hero")
+  const mayu = idOf("mayu")
   const alda = idOf("alda")
   const mort = idOf("mort")
   // アルダの素の武器（両手剣）に付く近接のワザ
@@ -72,7 +72,7 @@ describe("手番と決着（hunt）", () => {
     const state = aState(content)
       .inBattle({
         foes: ["kamokutsu", "koburakuda"],
-        order: ["alda", "foe-1", "hero", "foe-2", "mort"],
+        order: ["alda", "foe-1", "mayu", "foe-2", "mort"],
       })
       .build()
     const run = (seed: number) => {
@@ -99,7 +99,7 @@ describe("手番と決着（hunt）", () => {
     const state = aState(content)
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["alda", "foe-1", "hero", "mort"],
+        order: ["alda", "foe-1", "mayu", "mort"],
       })
       .build()
     const game = createTestGame({ content, state, random: 0.5 })
@@ -120,7 +120,7 @@ describe("手番と決着（hunt）", () => {
     const state = aState(content)
       .inBattle({
         foes: ["kamokutsu", "kamokutsu"],
-        order: ["alda", "hero", "mort", "foe-1", "foe-2"],
+        order: ["alda", "mayu", "mort", "foe-1", "foe-2"],
       })
       .build()
     const game = createTestGame({ content, state, random: 0.5 })
@@ -154,7 +154,7 @@ describe("手番と決着（hunt）", () => {
       .withMember("alda", { status: [{ kind: "poison", turns: 3 }] })
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["alda", "hero", "mort", "foe-1"],
+        order: ["alda", "mayu", "mort", "foe-1"],
       })
       .build()
     const game = createTestGame({ content, state, random: 0.5 })
@@ -176,7 +176,7 @@ describe("手番と決着（hunt）", () => {
         .withQuest("q-mole", progress)
         .inBattle({
           foes: ["kamokutsu", "kamokutsu"],
-          order: ["alda", "hero", "mort", "foe-1", "foe-2"],
+          order: ["alda", "mayu", "mort", "foe-1", "foe-2"],
         })
         .build()
     const quest = questBySlug("q-mole")
@@ -294,7 +294,7 @@ describe("手番と決着（hunt）", () => {
       .withMembers((member) => (member.id === alda ? { hp: 1 } : { hp: 0 }))
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["foe-1", "alda", "hero", "mort"],
+        order: ["foe-1", "alda", "mayu", "mort"],
         expedition: {
           loot: { gold: 40, goods: [{ good: contentId("potion"), count: 1 }] },
         },
@@ -323,16 +323,16 @@ describe("手番と決着（hunt）", () => {
       .withFoe("kamokutsu", { hp: 1, atk: 1 })
       .build()
     const state = aState(content)
-      .withWeaponSkills("hero", ["shears"])
+      .withWeaponSkills("mayu", ["shears"])
       .withGold(100)
       .withMembers((member) =>
-        member.id === hero
+        member.id === mayu
           ? { hp: 1, status: [{ kind: "poison", turns: 3 }] }
           : { hp: 0 }
       )
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["hero", "foe-1"],
+        order: ["mayu", "foe-1"],
         expedition: { loot: { gold: 40, goods: [] } },
       })
       .build()
@@ -378,7 +378,7 @@ describe("手番と決着（hunt）", () => {
     const state = aState(content)
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["alda", "hero", "mort", "foe-1"],
+        order: ["alda", "mayu", "mort", "foe-1"],
       })
       .build()
     const game = createTestGame({ content, state, random: 0.5 })
@@ -425,7 +425,7 @@ describe("手番と決着（hunt）", () => {
     const state = aState(content)
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["alda", "hero", "mort", "foe-1"],
+        order: ["alda", "mayu", "mort", "foe-1"],
         turn: 97,
       })
       .build()
@@ -433,7 +433,7 @@ describe("手番と決着（hunt）", () => {
     // 97 % 5 = 2 → 行動順の3人目
     expect(game.queries.battle(game.state)?.current).toEqual({
       kind: "member",
-      id: hero,
+      id: mayu,
     })
     eventsOrThrow(game.send({ type: "act", command: "guard" }))
     expect(battleStateOf(game.state).turn).toBe(98)
@@ -448,7 +448,7 @@ describe("手番と決着（hunt）", () => {
     const state = aState(content)
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["alda", "hero", "mort", "foe-1"],
+        order: ["alda", "mayu", "mort", "foe-1"],
       })
       .build()
     const game = createTestGame({ content, state, random: 0.5 })
@@ -509,7 +509,7 @@ describe("手番と決着（hunt）", () => {
       const state = builder
         .inBattle({
           foes: ["kamokutsu"],
-          order: ["foe-1", "alda", "hero", "mort"],
+          order: ["foe-1", "alda", "mayu", "mort"],
         })
         .build()
       // 乱数0.5は後衛への遠距離の命中（backRow.hit）より下なので当たる
@@ -531,7 +531,8 @@ describe("手番と決着（hunt）", () => {
     expect(skillBySlug("whirl").reach).toBe("melee")
     const melee = hitsOf("whirl", null)
     expect(melee.ids).toEqual(melee.state.party.slice(0, 2))
-    expect(melee.ids).not.toContain(mort)
+    // 後衛（並びの3番目）には届かない
+    expect(melee.ids).not.toContain(melee.state.party[2])
   })
 
   // 本物の作品データでは決着まで手番が多いので、待つ時間を長めに取る
@@ -546,7 +547,7 @@ describe("手番と決着（hunt）", () => {
         const state = aState(content)
           .inBattle({
             foes: ["kamokutsu", "koburakuda"],
-            order: ["alda", "foe-1", "hero", "foe-2", "mort"],
+            order: ["alda", "foe-1", "mayu", "foe-2", "mort"],
           })
           .build()
         const game = createTestGame({

@@ -17,7 +17,7 @@ export class TownPhase extends PhaseBase {
     })
   }
 
-  /** 登録用紙に名前を書き、写真（容姿）を選んで登録する。 */
+  /** 登録用紙に名前を書いて登録する。 */
   registerHero(name: string, look?: string) {
     return this.#stay({
       type: "register-hero",

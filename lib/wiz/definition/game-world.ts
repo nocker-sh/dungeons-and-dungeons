@@ -21,6 +21,7 @@ import { Advance } from "@/lib/wiz/application/expedition/advance"
 import { Depart } from "@/lib/wiz/application/expedition/depart"
 import { Retreat } from "@/lib/wiz/application/expedition/retreat"
 import { Act } from "@/lib/wiz/application/battle/act"
+import { CallDemon } from "@/lib/wiz/application/battle/call-demon"
 import { CreateHero } from "@/lib/wiz/application/hero/create-hero"
 import { RenameHero } from "@/lib/wiz/application/hero/rename-hero"
 import { ChooseHeroLook } from "@/lib/wiz/application/hero/choose-hero-look"
@@ -100,13 +101,14 @@ export function createGameWorld(
     .with(moduleFor("retreat", commands.retreat, new Retreat(deps)))
     .with(moduleFor("act", commands.act, new Act(deps)))
     .with(moduleFor("foe-turn", commands.foeTurn, new FoeTurn(deps)))
+    .with(moduleFor("call-demon", commands.callDemon, new CallDemon(deps)))
     .with(moduleFor("rest", commands.rest, new Rest(deps)))
     .with(moduleFor("buy", commands.buy, new Buy(deps)))
     .with(moduleFor("sell", commands.sell, new Sell(deps)))
     .with(moduleFor("appraise", commands.appraise, new Appraise(deps)))
     .with(moduleFor("equip", commands.equip, new Equip(deps)))
     .with(moduleFor("unequip", commands.unequip, new Unequip(deps)))
-    .with(moduleFor("swap", commands.swap, new Swap(deps)))
+    .with(moduleFor("swap", commands.swap, new Swap()))
     .with(moduleFor("swap-rows", commands.swapRows, new SwapRows(deps)))
     .with(moduleFor("use", commands.use, new Use(deps)))
     .with(moduleFor("recruit", commands.recruit, new Recruit(deps)))
@@ -142,5 +144,5 @@ export function createGameWorld(
     )
     .with(moduleFor("fight-quest", commands.fightQuest, new FightQuest(deps)))
     .with(moduleFor("claim-quest", commands.claimQuest, new ClaimQuest(deps)))
-    .with(moduleFor("chat", commands.chat, new Chat()))
+    .with(moduleFor("chat", commands.chat, new Chat(deps)))
 }

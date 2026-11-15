@@ -1,24 +1,14 @@
 import { PARTY_SLOTS } from "@/lib/wiz/content/constants"
-import type { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import type { GameState } from "@/lib/wiz/state/state-schema"
 
 /**
- * 4人で出撃していた古い保存を3人へ移す。主人公を残し、並びの右から控えへ回す（雇った仲間はそのまま）。
+ * 4人で出撃していた古い保存を3人へ移す。並びの右から控えへ回す（雇った仲間はそのまま）。
+ * プレイヤーは先に `retireHeroFromParty` で隊列から外している。
  * 戦闘中なら控えへ回った仲間を手番から除き、いま動く番の人を保つ。
  */
-export function fitPartySize(
-  state: GameState,
-  catalog: GameCatalog
-): GameState {
+export function fitPartySize(state: GameState): GameState {
   if (state.party.length <= PARTY_SLOTS) return state
-  const heroes = state.party.filter((id) => catalog.member(id)?.hero).length
-  let room = PARTY_SLOTS - heroes
-  const party = state.party.filter((id) => {
-    if (catalog.member(id)?.hero) return true
-    if (room <= 0) return false
-    room--
-    return true
-  })
+  const party = state.party.slice(0, PARTY_SLOTS)
   const benchedIds = new Set(state.party.filter((id) => !party.includes(id)))
   const hasBenchedBlessing = state.members.some(
     (member) => benchedIds.has(member.id) && member.blessing !== undefined

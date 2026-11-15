@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vite-plus/test"
-import { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import type { GameState } from "@/lib/wiz/state/state-schema"
 import { stateProblems } from "@/lib/wiz/integrity/state-problems"
@@ -7,12 +6,13 @@ import { aState } from "@/lib/wiz/testing/state-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { goodBySlug } from "@/lib/wiz/testing/good-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { realSmithy } from "@/lib/wiz/testing/real-smithy"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { sequentialIds } from "@/lib/wiz/testing/sequential-ids"
 
-const catalog = new GameCatalog(realContent())
+const catalog = catalogOf(realContent())
 
 // 武器の個体も壊せるように、アルダに鉄の両手剣を持たせた状態を土台にする
 const baseState = () => aState().withEquipped("alda", "greatsword").build()
@@ -47,21 +47,14 @@ const broken: readonly (readonly [string, (state: GameState) => unknown])[] = [
     "出撃メンバーが重複している",
     (state) => ({
       ...state,
-      party: ["alda", "alda", "hero"].map((slug) => contentId(slug)),
+      party: ["alda", "alda", "mayu"].map((slug) => contentId(slug)),
     }),
   ],
   [
     `出撃メンバー ${contentId("jig")} を雇っていない`,
     (state) => ({
       ...state,
-      party: ["alda", "jig", "hero"].map((slug) => contentId(slug)),
-    }),
-  ],
-  [
-    "主人公が出撃メンバーにいない",
-    (state) => ({
-      ...state,
-      party: ["alda", "mort"].map((slug) => contentId(slug)),
+      party: ["alda", "jig", "mayu"].map((slug) => contentId(slug)),
     }),
   ],
   [
@@ -248,6 +241,31 @@ describe("状態とコンテンツの食い違い（hunt）", () => {
         catalog
       )
     ).toContain("出撃メンバーが多すぎる")
+  })
+
+  it("プレイヤーが仲間に入った状態は食い違いとして返し、保存はプレイヤーを外して読み込む", () => {
+    const hero = contentId("hero")
+    const state = aState()
+      .withExtraMember("hero")
+      .withParty(["hero", "alda", "mort"])
+      .build()
+    expect(stateProblems(state, catalog)).toContain(
+      "プレイヤーが仲間に入っている"
+    )
+    // 仲間の一覧にいるだけでも断る
+    const benched = aState().withExtraMember("hero").build()
+    expect(stateProblems(benched, catalog)).toContain(
+      "プレイヤーが仲間に入っている"
+    )
+    // 旧保存は読み込むときに移し、プレイヤーは仲間にも隊列にも残らない
+    const game = createTestGame({ ids: sequentialIds("probe") })
+    const save = JSON.parse(JSON.stringify(game.save()))
+    expect(
+      game.restore({ ...save, snapshot: JSON.parse(JSON.stringify(state)) })
+    ).toBeUndefined()
+    expect(game.state.members.some((member) => member.id === hero)).toBe(false)
+    expect(game.state.party).not.toContain(hero)
+    expect(stateProblems(game.state, catalog)).toEqual([])
   })
 
   it("壊した状態はそれぞれの理由を返す", () => {

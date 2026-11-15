@@ -4,7 +4,7 @@ import { aState } from "@/lib/wiz/testing/state-builder"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { fightToEnd } from "@/lib/wiz/testing/fight-to-end"
 import { realContent } from "@/lib/wiz/testing/real-content"
-import { GameCatalog } from "@/lib/wiz/content/game-catalog"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 
 /** 敵が武器の個体をそのまま落とす（balance.weaponDrop・仮）。 */
 describe("敵の武器の落とし物", () => {
@@ -44,9 +44,7 @@ describe("敵の武器の落とし物", () => {
     })
     expect(gear.owner).toBeNull()
     expect(gear.weapon).not.toBeNull()
-    const pool = new GameCatalog(realContent()).weaponDropPool(
-      game.state.reached
-    )
+    const pool = catalogOf(realContent()).weaponDropPool(game.state.reached)
     expect(pool).toContain(gear.good)
     const route = game.queries.route(game.state)!
     expect(route.pending).toMatchObject({ kind: "loot", weapons })
@@ -79,7 +77,7 @@ describe("敵の武器の落とし物", () => {
         .withMembers({ hp: 1 })
         .inBattle({
           foes: ["kamokutsu"],
-          order: ["foe-1", "hero", "alda", "mort"],
+          order: ["foe-1", "mayu", "alda", "mort"],
         })
         .build(),
     })

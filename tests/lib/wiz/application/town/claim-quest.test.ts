@@ -12,6 +12,8 @@ it.each(quests)("本番の依頼 $name の報告境界と保存再開", (quest) 
   // 討伐経路の検査とは分け、報告直前の条件を与えて実際の操作を検査する。
   const accepted = definition.create(testEnvironment(), {
     ...initial.state,
+    // まだ行けない層の依頼は受けられないので、全層に届いた状態で受ける
+    reached: realContent().layers.length - 1,
     cleared: quest.requiresCleared === true,
   })
   eventsOrThrow(accepted.send({ type: "accept-quest", quest: quest.id }))

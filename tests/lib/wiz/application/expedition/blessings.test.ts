@@ -25,7 +25,34 @@ const altar = () =>
   })
 
 describe("武器3枠と祝福1枠", () => {
-  it.each([0, 1])("祝福の対象にHP%dを表示し、授与しても回復させない", (hp) => {
+  it("[feature:W033] 戦闘不能の仲間は祝福の対象に出さず、指定しても何も払わず拒否する", () => {
+    const member = contentId("alda")
+    const game = createTestGame({
+      state: aState()
+        .withMember("alda", { hp: 0 })
+        .inExpedition({
+          at: "n2",
+          visited: ["s", "n2"],
+          pending: { kind: "discovery" },
+        })
+        .build(),
+    })
+    const before = game.state
+    const view = game.queries.route(before)!.discovery!
+    expect(view.recipients.some((entry) => entry.id === member)).toBe(false)
+    expect(view.recipients.every((entry) => entry.hp > 0)).toBe(true)
+    const choice = view.choices.find((entry) => entry.blessings)!
+    const error = game.send({
+      type: "discover",
+      choice: choice.id,
+      member,
+      skill: choice.blessings![0].id,
+    })
+    expect(error).toBeInstanceOf(GameCommandError)
+    expect((error as GameCommandError).code).toBe("DOWN")
+    expect(game.state).toBe(before)
+  })
+  it.each([1])("祝福の対象にHP%dを表示し、授与しても回復させない", (hp) => {
     const game = createTestGame({
       state: aState()
         .withMember("alda", { hp })
@@ -52,9 +79,9 @@ describe("武器3枠と祝福1枠", () => {
       game.state.members.find((entry) => entry.id === member)
     ).toMatchObject({ hp, blessing: skill })
   })
-  it("固有・悪魔スキルは祝福を保持したまま別メニューから使える", () => {
+  it("固有スキルは祝福を保持したまま別メニューから使える", () => {
     for (const [member, skill] of [
-      ["hero", "shears"],
+      ["mayu", "offering"],
       ["alda", "hold-line"],
       ["mort", "grave-care"],
     ]) {
@@ -96,27 +123,31 @@ describe("武器3枠と祝福1枠", () => {
       })
     }
   })
-  it("戦闘で武器3つと祝福を使い、悪魔スキルは別メニューに残る", () => {
+  it("戦闘で武器3つと祝福を使い、別メニューは本人の固有スキルだけで悪魔のワザは混ざらない", () => {
     const skill = content.skills.find(
       (entry) => entry.blessing && entry.kind === "hit"
     )!
     const state = aState()
-      .inBattle({ order: ["hero", "foe-1", "alda", "mort"] })
+      .inBattle({ order: ["mayu", "foe-1", "alda", "mort"] })
       .build()
-    const hero = state.party[0]
+    const mayu = contentId("mayu")
     const game = createTestGame({
       state: {
         ...state,
         members: state.members.map((member) =>
-          member.id === hero ? { ...member, blessing: skill.id } : member
+          member.id === mayu ? { ...member, blessing: skill.id } : member
         ),
       },
     })
-    const commands = game.queries.commands(game.state, hero)!
+    const commands = game.queries.commands(game.state, mayu)!
     expect(commands.weaponSkills).toHaveLength(3)
-    expect(commands.skills.map((entry) => entry.id)).toEqual(
-      definition.catalog.demon(game.state.contract!)!.skills
-    )
+    // 合体は廃止した。悪魔のワザは仲間のワザに入らず、本人の固有スキルだけが並ぶ
+    const own = definition.catalog.member(mayu)!.skills ?? []
+    expect(commands.skills.length).toBeGreaterThan(0)
+    for (const entry of commands.skills) expect(own).toContain(entry.id)
+    for (const demonSkill of definition.catalog.demon(game.state.contract!)!
+      .skills)
+      expect(commands.skills.map((entry) => entry.id)).not.toContain(demonSkill)
     expect(commands.blessing?.left).toBe(skill.uses)
     const before = game.state
     expect(
@@ -125,10 +156,10 @@ describe("武器3枠と祝福1枠", () => {
     expect(game.state).toBe(before)
     eventsOrThrow(game.send({ type: "act", command: "skill", skill: skill.id }))
     expect(
-      game.state.members.find((member) => member.id === hero)!.used
+      game.state.members.find((member) => member.id === mayu)!.used
     ).toContainEqual({ skill: skill.id, count: 1 })
     expect(game.restore(game.save())).toBeUndefined()
-    expect(game.queries.commands(game.state, hero)!.blessing?.left).toBe(
+    expect(game.queries.commands(game.state, mayu)!.blessing?.left).toBe(
       skill.uses! - 1
     )
   })

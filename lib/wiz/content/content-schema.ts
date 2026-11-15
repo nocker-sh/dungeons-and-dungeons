@@ -46,17 +46,15 @@ export const contentSchema = z.strictObject({
         .min(1),
     })
     .optional(),
-  startingCompanions: z
-    .array(id)
-    .max(PARTY_SLOTS - 1)
-    .optional(),
+  /** はじめから隊列にいる仲間（プレイヤーは戦わないので、仲間だけで3人まで）。 */
+  startingCompanions: z.array(id).max(PARTY_SLOTS).optional(),
   conversations: z.array(conversationSchema).optional(),
   conversationResidents: z.array(id).optional(),
   /** 入ったときに場面が始まりうる街の場所。 */
   conversationPlaces: z.array(id).optional(),
   startingGold: count,
   startingStones: count,
-  /** 最初から契約・合体している悪魔。召喚石は使わない。 */
+  /** 最初から契約している悪魔（戦闘で呼べる）。召喚石は使わない。 */
   startingDemon: id.optional(),
   startingBag: z.array(z.strictObject({ good: id, count: positive })),
   hero,

@@ -4,10 +4,11 @@ import { conversationScenario } from "@/development/conversations/scenario"
 import { ConversationRules } from "@/lib/wiz/conversations/conversation-rules"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 import { sequentialIds } from "@/lib/wiz/testing/sequential-ids"
 
-const definition = new GameDefinition(realContent())
+const definition = new GameDefinition(catalogOf(realContent()))
 const rules = new ConversationRules(definition.catalog)
 const cases = (
   ["inn", "talk", "visit", "branch", "chest", "item"] as const

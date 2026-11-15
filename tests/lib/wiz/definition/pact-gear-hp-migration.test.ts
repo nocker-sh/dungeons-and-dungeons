@@ -8,8 +8,9 @@ import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { goodBySlug } from "@/lib/wiz/testing/good-by-slug"
 import { memberBySlug } from "@/lib/wiz/testing/member-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 
-const definition = new GameDefinition(realContent())
+const definition = new GameDefinition(catalogOf(realContent()))
 const alma = contentId("alma")
 const alda = contentId("alda")
 const vest = goodBySlug("gravekeeper-vest")
@@ -22,7 +23,7 @@ function legacyState(hp: number, battle = false): GameState {
     ? builder
         .inBattle({
           foes: ["kamokutsu"],
-          order: ["alma", "foe-1", "hero", "alda"],
+          order: ["alma", "foe-1", "mayu", "alda"],
         })
         .build()
     : builder.build()

@@ -75,6 +75,10 @@ for (const good of content.goods.filter((entry) => entry.kind === "weapon"))
           .pool(good)
           .filter((id) => !weapon.skills.includes(id))
         expect(row.candidates.map((entry) => entry.id)).toEqual(expected)
+        // 見え方の枠は付け替えの slot と同じ並び
+        expect(row.skills.map((entry) => [entry.slot, entry.id])).toEqual(
+          weapon.skills.map((id, index) => [index, id])
+        )
         expect(probe.save()).toEqual(before)
         const invalid = new Set([
           ...weapon.skills,

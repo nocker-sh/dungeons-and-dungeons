@@ -8,6 +8,7 @@ import { GameStateBuilder } from "@/lib/wiz/testing/state-builder"
 import { InMemorySaveStore } from "@/lib/wiz/testing/in-memory-save-store"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { seededRandom } from "@/lib/wiz/testing/seeded-random"
 import { sequentialIds } from "@/lib/wiz/testing/sequential-ids"
 import { startedState } from "@/lib/wiz/testing/started-state"
@@ -15,7 +16,7 @@ import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 import { turnActionFor } from "@/lib/wiz/testing/turn-action-for"
 import type { Random } from "@/lib/wiz/rules/random"
 
-const definition = new GameDefinition(realContent())
+const definition = new GameDefinition(catalogOf(realContent()))
 
 /** 鍛冶屋・鑑定・売り買いまで届くように、素材と金貨を持たせた街から始める。 */
 function startingState() {

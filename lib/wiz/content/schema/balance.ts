@@ -107,12 +107,11 @@ export const balance = z.strictObject({
     /** 一度鍛え直すのにかかるお金。 */
     gold: count,
   }),
-  /** 魔法の流派。 */
-  school: z.strictObject({
-    /**
-     * 相性の倍率。合体している悪魔と同じ流派を使える仲間は、その流派のワザの威力がこの倍になる。
-     */
-    affinity: z.number().positive(),
+  /**
+   * 戦闘で呼ぶ悪魔の必殺技（1戦闘に1回）。敵全員へ、隊列でいちばん高い攻撃力 × 悪魔のワザの威力 × power。
+   */
+  demonCall: z.strictObject({
+    power: z.number().positive(),
   }),
   /** 再生（regen）で一度に戻すHP = 最大HP ÷ regenDivisor。 */
   regenDivisor: positive,

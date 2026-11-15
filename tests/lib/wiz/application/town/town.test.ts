@@ -204,8 +204,19 @@ describe("街", () => {
     expect(game.state.gold).toBe(gold + priceOf("full") - repair)
   })
 
-  it("[feature:W012] 召喚石は店で買える（袋には入らない）", () => {
-    const { definition } = createTestPlay()
+  it("[feature:W012] 召喚石の品物を買うと、袋ではなく石が増える（本番の店は石を売らない）", () => {
+    // 石は使い道がないので本番の店では売らない。旧保存の互換として、石の品物の仕組みだけを確かめる。
+    const tools = realContent().shops.find(
+      (shop) => shop.id === contentId("tools")
+    )!
+    expect(tools.goods).not.toContain(contentId("stone"))
+    expect(realContent().foes.some((foe) => foe.stones)).toBe(false)
+    const { definition } = createTestPlay(
+      0.5,
+      aContent()
+        .withShop("tools", { goods: [...tools.goods, contentId("stone")] })
+        .build()
+    )
     const base = startedState(definition)
     const game = definition.create(undefined, { ...base, gold: 2000 })
     const before = game.state.stones
@@ -280,35 +291,35 @@ describe("街", () => {
 
   it("[feature:W011] 募集の枠にいる冒険者とだけ契約でき、契約済みは二度雇えない", () => {
     const game = createTestGame({
-      state: aState().withGold(1000).withBoard(["r-jig", "n-luca"]).build(),
+      state: aState().withGold(1000).withBoard(["r-jig", "n-rio"]).build(),
     })
     expect(game.queries.recruits(game.state).map((entry) => entry.id)).toEqual([
       contentId("r-jig"),
-      contentId("n-luca"),
+      contentId("n-rio"),
     ])
     expect(
       (
         game.send({
           type: "recruit",
-          recruit: contentId("r-tsumugi"),
+          recruit: contentId("r-alma"),
         }) as GameCommandError
       ).code
     ).toBe("UNAVAILABLE")
-    eventsOrThrow(game.send({ type: "recruit", recruit: contentId("n-luca") }))
+    eventsOrThrow(game.send({ type: "recruit", recruit: contentId("n-rio") }))
     expect(game.state.members.map((member) => member.id)).toContain(
-      contentId("luca")
+      contentId("rio")
     )
-    expect(game.state.party).not.toContain(contentId("luca"))
+    expect(game.state.party).not.toContain(contentId("rio"))
     expect(
       game.queries
         .recruits(game.state)
-        .find((entry) => entry.id === contentId("n-luca"))?.hired
+        .find((entry) => entry.id === contentId("n-rio"))?.hired
     ).toBe(true)
     expect(
       (
         game.send({
           type: "recruit",
-          recruit: contentId("n-luca"),
+          recruit: contentId("n-rio"),
         }) as GameCommandError
       ).code
     ).toBe("ALREADY")
@@ -317,7 +328,7 @@ describe("街", () => {
   it("[feature:W022] お金を払うと募集の枠を重みつきで引き直し、枠は次に引き直すまで残る", () => {
     const rolls = [0.99, 0.0]
     const source = realContent()
-    const candidates = [contentId("r-jig"), contentId("n-luca")]
+    const candidates = [contentId("r-jig"), contentId("n-rio")]
     const content = {
       ...source,
       recruiting: {
@@ -333,14 +344,14 @@ describe("街", () => {
     const { game } = createTestPlay(() => rolls.shift() ?? 0.5, content)
     const gold = game.state.gold
     const events = eventsOrThrow(game.send({ type: "reroll" }))
-    // 現役候補をジグとルカに限定し、末尾→先頭の2枠を引く。
+    // 現役候補をジグとリオに限定し、末尾→先頭の2枠を引く。
     expect(events).toEqual([
-      { type: "rerolled", board: [contentId("n-luca"), contentId("r-jig")] },
+      { type: "rerolled", board: [contentId("n-rio"), contentId("r-jig")] },
     ])
     expect(game.state.gold).toBe(gold - realContent().recruiting.reroll)
-    expect(game.state.board).toEqual([contentId("n-luca"), contentId("r-jig")])
+    expect(game.state.board).toEqual([contentId("n-rio"), contentId("r-jig")])
     eventsOrThrow(game.send({ type: "recruit", recruit: contentId("r-jig") }))
-    expect(game.state.board).toEqual([contentId("n-luca"), contentId("r-jig")])
+    expect(game.state.board).toEqual([contentId("n-rio"), contentId("r-jig")])
     const poorDefinition = new GameDefinition({
       ...realContent(),
       startingGold: 10,
@@ -368,7 +379,7 @@ describe("街", () => {
     expect(game.save()).toEqual(before)
   })
 
-  it("[feature:W013] 契約した悪魔からだけ合体する悪魔を選べる", () => {
+  it("[feature:W013] 契約した悪魔からだけ戦闘で呼ぶ悪魔を選べ、主人公とは合体しない", () => {
     const game = createTestGame()
     expect(
       (
@@ -392,16 +403,22 @@ describe("街", () => {
       })
     ).toBeUndefined()
     eventsOrThrow(game.send({ type: "choose-demon", demon: contentId("tris") }))
-    expect(game.queries.demon(game.state)?.name).toBe("三つ石の悪魔トリス")
-    expect(
-      game.queries
-        .commands(game.state, contentId("hero"))
-        ?.skills.map((skill) => skill.id)
-    ).toEqual([
+    const demon = game.queries.demon(game.state)
+    expect(demon?.name).toBe("三つ石の悪魔トリス")
+    expect(demon?.skills.map((skill) => skill.id)).toEqual([
       contentId("pebbles"),
       contentId("stonewall"),
       contentId("blood"),
     ])
+    // 選んだ悪魔は戦闘で呼ぶ悪魔になり、候補の詳細に呼んだときの必殺技が出る
+    const chosen = game.queries.demons(game.state).find((entry) => entry.active)
+    expect(chosen?.id).toBe(contentId("tris"))
+    expect(chosen?.call).toBeTruthy()
+    expect(chosen?.call?.id).toBe(
+      demon?.skills.find((skill) => skill.kind === "hit")?.id
+    )
+    // 主人公は戦わないので、合体したワザの一覧を持たない
+    expect(game.queries.commands(game.state, contentId("hero"))).toBeFalsy()
   })
 
   it("[feature:W023] 鍛冶屋で装備を強化すると、段ごとの費用を払い上がる能力が1ずつ増える", () => {
@@ -579,8 +596,10 @@ describe("街", () => {
         }) as GameCommandError
       ).code
     ).toBe("ALREADY")
-    // ほかの仲間とは今夜も話せる
-    const other = game.state.party.find((id) => id !== contentId("alda"))!
+    // ほかの仲間とは今夜も話せる（主人公は親しさの対象外）
+    const other = game.state.party.find(
+      (id) => id !== contentId("alda") && id !== contentId("hero")
+    )!
     const before = like(other)!
     eventsOrThrow(game.send({ type: "chat", liked: other }))
     expect(like(other)).toBe(before + 1)

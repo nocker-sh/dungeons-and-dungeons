@@ -314,7 +314,7 @@ describe("表示した値段と実際に払う額（hunt）", () => {
   })
 
   it("募集の affordable・hired は recruit の受理と一致する", () => {
-    for (const slug of ["r-jig", "n-luca", "r-alma", "sr-husky"]) {
+    for (const slug of ["r-jig", "n-rio", "r-alma", "sr-husky"]) {
       const recruitId = contentId(slug)
       const state = aState().withBoard([recruitId]).build()
       const price = gameOf(state).queries.recruits(state)[0].price

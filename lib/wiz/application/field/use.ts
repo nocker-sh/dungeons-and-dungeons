@@ -22,6 +22,8 @@ export class Use {
   execute(state: GameState, input: GameActionOf<"use">): Transition {
     if (state.phase.type !== "town" && state.phase.type !== "expedition")
       return reject("WRONG_PHASE")
+    // 会話の途中や、見ていない全滅の結果があるうちは使わせない
+    if (state.conversation?.active || state.wipe) return reject("WRONG_PHASE")
     const good = this.deps.catalog.good(input.good)
     if (
       !good ||
@@ -83,6 +85,7 @@ export class Use {
       if (effect.type === "refill") {
         const { used, restored } = this.deps.party.skills.refillUses(
           member,
+          state,
           effect.uses
         )
         member.used = used

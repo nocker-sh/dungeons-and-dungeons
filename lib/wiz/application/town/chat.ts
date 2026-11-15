@@ -4,6 +4,7 @@ import { inTown } from "@/lib/wiz/application/in-town"
 import { accept } from "@/lib/wiz/application/accept"
 import { reject } from "@/lib/wiz/application/reject"
 import type { Transition } from "@/lib/wiz/application/transition"
+import type { GameDependencies } from "@/lib/wiz/application/game-dependencies"
 
 /**
  * 宿の夜の雑談。選んだ相手の親しみが上がる。
@@ -11,10 +12,15 @@ import type { Transition } from "@/lib/wiz/application/transition"
  */
 export class Chat {
   static readonly featureId = "W016"
+  constructor(private readonly deps: Pick<GameDependencies, "party">) {}
+
   execute(state: GameState, input: GameActionOf<"chat">): Transition {
     if (!inTown(state)) return reject("WRONG_PHASE")
     if (state.nights <= 0) return reject("NOT_READY")
     if (!state.party.includes(input.liked)) return reject("UNKNOWN")
+    // 親しさは仲間どうしのもの。主人公は対象外（W001・W007と同じ）。
+    if (this.deps.party.equipment.isHero({ id: input.liked }))
+      return reject("HERO")
     if (state.chatted.includes(input.liked)) return reject("ALREADY")
     return accept(
       {

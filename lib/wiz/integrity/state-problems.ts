@@ -1,4 +1,3 @@
-import { ConversationRules } from "@/lib/wiz/conversations/conversation-rules"
 import { PARTY_SLOTS, PARTY_STORED_MAX } from "@/lib/wiz/content/constants"
 import type { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import type { GameState } from "@/lib/wiz/state/state-schema"
@@ -12,6 +11,8 @@ export function stateProblems(
   catalog: GameCatalog,
   options: {
     allowLegacyHeroArmor?: boolean
+    /** プレイヤーが仲間として戦っていた旧保存。読み込むときに外す。 */
+    allowLegacyHeroMember?: boolean
     allowLegacyPartySize?: boolean
     allowLegacyPactGear?: boolean
   } = {}
@@ -60,10 +61,12 @@ export function stateProblems(
   )
   for (const id of state.party)
     need(memberIds.has(id), `出撃メンバー ${id} を雇っていない`)
-  need(
-    state.party.some((id) => catalog.member(id)?.hero),
-    "主人公が出撃メンバーにいない"
-  )
+  // プレイヤーは戦わない運営役。隊列にも仲間の一覧にも入れない（旧保存は読み込むときに外す）。
+  if (!options.allowLegacyHeroMember)
+    need(
+      !state.members.some((member) => catalog.member(member.id)?.hero),
+      "プレイヤーが仲間に入っている"
+    )
   for (const entry of state.bag)
     need(catalog.good(entry.good), `持ち物 ${entry.good} がコンテンツにない`)
   if (state.provisions) {
@@ -324,34 +327,37 @@ export function stateProblems(
           : battle.foes.some((foe) => foe.id === ref.id),
         `行動順の ${ref.id} がいない`
       )
+    // 決着した戦闘や、倒れた者の手番で止まった戦闘は、誰も操作を進められない。
+    const alive = (ref: (typeof battle.order)[number]) =>
+      ref.kind === "member"
+        ? (state.members.find((member) => member.id === ref.id)?.hp ?? 0) > 0
+        : (battle.foes.find((foe) => foe.id === ref.id)?.hp ?? 0) > 0
+    need(battle.order.length, "行動順が空")
+    need(
+      battle.order.some((ref) => ref.kind === "member" && alive(ref)),
+      "戦える仲間がいない戦闘"
+    )
+    need(
+      battle.foes.some((foe) => foe.hp > 0),
+      "戦える敵がいない戦闘"
+    )
+    if (battle.order.length)
+      need(
+        alive(battle.order[battle.turn % battle.order.length]),
+        "倒れた者の手番で止まっている"
+      )
   }
   if (state.conversation?.active) {
     const active = catalog.data.conversations?.find(
       (entry) => entry.id === state.conversation?.active
     )
     need(active, "再生中の会話がコンテンツにない")
-    if (active) {
-      const rules = new ConversationRules(catalog)
-      const subject = {
-        resident: active.participants[0],
-        place: active.place,
-      }
-      // 始める前の状態。場所の場面は始めたときに記録した夜も戻す
-      const { [active.place ?? ""]: _started, ...visits } =
-        state.conversation.visits ?? {}
-      const before = {
-        ...state,
-        conversation: { ...state.conversation, active: null, visits },
-      }
-      need(
-        rules.reasons(before, active.trigger, active, subject).length === 0,
-        "再生中の会話の人物または進行度が不正"
-      )
-      need(
-        rules.canStart(before, active.trigger, subject),
-        "再生中の会話の場面が不正"
-      )
-    }
+    // 始めた後にコンテンツの条件（夜の数・到達層・隊列など）を直しても、途中の保存は読み込める。
+    // 登場する仲間は雇っていること（控えでもよい）。出会いの会話には契約前の悪魔も出るので、悪魔は問わない。
+    if (active)
+      for (const id of active.participants)
+        if (catalog.member(id))
+          need(memberIds.has(id), "再生中の会話の人物を雇っていない")
   }
   return problems
 }

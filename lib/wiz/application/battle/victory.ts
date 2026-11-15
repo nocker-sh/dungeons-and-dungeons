@@ -166,6 +166,9 @@ export class Victory {
       loot: {
         gold: phase.expedition.loot.gold + gold,
         goods: Bag.add(phase.expedition.loot.goods, goods),
+        ...(stones > 0 || phase.expedition.loot.stones
+          ? { stones: (phase.expedition.loot.stones ?? 0) + stones }
+          : {}),
         ...(dropped.length || phase.expedition.loot.weapons
           ? {
               weapons: [

@@ -30,7 +30,7 @@ describe("全滅しても持ち帰れるガラクタ", () => {
         ])
         .inBattle({
           foes: ["kamokutsu"],
-          order: ["foe-1", "hero", "alda", "mort"],
+          order: ["foe-1", "mayu", "alda", "mort"],
         })
         .build()
       if (base.phase.type !== "battle") throw new Error("戦闘で始まる")
@@ -97,7 +97,7 @@ describe("全滅しても持ち帰れるガラクタ", () => {
       .withMembers({ hp: 1 })
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["foe-1", "hero", "alda", "mort"],
+        order: ["foe-1", "mayu", "alda", "mort"],
       })
       .build()
     if (base.phase.type !== "battle") throw new Error("戦闘で始まる")

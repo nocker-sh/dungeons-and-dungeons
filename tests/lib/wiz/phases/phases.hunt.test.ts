@@ -101,8 +101,10 @@ describe("フェーズの不変条件", () => {
         .build(),
     })
     // ケイヤクは手番の操作として公開し、契約でない仲間が送ると act が断る（pact.test）
+    // 悪魔を呼ぶ（W046）も手番の操作として公開する
     expect(operationsOf(phaseOf(battle))).toEqual([
       "brawl",
+      "callDemon",
       "guard",
       "item",
       "pact",

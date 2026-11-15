@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vite-plus/test"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { seededRandom } from "@/lib/wiz/testing/seeded-random"
 import { startedState } from "@/lib/wiz/testing/started-state"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
@@ -31,7 +32,7 @@ import { Upgrade } from "@/lib/wiz/application/town/upgrade"
  * 見え方（Query）と規則（ユースケース）が食い違うと、押せるのに断られるボタンが出る。
  */
 describe("街の見え方と規則の一致", () => {
-  const definition = new GameDefinition(realContent())
+  const definition = new GameDefinition(catalogOf(realContent()))
   const catalog = definition.catalog
   const weapons = new WeaponRules(catalog)
   const party = new PartyRules(catalog, weapons)
@@ -71,7 +72,7 @@ describe("街の見え方と規則の一致", () => {
         case "summon":
           return new Summon(deps).execute(state, action, environment())
         case "chat":
-          return new Chat().execute(state, action)
+          return new Chat(deps).execute(state, action)
         case "accept-quest":
           return new AcceptQuest(deps).execute(state, action)
         case "claim-quest":
@@ -145,7 +146,7 @@ describe("街の見え方と規則の一致", () => {
         type: "recruit",
         recruit: recruit.id,
       })
-    check("引き直す", queries.reroll(state).affordable, { type: "reroll" })
+    check("引き直す", queries.reroll(state).enabled, { type: "reroll" })
     check("召喚", queries.summon(state).enabled, { type: "summon" })
     check("雑談", queries.canChatWith(state, state.party[0]), {
       type: "chat",

@@ -210,10 +210,12 @@ export class ExpeditionViews {
                   ),
                 }
               }),
-              recipients: state.party.map((id) => {
+              recipients: state.party.flatMap((id) => {
                 const member = state.members.find((entry) => entry.id === id)!
+                // 戦闘不能の仲間は祝福の対象にしない（discoverもDOWNで拒否する）。
+                if (member.hp <= 0) return []
                 const definition = this.catalog.member(id)!
-                return {
+                const recipient = {
                   id,
                   name: definition.hero ? state.hero.name : definition.name,
                   hp: member.hp,
@@ -222,6 +224,7 @@ export class ExpeditionViews {
                     ? this.catalog.skill(member.blessing)?.name
                     : null,
                 }
+                return [recipient]
               }),
             }
           : null,

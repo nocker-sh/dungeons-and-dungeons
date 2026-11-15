@@ -13,10 +13,10 @@ describe("3人の連携を支える技", () => {
       .build()
     const state = aState()
       .withExtraMember("jig")
-      .withParty(["hero", "jig", "mort"])
+      .withParty(["alda", "jig", "mort"])
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["jig", "foe-1", "hero", "mort"],
+        order: ["jig", "foe-1", "alda", "mort"],
       })
       .build()
     if (state.phase.type !== "battle") throw new Error("fixture")
@@ -59,13 +59,12 @@ describe("3人の連携を支える技", () => {
       .build()
     const game = createTestGame({
       content,
-      // 魔弾はマユのワザなので、アルダと入れ替えて先に動かす
+      // 魔弾はマユのワザなので、マユを先に動かす
       state: aState()
-        .withJoined("mayu", { replacing: "alda" })
         .withMember("mayu", { hp: 60 })
         .inBattle({
           foes: ["kamokutsu"],
-          order: ["mayu", "foe-1", "hero", "mort"],
+          order: ["mayu", "foe-1", "alda", "mort"],
         })
         .build(),
       random: 0.5,
@@ -99,10 +98,10 @@ describe("3人の連携を支える技", () => {
     const game = createTestGame({
       state: aState()
         .withExtraMember("husky", { hp: 1 })
-        .withParty(["hero", "husky", "mort"])
+        .withParty(["mayu", "husky", "mort"])
         .inBattle({
           foes: ["kamokutsu"],
-          order: ["husky", "foe-1", "hero", "mort"],
+          order: ["husky", "foe-1", "mayu", "mort"],
         })
         .build(),
       random: 0.5,
@@ -145,11 +144,10 @@ describe("3人の連携を支える技", () => {
       .build()
     const state = aState()
       .withExtraMember("gou")
-      .withJoined("mayu")
-      .withParty(["hero", "gou", "mayu"])
+      .withParty(["alda", "gou", "mayu"])
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["gou", "mayu", "foe-1", "hero"],
+        order: ["gou", "mayu", "foe-1", "alda"],
       })
       .build()
     const game = createTestGame({ content, state, random: 0.5 })
@@ -187,11 +185,11 @@ describe("3人の連携を支える技", () => {
     const game = createTestGame({
       state: aState()
         .withExtraMember(member)
-        .withParty(["hero", "alda", member])
+        .withParty(["mort", "alda", member])
         .withMember("alda", { hp: 0 })
         .inBattle({
           foes: ["kamokutsu"],
-          order: [member, "foe-1", "hero", "alda"],
+          order: [member, "foe-1", "mort", "alda"],
         })
         .build(),
       random: 0.5,

@@ -7,7 +7,8 @@ import type { Random } from "@/lib/wiz/rules/random"
 
 /**
  * はじめから。装備の個体IDは連番（環境のIDは使わず、毎回同じ初期状態にする）。
- * 作品が指定した初期仲間と最初の悪魔で開始する。追加の悪魔は契約書から呼び出す。
+ * 作品が指定した初期仲間3人と最初の悪魔で開始する。プレイヤーは戦わない運営役なので隊列に入らない。
+ * 追加の悪魔は契約書から呼び出す。
  */
 export function createInitialState(
   catalog: GameCatalog,
@@ -18,7 +19,7 @@ export function createInitialState(
   const companions = (data.startingCompanions ?? []).map((id) =>
     catalog.member(id)!
   )
-  const starting = [...data.party, ...companions]
+  const starting = companions
   let serial = 0
   const nextId = () => `starter-${++serial}`
   return {

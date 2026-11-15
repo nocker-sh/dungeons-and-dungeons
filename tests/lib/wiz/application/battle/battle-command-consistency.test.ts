@@ -19,12 +19,10 @@ const foe = content.foes.reduce((strongest, entry) =>
 )
 const initial = aState(definition.catalog)
 const native = initial.build()
-const actors = members.flatMap((member) =>
-  (member.hero
-    ? [null, ...content.demons.map((entry) => entry.id)]
-    : [native.contract]
-  ).map((contract) => ({ member, contract }))
-)
+// The player is a non-fighting manager, so only companions take battle turns.
+const actors = members
+  .filter((member) => !member.hero)
+  .map((member) => ({ member, contract: native.contract }))
 
 for (const entry of actors)
   for (const critical of [false, true])
@@ -53,7 +51,7 @@ for (const entry of actors)
           builder = builder
             .withParty([entry.member.id, ...companions])
             .withBag([])
-          // Contract-free starting conditions use the real HP cap without the fusion bonus.
+          // Starting conditions use the real HP cap.
           const bounded = builder.build()
           builder = builder.withMembers((member) => ({
             hp: Math.min(

@@ -64,7 +64,11 @@ describe("出撃と探索", () => {
     expect(order.filter((id) => id.startsWith("foe")).length).toBe(
       game.queries.battle(game.state)!.foes.length
     )
-    expect(order).toContain(memberBySlug("hero").id)
+    // 行動順には出撃の3人だけが入り、戦わない主人公は入らない
+    expect(order.filter((id) => !id.startsWith("foe")).toSorted()).toEqual(
+      game.state.party.toSorted()
+    )
+    expect(order).not.toContain(memberBySlug("hero").id)
   })
 
   it("[feature:W002] 中ボスの地点では決まった敵が出て、倒しても層は終わらない", () => {

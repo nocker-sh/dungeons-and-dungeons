@@ -27,7 +27,7 @@ describe("主人公を作る", () => {
     expect(game.send({ type: "summon" })).toBeInstanceOf(GameCommandError)
   })
 
-  it("[feature:W029] 外見と名前を決めると街へ出て、名前がそのまま札に出る", () => {
+  it("[feature:W029] 外見と名前を決めると街へ出て、名前と外見が状態に残り、隊列には入らない", () => {
     const game = freshPlay()
     const hero = game.queries.hero(game.state)
     expect(hero.creating).toBe(true)
@@ -41,10 +41,16 @@ describe("主人公を作る", () => {
       { type: "hero-created", name: "ノア", look: second },
     ])
     expect(game.state.phase.type).toBe("town")
-    const hired = game.queries.party(game.state).find((entry) => entry.hero)!
-    expect(hired.name).toBe("ノア")
-    expect(hired.look).toBe(second)
+    expect(game.state.hero).toMatchObject({ name: "ノア", look: second })
+    expect(game.queries.hero(game.state).name).toBe("ノア")
     expect(game.queries.look(game.state, contentId("hero"))).toBe(second)
+    // 主人公は戦わない運営役なので、作っても隊列・仲間には入らない
+    expect(game.queries.party(game.state).some((entry) => entry.hero)).toBe(
+      false
+    )
+    expect(game.state.members.map((member) => member.id)).not.toContain(
+      contentId("hero")
+    )
     // 作り終えた後にもう一度は通らない
     expect(
       game.send({ type: "create-hero", name: "別名", look: first })

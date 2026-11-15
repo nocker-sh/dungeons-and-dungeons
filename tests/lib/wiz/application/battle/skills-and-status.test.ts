@@ -21,7 +21,7 @@ import type { Member } from "@/lib/wiz/state/state-schema"
 const idOf = (slug: string) => memberBySlug(slug).id
 
 describe("ワザと状態", () => {
-  const hero = idOf("hero")
+  const mayu = idOf("mayu")
   const alda = idOf("alda")
   const sion = idOf("sion")
   const whirl = skillBySlug("whirl")
@@ -41,12 +41,13 @@ describe("ワザと状態", () => {
     // 蘇生は最初の仲間にいないシオンのワザなので、モートと入れ替えて出撃させる
     let state = aState(content)
       .withJoined("sion", { replacing: "mort" })
+      .withParty(["mayu", "alda", "sion"])
       .withWeaponSkills("alda", ["whirl", "helmsplit"])
-      .withWeaponSkills("hero", ["stitch"])
+      .withWeaponSkills("mayu", ["stitch"])
       .withWeaponSkills("sion", ["revival-light"])
       .inBattle({
         foes: options.foes ?? ["kamokutsu"],
-        order: options.order ?? ["hero", "sion", "foe-1", "alda"],
+        order: options.order ?? ["mayu", "sion", "foe-1", "alda"],
       })
       .build()
     if (options.patch) state = options.patch(state)
@@ -61,7 +62,7 @@ describe("ワザと状態", () => {
   it("[feature:W004] 敵全員を狙うワザは生きている敵すべてに当たる", () => {
     const game = battleWith({
       foes: ["kamokutsu", "kamokutsu"],
-      order: ["alda", "hero", "sion", "foe-1", "foe-2"],
+      order: ["alda", "mayu", "sion", "foe-1", "foe-2"],
     })
     const acted = eventsOrThrow(
       game.send({ type: "act", command: "skill", skill: whirl.id })
@@ -75,7 +76,7 @@ describe("ワザと状態", () => {
   it("[feature:W004] 狙う敵を選べる", () => {
     const game = battleWith({
       foes: ["kamokutsu", "kamokutsu"],
-      order: ["alda", "hero", "sion", "foe-1", "foe-2"],
+      order: ["alda", "mayu", "sion", "foe-1", "foe-2"],
     })
     const acted = eventsOrThrow(
       game.send({
@@ -89,7 +90,7 @@ describe("ワザと状態", () => {
   })
 
   it("[feature:W004] 溜めると次の一撃が倍になり、使うと消える", () => {
-    const order = ["alda", "hero", "sion", "foe-1"]
+    const order = ["alda", "mayu", "sion", "foe-1"]
     const plain = battleWith({ random: 0, order })
     const normal = (
       eventsOrThrow(
@@ -121,7 +122,7 @@ describe("ワザと状態", () => {
     const stitch = skillBySlug("stitch")
     const game = battleWith({
       random: 0,
-      order: ["hero", "foe-1", "sion", "alda"],
+      order: ["mayu", "foe-1", "sion", "alda"],
     })
     const events = eventsOrThrow(
       game.send({ type: "act", command: "skill", skill: stitch.id })
@@ -144,7 +145,7 @@ describe("ワザと状態", () => {
   it("[feature:W005] 毒は手番の終わりに削り、守りの加護は一度だけ被害を防ぐ", () => {
     const kamokutsu = foeBySlug("kamokutsu")
     const { protect, poisonDivisor } = realContent().balance
-    const order = ["foe-1", "hero", "sion", "alda"]
+    const order = ["foe-1", "mayu", "sion", "alda"]
     // 乱数0では敵は並びの一人目を狙う
     const plain = battleWith({ random: 0, order })
     const bare = (
@@ -159,7 +160,7 @@ describe("ワザと状態", () => {
       patch: (state) => ({
         ...state,
         members: state.members.map((member) =>
-          member.id === hero
+          member.id === mayu
             ? { ...member, status: [{ kind: "protect", turns: 1 }] }
             : member
         ),
@@ -181,7 +182,7 @@ describe("ワザと状態", () => {
     const events = eventsOrThrow(game.send({ type: "foe-turn" }))
     const acted = events[0] as Extract<GameEvent, { type: "acted" }>
     expect(acted.results[0]).toMatchObject({
-      target: { id: hero },
+      target: { id: mayu },
       blocked: true,
     })
     // 加護のぶんだけ被害が減る（端数の丸めは1まで）
@@ -196,7 +197,7 @@ describe("ワザと状態", () => {
       damage: Math.max(1, Math.floor(kamokutsu.hp / poisonDivisor)),
       down: false,
     })
-    expect(game.queries.member(game.state, hero)?.status).toEqual([])
+    expect(game.queries.member(game.state, mayu)?.status).toEqual([])
   })
 
   it("[feature:W005] 敵はワザで毒を与えることがある", () => {
@@ -206,13 +207,13 @@ describe("ワザと状態", () => {
       random: 0,
       content: aContent().withFoe("kuragesa", { atk: 40 }).build(),
       foes: ["kuragesa"],
-      order: ["foe-1", "hero", "sion", "alda"],
+      order: ["foe-1", "mayu", "sion", "alda"],
     })
     const events = eventsOrThrow(game.send({ type: "foe-turn" }))
     expect(events[0]).toMatchObject({
       type: "acted",
       name: spit.name,
-      results: [{ target: { id: hero }, status: "poison" }],
+      results: [{ target: { id: mayu }, status: "poison" }],
     })
   })
 
@@ -224,14 +225,14 @@ describe("ワザと状態", () => {
       .build()
     const game = battleWith({
       content,
-      order: ["sion", "hero", "foe-1", "alda"],
+      order: ["sion", "mayu", "foe-1", "alda"],
       patch: (state) => ({
         ...state,
         bag: [...state.bag, { good: contentId("antidote"), count: 1 }],
         members: state.members.map((member) =>
           member.id === alda
             ? { ...member, hp: 0 }
-            : member.id === hero
+            : member.id === mayu
               ? { ...member, status: [{ kind: "poison", turns: 3 }] }
               : member
         ),
@@ -255,11 +256,11 @@ describe("ワザと状態", () => {
         type: "act",
         command: "item",
         good: contentId("antidote"),
-        target: hero,
+        target: mayu,
       })
     )[0] as Extract<GameEvent, { type: "acted" }>
     expect(cured.results[0]).toMatchObject({
-      target: { id: hero },
+      target: { id: mayu },
       cured: ["poison"],
     })
   })
@@ -267,7 +268,7 @@ describe("ワザと状態", () => {
 
 describe("モートとジグの回復のワザ", () => {
   const alda = idOf("alda")
-  const hero = idOf("hero")
+  const mayu = idOf("mayu")
   const mort = idOf("mort")
   const jig = idOf("jig")
   const content = realContent()
@@ -292,7 +293,7 @@ describe("モートとジグの回復のワザ", () => {
       .withMembers(patch)
       .inBattle({
         foes: ["kamokutsu", "kamokutsu"],
-        order: [healer, "foe-1", "foe-2", "hero", "alda"],
+        order: [healer, "foe-1", "foe-2", "mayu", "alda"],
       })
       .build()
     return {
@@ -484,7 +485,7 @@ describe("モートとジグの回復のワザ", () => {
     const hymn = skillBySlug("grave-hymn")
     expect(hymn.target).toBe("allies")
     const { state, game } = healerBattle("mort", (member) =>
-      member.id === alda || member.id === hero ? { hp: 1 } : {}
+      member.id === alda || member.id === mayu ? { hp: 1 } : {}
     )
     const acted = actedOf(
       eventsOrThrow(
@@ -493,7 +494,7 @@ describe("モートとジグの回復のワザ", () => {
     )
     const healed = acted.results.filter((result) => (result.heal ?? 0) > 0)
     expect(healed.map((result) => result.target.id)).toEqual(
-      expect.arrayContaining([alda, hero])
+      expect.arrayContaining([alda, mayu])
     )
     for (const result of acted.results) {
       const before = state.members.find(
@@ -536,7 +537,7 @@ describe("モートとジグの回復のワザ", () => {
               { kind: "protect", turns: 2 },
             ],
           }
-        : member.id === hero
+        : member.id === mayu
           ? { status: [{ kind: "poison", turns: 3 }] }
           : {}
     )
@@ -564,7 +565,7 @@ describe("モートとジグの回復のワザ", () => {
     // ひとり分なので、ほかの仲間の毒は残る
     expect(
       game.state.members
-        .find((member) => member.id === hero)!
+        .find((member) => member.id === mayu)!
         .status.map((entry) => entry.kind)
     ).toEqual(["poison"])
   })
@@ -574,7 +575,7 @@ describe("モートとジグの回復のワザ", () => {
     const { state, game } = healerBattle("jig", (member) =>
       member.id === alda
         ? { hp: 0 }
-        : member.id === hero
+        : member.id === mayu
           ? { hp: 10, status: [{ kind: "bind", turns: 2 }] }
           : member.id === jig
             ? { hp: 10, status: [{ kind: "poison", turns: 3 }] }
@@ -590,14 +591,14 @@ describe("モートとジグの回復のワザ", () => {
     expect(acted.results.map((result) => result.target.id)).toEqual(
       state.party.filter((id) => id !== alda)
     )
-    for (const id of [hero, jig]) {
+    for (const id of [mayu, jig]) {
       const result = acted.results.find((entry) => entry.target.id === id)!
       expect(result.heal).toBeGreaterThanOrEqual(low)
       expect(result.heal).toBeLessThanOrEqual(high)
       expect(game.queries.member(game.state, id)!.status).toEqual([])
     }
     expect(
-      acted.results.find((entry) => entry.target.id === hero)!.cured
+      acted.results.find((entry) => entry.target.id === mayu)!.cured
     ).toEqual(["bind"])
     expect(
       acted.results.find((entry) => entry.target.id === jig)!.cured

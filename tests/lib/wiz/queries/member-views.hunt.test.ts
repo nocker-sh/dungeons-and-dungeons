@@ -11,20 +11,19 @@ import { sequentialIds } from "@/lib/wiz/testing/sequential-ids"
 
 const weapons = ["greatsword", "sword", "axe", "gun", "dagger"] as const
 const armors = ["coat", "leather", "mail", "robe"] as const
-/** 出撃の3人と、控えに雇ったマユ（ローブを着られる仲間）。 */
-const partySlugs = ["hero", "alda", "mayu", "mort"] as const
+/** 出撃の初期の3人（マユはローブを着られる仲間）。主人公は戦わないので入らない。 */
+const partySlugs = ["alda", "mort", "mayu"] as const
 const idOf = (slug: string) => memberBySlug(slug).id
 
-function richGame(
-  state: GameState = aState().withGold(5000).withJoined("mayu").build()
-) {
+function richGame(state: GameState = aState().withGold(5000).build()) {
   return createTestGame({ state, ids: sequentialIds("bought") })
 }
 
 describe("仲間の見え方（hunt）", () => {
-  it("登録した主人公の名前が持ち主・修理・持ち替え案内と保存復元に反映される", () => {
+  it("登録した主人公は持ち主・修理・持ち替え案内に出ず、仲間の名前がそのまま出て保存復元でも保つ", () => {
     const game = richGame(aState().withHero("コハク").withGold(5000).build())
     const hero = idOf("hero")
+    const mayu = idOf("mayu")
     eventsOrThrow(
       game.send({
         type: "buy",
@@ -32,36 +31,35 @@ describe("仲間の見え方（hunt）", () => {
         good: contentId("dagger"),
       })
     )
-    eventsOrThrow(
-      game.send({
-        type: "equip",
-        member: hero,
-        gear: game.state.gear.at(-1)!.id,
-      })
-    )
+    const dagger = game.state.gear.at(-1)!.id
+    // 主人公は仲間にいないので装備できない
+    const before = game.state
+    expect(
+      game.send({ type: "equip", member: hero, gear: dagger })
+    ).toMatchObject({ code: "UNKNOWN" })
+    expect(game.state).toBe(before)
+    eventsOrThrow(game.send({ type: "equip", member: mayu, gear: dagger }))
     const verify = (current: typeof game) => {
+      const gear = current.queries.gear(current.state)
+      expect(gear.find((entry) => entry.gear === dagger)?.owner).toBe(
+        memberBySlug("mayu").name
+      )
+      expect(gear.some((entry) => entry.ownerId === hero)).toBe(false)
+      expect(gear.some((entry) => entry.owner === "コハク")).toBe(false)
+      const repairs = current.queries.repairs(current.state).rows
+      expect(repairs.some((entry) => entry.member === hero)).toBe(false)
       expect(
-        current.queries
-          .gear(current.state)
-          .find((entry) => entry.ownerId === hero)?.owner
-      ).toBe("コハク")
-      expect(
-        current.queries
-          .repairs(current.state)
-          .rows.find((entry) => entry.member === hero)?.memberName
-      ).toBeUndefined() // 主人公は防具を着けず、修理対象にならない
-      const upgrade = realContent()
+        repairs.find((entry) => entry.member === idOf("alda"))?.memberName
+      ).toBe(memberBySlug("alda").name)
+      const upgrades = realContent()
         .goods.filter((good) => good.kind === "weapon")
         .flatMap((good) =>
           current.queries.upgradesForGood(current.state, good.id)
         )
-        .find((entry) => entry.member === hero)
-      expect(upgrade?.name).toBe("コハク")
-      expect(
-        current.queries
-          .repairs(current.state)
-          .rows.find((entry) => entry.member === idOf("alda"))?.memberName
-      ).toBe(memberBySlug("alda").name)
+      expect(upgrades.some((entry) => entry.member === hero)).toBe(false)
+      expect(upgrades.find((entry) => entry.member === mayu)?.name).toBe(
+        memberBySlug("mayu").name
+      )
     }
     verify(game)
     const restored = richGame()
@@ -111,7 +109,7 @@ describe("仲間の見え方（hunt）", () => {
   })
 
   it("武器を着けていなければ素の武器で戦う", () => {
-    const state = aState().withJoined("mayu").withGear([]).build()
+    const state = aState().withGear([]).build()
     const game = createTestGame({ state })
     for (const slug of partySlugs) {
       const definition = memberBySlug(slug)
@@ -254,19 +252,19 @@ describe("仲間の見え方（hunt）", () => {
     const game = createTestGame({ state: aState().build() })
     const rows = () =>
       game.queries.party(game.state).map((member) => [member.id, member.row])
-    const [hero, alda, mort] = ["hero", "alda", "mort"].map(idOf)
+    const [alda, mort, mayu] = ["alda", "mort", "mayu"].map(idOf)
     expect(rows()).toEqual([
-      [hero, "front"],
       [alda, "front"],
-      [mort, "back"],
-    ])
-    eventsOrThrow(game.send({ type: "swap-rows", a: hero, b: mort }))
-    expect(rows()).toEqual([
       [mort, "front"],
-      [alda, "front"],
-      [hero, "back"],
+      [mayu, "back"],
     ])
-    expect(game.queries.member(game.state, hero)!.row).toBe("back")
+    eventsOrThrow(game.send({ type: "swap-rows", a: alda, b: mayu }))
+    expect(rows()).toEqual([
+      [mayu, "front"],
+      [mort, "front"],
+      [alda, "back"],
+    ])
+    expect(game.queries.member(game.state, alda)!.row).toBe("back")
   })
 
   it("控えの仲間は隊列を持たず、出撃の印も立たない", () => {
@@ -366,25 +364,5 @@ describe("仲間の見え方（hunt）", () => {
     expect(view.maxHp).toBeGreaterThanOrEqual(1)
     expect(view.str).toBeGreaterThanOrEqual(0)
     expect(view.weapon!.attack).toBeGreaterThanOrEqual(1)
-  })
-})
-
-describe("合体の耐性の見え方", () => {
-  it("悪魔の一覧と主人公で上限到達を無効として案内し閲覧で保存を変えない", () => {
-    for (const level of [1, 20]) {
-      const game = richGame(
-        aState()
-          .withDemons([{ id: "lox", lv: level, exp: 0 }])
-          .build()
-      )
-      const before = game.save()
-      const hero = game.queries.member(game.state, idOf("hero"))!
-      const demon = game.queries.demons(game.state)[0]!
-      const expected = level === 20 ? "縛り無効" : "縛り8%"
-      expect(hero.fusion!.resist[0]!.label).toBe(expected)
-      expect(demon.fusion!.resist[0]!.label).toBe(expected)
-      expect(hero.fusion!.resist[0]!.immune).toBe(level === 20)
-      expect(game.save()).toEqual(before)
-    }
   })
 })

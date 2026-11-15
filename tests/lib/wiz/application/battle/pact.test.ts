@@ -99,7 +99,7 @@ describe("悪魔と契約して戦う仲間（ケイヤク）", () => {
       (entry) => entry.rank === "R" && !entry.retired
     )
     expect(rare.map((entry) => entry.member.id).sort()).toEqual(
-      ["alma", "nem", "rivet", "rize", "sera", "tsumugi"].map(idOf).sort()
+      ["alma", "nem", "rize", "sera"].map(idOf).sort()
     )
     for (const entry of rare) {
       const pact = entry.member.pact
@@ -266,6 +266,14 @@ describe("悪魔と契約して戦う仲間（ケイヤク）", () => {
     expect(after.weaponSkills.map((skill) => skill.id)).toEqual(
       modeGoods[1]!.skills
     )
+    // 契約の武器は個体を持たず、鍛冶屋で付け替えられないので印を付けない
+    expect(after.weaponSkills.some((skill) => skill.random)).toBe(false)
+    const almaMember = game.state.members.find((member) => member.id === alma)!
+    expect(
+      game.queries
+        .weapon(game.state, almaMember)!
+        .skills.some((skill) => skill.random)
+    ).toBe(false)
     expect(after.pact!.map((mode) => mode.current)).toEqual([
       false,
       true,

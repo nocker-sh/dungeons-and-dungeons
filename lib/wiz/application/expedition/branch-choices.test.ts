@@ -81,6 +81,31 @@ describe("狙う報酬と代償で選ぶ分岐", () => {
     }
   )
 
+  it("察知できない未知の道には、できない理由を添える", () => {
+    const content = aContent()
+      .withLayer("layer0", {
+        stations: [
+          { id: "s", x: 0, y: 0, next: ["m", "n"] },
+          { id: "m", x: 1, y: 0, next: ["end"], mystery: true },
+          { id: "n", x: 1, y: 1, next: ["end"], mystery: true },
+          { id: "end", x: 2, y: 0, next: [], boss: true },
+        ],
+      })
+      .build()
+    const game = createTestGame({
+      content,
+      state: aState(content)
+        .inExpedition({ surveyed: [{ station: "n", kind: "trap" }] })
+        .build(),
+    })
+    const [unknown, surveyed] = game.queries.route(game.state)!.paths
+    expect(unknown).toMatchObject({
+      canSurvey: false,
+      surveyReason: "この出撃の察知は使い切った",
+    })
+    expect(surveyed).toMatchObject({ surveyReason: "この道は察知済み" })
+  })
+
   it("合流先の共通報酬を、手前の枝固有の報酬として表示しない", () => {
     const content = aContent()
       .withLayer("layer0", {
@@ -176,7 +201,7 @@ describe("狙う報酬と代償で選ぶ分岐", () => {
     const game = createTestGame({
       state: aState()
         .withGold(100)
-        .withMember("hero", { hp: 1 })
+        .withMember("mayu", { hp: 1 })
         .inExpedition({
           at: "n3",
           visited: ["s", "n3"],
@@ -199,7 +224,7 @@ describe("狙う報酬と代償で選ぶ分岐", () => {
         .withMember("alda", {
           used: [
             { skill: skillBySlug("whirl").id, count: 1 },
-            { skill: skillBySlug("charge").id, count: 3 },
+            { skill: skillBySlug("helmsplit").id, count: 3 },
           ],
         })
         .inExpedition({
@@ -210,7 +235,9 @@ describe("狙う報酬と代償で選ぶ分岐", () => {
         .build(),
     })
     const before = game.state
-    const alda = before.members.find((member) => member.id === before.party[1])!
+    const alda = before.members.find(
+      (member) => member.id === contentId("alda")
+    )!
     expect(alda.used.reduce((sum, entry) => sum + entry.count, 0)).toBe(4)
     const rest = game.queries
       .route(before)!
@@ -238,7 +265,7 @@ describe("狙う報酬と代償で選ぶ分岐", () => {
     ({ station, choice, hp }) => {
       const game = createTestGame({
         state: aState()
-          .withMember("hero", { hp })
+          .withMember("mayu", { hp })
           .inExpedition({
             at: station,
             visited: ["s", station],
@@ -251,8 +278,8 @@ describe("狙う報酬と代償で選ぶ分岐", () => {
       const offer = game.queries
         .route(before)!
         .discovery!.choices.find((entry) => entry.id === choice)!
-      const hero = before.party[0]
-      expect(offer.healthChanges.some((entry) => entry.id === hero)).toBe(
+      const mayu = contentId("mayu")
+      expect(offer.healthChanges.some((entry) => entry.id === mayu)).toBe(
         hp > 0
       )
       expect(offer.payment).toEqual([])
@@ -263,17 +290,17 @@ describe("狙う報酬と代償で選ぶ分岐", () => {
         expect(
           game.state.members.find((member) => member.id === predicted.id)!.hp
         ).toBe(predicted.after)
-      expect(game.state.members.find((member) => member.id === hero)!.hp).toBe(
+      expect(game.state.members.find((member) => member.id === mayu)!.hp).toBe(
         hp === 0
           ? 0
           : choice === "force"
             ? Math.max(
                 1,
-                hp - Math.floor(game.queries.member(before, hero)!.maxHp * 0.2)
+                hp - Math.floor(game.queries.member(before, mayu)!.maxHp * 0.2)
               )
             : Math.min(
-                game.queries.member(before, hero)!.maxHp,
-                hp + Math.floor(game.queries.member(before, hero)!.maxHp * 0.3)
+                game.queries.member(before, mayu)!.maxHp,
+                hp + Math.floor(game.queries.member(before, mayu)!.maxHp * 0.3)
               )
       )
     }
@@ -284,7 +311,7 @@ describe("狙う報酬と代償で選ぶ分岐", () => {
       state: aState()
         .withGold(100)
         .withExtraMember("alma")
-        .withParty(["hero", "alda", "alma"])
+        .withParty(["alda", "mort", "alma"])
         .inExpedition({ at: "n9", visited: ["s", "n9"] })
         .build(),
       random: () => {
@@ -343,7 +370,7 @@ describe("狙う報酬と代償で選ぶ分岐", () => {
     const game = createTestGame({
       state: aState()
         .withExtraMember("alma", { hp: 0 })
-        .withParty(["hero", "alda", "alma"])
+        .withParty(["alda", "mort", "alma"])
         .inExpedition({ at: "n9", visited: ["s", "n9"] })
         .build(),
     })

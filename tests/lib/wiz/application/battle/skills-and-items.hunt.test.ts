@@ -80,7 +80,7 @@ describe("ワザと道具の当たり方（hunt）", () => {
       ],
     })
     .build()
-  const hero = idOf("hero")
+  const mayu = idOf("mayu")
   const alda = idOf("alda")
   const mort = idOf("mort")
   // アルダの素の武器（両手剣）に付く近接のワザ
@@ -184,7 +184,8 @@ describe("ワザと道具の当たり方（hunt）", () => {
   it("[feature:W004] 状態の耐性が高い敵は状態を受け付けない", () => {
     const content = toughFoe(fixture, { resist: { bind: 1 } })
     const state = aState(content)
-      .inBattle({ foes: ["kamokutsu"], order: ["hero", "foe-1"] })
+      .withWeaponSkills("mayu", ["stitch"])
+      .inBattle({ foes: ["kamokutsu"], order: ["mayu", "foe-1"] })
       .build()
     const game = createTestGame({ content, state, random: 0 })
     const acted = actedOf(
@@ -200,7 +201,8 @@ describe("ワザと道具の当たり方（hunt）", () => {
   it("[feature:W004] 耐性のない敵は確率のとおり状態を受ける", () => {
     const content = toughFoe()
     const state = aState(content)
-      .inBattle({ foes: ["kamokutsu"], order: ["hero", "foe-1"] })
+      .withWeaponSkills("mayu", ["stitch"])
+      .inBattle({ foes: ["kamokutsu"], order: ["mayu", "foe-1"] })
       .build()
     // 赤糸縫いは0.6。乱数0.5なら掛かり、0.7なら掛からない
     const statusOf = (random: number) => {
@@ -222,9 +224,10 @@ describe("ワザと道具の当たり方（hunt）", () => {
   it("[feature:W004] 倒した敵には状態がかからない", () => {
     const content = fixture
     const base = aState(content)
+      .withWeaponSkills("mayu", ["stitch"])
       .inBattle({
         foes: ["kamokutsu", "kamokutsu"],
-        order: ["hero", "foe-1", "foe-2"],
+        order: ["mayu", "foe-1", "foe-2"],
       })
       .build()
     const state = patchFoes(base, (foe) =>
@@ -339,13 +342,14 @@ describe("ワザと道具の当たり方（hunt）", () => {
       })
       .build()
     const state = aState(content)
+      .withParty(["mayu", "alda", "mort"])
       .withBag([{ good: contentId("smoke"), count: 1 }])
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["hero", "foe-1", "alda", "mort"],
+        order: ["mayu", "foe-1", "alda", "mort"],
       })
       .build()
-    // 乱数0では敵は並びの一人目（主人公）を狙う
+    // 乱数0では敵は並びの一人目（マユ）を狙う
     const game = createTestGame({ content, state, random: 0 })
     const acted = actedOf(
       eventsOrThrow(
@@ -353,13 +357,13 @@ describe("ワザと道具の当たり方（hunt）", () => {
       )
     )
     expect(acted.results[0]).toMatchObject({
-      target: { kind: "member", id: hero },
+      target: { kind: "member", id: mayu },
       status: "protect",
     })
     const result = actedOf(eventsOrThrow(game.send({ type: "foe-turn" })))
       .results[0]
-    expect(result).toMatchObject({ target: { id: hero }, blocked: true })
-    expect(game.queries.member(game.state, hero)!.status).toEqual([])
+    expect(result).toMatchObject({ target: { id: mayu }, blocked: true })
+    expect(game.queries.member(game.state, mayu)!.status).toEqual([])
   })
 
   it("[feature:W005] 敵の回復ワザは最大HPを超えない", () => {
@@ -397,8 +401,8 @@ describe("ワザと道具の当たり方（hunt）", () => {
     // 最初の3人に加え、最初の仲間にいないシオンもモートと入れ替えて試す
     const lineups = [
       // down は倒れた場面で倒れている仲間（動く仲間からは外す）
-      { party: base, actors: ["alda", "hero", "mort"], down: "alda" },
-      { party: base, actors: ["alda", "hero", "mort"], down: "mort" },
+      { party: base, actors: ["alda", "mayu", "mort"], down: "alda" },
+      { party: base, actors: ["alda", "mayu", "mort"], down: "mort" },
       {
         party: base.withJoined("sion", { replacing: "mort" }),
         actors: ["sion"],
@@ -474,35 +478,27 @@ describe("ワザと道具の当たり方（hunt）", () => {
     expect(game.queries.member(game.state, mort)!.status).toEqual([])
   })
 
-  it("[feature:W004] 悪魔のレベルが上がると主人公の悪魔のワザだけ強くなる", () => {
-    // 合体の攻撃力ぶんを切り離して、ワザの威力の伸びだけを測る
-    const content = aContent(toughFoe())
-      .withDemon("nui", { fusion: undefined })
-      .build()
+  it("[feature:W004] 悪魔のレベルは仲間のワザの威力を変えない", () => {
+    // 悪魔の力は戦闘で呼ぶ必殺技（W046）だけに使い、仲間のワザには乗せない
+    const content = toughFoe()
     const damageOf = (lv: number, skill: string) => {
       const state = aState(content)
-        .withWeaponSkills("hero", [skill])
+        .withWeaponSkills("mayu", [skill])
         .withDemons([{ id: "nui", lv, exp: 0 }], "nui")
-        .inBattle({ foes: ["kamokutsu"], order: ["hero", "foe-1"] })
+        .inBattle({ foes: ["kamokutsu"], order: ["mayu", "foe-1"] })
         .build()
       const game = createTestGame({ content, state, random: 0.5 })
       return actedOf(
         eventsOrThrow(game.send({ type: "act", command: "skill", skill }))
       ).results[0].damage!
     }
-    // 悪魔のワザは威力 × (1 + powerPerLevel × (レベル−1))
-    const per = realContent().summon.powerPerLevel
     const level = realContent().summon.maxLevel
-    const shears = skillBySlug("shears").id
-    const thrust = skillBySlug("thrust").id
-    const low = damageOf(1, shears)
-    const high = damageOf(level, shears)
-    expect(high).toBeGreaterThan(low)
-    // 端数の丸めのぶんだけ1まで離れる
-    expect(Math.abs(high - low * (1 + per * (level - 1)))).toBeLessThanOrEqual(
-      1
-    )
-    // 武器のワザは悪魔のレベルで変わらない
-    expect(damageOf(level, thrust)).toBe(damageOf(1, thrust))
+    expect(level).toBeGreaterThan(1)
+    // 悪魔のワザを武器に付けても、武器のワザでも、レベルで変わらない
+    for (const skill of [
+      skillBySlug("shears").id,
+      skillBySlug("magicbullet").id,
+    ])
+      expect(damageOf(level, skill)).toBe(damageOf(1, skill))
   })
 })

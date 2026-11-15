@@ -3,6 +3,7 @@ import type { GameRules } from "@/lib/wiz/definition/game-rules"
 import type { Game } from "@/lib/wiz/game/game"
 import type { GameState } from "@/lib/wiz/state/state-schema"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { GameStateBuilder } from "@/lib/wiz/testing/state-builder"
 import { fixedClock } from "@/lib/wiz/testing/fixed-clock"
 import { sequentialIds } from "@/lib/wiz/testing/sequential-ids"
@@ -28,13 +29,13 @@ export type TestGameOptions = Readonly<{
  */
 export function createTestGame(options: TestGameOptions = {}): Game {
   const random = options.random ?? 0.5
+  // 同じ作品データの検証・凍結はやり直さない（テストの時間の大半を占めていた）
+  const content = catalogOf(options.content ?? realContent())
   return createGame({
-    content: options.content ?? realContent(),
+    content,
     initialState:
       options.state ??
-      (options.fresh
-        ? undefined
-        : GameStateBuilder.of(options.content ?? realContent()).build()),
+      (options.fresh ? undefined : GameStateBuilder.of(content).build()),
     random: typeof random === "number" ? () => random : random,
     clock: options.clock ?? fixedClock(0),
     ids: options.ids ?? sequentialIds(),

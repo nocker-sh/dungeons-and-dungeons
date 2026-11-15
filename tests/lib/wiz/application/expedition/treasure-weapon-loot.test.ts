@@ -33,7 +33,7 @@ describe("武器を拾った後の宝箱", () => {
         state: aState(content)
           .inBattle({
             foes: ["kamokutsu"],
-            order: ["hero", "alda", "mort", "foe-1"],
+            order: ["mayu", "alda", "mort", "foe-1"],
           })
           .build(),
       })

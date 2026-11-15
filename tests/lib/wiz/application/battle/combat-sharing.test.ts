@@ -19,8 +19,8 @@ function play(foeFirst = false, hurt = false) {
       .inBattle({
         foes: ["kamokutsu"],
         order: foeFirst
-          ? ["foe-1", "hero", "alda", "mort"]
-          : ["hero", "foe-1", "alda", "mort"],
+          ? ["foe-1", "mayu", "alda", "mort"]
+          : ["mayu", "foe-1", "alda", "mort"],
       })
       .build()
   )

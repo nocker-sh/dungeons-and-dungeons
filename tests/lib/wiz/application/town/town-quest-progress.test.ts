@@ -140,11 +140,12 @@ it.each([false, true])(
           : entry
       ),
     })
-    const hero = definition.catalog.data.party.find((member) => member.hero)!.id
+    // 倒れる一人は後衛のマユ。ほかの二人は倒れないほど強くする
+    const weak = contentId("mayu")
     const game = definition.create(testEnvironment(), {
       ...ready.state,
       members: ready.state.members.map((member) =>
-        member.id === hero
+        member.id === weak
           ? { ...member, hp: 1, status: [{ kind: "poison", turns: 1 }] }
           : {
               ...member,

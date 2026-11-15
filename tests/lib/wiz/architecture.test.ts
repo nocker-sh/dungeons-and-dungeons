@@ -53,7 +53,11 @@ function importedPaths(source: string, file: string) {
     .importedFiles.map((reference) => {
       const path = reference.fileName
       const absolute = path.startsWith("@/")
-        ? resolve(engineRoot, "../..", path.slice(2))
+        ? resolve(
+            engineRoot,
+            "../..",
+            path.slice(2).replace(/^client\//, "apps/main/client/")
+          )
         : path.startsWith(".")
           ? resolve(dirname(file), path)
           : null
@@ -98,7 +102,9 @@ describe("エンジンの境界", () => {
       for (const imported of importedPaths(source, file)) {
         expect(imported, path).not.toMatch(/^react(?:-dom)?(?:\/|$)/)
         const projectPath = relative(resolve(engineRoot, "../.."), imported)
-        expect(projectPath, path).not.toMatch(/^client(?:\/|$)/)
+        expect(projectPath, path).not.toMatch(
+          /^(?:apps\/main\/)?client(?:\/|$)/
+        )
         // testing だけは作品データを読む（入口は次のテストで制限する）。
         if (!path.startsWith("testing/"))
           expect(projectPath, path).not.toMatch(/^(?:content|concept)(?:\/|$)/)
@@ -320,9 +326,10 @@ describe("エンジンの境界", () => {
   )
 
   it("画面はフェーズのクラスを通してだけ操作する（game.send を直接呼ばない）", () => {
-    const uiRoots = ["../../client/components", "../../client/contexts"].map(
-      (dir) => resolve(engineRoot, dir)
-    )
+    const uiRoots = [
+      "../../apps/main/client/components",
+      "../../apps/main/client/contexts",
+    ].map((dir) => resolve(engineRoot, dir))
     const files = (root: string): string[] =>
       readdirSync(root, { withFileTypes: true }).flatMap((entry) =>
         entry.isDirectory()

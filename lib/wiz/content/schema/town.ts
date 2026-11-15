@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { magicSchools, statusKinds } from "@/lib/wiz/content/constants"
+import { magicSchools } from "@/lib/wiz/content/constants"
 import { id, positive, count } from "./primitives"
 import { member } from "./members"
 
@@ -19,24 +19,8 @@ export const demon = z.strictObject({
     })
     .optional(),
   skills: z.array(id).min(1),
-  /** この悪魔の魔法の流派。合体している主人公はこの流派を使う。 */
+  /** この悪魔の魔法の流派（設定。戦闘の数値には関わらない）。 */
   school: z.enum(magicSchools).optional(),
-  /**
-   * 合体の効果。悪魔のレベル1つごとに主人公へ足す分。
-   * ワザの威力そのものは `summon.powerPerLevel` で上がる（合体の効果とは別）。
-   */
-  fusion: z
-    .strictObject({
-      /** レベル1つごとに上がる攻撃力の割合。 */
-      attack: z.number().nonnegative().optional(),
-      /** レベル1つごとに増える最大HP。 */
-      maxHp: count.optional(),
-      /** レベル1つごとに増える状態異常への耐性（合計は1まで）。 */
-      resist: z
-        .partialRecord(z.enum(statusKinds), z.number().min(0).max(1))
-        .optional(),
-    })
-    .optional(),
 })
 
 export const room = z.strictObject({
@@ -81,7 +65,7 @@ export const summon = z.strictObject({
   /** 1レベル上がるのに要る経験値。 */
   levelExp: positive,
   maxLevel: positive,
-  /** 悪魔のレベル1つごとに、主人公のワザの威力に足す割合。 */
+  /** 旧仕様（合体）の、悪魔のレベルによるワザの威力の割合。今の規則では使わない。 */
   powerPerLevel: z.number().nonnegative(),
 })
 

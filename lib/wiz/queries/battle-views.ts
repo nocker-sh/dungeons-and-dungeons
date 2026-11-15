@@ -53,8 +53,30 @@ export class BattleViews {
       state.phase.expedition.at
     )
     const townQuest = state.phase.townQuest ?? null
+    const current = battle.order[battle.turn % battle.order.length]
+    const demon = this.rules.magic.contracted(state)?.demon ?? null
+    const call = demon ? this.rules.demonCall.skillOf(demon.id) : null
     return {
       boss: battle.boss,
+      /**
+       * プレイヤーが呼べる悪魔の必殺技（契約がなければ null）。1戦闘に1回、仲間の手番に使え、手番は消えない。
+       */
+      demonCall:
+        demon && call
+          ? {
+              demon: demon.id,
+              demonName: demon.name,
+              skill: call.id,
+              skillName: call.name,
+              /** 今呼べる（まだ呼んでおらず、戦える仲間の手番）。 */
+              usable:
+                !battle.demonCalled &&
+                current.kind === "member" &&
+                (state.members.find((entry) => entry.id === current.id)?.hp ??
+                  0) > 0,
+              called: !!battle.demonCalled,
+            }
+          : null,
       townQuest,
       /** 戦う場所の鍵。依頼の戦いは依頼の場所、探索の戦いは層の id。背景の絵は作品のデータが引く。 */
       place: townQuest
@@ -166,8 +188,6 @@ export class BattleViews {
         /** 魔法の流派（流派のないワザは null）。 */
         school: skill.school ?? null,
         schoolName: skill.school ? MAGIC_SCHOOL_NAMES[skill.school] : null,
-        /** 合体している悪魔と流派が合い、威力が上がる。 */
-        affinity: this.rules.magic.affinityFactor(member, state, id) > 1,
         /** 流派が合わなくて選べない。 */
         blocked: !allowed,
         /** 放つときに払うHP（払わないワザは 0）。 */
@@ -189,16 +209,18 @@ export class BattleViews {
     return {
       /** いま戦う武器（個体のレア度・上振れを含む）。 */
       weapon: this.members.weapon(state, member),
-      /** 武器に付く3つのワザ。付け替え可能な枠には random の印。 */
+      /** 武器に付く3つのワザ。付け替え可能な枠には random の印（個体を持たない契約・素の武器は付け替えられない）。 */
       weaponSkills: weaponSkills.map((id, index) => ({
         ...view(id),
-        random: !!weapon && this.weapons.isRandomSkill(weapon.good, index, id),
+        random:
+          !!weapon?.gear &&
+          this.weapons.isRandomSkill(weapon.good, index, id),
       })),
       blessing: member.blessing
         ? { ...view(member.blessing), random: false }
         : null,
       /** キャラ固有のスキル。 */
-      skills: this.rules.magic.skills(member, state).map(view),
+      skills: this.rules.magic.skills(member).map(view),
       /**
        * ケイヤク（悪魔と契約して戦う仲間だけ）。モードごとの戦い方と、いまのモード・選べるか。
        * 契約しない仲間と、モードが一つだけの仲間（変える先がない）は null。モードを変えると手番を使う。

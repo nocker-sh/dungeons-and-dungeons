@@ -1,13 +1,14 @@
 import { expect, it } from "vite-plus/test"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { Bag } from "@/lib/wiz/rules/bag"
 import type { GameState } from "@/lib/wiz/state/state-schema"
 
-const definition = new GameDefinition(realContent())
+const definition = new GameDefinition(catalogOf(realContent()))
 const smithy = definition.catalog.data.smithy!
 it.each(smithy.recipes)(
   "$id: crafting and every upgrade survive save resumption without partial payment",

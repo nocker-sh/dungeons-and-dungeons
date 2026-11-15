@@ -9,8 +9,8 @@ import { reject } from "@/lib/wiz/application/reject"
 import type { Transition } from "@/lib/wiz/application/transition"
 
 /**
- * ギルドの登録用紙に名前を書き、写真（容姿）を選んで登録する。
- * 名前は全角カタカナ1〜6文字。写真を省くと今の容姿のまま。
+ * ギルドの登録用紙に名前を書いて登録する。
+ * 名前は全角カタカナ1〜6文字。プレイヤーは画面に出ないので容姿は選ばない（旧保存の look は受け取るだけ）。
  */
 export class RegisterHero {
   static readonly featureId = "W037"

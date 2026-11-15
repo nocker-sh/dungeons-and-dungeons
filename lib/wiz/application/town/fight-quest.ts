@@ -25,6 +25,8 @@ export class FightQuest {
   ) {
     if (state.phase.type !== "town" || state.conversation?.active || state.wipe)
       return reject("WRONG_PHASE")
+    // 戦闘の札に登録した名前を出すため、ギルドで登録するまでは戦わない（W045）。
+    if (state.hero.registrationPending) return reject("UNREGISTERED")
     const quest = this.deps.catalog.quest(input.quest)
     if (!quest?.encounter) return reject("UNKNOWN")
     if (

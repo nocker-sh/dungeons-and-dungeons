@@ -7,9 +7,10 @@ import { aState } from "@/lib/wiz/testing/state-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 
-const definition = new GameDefinition(realContent())
+const definition = new GameDefinition(catalogOf(realContent()))
 
 test.each(definition.catalog.data.goods.filter((good) => good.kind === "item"))(
   "$id: native packing, departure, field use and return survive failed saves without using stored reserves",

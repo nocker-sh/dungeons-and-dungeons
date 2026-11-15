@@ -3,12 +3,13 @@ import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 import { Bag } from "@/lib/wiz/rules/bag"
 
 function journey(reached = 1) {
-  const definition = new GameDefinition(realContent())
+  const definition = new GameDefinition(catalogOf(realContent()))
   const initial = definition.initialState()
   const game = definition.create(testEnvironment({ random: 0 }), {
     ...initial,
@@ -317,16 +318,17 @@ describe("村・契約書・別のバイオームの約束", () => {
   })
   it("初期の三人と役割を保ち、初回案内を優先し、再訪で繰り返さない", () => {
     const { game, definition } = journey()
+    // 主人公は戦わない運営役なので、初期の三人はアルダ・モート・マユ
     expect(game.state.party).toEqual([
-      contentId("hero"),
       contentId("alda"),
       contentId("mort"),
+      contentId("mayu"),
     ])
     expect(
       game.queries
         .party(game.state)
         .map((member) => definition.catalog.member(member.id)!.role)
-    ).toEqual(["summoner", "tank", "healer"])
+    ).toEqual(["tank", "healer", "damage"])
     // 街・ギルドのホールの初回の場面は、はじめから遊ぶ流れ（登録前）で流す
     for (const place of [
       "inn",

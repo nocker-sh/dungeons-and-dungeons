@@ -153,6 +153,7 @@ export class SmithyViews {
     const inscriptions = state.gear.flatMap((gear) => {
       const good = this.catalog.good(gear.good)
       if (gear.unidentified || !gear.weapon || !good) return []
+      if (this.rules.equipment.isFixedWeapon(gear)) return []
       const weapon = this.goods.weaponEntry(good, gear.plus, gear.weapon)
       if (!weapon) return []
       return [
@@ -163,7 +164,16 @@ export class SmithyViews {
           owner: gear.owner
             ? this.members.member(state, gear.owner)?.name
             : null,
-          skills: weapon.skills,
+          /** 枠ごとのワザ。slot は付け替えの指定にそのまま使う（0 は固有で変更できない）。 */
+          skills: gear.weapon.skills.flatMap((id, slot) =>
+            this.goods
+              .skillList([id], undefined, weapon.usesBonus)
+              .map((skill) => ({
+                ...skill,
+                slot,
+                random: this.weapons.isRandomSkill(good, slot, id),
+              }))
+          ),
           candidates: this.goods.skillList(
             this.weapons
               .pool(good)

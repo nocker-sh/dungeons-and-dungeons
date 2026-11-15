@@ -3,6 +3,7 @@ import { aState } from "@/lib/wiz/testing/state-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { goodBySlug } from "@/lib/wiz/testing/good-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { seededRandom } from "@/lib/wiz/testing/seeded-random"
@@ -14,7 +15,7 @@ describe("光るガラクタの鑑定", () => {
   const rare = goodBySlug("rare-junk").id
 
   it("[feature:W010] 光るガラクタは武器の店で必ず R 以上の武器になり、1つ減る", () => {
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const state = aState().withItem("rare-junk", 1).build()
     for (let seed = 1; seed <= 40; seed++) {
       const game = definition.create(

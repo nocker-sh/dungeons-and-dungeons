@@ -19,6 +19,8 @@ export class Reroll {
     environment: WizWorldEnvironment
   ): Transition {
     if (!inTown(state)) return reject("WRONG_PHASE")
+    // 登録前は契約できないので、引き直しにも払わせない（W037）。
+    if (state.hero.registrationPending) return reject("UNREGISTERED")
     const { recruits, recruiting } = this.deps.catalog.data
     const active = recruits.filter((entry) => !entry.retired)
     if (!active.length) return reject("UNAVAILABLE")

@@ -82,20 +82,21 @@ describe("殴る（使える手が尽きたとき）", () => {
   it.each(["HP1", "代償と同じHP", "代償より1多いHP"])(
     "[feature:W004] 残る攻撃のHP代償を払えるかで殴るを決める（%s）",
     (boundary) => {
-      const hero = memberBySlug("hero").id
-      const builder = aState().withDemons([{ id: "zaza", lv: 1, exp: 0 }])
-      const state = builder
-        .inBattle({ order: [...builder.build().party, "foe-1"] })
+      // マユは己のHPを払う攻撃（生贄の一撃）を持つ
+      const mayu = memberBySlug("mayu").id
+      const state = aState()
+        .inBattle({ order: ["mayu", "alda", "mort", "foe-1"] })
         .build()
       const probe = createTestGame({ state })
-      const commands = probe.queries.commands(probe.state, hero)!
+      const commands = probe.queries.commands(probe.state, mayu)!
       const attacks = [...commands.weaponSkills, ...commands.skills].filter(
         (skill) => skill.kind === "hit"
       )
       const sacrifice = attacks.find((skill) => skill.cost > 0)!
       expect(sacrifice.left).toBeGreaterThan(0)
+      // 代償を払う攻撃をひとつだけ残し、ほかの攻撃は使い切る
       const used = attacks
-        .filter((skill) => skill.cost === 0)
+        .filter((skill) => skill.id !== sacrifice.id)
         .map((skill) => ({ skill: skill.id, count: skill.uses! }))
       const hp =
         boundary === "HP1"
@@ -105,11 +106,11 @@ describe("殴る（使える手が尽きたとき）", () => {
         state: {
           ...state,
           members: state.members.map((member) =>
-            member.id === hero ? { ...member, hp, used } : member
+            member.id === mayu ? { ...member, hp, used } : member
           ),
         },
       })
-      const view = game.queries.commands(game.state, hero)!
+      const view = game.queries.commands(game.state, mayu)!
       const canAttack = hp > sacrifice.cost
       expect(
         [...view.weaponSkills, ...view.skills].some(
@@ -140,7 +141,7 @@ describe("殴る（使える手が尽きたとき）", () => {
         ).find((event) => event.type === "acted")
         expect(acted).toMatchObject({ command: "brawl" })
         expect(
-          game.state.members.find((member) => member.id === hero)
+          game.state.members.find((member) => member.id === mayu)
         ).toMatchObject({ hp, used })
       }
     }

@@ -24,7 +24,7 @@ describe("道具を使う（戦闘の外）の不変条件", () => {
   const mort = idOf("mort")
   const jig = idOf("jig")
   const whirl = skillBySlug("whirl")
-  const charge = skillBySlug("charge")
+  const helmsplit = skillBySlug("helmsplit")
   const potionHeal = amountOf("potion")
   // はじめの袋に入っている回復薬の数
   const potions = 3
@@ -244,7 +244,7 @@ describe("道具を使う（戦闘の外）の不変条件", () => {
         .withItem("ether", 2)
         .withUses("alda", [
           { skill: whirl.id, count: 1 },
-          { skill: charge.id, count: 3 },
+          { skill: helmsplit.id, count: 3 },
         ])
         .build(),
     })
@@ -270,7 +270,7 @@ describe("道具を使う（戦闘の外）の不変条件", () => {
     ).toBe(1)
     expect(
       game.state.members.find((member) => member.id === alda)!.used
-    ).toEqual([{ skill: charge.id, count: 3 - per }])
+    ).toEqual([{ skill: helmsplit.id, count: 3 - per }])
     eventsOrThrow(
       game.send({ type: "use", good: contentId("ether"), member: alda })
     )

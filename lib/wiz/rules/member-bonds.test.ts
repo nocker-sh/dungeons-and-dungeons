@@ -2,23 +2,26 @@ import { describe, expect, it } from "vite-plus/test"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { startedState } from "@/lib/wiz/testing/started-state"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 import { ConversationRules } from "@/lib/wiz/conversations/conversation-rules"
 import { MemberBonds } from "@/lib/wiz/rules/member-bonds"
 
-const definition = new GameDefinition(realContent())
+const definition = new GameDefinition(catalogOf(realContent()))
 const hero = contentId("hero")
 const likes = (state: ReturnType<typeof startedState>) =>
   Object.fromEntries(state.members.map((member) => [member.id, member.like]))
 
 describe("仲間との親しさ", () => {
-  it("一緒に出撃すると、主人公以外の2人の親しさが1上がる", () => {
+  it("一緒に出撃すると、出撃した3人の親しさが1上がる（プレイヤーは戦わないので数えない）", () => {
     const start = startedState(definition)
     const game = definition.create(testEnvironment({ random: 0 }), start)
     eventsOrThrow(game.send({ type: "depart", layer: contentId("layer0") }))
     const after = likes(game.state)
+    expect(start.party).toHaveLength(3)
+    expect(start.party).not.toContain(hero)
     for (const member of start.members) {
       const expected =
         start.party.includes(member.id) && member.id !== hero ? 1 : 0
@@ -26,7 +29,7 @@ describe("仲間との親しさ", () => {
     }
   })
 
-  it("宿に泊まると、出撃の3人（主人公を除く）の親しさが1上がる", () => {
+  it("宿に泊まると、出撃の3人の親しさが1上がる", () => {
     const start = startedState(definition)
     const game = definition.create(testEnvironment({ random: 0 }), {
       ...start,

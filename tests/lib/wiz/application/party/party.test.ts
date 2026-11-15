@@ -70,7 +70,6 @@ describe("装備と隊列", () => {
       undefined,
       GameStateBuilder.from(startedState(definition), definition.catalog)
         .withGold(5000)
-        .withJoined("mayu")
         .build()
     )
     eventsOrThrow(
@@ -88,7 +87,7 @@ describe("装備と隊列", () => {
     expect(game.queries.member(game.state, mayu)!.armor).toBeNull()
   })
 
-  it("[feature:W019] 控えと入れ替えると位置と前衛・後衛を引き継ぐ。主人公は外せない", () => {
+  it("[feature:W019] 控えと入れ替えると位置と前衛・後衛を引き継ぐ。主人公は仲間にいないので入れ替えられない", () => {
     const { definition } = createTestPlay()
     const game = definition.create(
       undefined,
@@ -98,21 +97,26 @@ describe("装備と隊列", () => {
         .build()
     )
     eventsOrThrow(game.send({ type: "recruit", recruit: contentId("r-jig") }))
+    const before = game.state
     expect(
-      (game.send({ type: "swap", out: hero, in: jig }) as GameCommandError).code
-    ).toBe("HERO")
-    eventsOrThrow(game.send({ type: "swap", out: mort, in: jig }))
-    expect(game.state.party).toEqual([hero, alda, jig])
+      (game.send({ type: "swap", out: alda, in: hero }) as GameCommandError)
+        .code
+    ).toBe("UNKNOWN")
+    expect(game.state).toBe(before)
+    eventsOrThrow(game.send({ type: "swap", out: mayu, in: jig }))
+    expect(game.state.party).toEqual([alda, mort, jig])
     expect(game.queries.member(game.state, jig)?.row).toBe("back")
     expect(game.queries.reserve(game.state).map((member) => member.id)).toEqual(
-      [mort]
+      [mayu]
     )
   })
 
   it("[feature:W020] 並びの左2人が前衛。前衛と後衛を一人ずつ入れ替えると位置が入れ替わる", () => {
     const { game } = createTestPlay()
-    expect(game.queries.member(game.state, hero)?.row).toBe("front")
-    expect(game.queries.member(game.state, mort)?.row).toBe("back")
+    expect(game.state.party).toEqual([alda, mort, mayu])
+    expect(game.queries.member(game.state, alda)?.row).toBe("front")
+    expect(game.queries.member(game.state, mort)?.row).toBe("front")
+    expect(game.queries.member(game.state, mayu)?.row).toBe("back")
   })
 
   it("[feature:W020] 前衛と後衛を一人ずつ入れ替える", () => {
@@ -121,23 +125,26 @@ describe("装備と隊列", () => {
       (
         game.send({
           type: "swap-rows",
-          a: hero,
-          b: alda,
+          a: alda,
+          b: mort,
         }) as GameCommandError
       ).code
     ).toBe("UNAVAILABLE")
-    eventsOrThrow(game.send({ type: "swap-rows", a: alda, b: mort }))
+    eventsOrThrow(game.send({ type: "swap-rows", a: alda, b: mayu }))
     expect(game.queries.member(game.state, alda)?.row).toBe("back")
-    expect(game.queries.member(game.state, mort)?.row).toBe("front")
-    expect(game.state.party).toEqual([hero, mort, alda])
+    expect(game.queries.member(game.state, mayu)?.row).toBe("front")
+    expect(game.state.party).toEqual([mayu, mort, alda])
     // 後衛へ移ると近接のワザに weak の印が付き、前衛へ移ると消える
     const weakOf = (member: string) =>
       game.queries
         .commands(game.state, member)
         ?.weaponSkills.filter((skill) => skill.reach === "melee")
         .map((skill) => skill.weak)
+    expect(weakOf(alda)?.length).toBeGreaterThan(0)
     expect(weakOf(alda)?.every((weak) => weak)).toBe(true)
-    expect(weakOf(mort)?.every((weak) => !weak)).toBe(true)
+    eventsOrThrow(game.send({ type: "swap-rows", a: mayu, b: alda }))
+    expect(game.state.party).toEqual([alda, mort, mayu])
+    expect(weakOf(alda)?.every((weak) => !weak)).toBe(true)
   })
 
   it("[feature:W009] 誰も着けていない装備は売れ、着けている装備は売れない", () => {
@@ -145,7 +152,6 @@ describe("装備と隊列", () => {
     const game = definition.create(
       undefined,
       GameStateBuilder.from(startedState(definition), definition.catalog)
-        .withJoined("mayu")
         .withEquipped("mayu", "axe")
         .build()
     )
@@ -197,6 +203,7 @@ describe("装備と隊列", () => {
     expect(tired.queries.readiness(tired.state)).toEqual({
       ready: false,
       unregistered: false,
+      wipePending: false,
       short: 0,
       slots: 3,
       down: [],

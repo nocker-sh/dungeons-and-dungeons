@@ -15,6 +15,7 @@ import type {
 import { idOfSlug } from "@/lib/wiz/testing/id-of-slug"
 import { layerBySlug } from "@/lib/wiz/testing/layer-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { startedState } from "@/lib/wiz/testing/started-state"
 
 /** 探索の場面を組み立てるときの指定。省略した分は0層の最初の地点。 */
@@ -62,7 +63,7 @@ export class GameStateBuilder {
    * 作る場面は `inCreation`、悪魔のない状態は `withoutDemon` で作る。
    */
   static of(content: unknown = realContent()): GameStateBuilder {
-    const definition = new GameDefinition(content)
+    const definition = new GameDefinition(catalogOf(content))
     return new GameStateBuilder(startedState(definition), definition.catalog)
   }
 
@@ -154,14 +155,27 @@ export class GameStateBuilder {
   withJoined(key: string, options: { replacing?: string } = {}) {
     const definition = this.catalog.member(idOfSlug("member", key))
     if (!definition) throw new Error(`作品データに仲間の ${key} がない`)
-    if (this.state.members.some((member) => member.id === definition.id))
-      throw new Error(`${key} はもう雇っている`)
     const replaced =
       options.replacing === undefined
         ? undefined
         : idOfSlug("member", options.replacing)
     if (replaced !== undefined && !this.state.party.includes(replaced))
       throw new Error(`${options.replacing} は出撃していない`)
+    // 初期の仲間（マユなど）はもういる。並びの指定だけを当てる：
+    // 出撃中なら入れ替える相手と位置を交換し、控えなら相手の位置へ入る（相手は控えへ）
+    if (this.state.members.some((member) => member.id === definition.id)) {
+      if (replaced === undefined) return this
+      const own = this.state.party.indexOf(definition.id)
+      return this.#with({
+        party: this.state.party.map((id, index) =>
+          id === replaced
+            ? definition.id
+            : own >= 0 && index === own
+              ? replaced
+              : id
+        ),
+      })
+    }
     const rules = new GameDefinition(this.catalog).rules
     let serial = 0
     const gear = starterGear(

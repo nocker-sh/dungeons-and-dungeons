@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vite-plus/test"
-import { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { PARTY_SLOTS } from "@/lib/wiz/content/constants"
 import type { GameState } from "@/lib/wiz/state/state-schema"
@@ -8,37 +7,45 @@ import { fitPartySize } from "@/lib/wiz/definition/party-size-migration"
 import { aState } from "@/lib/wiz/testing/state-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
+import { createMember } from "@/lib/wiz/members/create-member"
 
-const catalog = new GameCatalog(realContent())
-const [hero, alda, mayu, mort] = ["hero", "alda", "mayu", "mort"].map(contentId)
+const catalog = catalogOf(realContent())
+const [hero, alda, mayu, mort, jig] = [
+  "hero",
+  "alda",
+  "mayu",
+  "mort",
+  "jig",
+].map(contentId)
 
-/** 以前の4人編成（主人公・アルダ・マユ・モート）で保存した状態。 */
+/** 以前の4人編成（アルダ・マユ・モート・ジグ）で保存した状態。 */
 function fourInTown(): GameState {
-  const state = aState().withJoined("mayu").build()
-  return { ...state, party: [hero, alda, mayu, mort] }
+  const state = aState().withJoined("jig").build()
+  return { ...state, party: [alda, mayu, mort, jig] }
 }
 
 /** 4人で戦っている途中の状態。turn で動く番の人を決める。 */
 function fourInBattle(turn: number, guarding: string[] = []): GameState {
   const state = aState()
-    .withJoined("mayu")
-    .inBattle({ foes: ["kamokutsu"], order: ["hero"] })
+    .withJoined("jig")
+    .inBattle({ foes: ["kamokutsu"], order: ["alda"] })
     .build()
   if (state.phase.type !== "battle") throw new Error("戦闘ではない")
   return {
     ...state,
-    party: [hero, alda, mayu, mort],
+    party: [alda, mayu, mort, jig],
     phase: {
       ...state.phase,
       battle: {
         ...state.phase.battle,
         order: [
-          { kind: "member", id: hero },
-          { kind: "foe", id: "foe-1" },
           { kind: "member", id: alda },
+          { kind: "foe", id: "foe-1" },
           { kind: "member", id: mayu },
           { kind: "member", id: mort },
+          { kind: "member", id: jig },
         ],
         turn,
         guarding,
@@ -61,7 +68,7 @@ describe("4人の古い保存を3人へ移す", () => {
         ...battle,
         phase,
         members: battle.members.map((member) =>
-          member.id === mort || member.id === hero
+          member.id === jig || member.id === alda
             ? { ...member, blessing }
             : member
         ),
@@ -71,10 +78,10 @@ describe("4人の古い保存を3人へ移す", () => {
       const before = JSON.stringify(save)
       expect(game.restore(save)).toBeUndefined()
       expect(
-        game.state.members.find((member) => member.id === mort)?.blessing
+        game.state.members.find((member) => member.id === jig)?.blessing
       ).toBeUndefined()
       expect(
-        game.state.members.find((member) => member.id === hero)?.blessing
+        game.state.members.find((member) => member.id === alda)?.blessing
       ).toBe(blessing)
       expect(game.state.gear).toEqual(old.gear)
       expect(game.state.gold).toBe(old.gold)
@@ -92,7 +99,7 @@ describe("4人の古い保存を3人へ移す", () => {
     const snapshot = {
       ...old,
       members: old.members.map((member) =>
-        member.id === mort ? { ...member, blessing: "missing" } : member
+        member.id === jig ? { ...member, blessing: "missing" } : member
       ),
     }
     const before = game.state
@@ -110,7 +117,7 @@ describe("4人の古い保存を3人へ移す", () => {
       if (old.phase.type !== "battle") throw new Error("戦闘ではない")
       const invalid =
         kind === "duplicate"
-          ? alda
+          ? mayu
           : kind === "unknown"
             ? "missing"
             : contentId("alma")
@@ -129,7 +136,7 @@ describe("4人の古い保存を3人へ移す", () => {
                 },
               },
             }
-          : { ...fourInTown(), party: [hero, alda, mayu, invalid] }
+          : { ...fourInTown(), party: [alda, mayu, mort, invalid] }
       const before = game.state
       expect(game.restore({ ...game.save(), snapshot })).toBeInstanceOf(
         GameCommandError
@@ -141,48 +148,43 @@ describe("4人の古い保存を3人へ移す", () => {
   it("街の保存は並びの右から控えへ回し、雇った仲間と装備はそのまま", () => {
     const old = fourInTown()
     expect(stateProblems(old, catalog)).toContain("出撃メンバーが多すぎる")
-    const moved = fitPartySize(old, catalog)
-    expect(moved.party).toEqual([hero, alda, mayu])
+    const moved = fitPartySize(old)
+    expect(moved.party).toEqual([alda, mayu, mort])
     expect(moved.party).toHaveLength(PARTY_SLOTS)
     expect(moved.members).toBe(old.members)
     expect(moved.gear).toBe(old.gear)
     expect(stateProblems(moved, catalog)).toEqual([])
   })
 
-  it("主人公が右端にいても主人公は残す", () => {
-    const old = { ...fourInTown(), party: [alda, mayu, mort, hero] }
-    expect(fitPartySize(old, catalog).party).toEqual([alda, mayu, hero])
-  })
-
   it("3人以下の保存はそのまま返す", () => {
     const state = aState().build()
-    expect(fitPartySize(state, catalog)).toBe(state)
+    expect(fitPartySize(state)).toBe(state)
   })
 
   it("戦闘中なら控えへ回った仲間を手番と防御から外し、動く番の人を保つ", () => {
-    // 動く番はマユ（3番目）。モートが外れても、マユの番のまま
-    const atMayu = fitPartySize(fourInBattle(3, [mort, alda]), catalog)
-    if (atMayu.phase.type !== "battle") throw new Error("戦闘ではない")
-    const battle = atMayu.phase.battle
+    // 動く番はモート（3番目）。ジグが外れても、モートの番のまま
+    const atMort = fitPartySize(fourInBattle(3, [jig, mayu]))
+    if (atMort.phase.type !== "battle") throw new Error("戦闘ではない")
+    const battle = atMort.phase.battle
     expect(battle.order.map((ref) => ref.id)).toEqual([
-      hero,
-      "foe-1",
       alda,
+      "foe-1",
       mayu,
+      mort,
     ])
-    expect(battle.order[battle.turn % battle.order.length].id).toBe(mayu)
-    expect(battle.guarding).toEqual([alda])
-    expect(stateProblems(atMayu, catalog)).toEqual([])
+    expect(battle.order[battle.turn % battle.order.length].id).toBe(mort)
+    expect(battle.guarding).toEqual([mayu])
+    expect(stateProblems(atMort, catalog)).toEqual([])
   })
 
   it("戦闘中に動く番の人が控えへ回ったら、次の人の番にする", () => {
-    // 2巡目のモートの番（turn 9 = 9 % 5 = 4）。次は1番目の主人公
-    const moved = fitPartySize(fourInBattle(9), catalog)
+    // 2巡目のジグの番（turn 9 = 9 % 5 = 4）。次は1番目のアルダ
+    const moved = fitPartySize(fourInBattle(9))
     if (moved.phase.type !== "battle") throw new Error("戦闘ではない")
     const battle = moved.phase.battle
     expect(battle.order[battle.turn % battle.order.length]).toEqual({
       kind: "member",
-      id: hero,
+      id: alda,
     })
     expect(stateProblems(moved, catalog)).toEqual([])
   })
@@ -194,14 +196,40 @@ describe("4人の古い保存を3人へ移す", () => {
     expect(
       game.restore({ ...save, snapshot: JSON.parse(JSON.stringify(four)) })
     ).toBeUndefined()
-    expect(game.state.party).toEqual([hero, alda, mayu])
+    expect(game.state.party).toEqual([alda, mayu, mort])
     expect(game.queries.reserve(game.state).map((member) => member.id)).toEqual(
-      [mort]
+      [jig]
     )
     // 読み込んだ後の保存は3人のまま戻る
     const again = createTestGame()
     expect(again.restore(game.save())).toBeUndefined()
-    expect(again.state.party).toEqual([hero, alda, mayu])
+    expect(again.state.party).toEqual([alda, mayu, mort])
+  })
+
+  it("プレイヤーを含む4人の保存は、プレイヤーを外した3人で読み込む", () => {
+    // プレイヤーが戦っていた頃の4人編成（プレイヤー・アルダ・マユ・モート）
+    const base = aState().build()
+    const old: GameState = {
+      ...base,
+      members: [createMember(catalog.member(hero)!), ...base.members],
+      party: [hero, alda, mayu, mort],
+    }
+    expect(stateProblems(old, catalog)).toEqual(
+      expect.arrayContaining([
+        "出撃メンバーが多すぎる",
+        "プレイヤーが仲間に入っている",
+      ])
+    )
+    const game = createTestGame()
+    const save = JSON.parse(JSON.stringify(game.save()))
+    expect(
+      game.restore({ ...save, snapshot: JSON.parse(JSON.stringify(old)) })
+    ).toBeUndefined()
+    // プレイヤーが抜けて3人になるので、控えへ回る仲間はいない
+    expect(game.state.party).toEqual([alda, mayu, mort])
+    expect(game.state.members.some((member) => member.id === hero)).toBe(false)
+    expect(game.queries.reserve(game.state)).toEqual([])
+    expect(stateProblems(game.state, catalog)).toEqual([])
   })
 
   it("戦闘中の4人の保存も読み込め、手番を続けられる", () => {
@@ -213,10 +241,10 @@ describe("4人の古い保存を3人へ移す", () => {
         snapshot: JSON.parse(JSON.stringify(fourInBattle(0))),
       })
     ).toBeUndefined()
-    expect(game.state.party).toEqual([hero, alda, mayu])
+    expect(game.state.party).toEqual([alda, mayu, mort])
     expect(game.queries.battle(game.state)?.current).toEqual({
       kind: "member",
-      id: hero,
+      id: alda,
     })
     expect(game.send({ type: "act", command: "guard" })).not.toBeInstanceOf(
       Error

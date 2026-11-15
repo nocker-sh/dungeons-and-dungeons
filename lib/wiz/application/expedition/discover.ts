@@ -55,6 +55,8 @@ export class Discover {
           member.id === input.member && state.party.includes(member.id)
       )
       if (!recipient) return reject("UNKNOWN")
+      // 他の授与・行動と同じく、戦闘不能の仲間には授けない。
+      if (recipient.hp <= 0) return reject("DOWN")
       const name = this.deps.catalog.skill(input.skill)!.name
       const memberName = this.deps.catalog.member(recipient.id)?.hero
         ? state.hero.name
@@ -108,6 +110,7 @@ export class Discover {
         const refill = choice.refill
           ? this.deps.party.skills.refillUses(
               member,
+              state,
               new ExplorationRules(this.deps.catalog).refill(
                 state,
                 choice.refill

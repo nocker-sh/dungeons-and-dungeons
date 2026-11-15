@@ -18,6 +18,7 @@ export function defeat(
       gold: number
       goods: readonly Stack[]
       weapons?: readonly string[]
+      stones?: number
     }
   },
   events: GameEvent[],
@@ -59,6 +60,8 @@ export function defeat(
       : member
   )
   const gold = Math.min(state.gold, loot.gold)
+  // この探索で得た契約石も、ほかの拾い物と同じく失う。
+  const stones = Math.min(state.stones, loot.stones ?? 0)
   return accept(
     {
       ...state,
@@ -66,10 +69,12 @@ export function defeat(
       bag,
       gear,
       gold: state.gold - gold,
+      stones: state.stones - stones,
       wipe: {
         layer: expedition.layer,
         gold,
         goods: lost,
+        ...(stones ? { stones } : {}),
         ...(unidentifiedWeapons.length
           ? { unidentifiedWeapons: Bag.add([], unidentifiedWeapons) }
           : {}),

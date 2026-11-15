@@ -251,7 +251,7 @@ describe("三人で始めてギルド登録", () => {
     expect(game.state).toBe(before)
   })
 
-  it("[feature:W037] 登録用紙の名前は全角カタカナ1〜6文字。写真で容姿を選び、登録直後の場面のフラグを立てる", () => {
+  it("[feature:W037] 登録用紙の名前は全角カタカナ1〜6文字。登録直後の場面のフラグを立てる", () => {
     const game = arriveInTown()
     const look = gameContent.hero.looks[2]
     for (const name of [

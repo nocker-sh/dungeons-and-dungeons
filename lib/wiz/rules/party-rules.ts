@@ -9,6 +9,7 @@ import { PartyEquipment } from "./party/equipment"
 import { PartyMagic } from "./party/magic"
 import { PartyGrowth } from "./party/growth"
 import { PartySkills } from "./party/skills"
+import { DemonCall } from "./party/demon-call"
 
 /** 仲間の能力の合算と、複数の規則にまたがる計算。個別の規則は各クラスから使う。 */
 export class PartyRules {
@@ -16,6 +17,8 @@ export class PartyRules {
   readonly magic: PartyMagic
   readonly growth: PartyGrowth
   readonly skills: PartySkills
+  /** 戦闘で呼ぶ悪魔の必殺技。 */
+  readonly demonCall: DemonCall
   constructor(
     private readonly catalog: GameCatalog,
     weapons = new WeaponRules(catalog)
@@ -24,32 +27,32 @@ export class PartyRules {
     this.magic = new PartyMagic(catalog)
     this.growth = new PartyGrowth(catalog)
     this.skills = new PartySkills(catalog, this.equipment, this.magic)
+    this.demonCall = new DemonCall(catalog, (member, state) =>
+      this.attack(member, state)
+    )
   }
   static readonly FRONT_SLOTS = 2
 
-  /** 装備の補正と、主人公なら合体の効果を足した能力。 */
+  /** 装備の補正を足した能力。 */
   stats(
     member: Member,
     state: Pick<GameState, "gear" | "demons" | "contract">
   ): StatBlock {
     const bonus = {
-      maxHp: this.magic.fusionOf(member, state).maxHp,
+      maxHp: 0,
       str: 0,
       tec: 0,
       spd: 0,
     }
     for (const gear of this.equipment.gearOf(state, member.id)) {
       const good = this.catalog.good(gear.good)
-      if (this.equipment.isHero(member)) continue
       const gained = this.equipment.gearBonus(good?.bonus, gear.plus)
       bonus.maxHp += gained.maxHp
       bonus.str += gained.str
       bonus.tec += gained.tec
       bonus.spd += gained.spd
     }
-    const base = this.equipment.isHero(member)
-      ? this.catalog.member(member.id)!.stats
-      : member.stats
+    const base = member.stats
     return {
       maxHp: Math.max(1, base.maxHp + bonus.maxHp),
       str: Math.max(0, base.str + bonus.str),
@@ -83,8 +86,7 @@ export class PartyRules {
       Math.round(
         power *
           this.equipment.requirementFactor(stats, need) *
-          this.equipment.favoriteFactor(member, weapon.good.weaponType) *
-          this.magic.fusionOf(member, state).attack
+          this.equipment.favoriteFactor(member, weapon.good.weaponType)
       )
     )
   }
@@ -136,7 +138,7 @@ export class PartyRules {
 
   /**
    * その道具がこの仲間に効くか。効かない相手に使うと道具が無駄になるので選ばせない。
-   * 回復＝HPが減っている、使用回数の戻し＝使ったワザがある、治療＝その状態がある、蘇生＝倒れている。
+   * 回復＝HPが減っている、使用回数の戻し＝いま使えるワザの残りが増える、治療＝その状態がある、蘇生＝倒れている。
    */
   itemAffects(
     member: Member,
@@ -149,7 +151,10 @@ export class PartyRules {
       case "revive":
         return member.hp <= 0
       case "refill":
-        return member.hp > 0 && member.used.some((entry) => entry.count > 0)
+        return (
+          member.hp > 0 &&
+          this.skills.refillUses(member, state, effect.uses).restored > 0
+        )
       case "cure":
         return (
           member.hp > 0 &&

@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vite-plus/test"
 import { realContent } from "@/lib/wiz/testing/real-content"
-import { GameCatalog } from "@/lib/wiz/content/game-catalog"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 
 describe("合流しない道のり（木）", () => {
-  const catalog = new GameCatalog(realContent())
+  const catalog = catalogOf(realContent())
 
   it("どの層でも、どの地点にも入ってくる線は一本だけ（合流しない）", () => {
     for (const layer of catalog.data.layers) {

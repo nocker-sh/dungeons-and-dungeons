@@ -7,7 +7,7 @@ export function verifyInitialContent({ catalog, need }: ContentVerification) {
   const companions = data.startingCompanions ?? []
   need(
     new Set(companions).size === companions.length &&
-      companions.length + data.party.length <= PARTY_SLOTS,
+      companions.length <= PARTY_SLOTS,
     "初期編成が重複または出撃の人数を超えている"
   )
   for (const companion of companions)

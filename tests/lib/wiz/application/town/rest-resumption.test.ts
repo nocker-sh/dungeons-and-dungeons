@@ -7,14 +7,14 @@ import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 
 const content = realContent()
 const definition = new GameDefinition(content)
+// 主人公は出撃も宿泊もしない管理者なので、泊まる対象は仲間だけ。
 const members = [
   ...new Map(
-    [...content.party, ...content.recruits.map((entry) => entry.member)].map(
-      (member) => [member.id, member] as const
-    )
+    [...content.party, ...content.recruits.map((entry) => entry.member)]
+      .filter((member) => !member.hero)
+      .map((member) => [member.id, member] as const)
   ).values(),
 ]
-const hero = members.find((member) => member.hero)!
 let builder = aState(definition.catalog)
 for (const member of members)
   if (!builder.build().members.some((entry) => entry.id === member.id))
@@ -29,15 +29,12 @@ const cost = (level: number) =>
 
 for (const room of content.rooms)
   for (const target of members)
-    for (const active of target.hero ? [true] : [true, false])
+    for (const active of [true, false])
       test(`${room.id}: ${target.id}, active=${active}, growth and recovery survive JSON restoration`, () => {
-        const others = members.filter(
-          (member) => !member.hero && member.id !== target.id
-        )
-        const party =
-          !target.hero && active
-            ? [hero.id, target.id, others[0].id]
-            : [hero.id, ...others.slice(0, 2).map((member) => member.id)]
+        const others = members.filter((member) => member.id !== target.id)
+        const party = active
+          ? [others[0].id, target.id, others[1].id]
+          : others.slice(0, 3).map((member) => member.id)
         // A complete roster, injuries and stored experience are local initial conditions.
         // Recruitment and battle experience acquisition are not simulated here.
         const initial = {
@@ -103,8 +100,7 @@ for (const room of content.rooms)
             expect(after).toEqual(before)
             continue
           }
-          const grows =
-            room.levelUp && !definition.catalog.member(before.id)!.hero
+          const grows = room.levelUp
           const level = grows ? Math.max(before.lv, lastLevel) : before.lv
           if (grows && level > before.lv) {
             expectedDraws += level - before.lv
@@ -134,7 +130,7 @@ for (const room of content.rooms)
             status: [],
             fatigue: Math.max(0, Math.min(100, 95 + room.fatigue)),
             dirt: room.clean ? 0 : Math.max(0, Math.min(100, 95 + room.dirt)),
-            like: before.id === hero.id ? before.like : before.like + 1,
+            like: before.like + 1,
           })
         }
         expect(draws).toBe(expectedDraws)

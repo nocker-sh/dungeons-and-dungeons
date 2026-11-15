@@ -1,6 +1,5 @@
 import { MemberBonds } from "@/lib/wiz/rules/member-bonds"
 import { PARTY_SLOTS } from "@/lib/wiz/content/constants"
-import type { StatusKind } from "@/lib/wiz/content/constants"
 import { slotOf } from "@/lib/wiz/content/slot-of"
 import type { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import type { PartyRules } from "@/lib/wiz/rules/party-rules"
@@ -13,10 +12,7 @@ import {
   MAGIC_SCHOOL_NAMES,
   WEAPON_TYPE_NAMES,
 } from "@/lib/wiz/queries/names"
-import {
-  STATUS_NAMES,
-  statusResistanceView,
-} from "@/lib/wiz/queries/status-resistance-view"
+import { STATUS_NAMES } from "@/lib/wiz/queries/status-resistance-view"
 import type { GoodViews } from "@/lib/wiz/queries/good-views"
 import { ExplorationRules } from "@/lib/wiz/rules/exploration-rules"
 
@@ -127,19 +123,11 @@ export class MemberViews {
             current: mode.index === this.rules.equipment.modeOf(member),
           }))
         : null,
-      /** 使える魔法の流派。主人公は合体している悪魔の流派。 */
-      schools: this.rules.magic.schoolsOf(member, state),
+      /** 使える魔法の流派。 */
+      schools: this.rules.magic.schoolsOf(member),
       schoolNames: this.rules.magic
-        .schoolsOf(member, state)
+        .schoolsOf(member)
         .map((school) => MAGIC_SCHOOL_NAMES[school]),
-      /** 合体している悪魔と合う流派（合わなければ null）。そのワザの威力が上がる。 */
-      affinity: this.rules.magic.affinityOf(member, state),
-      affinityName: (() => {
-        const school = this.rules.magic.affinityOf(member, state)
-        return school ? MAGIC_SCHOOL_NAMES[school] : null
-      })(),
-      /** 合体の効果（主人公だけ）。悪魔のレベルで上がる。 */
-      fusion: this.fusion(state, member),
       status: member.status.map((entry) => ({
         ...entry,
         name: STATUS_NAMES[entry.kind],
@@ -155,25 +143,6 @@ export class MemberViews {
       /** 着けている防具と耐久（着けていなければ null）。 */
       armor: this.armor(state, member),
       inParty: state.party.includes(member.id),
-    }
-  }
-
-  /**
-   * 合体の効果の見え方。主人公以外と、効果のない悪魔は null。
-   * 攻撃力は増える割合（%）、耐久は状態異常の効きにくさ（%）で出す。
-   */
-  fusion(state: GameState, member: Pick<Member, "id">) {
-    if (!this.rules.equipment.isHero(member)) return null
-    const bonus = this.rules.magic.fusionOf(member, state)
-    const resist = Object.entries(bonus.resist).map(([kind, value]) =>
-      statusResistanceView(kind as StatusKind, value)
-    )
-    if (bonus.attack === 1 && !bonus.maxHp && !resist.length) return null
-    return {
-      /** 攻撃力が増える割合（%）。 */
-      attackPercent: Math.round((bonus.attack - 1) * 100),
-      maxHp: bonus.maxHp,
-      resist,
     }
   }
 
@@ -241,7 +210,8 @@ export class MemberViews {
         : 0,
       skills: this.goods.skillList(
         weapon.individual.skills,
-        weapon.good,
+        // 個体を持たない素・契約の武器は付け替えられないので、ランダムの印を付けない。
+        weapon.gear ? weapon.good : undefined,
         weapon.equipped
           ? this.rules.skills.weaponUsesBonus(
               weapon.plus,
@@ -298,10 +268,18 @@ export class MemberViews {
         (member) => member.fatigue >= this.catalog.data.balance.exhaustedAt
       )
       .map((member) => member.name)
+    const wipePending = !!state.wipe
     return {
-      ready: !unregistered && !short && !down.length && !tired.length,
+      ready:
+        !unregistered &&
+        !wipePending &&
+        !short &&
+        !down.length &&
+        !tired.length,
       /** ギルドの受付で名前を登録する前。ダンジョンへは行けない。 */
       unregistered,
+      /** 全滅の結果をまだ閉じていない。閉じるまで出撃しない。 */
+      wipePending,
       /** 3人まで足りない人数。募集で集める。 */
       short,
       slots: PARTY_SLOTS,

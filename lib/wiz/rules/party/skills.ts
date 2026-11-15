@@ -30,7 +30,7 @@ export class PartySkills {
     if (this.catalog.skill(skillId)?.blessing) return true
     if (!school) return true
     if (this.weaponSkills(member, state).includes(skillId)) return true
-    return this.magic.schoolsOf(member, state).includes(school)
+    return this.magic.schoolsOf(member).includes(school)
   }
 
   /** 装備（または素）の武器に付く3つのワザ。個体ごとに変わる。 */
@@ -51,7 +51,7 @@ export class PartySkills {
       ...new Set([
         ...weapon,
         ...(member.blessing ? [member.blessing] : []),
-        ...this.magic.skills(member, state),
+        ...this.magic.skills(member),
       ]),
     ]
   }
@@ -117,12 +117,22 @@ export class PartySkills {
     )
   }
 
-  /** 使用回数を amount 回ずつ戻す。戻した回数の合計を返す。 */
-  refillUses(member: Member, amount: number) {
+  /**
+   * いま使えるワザ（武器・祝福・固有・悪魔）の使用回数を amount 回ずつ戻す。
+   * restored は実際に増えた残り回数の合計。外した武器のワザや、最大を超えた分は数えない。
+   */
+  refillUses(
+    member: Member,
+    state: Pick<GameState, "gear" | "contract">,
+    amount: number
+  ) {
+    const current = new Set(this.battleSkills(member, state))
     let restored = 0
     const used = member.used.flatMap((entry) => {
+      const max = this.maxUses(member, state, entry.skill)
+      if (!current.has(entry.skill) || max === null) return [entry]
       const next = Math.max(0, entry.count - amount)
-      restored += entry.count - next
+      restored += Math.min(entry.count, max) - Math.min(next, max)
       return next > 0 ? [{ skill: entry.skill, count: next }] : []
     })
     return { used, restored }

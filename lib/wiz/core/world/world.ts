@@ -124,6 +124,8 @@ type WizErasedWorldActionMatcher = (
 type WizErasedWorldModuleBehavior = Readonly<{
   match: WizErasedWorldActionMatcher
   reduce: WizErasedWorldRule
+  /** define() のmoduleは、受け取ったactionを自分で所有してから判定する。 */
+  ownsInput: boolean
 }>
 
 const worldModuleBehaviors = new WeakMap<object, WizErasedWorldModuleBehavior>()
@@ -200,13 +202,6 @@ const requireWorldModuleBehavior = (
   }
 
   return behavior
-}
-
-const matchWorldModule = (
-  module: WizErasedWorldModule,
-  action: unknown
-): WizErasedWorldActionMatch => {
-  return requireWorldModuleBehavior(module).match(action)
 }
 
 const reduceWorldModule = <TState, TReason extends string>(
@@ -595,6 +590,9 @@ const createDeepImmutableStateOwner = <TState>(): ((
 
 const ownWorldBoundaryValue = createDeepImmutableStateOwner<unknown>()
 
+/** dispatchで一度だけの所有に失敗した印。 */
+const unownedWorldAction = Symbol("unownedWorldAction")
+
 /**
  * World境界におけるstate所有権取得を表す、不変なstrategy。
  *
@@ -881,10 +879,12 @@ export class WizWorldModule<
     readonly name: string
     readonly match: WizErasedWorldActionMatcher
     readonly reduce: WizErasedWorldRule
+    readonly ownsInput: boolean
   }) {
     assertWorldConstructionToken(definition.token)
     const match = definition.match
     const reduce = definition.reduce
+    const ownsInput = definition.ownsInput
     this.name = definition.name
     this.accepts = Object.freeze((action: unknown): action is TAction => {
       const actionMatch = match(action)
@@ -898,6 +898,7 @@ export class WizWorldModule<
       Object.freeze({
         match,
         reduce,
+        ownsInput,
       })
     )
     Object.freeze(this)
@@ -950,6 +951,7 @@ export class WizWorldModule<
       },
       name,
       reduce: reduce as WizErasedWorldRule,
+      ownsInput: true,
       token: worldConstructionToken,
     })
   }
@@ -1017,6 +1019,7 @@ export class WizWorldModule<
       },
       name,
       reduce: reduce as WizErasedWorldRule,
+      ownsInput: false,
       token: worldConstructionToken,
     })
   }
@@ -1819,8 +1822,22 @@ export class WizWorld<
     action: unknown
   ): WizWorldDispatchResult<TState, TEvent, TReason> {
     const ownedState = ownWorldState(this.stateOwnership, state)
+    // define() のmoduleは判定の前にactionを所有する。moduleごとに同じactionを複製し直さないよう、
+    // 一度だけ所有した値を渡す（所有済みの値はそのまま返る）。所有できない入力は、従来どおり
+    // 各moduleへ元の値を渡して、それぞれの診断・例外にする。
+    let ownedAction: unknown = unownedWorldAction
+    try {
+      ownedAction = ownWorldBoundaryValue(action)
+    } catch {
+      ownedAction = unownedWorldAction
+    }
     const evaluatedModules = this.modules.map((module) => {
-      const match = matchWorldModule(module, action)
+      const behavior = requireWorldModuleBehavior(module)
+      const match = behavior.match(
+        behavior.ownsInput && ownedAction !== unownedWorldAction
+          ? ownedAction
+          : action
+      )
 
       return Object.freeze({ match, module })
     })

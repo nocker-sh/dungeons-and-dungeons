@@ -1,9 +1,9 @@
+import { questLayers } from "@/lib/wiz/rules/quest-layers"
 import { DemonInvocationRules } from "@/lib/wiz/rules/demon-invocation-rules"
 import { DemonContractRules } from "@/lib/wiz/rules/demon-contract-rules"
 import { DemonBonds } from "@/lib/wiz/rules/demon-bonds"
 import { ConversationRules } from "@/lib/wiz/conversations/conversation-rules"
 import { PARTY_SLOTS } from "@/lib/wiz/content/constants"
-import type { MagicSchool, StatusKind } from "@/lib/wiz/content/constants"
 import type { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import { Bag } from "@/lib/wiz/rules/bag"
 import type { PartyRules } from "@/lib/wiz/rules/party-rules"
@@ -15,8 +15,24 @@ import {
   GROWTH_TYPE_NAMES,
   MAGIC_SCHOOL_NAMES,
 } from "@/lib/wiz/queries/names"
-import { statusResistanceView } from "@/lib/wiz/queries/status-resistance-view"
 import type { MemberViews } from "@/lib/wiz/queries/member-views"
+
+/** 依頼一覧の並び順。小さいほど上。 */
+const questRank = (quest: {
+  status: string
+  canAccept: boolean
+  canFight: boolean
+  battleBlock: string | null
+}) =>
+  quest.status === "ready"
+    ? 0
+    : quest.canAccept || quest.canFight
+      ? 1
+      : quest.status === "done"
+        ? 4
+        : quest.battleBlock
+          ? 3
+          : 2
 
 /** 酒場・秘密の部屋・街の印の見え方：募集・依頼・召喚・悪魔・結果の板。 */
 export class GuildViews {
@@ -38,26 +54,11 @@ export class GuildViews {
     }
   }
 
-  /**
-   * 契約した悪魔。レベル・次のレベルまでの経験値・合体中か・流派と、
-   * その悪魔で合体したときの効果と、流派が合う出撃中の仲間の名前。
-   */
+  /** 契約した悪魔。レベル・次のレベルまでの経験値・戦闘で呼ぶ悪魔か・流派。 */
   demons(state: GameState) {
     const rules = this.catalog.data.summon
-    const hero = state.members.find((member) =>
-      this.rules.equipment.isHero(member)
-    )
-    const before = hero
-      ? {
-          hp: hero.hp,
-          maxHp: this.rules.stats(hero, state).maxHp,
-          attack: this.rules.attack(hero, state),
-        }
-      : null
     return state.demons.map((owned) => {
       const demon = this.catalog.demon(owned.id)!
-      const projected = { ...state, contract: owned.id }
-      const maxHp = hero ? this.rules.stats(hero, projected).maxHp : 0
       return {
         ...demon,
         bond: new DemonBonds(this.catalog).view(state, demon.id),
@@ -72,22 +73,8 @@ export class GuildViews {
         /** 魔法の流派（決まっていなければ null）。 */
         school: demon.school ?? null,
         schoolName: demon.school ? MAGIC_SCHOOL_NAMES[demon.school] : null,
-        /** この悪魔と合体したときの効果（レベルの分を掛けた値）。 */
-        fusion: this.fusionOf(demon.id, owned.lv),
-        /** 合体前後の主人公。最大HPが下がる場合の現在HPも含める。 */
-        comparison:
-          hero && before
-            ? {
-                before,
-                after: {
-                  hp: Math.min(hero.hp, maxHp),
-                  maxHp,
-                  attack: this.rules.attack(hero, projected),
-                },
-              }
-            : null,
-        /** 流派が合う出撃中の仲間の名前。 */
-        affinity: this.matching(state, demon.school ?? null),
+        /** 戦闘で呼んだときの必殺技。 */
+        call: this.rules.demonCall.skillOf(demon.id),
       }
     })
   }
@@ -146,32 +133,6 @@ export class GuildViews {
     })
   }
 
-  /** その悪魔のレベルでの合体の効果。効果がなければ null。 */
-  private fusionOf(demonId: string, lv: number) {
-    const fusion = this.catalog.demon(demonId)?.fusion
-    if (!fusion) return null
-    const resist = Object.entries(fusion.resist ?? {}).map(([kind, value]) =>
-      statusResistanceView(kind as StatusKind, Math.min(1, value * lv))
-    )
-    const attackPercent = Math.round((fusion.attack ?? 0) * lv * 100)
-    const maxHp = (fusion.maxHp ?? 0) * lv
-    if (!attackPercent && !maxHp && !resist.length) return null
-    return { attackPercent, maxHp, resist }
-  }
-
-  /** その流派を使える出撃中の仲間の名前。 */
-  private matching(state: GameState, school: MagicSchool | null) {
-    if (!school) return [] as string[]
-    return state.party.flatMap((id) => {
-      const member = state.members.find((entry) => entry.id === id)
-      if (!member) return []
-      if (this.rules.equipment.isHero(member)) return []
-      return this.rules.magic.schoolsOf(member, state).includes(school)
-        ? [this.catalog.member(id)?.name ?? id]
-        : []
-    })
-  }
-
   demonDef(id: string) {
     return this.catalog.demon(id)
   }
@@ -221,7 +182,13 @@ export class GuildViews {
   /** 募集の引き直し。 */
   reroll(state: GameState) {
     const price = this.catalog.data.recruiting.reroll
-    return { price, affordable: state.gold >= price }
+    const affordable = state.gold >= price
+    return {
+      price,
+      affordable,
+      /** 引き直せるか。登録前は契約できないので引き直さない。 */
+      enabled: affordable && !state.hero.registrationPending,
+    }
   }
 
   /** 旧クライアント向けの互換Query。ガチャ操作は常に不可。 */
@@ -241,8 +208,9 @@ export class GuildViews {
     const party = state.members.filter((member) =>
       state.party.includes(member.id)
     )
-    const partyBlock =
-      party.length !== PARTY_SLOTS
+    const partyBlock = state.hero.registrationPending
+      ? "ギルドで登録しよう"
+      : party.length !== PARTY_SLOTS
         ? "3人の仲間を編成しよう"
         : party.some((member) => member.hp <= 0)
           ? "宿で仲間を回復しよう"
@@ -252,56 +220,61 @@ export class GuildViews {
               )
             ? "宿で疲れを取ろう"
             : null
-    return this.catalog.data.quests
-      .filter((quest) => !quest.requiresCleared || state.cleared)
-      .map((quest) => {
-        const progress = state.quests.find((entry) => entry.id === quest.id)
-        const status = !progress
-          ? "open"
-          : progress.claimed
-            ? "done"
-            : progress.progress >= quest.count
-              ? "ready"
-              : "active"
-        const battleBlock =
-          partyBlock ??
-          (state.reached < (quest.encounter?.reached ?? 0)
-            ? `${quest.encounter!.reached - 1}層の突破後に解放`
-            : null)
-        const locations = this.catalog.data.layers
-          .filter((_layer, index) => index <= state.reached)
-          .filter((layer) =>
-            quest.requiresBossVictory
-              ? layer.boss === quest.foe
-              : layer.boss === quest.foe ||
-                layer.foes.includes(quest.foe) ||
-                layer.stations.some((station) =>
-                  station.foes?.includes(quest.foe)
-                ) ||
-                (layer.treasure.mimic?.foe === quest.foe &&
-                  layer.treasure.mimic.chance > 0)
+    return (
+      this.catalog.data.quests
+        .filter((quest) => !quest.requiresCleared || state.cleared)
+        .map((quest) => {
+          const progress = state.quests.find((entry) => entry.id === quest.id)
+          const status = !progress
+            ? "open"
+            : progress.claimed
+              ? "done"
+              : progress.progress >= quest.count
+                ? "ready"
+                : "active"
+          const battleBlock =
+            partyBlock ??
+            (state.reached < (quest.encounter?.reached ?? 0)
+              ? `${quest.encounter!.reached - 1}層の突破後に解放`
+              : null)
+          const locations = questLayers(this.catalog, quest, state.reached).map(
+            (layer) => ({ no: layer.no, name: layer.name })
           )
-          .map((layer) => ({ no: layer.no, name: layer.name }))
-        return {
-          ...quest,
-          progress: progress?.progress ?? 0,
-          status,
-          canAccept: !quest.encounter && status === "open",
-          canFight:
-            !!quest.encounter &&
-            state.phase.type === "town" &&
-            !state.conversation?.active &&
-            !state.wipe &&
-            status !== "done" &&
-            status !== "ready" &&
-            !battleBlock,
-          battleBlock,
-          enemyNames: (quest.encounter?.foes ?? []).map(
-            (id) => this.catalog.foe(id)!.name
-          ),
-          locations,
-        } as const
-      })
+          return {
+            ...quest,
+            progress: progress?.progress ?? 0,
+            status,
+            canAccept: !quest.encounter && status === "open",
+            canFight:
+              !!quest.encounter &&
+              state.phase.type === "town" &&
+              !state.conversation?.active &&
+              !state.wipe &&
+              status !== "done" &&
+              status !== "ready" &&
+              !battleBlock,
+            battleBlock,
+            enemyNames: (quest.encounter?.foes ?? []).map(
+              (id) => this.catalog.foe(id)!.name
+            ),
+            locations,
+          } as const
+        })
+        // まだ行けない層の討伐依頼は掲示しない。受けた依頼と街の単発戦闘は残す
+        .filter(
+          (quest) =>
+            !!quest.encounter ||
+            quest.status !== "open" ||
+            quest.locations.length > 0
+        )
+        // 今できる依頼（報告・引き受け・戦う）を先に、受注中・鍵付き・達成済みを後に並べる
+        .map((quest, order) => ({ quest, order }))
+        .sort(
+          (a, b) =>
+            questRank(a.quest) - questRank(b.quest) || a.order - b.order
+        )
+        .map((entry) => entry.quest)
+    )
   }
 
   /** 街の施設に付ける印：報告できる依頼・鑑定できるガラクタ・休むべき仲間。 */
@@ -327,6 +300,8 @@ export class GuildViews {
         kind: "wipe" as const,
         layerName: layer?.name ?? "",
         gold: state.wipe.gold,
+        /** この探索で得て失った契約石。 */
+        stones: state.wipe.stones ?? 0,
         goods: [
           ...state.wipe.goods.map((entry) => ({
             good: entry.good,
@@ -356,6 +331,7 @@ export class GuildViews {
         kind: "ending" as const,
         layerName: last.name,
         gold: 0,
+        stones: 0,
         goods: [] as { good: string; name: string; count: number }[],
         kept: [] as { good: string; name: string; count: number }[],
       }
@@ -368,7 +344,10 @@ export class GuildViews {
     return (
       state.phase.type === "town" &&
       state.nights > 0 &&
-      state.party.some((id) => !state.chatted.includes(id))
+      state.party.some(
+        (id) =>
+          !state.chatted.includes(id) && !this.rules.equipment.isHero({ id })
+      )
     )
   }
 
@@ -378,6 +357,7 @@ export class GuildViews {
       state.phase.type === "town" &&
       state.nights > 0 &&
       state.party.includes(member) &&
+      !this.rules.equipment.isHero({ id: member }) &&
       !state.chatted.includes(member)
     )
   }

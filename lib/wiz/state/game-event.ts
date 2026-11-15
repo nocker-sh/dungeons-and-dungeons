@@ -29,8 +29,17 @@ export type GameEvent =
   | Readonly<{
       type: "acted"
       actor: ActorRef
-      command: "attack" | "skill" | "guard" | "item" | "brawl" | "pact"
+      command:
+        | "attack"
+        | "skill"
+        | "guard"
+        | "item"
+        | "brawl"
+        | "pact"
+        | "demon"
       name: string
+      /** 呼んだ悪魔（command が demon のとき）。 */
+      demon?: string
       skill?: string
       good?: string
       /** ケイヤクで変えたモードの番号。 */

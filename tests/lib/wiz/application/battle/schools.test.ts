@@ -11,9 +11,8 @@ import type { GameState } from "@/lib/wiz/state/state-schema"
 
 const idOf = (slug: string) => memberBySlug(slug).id
 
-/** 魔法の流派・合体の効果・再生。数値は作品データの balance と summon から読む。 */
-describe("魔法の流派と合体", () => {
-  const hero = idOf("hero")
+/** 魔法の流派・再生と、廃止した合体・相性。数値は作品データの balance と summon から読む。 */
+describe("魔法の流派", () => {
   const alda = idOf("alda")
   const mayu = idOf("mayu")
   const sion = idOf("sion")
@@ -53,15 +52,11 @@ describe("魔法の流派と合体", () => {
     order?: readonly string[]
     patch?: (state: GameState) => GameState
     random?: number
-    /** 大地のマユをアルダと入れ替えて出撃させる。 */
-    mayu?: boolean
   }) {
     const content = options.content ?? schooled
     // 植物の流派に変えたシオンは最初の仲間にいないので、モートと入れ替えて出撃させる
-    let builder = aState(content).withJoined("sion", { replacing: "mort" })
-    if (options.mayu)
-      builder = builder.withJoined("mayu", { replacing: "alda" })
-    let state = builder
+    let state = aState(content)
+      .withJoined("sion", { replacing: "mort" })
       .withDemons(
         [
           { id: "nui", lv: 1, exp: 0 },
@@ -72,7 +67,7 @@ describe("魔法の流派と合体", () => {
       )
       .inBattle({
         foes: ["kamokutsu"],
-        order: options.order ?? ["alda", "sion", "hero", "foe-1"],
+        order: options.order ?? ["alda", "sion", "mayu", "foe-1"],
       })
       .build()
     if (options.patch) state = options.patch(state)
@@ -83,10 +78,7 @@ describe("魔法の流派と合体", () => {
     events[0] as Extract<GameEvent, { type: "acted" }>
 
   it("[feature:W004] キャラ固有スキルは別メニューに残り、流派が合わなければ選べない", () => {
-    const game = battle({
-      mayu: true,
-      order: ["mayu", "sion", "hero", "foe-1"],
-    })
+    const game = battle({ order: ["mayu", "sion", "alda", "foe-1"] })
     const view = game.queries
       .commands(game.state, mayu)
       ?.skills.find((skill) => skill.id === sunlit.id)
@@ -125,7 +117,7 @@ describe("魔法の流派と合体", () => {
       .build()
     const game = battle({
       content,
-      order: ["sion", "alda", "hero", "foe-1"],
+      order: ["sion", "alda", "mayu", "foe-1"],
     })
     const view = game.queries
       .commands(game.state, sion)
@@ -134,27 +126,25 @@ describe("魔法の流派と合体", () => {
     expect(view?.usable).toBe(true)
   })
 
-  it("[feature:W004] 合体している悪魔と流派が合うと威力が上がる", () => {
+  it("[feature:W004] 呼ぶ悪魔と流派が合っても威力は変わらない（相性は廃止）", () => {
     // 同じ 陽の手当て を、太陽にした悪魔（ハロ）と悪魔の悪魔（ヌイ）で比べる
     const plain = battle({ random: 0.5, contract: "nui", patch: hurt })
     const matched = battle({ random: 0.5, contract: "haro", patch: hurt })
-    expect(
-      matched.queries
-        .commands(matched.state, alda)
-        ?.weaponSkills.find((skill) => skill.id === sunlit.id)?.affinity
-    ).toBe(true)
-    expect(
-      plain.queries
-        .commands(plain.state, alda)
-        ?.weaponSkills.find((skill) => skill.id === sunlit.id)?.affinity
-    ).toBe(false)
+    for (const game of [plain, matched])
+      expect(
+        game.queries
+          .commands(game.state, alda)
+          ?.weaponSkills.find((skill) => skill.id === sunlit.id)
+      ).not.toHaveProperty("affinity")
     const heal = (game: ReturnType<typeof battle>) =>
       acted(
         eventsOrThrow(
           game.send({ type: "act", command: "skill", skill: sunlit.id })
         )
       ).results[0].heal!
-    expect(heal(matched)).toBeGreaterThan(heal(plain))
+    const plainHeal = heal(plain)
+    expect(plainHeal).toBeGreaterThan(0)
+    expect(heal(matched)).toBe(plainHeal)
   })
 
   it("[feature:W004] 自分を削って放つワザは代償のHPを払い、払えないと選べない", () => {
@@ -191,7 +181,7 @@ describe("魔法の流派と合体", () => {
 
   it("[feature:W004] 再生は手番の終わりにHPを戻す", () => {
     const game = battle({
-      order: ["sion", "alda", "hero", "foe-1"],
+      order: ["sion", "alda", "mayu", "foe-1"],
       patch: (state) => ({
         ...state,
         members: state.members.map((member) => ({ ...member, hp: 20 })),
@@ -218,51 +208,51 @@ describe("魔法の流派と合体", () => {
     ).toContain("再生")
   })
 
-  it("[feature:W013] 合体の効果は悪魔のレベルで上がる", () => {
-    const fusion = { attack: 0.1, maxHp: 8, resist: { bind: 0.2 } }
-    const level = 4
+  it("[feature:W013] 悪魔のレベルを上げても仲間の強さと流派は変わらない（合体は廃止）", () => {
     const content = aContent(schooled)
-      .withDemon("lox", { school: "earth", fusion })
+      .withDemon("lox", { school: "earth" })
       .build()
     const low = battle({ content, contract: "lox", demonLevel: 1 })
-    const high = battle({ content, contract: "lox", demonLevel: level })
-    const view = (game: ReturnType<typeof battle>) =>
-      game.queries.member(game.state, hero)!
-    expect(view(high).maxHp - view(low).maxHp).toBe(fusion.maxHp * (level - 1))
-    expect(view(high).weapon!.attack).toBeGreaterThan(view(low).weapon!.attack)
-    expect(view(high).fusion).toMatchObject({
-      attackPercent: fusion.attack * level * 100,
-      maxHp: fusion.maxHp * level,
-      resist: [{ name: "縛り", percent: fusion.resist.bind * level * 100 }],
-    })
-    // 流派は合体している悪魔で決まる
-    expect(view(high).schoolNames).toEqual(["大地"])
-    expect(view(low).affinityName).toBe("大地")
+    const high = battle({ content, contract: "lox", demonLevel: 4 })
+    const none = battle({ content, contract: "nui" })
+    for (const id of low.state.party) {
+      const view = (game: ReturnType<typeof battle>) =>
+        game.queries.member(game.state, id)!
+      for (const other of [high, none]) {
+        expect(view(other).maxHp).toBe(view(low).maxHp)
+        expect(view(other).weapon!.attack).toBe(view(low).weapon!.attack)
+        expect(view(other).schoolNames).toEqual(view(low).schoolNames)
+      }
+      expect(view(high)).not.toHaveProperty("fusion")
+      expect(view(high)).not.toHaveProperty("affinityName")
+    }
+    // 流派は仲間のデータだけで決まる（大地にしたマユは大地のまま）
+    expect(low.queries.member(low.state, mayu)!.schoolNames).toEqual(["大地"])
   })
 
-  it("[feature:W013] 合体の効果の耐性で状態異常が入りにくくなる", () => {
+  it("[feature:W013] 悪魔の耐性は仲間に乗らず、状態異常の入りやすさは変わらない", () => {
     const content = aContent(schooled)
-      .withDemon("lox", { school: "earth", fusion: { resist: { bind: 1 } } })
+      .withDemon("lox", { school: "earth" })
       .build()
-    // 縛りを確実にかけるワザ（鍵穴の檻）を敵に持たせ、主人公だけを狙わせる
+    // 縛りを確実にかけるワザ（鍵穴の檻）を敵に持たせ、マユだけを狙わせる
     const withBind = aContent(content)
       .withFoe("kamokutsu", { skills: [contentId("cage")], skillRate: 1 })
       .build()
     const state = aState(withBind)
       .withDemons([{ id: "lox", lv: 1, exp: 0 }], "lox")
-      .withParty(["hero", "alda", "mort"])
-      .withMembers((member) => (member.id === hero ? {} : { hp: 0 }))
-      .inBattle({ foes: ["kamokutsu"], order: ["foe-1", "hero"] })
+      .withMembers((member) => (member.id === mayu ? {} : { hp: 0 }))
+      .inBattle({ foes: ["kamokutsu"], order: ["foe-1", "mayu"] })
       .build()
     const game = createTestGame({ content: withBind, state, random: 0 })
     const events = eventsOrThrow(game.send({ type: "foe-turn" }))
     expect(acted(events).results[0]).toMatchObject({
-      target: { id: hero },
-      resisted: "bind",
+      target: { id: mayu },
+      status: "bind",
     })
+    expect(acted(events).results[0].resisted).toBeUndefined()
   })
 
-  it("[feature:W013] 合体する悪魔を選ぶと流派と相性が変わる", () => {
+  it("[feature:W013] 呼ぶ悪魔を選び直しても仲間の流派は変わらない", () => {
     const state = aState(schooled)
       .withDemons(
         [
@@ -278,9 +268,17 @@ describe("魔法の流派と合体", () => {
       .demons(game.state)
       .find((demon) => demon.id === contentId("haro"))!
     expect(before.schoolName).toBe("太陽")
-    expect(before.affinity).toEqual([memberBySlug("alda").name])
+    expect(before).not.toHaveProperty("affinity")
+    const schools = () =>
+      game.state.party.map(
+        (id) => game.queries.member(game.state, id)!.schoolNames
+      )
+    const beforeSchools = schools()
     eventsOrThrow(game.send({ type: "choose-demon", demon: contentId("haro") }))
-    expect(game.queries.member(game.state, alda)!.affinityName).toBe("太陽")
-    expect(game.queries.member(game.state, hero)!.schoolNames).toEqual(["太陽"])
+    expect(game.state.contract).toBe(contentId("haro"))
+    expect(schools()).toEqual(beforeSchools)
+    expect(game.queries.member(game.state, alda)).not.toHaveProperty(
+      "affinityName"
+    )
   })
 })

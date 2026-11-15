@@ -2,6 +2,7 @@ import { describe, expect, it } from "vite-plus/test"
 import { aContent } from "@/lib/wiz/testing/content-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { SequenceRandom } from "@/lib/wiz/testing/sequence-random"
 import { seededRandom } from "@/lib/wiz/testing/seeded-random"
 import { ExpeditionRules } from "@/lib/wiz/rules/expedition-rules"
@@ -9,7 +10,7 @@ import { GameCatalog } from "@/lib/wiz/content/game-catalog"
 
 /** 地点の出来事の抽選（ExpeditionRules）の境界と分布をさがす。 */
 describe("地点の出来事の抽選", () => {
-  const catalog = new GameCatalog(realContent())
+  const catalog = catalogOf(realContent())
   const rules = new ExpeditionRules(catalog)
   const layer = catalog.layer(contentId("layer0"))!
   const stationOf = (id: string) =>

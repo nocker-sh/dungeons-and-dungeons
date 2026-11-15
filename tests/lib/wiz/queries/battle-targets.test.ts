@@ -10,10 +10,10 @@ const idOf = (slug: string) => memberBySlug(slug).id
 
 it.each([
   ["dungeon-blessing-1", []],
-  ["dungeon-blessing-2", ["mort", "hero"]],
-  ["dungeon-blessing-3", ["mort", "hero"]],
+  ["dungeon-blessing-2", ["mort", "mayu"]],
+  ["dungeon-blessing-3", ["mort", "mayu"]],
   ["dungeon-blessing-4", ["alda"]],
-  ["dungeon-blessing-5", ["mort", "hero"]],
+  ["dungeon-blessing-5", ["mort", "mayu"]],
 ] as const)("%sの対象は実際に効く隊員だけを隊列順に返す", (slug, expected) => {
   const skill = skillBySlug(slug)
   const state = aState()
@@ -21,7 +21,7 @@ it.each([
     .withMember("alda", { hp: 0 })
     .withExtraMember("rivet", { hp: 0 })
     .withExtraMember("husky", { hp: 1 })
-    .withParty(["mort", "hero", "alda"])
+    .withParty(["mort", "mayu", "alda"])
     .inBattle({ foes: ["kamokutsu"], order: ["mort", "foe-1"] })
     .build()
   const probe = createTestGame({ state })
@@ -39,7 +39,8 @@ it.each([
     ).toEqual(expected.map(idOf))
   }
   if (skill.target !== "ally") return
-  for (const slug of ["mort", "hero", "alda", "rivet", "husky"]) {
+  // 仲間ではないプレイヤーも、狙えない相手として確かめる
+  for (const slug of ["mort", "mayu", "alda", "rivet", "husky", "hero"]) {
     const game = createTestGame({ state })
     const result = game.send({
       type: "act",

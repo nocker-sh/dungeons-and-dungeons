@@ -27,7 +27,7 @@ export class MemberBonds {
     return { count, label }
   }
 
-  /** 出撃の3人（主人公を除く）の親しさを上げる。 */
+  /** 出撃の3人の親しさを上げる。旧保存でプレイヤーが隊列に残っていても、プレイヤーは数えない。 */
   static raise(state: GameState, catalog: GameCatalog, amount = 1) {
     return state.members.map((member) =>
       state.party.includes(member.id) && !catalog.member(member.id)?.hero

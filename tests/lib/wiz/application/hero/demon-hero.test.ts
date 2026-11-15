@@ -4,6 +4,7 @@ import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { ConversationRules } from "@/lib/wiz/conversations/conversation-rules"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { createTestPlay } from "@/lib/wiz/testing/create-test-play"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
@@ -11,8 +12,22 @@ import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 const heroId = contentId("hero")
 const loxId = contentId("lox")
 
-describe("悪魔と戦う主人公", () => {
-  it("自身は宿で成長せず、防具も装備できない。拒否で資産を変えない", () => {
+/** 出撃の3人の表示上の能力。主人公の見た目や悪魔では変わらないことを確かめる。 */
+function partyStats(game: ReturnType<typeof createTestPlay>["game"]) {
+  return game.queries
+    .party(game.state)
+    .map((member) => [
+      member.id,
+      member.maxHp,
+      member.str,
+      member.tec,
+      member.spd,
+      member.weapon?.attack ?? null,
+    ])
+}
+
+describe("戦わない運営役の主人公", () => {
+  it("主人公は仲間にいないので装備の対象にならず、宿の成長にも入らない。拒否で資産を変えない", () => {
     const { definition, game: original } = createTestPlay()
     const initial = {
       ...original.state,
@@ -23,7 +38,7 @@ describe("悪魔と戦う主人公", () => {
       })),
     }
     const game = definition.create(testEnvironment(), initial)
-    const before = game.state.members.find((member) => member.id === heroId)!
+    expect(game.queries.member(game.state, heroId)).toBeNull()
     const armor = game.state.gear.find(
       (gear) => definition.catalog.good(gear.good)?.kind === "armor"
     )!
@@ -34,45 +49,75 @@ describe("悪魔と戦う主人公", () => {
     expect(game.save()).toEqual(save)
     const room = definition.catalog.data.rooms.find((room) => room.levelUp)!
     const events = eventsOrThrow(game.send({ type: "rest", room: room.id }))
-    const after = game.state.members.find((member) => member.id === heroId)!
-    expect(after.stats).toEqual(before.stats)
-    expect(after.lv).toBe(before.lv)
-    expect(game.queries.member(game.state, heroId)!.levelUpReady).toBe(false)
     const rested = events.find((event) => event.type === "rested")!
     if (rested.type !== "rested") throw new Error("宿の結果なし")
     expect(rested.levelUps.some((entry) => entry.member === heroId)).toBe(false)
-    // 主人公以外の出撃の2人だけが成長する
-    expect(rested.levelUps.length).toBe(2)
-    expect(game.queries.member(game.state, heroId)!.armor).toBeNull()
+    // 出撃の3人の仲間だけが成長する
+    expect(rested.levelUps.map((entry) => entry.member).toSorted()).toEqual(
+      game.state.party.toSorted()
+    )
+    expect(game.state.members.some((member) => member.id === heroId)).toBe(
+      false
+    )
   })
 
-  it("旧保存の主人公防具を袋へ戻し、旧能力成長を戦闘に使わず、元データを壊さない", () => {
+  it("主人公が戦っていた旧保存は、主人公を外して防具を袋へ戻し、初期の仲間を迎え、元データを壊さない", () => {
     const { definition, game } = createTestPlay()
     const saved = JSON.parse(JSON.stringify(game.save()))
+    const mayu = contentId("mayu")
+    const heroDef = definition.catalog.member(heroId)!
+    // 旧保存：主人公・アルダ・モートの3人で、マユはまだいない
+    saved.snapshot.members = [
+      {
+        id: heroId,
+        lv: heroDef.lv,
+        exp: 0,
+        hp: 900,
+        stats: { maxHp: 900, str: 99, tec: 99, spd: 99 },
+        used: [],
+        status: [],
+        fatigue: 0,
+        dirt: 0,
+        like: 0,
+      },
+      ...saved.snapshot.members.filter(
+        (member: { id: string }) => member.id !== mayu
+      ),
+    ]
+    saved.snapshot.party = [
+      heroId,
+      ...saved.snapshot.party.filter((id: string) => id !== mayu),
+    ]
+    saved.snapshot.recruited = saved.snapshot.recruited.filter(
+      (id: string) => definition.catalog.recruit(id)?.member.id !== mayu
+    )
+    saved.snapshot.gear = saved.snapshot.gear.filter(
+      (gear: { owner: string | null }) => gear.owner !== mayu
+    )
     const armor = saved.snapshot.gear.find(
       (gear: { good: string }) =>
         definition.catalog.good(gear.good)?.kind === "armor"
     )
     armor.owner = heroId
-    const hero = saved.snapshot.members.find(
-      (member: { id: string }) => member.id === heroId
-    )
-    hero.stats = { maxHp: 900, str: 99, tec: 99, spd: 99 }
     const original = JSON.stringify(saved)
     expect(game.restore(saved)).toBeUndefined()
     expect(JSON.stringify(saved)).toBe(original)
+    expect(game.state.members.some((member) => member.id === heroId)).toBe(
+      false
+    )
+    expect(game.state.party).not.toContain(heroId)
+    expect(game.state.party).toContain(mayu)
+    expect(game.state.party).toHaveLength(3)
     expect(
       game.state.gear.find((gear) => gear.id === armor.id)!.owner
     ).toBeNull()
-    expect(game.queries.member(game.state, heroId)!.base).toEqual(
-      definition.catalog.member(heroId)!.stats
-    )
-    expect(game.queries.member(game.state, heroId)!.maxHp).toBeLessThan(900)
+    expect(game.queries.member(game.state, heroId)).toBeNull()
+    expect(game.queries.problems(game.state)).toEqual([])
     expect(game.state.gold).toBe(saved.snapshot.gold)
     expect(game.state.bag).toEqual(saved.snapshot.bag)
   })
 
-  it("見た目の変更は能力に影響せず、ロクスのレベルが合体の力を上げる", () => {
+  it("見た目の変更も、相棒の悪魔のレベルも、仲間の能力を変えない（合体は廃止）", () => {
     const { definition, game: original } = createTestPlay()
     const initial = {
       ...original.state,
@@ -80,41 +125,25 @@ describe("悪魔と戦う主人公", () => {
       contract: loxId,
     }
     const game = definition.create(testEnvironment(), initial)
-    const before = game.queries.member(game.state, heroId)!
+    const before = partyStats(game)
     eventsOrThrow(
       game.send({ type: "choose-hero-look", look: realContent().hero.looks[1] })
     )
-    const after = game.queries.member(game.state, heroId)!
-    expect([
-      after.maxHp,
-      after.str,
-      after.tec,
-      after.spd,
-      after.weapon!.attack,
-    ]).toEqual([
-      before.maxHp,
-      before.str,
-      before.tec,
-      before.spd,
-      before.weapon!.attack,
-    ])
+    expect(game.state.hero.look).toBe(realContent().hero.looks[1])
+    expect(game.state.members).toEqual(initial.members)
+    expect(partyStats(game)).toEqual(before)
     const stronger = definition.create(testEnvironment(), {
       ...game.state,
       demons: [{ id: loxId, lv: 5, exp: 0 }],
     })
-    expect(
-      stronger.queries.member(stronger.state, heroId)!.maxHp
-    ).toBeGreaterThan(before.maxHp)
-    expect(
-      stronger.queries.member(stronger.state, heroId)!.weapon!.attack
-    ).toBeGreaterThan(before.weapon!.attack)
+    expect(partyStats(stronger)).toEqual(before)
   })
-  it("衣装は買わずに着替えられ、所持金・装備・能力を変えない。未知の衣装は断る", () => {
+  it("衣装は買わずに着替えられ、所持金・装備・仲間の能力を変えない。未知の衣装は断る", () => {
     const { game } = createTestPlay()
     const before = game.state
     const hero = game.queries.hero(before)
     const outfit = hero.outfits[0].id
-    const stats = game.queries.member(before, heroId)!
+    const stats = partyStats(game)
     eventsOrThrow(
       game.send({ type: "choose-hero-look", look: hero.look, outfit })
     )
@@ -122,20 +151,7 @@ describe("悪魔と戦う主人公", () => {
     expect(game.state.members).toEqual(before.members)
     expect(game.state.gear).toEqual(before.gear)
     expect(game.state.gold).toBe(before.gold)
-    const after = game.queries.member(game.state, heroId)!
-    expect([
-      after.maxHp,
-      after.str,
-      after.tec,
-      after.spd,
-      after.weapon!.attack,
-    ]).toEqual([
-      stats.maxHp,
-      stats.str,
-      stats.tec,
-      stats.spd,
-      stats.weapon!.attack,
-    ])
+    expect(partyStats(game)).toEqual(stats)
     const saved = game.save()
     expect(
       game.send({
@@ -152,7 +168,7 @@ describe("悪魔と戦う主人公", () => {
 
 describe("最初の相棒ロクスとの会話", () => {
   it("初回会話から選択肢で返事し、未読を優先して違う会話を楽しめる。保存して続けられる", () => {
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const initial = definition.initialState()
     const game = definition.create(testEnvironment({ random: 0 }), {
       ...initial,
@@ -192,7 +208,7 @@ describe("最初の相棒ロクスとの会話", () => {
   })
 
   it("相棒の物語は前の会話・夜・到達層・踏破で進み、未所持には出さない", () => {
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const initial = definition.initialState()
     const rules = new ConversationRules(definition.catalog)
     const story = definition.catalog.data.conversations!.filter((entry) =>

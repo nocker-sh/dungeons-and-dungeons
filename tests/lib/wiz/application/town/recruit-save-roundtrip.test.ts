@@ -1,12 +1,13 @@
 import { expect, it } from "vite-plus/test"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { PARTY_SLOTS } from "@/lib/wiz/content/constants"
 
-const definition = new GameDefinition(realContent())
+const definition = new GameDefinition(catalogOf(realContent()))
 const cases = definition.catalog.data.recruits.flatMap((recruit) =>
   [false, true].map((vacant) => ({ recruit, vacant }))
 )

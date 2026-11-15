@@ -5,14 +5,14 @@ import { contentId } from "@/lib/wiz/testing/content-id"
 import { goodBySlug } from "@/lib/wiz/testing/good-by-slug"
 import { memberBySlug } from "@/lib/wiz/testing/member-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { sequentialIds } from "@/lib/wiz/testing/sequential-ids"
-import { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import { WeaponRules } from "@/lib/wiz/rules/weapon-rules"
 import { memberSchema } from "@/lib/wiz/state/state-schema"
 
 /** 仲間と初期装備の作り方（members）の不変条件をさがす。 */
 describe("仲間の作り方の不変条件", () => {
-  const catalog = new GameCatalog(realContent())
+  const catalog = catalogOf(realContent())
   const weapons = new WeaponRules(catalog)
 
   it("[feature:W011] 雇ったばかりの仲間は満タン・経験値0・記録なしで、保存の形に通る", () => {

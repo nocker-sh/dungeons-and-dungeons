@@ -5,12 +5,14 @@ import { aState } from "@/lib/wiz/testing/state-builder"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { ExplorationRules } from "@/lib/wiz/rules/exploration-rules"
 import { GameCatalog } from "@/lib/wiz/content/game-catalog"
 
 /** 察知（scout）はマユの探索能力。最初の仲間にいないので、モートと入れ替えて出撃させる。 */
-const withScout = () => aState().withJoined("mayu", { replacing: "mort" })
+// 察知役のマユは初期の三人にいる
+const withScout = () => aState()
 
 describe("編成で変わる探索能力", () => {
   it("未知のボス地点の察知を保存・再開し、ボスと戦える", () => {
@@ -22,10 +24,7 @@ describe("編成で変わる探索能力", () => {
     const source = layer.stations.find((entry) => entry.next.includes(boss.id))!
     const game = createTestGame({
       content,
-      state: aState(content)
-        .withJoined("mayu", { replacing: "mort" })
-        .inExpedition({ at: source.id })
-        .build(),
+      state: aState(content).inExpedition({ at: source.id }).build(),
     })
     expect(
       eventsOrThrow(game.send({ type: "survey", to: boss.id }))
@@ -103,7 +102,6 @@ describe("編成で変わる探索能力", () => {
       const game = createTestGame({
         content,
         state: aState(content)
-          .withJoined("mayu", { replacing: "mort" })
           .inExpedition({ at: "n2", visited: ["s", "n2"] })
           .build(),
         random: () => random,
@@ -205,12 +203,17 @@ describe("編成で変わる探索能力", () => {
       GameCommandError
     )
     expect(game.state).toBe(before)
-    const rules = new ExplorationRules(new GameCatalog(realContent()))
+    const rules = new ExplorationRules(catalogOf(realContent()))
     expect(
       rules.has(
         {
           ...withScout().build(),
-          party: [contentId("hero"), contentId("alda"), contentId("mort")],
+          // 察知役のマユを外し、察知を持たない3人にする
+          party: [contentId("alda"), contentId("mort"), contentId("jig")],
+          members: [
+            ...withScout().build().members,
+            { ...withScout().build().members[0], id: contentId("jig") },
+          ],
         },
         "scout"
       )
@@ -298,7 +301,7 @@ describe("編成で変わる探索能力", () => {
   })
 
   it("同じ能力を重ねても加算せず、交渉・罠対策・野営・目利きが働く", () => {
-    const catalog = new GameCatalog(realContent())
+    const catalog = catalogOf(realContent())
     const rules = new ExplorationRules(catalog)
     const state = aState().build()
     expect(rules.trap(state, 20)).toBe(15)
@@ -317,7 +320,7 @@ describe("編成で変わる探索能力", () => {
         { ...state.members[0], id: alma.id },
         { ...state.members[0], id: gou.id },
       ],
-      party: [contentId("hero"), alma.id, gou.id],
+      party: [contentId("alda"), alma.id, gou.id],
     }
     expect(rules.cost(added, 35)).toBe(30)
     expect(rules.gold(added, 100)).toBe(110)
@@ -325,7 +328,7 @@ describe("編成で変わる探索能力", () => {
       rules.refill(
         {
           ...added,
-          party: [contentId("hero"), contentId("mort"), contentId("mort")],
+          party: [contentId("alda"), contentId("mort"), contentId("mort")],
         },
         2
       )
@@ -334,11 +337,11 @@ describe("編成で変わる探索能力", () => {
 
   it("全ての現役の仲間に戦い方と探索の採用理由がある", () => {
     const recruits = realContent().recruits.filter((entry) => !entry.retired)
-    // ミミカを N の仲間として募集に戻したので18人
-    expect(recruits).toHaveLength(18)
+    // ルカ・ガルド・ツムギ・リベットを廃止したので現役は14人
+    expect(recruits).toHaveLength(14)
     expect(
       new Set(recruits.map((entry) => entry.member.combatStyle)).size
-    ).toBe(18)
+    ).toBe(recruits.length)
     for (const recruit of recruits) {
       expect(recruit.member.exploration).toBeDefined()
       expect(recruit.member.skills.length).toBeGreaterThan(0)

@@ -1,13 +1,14 @@
 import { expect, it } from "vite-plus/test"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { Bag } from "@/lib/wiz/rules/bag"
 
 it("全ての本番契約を実際の出会い・保存再開・支払いで辿り、一度だけ仲間にする", () => {
-  const definition = new GameDefinition(realContent())
+  const definition = new GameDefinition(catalogOf(realContent()))
   const contracts = definition.catalog.data.demons.filter(
     (demon) => demon.contract
   )

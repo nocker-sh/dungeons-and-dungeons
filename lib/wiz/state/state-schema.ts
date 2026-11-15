@@ -52,6 +52,8 @@ const loot = z.strictObject({
   goods: z.array(stack),
   /** この探索で敵が落とした武器の個体の id（全滅すると失う）。 */
   weapons: z.array(id).optional(),
+  /** この探索で中ボス・ボスから得た契約石（全滅すると失う）。 */
+  stones: count.optional(),
 })
 
 const pending = z.discriminatedUnion("kind", [
@@ -109,6 +111,8 @@ export const battleSchema = z.strictObject({
   turn: count,
   guarding: z.array(id),
   boss: z.boolean(),
+  /** この戦闘で悪魔を呼んだ（1戦闘に1回）。 */
+  demonCalled: z.boolean().optional(),
 })
 
 export const phaseSchema = z.discriminatedUnion("type", [
@@ -145,7 +149,7 @@ export const stateSchema = z.strictObject({
     .optional(),
   gold: count,
   stones: count,
-  /** 主人公。ギルドの登録用紙で名前と容姿（写真）を決める。 */
+  /** 主人公。ギルドの登録用紙で名前を決める。戦わず、画面にも出ない運営役。 */
   hero: z.strictObject({
     /** 登録の規則（全角カタカナ1〜6文字）より広く受け、古い保存の名前も読み込む。 */
     name: z.string().min(1).max(HERO_NAME_STORED_MAX),
@@ -220,6 +224,8 @@ export const stateSchema = z.strictObject({
       unidentifiedWeapons: z.array(stack).optional(),
       /** 全滅しても持ち帰れたガラクタ（balance.wipe.keepJunk）。 */
       kept: z.array(stack).optional(),
+      /** この探索で得て、全滅で失った契約石。 */
+      stones: count.optional(),
     })
     .nullable(),
   quests: z.array(

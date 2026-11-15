@@ -1,7 +1,7 @@
 import { Statuses } from "@/lib/wiz/rules/statuses"
 import type { Battle, GameState } from "@/lib/wiz/state/state-schema"
 
-/** order の from 番目から数えて、最初に動ける者の番号。縛られている者も最初の手番は受け取る。 */
+/** order の from 番目から数えて、最初に動ける者（倒れていない・縛られていない）の番号。 */
 export function firstLiving(state: GameState, battle: Battle, from: number) {
   for (let step = 0; step < battle.order.length; step++) {
     const index = from + step

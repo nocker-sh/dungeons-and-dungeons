@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vite-plus/test"
 import { aContent } from "@/lib/wiz/testing/content-builder"
 import { aState } from "@/lib/wiz/testing/state-builder"
+import { turnActionFor } from "@/lib/wiz/testing/turn-action-for"
 import { battleStateOf } from "@/lib/wiz/testing/battle-state-of"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { foeBySlug } from "@/lib/wiz/testing/foe-by-slug"
 import { memberBySlug } from "@/lib/wiz/testing/member-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { skillBySlug } from "@/lib/wiz/testing/skill-by-slug"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { createTestPlay } from "@/lib/wiz/testing/create-test-play"
@@ -24,14 +26,15 @@ import type { GameState } from "@/lib/wiz/state/state-schema"
 const idOf = (slug: string) => memberBySlug(slug).id
 
 describe("戦闘", () => {
-  const hero = idOf("hero")
+  const alda = idOf("alda")
   const mort = idOf("mort")
+  const mayu = idOf("mayu")
   const kamokutsu = foeBySlug("kamokutsu")
 
   it("[feature:W004] 後衛も攻撃できるが、後衛から近接の攻撃は被害が減る", () => {
-    // 主人公を後衛に置く。短剣の「刺突」は近接、「投げナイフ」は遠距離
-    const melee = skillBySlug("thrust")
-    const ranged = skillBySlug("throwknife")
+    // モートを後衛に置く。鎚の「叩き割り」は近接、固有の「土くれ投げ」は遠距離
+    const melee = skillBySlug("cleave")
+    const ranged = skillBySlug("clod-throw")
     const withMelee = (factor: number) => {
       const content = aContent()
         .withBalance({ backRow: { melee: factor, hit: 1 } })
@@ -40,18 +43,21 @@ describe("戦闘", () => {
         content,
         random: 0.5,
         state: aState(content)
-          .withParty(["alda", "mort", "hero"])
-          .inBattle({ foes: ["kamokutsu"], order: ["hero", "foe-1"] })
+          .withParty(["alda", "mayu", "mort"])
+          .inBattle({ foes: ["kamokutsu"], order: ["mort", "foe-1"] })
           .build(),
       })
     }
     const game = withMelee(0.5)
-    const weakOf = (target: typeof game, member: string, skill: string) =>
-      target.queries
-        .commands(target.state, member)
-        ?.weaponSkills.find((entry) => entry.id === skill)?.weak
-    expect(weakOf(game, hero, melee.id)).toBe(true)
-    expect(weakOf(game, hero, ranged.id)).toBe(false)
+    const weakOf = (target: typeof game, member: string, skill: string) => {
+      const commands = target.queries.commands(target.state, member)
+      return [
+        ...(commands?.weaponSkills ?? []),
+        ...(commands?.skills ?? []),
+      ].find((entry) => entry.id === skill)?.weak
+    }
+    expect(weakOf(game, mort, melee.id)).toBe(true)
+    expect(weakOf(game, mort, ranged.id)).toBe(false)
     const damage = (target: typeof game) => {
       const events = eventsOrThrow(
         target.send({ type: "act", command: "skill", skill: melee.id })
@@ -61,7 +67,7 @@ describe("戦闘", () => {
     }
     expect(game.queries.battle(game.state)?.current).toEqual({
       kind: "member",
-      id: hero,
+      id: mort,
     })
     expect(damage(game)).toBeLessThan(damage(withMelee(1)))
   })
@@ -71,8 +77,8 @@ describe("戦闘", () => {
     const members = game.state.party.map((id) =>
       game.state.members.find((member) => member.id === id)!
     )
-    // 並びは主人公・アルダ（タンク）が前衛、モートが後衛
-    expect(game.state.party).toEqual([hero, idOf("alda"), mort])
+    // 並びはアルダ（タンク）・モートが前衛、マユが後衛
+    expect(game.state.party).toEqual([alda, mort, mayu])
     const rulesWith = (tank: number) => {
       const catalog = new GameCatalog(
         aContent().withBalance({ tankTarget: tank }).build()
@@ -82,54 +88,52 @@ describe("戦闘", () => {
     const tank = 3
     const rules = rulesWith(tank)
     const step = 0.001
-    // 近接：前衛の主人公1・アルダ3。境目のすぐ手前はその枠の仲間
-    const melee = 1 + tank
-    expect(rules.target(members, () => 1 / melee - step, "melee")?.id).toBe(
-      hero
+    // 近接：前衛のアルダ3・モート1。境目のすぐ手前はその枠の仲間
+    const melee = tank + 1
+    expect(rules.target(members, () => tank / melee - step, "melee")?.id).toBe(
+      alda
     )
-    expect(rules.target(members, () => 1 / melee + step, "melee")?.id).toBe(
-      idOf("alda")
+    expect(rules.target(members, () => tank / melee + step, "melee")?.id).toBe(
+      mort
     )
     // 端の乱数でも後衛には届かない
-    expect(rules.target(members, () => 1 - step, "melee")?.id).toBe(
-      idOf("alda")
-    )
-    // 遠距離：後衛のモートにも重み1で届く
-    const ranged = 2 + tank
+    expect(rules.target(members, () => 1 - step, "melee")?.id).toBe(mort)
+    // 遠距離：後衛のマユにも重み1で届く
+    const ranged = tank + 2
     expect(
-      rules.target(members, () => (1 + tank) / ranged - step, "ranged")?.id
-    ).toBe(idOf("alda"))
-    expect(rules.target(members, () => 1 - step, "ranged")?.id).toBe(mort)
+      rules.target(members, () => (tank + 1) / ranged - step, "ranged")?.id
+    ).toBe(mort)
+    expect(rules.target(members, () => 1 - step, "ranged")?.id).toBe(mayu)
     // タンクの重みが1なら、前衛は等しく狙われる
     expect(rulesWith(1).target(members, () => 0.5 - step, "melee")?.id).toBe(
-      hero
+      alda
     )
     expect(rulesWith(1).target(members, () => 0.5 + step, "melee")?.id).toBe(
-      idOf("alda")
+      mort
     )
   })
 
   it("[feature:W004] 一回の指示で一人分の結果だけが出て、手番が次へ回る", () => {
-    const thrust = skillBySlug("thrust")
+    const bullet = skillBySlug("magicbullet")
     const game = createTestGame({
       state: aState()
-        .inBattle({ foes: ["kamokutsu"], order: ["hero", "mort"] })
+        .inBattle({ foes: ["kamokutsu"], order: ["mayu", "mort"] })
         .build(),
     })
     const events = eventsOrThrow(
-      game.send({ type: "act", command: "skill", skill: thrust.id })
+      game.send({ type: "act", command: "skill", skill: bullet.id })
     )
     expect(events).toHaveLength(1)
     expect(events[0]).toMatchObject({
       type: "acted",
-      actor: { kind: "member", id: hero },
-      name: thrust.name,
+      actor: { kind: "member", id: mayu },
+      name: bullet.name,
     })
     expect(
       game.queries
-        .commands(game.state, hero)
-        ?.weaponSkills.find((skill) => skill.id === thrust.id)?.left
-    ).toBe(thrust.uses! - 1)
+        .commands(game.state, mayu)
+        ?.weaponSkills.find((skill) => skill.id === bullet.id)?.left
+    ).toBe(bullet.uses! - 1)
     expect(battleStateOf(game.state).foes[0].hp).toBeLessThan(kamokutsu.hp)
     expect(game.queries.battle(game.state)?.current).toEqual({
       kind: "member",
@@ -152,10 +156,10 @@ describe("戦闘", () => {
     const game = createTestGame({
       random: 0,
       state: aState()
-        .withParty(["alda", "hero", "mort"])
+        .withParty(["alda", "mayu", "mort"])
         .inBattle({
           foes: ["kamokutsu"],
-          order: ["foe-1", "hero", "alda", "mort"],
+          order: ["foe-1", "mayu", "alda", "mort"],
         })
         .build(),
     })
@@ -182,7 +186,50 @@ describe("戦闘", () => {
     expect(halved.results[0].damage).toBe(
       Math.ceil(plain.results[0].damage! * guard)
     )
-    expect(game.queries.battle(game.state)?.guarding).toEqual([])
+    // 受けた一人だけ防御が解け、狙われなかった二人は守ったまま
+    expect(game.queries.battle(game.state)?.guarding).toEqual(
+      game.state.party.slice(1)
+    )
+  })
+
+  it("[feature:W005] 防御は自分が敵の行動を受けるか、自分の次の手番まで続く", () => {
+    // 乱数0では敵は並びの一人目（アルダ）を狙う
+    const game = createTestGame({
+      random: 0,
+      state: aState()
+        .withParty(["alda", "mayu", "mort"])
+        .inBattle({
+          foes: ["kamokutsu", "kamokutsu"],
+          order: ["alda", "mort", "foe-1", "foe-2", "mayu"],
+        })
+        .build(),
+    })
+    const [alda, , mort] = game.state.party
+    const guarding = () => game.queries.battle(game.state)?.guarding
+    eventsOrThrow(game.send({ type: "act", command: "guard" }))
+    eventsOrThrow(game.send({ type: "act", command: "guard" }))
+    expect(guarding()).toEqual([alda, mort])
+    eventsOrThrow(game.send({ type: "foe-turn" }))
+    // 別の仲間が狙われても、モートの防御は解けない
+    expect(guarding()).toEqual([mort])
+    const second = eventsOrThrow(game.send({ type: "foe-turn" }))[0] as Extract<
+      GameEvent,
+      { type: "acted" }
+    >
+    expect(second.results[0]).toMatchObject({
+      target: { id: alda },
+      guarded: false,
+    })
+    expect(guarding()).toEqual([mort])
+    const mayu = game.state.party[1]
+    eventsOrThrow(game.send({ type: "act", command: "guard" }))
+    eventsOrThrow(game.send({ type: "act", command: "guard" }))
+    expect(guarding()).toEqual([mort, mayu, alda])
+    // 受けずに残った防御も、自分が次に動くときに解ける
+    const attack = turnActionFor(game, mort)
+    expect(attack).toMatchObject({ command: "skill" })
+    eventsOrThrow(game.send(attack))
+    expect(guarding()).toEqual([mayu, alda])
   })
 
   it("[feature:W006] 勝つと戦利品の板が出て、閉じるまで進めない", () => {
@@ -204,9 +251,7 @@ describe("戦闘", () => {
     const exp = victory?.type === "victory" ? victory.exp : 0
     expect(exp).toBeGreaterThan(0)
     expect(
-      game.queries
-        .party(game.state)
-        .every((member) => member.exp === (member.hero ? 0 : exp))
+      game.queries.party(game.state).every((member) => member.exp === exp)
     ).toBe(true)
   })
 
@@ -240,7 +285,7 @@ describe("戦闘", () => {
       ...game.state,
       members: game.state.members.map((member) => ({ ...member, hp: 1 })),
     }
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const weak = definition.create(
       WizWorldEnvironment.create({
         random: () => 0.99,
@@ -259,6 +304,33 @@ describe("戦闘", () => {
     expect(
       weak.queries.party(weak.state).every((member) => member.hp === 1)
     ).toBe(true)
+  })
+
+  it("[feature:W005] 全滅すると、この探索で得た契約石も失い、結果に出す", () => {
+    // 中ボスで石を2つ得た後の戦闘。手持ちの5つのうち、この探索の2つだけを失う
+    const state = aState()
+      .withStones(5)
+      .inBattle({
+        foes: ["kamokutsu"],
+        expedition: { loot: { gold: 0, goods: [], stones: 2 } },
+      })
+      .build()
+    const weak = createTestGame({
+      random: 0.99,
+      state: {
+        ...state,
+        members: state.members.map((member) => ({ ...member, hp: 1 })),
+      },
+    })
+    const events = fightToEnd(weak, "guard")
+    expect(events.at(-1)).toEqual({ type: "defeated" })
+    expect(weak.state.stones).toBe(3)
+    expect(weak.state.wipe?.stones).toBe(2)
+    expect(weak.queries.result(weak.state)).toMatchObject({
+      kind: "wipe",
+      stones: 2,
+    })
+    expect(weak.restore(weak.save())).toBeUndefined()
   })
 
   it("[feature:W002] ボスを倒すと次の層が開く", () => {

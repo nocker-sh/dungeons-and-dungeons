@@ -36,15 +36,16 @@ describe("敵の攻撃と後衛", () => {
         skillRate: options.skill ? 1 : 0,
       })
       .build()
-    let builder = aState(content)
+    // マユ・アルダを前衛に、モートを後衛に置く
+    let builder = aState(content).withParty(["mayu", "alda", "mort"])
     if (options.frontDown)
       builder = builder
-        .withMember("hero", { hp: 0 })
+        .withMember("mayu", { hp: 0 })
         .withMember("alda", { hp: 0 })
     const state = builder
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["foe-1", "hero", "alda", "mort"],
+        order: ["foe-1", "mayu", "alda", "mort"],
       })
       .build()
     return createTestGame({ content, state, random: options.random })
@@ -127,10 +128,10 @@ describe("敵の攻撃と後衛", () => {
   })
 
   it("前衛への遠距離の攻撃は外れない", () => {
-    // 乱数0は重みの先頭（主人公）を狙う。命中の判定は後衛だけにかかる
+    // 乱数0は重みの先頭（マユ）を狙う。命中の判定は後衛だけにかかる
     const game = foeFirst({ reach: "ranged", random: 0 })
     const acted = actedOf(eventsOrThrow(game.send({ type: "foe-turn" })))
-    expect(acted.results[0].target.id).toBe(contentId("hero"))
+    expect(acted.results[0].target.id).toBe(contentId("mayu"))
     expect(acted.results[0].missed).toBeUndefined()
     expect(acted.results[0].damage).toBeGreaterThan(0)
   })

@@ -58,8 +58,15 @@ export class FoeTurn {
           undefined
         )
     if (!results) return reject("NO_TARGET")
-    // 防御は敵の行動を一度受けるまで
-    combat.guarding = []
+    // 防御は敵の行動を一度受けるまで。別の仲間が狙われた・外れた行動では解けない。
+    const received = new Set(
+      results.flatMap((result) =>
+        result.target.kind === "member" && !result.missed
+          ? [result.target.id]
+          : []
+      )
+    )
+    combat.guarding = combat.guarding.filter((id) => !received.has(id))
     const acted: GameEvent = {
       type: "acted",
       actor,

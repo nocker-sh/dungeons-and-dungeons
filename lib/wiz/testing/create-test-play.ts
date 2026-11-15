@@ -1,6 +1,7 @@
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import type { Game } from "@/lib/wiz/game/game"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { fixedClock } from "@/lib/wiz/testing/fixed-clock"
 import { startedState } from "@/lib/wiz/testing/started-state"
 import { testEnvironment } from "@/lib/wiz/testing/test-environment"
@@ -15,7 +16,7 @@ export function createTestPlay(
   random: number | (() => number) = 0.5,
   content: unknown = realContent()
 ): TestPlay {
-  const definition = new GameDefinition(content)
+  const definition = new GameDefinition(catalogOf(content))
   return {
     definition,
     game: definition.create(

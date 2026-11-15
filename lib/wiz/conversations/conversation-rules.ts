@@ -1,6 +1,7 @@
 import { DemonBonds } from "@/lib/wiz/rules/demon-bonds"
 import { MemberBonds } from "@/lib/wiz/rules/member-bonds"
 import type { GameCatalog } from "@/lib/wiz/content/game-catalog"
+import { HERO_REGISTERED_FLAG } from "@/lib/wiz/content/constants"
 import type { GameState } from "@/lib/wiz/state/state-schema"
 import type {
   ConversationDefinition,
@@ -27,7 +28,10 @@ export class ConversationRules {
   ) {
     return (this.catalog.data.conversations ?? []).map((conversation) => ({
       conversation,
-      reasons: this.reasons(state, trigger, conversation, subject),
+      reasons: [
+        ...this.reasons(state, trigger, conversation, subject),
+        ...(conversation.retired ? ["廃止した会話"] : []),
+      ],
     }))
   }
 
@@ -80,11 +84,17 @@ export class ConversationRules {
     const flags = state.conversation?.flags ?? []
     for (const flag of conversation.requires)
       if (!flags.includes(flag)) reasons.push(`フラグがない:${flag}`)
+    // 登録の印は、印を付ける前の版で登録した保存にはない。登録前だけの場面は、登録済みなら印がなくても流さない
+    // （印を必要とする場面は、旧保存で今さら流さないよう、実際の印だけで判定する）。
+    const registered = !state.hero.registrationPending
     for (const flag of conversation.excludes)
-      if (flags.includes(flag)) reasons.push(`フラグが立っている:${flag}`)
+      if (flags.includes(flag) || (flag === HERO_REGISTERED_FLAG && registered))
+        reasons.push(`フラグが立っている:${flag}`)
+    // 親しさは0以上なので、下限のない台本では数えない（悪魔の親しさは全台本を走査するので重い）
+    const minimumBond = conversation.minimumBond ?? 0
     if (
-      this.bond(state, conversation.participants[0]) <
-      (conversation.minimumBond ?? 0)
+      minimumBond > 0 &&
+      this.bond(state, conversation.participants[0]) < minimumBond
     )
       reasons.push("まだ親しくなっていない")
     for (const person of conversation.participants) {

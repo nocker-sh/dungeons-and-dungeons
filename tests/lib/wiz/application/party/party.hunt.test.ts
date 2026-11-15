@@ -29,14 +29,10 @@ describe("装備と隊列の不変条件", () => {
       (entry) => entry.good === contentId(good) && entry.owner === owner
     )!
 
-  /** 控えのマユに木こりの斧を持たせた街（本物の始まりは誰も武器を持たない）。 */
+  /** 初期の三人にいるマユに木こりの斧を持たせた街。 */
   const armedGame = (gold = 500) =>
     createTestGame({
-      state: aState()
-        .withGold(gold)
-        .withJoined("mayu")
-        .withEquipped("mayu", "axe")
-        .build(),
+      state: aState().withGold(gold).withEquipped("mayu", "axe").build(),
     })
 
   it("[feature:W017] 拒否された装備は状態を変えない", () => {
@@ -75,11 +71,7 @@ describe("装備と隊列の不変条件", () => {
 
   it("[feature:W017] 街の外では装備も隊列も変えられず、状態を変えない", () => {
     const game = createTestGame({
-      state: aState()
-        .withJoined("mayu")
-        .withEquipped("mayu", "axe")
-        .inExpedition()
-        .build(),
+      state: aState().withEquipped("mayu", "axe").inExpedition().build(),
     })
     const axe = gearOf(game, "axe", mayu)
     for (const action of [
@@ -101,7 +93,6 @@ describe("装備と隊列の不変条件", () => {
     const game = createTestGame({
       state: aState()
         .withGold(1000)
-        .withJoined("mayu")
         .withEquipped("mayu", "axe")
         .withBoard(["sr-husky", "r-alma"])
         .build(),
@@ -264,7 +255,9 @@ describe("装備と隊列の不変条件", () => {
     const game = createTestGame({ state: aState().withGold(500).build() })
     eventsOrThrow(game.send({ type: "recruit", recruit: contentId("r-jig") }))
     for (const [action, code] of [
-      [{ type: "swap", out: hero, in: jig }, "HERO"],
+      // 主人公は雇っている仲間にいないので、出す側にも入れる側にもなれない
+      [{ type: "swap", out: hero, in: jig }, "UNKNOWN"],
+      [{ type: "swap", out: mort, in: hero }, "UNKNOWN"],
       [{ type: "swap", out: jig, in: mort }, "UNKNOWN"],
       [{ type: "swap", out: mort, in: mort }, "UNKNOWN"],
       [{ type: "swap", out: mort, in: "no-one" }, "UNKNOWN"],
@@ -279,23 +272,21 @@ describe("装備と隊列の不変条件", () => {
 
   it("[feature:W019] 何度入れ替えても出撃は3人で重複しない", () => {
     const game = createTestGame({
-      state: aState().withGold(500).withBoard(["r-jig", "n-luca"]).build(),
+      state: aState().withGold(500).withBoard(["r-jig", "n-rio"]).build(),
     })
     eventsOrThrow(game.send({ type: "recruit", recruit: contentId("r-jig") }))
-    eventsOrThrow(game.send({ type: "recruit", recruit: contentId("n-luca") }))
+    eventsOrThrow(game.send({ type: "recruit", recruit: contentId("n-rio") }))
     const random = seededRandom(5)
     for (let step = 0; step < 40; step++) {
       const reserve = game.queries.reserve(game.state)
-      const party = game.queries
-        .party(game.state)
-        .filter((member) => member.id !== hero)
+      const party = game.queries.party(game.state)
       if (!reserve.length) break
       const out = party[Math.floor(random() * party.length)]
       const incoming = reserve[Math.floor(random() * reserve.length)]
       eventsOrThrow(game.send({ type: "swap", out: out.id, in: incoming.id }))
       expect(game.state.party.length).toBe(3)
       expect(new Set(game.state.party).size).toBe(3)
-      expect(game.state.party).toContain(hero)
+      expect(game.state.party).not.toContain(hero)
     }
   })
 
@@ -303,9 +294,10 @@ describe("装備と隊列の不変条件", () => {
     const game = createTestGame()
     for (const [action, code] of [
       // 後衛は1人なので、同じ列は前衛の2人だけ
-      [{ type: "swap-rows", a: hero, b: alda }, "UNAVAILABLE"],
+      [{ type: "swap-rows", a: alda, b: mort }, "UNAVAILABLE"],
       [{ type: "swap-rows", a: alda, b: alda }, "UNAVAILABLE"],
       [{ type: "swap-rows", a: alda, b: jig }, "UNKNOWN"],
+      [{ type: "swap-rows", a: hero, b: mayu }, "UNKNOWN"],
     ] as const satisfies readonly [GameAction, string][]) {
       const before = game.state
       expect((game.send(action) as GameCommandError).code).toBe(code)
@@ -315,27 +307,27 @@ describe("装備と隊列の不変条件", () => {
 
   it("[feature:W020] 入れ替えは2か所だけ動かし、出来事は入れ替えた後の位置を出す", () => {
     const game = createTestGame()
-    expect(game.state.party).toEqual([hero, alda, mort])
+    expect(game.state.party).toEqual([alda, mort, mayu])
     const events = eventsOrThrow(
-      game.send({ type: "swap-rows", a: alda, b: mort })
+      game.send({ type: "swap-rows", a: alda, b: mayu })
     )
-    expect(game.state.party).toEqual([hero, mort, alda])
+    expect(game.state.party).toEqual([mayu, mort, alda])
     // front には前衛へ入った者、back には後衛へ下がった者
     expect(events[0]).toEqual({
       type: "rows-swapped",
-      front: mort,
+      front: mayu,
       back: alda,
     })
-    expect(game.queries.member(game.state, mort)!.row).toBe("front")
+    expect(game.queries.member(game.state, mayu)!.row).toBe("front")
     expect(game.queries.member(game.state, alda)!.row).toBe("back")
-    expect(game.queries.member(game.state, hero)!.row).toBe("front")
+    expect(game.queries.member(game.state, mort)!.row).toBe("front")
   })
 
   it("[feature:W020] 前衛と後衛の入れ替えを繰り返しても並びは元へ戻る", () => {
     const game = createTestGame()
     const before = game.state.party
-    eventsOrThrow(game.send({ type: "swap-rows", a: alda, b: mort }))
-    eventsOrThrow(game.send({ type: "swap-rows", a: mort, b: alda }))
+    eventsOrThrow(game.send({ type: "swap-rows", a: alda, b: mayu }))
+    eventsOrThrow(game.send({ type: "swap-rows", a: mayu, b: alda }))
     expect(game.state.party).toEqual(before)
   })
 
@@ -351,7 +343,7 @@ describe("装備と隊列の不変条件", () => {
     const mail = gearOf(game, "mail")
     eventsOrThrow(game.send({ type: "equip", gear: mail.id, member: alda }))
     eventsOrThrow(game.send({ type: "recruit", recruit: contentId("r-jig") }))
-    eventsOrThrow(game.send({ type: "swap", out: mort, in: jig }))
+    eventsOrThrow(game.send({ type: "swap", out: mayu, in: jig }))
     eventsOrThrow(game.send({ type: "swap-rows", a: alda, b: jig }))
     const saved = JSON.parse(JSON.stringify(game.save()))
     const before = JSON.stringify(game.state)
@@ -359,8 +351,8 @@ describe("装備と隊列の不変条件", () => {
     expect(restored.restore(saved)).toBeUndefined()
     expect(JSON.stringify(restored.state)).toBe(before)
     // 戻した後も編成を続けられる
-    eventsOrThrow(restored.send({ type: "swap", out: jig, in: mort }))
-    expect(restored.state.party).toEqual([hero, mort, alda])
+    eventsOrThrow(restored.send({ type: "swap", out: jig, in: mayu }))
+    expect(restored.state.party).toEqual([mayu, mort, alda])
   })
 
   it("[feature:W004] 武器を弱いものに替えても、残りの使用回数は0より下がらない", () => {

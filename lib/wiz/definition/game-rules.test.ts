@@ -1,13 +1,13 @@
 import { describe, expect, it } from "vite-plus/test"
-import { GameCatalog } from "@/lib/wiz/content/game-catalog"
 import { PartyRules } from "@/lib/wiz/rules/party-rules"
 import { WeaponRules } from "@/lib/wiz/rules/weapon-rules"
 import { createGameRules } from "@/lib/wiz/definition/game-rules"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 
 describe("計算規則の組み立て（createGameRules）", () => {
-  const catalog = new GameCatalog(realContent())
+  const catalog = catalogOf(realContent())
 
   it("渡さなければ既定の規則を一組だけ作る", () => {
     const rules = createGameRules(catalog)

@@ -116,9 +116,9 @@ describe("探索なしの街・農場の戦闘", () => {
   it("人数・戦闘不能・疲労・未解放・普通の依頼を拒否し、資産を保持", () => {
     const quest = contentId("q-town-crates")
     const states = [
-      aState().withParty(["hero"]).build(),
-      aState().withMember("hero", { hp: 0 }).build(),
-      aState().withMember("hero", { fatigue: 100 }).build(),
+      aState().withParty(["alda"]).build(),
+      aState().withMember("mayu", { hp: 0 }).build(),
+      aState().withMember("mayu", { fatigue: 100 }).build(),
     ]
     for (const state of states) {
       const game = createTestGame({ state })

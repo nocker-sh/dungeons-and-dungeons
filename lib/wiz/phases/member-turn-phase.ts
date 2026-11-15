@@ -39,6 +39,10 @@ export class MemberTurnPhase extends PhaseBase {
   guard() {
     return this.send<AfterTurn>({ type: "act", command: "guard" }, AFTER_TURN)
   }
+  /** プレイヤーが契約した悪魔を呼ぶ必殺技。1戦闘に1回。手番を使わない。 */
+  callDemon() {
+    return this.send({ type: "call-demon" }, AFTER_TURN)
+  }
   /** ケイヤク：悪魔と契約して戦う仲間（R）がモードを変える。手番を使う。 */
   pact(mode: number) {
     return this.send<AfterTurn>(

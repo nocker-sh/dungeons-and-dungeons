@@ -11,30 +11,30 @@ import { WizWorldEnvironment } from "@/lib/wiz/core/world/world"
 import type { GameState } from "@/lib/wiz/state/state-schema"
 
 describe("ワザの使用回数", () => {
-  const hero = memberBySlug("hero").id
+  const mayu = memberBySlug("mayu").id
   const alda = memberBySlug("alda").id
-  const thrust = skillBySlug("thrust")
+  const bullet = skillBySlug("magicbullet")
 
   it("[feature:W004] ワザを使うと残りが減り、0になると使えない", () => {
     const game = createTestGame({
       state: aState()
-        .inBattle({ order: ["hero", "foe-1", "alda", "mort"] })
+        .inBattle({ order: ["mayu", "foe-1", "alda", "mort"] })
         .build(),
     })
     const left = () =>
       game.queries
-        .commands(game.state, hero)
-        ?.weaponSkills.find((skill) => skill.id === thrust.id)?.left
-    expect(left()).toBe(thrust.uses)
+        .commands(game.state, mayu)
+        ?.weaponSkills.find((skill) => skill.id === bullet.id)?.left
+    expect(left()).toBe(bullet.uses)
     eventsOrThrow(
-      game.send({ type: "act", command: "skill", skill: thrust.id })
+      game.send({ type: "act", command: "skill", skill: bullet.id })
     )
-    expect(left()).toBe(thrust.uses! - 1)
+    expect(left()).toBe(bullet.uses! - 1)
     const spent: GameState = {
       ...game.state,
       members: game.state.members.map((member) =>
-        member.id === hero
-          ? { ...member, used: [{ skill: thrust.id, count: thrust.uses! }] }
+        member.id === mayu
+          ? { ...member, used: [{ skill: bullet.id, count: bullet.uses! }] }
           : member
       ),
     }
@@ -44,8 +44,8 @@ describe("ワザの使用回数", () => {
     )
     expect(
       dry.queries
-        .commands(dry.state, hero)
-        ?.weaponSkills.find((skill) => skill.id === thrust.id)?.usable
+        .commands(dry.state, mayu)
+        ?.weaponSkills.find((skill) => skill.id === bullet.id)?.usable
     ).toBe(false)
   })
 
@@ -69,14 +69,14 @@ describe("ワザの使用回数", () => {
   it("[feature:W021] 気力の水はワザの残りを戻す", () => {
     const { definition } = createTestPlay()
     const base = startedState(definition)
-    const focus = contentId("focus")
+    const whirl = contentId("whirl")
     const refill = 3
     const used: GameState = {
       ...base,
       bag: [...base.bag, { good: contentId("ether"), count: 1 }],
       members: base.members.map((member) =>
         member.id === alda
-          ? { ...member, used: [{ skill: focus, count: refill }] }
+          ? { ...member, used: [{ skill: whirl, count: refill }] }
           : member
       ),
     }
@@ -89,6 +89,6 @@ describe("ワザの使用回数", () => {
     const back = effect?.type === "refill" ? effect.uses : 0
     expect(
       game.state.members.find((member) => member.id === alda)?.used
-    ).toEqual([{ skill: focus, count: refill - back }])
+    ).toEqual([{ skill: whirl, count: refill - back }])
   })
 })

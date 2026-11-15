@@ -10,7 +10,7 @@ import type { GameState } from "@/lib/wiz/state/state-schema"
 export class Inscribe {
   static readonly featureId = "W034"
   constructor(
-    private readonly deps: Pick<GameDependencies, "catalog" | "weapons">
+    private readonly deps: Pick<GameDependencies, "catalog" | "weapons" | "party">
   ) {}
 
   execute(state: GameState, input: GameActionOf<"inscribe">): Transition {
@@ -20,6 +20,10 @@ export class Inscribe {
     const book = this.deps.catalog.data.smithy?.skillBook
     if (!gear?.weapon || !good || !book) return reject("UNKNOWN")
     if (gear.unidentified) return reject("UNAVAILABLE")
+    // 専用の武器（ユニークの固有武器）は鍛え直しで扱い、ワザは付け替えない
+    if (this.deps.party.equipment.isFixedWeapon(gear))
+      return reject("UNAVAILABLE")
+    if (input.slot >= gear.weapon.skills.length) return reject("NO_TARGET")
     if (!this.deps.weapons.pool(good).includes(input.skill))
       return reject("UNAVAILABLE")
     if (gear.weapon.skills.includes(input.skill)) return reject("ALREADY")

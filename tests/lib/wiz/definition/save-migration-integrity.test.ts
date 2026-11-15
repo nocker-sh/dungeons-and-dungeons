@@ -7,9 +7,10 @@ import { aState } from "@/lib/wiz/testing/state-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { memberBySlug } from "@/lib/wiz/testing/member-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 
-const definition = new GameDefinition(realContent())
+const definition = new GameDefinition(catalogOf(realContent()))
 const alma = contentId("alma")
 const good = memberBySlug("alma").pact!.modes[0].weapon
 const signature: Gear = {
@@ -104,6 +105,31 @@ describe("保存移行前の整合性", () => {
       if (!(cause instanceof StateIntegrityError))
         throw new Error("保存の不正な箇所が分からない")
       expect(cause.problems).toContain("出撃メンバーが重複している")
+      expect(game.state).toBe(before)
+    }
+  )
+
+  it.each([
+    definition.identity,
+    definition.previousIdentity,
+    definition.legacyIdentity,
+  ])(
+    "対応している各版で、形の崩れた保存を版違いと誤診しない: %s",
+    (contentVersion) => {
+      const game = createTestGame()
+      const before = game.state
+      const error = game.restore({
+        ...game.save(),
+        contentVersion,
+        snapshot: { ...aState().build(), gold: -1 },
+      })
+      expect(error).toBeInstanceOf(GameCommandError)
+      if (!(error instanceof GameCommandError))
+        throw new Error("保存が拒否されなかった")
+      // 名乗った版の読み方の誤り（所持金が不正）を伝え、「以前の版の保存」とは言わない
+      expect((error.cause as { code?: string } | undefined)?.code).not.toBe(
+        "CONTENT_VERSION_MISMATCH"
+      )
       expect(game.state).toBe(before)
     }
   )

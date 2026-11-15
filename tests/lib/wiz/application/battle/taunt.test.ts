@@ -59,11 +59,11 @@ describe("挑発で仲間を守る", () => {
       random: 0.5,
       state: aState()
         .withExtraMember("gald")
-        .withParty(["hero", "alda", "gald"])
+        .withParty(["mayu", "alda", "gald"])
         .withMember("gald", { status: [{ kind: "taunt", turns: 2 }] })
         .inBattle({
           foes: ["hiyokobu"],
-          order: ["foe-1", "hero", "alda", "gald"],
+          order: ["foe-1", "mayu", "alda", "gald"],
         })
         .build(),
     })
@@ -92,6 +92,7 @@ describe("挑発で仲間を守る", () => {
       content,
       random: 0.5,
       state: aState()
+        .withParty(["mayu", "alda", "mort"])
         .withMember("alda", {
           status: [
             { kind: "taunt", turns: 2 },
@@ -100,7 +101,7 @@ describe("挑発で仲間を守る", () => {
         })
         .inBattle({
           foes: ["hiyokobu"],
-          order: ["foe-1", "hero", "alda", "mort"],
+          order: ["foe-1", "mayu", "alda", "mort"],
         })
         .build(),
     })
@@ -110,7 +111,7 @@ describe("挑発で仲間を守る", () => {
     if (acted?.type !== "acted") throw new Error("acted がない")
     // 地鳴らしは近接なので、後衛のモートには届かない
     expect(acted.results.map((hit) => hit.target.id)).toEqual([
-      contentId("hero"),
+      contentId("mayu"),
       contentId("alda"),
     ])
     expect(

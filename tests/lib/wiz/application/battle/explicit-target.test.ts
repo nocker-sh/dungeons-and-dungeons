@@ -17,7 +17,7 @@ function battle() {
       .withMember("alda", { hp: 0 })
       .inBattle({
         foes: ["kamokutsu", "kamokutsu"],
-        order: ["mort", "foe-1", "foe-2", "hero"],
+        order: ["mort", "foe-1", "foe-2", "mayu"],
       })
       .build(),
     random: 0.5,

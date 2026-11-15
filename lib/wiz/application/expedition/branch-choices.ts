@@ -137,19 +137,28 @@ export class BranchChoices {
         if ((incoming.get(next) ?? 0) > 1) break
         current = stations.get(next)!
       }
+      const surveyReason =
+        !station.mystery || station.event
+          ? "この道は正体が分かっている"
+          : surveyed
+            ? "この道は察知済み"
+            : !new ExplorationRules(this.catalog).has(state, "scout")
+              ? "察知を持つ仲間がいない"
+              : (expedition.surveyed?.length ?? 0) >=
+                  ExplorationRules.surveyLimit
+                ? "この出撃の察知は使い切った"
+                : expedition.pending
+                  ? "目の前の出来事を片付けてから"
+                  : null
       return {
         id,
         label: surveyed
           ? `察知：${revealedNames[surveyed.kind]}`
           : (station.label ?? "先へ進む"),
         surveyed: !!surveyed,
-        canSurvey:
-          !!station.mystery &&
-          !station.event &&
-          !surveyed &&
-          (expedition.surveyed?.length ?? 0) < ExplorationRules.surveyLimit &&
-          new ExplorationRules(this.catalog).has(state, "scout") &&
-          !expedition.pending,
+        canSurvey: surveyReason === null,
+        /** 察知できない理由。できるときは null。 */
+        surveyReason,
         hint: station.hint ?? "何があるかは着いてからのお楽しみ",
         danger: (
           { low: "低", medium: "中", high: "高", unknown: "不明" } as const

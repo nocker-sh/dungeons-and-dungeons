@@ -38,6 +38,8 @@ export class Act {
       environment.random,
       environment.nextId
     )
+    // 防御は自分の次の手番まで。受けずに残っていても、次に動くときに解ける。
+    combat.guarding = combat.guarding.filter((entry) => entry !== member.id)
     let results: ActionResult[] | null = []
     let name = ""
     let paid = 0
@@ -75,16 +77,9 @@ export class Act {
       }
       name = skill.name
       const spec = skillSpec(skill)
-      // 主人公の固有スキルは合体する悪魔のワザ。悪魔のレベルで威力が上がる。
-      // 流派が合体中の悪魔と合えば相性の分だけ上がり、後衛から近接のワザは下がる。
-      const own =
-        input.command === "skill" &&
-        this.deps.party.magic.skills(member, state).includes(skill.id)
+      // 後衛から近接のワザは下がる
       const power =
-        (own && this.deps.party.equipment.isHero(member)
-          ? spec.power * this.deps.party.magic.demonPower(state)
-          : spec.power) *
-        this.deps.party.magic.affinityFactor(member, state, skill.id) *
+        spec.power *
         (spec.kind === "hit" && spec.reach
           ? this.deps.party.reachFactor(state, member.id, spec.reach)
           : 1)

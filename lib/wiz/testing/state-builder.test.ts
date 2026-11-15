@@ -6,6 +6,7 @@ import { contentId } from "@/lib/wiz/testing/content-id"
 import { foeBySlug } from "@/lib/wiz/testing/foe-by-slug"
 import { memberBySlug } from "@/lib/wiz/testing/member-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { startedState } from "@/lib/wiz/testing/started-state"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 
@@ -74,7 +75,8 @@ describe("場面の組み立て器（aState）", () => {
     expect(game.queries.member(game.state, sion.id)!.hp).toBe(
       game.queries.member(game.state, sion.id)!.maxHp
     )
-    expect(() => base.withJoined("mort")).toThrow("もう雇っている")
+    // もう雇っている初期の仲間を指しても、仲間も装備も増えない
+    expect(base.withJoined("mort").build()).toEqual(base.build())
   })
 
   it("つなげても元の組み立て器は変わらない", () => {
@@ -156,7 +158,7 @@ describe("場面の組み立て器（aState）", () => {
   })
 
   it("途中の状態からも組み立てられる", () => {
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const game = definition.create(undefined, startedState(definition))
     eventsOrThrow(game.send({ type: "depart", layer: contentId("layer0") }))
     const next = GameStateBuilder.from(game.state, definition.catalog)

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vite-plus/test"
 import { aState } from "@/lib/wiz/testing/state-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { createTestPlay } from "@/lib/wiz/testing/create-test-play"
@@ -72,7 +73,7 @@ describe("持ち出しと探索の選択", () => {
       .withMember("alda", { hp: 1 })
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["hero", "foe-1", "alda", "mort"],
+        order: ["mayu", "foe-1", "alda", "mort"],
       })
       .build()
     const game = createTestGame({
@@ -88,7 +89,10 @@ describe("持ち出しと探索の選択", () => {
     )
     expect(Bag.count(game.state.bag, potion)).toBe(11)
     expect(
-      SupplyRules.packed(game.state, new GameDefinition(realContent()).catalog)
+      SupplyRules.packed(
+        game.state,
+        new GameDefinition(catalogOf(realContent())).catalog
+      )
     ).toEqual([])
   })
 
@@ -162,9 +166,22 @@ describe("持ち出しと探索の選択", () => {
   })
 
   it("初回募集を逆順で雇っても前衛に守り役、後衛に回復役が揃い、そろった後の募集は控えに入る", () => {
+    // 主人公は隊列に入らないので、最初の仲間がマユ一人だけの作品で3人がそろう流れを見る
+    const source = realContent()
     const game = createTestGame({
       fresh: true,
-      content: { ...realContent(), startingCompanions: [] },
+      content: {
+        ...source,
+        startingCompanions: [contentId("mayu")],
+        recruiting: {
+          ...source.recruiting,
+          initial: [
+            contentId("n-alda"),
+            contentId("n-mort"),
+            contentId("r-jig"),
+          ],
+        },
+      },
     })
     eventsOrThrow(
       game.send({
@@ -182,15 +199,16 @@ describe("持ち出しと探索の選択", () => {
     expect(
       game.queries.party(game.state).map((member) => [member.role, member.row])
     ).toEqual([
-      ["summoner", "front"],
       ["tank", "front"],
+      ["damage", "front"],
       ["healer", "back"],
     ])
+    expect(game.state.party).not.toContain(contentId("hero"))
     const lineup = game.state.party
-    eventsOrThrow(game.send({ type: "recruit", recruit: recruitOf("mayu") }))
+    eventsOrThrow(game.send({ type: "recruit", recruit: recruitOf("jig") }))
     expect(game.state.party).toEqual(lineup)
     expect(game.queries.reserve(game.state).map((member) => member.id)).toEqual(
-      [contentId("mayu")]
+      [contentId("jig")]
     )
     const { definition } = createTestPlay()
     const party = game.state.party.map((id) =>

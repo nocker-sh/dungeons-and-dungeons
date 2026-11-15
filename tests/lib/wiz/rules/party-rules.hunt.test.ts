@@ -5,6 +5,7 @@ import { demonBySlug } from "@/lib/wiz/testing/demon-by-slug"
 import { goodBySlug } from "@/lib/wiz/testing/good-by-slug"
 import { memberBySlug } from "@/lib/wiz/testing/member-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { skillBySlug } from "@/lib/wiz/testing/skill-by-slug"
 import { realSmithy } from "@/lib/wiz/testing/real-smithy"
 import { seededRandom } from "@/lib/wiz/testing/seeded-random"
@@ -15,7 +16,7 @@ import type { Member } from "@/lib/wiz/state/state-schema"
 
 /** 仲間の能力・成長・使用回数（PartyRules）の境界をさがす。 */
 describe("仲間の能力と成長の不変条件", () => {
-  const catalog = new GameCatalog(realContent())
+  const catalog = catalogOf(realContent())
   const rules = new PartyRules(catalog)
   // 武器のワザを測るので、アルダには鉄の両手剣を持たせておく
   const base = aState().withEquipped("alda", "greatsword").build()
@@ -30,7 +31,7 @@ describe("仲間の能力と成長の不変条件", () => {
   const brawl = contentId("brawl")
 
   it("[feature:W020] 並びの左2人が前衛、右1人が後衛。控えは列を持たない", () => {
-    expect(base.party).toEqual(["hero", "alda", "mort"].map(idOf))
+    expect(base.party).toEqual(["alda", "mort", "mayu"].map(idOf))
     expect(rules.rowOf(base, base.party[0])).toBe("front")
     expect(rules.rowOf(base, base.party[1])).toBe("front")
     expect(rules.rowOf(base, base.party[2])).toBe("back")
@@ -170,24 +171,36 @@ describe("仲間の能力と成長の不変条件", () => {
   })
 
   it("[feature:W021] 使用回数を戻すと0未満にならず、戻した数が合う", () => {
+    const secondWeaponSkill = skillBySlug("helmsplit")
     const alda: Member = {
       ...memberOf(base, idOf("alda")),
       used: [
         { skill: weaponSkill.id, count: 1 },
-        { skill: otherWeaponSkill.id, count: 3 },
+        { skill: secondWeaponSkill.id, count: 3 },
       ],
     }
-    const restored = rules.skills.refillUses(alda, 2)
+    const restored = rules.skills.refillUses(alda, base, 2)
     expect(restored).toEqual({
-      used: [{ skill: otherWeaponSkill.id, count: 1 }],
+      used: [{ skill: secondWeaponSkill.id, count: 1 }],
       restored: 3,
     })
-    expect(rules.skills.refillUses(alda, 0)).toEqual({
+    expect(rules.skills.refillUses(alda, base, 0)).toEqual({
       used: alda.used,
       restored: 0,
     })
-    expect(rules.skills.refillUses(alda, 99).used).toEqual([])
-    expect(rules.skills.refillUses({ ...alda, used: [] }, 2).restored).toBe(0)
+    expect(rules.skills.refillUses(alda, base, 99).used).toEqual([])
+    expect(
+      rules.skills.refillUses({ ...alda, used: [] }, base, 2).restored
+    ).toBe(0)
+    // いまの武器に付かないワザの記録は戻さず、数えない
+    const stale: Member = {
+      ...alda,
+      used: [{ skill: otherWeaponSkill.id, count: 3 }],
+    }
+    expect(rules.skills.refillUses(stale, base, 2)).toEqual({
+      used: stale.used,
+      restored: 0,
+    })
   })
 
   it("[feature:W004] 攻撃できるワザが残り0のときだけ殴れる（境界）", () => {
@@ -234,8 +247,14 @@ describe("仲間の能力と成長の不変条件", () => {
 
   it("[feature:W007] 経験値がたくさんあると一度に何段でも上がる", () => {
     const ada = memberOf(base, idOf("alda"))
-    const grown = rules.growth.grow({ ...ada, exp: 1000 }, () => 0.99)
-    expect(grown.lv).toBeGreaterThan(ada.lv + 3)
+    // 4段ぶんの経験値と端数を、作品データの必要量から積み上げる
+    const steps = 4
+    const exp = Array.from({ length: steps }, (_, index) =>
+      rules.growth.expToNext(ada.lv + index)
+    ).reduce((sum, need) => sum + need, 0)
+    const grown = rules.growth.grow({ ...ada, exp: exp + 1 }, () => 0.99)
+    expect(grown.lv).toBe(ada.lv + steps)
+    expect(grown.exp).toBe(1)
     expect(grown.exp).toBeLessThan(rules.growth.expToNext(grown.lv))
     expect(grown.stats.maxHp).toBeGreaterThan(ada.stats.maxHp)
   })
@@ -369,18 +388,27 @@ describe("仲間の能力と成長の不変条件", () => {
     ).toBe(upgrades)
   })
 
-  it("[feature:W013] 主人公のワザは契約している悪魔のもので、悪魔のレベルで威力が上がる", () => {
-    expect(rules.magic.skills({ id: idOf("hero") }, base)).toEqual(
-      demonBySlug("nui").skills
-    )
-    expect(rules.magic.skills({ id: idOf("alda") }, base)).toEqual(
-      memberBySlug("alda").skills
-    )
-    const per = realContent().summon.powerPerLevel
-    expect(rules.magic.demonPower(base)).toBe(1)
-    const leveled = aState()
-      .withDemons([{ id: "nui", lv: 3, exp: 0 }])
-      .build()
-    expect(rules.magic.demonPower(leveled)).toBe(1 + per * 2)
+  it("[feature:W013] 仲間のワザは自分のデータのもので、呼ぶ悪魔とそのレベルで変わらない", () => {
+    const states = [
+      base,
+      aState().withoutDemon().build(),
+      aState()
+        .withDemons([{ id: "lox", lv: 3, exp: 0 }], "lox")
+        .build(),
+    ]
+    for (const slug of ["alda", "mort", "mayu"]) {
+      expect(rules.magic.skills({ id: idOf(slug) }), slug).toEqual(
+        memberBySlug(slug).skills
+      )
+      // 戦闘で選べるワザも、呼ぶ悪魔の有無・種類・レベルで変わらない
+      const skillsIn = (state: GameState) =>
+        rules.skills.battleSkills(memberOf(state, idOf(slug)), state)
+      for (const state of states)
+        expect(skillsIn(state), slug).toEqual(skillsIn(base))
+    }
+    // 悪魔のワザは仲間のワザに混ざらない（呼んだときの必殺技だけに使う）
+    for (const skill of demonBySlug("nui").skills)
+      for (const slug of ["alda", "mort", "mayu"])
+        expect(rules.magic.skills({ id: idOf(slug) })).not.toContain(skill)
   })
 })

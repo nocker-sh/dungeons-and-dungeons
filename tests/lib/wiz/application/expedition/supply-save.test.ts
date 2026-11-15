@@ -38,7 +38,7 @@ describe("分かれた道具の束からの保存再開", () => {
         base()
           .inBattle({
             foes: ["kamokutsu"],
-            order: ["hero", "foe-1", "alda", "mort"],
+            order: ["mayu", "foe-1", "alda", "mort"],
           })
           .build(),
       action: {

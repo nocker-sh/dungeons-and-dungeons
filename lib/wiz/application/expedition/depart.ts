@@ -20,6 +20,8 @@ export class Depart {
     if (state.phase.type !== "town") return reject("WRONG_PHASE")
     // 最初はギルドの受付で名前を登録してから。登録前はダンジョンへ行かない
     if (state.hero.registrationPending) return reject("UNREGISTERED")
+    // 前の全滅の結果を見る前に出ない。次の全滅で見ていない結果を上書きしない。
+    if (state.wipe) return reject("WRONG_PHASE")
     const layer = this.deps.catalog.layer(input.layer)
     if (!layer) return reject("UNKNOWN")
     if (this.deps.catalog.layerIndex(layer.id) > state.reached)

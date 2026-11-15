@@ -35,7 +35,7 @@ export const commands = {
     look: id,
     outfit: id.nullable().optional(),
   }),
-  /** 登録用紙に名前を書き、写真（容姿）を選ぶ。look を省くと今の容姿。 */
+  /** 登録用紙に名前を書く。look は旧保存との互換のためだけに受け取る（画面では選ばない）。 */
   registerHero: z.strictObject({
     type: z.literal("register-hero"),
     name: z.string(),
@@ -77,6 +77,8 @@ export const commands = {
     target: id.optional(),
   }),
   foeTurn: z.strictObject({ type: z.literal("foe-turn") }),
+  /** プレイヤーが契約した悪魔を呼ぶ必殺技。1戦闘に1回。仲間の手番に使い、その手番は消えない。 */
+  callDemon: z.strictObject({ type: z.literal("call-demon") }),
   rest: z.strictObject({ type: z.literal("rest"), room: id }),
   buy: z.strictObject({ type: z.literal("buy"), shop: id, good: id }),
   sell: z.union([

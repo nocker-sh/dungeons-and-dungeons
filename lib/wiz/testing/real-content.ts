@@ -7,8 +7,10 @@ import type { RealLayer } from "@/lib/wiz/testing/layer-by-slug"
  * 本物のゲームのデータ（content）をそのままエンジンの形にして渡すので、
  * テストは実際に遊ぶ数値の上で規則を確かめる。
  * 人が読める名前（slug）から id を引く小さな道具もここに置く。
+ * 全テストで同じ1つを共有するので凍結し、どこかのテストが書き換えたらその場で失敗させる
+ * （変えた作品データが要るテストは `aContent()` で複製から作る）。
  */
-export const content = toGameContent(contentSource)
+export const content = deepFreeze(toGameContent(contentSource))
 
 export type RealStation = RealLayer["stations"][number]
 
@@ -59,4 +61,11 @@ export const sluggedEntries: Record<ContentKind, readonly Slugged[]> = {
   recruit: source.recruits,
   quest: source.quests,
   recipe: source.smithy?.recipes ?? [],
+}
+
+function deepFreeze<T>(value: T): T {
+  if (typeof value !== "object" || value === null || Object.isFrozen(value))
+    return value
+  for (const child of Object.values(value)) deepFreeze(child)
+  return Object.freeze(value)
 }

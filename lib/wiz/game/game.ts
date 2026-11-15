@@ -1,5 +1,8 @@
 import type { WizWorld } from "@/lib/wiz/core/world/world"
-import type { WizWorldSaveCodec } from "@/lib/wiz/core/save/world-save-codec"
+import type {
+  WizWorldSaveCodec,
+  WizWorldSaveEnvelope,
+} from "@/lib/wiz/core/save/world-save-codec"
 import type { GameAction } from "@/lib/wiz/commands"
 import type { GameQueries } from "@/lib/wiz/queries/game-queries"
 import type { GameEvent } from "@/lib/wiz/state/game-event"
@@ -13,6 +16,14 @@ export class Game {
   #snapshot: GameSnapshot
   #listeners = new Set<() => void>()
   #dispatching = false
+  /**
+   * 最後に書き出した状態と保存。状態は凍結済みで、遷移や復元のたびに別の値へ替わる。
+   * 書き出しは全体の複製と検証で重く、表示・自動保存が同じ状態を何度も書き出すので使い回す。
+   */
+  #saved: {
+    state: GameState
+    save: WizWorldSaveEnvelope<GameState>
+  } | null = null
 
   constructor(
     readonly queries: GameQueries,
@@ -66,8 +77,12 @@ export class Game {
     }
   }
 
-  save() {
-    return this.codec.encode(this.#snapshot.state)
+  save(): WizWorldSaveEnvelope<GameState> {
+    const state = this.#snapshot.state
+    if (this.#saved?.state === state) return this.#saved.save
+    const save = this.codec.encode(state)
+    this.#saved = { state, save }
+    return save
   }
 
   restore(input: unknown): void | GameCommandError {

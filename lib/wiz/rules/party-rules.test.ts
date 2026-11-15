@@ -4,12 +4,12 @@ import { contentId } from "@/lib/wiz/testing/content-id"
 import { goodBySlug } from "@/lib/wiz/testing/good-by-slug"
 import { memberBySlug } from "@/lib/wiz/testing/member-by-slug"
 import { realContent } from "@/lib/wiz/testing/real-content"
-import { GameCatalog } from "@/lib/wiz/content/game-catalog"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { PartyRules } from "@/lib/wiz/rules/party-rules"
 import type { GameState } from "@/lib/wiz/state/state-schema"
 
 describe("武器の攻撃力", () => {
-  const catalog = new GameCatalog(realContent())
+  const catalog = catalogOf(realContent())
   const rules = new PartyRules(catalog)
   const alda = memberBySlug("alda")
   const greatsword = goodBySlug("greatsword")
