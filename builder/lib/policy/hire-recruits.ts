@@ -13,7 +13,6 @@ export function hireRecruits(session: Session, reserve: number) {
   for (let guard = 0; guard < 8; guard++) {
     const others = queries
       .party(session.state)
-      .filter((member) => !member.hero)
       .sort((a, b) => strength(a) - strength(b))
     const weakest = others[0]
     if (!weakest) break

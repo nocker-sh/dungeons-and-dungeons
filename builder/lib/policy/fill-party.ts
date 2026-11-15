@@ -3,7 +3,7 @@ import type { Session } from "@/builder/lib/session"
 
 /**
  * 出撃の3人をそろえる。募集の枠から、払える安い順に契約する。
- * 始めたては主人公ひとりなので、最初の街でここが3人を雇う。払った額を返す。
+ * はじめから3人いるので、欠けたときだけ雇う。払った額を返す。
  */
 export function fillParty(session: Session, reserve = 0) {
   const { queries } = session

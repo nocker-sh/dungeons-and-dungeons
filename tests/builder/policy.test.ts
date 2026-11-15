@@ -54,13 +54,12 @@ describe("編成比較の戦闘方策", () => {
     const session = Session.create()
     const state = aState()
       .withExtraMember("rivet")
-      .withParty(["alda", "rivet", "hero"])
+      .withParty(["alda", "rivet", "mayu"])
       // スタンプダックの一撃（攻撃力）には HP だけでは届かず、修復した耐久を足せば耐える
-      // 主人公は防具を着けないので、防具を着けた前衛のアルダで確かめる
       .withMember("alda", { hp: 64 })
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["rivet", "foe-1", "alda", "hero"],
+        order: ["rivet", "foe-1", "alda", "mayu"],
       })
       .build()
     expect(
@@ -71,6 +70,9 @@ describe("編成比較の戦闘方策", () => {
         (gear) => gear.owner === contentId("alda") && !gear.weapon
       )!
       coat.wear = 20
+      // 悪魔はもう呼んだ。仲間の手番で選ぶワザを確かめる
+      if (snapshot.phase.type === "battle")
+        snapshot.phase.battle.demonCalled = true
     })
     const action = battleAction(session, "smart", new SeededRandom(1))
     expect(action).toEqual({
@@ -89,15 +91,19 @@ describe("編成比較の戦闘方策", () => {
     const session = Session.create()
     const state = aState()
       .withExtraMember("rivet")
-      .withParty(["alda", "rivet", "hero"])
+      .withParty(["alda", "rivet", "mayu"])
       .inBattle({
         foes: ["kamokutsu"],
-        order: ["rivet", "foe-1", "alda", "hero"],
+        order: ["rivet", "foe-1", "alda", "mayu"],
       })
       .build()
     expect(
       session.game.restore({ ...session.game.save(), snapshot: state })
     ).toBeUndefined()
+    session.patch((snapshot) => {
+      if (snapshot.phase.type === "battle")
+        snapshot.phase.battle.demonCalled = true
+    })
     expect(
       battleAction(session, "smart", new SeededRandom(1))
     ).not.toMatchObject({ skill: contentId("earth-mend") })

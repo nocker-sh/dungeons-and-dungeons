@@ -11,7 +11,9 @@ export const LIMIT = 2000
 export function fightToEnd(
   session: Session,
   style: BattleStyle,
-  tally?: Tally
+  tally?: Tally,
+  /** ピンチの深さ（start・lowest）を測るか。測らなければ手ごとに隊列の表示を作らない（乱数は使わない）。 */
+  pinch = true
 ) {
   const random = session.random.fork(7)
   let actions = 0
@@ -22,7 +24,7 @@ export function fightToEnd(
     const max = party.reduce((sum, member) => sum + member.maxHp, 0)
     return max ? party.reduce((sum, member) => sum + member.hp, 0) / max : 0
   }
-  const start = ratio()
+  const start = pinch ? ratio() : Number.NaN
   let lowest = start
   // 敵が落とした武器の個体の数
   let drops = 0
@@ -57,7 +59,7 @@ export function fightToEnd(
     if (view.turn % view.order.length === 0) rounds++
     const action = battleAction(session, style, random, view)
     const result = session.send(action)
-    if (session.state.phase.type === "battle")
+    if (pinch && session.state.phase.type === "battle")
       lowest = Math.min(lowest, ratio())
     if (Array.isArray(result))
       for (const event of result)
@@ -73,6 +75,6 @@ export function fightToEnd(
   }
   if (session.state.phase.type === "battle")
     throw new Error(`戦闘が${LIMIT}手で決着せず、測定は未完了です`)
-  if (won) lowest = Math.min(lowest, ratio())
+  if (pinch && won) lowest = Math.min(lowest, ratio())
   return { won, actions, rounds, start, lowest, drops }
 }

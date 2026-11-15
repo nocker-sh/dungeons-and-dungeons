@@ -48,14 +48,15 @@ export function expeditionAction(
       .some((member) => member.hp > 0 && member.hp / member.maxHp < 0.75)
     const choices = route.discovery.choices.filter((choice) => choice.available)
     const altar = choices.find((choice) => choice.blessings?.length)
+    // 祝福は画面と同じく、ルートの表示が出す生存中の仲間から選ぶ。
+    const recipients = route.discovery.recipients
     if (
       altar?.blessings &&
+      recipients.length &&
       !(hurt && choices.some((choice) => choice.healRatio))
     ) {
       const recipient =
-        state.members.find(
-          (member) => state.party.includes(member.id) && !member.blessing
-        ) ?? state.members.find((member) => member.id === state.party[0])!
+        recipients.find((member) => !member.blessing) ?? recipients[0]
       return {
         type: "discover",
         choice: altar.id,

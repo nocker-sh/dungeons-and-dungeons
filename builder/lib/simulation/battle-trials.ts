@@ -3,6 +3,7 @@ import type { BattleStyle } from "@/builder/lib/policy/battle"
 import { Session } from "@/builder/lib/session"
 import type { Setup } from "@/builder/lib/simulation/prepare"
 import { arenaContent } from "@/builder/lib/simulation/arena-content"
+import type { Built } from "@/builder/lib/build-content"
 import { prepare } from "@/builder/lib/simulation/prepare"
 import { newTally } from "@/builder/lib/simulation/new-tally"
 import { fightToEnd } from "@/builder/lib/simulation/fight-to-end"
@@ -24,8 +25,11 @@ export function battleTrials(options: {
     runs: number
     hpLeft: readonly number[]
   }) => boolean
+  /** 同じ闘技場を何度も測るときに使い回すデータ（`arenaContent(overrides, foes, boss)` と同じもの）。 */
+  built?: Built
 }) {
-  const built = arenaContent(options.overrides, options.foes, options.boss)
+  const built =
+    options.built ?? arenaContent(options.overrides, options.foes, options.boss)
   let wins = 0
   let runs = 0
   const rounds: number[] = []
@@ -38,7 +42,8 @@ export function battleTrials(options: {
     prepare(session, options.setup)
     session.must({ type: "depart", layer: "arena" })
     session.must({ type: "advance", to: "n1" })
-    const fight = fightToEnd(session, options.style, tally)
+    // 勝敗と手数だけを使うので、ピンチの深さは測らない
+    const fight = fightToEnd(session, options.style, tally, false)
     labels = new Map(session.state.party.map((id) => [id, session.label(id)]))
     const party = session.queries.party(session.state)
     if (fight.won) wins++

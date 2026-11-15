@@ -66,12 +66,13 @@ const scenarios =
 /** 役割ごとの組み合わせ。毒（毒を入れる仲間と組む）・守り（守りの加護と遠距離）。 */
 const bases = {
   基準: { tank: "alda", healer: "mort" },
-  毒: { tank: "gald", healer: "jig" },
+  毒: { tank: "sera", healer: "jig" },
   守り: { tank: "sera", healer: "sion" },
 } as const
 
 /**
- * 役割の枠に入れた並び（左2人が前衛、右1人が後衛）。主人公と2人なので、ダメージ役は
+ * 役割の枠に入れた並び（左2人が前衛、右1人が後衛）。主人公がいた枠には初期の攻撃役マユを
+ * 入れて比較の条件を保つ（マユ自身を測るときはリオ）。ダメージ役は
  * タンクの代わりに前衛へ入れる並びと、ヒールの代わりに後衛へ入れる並びの両方を試す。
  * 後衛からの近接攻撃は被害が半分になるので、近接で戦う仲間は前衛に置く遊び方も比べる。
  */
@@ -79,15 +80,17 @@ const slotParties = (
   base: { tank: string; healer: string },
   role: string,
   slug: string
-) =>
-  role === "tank"
-    ? [["hero", slug, base.healer]]
+) => {
+  const filler = slug === "mayu" ? "rio" : "mayu"
+  return role === "tank"
+    ? [[filler, slug, base.healer]]
     : role === "healer"
-      ? [["hero", base.tank, slug]]
+      ? [[filler, base.tank, slug]]
       : [
-          ["hero", base.tank, slug],
-          ["hero", slug, base.healer],
+          [filler, base.tank, slug],
+          [filler, slug, base.healer],
         ]
+}
 
 for (const recruit of contentSource.recruits.filter(
   (entry) => !(entry as { retired?: boolean }).retired
@@ -118,11 +121,11 @@ for (const recruit of contentSource.recruits.filter(
 }
 
 const compositions = [
-  { name: "タンク・ヒール", party: ["hero", "alda", "sion"] },
-  { name: "タンク・ヒール（毒）", party: ["hero", "gald", "jig"] },
-  { name: "ヒールなし", party: ["hero", "alda", "mayu"] },
-  { name: "タンクなし", party: ["hero", "mayu", "sion"] },
-  { name: "ダメージだけ", party: ["hero", "mayu", "luca"] },
+  { name: "タンク・ヒール", party: ["mayu", "alda", "sion"] },
+  { name: "タンク・ヒール（毒）", party: ["mayu", "sera", "jig"] },
+  { name: "ヒールなし", party: ["rio", "alda", "mayu"] },
+  { name: "タンクなし", party: ["rio", "mayu", "sion"] },
+  { name: "ダメージだけ", party: ["gou", "mayu", "rio"] },
 ]
 for (const composition of compositions)
   for (const scenario of scenarios)

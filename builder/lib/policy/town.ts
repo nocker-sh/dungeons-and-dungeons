@@ -117,7 +117,7 @@ export function townDay(
     rooms.find((entry) => entry.affordable)
   if (room) session.send({ type: "rest", room: room.id })
   const reserve = (rooms.find((entry) => entry.levelUp)?.price ?? 0) * 2
-  // まず出撃の3人をそろえる（始めたては主人公ひとり）
+  // まず出撃の3人をそろえる（はじめから3人いるので、欠けたときだけ）
   spentGold += fillParty(session, 0)
   // 求人で強い仲間を入れる（0層は最初の3人のまま）
   spentGold += hireRecruits(session, reserve)

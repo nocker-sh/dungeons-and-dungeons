@@ -3,7 +3,7 @@ import { fillParty } from "@/builder/lib/policy/fill-party"
 import { chooseFirstPartner } from "@/builder/lib/policy/choose-first-partner"
 
 /**
- * 遊び始めの準備：3人そろえ、開始時から契約したロクスと合体する。
+ * 遊び始めの準備：3人そろえ、開始時から契約したロクスを戦闘で呼べるようにしておく。
  * ガチャや階級による相棒の自動入替はしない。
  */
 export function startParty(session: Session) {

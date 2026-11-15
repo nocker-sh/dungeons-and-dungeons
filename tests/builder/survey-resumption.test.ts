@@ -4,9 +4,14 @@ import { Session } from "@/builder/lib/session"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { GameStateBuilder } from "@/lib/wiz/testing/state-builder"
 import { ExplorationRules } from "@/lib/wiz/rules/exploration-rules"
+import { BRANCH_MARK } from "@/lib/wiz/content/route-tree"
 
 const built = buildContent([])
 const catalog = new Session(built, 1).catalog
+type Station = (typeof catalog.data.layers)[number]["stations"][number]
+
+/** 合流のために複製した地点の、作品データ上の元の id。 */
+const authored = (id: string) => id.split(BRANCH_MARK)[0]
 const scouts = [
   ...catalog.data.party,
   ...catalog.data.recruits.map((entry) => entry.member),
@@ -16,15 +21,25 @@ for (const layer of catalog.data.layers)
   for (const seed of [1, 7])
     test(`${layer.id}, seed=${seed}: every authored mystery keeps its surveyed outcome across Session reloads`, () => {
       expect(scouts.length).toBeGreaterThan(0)
-      const targets = layer.stations.flatMap((from) =>
-        from.next.flatMap((id) => {
+      // 合流する地点は枝ごとに複製され、id と高さ以外（重み・深さ）を元の地点と共有する。
+      // 同じ元の地点へ同じ元の地点から入る複製は同じ察知結果になるので、組ごとに1回だけ通す。
+      // 後から見つけた複製で上書きし、`~2` のような複製の id も本物の処理へ通す。
+      const targets = new Map<string, { from: Station; to: Station }>()
+      for (const from of layer.stations)
+        for (const id of from.next) {
           const to = layer.stations.find((station) => station.id === id)!
-          return to.mystery && !to.event ? [{ from, to }] : []
-        })
-      )
-      expect(targets.length).toBeGreaterThan(0)
+          if (!to.mystery || to.event) continue
+          const key = `${authored(to.id)}<-${authored(from.id)}`
+          const seen = targets.get(key)
+          if (seen) {
+            expect(to.weights, to.id).toBe(seen.to.weights)
+            expect(to.x, to.id).toBe(seen.to.x)
+          }
+          targets.set(key, { from, to })
+        }
+      expect(targets.size).toBeGreaterThan(0)
       for (const scout of scouts)
-        for (const { from, to } of targets) {
+        for (const { from, to } of targets.values()) {
           let play = new Session(built, seed)
           let builder = GameStateBuilder.from(play.state, play.catalog)
           if (!play.state.members.some((member) => member.id === scout.id))

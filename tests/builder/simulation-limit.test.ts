@@ -9,7 +9,7 @@ import { PUSH_PLAN } from "@/builder/lib/policy/expedition"
 const stalled = [
   "foes.kamokutsu.hp=100000000",
   "foes.kamokutsu.atk=1",
-  "party.*.stats.maxHp=1000000",
+  "recruits.*.member.stats.maxHp=1000000",
 ]
 
 function arena(overrides: readonly string[]) {

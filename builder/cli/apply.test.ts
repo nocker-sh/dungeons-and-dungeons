@@ -94,6 +94,15 @@ test.each([
   }
 )
 
+test("refuses a new top-level key that has no file to write back to", () => {
+  const before = new Map(io.files)
+  expect(() =>
+    commandApply(parseOptions(["apply", "--set", "notAFile=1"]))
+  ).toThrow("書き戻す先のない項目")
+  expect(io.writes).toEqual([])
+  expect(io.files).toEqual(before)
+})
+
 test("validates the freshly read files rather than the imported startup snapshot", () => {
   const file = pathToFileURL(join(directory, "foes.json")).href
   const broken = JSON.parse(io.files.get(file)!)

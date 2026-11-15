@@ -1,3 +1,4 @@
+import { fullRun } from "@/tests/full-run"
 import { DEFAULT_PLAN } from "@/builder/lib/policy/expedition"
 import { buildContent } from "@/builder/lib/build-content"
 import { campaignRun } from "@/builder/lib/simulation/campaign-run"
@@ -110,12 +111,21 @@ describe("ブラウザなしで動かす", () => {
 })
 
 /**
- * 層をまたぐ一周（街と探索をくり返して踏破するまで）の目標は、一度測るのに数分かかる。
- * ふだんのテストでは戦闘の目標だけを測り、一周の目標は
+ * バランスの目標は `vp run cli check` と同じ種・同じ逐次検定（合否が決まったら打ち切る）で測る。
+ * ただし回数の上限は100回（check は既定で200回）なので、範囲のきわの目標は check と合否が分かれることがある。
+ * バランスの合否は `vp run cli check` で決め、このテストは崩れの早期の目安にする。
+ * ふだんのテストでは、上下両側に範囲がある目安だけを測り、強すぎ・弱すぎのどちらへの崩れにも気付けるようにする。
+ * 戦闘・探索の全目標は `vp run test:full` で測る。
+ * 層をまたぐ一周（街と探索をくり返して踏破するまで）の目標は一度測るのに数分かかるので、
  * `vp run cli check`（または `BUILDER_CAMPAIGN=1 vp test run`）で測る。
  */
 const spansLayers = (id: string) => id.startsWith("campaign")
 const measureCampaign = process.env.BUILDER_CAMPAIGN === "1"
+const canaries = new Set(["mole-pair-hp", "midboss-fresh"])
+const measured = (id: string) =>
+  spansLayers(id)
+    ? measureCampaign
+    : fullRun || measureCampaign || canaries.has(id)
 
 const campaignInvariant = measureCampaign ? it : it.skip
 
@@ -159,12 +169,25 @@ campaignInvariant(
 )
 
 describe("バランスの目標（builder/targets.ts）", () => {
+  it("ふだん測る目安は、上下両側に範囲がある実在の目標", () => {
+    for (const id of canaries) {
+      const target = TARGETS.find((entry) => entry.id === id)
+      expect(target, id).toBeDefined()
+      expect(target!.min, id).toBeDefined()
+      expect(target!.max, id).toBeDefined()
+    }
+  })
   for (const target of TARGETS) {
-    const run = spansLayers(target.id) && !measureCampaign ? it.skip : it
+    const run = measured(target.id) ? it : it.skip
     run(
       `${target.id}: ${target.label}`,
       () => {
-        const value = target.measure({ overrides: [], runs: 100, seed: 1 })
+        const value = target.measure({
+          overrides: [],
+          runs: 100,
+          seed: 1,
+          range: target,
+        })
         expect(judge(target, value), `${target.id} = ${value}`).toBe(true)
       },
       900_000

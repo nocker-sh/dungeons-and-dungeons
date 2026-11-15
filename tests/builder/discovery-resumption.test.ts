@@ -4,20 +4,39 @@ import { Session } from "@/builder/lib/session"
 import { GameStateBuilder } from "@/lib/wiz/testing/state-builder"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { Bag } from "@/lib/wiz/rules/bag"
+import { BRANCH_MARK } from "@/lib/wiz/content/route-tree"
 
 const built = buildContent([])
 const catalog = new Session(built, 1).catalog
+type Station = (typeof catalog.data.layers)[number]["stations"][number]
+
+/** 合流のために複製した地点の、作品データ上の元の id。 */
+const authored = (id: string) => id.split(BRANCH_MARK)[0]
 
 for (const layer of catalog.data.layers)
   for (const seed of [1, 7])
     test(`${layer.id}, seed=${seed}: every discovery choice matches its offer and survives Session reloads without duplicate payment`, () => {
       const stations = layer.stations.filter((station) => station.discovery)
       expect(stations.length).toBeGreaterThan(0)
+      // 合流する地点は枝ごとに複製され、id と高さ以外（発見・重み・深さ）を元の地点と共有する。
+      // 同じ元の地点へ同じ元の地点から入る複製は同じ結果になるので、組ごとに1回だけ通す。
+      // 後から見つけた複製で上書きし、`~2` のような複製の id も本物の処理へ通す。
+      const cases = new Map<string, { station: Station; from: Station }>()
       for (const station of stations) {
         const from = layer.stations.find((entry) =>
           entry.next.includes(station.id)
         )
         expect(from, station.id).toBeDefined()
+        const key = `${authored(station.id)}<-${authored(from!.id)}`
+        const seen = cases.get(key)
+        if (seen) {
+          expect(station.discovery, station.id).toBe(seen.station.discovery)
+          expect(station.weights, station.id).toBe(seen.station.weights)
+          expect(station.x, station.id).toBe(seen.station.x)
+        }
+        cases.set(key, { station, from: from! })
+      }
+      for (const { station, from } of cases.values()) {
         let arrivalSeed: number | undefined
         for (let attempt = 0; attempt < 256; attempt++) {
           const candidate = new Session(built, seed + attempt)
@@ -28,8 +47,8 @@ for (const layer of catalog.data.layers)
             .withReached(candidate.catalog.layerIndex(layer.id))
             .inExpedition({
               layer: layer.id,
-              at: from!.id,
-              visited: [from!.id],
+              at: from.id,
+              visited: [from.id],
             })
             .build()
           candidate.patch((state) => Object.assign(state, approach))
@@ -59,8 +78,8 @@ for (const layer of catalog.data.layers)
               .withBag(choice.costGoods ?? [])
               .inExpedition({
                 layer: layer.id,
-                at: from!.id,
-                visited: [from!.id],
+                at: from.id,
+                visited: [from.id],
               })
               .withReached(play.catalog.layerIndex(layer.id))
               .build()

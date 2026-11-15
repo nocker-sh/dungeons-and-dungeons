@@ -9,7 +9,7 @@ function weaponSession(identified: boolean) {
   const base = aState()
     .withGold(0)
     .withMembers({ hp: 1 })
-    .withParty(["alda", "hero", "mort"])
+    .withParty(["alda", "mayu", "mort"])
     .withEquipped("alda", "sword")
     .build()
   const sword = base.gear.find(

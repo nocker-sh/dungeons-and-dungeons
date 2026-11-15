@@ -261,6 +261,8 @@ export const TARGETS: readonly Target[] = [
     measure: ({ overrides, runs, seed, range }) =>
       levelFor({
         sequential: !!range,
+        // 値は勝率が届いた最初のレベルなので、それより上は測らない
+        stopAtThreshold: true,
         overrides,
         foes: ["haribote-adult"],
         boss: true,
@@ -322,7 +324,7 @@ export const TARGETS: readonly Target[] = [
      * （以前は 50〜60 まで伸びていた）。
      */
     id: "campaign-ending-level",
-    label: "踏破したときの育成対象の仲間の平均レベル（主人公を除く）",
+    label: "踏破したときの育成対象の仲間の平均レベル",
     min: 22,
     max: 40,
     unit: "count",

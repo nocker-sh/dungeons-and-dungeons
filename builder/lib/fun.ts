@@ -11,7 +11,7 @@ export type Trip = {
   /** 出撃の3人の攻撃力の合計（街の準備の前と後）。 */
   attackBefore: number
   attackAfter: number
-  /** 出撃前の全員の平均レベル（主人公を含む保存上の値）。 */
+  /** 出撃前の全員の平均レベル。プレイヤーは隊列に入らないので育成対象の平均と同じ。 */
   levelBefore: number
   /** 出撃前の育成対象の仲間の平均レベル。 */
   companionLevelBefore: number

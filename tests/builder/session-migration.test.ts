@@ -5,6 +5,7 @@ import { parseCommand } from "@/builder/lib/commands"
 import { aState } from "@/lib/wiz/testing/state-builder"
 import { contentId } from "@/lib/wiz/testing/content-id"
 import type { GameState } from "@/lib/wiz/state/state-schema"
+import { createMember } from "@/lib/wiz/members/create-member"
 
 for (const version of ["current", "previous", "legacy"] as const)
   test(`${version}: rewards allocated during battle migration cannot collide with saved equipment`, () => {
@@ -18,25 +19,28 @@ for (const version of ["current", "previous", "legacy"] as const)
       contentId
     )
     const base = aState()
-      .withJoined("mayu")
       .inBattle({
         foes: ["kamokutsu", "kamokutsu"],
-        order: ["mort", "hero", "foe-1", "alda", "foe-2", "mayu"],
+        // The retired player's turn passes to the bound, poisoned foe on load.
+        order: ["hero", "foe-1", "mort", "alda", "foe-2", "mayu"],
       })
       .build()
     if (base.phase.type !== "battle") throw Error("Expected battle")
     // A supported four-person save at an expiring bound/poison turn is a local restoration fixture.
+    // The player fought as a member in these saves; loading retires them from the party and the turn order.
     const snapshot: GameState = {
       ...base,
       party: [hero, alda, mayu, mort],
       gear: [...base.gear, owned],
-      members: base.members.map((member) =>
-        member.id === hero
-          ? { ...member, status: [{ kind: "bind", turns: 1 }] }
-          : member.id === alda
-            ? { ...member, hp: 0 }
-            : member
-      ),
+      members: [
+        ...base.members.map((member) =>
+          member.id === alda ? { ...member, hp: 0 } : member
+        ),
+        {
+          ...createMember(built.content.party.find((entry) => entry.hero)!),
+          status: [{ kind: "bind", turns: 1 }],
+        },
+      ],
       phase: {
         ...base.phase,
         battle: {

@@ -2,16 +2,17 @@ import { RosterTrials } from "@/builder/lib/roster-trials"
 import { readFileSync } from "node:fs"
 
 const presets = [
-  { name: "初期編成", party: ["hero", "alda", "mort"] },
-  { name: "毒と再生", party: ["hero", "jig", "tsumugi"] },
-  { name: "防護と修復", party: ["hero", "sera", "mort"] },
-  { name: "吸収と狙撃", party: ["hero", "husky", "luca"] },
-  { name: "支援と救援", party: ["hero", "rivet", "alma"] },
-  { name: "二盾と再生", party: ["hero", "gald", "tsumugi"] },
-  { name: "妨害と速攻", party: ["hero", "nem", "rio"] },
-  { name: "吸収と即時回復", party: ["hero", "husky", "sion"] },
-  { name: "防護と救援", party: ["hero", "clef", "alma"] },
-  { name: "足止めと再生", party: ["hero", "gald", "tsumugi"] },
+  // プレイヤーは戦わないので、主人公がいた枠には初期の攻撃役マユを入れる
+  { name: "初期編成", party: ["alda", "mort", "mayu"] },
+  { name: "毒と修復", party: ["mayu", "jig", "mort"] },
+  { name: "全体防護と救援", party: ["mayu", "alda", "alma"] },
+  { name: "扉と修復", party: ["mayu", "clef", "mort"] },
+  { name: "妨害と修復", party: ["mayu", "nem", "mort"] },
+  { name: "防護と修復", party: ["mayu", "sera", "mort"] },
+  { name: "吸収と狙撃", party: ["mayu", "husky", "rio"] },
+  { name: "妨害と速攻", party: ["mayu", "nem", "rio"] },
+  { name: "吸収と即時回復", party: ["mayu", "husky", "sion"] },
+  { name: "防護と救援", party: ["mayu", "clef", "alma"] },
 ]
 const scenarios = [
   {

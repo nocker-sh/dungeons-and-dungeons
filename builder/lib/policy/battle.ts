@@ -8,6 +8,7 @@ import { bestPotion } from "@/builder/lib/policy/best-potion"
  * - smart：倒れた仲間を起こし、弱った仲間を回復し、残りは一番効く手で一番弱った敵を狙う
  * - attack：攻撃のワザだけ（残っていなければ殴る・防御）。基準線
  * - random：使える手からでたらめに選ぶ
+ * 悪魔を呼ぶ必殺技は手番を使わないので、smart・attack は呼べるときにすぐ呼ぶ。
  */
 export type BattleStyle = "smart" | "attack" | "random"
 
@@ -23,6 +24,8 @@ export function battleAction(
   const { state, queries, catalog } = session
   if (!view) throw new Error("戦闘中ではない")
   if (view.current.kind === "foe") return { type: "foe-turn" }
+  if (style !== "random" && view.demonCall?.usable)
+    return { type: "call-demon" }
   const id = view.current.id
   const commands = queries.commands(state, id)!
   const party = queries.party(state)
@@ -46,6 +49,7 @@ export function battleAction(
     : null
 
   const options: GameAction[] = [{ type: "act", command: "guard" }]
+  if (view.demonCall?.usable) options.push({ type: "call-demon" })
   if (brawl) options.push(brawl)
   for (const skill of skills.filter((entry) => entry.usable))
     options.push({ type: "act", command: "skill", skill: skill.id })

@@ -41,6 +41,12 @@ export function commandApply(
   const raw: Record<string, unknown> = { ...settings }
   for (const [key, file] of Object.entries(FILES)) raw[key] = read(file)
   for (const expression of options.overrides) applyOverride(raw, expression)
+  // 書き戻す先のない新しい項目は、黙って捨てずに断る
+  const unknown = Object.keys(raw).filter(
+    (key) => !Object.hasOwn(settings, key) && !Object.hasOwn(FILES, key)
+  )
+  if (unknown.length)
+    throw new Error(`書き戻す先のない項目: ${unknown.join(", ")}`)
   new GameCatalog(
     toGameContent({
       ...contentSource,

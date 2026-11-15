@@ -57,7 +57,7 @@ export class Session {
       const failed = this.game.restore(resume.save)
       if (failed) throw failed
     }
-    // はじめからは主人公を作る場面。名前と外見は測定に関係しないので既定で作る
+    // はじめからはプレイヤーの名前を決める場面。名前は測定に関係しないので既定で決める
     if (this.state.phase.type === "creating") {
       const hero = this.queries.hero(this.state)
       this.must({
@@ -156,10 +156,8 @@ export class Session {
     if (!room) throw new Error("レベルが上がる部屋がない")
     const gold = this.state.gold
     for (let guard = 0; guard < 99; guard++) {
-      const party = this.state.members.filter(
-        (member) =>
-          this.state.party.includes(member.id) &&
-          !this.catalog.member(member.id)?.hero
+      const party = this.state.members.filter((member) =>
+        this.state.party.includes(member.id)
       )
       if (party.every((member) => member.lv >= level)) break
       // 次のレベルまでの経験値はエンジンの規則から引く（式を builder に写さない）
@@ -172,11 +170,7 @@ export class Session {
       this.patch((state) => {
         state.gold = Math.max(state.gold, room.price)
         for (const member of state.members)
-          if (
-            state.party.includes(member.id) &&
-            !this.catalog.member(member.id)?.hero &&
-            member.lv < level
-          )
+          if (state.party.includes(member.id) && member.lv < level)
             member.exp = Math.max(member.exp, need.get(member.id) ?? 0)
       })
       this.must({ type: "rest", room: room.id })
