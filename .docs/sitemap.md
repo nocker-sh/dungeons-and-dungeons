@@ -1,6 +1,6 @@
 # Sitemap
 
-ゲームは `/` 一つで動くSPA。画面はゲーム内の場面として切り替え、URLは変えない。下の名前は画面の呼び名（`client/components/screens`）。
+ゲームは `/` 一つで動くSPA。画面はゲーム内の場面として切り替え、URLは変えない。下の名前は画面の呼び名（`apps/main/client/components/screens`）。
 
 各画面の目的・主役・操作は [[ux-design|ゲームUX設計]]、動きは [[ui-direction|画面演出]] を参照。画面コンセプトを採用した理由は[[decisions/003-mock-into-app]]、現在の受入条件は[[features]]を参照する。
 

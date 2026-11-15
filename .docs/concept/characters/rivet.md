@@ -6,6 +6,8 @@
 
 # リベット
 
+廃止済み。新規の募集・会話・画像制作の対象にしない。以下は旧セーブとの互換性のために残す過去の設定。
+
 表示名・紹介文・ひとことは [[concept/data/characters.json]]・`dialogues.json`、会話用の口調と来歴の要約は `conversation-profiles.json`、台本は [[content/data/conversations.json]]、役割・ワザ・得意武器は [[content/data/recruits.json]] を正とし、ここには複製しない。
 
 ## 制作上の決め事（確定）

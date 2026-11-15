@@ -8,6 +8,7 @@
 | --- | --- |
 | 型と静的解析 | `vp run typecheck`、`vp run lint` |
 | 動作 | 変更した責務の既存テストと、その境界の呼び出し側を実行する |
+| 全件の組み合わせ | `vp run test:full`。ふだんの `vp test run` は同じ処理を通る組み合わせの代表だけを回す。作品データ・画面の部品・保存の形を大きく変えたときに直列で実行する |
 | ビルド | `vp run build` |
 | 数値・ワザ・敵・規則 | `vp run cli check`。測定条件は[[builder/README|builderの手順]] |
 | 世界・部屋・人物の資料 | `vp run check:concept` と、正本・本文・生活動線の照合 |

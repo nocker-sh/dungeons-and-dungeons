@@ -15,7 +15,7 @@
 - 名前・紹介文・セリフ・画像参照は `concept/data/`、数値・会話台本は `content/data/` のJSONを正とする。
 - 設定の構造化データは `concept/lore/` のJSONを正本とし、資料は `entity` のWikiリンクで参照する。寸法・設備・関係・出典を本文やFront Matterへ複製しない。
 - 裏設定・出典・制作意図の説明は `.docs/concept/`。1データ1ファイルとし、形式・Front Matterは `.docs/concept-data.md` に従う。実行用データを複製しない。
-- `/dev` は実行用データと育成シミュレーションの確認用。裏設定・制作メモを表示せず、アプリから `.docs` をimportしない。
+- 開発アプリ（`https://dev.dnd.localhost`）は実行用データと育成シミュレーションの確認用。裏設定・制作メモを表示せず、アプリから `.docs` をimportしない。
 - `lib/wiz/` はクラスベースのゲームエンジン。React・DOM・localStorage・作品固有データから独立させる。
 - 操作は具象ユースケース、表示値と操作可否はQuery。乱数・時計・ID・保存先をDIで差し替える。
 - React Contextでエンジンを注入し、`useSyncExternalStore`で購読する。Reactにゲーム状態を複製しない。
@@ -24,7 +24,8 @@
 
 ## ファイルと依存の規約
 
-- 作品固有のデータ・実装は `content/`・`concept/`、開発支援は `development/` に置く。`lib/` はエンジンなど再利用するライブラリのために使う。
+- 作品固有のデータ・実装は `content/`・`concept/`、開発支援は `apps/studio/development/` に置く。`lib/` はエンジンなど再利用するライブラリのために使う。
+- ゲーム（`apps/main`）は開発アプリのコードを読まず、デバッグ用の入口を本番に含めない。開発中だけの処理は `import.meta.env.DEV` の分岐に置き、ビルドで消す。境界は `tests/apps/app-boundary.test.ts`、配布物は `vp run build` 後の `scripts/check-release.ts` で検査する。スタジオ（shadcnの部品・プレビュー・開発画面）は `apps/studio/development/` に置く。
 - 関数・クラス単位のテストは実装と同じフォルダへ `ファイル名.test.ts`（JSXは `.test.tsx`）として置く。横断・結合・データ全体の検証は `tests/`、E2Eは `tests/e2e/` に置く。
 - 1ファイルからexportする関数は1つまで。関数ごとに定義ファイルを分ける。
 - re-exportは禁止。型を含め、利用側から定義元を直接importする。importした値を別名のexportやラッパーで迂回させない。
@@ -34,18 +35,18 @@
 ## 画面
 
 - 開発画面のUIはshadcn。サイドバーはセクション表示を保つ。
-- ゲーム画面は `client/components/canvas/` の部品とstyle属性・motion/reactで描画し、CSSファイルを使わない。Canvas部品は `all: revert` でページ側のCSSから分離する。
+- ゲーム画面は `apps/main/client/components/canvas/` の部品とstyle属性・motion/reactで描画し、CSSファイルを使わない。Canvas部品は `all: revert` でページ側のCSSから分離する。
 - スマホファースト。文字は日本語にし、意味が重複する英語を飾りで添えない。ステータス略語と擬音は例外。
 - 画像はユーザー提供または依頼を受けて生成する。未用意なら四角や色付きdivを使う。
 
 ## ローカル開発
 
-- 物語・会話・フラグ条件を変えたら、本番データと本物の進行処理を使うテストも更新し、`vp run test:story` を実行する。前提不足・選択肢・状態変化・重複操作・保存再開を確認する。検査の境界は [[.docs/story-validation]]。通常の進行検証はブラウザなしで行い、重い検査は直列、ブラウザ確認は並列にしない。
-- 依存の導入は `vp install`、ロックは `pnpm-lock.yaml`。`bun.lock` は使わない。
+- 物語・会話・フラグ条件を変えたら、本番データと本物の進行処理を使うテストも更新し、`vp run test:story` を実行する。前提不足・選択肢・状態変化・重複操作・保存再開を確認する。検査の境界は [[.docs/story-validation]]。通常の進行検証はブラウザなしで行い、重い検査は直列、ブラウザ確認は並列にしない。全件の組み合わせは `vp run test:full` で回す。
+- 依存の導入は `vp install`、ロックは `pnpm-lock.yaml`。`bun.lock` は使わない。版は `pnpm-workspace.yaml` の `catalog` だけで決め、各 `package.json` は自分が使う物だけを `catalog:` で宣言する。
 - CLIはBunを実行環境にし、`vp run cli` または `vp exec bun <file>` から実行する。CLIのimportは `@/` の絶対パスにする。
 
-- Portless名は `dnd`、URLは `https://dnd.localhost`。
-- AIのグラフィック確認は `/dev/view?scene={slug}&seed={seed}&at={ms}`（入力無効）、動作確認は `/dev/play/{slug}?seed={seed}`。場面一覧は `/dev/view?catalog=1`、手順は [[.docs/dev-preview]]。従来の場面確認は `/previews/{slug}`、`?still` で動きを止める。
+- ゲームは `vp run dev` で `https://dnd.localhost`。開発アプリは `vp run dev:studio` で `https://dev.dnd.localhost`。
+- AIのグラフィック確認は `/view?scene={slug}&seed={seed}&at={ms}`（入力無効）、動作確認は `/play/{slug}?seed={seed}`。場面一覧は `/view?catalog=1`、手順は [[.docs/dev-preview]]。従来の場面確認は `/previews/{slug}`、`?still` で動きを止める。
 - 数値・ワザ・敵・規則を変えたら `vp run cli check`。CLIの操作・測定方法は `builder/README.md`。
 - 資料への参照はWikiリンクだけを使う。名前・IDだけの索引、日付別の作業実況、一時画像の一覧は作らない。固有の設定・判断・手順を残し、正本を複製しない。
 - `.docs/` は公開する仕様・設計資料としてGit管理する。画像本体はコミットしない。元画像は `private/art/originals/`、R2移行前の表示用画像は `public/tmp/`。

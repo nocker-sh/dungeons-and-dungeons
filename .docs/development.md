@@ -4,7 +4,7 @@
 
 ```sh
 vp install
-portless dnd vp run dev
+vp run dev
 ```
 
 開発URLは `https://dnd.localhost`。依存は[[pnpm-lock.yaml]]で固定し、CIは `vp install --frozen-lockfile` を使う。CLIは `vp run cli`、直接実行は `vp exec bun <file>`。CLIのimportは `@/` から定義元を参照する。
@@ -47,6 +47,8 @@ vp run cli inspect
 - re-exportを作らず、定義元から直接importする。1ファイルからexportする関数は1つまで。
 - コンポーネントのファイル名は名前のkebab-case。`index.tsx` は使わない。propsとオブジェクト入力のフックは `type Props` と `props: Props` を使い、分割代入しない。
 - 単体テストは同名の実装の隣。横断・結合・データ全体の検証は[[tests]]、ブラウザ検証は[[tests/e2e]]へ置く。
+- エンジン・builder・それ以外（作品データ・scripts など）のテストは、群ごとに1つのプロセスで続けて動かす（作品データと検証済みの定義を読み直さない）。群の分け方は[[vite.shared.ts]]の `projects`。画面・jsdom・`vi.mock`・`vi.stubGlobal`・偽タイマー・終了コードを使うテストは1ファイルずつ別のプロセスで動かす。画面のテストは `apps/`・`tests/client/`・`tests/development/` に置けば隔離され、他の置き場は[[scripts/isolated-tests.ts]]に足す。[[tests/apps/test-isolation.test.ts]]は、共有するプロセスに入るテストが `vi.mock`・`vi.stubGlobal`・`vi.stubEnv`・偽タイマー・jsdom の指定・`react-dom`・Testing Library・演出の時計（`animationClock`・`stillClock`）の書き換え・`process.exitCode`・`process.env`・`process.chdir` を使っていたら失敗する。それ以外の共有状態（作品データ以外のモジュールの変数など）は検出しないので、共有するテストは本物の作品データ（凍結済み）を書き換えず、変えた作品データは `aContent()` の複製から作る。
+- 品物・敵・段階ごとの組み合わせの画面テストは、ふだんは同じ処理を通る代表だけを回し、`vp run test:full` で全件を回す（[[tests/full-run.ts]]）。代表は作品データから選び、新しい種類が増えれば代表にも入るようにする。
 - 規約は `vp run check:source`、資料のWikiリンクは `vp run check:docs`、資料のID・生活設備・配置は `vp run check:concept` で検査する。
 - 変更に応じた確認は[[verification]]、受入条件は[[features]]を正とする。過去の成功件数を現在の合格として扱わない。
 
@@ -54,6 +56,6 @@ vp run cli inspect
 
 Service Workerは本番だけで登録する。自アプリのキャッシュだけを扱い、保存データの削除と資源キャッシュの更新を分ける。オフライン再開の受入条件は[[features#オフライン再開]]を参照する。
 
-静的HTMLの生成は `vp run build`、公開は `vp run deploy`。公開操作は依頼された範囲で行う。環境設定は[[void.config.ts]]と[[vite.config.ts]]、PWA定義は[[public/manifest.json]]・[[public/sw.js]]を参照する。
+静的HTMLの生成は `vp run build`、公開は `vp run deploy`。公開操作は依頼された範囲で行う。環境設定は[[apps/main/void.config.ts]]・[[apps/main/vite.config.ts]]と共通の[[vite.shared.ts]]、PWA定義は[[public/manifest.json]]・[[public/sw.js]]を参照する。
 
 `VITE_EQUIPMENT_IMAGES=off` は装備画像を記号へ切り替える。ビルド時の値なので変更後は開発サーバーを再起動する。画像の取り込み・品質確認は[[artwork]]へまとめる。
