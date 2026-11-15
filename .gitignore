@@ -35,3 +35,9 @@ todos.json
 *.bmp
 *.tif
 *.tiff
+
+/apps/studio/.wrangler/
+
+/apps/main/.void/
+/apps/main/.void-wrangler.jsonc
+/apps/main/.wrangler/

@@ -6,10 +6,11 @@ type Props = { root: string; files: readonly string[] }
 /** 単体テストの対応先と、作品固有モジュールの置き場所を検査する。 */
 export function sourceLayoutProblems(props: Props): string[] {
   const files = new Set(props.files)
-  const problems = ["content", "concept", "dev", "development"].flatMap((name) =>
-    existsSync(join(props.root, "lib", name))
-      ? [`lib/${name}: 作品固有のモジュールはlibの外に置く`]
-      : []
+  const problems = ["content", "concept", "dev", "development"].flatMap(
+    (name) =>
+      existsSync(join(props.root, "lib", name))
+        ? [`lib/${name}: 作品固有のモジュールはlibの外に置く`]
+        : []
   )
   for (const file of props.files) {
     if (

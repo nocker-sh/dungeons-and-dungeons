@@ -10,19 +10,19 @@ import { frameUrl } from "@/development/studio/frame-url"
 import { parseStudioConfig } from "@/development/studio/parse-studio-config"
 import type { StudioConfig } from "@/development/studio/config"
 import { waitForStudio } from "@/scripts/studio-browser"
-import type { StudioInspection } from "@/client/dev/studio-types"
+import type { StudioInspection } from "@/development/preview/studio-types"
 
 /** UIと同じiframeを実寸で開き、仮想時計の指定時刻を描画する。 */
 const help = `ゲームの画像と検証記録を生成する（開発サーバーが必要）
   vp run studio list
-  vp run studio capture --scene battle --party hero,rivet,husky --foes haribote-adult,hiyokobu --at 2000 --out /tmp/battle.png
+  vp run studio capture --scene battle --party mayu,sera,husky --foes haribote-adult,hiyokobu --at 2000 --out /tmp/battle.png
   vp run studio frames --config /tmp/battle.json --times 0,700,1500,2000,3000 --out /tmp/battle-frames
   vp run studio inspect --scene battle --at 2000 --out /tmp/battle.json
 
   --size 1280x800  --seed 1  --hp 100,25,0  --duration 6000
   --actions '[{"at":4000,"label":"放つ"}]'
   --config <JSONファイル> / --config-json '<JSON>'
-  --base-url https://dnd.localhost
+  --base-url https://dev.dnd.localhost
   --guides  配置の枠線を画像に入れる
   --verify  同じ条件を2回描画し、PNGのハッシュの一致を検証
 
@@ -67,7 +67,7 @@ for (const key of args.keys())
 const base = (
   args.get("base-url") ??
   process.env.E2E_BASE_URL ??
-  "https://dnd.localhost"
+  "https://dev.dnd.localhost"
 ).replace(/\/$/, "")
 
 async function configOf(): Promise<StudioConfig> {
