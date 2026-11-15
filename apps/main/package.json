@@ -1,0 +1,31 @@
+{
+  "name": "dnd-main",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "VOID_INSPECTOR_PORT=false vp dev",
+    "build": "vp build",
+    "preview": "VOID_INSPECTOR_PORT=false vp preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "catalog:",
+    "motion": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "shadcn": "catalog:",
+    "tailwindcss": "catalog:",
+    "tw-animate-css": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@void/react": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "void": "catalog:"
+  }
+}

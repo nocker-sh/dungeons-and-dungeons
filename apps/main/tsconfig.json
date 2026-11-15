@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "dist", ".void"],
+  "compilerOptions": {
+    "paths": {
+      "void/routes": ["./.void/routes.d.ts"],
+      "@/client/*": ["./client/*"],
+      "@/pages/*": ["./pages/*"],
+      "@/*": ["../../*"]
+    }
+  }
+}
