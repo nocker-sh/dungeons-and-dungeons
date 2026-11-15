@@ -7,10 +7,6 @@ import demons from "@/content/data/demons.json"
  * 決める前からある台本で、悪魔が仲間・住人・ほかの悪魔と同じ場面に出るもの。直すまでここに残し、増やさない。
  */
 const existingMixedScenes = new Set([
-  "rize-lox-inn",
-  "nui-tsumugi-inn",
-  "yoru-haro-inn",
-  "yoru-talk-09",
   "zaza-encounter",
   "nui-zaza-friends-1",
   "nui-zaza-friends-2",
@@ -33,5 +29,12 @@ describe("悪魔の会話", () => {
     expect(
       [...existingMixedScenes].filter((id) => !mixed.includes(id))
     ).toEqual([])
+  })
+
+  it("悪魔はパーティに入らない（契約の説明で仲間になると言わない）", () => {
+    const lines = JSON.stringify(conversations).match(/"text":"[^"]*"/g) ?? []
+    expect(lines.filter((line) => /悪魔[^"]*仲間になる/.test(line))).toEqual(
+      []
+    )
   })
 })

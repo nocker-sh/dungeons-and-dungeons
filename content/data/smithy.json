@@ -317,7 +317,7 @@
       "id": "fcaa9a7b-4df3-46c9-be0d-eb4acba0fd70",
       "slug": "craft-vine-sword",
       "good": "466b25ec-4eb2-4032-abfe-4ad8b498d8b1",
-      "gold": 560,
+      "gold": 320,
       "materials": [
         {
           "good": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
@@ -333,7 +333,7 @@
       "id": "d3f203b0-ce34-42c1-8343-c432e5f4c714",
       "slug": "craft-vine-armor",
       "good": "90c0e8f9-f8e9-4d1d-954d-719a2c20365c",
-      "gold": 420,
+      "gold": 240,
       "materials": [
         {
           "good": "e5ef0a13-1dc3-4c52-9e0f-90cdbed00e2a",
@@ -349,7 +349,7 @@
       "id": "1c0f3ef5-56d9-4bbc-8fca-d3b85f3431f9",
       "slug": "craft-seal-dagger",
       "good": "63eec065-9e2d-479c-b5f0-901137573470",
-      "gold": 1000,
+      "gold": 440,
       "materials": [
         {
           "good": "57790d09-046e-4fc6-9f57-e285f8e4b890",
@@ -365,7 +365,7 @@
       "id": "743d2c00-6a45-49a7-bfbb-299946c9e748",
       "slug": "craft-seal-armor",
       "good": "1cf811a3-4709-4578-967a-c236127ce41e",
-      "gold": 860,
+      "gold": 380,
       "materials": [
         {
           "good": "57790d09-046e-4fc6-9f57-e285f8e4b890",

@@ -68,10 +68,12 @@ export interface ConceptEntry {
 
 export const conceptEntries: ConceptEntry[] = [
   ...characterGroups.flatMap((group) =>
-    group.characters.map((character) => ({
-      ...character,
-      category: group.label,
-    }))
+    group.characters
+      .filter((character) => !character.retired)
+      .map((character) => ({
+        ...character,
+        category: group.label,
+      }))
   ),
   ...(world as ConceptEntry[]),
 ]

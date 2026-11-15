@@ -94,7 +94,7 @@
     ]
   },
   "balance": {
-    "expBase": 20,
+    "expBase": 27,
     "expPower": 1.6,
     "growth": {
       "maxHp": 18,
@@ -204,8 +204,8 @@
       },
       "gold": 20
     },
-    "school": {
-      "affinity": 1.1
+    "demonCall": {
+      "power": 1.2
     },
     "regenDivisor": 16,
     "sell": {
@@ -239,6 +239,7 @@
   "startingDemon": "7a09e178-f9cc-40fc-b87b-472250f3dc35",
   "startingCompanions": [
     "e7883b7f-237f-4de0-a73d-196b09e705b5",
-    "1aac56f8-7a5c-4199-8100-91caf9e283a6"
+    "1aac56f8-7a5c-4199-8100-91caf9e283a6",
+    "d312117e-1aa5-4e02-ae58-9b913f6b8917"
   ]
 }

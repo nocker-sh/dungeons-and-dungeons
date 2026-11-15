@@ -6,7 +6,7 @@ import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { Bag } from "@/lib/wiz/rules/bag"
 
-const member = contentId("hero")
+const member = contentId("mayu")
 
 describe("回復・強化の道具", () => {
   it("店に並ぶ道具はすべて実行できる効果を持つ", () => {
@@ -46,7 +46,7 @@ describe("回復・強化の道具", () => {
     const initial = aState()
       .withItem("revival-incense", 1)
       .withItem("cleansing-mist", 1)
-      .withMember("hero", { hp: 0 })
+      .withMember("mayu", { hp: 0 })
       .build()
     const game = createTestGame({
       state: {
@@ -80,7 +80,7 @@ describe("回復・強化の道具", () => {
     const game = createTestGame({
       state: aState()
         .withItem(slug, 1)
-        .inBattle({ foes: ["kamokutsu"], order: ["hero", "foe-1"] })
+        .inBattle({ foes: ["kamokutsu"], order: ["mayu", "foe-1"] })
         .build(),
     })
     eventsOrThrow(
@@ -102,7 +102,7 @@ describe("回復・強化の道具", () => {
         .withItem("burst-bomb", 1)
         .inBattle({
           foes: ["kamokutsu", "kamokutsu"],
-          order: ["hero", "foe-1", "foe-2"],
+          order: ["mayu", "foe-1", "foe-2"],
         })
         .build(),
     })

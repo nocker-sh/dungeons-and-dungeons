@@ -6,11 +6,12 @@ import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { createTestGame } from "@/lib/wiz/testing/create-test-game"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { realContent } from "@/lib/wiz/testing/real-content"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { startedState } from "@/lib/wiz/testing/started-state"
 
 describe("夜の雑談", () => {
   it("初期の3人で二人雑談ができ、選んだ仲間だけに一晩一度の親しさが付く", () => {
-    const definition = new GameDefinition(realContent())
+    const definition = new GameDefinition(catalogOf(realContent()))
     const state = startedState(definition)
     const talks = nightTalks().filter((talk) =>
       talk.pair.every((id) => state.party.includes(id))

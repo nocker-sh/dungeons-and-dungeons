@@ -434,6 +434,15 @@
         "sleepingImage": "/tmp/monsters/v1/rengaeru-sleeping-strong-round-print-20261027-fresh-dots-v3.webp",
         "attackImage": "/tmp/monsters/v1/rengaeru-attack-strong-round-print-20261027-local-v5.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_rengaeru_defeated_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/001-rengaeru-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/003-rengaeru-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/004-rengaeru-defeatedImage.webp",
+        "skillPortraits": {
+          "3178c33a-f33e-4908-8247-4403c6d56419": "/tmp/monsters/v2/005-rengaeru-skillPortraits-3178c33a-f33e-4908-8247-4403c6d56419.webp"
+        }
       }
     ]
   },
@@ -462,6 +471,15 @@
         "attackImage": "/tmp/monsters/v1/monster_kabemimi_attack_new_dots_20261027.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_kabemimi_defeated_new_dots_20261027.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_kabemimi_sleeping_new_dots_20261027.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/006-kabemimi-image.webp",
+        "skillPortraits": {
+          "96af34af-a342-4316-928f-505ab2731baa": "/tmp/monsters/v2/010-kabemimi-skillPortraits-96af34af-a342-4316-928f-505ab2731baa.webp"
+        },
+        "defeatedImage": "/tmp/monsters/v2/009-kabemimi-defeatedImage.webp",
+        "attackImage": "/tmp/monsters/v2/007-kabemimi-attackImage.webp"
       }
     ]
   },
@@ -487,6 +505,12 @@
         "attackImage": "/tmp/monsters/v1/kabemimi-adult-attack-dark-round-dots-20261027.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_kabemimi-adult_sleeping_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_kabemimi-adult_defeated_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/011-kabemimi-adult-image.webp",
+        "defeatedImage": "/tmp/monsters/v2/014-kabemimi-adult-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/013-kabemimi-adult-sleepingImage.webp"
       }
     ]
   },
@@ -522,6 +546,18 @@
         },
         "attackImage": "/tmp/monsters/v1/kabemimi-fortress-attack-clean-dots-20261027-flat-v2.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_kabemimi-fortress_defeated_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/015-kabemimi-fortress-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/017-kabemimi-fortress-sleepingImage.webp",
+        "attackImage": "/tmp/monsters/v2/016-kabemimi-fortress-attackImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/018-kabemimi-fortress-defeatedImage.webp",
+        "skillPortraits": {
+          "20196775-1b91-4425-954b-a67b54e00cef": "/tmp/monsters/v2/019-kabemimi-fortress-skillPortraits-20196775-1b91-4425-954b-a67b54e00cef.webp",
+          "08cece1a-363a-4b43-a558-cdd0e9bb60cd": "/tmp/monsters/v2/021-kabemimi-fortress-skillPortraits-08cece1a-363a-4b43-a558-cdd0e9bb60cd.webp",
+          "c2576d5a-ca55-4beb-ac73-7884f9dcea47": "/tmp/monsters/v2/020-kabemimi-fortress-skillPortraits-c2576d5a-ca55-4beb-ac73-7884f9dcea47.webp"
+        }
       }
     ]
   },
@@ -553,6 +589,16 @@
         "skillPortraits": {
           "6aed3e33-557b-483e-aebb-84d4a8b28b0d": "/tmp/monsters/v1/monster_koburakuda_skill_sleeve-grab_v1_20261026.webp"
         }
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/022-koburakuda-image.webp",
+        "skillPortraits": {
+          "6aed3e33-557b-483e-aebb-84d4a8b28b0d": "/tmp/monsters/v2/026-koburakuda-skillPortraits-6aed3e33-557b-483e-aebb-84d4a8b28b0d.webp"
+        },
+        "attackImage": "/tmp/monsters/v2/023-koburakuda-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/024-koburakuda-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/025-koburakuda-defeatedImage.webp"
       }
     ]
   },
@@ -584,6 +630,16 @@
         },
         "attackImage": "/tmp/monsters/v1/rousokun-attack-strong-round-print-20261027-local-v5-frame-v6.webp",
         "defeatedImage": "/tmp/monsters/v1/rousokun-defeated-strong-round-print-20261027-local-v4.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/027-rousokun-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/029-rousokun-sleepingImage.webp",
+        "attackImage": "/tmp/monsters/v2/028-rousokun-attackImage.webp",
+        "skillPortraits": {
+          "c6284fa4-43f2-4f89-bad0-2724505dc947": "/tmp/monsters/v2/031-rousokun-skillPortraits-c6284fa4-43f2-4f89-bad0-2724505dc947.webp"
+        },
+        "defeatedImage": "/tmp/monsters/v2/030-rousokun-defeatedImage.webp"
       }
     ]
   },
@@ -615,6 +671,16 @@
         "attackImage": "/tmp/monsters/v1/monster_koke-gaeru-attack-clean-round-dots-20261027-surface-v2-local-v3-frame-v4.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_koke-gaeru-sleeping-clean-round-dots-20261027-surface-v2-local-v3.webp",
         "image": "/tmp/monsters/v1/monster_koke-gaeru-normal-clean-round-dots-20261027-surface-v2.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/032-koke-gaeru-image.webp",
+        "attackImage": "/tmp/monsters/v2/033-koke-gaeru-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/034-koke-gaeru-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/035-koke-gaeru-defeatedImage.webp",
+        "skillPortraits": {
+          "3178c33a-f33e-4908-8247-4403c6d56419": "/tmp/monsters/v2/036-koke-gaeru-skillPortraits-3178c33a-f33e-4908-8247-4403c6d56419.webp"
+        }
       }
     ]
   },
@@ -644,6 +710,11 @@
         "skillPortraits": {
           "80f3b6ac-41d6-4ee9-ba74-ed609ab48333": "/tmp/monsters/v1/monster_peripoke_skill_gulp_v1_20261026.webp"
         }
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/037-peripoke-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/039-peripoke-sleepingImage.webp"
       }
     ]
   },
@@ -704,6 +775,12 @@
         "skillPortraits": {
           "e7e375ed-2a98-458a-b80e-5540da67db1f": "/tmp/monsters/v1/monster_tsubomimu_skill_vine-lash_v1_20261026.webp"
         }
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/042-tsubomimu-image.webp",
+        "defeatedImage": "/tmp/monsters/v2/045-tsubomimu-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/044-tsubomimu-sleepingImage.webp"
       }
     ]
   },
@@ -733,6 +810,16 @@
         "defeatedImage": "/tmp/monsters/v1/monster_kuragesa-defeated-clean-round-dots-20261027-flat-v2.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_kuragesa-sleeping-clean-round-dots-20261027.webp",
         "image": "/tmp/monsters/v1/monster_kuragesa-normal-clean-round-dots-20261027-flat-v2.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/047-kuragesa-image.webp",
+        "attackImage": "/tmp/monsters/v2/048-kuragesa-attackImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/050-kuragesa-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/049-kuragesa-sleepingImage.webp",
+        "skillPortraits": {
+          "1afac4ed-2737-4efa-89fe-17fad1c1551b": "/tmp/monsters/v2/051-kuragesa-skillPortraits-1afac4ed-2737-4efa-89fe-17fad1c1551b.webp"
+        }
       }
     ]
   },
@@ -770,6 +857,17 @@
               "3a9aba66-59f9-4e24-b980-5b46df81fe3e": "/tmp/monsters/v1/monster_makigaitsu-stone_skill_slime-spray_v1_20261026.webp"
             },
             "sleepingImage": "/tmp/monsters/v1/monster_makigaitsu-stone_sleeping_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/058-makigaitsu-stone-image.webp",
+            "defeatedImage": "/tmp/monsters/v2/061-makigaitsu-stone-defeatedImage.webp",
+            "skillPortraits": {
+              "3a9aba66-59f9-4e24-b980-5b46df81fe3e": "/tmp/monsters/v2/063-makigaitsu-stone-skillPortraits-3a9aba66-59f9-4e24-b980-5b46df81fe3e.webp",
+              "3d6d60b7-f7d2-494f-aa4c-46093ca1cc33": "/tmp/monsters/v2/062-makigaitsu-stone-skillPortraits-3d6d60b7-f7d2-494f-aa4c-46093ca1cc33.webp"
+            },
+            "attackImage": "/tmp/monsters/v2/059-makigaitsu-stone-attackImage.webp",
+            "sleepingImage": "/tmp/monsters/v2/060-makigaitsu-stone-sleepingImage.webp"
           }
         ]
       }
@@ -793,6 +891,16 @@
         },
         "attackImage": "/tmp/monsters/v1/monster_makigaitsu_attack_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_makigaitsu_defeated_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/052-makigaitsu-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/054-makigaitsu-sleepingImage.webp",
+        "skillPortraits": {
+          "3a9aba66-59f9-4e24-b980-5b46df81fe3e": "/tmp/monsters/v2/057-makigaitsu-skillPortraits-3a9aba66-59f9-4e24-b980-5b46df81fe3e.webp",
+          "3d6d60b7-f7d2-494f-aa4c-46093ca1cc33": "/tmp/monsters/v2/056-makigaitsu-skillPortraits-3d6d60b7-f7d2-494f-aa4c-46093ca1cc33.webp"
+        },
+        "attackImage": "/tmp/monsters/v2/053-makigaitsu-attackImage.webp"
       }
     ]
   },
@@ -858,6 +966,16 @@
             "attackImage": "/tmp/monsters/v1/monster_tsunofood-blue_attack_v1_20261026.webp",
             "defeatedImage": "/tmp/monsters/v1/monster_tsunofood-blue_defeated_v1_20261026.webp",
             "image": "/tmp/monsters/v1/monster_tsunofood-blue_normal_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/069-tsunofood-individual-1-image.webp",
+            "attackImage": "/tmp/monsters/v2/070-tsunofood-individual-1-attackImage.webp",
+            "sleepingImage": "/tmp/monsters/v2/071-tsunofood-individual-1-sleepingImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/072-tsunofood-individual-1-defeatedImage.webp",
+            "skillPortraits": {
+              "2ef5781b-1583-4562-91da-7a26f6866d66": "/tmp/monsters/v2/074-tsunofood-individual-1-skillPortraits-2ef5781b-1583-4562-91da-7a26f6866d66.webp"
+            }
           }
         ]
       }
@@ -879,6 +997,16 @@
         },
         "sleepingImage": "/tmp/monsters/v1/monster_tsunofood_sleeping_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_tsunofood_normal_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/064-tsunofood-image.webp",
+        "attackImage": "/tmp/monsters/v2/065-tsunofood-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/066-tsunofood-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/067-tsunofood-defeatedImage.webp",
+        "skillPortraits": {
+          "2ef5781b-1583-4562-91da-7a26f6866d66": "/tmp/monsters/v2/068-tsunofood-skillPortraits-2ef5781b-1583-4562-91da-7a26f6866d66.webp"
+        }
       }
     ]
   },
@@ -911,6 +1039,17 @@
         "defeatedImage": "/tmp/monsters/v1/monster_makurayume_defeated_v1_20261026.webp",
         "attackImage": "/tmp/monsters/v1/monster_makurayume_attack_v1_20261026.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_makurayume_sleeping_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/075-makurayume-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/077-makurayume-sleepingImage.webp",
+        "attackImage": "/tmp/monsters/v2/076-makurayume-attackImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/078-makurayume-defeatedImage.webp",
+        "skillPortraits": {
+          "e8a6f050-deb5-4664-95da-1de35bec408c": "/tmp/monsters/v2/080-makurayume-skillPortraits-e8a6f050-deb5-4664-95da-1de35bec408c.webp",
+          "2638ec61-1720-4cab-8370-29b7445c6161": "/tmp/monsters/v2/079-makurayume-skillPortraits-2638ec61-1720-4cab-8370-29b7445c6161.webp"
+        }
       }
     ]
   },
@@ -944,6 +1083,17 @@
         "defeatedImage": "/tmp/monsters/v1/monster_kuro-rousoku-defeated-clean-round-dots-20261027-flat-v2-frame-v3.webp",
         "image": "/tmp/monsters/v1/monster_kuro-rousoku-normal-clean-round-dots-20261027-flat-v2.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_kuro-rousoku_sleeping_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/081-kuro-rousoku-image.webp",
+        "attackImage": "/tmp/monsters/v2/082-kuro-rousoku-attackImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/084-kuro-rousoku-defeatedImage.webp",
+        "skillPortraits": {
+          "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/tmp/monsters/v2/085-kuro-rousoku-skillPortraits-871cd85b-2b84-4d04-a8f8-56a8a84ab34a.webp",
+          "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/tmp/monsters/v2/086-kuro-rousoku-skillPortraits-b32f5694-90f9-4180-a703-7cc3bf39fb7a.webp"
+        },
+        "sleepingImage": "/tmp/monsters/v2/083-kuro-rousoku-sleepingImage.webp"
       }
     ]
   },
@@ -978,6 +1128,17 @@
             ],
             "attackImage": "/tmp/monsters/v1/monster_wood-mimic-individual_attack_v1_20261026.webp",
             "defeatedImage": "/tmp/monsters/v1/monster_wood-mimic-individual_defeated_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/092-wood-mimic-individual-image.webp",
+            "sleepingImage": "/tmp/monsters/v2/094-wood-mimic-individual-sleepingImage.webp",
+            "attackImage": "/tmp/monsters/v2/093-wood-mimic-individual-attackImage.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/093-wood-mimic-individual-attackImage.webp",
+              "/tmp/monsters/v2/096-wood-mimic-individual-attackImages-1.webp"
+            ],
+            "defeatedImage": "/tmp/monsters/v2/095-wood-mimic-individual-defeatedImage.webp"
           }
         ]
       }
@@ -1006,6 +1167,17 @@
           "/tmp/monsters/v1/monster_wood-mimic_attack-2_v1_20261026.webp"
         ],
         "attackImage": "/tmp/monsters/v1/monster_wood-mimic_attack_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/087-wood-mimic-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/089-wood-mimic-sleepingImage.webp",
+        "attackImage": "/tmp/monsters/v2/088-wood-mimic-attackImage.webp",
+        "attackImages": [
+          "/tmp/monsters/v2/088-wood-mimic-attackImage.webp",
+          "/tmp/monsters/v2/091-wood-mimic-attackImages-1.webp"
+        ],
+        "defeatedImage": "/tmp/monsters/v2/090-wood-mimic-defeatedImage.webp"
       }
     ]
   },
@@ -1045,6 +1217,20 @@
         "skillPortraits": {
           "96af34af-a342-4316-928f-505ab2731baa": "/tmp/monsters/v1/monster_iron-mimic_skill_wall-tackle_v1_20261026.webp"
         }
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/097-iron-mimic-image.webp",
+        "skillPortraits": {
+          "96af34af-a342-4316-928f-505ab2731baa": "/tmp/monsters/v2/102-iron-mimic-skillPortraits-96af34af-a342-4316-928f-505ab2731baa.webp"
+        },
+        "attackImage": "/tmp/monsters/v2/098-iron-mimic-attackImage.webp",
+        "attackImages": [
+          "/tmp/monsters/v2/098-iron-mimic-attackImage.webp",
+          "/tmp/monsters/v2/101-iron-mimic-attackImages-1.webp"
+        ],
+        "defeatedImage": "/tmp/monsters/v2/100-iron-mimic-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/099-iron-mimic-sleepingImage.webp"
       }
     ]
   },
@@ -1086,6 +1272,21 @@
           "/tmp/monsters/v1/monster_vault-mimic_attack-2_v1_20261026.webp"
         ],
         "image": "/tmp/monsters/v1/monster_vault-mimic_normal_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/103-vault-mimic-image.webp",
+        "attackImages": [
+          "/tmp/monsters/v2/104-vault-mimic-attackImage.webp",
+          "/tmp/monsters/v2/107-vault-mimic-attackImages-1.webp"
+        ],
+        "attackImage": "/tmp/monsters/v2/104-vault-mimic-attackImage.webp",
+        "skillPortraits": {
+          "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/tmp/monsters/v2/108-vault-mimic-skillPortraits-b32f5694-90f9-4180-a703-7cc3bf39fb7a.webp",
+          "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/tmp/monsters/v2/109-vault-mimic-skillPortraits-871cd85b-2b84-4d04-a8f8-56a8a84ab34a.webp"
+        },
+        "sleepingImage": "/tmp/monsters/v2/105-vault-mimic-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/106-vault-mimic-defeatedImage.webp"
       }
     ]
   },
@@ -1120,6 +1321,17 @@
               "/tmp/monsters/v1/monster_black-slime-wide-attack-clean-round-dots-20261027-local.webp",
               "/tmp/monsters/v1/monster_black-slime-wide-attack-2-clean-round-dots-20261027-local.webp"
             ]
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/115-black-slime-wide-image.webp",
+            "attackImage": "/tmp/monsters/v2/116-black-slime-wide-attackImage.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/116-black-slime-wide-attackImage.webp",
+              "/tmp/monsters/v2/119-black-slime-wide-attackImages-1.webp"
+            ],
+            "sleepingImage": "/tmp/monsters/v2/117-black-slime-wide-sleepingImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/118-black-slime-wide-defeatedImage.webp"
           }
         ]
       },
@@ -1146,6 +1358,17 @@
             "image": "/tmp/monsters/v1/monster_black-slime-tall-normal-clean-round-dots-20261027.webp",
             "defeatedImage": "/tmp/monsters/v1/monster_black-slime-tall-defeated-clean-round-dots-20261027.webp",
             "attackImage": "/tmp/monsters/v1/monster_black-slime-tall-attack-clean-round-dots-20261027-local.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/120-black-slime-tall-image.webp",
+            "attackImage": "/tmp/monsters/v2/121-black-slime-tall-attackImage.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/121-black-slime-tall-attackImage.webp",
+              "/tmp/monsters/v2/124-black-slime-tall-attackImages-1.webp"
+            ],
+            "sleepingImage": "/tmp/monsters/v2/122-black-slime-tall-sleepingImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/123-black-slime-tall-defeatedImage.webp"
           }
         ]
       }
@@ -1174,6 +1397,17 @@
         ],
         "sleepingImage": "/tmp/monsters/v1/monster_black-slime-sleeping-clean-round-dots-20261027-v2-local.webp",
         "attackImage": "/tmp/monsters/v1/monster_black-slime-attack-clean-round-dots-20261027-v2.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/110-black-slime-image.webp",
+        "defeatedImage": "/tmp/monsters/v2/113-black-slime-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/112-black-slime-sleepingImage.webp",
+        "attackImage": "/tmp/monsters/v2/111-black-slime-attackImage.webp",
+        "attackImages": [
+          "/tmp/monsters/v2/111-black-slime-attackImage.webp",
+          "/tmp/monsters/v2/114-black-slime-attackImages-1.webp"
+        ]
       }
     ]
   },
@@ -1208,6 +1442,17 @@
         ],
         "image": "/tmp/monsters/v1/monster_white-slime_normal_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_white-slime_defeated_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/125-white-slime-image.webp",
+        "attackImages": [
+          "/tmp/monsters/v2/126-white-slime-attackImage.webp",
+          "/tmp/monsters/v2/129-white-slime-attackImages-1.webp"
+        ],
+        "sleepingImage": "/tmp/monsters/v2/127-white-slime-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/128-white-slime-defeatedImage.webp",
+        "attackImage": "/tmp/monsters/v2/126-white-slime-attackImage.webp"
       }
     ]
   },
@@ -1247,6 +1492,20 @@
           "/tmp/monsters/v1/monster_poison-slime_attack-2_v1_20261026.webp"
         ],
         "sleepingImage": "/tmp/monsters/v1/monster_poison-slime_sleeping_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/130-poison-slime-image.webp",
+        "attackImage": "/tmp/monsters/v2/131-poison-slime-attackImage.webp",
+        "attackImages": [
+          "/tmp/monsters/v2/131-poison-slime-attackImage.webp",
+          "/tmp/monsters/v2/134-poison-slime-attackImages-1.webp"
+        ],
+        "sleepingImage": "/tmp/monsters/v2/132-poison-slime-sleepingImage.webp",
+        "skillPortraits": {
+          "3a9aba66-59f9-4e24-b980-5b46df81fe3e": "/tmp/monsters/v2/135-poison-slime-skillPortraits-3a9aba66-59f9-4e24-b980-5b46df81fe3e.webp"
+        },
+        "defeatedImage": "/tmp/monsters/v2/133-poison-slime-defeatedImage.webp"
       }
     ]
   },
@@ -1306,6 +1565,23 @@
         ],
         "sleepingImage": "/tmp/monsters/v1/monster_slime-swordsman_sleeping_v1_20261026.webp",
         "attackImage": "/tmp/monsters/v1/monster_slime-swordsman_attack_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/136-slime-swordsman-image.webp",
+        "attackImage": "/tmp/monsters/v2/137-slime-swordsman-attackImage.webp",
+        "attackImages": [
+          "/tmp/monsters/v2/137-slime-swordsman-attackImage.webp",
+          "/tmp/monsters/v2/140-slime-swordsman-attackImages-1.webp"
+        ],
+        "sleepingImage": "/tmp/monsters/v2/138-slime-swordsman-sleepingImage.webp",
+        "skillPortraits": {
+          "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/tmp/monsters/v2/141-slime-swordsman-skillPortraits-b32f5694-90f9-4180-a703-7cc3bf39fb7a.webp",
+          "2ef5781b-1583-4562-91da-7a26f6866d66": "/tmp/monsters/v2/143-slime-swordsman-skillPortraits-2ef5781b-1583-4562-91da-7a26f6866d66.webp",
+          "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/tmp/monsters/v2/142-slime-swordsman-skillPortraits-871cd85b-2b84-4d04-a8f8-56a8a84ab34a.webp",
+          "ed55c469-5ca5-4c3f-b7f2-569fb78dd734": "/tmp/monsters/v2/144-slime-swordsman-skillPortraits-ed55c469-5ca5-4c3f-b7f2-569fb78dd734.webp"
+        },
+        "defeatedImage": "/tmp/monsters/v2/139-slime-swordsman-defeatedImage.webp"
       }
     ]
   },
@@ -1338,6 +1614,12 @@
               "20196775-1b91-4425-954b-a67b54e00cef": "/tmp/monsters/v1/monster_mitsuashi-marsh_skill_iron-press_v1_20261026_v2.webp"
             },
             "image": "/tmp/monsters/v1/monster_mitsuashi-marsh_normal_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "skillPortraits": {
+              "20196775-1b91-4425-954b-a67b54e00cef": "/tmp/monsters/v2/154-mitsuashi-individual-1-skillPortraits-20196775-1b91-4425-954b-a67b54e00cef.webp"
+            }
           }
         ]
       }
@@ -1362,6 +1644,13 @@
         },
         "sleepingImage": "/tmp/monsters/v1/monster_mitsuashi_sleeping_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_mitsuashi_normal_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "skillPortraits": {
+          "20196775-1b91-4425-954b-a67b54e00cef": "/tmp/monsters/v2/149-mitsuashi-skillPortraits-20196775-1b91-4425-954b-a67b54e00cef.webp"
+        },
+        "defeatedImage": "/tmp/monsters/v2/148-mitsuashi-defeatedImage.webp"
       }
     ]
   },
@@ -1394,6 +1683,19 @@
             },
             "defeatedImage": "/tmp/monsters/v1/monster_kemurimaki_ash-defeated_new_dots_20261027_v2.webp",
             "attackImage": "/tmp/monsters/v1/monster_kemurimaki-ash_attack_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/160-kemurimaki-individual-1-image.webp",
+            "sleepingImage": "/tmp/monsters/v2/162-kemurimaki-individual-1-sleepingImage.webp",
+            "attackImage": "/tmp/monsters/v2/161-kemurimaki-individual-1-attackImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/163-kemurimaki-individual-1-defeatedImage.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/164-kemurimaki-individual-1-attackImages-0.webp"
+            ],
+            "skillPortraits": {
+              "84b5c834-0808-49c0-b9ba-2f5bcb9e084b": "/tmp/monsters/v2/165-kemurimaki-individual-1-skillPortraits-84b5c834-0808-49c0-b9ba-2f5bcb9e084b.webp"
+            }
           }
         ]
       },
@@ -1418,6 +1720,19 @@
             },
             "sleepingImage": "/tmp/monsters/v1/monster_kemurimaki_ice-sleeping_new_dots_20261027_v2.webp",
             "image": "/tmp/monsters/v1/monster_kemurimaki_ice-normal_new_dots_20261027.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/166-kemurimaki-individual-2-image.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/170-kemurimaki-individual-2-attackImages-0.webp"
+            ],
+            "defeatedImage": "/tmp/monsters/v2/169-kemurimaki-individual-2-defeatedImage.webp",
+            "sleepingImage": "/tmp/monsters/v2/168-kemurimaki-individual-2-sleepingImage.webp",
+            "skillPortraits": {
+              "6aed3e33-557b-483e-aebb-84d4a8b28b0d": "/tmp/monsters/v2/171-kemurimaki-individual-2-skillPortraits-6aed3e33-557b-483e-aebb-84d4a8b28b0d.webp"
+            },
+            "attackImage": "/tmp/monsters/v2/167-kemurimaki-individual-2-attackImage.webp"
           }
         ]
       }
@@ -1442,6 +1757,16 @@
         },
         "defeatedImage": "/tmp/monsters/v1/monster_kemurimaki_defeated_v1_20261026.webp",
         "image": "/tmp/monsters/v1/kemurimaki-normal-clean-dots-20261027-frame-v2.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/155-kemurimaki-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/157-kemurimaki-sleepingImage.webp",
+        "attackImage": "/tmp/monsters/v2/156-kemurimaki-attackImage.webp",
+        "skillPortraits": {
+          "6aed3e33-557b-483e-aebb-84d4a8b28b0d": "/tmp/monsters/v2/159-kemurimaki-skillPortraits-6aed3e33-557b-483e-aebb-84d4a8b28b0d.webp"
+        },
+        "defeatedImage": "/tmp/monsters/v2/158-kemurimaki-defeatedImage.webp"
       }
     ]
   },
@@ -1469,6 +1794,11 @@
             "defeatedImage": "/tmp/monsters/v1/hanenashin-stone-defeated-batch-round-dots-20261027-flat-v5.webp",
             "sleepingImage": "/tmp/monsters/v1/hanenashin-stone-sleeping-batch-round-dots-20261027-repair-v2.webp",
             "attackImage": "/tmp/monsters/v1/monster_hanenashin-stone_attack_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "sleepingImage": "/tmp/monsters/v2/178-hanenashin-individual-1-sleepingImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/179-hanenashin-individual-1-defeatedImage.webp"
           }
         ]
       },
@@ -1485,6 +1815,11 @@
           {
             "version": "v1",
             "defeatedImage": "/tmp/monsters/v1/hanenashin-adult-defeated-batch-round-dots-20261027-flat-v3.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/181-hanenashin-individual-2-image.webp",
+            "sleepingImage": "/tmp/monsters/v2/183-hanenashin-individual-2-sleepingImage.webp"
           }
         ]
       }
@@ -1504,6 +1839,12 @@
         "attackImage": "/tmp/monsters/v1/hanenashin-attack-batch-round-dots-20261027.webp",
         "image": "/tmp/monsters/v1/hanenashin-normal-batch-round-dots-20261027.webp",
         "defeatedImage": "/tmp/monsters/v1/hanenashin-defeated-batch-round-dots-20261027-flat-v3.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/172-hanenashin-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/174-hanenashin-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/175-hanenashin-defeatedImage.webp"
       }
     ]
   },
@@ -1538,6 +1879,20 @@
             },
             "image": "/tmp/monsters/v1/monster_washinoko-snow_normal_v1_20261026.webp",
             "defeatedImage": "/tmp/monsters/v1/monster_washinoko-snow_defeated_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/190-washinoko-individual-1-image.webp",
+            "attackImage": "/tmp/monsters/v2/191-washinoko-individual-1-attackImage.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/191-washinoko-individual-1-attackImage.webp"
+            ],
+            "skillPortraits": {
+              "a9742f96-76fc-477c-bd58-ce2b6f9f6ea3": "/tmp/monsters/v2/195-washinoko-individual-1-skillPortraits-a9742f96-76fc-477c-bd58-ce2b6f9f6ea3.webp",
+              "319a9920-9562-4e02-bcaf-98d3ae14f013": "/tmp/monsters/v2/194-washinoko-individual-1-skillPortraits-319a9920-9562-4e02-bcaf-98d3ae14f013.webp"
+            },
+            "sleepingImage": "/tmp/monsters/v2/192-washinoko-individual-1-sleepingImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/193-washinoko-individual-1-defeatedImage.webp"
           }
         ]
       }
@@ -1561,6 +1916,15 @@
           "319a9920-9562-4e02-bcaf-98d3ae14f013": "/tmp/monsters/v1/monster_washinoko_skill_grave-grab_v1_20261026.webp"
         },
         "sleepingImage": "/tmp/monsters/v1/monster_washinoko_sleeping_flat_20261027_v5.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/185-washinoko-image.webp",
+        "defeatedImage": "/tmp/monsters/v2/188-washinoko-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/187-washinoko-sleepingImage.webp",
+        "skillPortraits": {
+          "319a9920-9562-4e02-bcaf-98d3ae14f013": "/tmp/monsters/v2/189-washinoko-skillPortraits-319a9920-9562-4e02-bcaf-98d3ae14f013.webp"
+        }
       }
     ]
   },
@@ -1594,6 +1958,16 @@
             "skillPortraits": {
               "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v1/monster_oumuku-forest_skill_swallow-cut_v1_20261026_v4.webp"
             }
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/201-oumuku-individual-1-image.webp",
+            "defeatedImage": "/tmp/monsters/v2/204-oumuku-individual-1-defeatedImage.webp",
+            "attackImage": "/tmp/monsters/v2/202-oumuku-individual-1-attackImage.webp",
+            "sleepingImage": "/tmp/monsters/v2/203-oumuku-individual-1-sleepingImage.webp",
+            "skillPortraits": {
+              "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v2/206-oumuku-individual-1-skillPortraits-d1d46bed-7671-42b0-90c1-e330a16f3fec.webp"
+            }
           }
         ]
       }
@@ -1615,6 +1989,16 @@
         "attackImage": "/tmp/monsters/v1/monster_oumuku_attack_v1_20261026.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_oumuku_sleeping_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_oumuku_normal_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/196-oumuku-image.webp",
+        "attackImage": "/tmp/monsters/v2/197-oumuku-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/198-oumuku-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/199-oumuku-defeatedImage.webp",
+        "skillPortraits": {
+          "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v2/200-oumuku-skillPortraits-d1d46bed-7671-42b0-90c1-e330a16f3fec.webp"
+        }
       }
     ]
   },
@@ -1643,6 +2027,11 @@
             "version": "v1",
             "defeatedImage": "/tmp/monsters/v1/monster_haneboots_defeated_v1_20261026.webp",
             "sleepingImage": "/tmp/monsters/v1/monster_haneboots_sleeping_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/212-kamokutsu-individual-1-image.webp",
+            "sleepingImage": "/tmp/monsters/v2/214-kamokutsu-individual-1-sleepingImage.webp"
           }
         ]
       },
@@ -1667,6 +2056,19 @@
             "attackImage": "/tmp/monsters/v1/monster_tosakado_attack_v1_20261026.webp",
             "sleepingImage": "/tmp/monsters/v1/monster_tosakado_sleeping_v1_20261026.webp",
             "image": "/tmp/monsters/v1/monster_tosakado_normal_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/216-kamokutsu-individual-2-image.webp",
+            "sleepingImage": "/tmp/monsters/v2/218-kamokutsu-individual-2-sleepingImage.webp",
+            "attackImage": "/tmp/monsters/v2/217-kamokutsu-individual-2-attackImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/219-kamokutsu-individual-2-defeatedImage.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/220-kamokutsu-individual-2-attackImages-0.webp"
+            ],
+            "skillPortraits": {
+              "876376fe-bbcf-420c-9e0d-247a8de30481": "/tmp/monsters/v2/221-kamokutsu-individual-2-skillPortraits-876376fe-bbcf-420c-9e0d-247a8de30481.webp"
+            }
           }
         ]
       }
@@ -1694,6 +2096,15 @@
         },
         "sleepingImage": "/tmp/monsters/v1/monster_kamokutsu_sleeping_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_kamokutsu_normal_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/207-kamokutsu-image.webp",
+        "defeatedImage": "/tmp/monsters/v2/210-kamokutsu-defeatedImage.webp",
+        "skillPortraits": {
+          "876376fe-bbcf-420c-9e0d-247a8de30481": "/tmp/monsters/v2/211-kamokutsu-skillPortraits-876376fe-bbcf-420c-9e0d-247a8de30481.webp"
+        },
+        "sleepingImage": "/tmp/monsters/v2/209-kamokutsu-sleepingImage.webp"
       }
     ]
   },
@@ -1719,6 +2130,13 @@
         "defeatedImage": "/tmp/monsters/v1/hiyokobu-defeated-batch-round-dots-20261027-repair-v2-local-v3.webp",
         "sleepingImage": "/tmp/monsters/v1/hiyokobu-sleeping-batch-round-dots-20261027-repair-v2.webp",
         "image": "/tmp/monsters/v1/hiyokobu-normal-batch-round-dots-20261027-repair-v2.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/222-hiyokobu-image.webp",
+        "attackImage": "/tmp/monsters/v2/223-hiyokobu-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/224-hiyokobu-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/225-hiyokobu-defeatedImage.webp"
       }
     ]
   },
@@ -1747,6 +2165,12 @@
             "defeatedImage": "/tmp/monsters/v1/monster_horopoppo-speckled-defeated-clean-round-dots-20261027.webp",
             "image": "/tmp/monsters/v1/monster_horopoppo-speckled-normal-clean-round-dots-20261027.webp",
             "sleepingImage": "/tmp/monsters/v1/monster_horopoppo-speckled-sleeping-clean-round-dots-20261027.webp"
+          },
+          {
+            "version": "v2",
+            "attackImage": "/tmp/monsters/v2/231-horopoppo-individual-1-attackImage.webp",
+            "sleepingImage": "/tmp/monsters/v2/232-horopoppo-individual-1-sleepingImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/233-horopoppo-individual-1-defeatedImage.webp"
           }
         ]
       },
@@ -1766,6 +2190,15 @@
             "sleepingImage": "/tmp/monsters/v1/monster_horopoppo-demon_sleeping_v1_20261026.webp",
             "image": "/tmp/monsters/v1/monster_horopoppo-demon_normal_v1_20261026.webp",
             "defeatedImage": "/tmp/monsters/v1/monster_horopoppo-demon_defeated_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/235-horopoppo-individual-2-image.webp",
+            "attackImage": "/tmp/monsters/v2/236-horopoppo-individual-2-attackImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/238-horopoppo-individual-2-defeatedImage.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/239-horopoppo-individual-2-attackImages-0.webp"
+            ]
           }
         ]
       }
@@ -1785,6 +2218,13 @@
         "sleepingImage": "/tmp/monsters/v1/monster_horopoppo-sleeping-clean-round-dots-20261027-flat-v2-local-v3.webp",
         "image": "/tmp/monsters/v1/horopoppo-normal-clean-dots-20261027.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_horopoppo-defeated-clean-round-dots-20261027.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/226-horopoppo-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/228-horopoppo-sleepingImage.webp",
+        "attackImage": "/tmp/monsters/v2/227-horopoppo-attackImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/229-horopoppo-defeatedImage.webp"
       }
     ]
   },
@@ -1818,6 +2258,18 @@
               "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v1/monster_yadocup-teapot_skill_swallow-cut_v1_20261026_v3.webp"
             },
             "attackImage": "/tmp/monsters/v1/monster_yadocup-teapot_attack_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/245-yadocup-individual-1-image.webp",
+            "sleepingImage": "/tmp/monsters/v2/247-yadocup-individual-1-sleepingImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/248-yadocup-individual-1-defeatedImage.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/249-yadocup-individual-1-attackImages-0.webp"
+            ],
+            "skillPortraits": {
+              "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v2/250-yadocup-individual-1-skillPortraits-d1d46bed-7671-42b0-90c1-e330a16f3fec.webp"
+            }
           }
         ]
       },
@@ -1841,6 +2293,15 @@
             "attackImage": "/tmp/monsters/v1/monster_yadocup-demon_attack_v1_20261026.webp",
             "image": "/tmp/monsters/v1/monster_yadocup-demon_normal_v1_20261026.webp",
             "sleepingImage": "/tmp/monsters/v1/monster_yadocup-demon_sleeping_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "attackImage": "/tmp/monsters/v2/252-yadocup-individual-2-attackImage.webp",
+            "sleepingImage": "/tmp/monsters/v2/253-yadocup-individual-2-sleepingImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/254-yadocup-individual-2-defeatedImage.webp",
+            "skillPortraits": {
+              "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v2/256-yadocup-individual-2-skillPortraits-d1d46bed-7671-42b0-90c1-e330a16f3fec.webp"
+            }
           }
         ]
       }
@@ -1865,6 +2326,16 @@
           "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v1/monster_yadocup_skill_swallow-cut_v1_20261026_v3.webp"
         },
         "sleepingImage": "/tmp/monsters/v1/monster_yadocup_sleeping_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/240-yadocup-image.webp",
+        "attackImage": "/tmp/monsters/v2/241-yadocup-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/242-yadocup-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/243-yadocup-defeatedImage.webp",
+        "skillPortraits": {
+          "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v2/244-yadocup-skillPortraits-d1d46bed-7671-42b0-90c1-e330a16f3fec.webp"
+        }
       }
     ]
   },
@@ -1892,6 +2363,15 @@
         "image": "/tmp/monsters/v1/monster_kurumiwari_normal_v1_20261026.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_kurumiwari_sleeping_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_kurumiwari_defeated_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/257-kurumiwari-image.webp",
+        "attackImage": "/tmp/monsters/v2/258-kurumiwari-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/259-kurumiwari-sleepingImage.webp",
+        "skillPortraits": {
+          "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v2/261-kurumiwari-skillPortraits-d1d46bed-7671-42b0-90c1-e330a16f3fec.webp"
+        }
       }
     ]
   },
@@ -1920,6 +2400,16 @@
         "sleepingImage": "/tmp/monsters/v1/monster_kaisando-sleeping-clean-round-dots-20261027-flat-v2.webp",
         "image": "/tmp/monsters/v1/monster_kaisando-normal-clean-round-dots-20261027.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_kaisando-defeated-clean-round-dots-20261027.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/262-kaisando-image.webp",
+        "attackImage": "/tmp/monsters/v2/263-kaisando-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/264-kaisando-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/265-kaisando-defeatedImage.webp",
+        "skillPortraits": {
+          "bd093901-181f-4448-8ad2-8dda2c4a5746": "/tmp/monsters/v2/266-kaisando-skillPortraits-bd093901-181f-4448-8ad2-8dda2c4a5746.webp"
+        }
       }
     ]
   },
@@ -1951,6 +2441,16 @@
           "e7e375ed-2a98-458a-b80e-5540da67db1f": "/tmp/monsters/v1/monster_futabane_skill_vine-lash_v1_20261026_v2.webp"
         },
         "attackImage": "/tmp/monsters/v1/monster_futabane_attack_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/267-futabane-image.webp",
+        "defeatedImage": "/tmp/monsters/v2/270-futabane-defeatedImage.webp",
+        "skillPortraits": {
+          "e7e375ed-2a98-458a-b80e-5540da67db1f": "/tmp/monsters/v2/272-futabane-skillPortraits-e7e375ed-2a98-458a-b80e-5540da67db1f.webp",
+          "1afac4ed-2737-4efa-89fe-17fad1c1551b": "/tmp/monsters/v2/271-futabane-skillPortraits-1afac4ed-2737-4efa-89fe-17fad1c1551b.webp"
+        },
+        "sleepingImage": "/tmp/monsters/v2/269-futabane-sleepingImage.webp"
       }
     ]
   },
@@ -1985,6 +2485,15 @@
         },
         "sleepingImage": "/tmp/monsters/v1/monster_yukimebae_sleeping_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_yukimebae_normal_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/273-yukimebae-image.webp",
+        "attackImage": "/tmp/monsters/v2/274-yukimebae-attackImage.webp",
+        "skillPortraits": {
+          "1afac4ed-2737-4efa-89fe-17fad1c1551b": "/tmp/monsters/v2/277-yukimebae-skillPortraits-1afac4ed-2737-4efa-89fe-17fad1c1551b.webp"
+        },
+        "sleepingImage": "/tmp/monsters/v2/275-yukimebae-sleepingImage.webp"
       }
     ]
   },
@@ -2022,6 +2531,21 @@
             },
             "sleepingImage": "/tmp/monsters/v1/monster_agohitsu-stone_sleeping_v1_20261026.webp",
             "image": "/tmp/monsters/v1/monster_agohitsu-stone_normal_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/286-agohitsu-individual-1-image.webp",
+            "sleepingImage": "/tmp/monsters/v2/288-agohitsu-individual-1-sleepingImage.webp",
+            "skillPortraits": {
+              "2ef5781b-1583-4562-91da-7a26f6866d66": "/tmp/monsters/v2/291-agohitsu-individual-1-skillPortraits-2ef5781b-1583-4562-91da-7a26f6866d66.webp",
+              "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/tmp/monsters/v2/293-agohitsu-individual-1-skillPortraits-b32f5694-90f9-4180-a703-7cc3bf39fb7a.webp",
+              "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/tmp/monsters/v2/292-agohitsu-individual-1-skillPortraits-871cd85b-2b84-4d04-a8f8-56a8a84ab34a.webp"
+            },
+            "attackImage": "/tmp/monsters/v2/287-agohitsu-individual-1-attackImage.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/290-agohitsu-individual-1-attackImages-0.webp"
+            ],
+            "defeatedImage": "/tmp/monsters/v2/289-agohitsu-individual-1-defeatedImage.webp"
           }
         ]
       }
@@ -2050,6 +2574,18 @@
         "defeatedImage": "/tmp/monsters/v1/monster_agohitsu_defeated_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_agohitsu_normal_v1_20261026.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_agohitsu_sleeping_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/279-agohitsu-image.webp",
+        "skillPortraits": {
+          "2ef5781b-1583-4562-91da-7a26f6866d66": "/tmp/monsters/v2/285-agohitsu-skillPortraits-2ef5781b-1583-4562-91da-7a26f6866d66.webp",
+          "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/tmp/monsters/v2/284-agohitsu-skillPortraits-871cd85b-2b84-4d04-a8f8-56a8a84ab34a.webp",
+          "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/tmp/monsters/v2/283-agohitsu-skillPortraits-b32f5694-90f9-4180-a703-7cc3bf39fb7a.webp"
+        },
+        "attackImage": "/tmp/monsters/v2/280-agohitsu-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/281-agohitsu-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/282-agohitsu-defeatedImage.webp"
       }
     ]
   },
@@ -2083,6 +2619,18 @@
             "defeatedImage": "/tmp/monsters/v1/haribote-moss-defeated-batch-round-dots-20261027-alpha-v2.webp",
             "sleepingImage": "/tmp/monsters/v1/haribote-moss-sleeping-batch-round-dots-20261027-alpha-v2.webp",
             "attackImage": "/tmp/monsters/v1/haribote-moss-attack-batch-round-dots-20261027-repair-v2-local-v4.webp"
+          },
+          {
+            "version": "v2",
+            "sleepingImage": "/tmp/monsters/v2/302-haribote-individual-1-sleepingImage.webp",
+            "skillPortraits": {
+              "876376fe-bbcf-420c-9e0d-247a8de30481": "/tmp/monsters/v2/305-haribote-individual-1-skillPortraits-876376fe-bbcf-420c-9e0d-247a8de30481.webp"
+            },
+            "defeatedImage": "/tmp/monsters/v2/303-haribote-individual-1-defeatedImage.webp",
+            "attackImage": "/tmp/monsters/v2/301-haribote-individual-1-attackImage.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/304-haribote-individual-1-attackImages-0.webp"
+            ]
           }
         ]
       }
@@ -2108,6 +2656,17 @@
         "sleepingImage": "/tmp/monsters/v1/haribote-sleeping-new-round-dots-20261027.webp",
         "attackImage": "/tmp/monsters/v1/monster_haribote_attack_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_haribote_defeated_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/294-haribote-image.webp",
+        "attackImage": "/tmp/monsters/v2/295-haribote-attackImage.webp",
+        "skillPortraits": {
+          "876376fe-bbcf-420c-9e0d-247a8de30481": "/tmp/monsters/v2/298-haribote-skillPortraits-876376fe-bbcf-420c-9e0d-247a8de30481.webp",
+          "9f72649e-cc75-4e44-8424-1c7841ec2eeb": "/tmp/monsters/v2/299-haribote-skillPortraits-9f72649e-cc75-4e44-8424-1c7841ec2eeb.webp"
+        },
+        "defeatedImage": "/tmp/monsters/v2/297-haribote-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/296-haribote-sleepingImage.webp"
       }
     ]
   },
@@ -2138,6 +2697,12 @@
           "20196775-1b91-4425-954b-a67b54e00cef": "/tmp/monsters/v1/monster_mitsuashi-marsh_skill_iron-press_v1_20261026_v2.webp"
         },
         "image": "/tmp/monsters/v1/monster_mitsuashi-marsh_normal_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "skillPortraits": {
+          "20196775-1b91-4425-954b-a67b54e00cef": "/tmp/monsters/v2/154-mitsuashi-individual-1-skillPortraits-20196775-1b91-4425-954b-a67b54e00cef.webp"
+        }
       }
     ]
   },
@@ -2168,6 +2733,16 @@
         },
         "defeatedImage": "/tmp/monsters/v1/monster_kemurimaki_ash-defeated_new_dots_20261027_v2.webp",
         "attackImage": "/tmp/monsters/v1/monster_kemurimaki-ash_attack_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/160-kemurimaki-individual-1-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/162-kemurimaki-individual-1-sleepingImage.webp",
+        "attackImage": "/tmp/monsters/v2/161-kemurimaki-individual-1-attackImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/163-kemurimaki-individual-1-defeatedImage.webp",
+        "skillPortraits": {
+          "84b5c834-0808-49c0-b9ba-2f5bcb9e084b": "/tmp/monsters/v2/165-kemurimaki-individual-1-skillPortraits-84b5c834-0808-49c0-b9ba-2f5bcb9e084b.webp"
+        }
       }
     ]
   },
@@ -2199,6 +2774,16 @@
         "skillPortraits": {
           "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v1/monster_oumuku-forest_skill_swallow-cut_v1_20261026_v4.webp"
         }
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/201-oumuku-individual-1-image.webp",
+        "defeatedImage": "/tmp/monsters/v2/204-oumuku-individual-1-defeatedImage.webp",
+        "attackImage": "/tmp/monsters/v2/202-oumuku-individual-1-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/203-oumuku-individual-1-sleepingImage.webp",
+        "skillPortraits": {
+          "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v2/206-oumuku-individual-1-skillPortraits-d1d46bed-7671-42b0-90c1-e330a16f3fec.webp"
+        }
       }
     ]
   },
@@ -2227,6 +2812,15 @@
             "sleepingImage": "/tmp/monsters/v1/monster_horopoppo-demon_sleeping_v1_20261026.webp",
             "image": "/tmp/monsters/v1/monster_horopoppo-demon_normal_v1_20261026.webp",
             "defeatedImage": "/tmp/monsters/v1/monster_horopoppo-demon_defeated_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "image": "/tmp/monsters/v2/235-horopoppo-individual-2-image.webp",
+            "attackImage": "/tmp/monsters/v2/236-horopoppo-individual-2-attackImage.webp",
+            "defeatedImage": "/tmp/monsters/v2/238-horopoppo-individual-2-defeatedImage.webp",
+            "attackImages": [
+              "/tmp/monsters/v2/239-horopoppo-individual-2-attackImages-0.webp"
+            ]
           }
         ]
       }
@@ -2246,6 +2840,12 @@
         "defeatedImage": "/tmp/monsters/v1/monster_horopoppo-speckled-defeated-clean-round-dots-20261027.webp",
         "image": "/tmp/monsters/v1/monster_horopoppo-speckled-normal-clean-round-dots-20261027.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_horopoppo-speckled-sleeping-clean-round-dots-20261027.webp"
+      },
+      {
+        "version": "v2",
+        "attackImage": "/tmp/monsters/v2/231-horopoppo-individual-1-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/232-horopoppo-individual-1-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/233-horopoppo-individual-1-defeatedImage.webp"
       }
     ]
   },
@@ -2277,6 +2877,15 @@
           "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v1/monster_yadocup-teapot_skill_swallow-cut_v1_20261026_v3.webp"
         },
         "attackImage": "/tmp/monsters/v1/monster_yadocup-teapot_attack_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/245-yadocup-individual-1-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/247-yadocup-individual-1-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/248-yadocup-individual-1-defeatedImage.webp",
+        "skillPortraits": {
+          "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v2/250-yadocup-individual-1-skillPortraits-d1d46bed-7671-42b0-90c1-e330a16f3fec.webp"
+        }
       }
     ]
   },
@@ -2310,6 +2919,16 @@
         "image": "/tmp/monsters/v1/haribote-adult-normal-batch-round-dots-20261027.webp",
         "attackImage": "/tmp/monsters/v1/haribote-adult-attack-batch-round-dots-20261027-repair-v2-local-v3.webp",
         "defeatedImage": "/tmp/monsters/v1/haribote-adult-defeated-batch-round-dots-20261027-repair-v2.webp"
+      },
+      {
+        "version": "v2",
+        "defeatedImage": "/tmp/monsters/v2/309-haribote-adult-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/308-haribote-adult-sleepingImage.webp",
+        "skillPortraits": {
+          "876376fe-bbcf-420c-9e0d-247a8de30481": "/tmp/monsters/v2/311-haribote-adult-skillPortraits-876376fe-bbcf-420c-9e0d-247a8de30481.webp",
+          "9f72649e-cc75-4e44-8424-1c7841ec2eeb": "/tmp/monsters/v2/310-haribote-adult-skillPortraits-9f72649e-cc75-4e44-8424-1c7841ec2eeb.webp"
+        },
+        "attackImage": "/tmp/monsters/v2/307-haribote-adult-attackImage.webp"
       }
     ]
   },
@@ -2345,6 +2964,18 @@
         },
         "sleepingImage": "/tmp/monsters/v1/monster_agohitsu-stone_sleeping_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_agohitsu-stone_normal_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/286-agohitsu-individual-1-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/288-agohitsu-individual-1-sleepingImage.webp",
+        "skillPortraits": {
+          "2ef5781b-1583-4562-91da-7a26f6866d66": "/tmp/monsters/v2/291-agohitsu-individual-1-skillPortraits-2ef5781b-1583-4562-91da-7a26f6866d66.webp",
+          "b32f5694-90f9-4180-a703-7cc3bf39fb7a": "/tmp/monsters/v2/293-agohitsu-individual-1-skillPortraits-b32f5694-90f9-4180-a703-7cc3bf39fb7a.webp",
+          "871cd85b-2b84-4d04-a8f8-56a8a84ab34a": "/tmp/monsters/v2/292-agohitsu-individual-1-skillPortraits-871cd85b-2b84-4d04-a8f8-56a8a84ab34a.webp"
+        },
+        "attackImage": "/tmp/monsters/v2/287-agohitsu-individual-1-attackImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/289-agohitsu-individual-1-defeatedImage.webp"
       }
     ]
   },
@@ -2376,6 +3007,15 @@
         "defeatedImage": "/tmp/monsters/v1/haribote-moss-defeated-batch-round-dots-20261027-alpha-v2.webp",
         "sleepingImage": "/tmp/monsters/v1/haribote-moss-sleeping-batch-round-dots-20261027-alpha-v2.webp",
         "attackImage": "/tmp/monsters/v1/haribote-moss-attack-batch-round-dots-20261027-repair-v2-local-v4.webp"
+      },
+      {
+        "version": "v2",
+        "sleepingImage": "/tmp/monsters/v2/302-haribote-individual-1-sleepingImage.webp",
+        "skillPortraits": {
+          "876376fe-bbcf-420c-9e0d-247a8de30481": "/tmp/monsters/v2/305-haribote-individual-1-skillPortraits-876376fe-bbcf-420c-9e0d-247a8de30481.webp"
+        },
+        "defeatedImage": "/tmp/monsters/v2/303-haribote-individual-1-defeatedImage.webp",
+        "attackImage": "/tmp/monsters/v2/301-haribote-individual-1-attackImage.webp"
       }
     ]
   },
@@ -2408,6 +3048,17 @@
         },
         "image": "/tmp/monsters/v1/monster_washinoko-snow_normal_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_washinoko-snow_defeated_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/190-washinoko-individual-1-image.webp",
+        "attackImage": "/tmp/monsters/v2/191-washinoko-individual-1-attackImage.webp",
+        "skillPortraits": {
+          "a9742f96-76fc-477c-bd58-ce2b6f9f6ea3": "/tmp/monsters/v2/195-washinoko-individual-1-skillPortraits-a9742f96-76fc-477c-bd58-ce2b6f9f6ea3.webp",
+          "319a9920-9562-4e02-bcaf-98d3ae14f013": "/tmp/monsters/v2/194-washinoko-individual-1-skillPortraits-319a9920-9562-4e02-bcaf-98d3ae14f013.webp"
+        },
+        "sleepingImage": "/tmp/monsters/v2/192-washinoko-individual-1-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/193-washinoko-individual-1-defeatedImage.webp"
       }
     ]
   },
@@ -2438,6 +3089,13 @@
         },
         "attackImage": "/tmp/monsters/v1/monster_kamokutsu-mud_attack_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_kamokutsu-mud_defeated_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "skillPortraits": {
+          "8adbc6e7-23a3-4aee-bf45-84b2b6c74640": "/tmp/monsters/v2/316-kamokutsu-mud-skillPortraits-8adbc6e7-23a3-4aee-bf45-84b2b6c74640.webp"
+        },
+        "sleepingImage": "/tmp/monsters/v2/314-kamokutsu-mud-sleepingImage.webp"
       }
     ]
   },
@@ -2472,6 +3130,14 @@
         "attackImage": "/tmp/monsters/v1/monster_washinoko-adult_attack_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_washinoko-adult_defeated_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_washinoko-adult_normal_v1_20261026_v2.webp"
+      },
+      {
+        "version": "v2",
+        "sleepingImage": "/tmp/monsters/v2/319-washinoko-adult-sleepingImage.webp",
+        "skillPortraits": {
+          "0de1870d-2513-4935-93ac-eeddd40fddd9": "/tmp/monsters/v2/322-washinoko-adult-skillPortraits-0de1870d-2513-4935-93ac-eeddd40fddd9.webp",
+          "319a9920-9562-4e02-bcaf-98d3ae14f013": "/tmp/monsters/v2/321-washinoko-adult-skillPortraits-319a9920-9562-4e02-bcaf-98d3ae14f013.webp"
+        }
       }
     ]
   },
@@ -2631,6 +3297,11 @@
         "version": "v1",
         "defeatedImage": "/tmp/monsters/v1/monster_haneboots_defeated_v1_20261026.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_haneboots_sleeping_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/212-kamokutsu-individual-1-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/214-kamokutsu-individual-1-sleepingImage.webp"
       }
     ]
   },
@@ -2665,6 +3336,16 @@
         "attackImage": "/tmp/monsters/v1/monster_tosakado_attack_v1_20261026.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_tosakado_sleeping_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_tosakado_normal_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/216-kamokutsu-individual-2-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/218-kamokutsu-individual-2-sleepingImage.webp",
+        "attackImage": "/tmp/monsters/v2/217-kamokutsu-individual-2-attackImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/219-kamokutsu-individual-2-defeatedImage.webp",
+        "skillPortraits": {
+          "876376fe-bbcf-420c-9e0d-247a8de30481": "/tmp/monsters/v2/221-kamokutsu-individual-2-skillPortraits-876376fe-bbcf-420c-9e0d-247a8de30481.webp"
+        }
       }
     ]
   },
@@ -2696,6 +3377,16 @@
         "attackImage": "/tmp/monsters/v1/monster_tsunofood-blue_attack_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_tsunofood-blue_defeated_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_tsunofood-blue_normal_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/069-tsunofood-individual-1-image.webp",
+        "attackImage": "/tmp/monsters/v2/070-tsunofood-individual-1-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/071-tsunofood-individual-1-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/072-tsunofood-individual-1-defeatedImage.webp",
+        "skillPortraits": {
+          "2ef5781b-1583-4562-91da-7a26f6866d66": "/tmp/monsters/v2/074-tsunofood-individual-1-skillPortraits-2ef5781b-1583-4562-91da-7a26f6866d66.webp"
+        }
       }
     ]
   },
@@ -2723,6 +3414,11 @@
         "sleepingImage": "/tmp/monsters/v1/monster_tsunofood-bone_sleeping_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_tsunofood-bone_defeated_v1_20261026.webp",
         "attackImage": "/tmp/monsters/v1/monster_tsunofood-bone_attack_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "defeatedImage": "/tmp/monsters/v2/326-tsunofood-bone-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/325-tsunofood-bone-sleepingImage.webp"
       }
     ]
   },
@@ -2746,6 +3442,11 @@
       {
         "version": "v1",
         "defeatedImage": "/tmp/monsters/v1/hanenashin-adult-defeated-batch-round-dots-20261027-flat-v3.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/181-hanenashin-individual-2-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/183-hanenashin-individual-2-sleepingImage.webp"
       }
     ]
   },
@@ -2777,6 +3478,16 @@
         "attackImage": "/tmp/monsters/v1/monster_kemurimaki_fire-attack_new_dots_20261027.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_kemurimaki_fire-defeated_new_dots_20261027.webp",
         "image": "/tmp/monsters/v1/monster_kemurimaki_fire-normal_new_dots_20261027.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/328-kemurimaki-fire-image.webp",
+        "defeatedImage": "/tmp/monsters/v2/331-kemurimaki-fire-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/330-kemurimaki-fire-sleepingImage.webp",
+        "attackImage": "/tmp/monsters/v2/329-kemurimaki-fire-attackImage.webp",
+        "skillPortraits": {
+          "c6284fa4-43f2-4f89-bad0-2724505dc947": "/tmp/monsters/v2/332-kemurimaki-fire-skillPortraits-c6284fa4-43f2-4f89-bad0-2724505dc947.webp"
+        }
       }
     ]
   },
@@ -2808,6 +3519,16 @@
         },
         "sleepingImage": "/tmp/monsters/v1/monster_kemurimaki_ice-sleeping_new_dots_20261027_v2.webp",
         "image": "/tmp/monsters/v1/monster_kemurimaki_ice-normal_new_dots_20261027.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/166-kemurimaki-individual-2-image.webp",
+        "defeatedImage": "/tmp/monsters/v2/169-kemurimaki-individual-2-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/168-kemurimaki-individual-2-sleepingImage.webp",
+        "skillPortraits": {
+          "6aed3e33-557b-483e-aebb-84d4a8b28b0d": "/tmp/monsters/v2/171-kemurimaki-individual-2-skillPortraits-6aed3e33-557b-483e-aebb-84d4a8b28b0d.webp"
+        },
+        "attackImage": "/tmp/monsters/v2/167-kemurimaki-individual-2-attackImage.webp"
       }
     ]
   },
@@ -2833,6 +3554,11 @@
         "defeatedImage": "/tmp/monsters/v1/hanenashin-stone-defeated-batch-round-dots-20261027-flat-v5.webp",
         "sleepingImage": "/tmp/monsters/v1/hanenashin-stone-sleeping-batch-round-dots-20261027-repair-v2.webp",
         "attackImage": "/tmp/monsters/v1/monster_hanenashin-stone_attack_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "sleepingImage": "/tmp/monsters/v2/178-hanenashin-individual-1-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/179-hanenashin-individual-1-defeatedImage.webp"
       }
     ]
   },
@@ -2864,6 +3590,16 @@
         "skillPortraits": {
           "1afac4ed-2737-4efa-89fe-17fad1c1551b": "/tmp/monsters/v1/monster_horopoppo-poison_skill_poison-spit_v1_20261026.webp"
         }
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/333-horopoppo-poison-image.webp",
+        "sleepingImage": "/tmp/monsters/v2/335-horopoppo-poison-sleepingImage.webp",
+        "attackImage": "/tmp/monsters/v2/334-horopoppo-poison-attackImage.webp",
+        "skillPortraits": {
+          "1afac4ed-2737-4efa-89fe-17fad1c1551b": "/tmp/monsters/v2/337-horopoppo-poison-skillPortraits-1afac4ed-2737-4efa-89fe-17fad1c1551b.webp"
+        },
+        "defeatedImage": "/tmp/monsters/v2/336-horopoppo-poison-defeatedImage.webp"
       }
     ]
   },
@@ -2890,6 +3626,12 @@
         "sleepingImage": "/tmp/monsters/v1/monster_horopoppo-demon_sleeping_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_horopoppo-demon_normal_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_horopoppo-demon_defeated_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/235-horopoppo-individual-2-image.webp",
+        "attackImage": "/tmp/monsters/v2/236-horopoppo-individual-2-attackImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/238-horopoppo-individual-2-defeatedImage.webp"
       }
     ]
   },
@@ -2921,6 +3663,16 @@
         },
         "image": "/tmp/monsters/v1/monster_yadocup-fire_normal_v1_20261026.webp",
         "defeatedImage": "/tmp/monsters/v1/monster_yadocup-fire_defeated_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "image": "/tmp/monsters/v2/338-yadocup-fire-image.webp",
+        "attackImage": "/tmp/monsters/v2/339-yadocup-fire-attackImage.webp",
+        "skillPortraits": {
+          "c6284fa4-43f2-4f89-bad0-2724505dc947": "/tmp/monsters/v2/342-yadocup-fire-skillPortraits-c6284fa4-43f2-4f89-bad0-2724505dc947.webp"
+        },
+        "defeatedImage": "/tmp/monsters/v2/341-yadocup-fire-defeatedImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/340-yadocup-fire-sleepingImage.webp"
       }
     ]
   },
@@ -2951,6 +3703,15 @@
         "attackImage": "/tmp/monsters/v1/monster_yadocup-demon_attack_v1_20261026.webp",
         "image": "/tmp/monsters/v1/monster_yadocup-demon_normal_v1_20261026.webp",
         "sleepingImage": "/tmp/monsters/v1/monster_yadocup-demon_sleeping_v1_20261026.webp"
+      },
+      {
+        "version": "v2",
+        "attackImage": "/tmp/monsters/v2/252-yadocup-individual-2-attackImage.webp",
+        "sleepingImage": "/tmp/monsters/v2/253-yadocup-individual-2-sleepingImage.webp",
+        "defeatedImage": "/tmp/monsters/v2/254-yadocup-individual-2-defeatedImage.webp",
+        "skillPortraits": {
+          "d1d46bed-7671-42b0-90c1-e330a16f3fec": "/tmp/monsters/v2/256-yadocup-individual-2-skillPortraits-d1d46bed-7671-42b0-90c1-e330a16f3fec.webp"
+        }
       }
     ]
   },

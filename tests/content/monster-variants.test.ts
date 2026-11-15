@@ -64,7 +64,7 @@ describe("行動が異なる亜種の配置", () => {
         state: aState()
           .inBattle({
             foes: [slug],
-            order: ["foe-1", "hero", "alda", "mort"],
+            order: ["foe-1", "alda", "mort", "mayu"],
           })
           .build(),
         random: 0,

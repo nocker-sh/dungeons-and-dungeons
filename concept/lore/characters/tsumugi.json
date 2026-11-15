@@ -27,7 +27,7 @@
     "late": "伸びにくい"
   },
   "entity_type": "person",
-  "lore_status": "active",
+  "lore_status": "retired",
   "tags": [
     "characters",
     "暮らし",
@@ -39,10 +39,6 @@
     "changes_game_rules": false
   },
   "livelihood": {
-    "canonical_profile": {
-      "file": "[[concept/data/conversation-profiles.json]]",
-      "id": "2f1b2a8b-1e8d-4c76-b820-8d1bc1bb38df"
-    },
     "routine_section": "生活動線の制作設計",
     "lodging": {
       "target": "room:guild-attic",

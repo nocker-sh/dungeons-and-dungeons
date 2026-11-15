@@ -38,7 +38,7 @@ describe("敵の攻撃と画像の対応", () => {
           state: aState()
             .inBattle({
               foes: [definition.id],
-              order: ["foe-1", "hero", "alda", "mort"],
+              order: ["foe-1", "alda", "mort", "mayu"],
             })
             .build(),
         })
@@ -88,7 +88,7 @@ describe("敵の攻撃と画像の対応", () => {
         state: aState()
           .inBattle({
             foes: ["makigaitsu"],
-            order: ["foe-1", "hero", "alda", "mort"],
+            order: ["foe-1", "alda", "mort", "mayu"],
           })
           .build(),
       })
@@ -118,7 +118,7 @@ describe("敵の攻撃と画像の対応", () => {
         state: aState()
           .inBattle({
             foes: ["kamokutsu"],
-            order: ["foe-1", "hero", "alda", "mort"],
+            order: ["foe-1", "alda", "mort", "mayu"],
           })
           .build(),
       })

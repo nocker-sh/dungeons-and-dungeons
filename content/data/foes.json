@@ -64,8 +64,7 @@
     "skillRate": 0.35,
     "resist": {
       "bind": 0.5
-    },
-    "stones": 1
+    }
   },
   {
     "id": "0db315b8-06b0-4c86-817a-5f50ab70e30a",
@@ -96,8 +95,7 @@
     "skillRate": 0.45,
     "resist": {
       "bind": 0.7
-    },
-    "stones": 2
+    }
   },
   {
     "id": "4790537c-c395-4bc5-9649-005d2fcf52a5",
@@ -124,14 +122,13 @@
     "skillRate": 0.4,
     "resist": {
       "bind": 0.5
-    },
-    "stones": 1
+    }
   },
   {
     "id": "8aae8f96-edbf-4649-82cb-4c6d7b12d1a8",
     "slug": "washinoko-adult",
-    "hp": 1148,
-    "atk": 128,
+    "hp": 2181,
+    "atk": 154,
     "spd": 5,
     "exp": 180,
     "gold": [120, 200],
@@ -157,13 +154,12 @@
     "skillRate": 0.45,
     "resist": {
       "bind": 0.6
-    },
-    "stones": 2
+    }
   },
   {
     "id": "3f93cd61-6218-4de9-921a-8ef69dd413e5",
     "slug": "mitsuashi",
-    "hp": 1300,
+    "hp": 1378,
     "atk": 110,
     "spd": 8,
     "exp": 160,
@@ -185,14 +181,13 @@
     "skillRate": 0.4,
     "resist": {
       "bind": 0.5
-    },
-    "stones": 1
+    }
   },
   {
     "id": "77f87869-8a88-4559-a8e8-f7f6f0828d9a",
     "slug": "kabemimi-fortress",
-    "hp": 1785,
-    "atk": 110,
+    "hp": 3392,
+    "atk": 132,
     "spd": 7,
     "exp": 320,
     "gold": [300, 480],
@@ -219,8 +214,7 @@
     "resist": {
       "bind": 0.6,
       "poison": 0.5
-    },
-    "stones": 2
+    }
   },
   {
     "id": "0b27b6ee-377c-4c00-98b6-ff9fe53bfb78",
@@ -248,14 +242,13 @@
     "resist": {
       "bind": 0.5,
       "poison": 1
-    },
-    "stones": 1
+    }
   },
   {
     "id": "85495e6d-9a6d-4b81-bc62-37ce73ee9722",
     "slug": "yukimebae",
-    "hp": 2104,
-    "atk": 141,
+    "hp": 3998,
+    "atk": 169,
     "spd": 6,
     "exp": 704,
     "gold": [486, 770],
@@ -282,13 +275,12 @@
     "resist": {
       "bind": 0.7,
       "poison": 1
-    },
-    "stones": 2
+    }
   },
   {
     "id": "495dd552-d553-4a92-b408-6f336c221ae2",
     "slug": "agohitsu",
-    "hp": 1900,
+    "hp": 2185,
     "atk": 145,
     "spd": 10,
     "exp": 840,
@@ -312,14 +304,13 @@
     "resist": {
       "bind": 0.5,
       "poison": 0.5
-    },
-    "stones": 1
+    }
   },
   {
     "id": "b2dfcc17-8719-472a-9510-6564f6dd3818",
     "slug": "slime-swordsman",
-    "hp": 2700,
-    "atk": 215,
+    "hp": 4720,
+    "atk": 258,
     "spd": 9,
     "exp": 1680,
     "gold": [936, 1482],
@@ -347,8 +338,7 @@
     "resist": {
       "bind": 0.7,
       "poison": 0.7
-    },
-    "stones": 2
+    }
   },
   {
     "id": "a5c09011-ddae-4bfb-8f07-dc82dfc58951",
@@ -963,8 +953,7 @@
     "skillRate": 0.4,
     "resist": {
       "bind": 0.5
-    },
-    "stones": 1
+    }
   },
   {
     "id": "5f10327a-44ce-480e-b5a3-ded71a959cf8",
@@ -1050,8 +1039,7 @@
     "resist": {
       "bind": 0.5,
       "poison": 0.5
-    },
-    "stones": 1
+    }
   },
   {
     "id": "90b7be26-2a70-4c76-bea3-5c8c840a860e",
@@ -1078,8 +1066,7 @@
     "skillRate": 0.35,
     "resist": {
       "bind": 0.5
-    },
-    "stones": 1
+    }
   },
   {
     "id": "ab2284ee-ddb0-4da3-9f14-c5e1a09bc916",
@@ -1106,8 +1093,7 @@
     "skillRate": 0.4,
     "resist": {
       "bind": 0.5
-    },
-    "stones": 1
+    }
   },
   {
     "id": "569b9fb2-dbc4-4d55-8ff5-796134341dc5",
@@ -1235,11 +1221,11 @@
   {
     "id": "2cf1c41a-7ce3-4118-b41c-fa5bcd4fed35",
     "slug": "hanenashin-adult",
-    "hp": 28,
-    "atk": 21,
+    "hp": 56,
+    "atk": 38,
     "spd": 9,
-    "exp": 13,
-    "gold": [8, 16],
+    "exp": 22,
+    "gold": [14, 26],
     "drops": [
       {
         "good": "474f33dd-079e-46e8-b11b-8549f6cf48cf",

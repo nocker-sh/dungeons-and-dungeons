@@ -14,6 +14,7 @@ export interface ConceptCharacter {
   role: string
   rarity?: string
   unique?: boolean
+  retired?: boolean
   equipmentChangeable?: boolean
   weapon?: string
   shield?: string

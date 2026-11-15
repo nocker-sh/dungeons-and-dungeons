@@ -28,13 +28,6 @@
     "text": "どこまで降りる？"
   },
   {
-    "id": "eccf89af-bd6c-4ebb-bf53-010a8e8202b1",
-    "slug": "luca-greeting",
-    "speakerId": "585cfe02-653c-448a-b8f8-e2646f097091",
-    "scene": "ひとこと",
-    "text": "さあ、ご覧あれ 今日の稼ぎも、一座の旗揚げの元手さ"
-  },
-  {
     "id": "58db1542-dcc4-4b26-9ba2-7012d0cc9396",
     "slug": "mort-greeting",
     "speakerId": "1aac56f8-7a5c-4199-8100-91caf9e283a6",
@@ -47,20 +40,6 @@
     "speakerId": "fd36c836-2564-415a-af21-14edc0a6c893",
     "scene": "ひとこと",
     "text": "ほら、行くよ ……ちゃんとついてきてね 置いてかないから"
-  },
-  {
-    "id": "42ceea06-e9be-49a1-9395-51063daa984d",
-    "slug": "gald-greeting",
-    "speakerId": "a43310c2-98c6-41e1-b8f6-facf50b5f413",
-    "scene": "ひとこと",
-    "text": "大丈夫、俺が受け止める お前は自分のやることに集中しな"
-  },
-  {
-    "id": "96c03b03-a8dd-4073-ba0e-733fa6f88e07",
-    "slug": "tsumugi-greeting",
-    "speakerId": "2f1b2a8b-1e8d-4c76-b820-8d1bc1bb38df",
-    "scene": "ひとこと",
-    "text": "そのほつれ、直しておくね ……傷も隠してない？"
   },
   {
     "id": "ce83f562-bc0a-4be4-a23c-3645fc6ab827",
@@ -96,13 +75,6 @@
     "speakerId": "950f4a1e-c783-4007-a6b2-6553906af367",
     "scene": "ひとこと",
     "text": "見ろ、抜けたぞ！ 石碑ごとだがな 弁償はきちんと払う 勇者だからな！"
-  },
-  {
-    "id": "a87cdf3d-a87b-41a7-b21d-dd473e7740a6",
-    "slug": "rivet-greeting",
-    "speakerId": "cf7498a0-fa43-457f-b018-a9f19764645e",
-    "scene": "ひとこと",
-    "text": "給料ぶんは、きっちり前に立つよ 小さいからって、抜けると思わないでよね"
   },
   {
     "id": "58e92ba7-e7aa-4164-a4f2-67b35f003945",

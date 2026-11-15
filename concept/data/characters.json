@@ -59,6 +59,12 @@
             },
             "battleRearPortrait": "/tmp/characters/v1/character_alda_bust_rear_v1_20261026.webp",
             "battleRearLookPortrait": "/tmp/characters/v1/character_alda_battleRearLookPortrait_clean_round_tone_20261027_v4.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/alda-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -119,6 +125,12 @@
             },
             "battleRearLookPortrait": "/tmp/characters/v1/character_mayu_battleRearLookPortrait_flat_eyes_20261027_v1.webp",
             "battleRearPortrait": "/tmp/characters/v1/character_mayu_bust_rear_v1_20261026_frame_v2.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/mayu-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -179,6 +191,12 @@
             },
             "battleRearPortrait": "/tmp/characters/v1/character_sion_bust_rear_v1_20261026_cape_v2.webp",
             "battleRearLookPortrait": "/tmp/characters/v1/character_sion_bust_backLook_v1_20261026_face_v2_pupils_v3_ink_bridge_v4.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/sion-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -239,8 +257,15 @@
             },
             "battleRearPortrait": "/tmp/characters/v1/character_luca_bust_rear_v1_20261026_top_v2.webp",
             "battleRearLookPortrait": "/tmp/characters/v1/character_luca_bust_backLook_v1_20261026_frame_v2_ink_bridge_v4.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/luca.webp"
+            }
           }
-        ]
+        ],
+        "retired": true
       },
       {
         "id": "fd36c836-2564-415a-af21-14edc0a6c893",
@@ -301,6 +326,12 @@
             },
             "battleRearPortrait": "/tmp/characters/v1/character_husky_bust_rear_v1_20261026.webp",
             "battleRearLookPortrait": "/tmp/characters/v1/character_husky_bust_backLook_v1_20261026_ink_bridge_v4_ink_bridge_v5.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/husky-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -361,8 +392,15 @@
             },
             "battleRearPortrait": "/tmp/characters/v1/character_gald_bust_rear_v1_20261026.webp",
             "battleRearLookPortrait": "/tmp/characters/v1/character_gald_bust_backLook_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/gald.webp"
+            }
           }
-        ]
+        ],
+        "retired": true
       },
       {
         "id": "2f1b2a8b-1e8d-4c76-b820-8d1bc1bb38df",
@@ -443,8 +481,15 @@
             },
             "battleRearLookPortrait": "/tmp/characters/v1/character_tsumugi_bust_backLook_v1_20261026_ink_bridge_v2_ink_diagnostic_v3.webp",
             "battleRearPortrait": "/tmp/characters/v1/character_tsumugi_bust_rear_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/tsumugi.webp"
+            }
           }
-        ]
+        ],
+        "retired": true
       },
       {
         "id": "b7925912-35a3-4f8f-b42e-d59581a71e19",
@@ -504,6 +549,12 @@
             },
             "battleRearLookPortrait": "/tmp/characters/v1/character_gou_bust_backLook_v1_20261026_ink_bridge_v2_ink_diagnostic_v3_ink_diagnostic_v4_closed_eyes_redraw_v5_head_turn_v6_fresh_left_shoulder_v7_jp_ink_loop_v8_eyeshape_v9_fresh_approved_v10_single_approved_v11.webp",
             "battleRearPortrait": "/tmp/characters/v1/character_gou_bust_rear_v1_20261026.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/gou-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -588,6 +639,12 @@
             },
             "battleRearPortrait": "/tmp/characters/v1/character_rize_bust_rear_v1_20261026.webp",
             "battleRearLookPortrait": "/tmp/characters/v1/character_rize_bust_backLook_v1_20261026_top_v2_ink_bridge_v3.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/rize-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -673,6 +730,12 @@
               "c7a44829-433d-4b1a-af43-080407466aeb": "/tmp/characters/v1/character_sera_contract_c7a44829_clean_v1_20261026_round_v2.webp"
             },
             "battleRearLookPortrait": "/tmp/characters/v1/character_sera_bust_backLook_closed_diagram_v9_20261026_frame_v10.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/sera-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -734,6 +797,12 @@
             },
             "battleRearLookPortrait": "/tmp/characters/v1/character_mimika_bust_backLook_v1_20261026_refine_v2.webp",
             "battleRearPortrait": "/tmp/characters/v1/character_mimika_bust_rear_v1_20261026_tone_v2.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/mimika-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -819,6 +888,12 @@
             },
             "battleRearPortrait": "/tmp/characters/v1/character_alma_bust_rear_v1_20261026_tone_v2_frame_v3.webp",
             "battleRearLookPortrait": "/tmp/characters/v1/character_alma_bust_backLook_closed_diagram_v9_20261026_closed_diagram_v10_connected_guide_v3_bridge_v4.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/alma-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -902,15 +977,22 @@
             },
             "battleRearLookPortrait": "/tmp/characters/v1/character_rivet_bust_backLook_v1_20261026_tone_v2_flat_iris_v4_masked_diagram_v5.webp",
             "battleRearPortrait": "/tmp/characters/v1/character_rivet_bust_rear_v1_20261026_tone_v2.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/rivet.webp"
+            }
           }
-        ]
+        ],
+        "retired": true
       },
       {
         "id": "cc5615da-77a2-4d94-8a50-54147f923397",
         "slug": "rio",
         "name": "リオ",
         "role": "ダメージ",
-        "introduction": "卵の殻の背負い籠で、小さなドラゴンを連れ歩く旅人。稼ぎは育ち盛りの相棒の餌代に消え、手が空けば古い冒険者に竜の故郷の話を聞いて回る。籠の紐の刻みが、少しずつ増えている。",
+        "introduction": "卵の殻の背負い籠で、小さなドラゴンを連れ歩く男性の旅人。稼ぎは育ち盛りの相棒の餌代に消え、手が空けば古い冒険者に竜の故郷の話を聞いて回る。籠の紐の刻みが、少しずつ増えている。",
         "portraits": {
           "normal": "/tmp/characters/character_26_rio.webp",
           "skill": null
@@ -963,6 +1045,12 @@
             },
             "battleRearLookPortrait": "/tmp/characters/v1/character_rio_bust_backLook_v1_20261026_tone_v2_flat_iris_v3_flat_iris_v4.webp",
             "battleRearPortrait": "/tmp/characters/v1/character_rio_bust_rear_v1_20261026_tone_v2.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/rio.webp"
+            }
           }
         ]
       },
@@ -1026,6 +1114,12 @@
             },
             "battleRearLookPortrait": "/tmp/characters/v1/character_clef_bust_backLook_v1_20261026_refine_v2_flat_iris_v3.webp",
             "battleRearPortrait": "/tmp/characters/v1/character_clef_bust_rear_v1_20261026_tone_v2.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/clef-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -1111,6 +1205,12 @@
             },
             "battleRearPortrait": "/tmp/characters/v1/character_nem_bust_rear_v1_20261026_tone_v2.webp",
             "battleRearLookPortrait": "/tmp/characters/v1/character_nem_bust_backLook_closed_diagram_v9_20261026_margin_v10.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/nem-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -1172,6 +1272,12 @@
             },
             "battleRearPortrait": "/tmp/characters/v1/character_mort_bust_rear_v1_20261026_tone_v2.webp",
             "battleRearLookPortrait": "/tmp/characters/v1/character_mort_bust_backLook_v1_20261026_tone_v2_bridge_v3_masked_diagram_v5_connected_v6.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/mort-unified-round-20261107.webp"
+            }
           }
         ]
       }
@@ -1237,6 +1343,12 @@
             },
             "battleRearLookPortrait": "/tmp/characters/v1/character_jig_bust_backLook_v1_20261026_tone_v2.webp",
             "battleRearPortrait": "/tmp/characters/v1/character_jig_bust_rear_v1_20261026_tone_v2.webp"
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/jig-unified-round-20261107.webp"
+            }
           }
         ]
       }
@@ -1284,6 +1396,12 @@
               "happy": "/tmp/residents/v1/resident_milena_happy_clean_ink_20261026.webp",
               "surprised": "/tmp/residents/v1/resident_milena_surprised_eye_bridge_20261027_v4.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/milena-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -1325,6 +1443,12 @@
               "talk": "/tmp/residents/v1/resident_hilde_talk_clean_ink_20261026_independent_v3_closed_single_iris_diagnostic_v4.webp",
               "thinking": "/tmp/residents/v1/resident_hilde_thinking_clean_ink_20261026_materials_v2_d_independent_v3_user_single_iris_v4_flat_iris_final_v5.webp",
               "happy": "/tmp/residents/v1/resident_hilde_happy_clean_ink_20261026_user_closed_flat_v3_independent_v4_independent_v5.webp"
+            }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/hilde-unified-round-20261107.webp"
             }
           }
         ]
@@ -1368,6 +1492,12 @@
               "happy": "/tmp/residents/v1/resident_otto_happy_current_round_ink_20261027_materials_batch2_closed_detail_full_v5_coarse_tone_v6.webp",
               "talk": "/tmp/residents/v1/resident_otto_talk_current_round_ink_20261027_materials_batch2_closed_detail_full_v5_round_tone_v6_clear_frame_v7.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/otto-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -1409,6 +1539,12 @@
               "surprisedLarge": "/tmp/residents/v1/resident_walter_bust_surprisedLarge_v1_20261025_root_refine_v2_local_v3.webp",
               "talk": "/tmp/residents/v1/resident_walter_bust_talk_v1_20261025_root_refine_v2_local_v3.webp",
               "sigh": "/tmp/residents/v1/resident_walter_bust_sigh_v1_20261025_root_refine_v2_local_v3_pose_frame_v4.webp"
+            }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/walter-unified-round-20261107.webp"
             }
           }
         ]
@@ -1452,6 +1588,12 @@
               "surprisedLarge": "/tmp/residents/v1/resident_morna_surprisedLarge_current_round_ink_20261027_materials_batch1_closed_rim_jaw_frame_v2_flat_iris_frame_v3_sleeve_margin_v4_coarse_tone_vnext.webp",
               "thinking": "/tmp/residents/v1/resident_morna_thinking_current_round_ink_20261027_materials_batch1_closed_rim_jaw_frame_v2_flat_iris_frame_v3_solid_iris_vnext_reference_flat_eye_vfinal_detail_transfer_vfinal_detail_first_vnext_coarse_tone_vnext.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/morna-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -1494,6 +1636,12 @@
               "thinking": "/tmp/residents/v1/resident_lloyd_bust_thinking_v1_20261025_v2.webp",
               "talk": "/tmp/residents/v1/resident_lloyd_bust_talk_v1_20261025_v2.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/lloyd-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -1535,6 +1683,12 @@
               "sigh": "/tmp/residents/v1/resident_yoru_bust_sigh_v1_20261025.webp",
               "talk": "/tmp/residents/v1/resident_yoru_bust_talk_v1_20261025.webp",
               "thinking": "/tmp/residents/v1/resident_yoru_bust_thinking_v1_20261025.webp"
+            }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/yoru-unified-round-20261107.webp"
             }
           }
         ]
@@ -1580,6 +1734,12 @@
               "shy": "/tmp/residents/v1/resident_pim_bust_shy_v1_20261025.webp",
               "special": "/tmp/residents/v1/resident_pim_bust_special_v1_20261025.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/pim-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -1623,6 +1783,12 @@
               "thinking": "/tmp/residents/v1/resident_nell_thinking_coarse_clothing_tone_20261027_v1.webp",
               "surprised": "/tmp/residents/v1/resident_nell_surprised_coarse_clothing_tone_20261027_v1.webp",
               "special": "/tmp/residents/v1/resident_nell_special_coarse_clothing_tone_20261027_v2.webp"
+            }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/nell-unified-round-20261107.webp"
             }
           }
         ]
@@ -1668,6 +1834,12 @@
               "thinking": "/tmp/residents/v1/resident_hanna_thinking_clean_ink_20261026_closed_ink_reference_v4_kohl_ring_v6_medium_outline_v7.webp",
               "special": "/tmp/residents/v1/resident_hanna_special_current_round_ink_20261027_materials_batch1_closed_rim_frame_v2_braid_margin_v3.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/hanna-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -1711,6 +1883,12 @@
               "shy": "/tmp/residents/v1/resident_gantz_shy_current_round_ink_20261027_materials_batch1_closed_rim_v2_complete_kohl_v3_medium_rim_flat_iris_v4_iris_contact_flat_v5_solid_iris_vnext_reference_flat_eye_vfinal_detail_transfer_vfinal.webp",
               "talk": "/tmp/residents/v1/resident_gantz_talk_current_round_ink_20261027_materials_batch1_closed_rim_v2_complete_kohl_v3_medium_rim_flat_iris_v4.webp",
               "special": "/tmp/residents/v1/resident_gantz_special_current_round_ink_20261027_materials_batch1_closed_rim_v2_complete_kohl_v3_medium_rim_v4.webp"
+            }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/gantz-unified-round-20261107.webp"
             }
           }
         ]
@@ -1756,6 +1934,12 @@
               "surprised": "/tmp/residents/v1/resident_toma_bust_surprised_v1_20261025.webp",
               "special": "/tmp/residents/v1/resident_toma_bust_special_v1_20261025.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/toma-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -1799,6 +1983,12 @@
               "surprisedLarge": "/tmp/residents/v1/resident_dan_bust_surprisedLarge_v1_20261025_root_v3_local_v4.webp",
               "thinking": "/tmp/residents/v1/resident_dan_bust_thinking_v1_20261025_root_v3.webp",
               "special": "/tmp/residents/v1/resident_dan_bust_special_v1_20261025.webp"
+            }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/dan-unified-round-20261107.webp"
             }
           }
         ]
@@ -1844,6 +2034,12 @@
               "surprisedLarge": "/tmp/residents/v1/resident_irma_bust_surprisedLarge_v1_20261025_eyes_v3.webp",
               "special": "/tmp/residents/v1/resident_irma_bust_special_v1_20261025.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/irma-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -1887,6 +2083,12 @@
               "thinking": "/tmp/residents/v1/resident_boris_bust_thinking_v1_20261025_v2.webp",
               "surprisedLarge": "/tmp/residents/v1/resident_boris_bust_surprisedLarge_v1_20261025_v2_eyes_v3.webp",
               "special": "/tmp/residents/v1/resident_boris_bust_special_v1_20261025_eyes_v2.webp"
+            }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/boris-unified-round-20261107.webp"
             }
           }
         ]
@@ -1932,6 +2134,12 @@
               "surprised": "/tmp/residents/v1/resident_kiki_bust_surprised_v1_20261025_v2.webp",
               "special": "/tmp/residents/v1/resident_kiki_bust_special_v1_20261025.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/kiki-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -1975,6 +2183,12 @@
               "talk": "/tmp/residents/v1/resident_fio_bust_talk_v1_20261025.webp",
               "thinking": "/tmp/residents/v1/resident_fio_bust_thinking_v1_20261025.webp",
               "special": "/tmp/residents/v1/resident_fio_bust_special_v1_20261025.webp"
+            }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/fio-unified-round-20261107.webp"
             }
           }
         ]
@@ -2020,6 +2234,12 @@
               "happy": "/tmp/residents/v1/resident_zepp_bust_happy_v1_20261025_v2.webp",
               "special": "/tmp/residents/v1/resident_zepp_bust_special_v1_20261025.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/zepp-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -2063,6 +2283,12 @@
               "thinking": "/tmp/residents/v1/resident_marta_bust_thinking_v1_20261025.webp",
               "talk": "/tmp/residents/v1/resident_marta_bust_talk_v1_20261025.webp",
               "special": "/tmp/residents/v1/resident_marta_bust_special_v1_20261025.webp"
+            }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/marta-unified-round-20261107.webp"
             }
           }
         ]
@@ -2116,6 +2342,12 @@
               "talk": "/tmp/demons/v1/demon_nui_talk_clean_ink_20261026_round_frame_v2.webp",
               "angry": "/tmp/demons/v1/demon_nui_angry_clean_ink_20261026_round_frame_v2_round_frame_v2.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/nui-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -2163,6 +2395,12 @@
               "talk": "/tmp/demons/v1/demon_lox_talk_clean_ink_20261026_round_frame_v2_round_frame_v2.webp",
               "happy": "/tmp/demons/v1/demon_lox_happy_clean_ink_20261026.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/lox-unified-round-20261107.webp"
+            }
           }
         ]
       },
@@ -2209,6 +2447,12 @@
               "shy": "/tmp/demons/v1/demon_tris_shy_clean_ink_20261026.webp",
               "surprised": "/tmp/demons/v1/tris-surprised-final-round-tone-20261027.webp",
               "surprisedLarge": "/tmp/demons/v1/tris-surprisedLarge-final-round-tone-20261027.webp"
+            }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/tris-unified-round-20261107.webp"
             }
           }
         ]
@@ -2258,6 +2502,12 @@
               "happy": "/tmp/demons/v1/demon_haro_happy_clean_ink_20261026_round_frame_v2.webp",
               "surprisedLarge": "/tmp/demons/v1/demon_haro_surprisedLarge_clean_ink_20261026.webp"
             }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/haro.webp"
+            }
           }
         ]
       },
@@ -2305,6 +2555,12 @@
               "sigh": "/tmp/demons/v1/demon_zaza_sigh_clean_ink_20261026_round_frame_v2.webp",
               "surprised": "/tmp/demons/v1/demon_zaza_surprised_clean_ink_20261026_round_frame_v2.webp",
               "surprisedLarge": "/tmp/demons/v1/zaza-surprisedLarge-final-round-tone-20261027.webp"
+            }
+          },
+          {
+            "version": "v2",
+            "portraits": {
+              "normal": "/tmp/characters/v2/zaza-unified-round-20261107-v2.webp"
             }
           }
         ]

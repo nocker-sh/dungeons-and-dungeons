@@ -31,7 +31,7 @@
     "late": "伸びにくい"
   },
   "entity_type": "person",
-  "lore_status": "active",
+  "lore_status": "retired",
   "tags": [
     "characters",
     "暮らし",
@@ -43,10 +43,6 @@
     "changes_game_rules": false
   },
   "livelihood": {
-    "canonical_profile": {
-      "file": "[[concept/data/conversation-profiles.json]]",
-      "id": "cf7498a0-fa43-457f-b018-a9f19764645e"
-    },
     "routine_section": "生活動線の制作設計",
     "lodging": {
       "target": "room:guild-normal-front",

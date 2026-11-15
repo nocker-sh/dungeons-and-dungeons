@@ -1,4 +1,5 @@
 import conversations from "@/content/data/conversations.json"
+import retiredConversations from "@/content/data/compatibility/retired-conversations.json"
 import type { GameContent } from "@/lib/wiz/content/content-schema"
 import { sourceData } from "@/content/source-data"
 import { prepareSource } from "@/content/prepare-source"
@@ -15,7 +16,10 @@ function withoutSlug<T>(value: T): T {
   return value
 }
 
-export const contentSource = { ...prepareSource(sourceData), conversations }
+export const contentSource = {
+  ...prepareSource(sourceData),
+  conversations: [...conversations, ...retiredConversations],
+}
 export type ContentSource = typeof contentSource
 
 /** slug を外してエンジンの形にする。中身の検証はエンジン（GameCatalog）が行う。 */

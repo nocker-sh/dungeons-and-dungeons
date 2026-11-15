@@ -60,7 +60,7 @@ describe("踏破後の全員生還の依頼", () => {
             .inBattle({
               foes: [quest.foe],
               boss,
-              order: ["alda", "hero", "mort", "foe-1"],
+              order: ["alda", "mayu", "mort", "foe-1"],
               expedition: { layer: layer.id, at: "n16", visited: ["s", "n16"] },
             })
             .build(),

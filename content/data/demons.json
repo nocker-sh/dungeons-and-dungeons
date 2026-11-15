@@ -8,13 +8,6 @@
       "3cddb15d-abfd-4f65-8d98-6cc44cb3b502"
     ],
     "school": "demon",
-    "fusion": {
-      "attack": 0.03,
-      "resist": {
-        "bind": 0.08
-      },
-      "maxHp": 8
-    },
     "contract": {
       "encounter": "nui-encounter",
       "gold": 100,
@@ -35,14 +28,7 @@
       "8882f142-16e3-4b7f-8b16-ab7da0bbfa94",
       "3cddb15d-abfd-4f65-8d98-6cc44cb3b502"
     ],
-    "school": "earth",
-    "fusion": {
-      "attack": 0.03,
-      "maxHp": 8,
-      "resist": {
-        "bind": 0.08
-      }
-    }
+    "school": "earth"
   },
   {
     "id": "12217057-7b5b-4b60-9008-fcf68bd37723",
@@ -53,13 +39,6 @@
       "3cddb15d-abfd-4f65-8d98-6cc44cb3b502"
     ],
     "school": "star",
-    "fusion": {
-      "attack": 0.03,
-      "maxHp": 8,
-      "resist": {
-        "poison": 0.08
-      }
-    },
     "contract": {
       "encounter": "tris-encounter",
       "gold": 100,
@@ -82,13 +61,6 @@
       "3cddb15d-abfd-4f65-8d98-6cc44cb3b502"
     ],
     "school": "plant",
-    "fusion": {
-      "attack": 0.03,
-      "maxHp": 8,
-      "resist": {
-        "poison": 0.08
-      }
-    },
     "contract": {
       "encounter": "haro-encounter",
       "gold": 100,
@@ -111,13 +83,6 @@
       "3cddb15d-abfd-4f65-8d98-6cc44cb3b502"
     ],
     "school": "demon",
-    "fusion": {
-      "attack": 0.03,
-      "maxHp": 8,
-      "resist": {
-        "bind": 0.08
-      }
-    },
     "contract": {
       "encounter": "zaza-encounter",
       "gold": 100,

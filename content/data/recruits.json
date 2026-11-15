@@ -192,7 +192,8 @@
       "schools": ["star"],
       "exploration": "scout",
       "combatStyle": "単体狙撃と範囲攻撃を使い分ける遠距離火力"
-    }
+    },
+    "retired": true
   },
   {
     "id": "90627990-f1c2-4a65-865b-b3bf315c0e15",
@@ -228,7 +229,8 @@
       "schools": ["earth"],
       "exploration": "camp",
       "combatStyle": "自身を守り、敵を足止めする近接タンク"
-    }
+    },
+    "retired": true
   },
   {
     "id": "f7252dab-3d97-45a9-a7b6-90abf7a75c37",
@@ -361,7 +363,8 @@
           }
         ]
       }
-    }
+    },
+    "retired": true
   },
   {
     "id": "2e03128d-aa0a-4170-89cb-819ec9931650",
@@ -407,7 +410,8 @@
           }
         ]
       }
-    }
+    },
+    "retired": true
   },
   {
     "id": "ccfa57af-14ce-4d0b-a456-cd83d342a966",

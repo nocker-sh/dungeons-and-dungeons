@@ -11,15 +11,20 @@ describe("作品のデータ", () => {
     expect(() => new GameCatalog(gameContent)).not.toThrow()
   })
 
-  it("はじめから三人（主人公・アルダ・モート）・ロクス契約済みで、名前と外見を決める場面から始まる", () => {
-    const game = new GameDefinition(gameContent).create()
+  it("はじめから三人（アルダ・モート・マユ）・ロクス契約済みで、名前を決める場面から始まり、主人公は仲間にいない", () => {
+    const definition = new GameDefinition(gameContent)
+    const game = definition.create()
     expect(game.state.phase.type).toBe("creating")
     expect(game.state.party).toHaveLength(3)
     expect(game.state.members).toHaveLength(3)
     expect(game.state.party).toEqual(
-      ["hero", "alda", "mort"].map((slug) => memberBySlug(slug).id)
+      ["alda", "mort", "mayu"].map((slug) => memberBySlug(slug).id)
     )
-    expect(game.state.members[0].lv).toBe(1)
+    expect(game.state.members.map((member) => member.id)).not.toContain(
+      memberBySlug("hero").id
+    )
+    for (const member of game.state.members)
+      expect(member.lv).toBe(definition.catalog.member(member.id)?.lv)
     expect(game.state.demons).toEqual([
       { id: gameContent.startingDemon, lv: 1, exp: 0 },
     ])

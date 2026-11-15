@@ -66,7 +66,7 @@
     "slug": "wall",
     "name": "鉄壁",
     "desc": "全員の被害を減らす",
-    "uses": 4,
+    "uses": 6,
     "kind": "support",
     "target": "allies",
     "status": {
@@ -88,7 +88,7 @@
     "id": "71d2194c-4c53-485e-8aaa-d3356533ba96",
     "slug": "holy",
     "name": "聖なる光",
-    "desc": "闇の敵に大きく効く",
+    "desc": "清らかな光で遠くの敵を撃つ",
     "uses": 6,
     "kind": "hit",
     "reach": "ranged",
@@ -139,7 +139,7 @@
     "id": "3cddb15d-abfd-4f65-8d98-6cc44cb3b502",
     "slug": "blood",
     "name": "血の契約",
-    "desc": "HPを削って次の一撃を倍に",
+    "desc": "血で誓いを立て、次の一撃を倍にする",
     "uses": 6,
     "kind": "support",
     "target": "self",
@@ -466,7 +466,7 @@
     "slug": "quick-thrust",
     "name": "早突き",
     "desc": "小さく速く突き込む",
-    "uses": 12,
+    "uses": 15,
     "kind": "hit",
     "reach": "melee",
     "power": 1.25
@@ -535,7 +535,7 @@
     "slug": "rapid-fire",
     "name": "速射",
     "desc": "狙いを絞らず撃ち続ける",
-    "uses": 12,
+    "uses": 18,
     "kind": "hit",
     "reach": "ranged",
     "power": 1.1
@@ -667,7 +667,7 @@
     "slug": "rock-wall",
     "name": "岩塊の壁",
     "desc": "岩を持ち上げて仲間全員をかばう",
-    "uses": 4,
+    "uses": 6,
     "kind": "support",
     "target": "allies",
     "status": {
@@ -992,35 +992,6 @@
     "kind": "hit",
     "reach": "melee",
     "power": 1.8
-  },
-  {
-    "id": "f0a77498-4e0a-4062-8179-0099b1aa73ec",
-    "slug": "shade-touch",
-    "name": "影の手",
-    "desc": "影が伸びて足を止める。",
-    "kind": "hit",
-    "reach": "ranged",
-    "power": 1.2,
-    "status": {
-      "kind": "bind",
-      "turns": 1,
-      "chance": 0.5
-    }
-  },
-  {
-    "id": "b241f77e-acb1-4303-8f80-71d617dffd25",
-    "slug": "spore-burst",
-    "name": "胞子まき",
-    "desc": "胞子をまき散らす。",
-    "kind": "hit",
-    "reach": "ranged",
-    "power": 0.4,
-    "target": "foes",
-    "status": {
-      "kind": "poison",
-      "turns": 3,
-      "chance": 0.35
-    }
   },
   {
     "id": "1afac4ed-2737-4efa-89fe-17fad1c1551b",
@@ -1709,7 +1680,7 @@
     "id": "28a2bfa4-e971-4ccb-9ffe-a83299c5f82a",
     "slug": "wing-cover",
     "name": "翼の覆い",
-    "desc": "石の翼で味方ひとりを覆い、長く守る。",
+    "desc": "石の翼で味方ひとりを覆い、次に受ける一撃を軽くする。",
     "uses": 5,
     "kind": "support",
     "target": "ally",
@@ -1830,7 +1801,7 @@
     "slug": "watch-guard",
     "name": "番犬の見張り",
     "desc": "ケルベロスが仲間全員の前に伏せ、次の被害を防ぐ。",
-    "uses": 4,
+    "uses": 6,
     "kind": "support",
     "target": "allies",
     "status": {

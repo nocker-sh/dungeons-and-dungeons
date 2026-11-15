@@ -23,7 +23,7 @@
     "late": "普通"
   },
   "entity_type": "person",
-  "lore_status": "active",
+  "lore_status": "retired",
   "tags": [
     "characters",
     "暮らし",
@@ -35,10 +35,6 @@
     "changes_game_rules": false
   },
   "livelihood": {
-    "canonical_profile": {
-      "file": "[[concept/data/conversation-profiles.json]]",
-      "id": "a43310c2-98c6-41e1-b8f6-facf50b5f413"
-    },
     "routine_section": "生活動線の制作設計",
     "lodging": {
       "target": "room:guild-normal-rear",

@@ -32,8 +32,8 @@ describe("ケイヤクの戦闘通常画像", () => {
   it("R全員のモード（1人1つ）が戦い方に対応し、モードの立ち絵と札で戦う", () => {
     const characters = characterGroups
       .flatMap((group) => group.characters)
-      .filter((character) => character.rarity === "R")
-    expect(characters).toHaveLength(6)
+      .filter((character) => character.rarity === "R" && !character.retired)
+    expect(characters).toHaveLength(4)
     for (const character of characters) {
       const recruit = gameContent.recruits.find(
         (entry) => entry.member.id === character.id
