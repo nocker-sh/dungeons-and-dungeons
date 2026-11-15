@@ -1,3 +1,4 @@
+import { layerClearedFlag } from "@/lib/wiz/rules/layer-cleared-flag"
 import { DemonBonds } from "@/lib/wiz/rules/demon-bonds"
 import { MemberBonds } from "@/lib/wiz/rules/member-bonds"
 import type { GameCatalog } from "@/lib/wiz/content/game-catalog"
@@ -82,8 +83,13 @@ export class ConversationRules {
     )
       reasons.push("一度限りの会話を既読")
     const flags = state.conversation?.flags ?? []
+    // 層を突破した印は、印を付ける前の版で突破した保存にはない。次の層へ届いていれば突破済みとして扱う
+    const clearedLayers = this.catalog.data.layers
+      .filter((_layer, index) => index < state.reached)
+      .map((layer) => layerClearedFlag(layer.no))
     for (const flag of conversation.requires)
-      if (!flags.includes(flag)) reasons.push(`フラグがない:${flag}`)
+      if (!flags.includes(flag) && !clearedLayers.includes(flag))
+        reasons.push(`フラグがない:${flag}`)
     // 登録の印は、印を付ける前の版で登録した保存にはない。登録前だけの場面は、登録済みなら印がなくても流さない
     // （印を必要とする場面は、旧保存で今さら流さないよう、実際の印だけで判定する）。
     const registered = !state.hero.registrationPending

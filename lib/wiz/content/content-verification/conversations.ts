@@ -1,3 +1,4 @@
+import { layerClearedFlag } from "@/lib/wiz/rules/layer-cleared-flag"
 import { HERO_REGISTERED_FLAG } from "@/lib/wiz/content/constants"
 import type { ContentVerification } from "./context"
 
@@ -69,6 +70,7 @@ export function verifyConversations({ catalog, need }: ContentVerification) {
   // Engine actions are possible entry points; dialogue conditions are checked optimistically.
   const external = [
     HERO_REGISTERED_FLAG,
+    ...data.layers.map((layer) => layerClearedFlag(layer.no)),
     ...data.demons
       .filter((demon) => demon.contract?.paper)
       .map((demon) => `demon-called:${demon.id}`),

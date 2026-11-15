@@ -4,7 +4,10 @@ import { realContent } from "@/lib/wiz/testing/real-content"
 import { eventsOrThrow } from "@/lib/wiz/testing/events-or-throw"
 import { fightToEnd } from "@/lib/wiz/testing/fight-to-end"
 import { startedState } from "@/lib/wiz/testing/started-state"
+import { catalogOf } from "@/lib/wiz/testing/catalog-of"
 import { ContentError } from "@/lib/wiz/content/content-error"
+import { ConversationRules } from "@/lib/wiz/conversations/conversation-rules"
+import { layerClearedFlag } from "@/lib/wiz/rules/layer-cleared-flag"
 import { GameCommandError } from "@/lib/wiz/game/game-command-error"
 import { GameDefinition } from "@/lib/wiz/definition/game-definition"
 import { WizWorldEnvironment } from "@/lib/wiz/core/world/world"
@@ -19,11 +22,12 @@ function beforeBossOf(reached: number) {
   const bossHealth = realContent().foes.find(
     (foe) => foe.id === deepest.boss
   )!.hp
-  const definition = new GameDefinition(
+  const catalog = catalogOf(
     aContent()
       .withWeaponPower(bossHealth * 3)
       .build()
   )
+  const definition = new GameDefinition(catalog)
   const boss = deepest.stations.find((station) => station.boss)!
   const beforeBoss = deepest.stations.find((station) =>
     station.next.includes(boss.id)
@@ -37,6 +41,9 @@ function beforeBossOf(reached: number) {
     }),
     {
       ...base,
+      // 本物のはじめからと同じく、最初の契約相手がいる
+      demons: [{ id: catalog.data.startingDemon!, lv: 1, exp: 0 }],
+      contract: catalog.data.startingDemon!,
       reached,
       phase: {
         type: "expedition",
@@ -52,7 +59,7 @@ function beforeBossOf(reached: number) {
       },
     }
   )
-  return { game, boss }
+  return { game, boss, catalog, rules: new ConversationRules(catalog) }
 }
 
 describe("開いている層の数", () => {
@@ -81,6 +88,35 @@ describe("開いている層の数", () => {
     ).toEqual(layers.slice(0, open).map((layer) => layer.id))
     // 同じ層へは何度でも出られる
     eventsOrThrow(game.send({ type: "depart", layer: deepest.id }))
+  })
+
+  it("[feature:W031] 開いている一番深い層を突破すると印が立ち、突破したあとの場面が始められる", () => {
+    const { game, boss, catalog, rules } = beforeBossOf(open - 1)
+    const flag = layerClearedFlag(deepest.no)
+    const after = (catalog.data.conversations ?? []).filter((conversation) =>
+      conversation.requires.includes(flag)
+    )
+    expect(after.map((conversation) => conversation.trigger).sort()).toEqual([
+      "talk",
+      "visit",
+    ])
+    const ready = () =>
+      after.filter(
+        (conversation) =>
+          rules.reasons(game.state, conversation.trigger, conversation)
+            .length === 0
+      )
+    expect(ready()).toEqual([])
+    eventsOrThrow(game.send({ type: "advance", to: boss.id }))
+    fightToEnd(game)
+    expect(game.state.conversation?.flags).toContain(flag)
+    eventsOrThrow(game.send({ type: "acknowledge" }))
+    eventsOrThrow(game.send({ type: "retreat" }))
+    expect(ready()).toEqual(after)
+    // もう一度倒しても印は増えない
+    const flags = game.state.conversation?.flags
+    eventsOrThrow(game.send({ type: "depart", layer: deepest.id }))
+    expect(game.state.conversation?.flags).toEqual(flags)
   })
 
   it("[feature:W001] 先の層まで進んでいた古い保存でも、閉じた層へは出られず状態を変えない", () => {

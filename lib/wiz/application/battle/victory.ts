@@ -1,3 +1,4 @@
+import { layerClearedFlag } from "@/lib/wiz/rules/layer-cleared-flag"
 import { PARTY_SLOTS } from "@/lib/wiz/content/constants"
 import { Bag } from "@/lib/wiz/rules/bag"
 import { between } from "@/lib/wiz/rules/between"
@@ -192,10 +193,24 @@ export class Victory {
           ? Math.max(state.reached, layerIndex + 1)
           : state.reached,
         cleared: state.cleared || cleared,
+        ...(battle.boss ? { conversation: this.#layerCleared(state, layerIndex) } : {}),
         phase: { type: "expedition", expedition },
       },
       ...all
     )
+  }
+
+  /** 層のボスを倒した印を会話のフラグへ足す（突破したあとの場面の条件）。 */
+  #layerCleared(state: GameState, layerIndex: number) {
+    const flag = layerClearedFlag(this.deps.catalog.data.layers[layerIndex].no)
+    const flags = state.conversation?.flags ?? []
+    return {
+      active: null,
+      last: null,
+      seen: [],
+      ...state.conversation,
+      flags: flags.includes(flag) ? flags : [...flags, flag],
+    }
   }
 
   /** 倒した敵ごとに、balance.weaponDrop.chance の確率で武器の個体を一つ落とす。 */
